@@ -1,0 +1,107 @@
+<div class="container">
+	<h1 style="font-weight: bold"><img src="http://pngimg.com/uploads/bitcoin/bitcoin_PNG48.png" height="60">Bitcoin</h1>
+	<!--   -->
+<!-- 	<div class="rub">
+	<div class="row">
+		<div class="col-lg-12">
+			<h2>{{dataRub.price}}</h2><pre>{{dataRub.lastupdate}}</pre>
+		</div>	
+	</div>
+	<table class="table">
+		<thead><tr><th>Капитализация</th><th>Об. 24ч</th><th>Откр. 24ч</th><th>Low/High 24ч</th><th>Последняя сделка</th></tr></thead>
+		<tr>
+			<td>
+				{{dataRub.mktcap}}
+			</td>
+			<td>
+				{{dataRub.vol24hours}}
+			</td>
+			<td>
+				{{dataRub.open24hours}}
+			</td>
+			<td>
+				{{dataRub.low24hours}} / {{dataRub.high24hours}}
+			</td>
+			<td>
+				{{dataRub.lasttrade}}
+			</td>
+		</tr>
+	</table>
+
+</div> -->
+
+	<div class="usd">
+	<div class="row">
+		<div class="col-lg-12">
+			<h2>{{dataUsd?.price_usd}}</h2>
+		</div>	
+	</div>
+	<table class="table">
+		<thead><tr><th>Капитализация</th><th>Изменение за 7 дней и 24 за часа</th><th>Объем торгов за 24 часа</th><!-- <th>Откр. 24ч</th> --><!-- <th>Low/High 24ч</th> --><!-- <th>Последняя сделка</th> --></tr></thead>
+		<tr>
+			<td>
+				${{dataUsd?.market_cap_usd}} 
+			</td>
+			<td>
+				{{dataUsd?.percent_change_7d}}% {{dataUsd?.percent_change_24h}}% 
+			</td>
+			<td>${{dataUsd?.h24_volume_usd}}</td>
+			<!-- <td>
+				{{dataUsd.open24hours}}
+			</td>
+			<td>
+				{{dataUsd.low24hours}} / {{dataUsd.high24hours}}
+			</td>
+			<td>
+				{{dataUsd.lasttrade}}
+			</td> -->
+		</tr>
+	</table>
+	<table class="table">
+		<h3>Markets</h3>
+		<tr *ngFor="let item of dataMarket">
+			<td>
+				{{item.name}}
+			</td>
+			<td>
+				${{item.price_usd}}
+			</td>
+
+		</tr>
+
+	</table>
+
+</div>
+
+	<!-- <div class="eur">
+	<div class="row">
+		<div class="col-lg-12">
+			<h2>{{dataEur.price}}</h2><pre>{{dataEur.lastupdate}}</pre>
+		</div>	
+	</div>
+	<table class="table">
+		<thead><tr><th>Капитализация</th><th>Об. 24ч</th><th>Откр. 24ч</th><th>Low/High 24ч</th><th>Последняя сделка</th></tr></thead>
+		<tr>
+			<td>
+				{{dataEur.mktcap}}
+			</td>
+			<td>
+				{{dataEur.vol24hours}}
+			</td>
+			<td>
+				{{dataEur.open24hours}}
+			</td>
+			<td>
+				{{dataEur.low24hours}} / {{dataEur.high24hours}}
+			</td>
+			<td>
+				{{dataEur.lasttrade}}
+			</td>
+		</tr>
+	</table>
+
+</div>
+</div> -->
+<p>
+  
+</p>

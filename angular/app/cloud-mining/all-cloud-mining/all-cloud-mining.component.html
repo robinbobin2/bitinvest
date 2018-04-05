@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-md-3" style="padding-left:20px;">
+    <h3 style="float:left;">Облачный майнинг</h3>
+	<h6 style="color:#9b9b9b;margin-top:10px;float:left;width:10%;text-align:center">228</h6>
+      </div>
+	  
+
+	  
+      <div class="col-md-9">
+        <ul class="tags">
+          <li><a routerLinkActive="active"  routerLink="/mining/pay">Платит/Ожидание</a></li>
+          <li><a routerLinkActive="active" routerLink="/mining/nopay">Не платит</a></li>
+        </ul>
+      </div>
+ </div>
+<table *ngFor="let item of news; let i=index" style="width: 100%">
+	<tr>
+	<td><img src="{{item.logo}}" class="img-responsive" width="50"></td>
+	<td>
+		<h3><a href="#">{{item.name}}</a></h3>
+<!-- 		<table><tr><td>
+			<table>
+				<tr>
+					<td><p>Статус: <strong>{{item.status == 1 ? 'Платит' : 'Не платит'}}</strong></p>
+						<p><strong>Доходность: {{item.proc}}%</strong>/год</p>
+		</td>
+		<td><p>Существует: <strong>{{item.start_days}}</strong> дней</p><p>Активность депозита:<strong> {{item.depo_date}}</strong> дней</p></td>
+
+				</tr>
+			</table>
+		
+		
+
+		</td>
+<td><div style="width: 200px;"><div class="progress" style="margin: 5px 0 0">
+		  <div class="progress-bar bg-danger" role="progressbar" style="width: {{item.percentage}}%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Депозит: <strong>{{item.depo}}</strong> (<strong>{{item.percentage}}%</strong>)</div>
+			</div>
+		</div></td>
+	</tr></table> -->
+		
+		
+		<!-- <p>Последняя выплата:<strong> {{item.latest_date}}</strong> дней назад</p> -->
+	</td>	<td>
+ <form (ngSubmit)="submitPortfolio(f, item.id, 'App\\CloudMining')" #f="ngForm">
+        	<label *ngFor="let portfolio of portfolios"><input ngModel name="portfolio_id" type="radio" value="{{portfolio.id}}"> {{portfolio.name}}</label>
+
+        	<button type="submit" class="btn btn-success">Следить</button>
+        </form>
+</td>
+
+
+	</tr>
+	<tr colspan="3"><td>{{item.desc}}</td></tr>
+</table>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

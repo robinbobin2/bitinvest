@@ -1,0 +1,49 @@
+<div class="row">
+
+<div class="col-lg-4">
+<img *ngFor="let photo of photos" src="{{photo.file}}" style="max-width: 100%; border-radius: 1200px;" />
+</div>
+    <div class="col-lg-8">
+        <h2>{{news?.title}}</h2>
+    <strong>{{news.name_credits}}</strong>
+    <p>{{news.workplace}}</p>
+    <p>{{news.created_at}}</p>
+    <p>0 комментариев </p>
+    </div>
+<div class="col-lg-12" [innerHTML]="news?.desc">
+
+</div>
+<div class="col-lg-12">
+	<h3>Оставить комментарий</h3>
+<form (ngSubmit)="submitComment(f, news.id, 'App\\Interview')" #f="ngForm">
+	<div class="form-group">
+	<input type="hidden" ngModel name="post_id" value="{{news?.id}}">
+	<input type="hidden" ngModel name="commentable_type" value="App\News">
+
+	<!-- <input type="hidden" > -->
+	<textarea ngModel name="body" class="form-control"></textarea>
+	<button type="submit" class="btn btn-success">Опубликовать</button>
+</div>
+</form>
+
+<h3>Комментарии</h3>
+       <div class="container">
+        <div class="row">
+
+                <div *ngFor="let item of comments" class="col-lg-12" style="margin-top:20px;">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" height="64" src="http://placehold.it/64x64" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h6 class="media-heading">{{item.author}}
+                            <!-- <small>{{$comment->created_at->diffForHumans()}}</small>  -->
+                        </h6>
+                        <p>{{item.body}}</p>
+                        </div>
+                    </div>
+                </div>
+</div>
+</div>
+</div>
+</div>

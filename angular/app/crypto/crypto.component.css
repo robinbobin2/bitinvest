@@ -1,0 +1,23 @@
+input[type="radio"] {
+	display: none;
+}
+.eur, .rub,.usd {
+	display: none;
+}
+input[type="radio"]:checked + label {
+	font-weight: bold;
+}
+#eur:checked ~ .eur {
+	display: block;
+}
+#usd:checked ~ .usd {
+	display: block;
+}
+#rub:checked ~ .rub {
+	display: block;
+}
+label {
+	cursor: pointer;
+	color: blue;
+
+}

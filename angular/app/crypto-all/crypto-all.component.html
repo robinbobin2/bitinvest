@@ -1,0 +1,196 @@
+	<h1>{{dataUsd.sym}}</h1>
+	<section class="crypto-active">
+		<div class="wrapper">
+			<div class="select-block">
+				<a href="#"><h3>Криптовалюты</h3></a>
+				<div class="filters">
+					<form>
+						<div class="select-wrap">
+							<select>
+								<option value="all">Валюта: Любая</option>
+								<option value="usd">Валюта: USD</option>
+								<option value="eur">Валюта: EUR</option>
+							</select>
+						</div>
+						<div class="select-wrap">
+							<select>
+								<option value="all">Алгоритм: Все</option>
+								<option value="SHA-256">Алгоритм: SHA-256</option>
+							</select>
+						</div>
+						<div class="select-wrap">
+							<select>
+								<option value="all">Возраст: Любой</option>
+								<option value="all">Возраст: 2009</option>
+							</select>
+						</div>
+						<div class="select-wrap select-big">
+							<select>
+								<option value="all">Рейтинг: Лидер роста</option>
+								<option value="all">Рейтинг: Лидер роста</option>
+								<option value="all">Рейтинг: Лидер роста</option>
+							</select>
+						</div>
+						<input type="text" placeholder="Поиск по названию монеты..." [(ngModel)]="filteredName" name="filteredName" value="">
+					</form>
+				</div>
+			</div>
+			<div class="table-wrap">
+				<table class="table crypto-table">
+					<thead>
+						<tr>
+							<th width="4.4%">
+								<span>#</span>
+								<img src="img/arr-top-table.png" alt="">
+							</th>
+							<th [class.active]="order === 'data.sym'"
+                      			(click)="setOrder('data.sym')"
+                      			 width="12.9%">
+								<span>Название</span>
+								<img src="img/arr-top-table.png" alt="">
+							</th>
+							<th [class.active]="order === 'data.price'"
+                      			(click)="setOrder('data.price')"
+                      			width="10%">
+								<span>Стоимость</span>
+								
+								<img src="img/arr-top-table.png" alt="">
+							</th>
+							<th
+							 
+							 width="10.8%">
+								<span>Капитализация</span>
+								<img src="img/arr-top-table.png" alt="">
+							</th>
+							<th 
+                      			width="11.2%">
+								<span>Всего / Получено</span>
+								<img src="img/arr-top-table.png" alt="">
+							</th>
+							<th 
+							
+                      			width="8.4%">
+								<span>Торги (24ч)</span>
+								<img src="img/arr-top-table.png" alt="">
+							</th>
+							<th 
+							[class.active]="order === 'data.algo'"
+                      			(click)="setOrder('data.algo')"
+                      			width="6.3%">
+								<span>Алгоритм</span>
+								<img src="img/arr-top-table.png" alt="">
+							</th>
+							<th [class.active]="order === 'data.year'"
+                      			(click)="setOrder('data.year')"
+                      			width="4.7%">
+								<span>Год</span>
+								<img src="img/arr-top-table.png" alt="">
+							</th>
+							<th 
+                      			width="11%">
+								<span>Изм. за 24ч</span>
+								<img src="img/arr-top-table.png" alt="">
+							</th>
+							<th 
+                      			width="20.3%">
+								<span>Изм. за 7д</span>
+								<img src="img/arr-top-table.png" alt="">
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr *ngFor="let data of dataUsd | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym'">
+							<td>
+								<span>{{i}}</span>
+							</td>
+							<td>
+								<div class="img-wrap">
+									<!-- <img src="img/bitcoin-icon.png" alt=""> -->
+								</div>
+								<span>{{data.name}}({{data.sym}})<!-- Bitcoin (BTC) --></span>
+							</td>
+							<td>
+								<span class="price">{{data.price}} ({{data.price-data.prevprice| number: '1.3'}})</span>
+								<!-- <span class="change">(+4,2%)</span> -->
+							</td>
+							<td>
+								<span class="capitalization"><!-- {{data.mktcap}} --></span>
+							</td>
+							<td>
+								<span class="total"></span>
+								<!-- <span class="received">890 910</span> -->
+							</td>
+							<td>
+								<span class="bargaining"><!-- {{data.vol24hours}} --></span>
+							</td>
+							<td>
+								<span class="algorithm">{{data.algo}}</span>
+							</td>
+							<td>
+								<span class="year">{{data.year}}</span>
+							</td>
+							<td>
+								<!-- <span [ngClass]="isNegative(data.CHANGEPCTDAY)==true ? 'change-red' : 'change-green'">{{data.CHANGEPCTDAY}}%</span> -->
+
+							</td>
+							<td>
+								<div class="difference">
+									<!-- <span [ngClass]="isNegative(data.CHANGEPCT24HOUR)==true ? 'change-red' : 'change-green'">{{data.CHANGEPCT24HOUR}}%({{data.CHANGEPCT24HOUR-data.CHANGEPCTDAY}})</span> -->
+									<div class="buttons">
+										<button class="right">></button>
+										<button class="plus">+</button>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr class="hidden">
+							<td>
+								<span>122</span>
+							</td>
+							<td>
+								<div class="img-wrap">
+									<img src="img/bitcoin-icon.png" alt="">
+								</div>
+								<span>Bitcoin (BTC)</span>
+							</td>
+							<td>
+								<span class="price">$9,200</span>
+								<span class="change">(+4,2%)</span>
+							</td>
+							<td>
+								<span class="capitalization">$95,113,177,098</span>
+							</td>
+							<td>
+								<span class="total">21 000 000 000</span>
+								<span class="received">890 910</span>
+							</td>
+							<td>
+								<span class="bargaining">$95,113,177</span>
+							</td>
+							<td>
+								<span class="algorithm">SHA-256</span>
+							</td>
+							<td>
+								<span class="year">2009</span>
+							</td>
+							<td>
+								<span class="change-green">+ 3,5% (+200,09)</span>
+
+							</td>
+							<td>
+								<div class="difference">
+									<span class="change-red">-2,3% (-201,11)</span>
+									<div class="buttons">
+										<button class="right">></button>
+										<button class="plus">+</button>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<a href="#" class="show-more">Показать еще</a>
+		</div>
+	</section>

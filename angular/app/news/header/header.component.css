@@ -1,0 +1,57 @@
+.navbar {
+        background: #1d1f24;
+        padding: 15px 0;
+      }
+      #searchform, #searchform input {
+        width: 100%;
+      }
+      .menubar {
+        background: #383c46;
+      }
+      .navbar-nav-ul a {
+        font-family: "PT Sans";
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+        display: block;
+        padding: 7px 14px;
+        font-size: 14px;
+        border-top: 2px solid #383c46;
+        border-right: 1px solid #1d1f24;
+      }
+      .navbar-nav-ul li:last-of-type a {
+        margin-right: 0;
+        border-right: none;
+      }
+      .navbar-nav-ul a:hover, .navbar-nav-ul a.active {
+        background: #fff;
+        color: #f58c1b;
+        border-top: 2px solid #f58c1b;
+        text-decoration: none;
+      }
+      .navbar-nav-ul, .tags {
+        overflow: hidden;
+        list-style: none;
+        padding-left: 0;
+      }
+      .navbar-nav-ul li, .tags li {
+        float: left;
+      }
+       .tags li {
+        margin-right: 15px;
+       }
+      .tags a {
+        display: block;
+        float: left;
+        padding: 10px 20px;
+        border-radius: 120px;
+        background: #e5e5e5;
+        color: #3e4468;
+        font-size: 13px;
+        font-family: "PT Sans";
+      }
+      .tags a:hover {
+        background: #f58c1b;
+        color: #fff;
+        text-decoration: none;
+      }
