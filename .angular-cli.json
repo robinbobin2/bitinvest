@@ -22,7 +22,6 @@
         "styles.scss"
       ],
       "scripts": [
-        "assets/masonry.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
