@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use File;
+use Illuminate\Support\Facades\Auth;
 
 class AngularController extends Controller
 {
@@ -15,9 +16,21 @@ class AngularController extends Controller
     {
         return File::get(public_path('dist/index.html'));
     }
+
     public function crypto($symbol)
     {
         return File::get(public_path('dist/index.html'));
+    }
+
+    public function user()
+    {
+        $user = Auth::user();
+        if($user){
+            return json_encode($user);
+        }
+        return [
+            'error' => 'User not loggined'
+        ];
     }
 
 
