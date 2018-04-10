@@ -78,10 +78,10 @@ public function show($id) {
             $item['start_days'] = $start_days;
             
         }
-        $mining = $mining->toArray();
-        $news = array_values($mining);
+        $comments = $item->comments;
         return response()->json([
-            'news' => $news
+            'news' => $item,
+            'comments'=>$comments
         ]);
 
 
