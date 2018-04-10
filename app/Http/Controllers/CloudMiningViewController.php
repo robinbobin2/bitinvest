@@ -50,7 +50,6 @@ class CloudMiningViewController extends Controller
 
 public function show($id) {
         $item = CloudMining::findOrFail($id);
-        foreach ($mining as $item) {
             $history = $item->history;
             $got = 0;
             foreach ($history as $h_item) {
@@ -76,8 +75,6 @@ public function show($id) {
             $item['percentage'] = $percentage;
             $start_days = round((strtotime("now") - strtotime($item->start))  / (60 * 60 * 24), 0);
             $item['start_days'] = $start_days;
-            
-        }
         $comments = $item->comments;
         return response()->json([
             'news' => $item,
