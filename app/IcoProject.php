@@ -30,4 +30,11 @@ class IcoProject extends Model
     {
         return $this->hasMany('App\IcoPercent', 'ico_id');
     }
+    public function category()
+    {
+        return $this->belongsTo('App\Category', 'cat_id');
+    }
+    public function comments() {
+        return $this->morphMany('App\Comment', 'commentable');
+    }
 }

@@ -1,63 +1,712 @@
-<div class="row">
-        <div class="col-md-3" style="padding-left:20px;">
-        <h3 style="float:left;">Новости</h3>
-	<h6 style="color:#9b9b9b;margin-top:10px;float:left;width:10%;text-align:center">228</h6>
-      </div>
-	  
-
-	  
-      <div class="col-md-9">
-        <ul class="tags">
-          <li><a routerLinkActive="active"  routerLink="/posts/all">Новое за сегодня</a></li>
-          <li><a routerLinkActive="active" href="#">Самое популярное</a></li>
-          <li><a routerLinkActive="active" href="#">Самое обсуждаемое</a></li>
-        </ul>
-      </div>
- </div>
-
- <div class="main-block" style="width: 48%;float:left;margin:1%;" *ngFor="let main_item of main_news">
-        <div class="block" style="background-size: cover; width: 100%; height: 240px; box-sizing: border-box;">
-          <div style="position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;"></div>
-          <img style="z-index: 1; position: absolute; top: 0; left: 0; right: 0;
-          bottom: 0;" src="{{main_item.photo}}">
-          <div class="block-content">
-            <span class="tag"><a href="#">{{main_item.category}}</a></span>
-            <table style="height: 140px;"><tr><td valign="bottom">
-            
-            <h2 style="position: relative; z-index: 999"><a (click)="loadMore(main_item.id)">{{main_item.title}}</a></h2>
-          </td></tr></table>
-
-            <div class="meta" style="z-index: 99">
-              <span class="date">{{main_item.created_at}}</span>
-              <span class="spy">0</span>
-              <span class="chat">0</span>
+<div class="news-content">
+        <div class="news-head">
+          <h1>Новости<span>872</span></h1>
+          <ul class="news-tabs">
+            <li class="active"><a href="#">Новое за сегодня</a></li>
+            <li><a href="#">Самое популярное</a></li>
+            <li><a href="#">Самое обсуждаемое</a></li>
+          </ul>
+        </div>
+        <div class="news-body">
+          <div class="news-tab-content active">
+            <div class="main-news">
+              <div class="news">
+                <div class="img" style="background-image: url(img/news-big-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">Платформа для управления <br> криптовалютными активами <br> MyWish с интегрированной</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                    <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>1280</span>
+                    <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a>
+                  </div>
+                </div>
+                <div class="text">
+                  <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br> Система предназначена для интеграции высоких технологий <br> в реальный сектор, использующий... <a href="#">Подробнее</a></p>
+                </div>
+              </div>
+              <div class="news news-slider-wrap">
+                <div class="news-slider news-slider-1">
+                  <div class="slide" style="background-image: url(img/news-big-img1.jpg)"></div>
+                  <div class="slide" style="background-image: url(img/news-big-img2.jpg)"></div>
+                  <div class="slide" style="background-image: url(img/news-big-img1.jpg)"></div>
+                </div>
+                <div class="news-slider-info">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">Sunday TIMEs Issue #15</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br><a href="#">Подробнее</a></p>
+                </div>
+              </div>
             </div>
+            <div class="news-list">
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления <br> криптовалютными...</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img2.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления <br> криптовалютными активами <br> MyWish </a>
+                  </h3>
+                </div>
+              </div>
+              <a href="#" class="trust">
+                <div class="img-wrap"><img src="img/trust.png" alt=""></div>
+                <h4>Как вложиться <br>в криптовалюту?</h4>
+                <p class="name">Александр Александров</p>
+                <span>SEO ICOTrust</span>
+              </a>
+              <div class="news">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления <br> криптовалютными активами <br> MyWish </a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img4.jpg)">
+                  <a href="#" class="news-btn">Интересности</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Bitcoin восстановился <br>после падения</a>
+                  </h3>
+                </div>
+              </div>
+              <a href="#" class="trust">
+                <div class="img-wrap"><img src="img/trust.png" alt=""></div>
+                <h4>Как вложиться <br>в криптовалюту?</h4>
+                <p class="name">Александр Александров</p>
+                <span>SEO ICOTrust</span>
+              </a>
+              <div class="news">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="banner-orange"><img src="img/banner-orange.jpg" alt=""></a>
+              <a href="#" class="trust">
+                <div class="img-wrap"><img src="img/trust.png" alt=""></div>
+                <h4>Как вложиться <br>в криптовалюту?</h4>
+                <p class="name">Александр Александров</p>
+                <span>SEO ICOTrust</span>
+              </a>
+              <div class="news">
+                <div class="img news-small-title" style="background-image: url(img/list-img5.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">Яндекс касса <br>планирует начать <br>прием Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Блокчейн - есть ли будущее?</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img2.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Блокчейн - есть ли будущее?</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления <br> криптовалютными активами <br> MyWish </a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news news-hidden">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news news-hidden">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news news-hidden">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="show-more">Показать еще</a>
+          </div>
+          <div class="news-tab-content">
+            <div class="main-news">
+              <div class="news">
+                <div class="img" style="background-image: url(img/news-big-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">Платформа для управления <br> криптовалютными активами <br> MyWish с интегрированной</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                    <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>1280</span>
+                    <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a>
+                  </div>
+                </div>
+                <div class="text">
+                  <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br> Система предназначена для интеграции высоких технологий <br> в реальный сектор, использующий... <a href="#">Подробнее</a></p>
+                </div>
+              </div>
+              <div class="news news-slider-wrap">
+                <div class="news-slider news-slider-2">
+                  <div class="slide" style="background-image: url(img/news-big-img1.jpg)"></div>
+                  <div class="slide" style="background-image: url(img/news-big-img2.jpg)"></div>
+                  <div class="slide" style="background-image: url(img/news-big-img1.jpg)"></div>
+                </div>
+                <div class="news-slider-info">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">Sunday TIMEs Issue #15</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br><a href="#">Подробнее</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="news-list">
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления <br> криптовалютными...</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img2.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления <br> криптовалютными активами <br> MyWish </a>
+                  </h3>
+                </div>
+              </div>
+              <a href="#" class="trust">
+                <div class="img-wrap"><img src="img/trust.png" alt=""></div>
+                <h4>Как вложиться <br>в криптовалюту?</h4>
+                <p class="name">Александр Александров</p>
+                <span>SEO ICOTrust</span>
+              </a>
+              <div class="news">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления <br> криптовалютными активами <br> MyWish </a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img4.jpg)">
+                  <a href="#" class="news-btn">Интересности</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Bitcoin восстановился <br>после падения</a>
+                  </h3>
+                </div>
+              </div>
+              <a href="#" class="trust">
+                <div class="img-wrap"><img src="img/trust.png" alt=""></div>
+                <h4>Как вложиться <br>в криптовалюту?</h4>
+                <p class="name">Александр Александров</p>
+                <span>SEO ICOTrust</span>
+              </a>
+              <div class="news">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="banner-orange"><img src="img/banner-orange.jpg" alt=""></a>
+              <a href="#" class="trust">
+                <div class="img-wrap"><img src="img/trust.png" alt=""></div>
+                <h4>Как вложиться <br>в криптовалюту?</h4>
+                <p class="name">Александр Александров</p>
+                <span>SEO ICOTrust</span>
+              </a>
+              <div class="news">
+                <div class="img news-small-title" style="background-image: url(img/list-img5.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">Яндекс касса <br>планирует начать <br>прием Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Блокчейн - есть ли будущее?</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img2.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Блокчейн - есть ли будущее?</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления <br> криптовалютными активами <br> MyWish </a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news news-hidden">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news news-hidden">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news news-hidden">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="show-more">Показать еще</a>
+          </div>
+          <div class="news-tab-content">
+            <div class="main-news">
+              <div class="news">
+                <div class="img" style="background-image: url(img/news-big-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">Платформа для управления <br> криптовалютными активами <br> MyWish с интегрированной</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                    <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>1280</span>
+                    <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a>
+                  </div>
+                </div>
+                <div class="text">
+                  <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br> Система предназначена для интеграции высоких технологий <br> в реальный сектор, использующий... <a href="#">Подробнее</a></p>
+                </div>
+              </div>
+              <div class="news news-slider-wrap">
+                <div class="news-slider news-slider-3">
+                  <div class="slide" style="background-image: url(img/news-big-img1.jpg)"></div>
+                  <div class="slide" style="background-image: url(img/news-big-img2.jpg)"></div>
+                  <div class="slide" style="background-image: url(img/news-big-img1.jpg)"></div>
+                </div>
+                <div class="news-slider-info">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">Sunday TIMEs Issue #15</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br><a href="#">Подробнее</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="news-list">
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления <br> криптовалютными...</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img2.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления <br> криптовалютными активами <br> MyWish </a>
+                  </h3>
+                </div>
+              </div>
+              <a href="#" class="trust">
+                <div class="img-wrap"><img src="img/trust.png" alt=""></div>
+                <h4>Как вложиться <br>в криптовалюту?</h4>
+                <p class="name">Александр Александров</p>
+                <span>SEO ICOTrust</span>
+              </a>
+              <div class="news">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления <br> криптовалютными активами <br> MyWish </a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img4.jpg)">
+                  <a href="#" class="news-btn">Интересности</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Bitcoin восстановился <br>после падения</a>
+                  </h3>
+                </div>
+              </div>
+              <a href="#" class="trust">
+                <div class="img-wrap"><img src="img/trust.png" alt=""></div>
+                <h4>Как вложиться <br>в криптовалюту?</h4>
+                <p class="name">Александр Александров</p>
+                <span>SEO ICOTrust</span>
+              </a>
+              <div class="news">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="banner-orange"><img src="img/banner-orange.jpg" alt=""></a>
+              <a href="#" class="trust">
+                <div class="img-wrap"><img src="img/trust.png" alt=""></div>
+                <h4>Как вложиться <br>в криптовалюту?</h4>
+                <p class="name">Александр Александров</p>
+                <span>SEO ICOTrust</span>
+              </a>
+              <div class="news">
+                <div class="img news-small-title" style="background-image: url(img/list-img5.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">Яндекс касса <br>планирует начать <br>прием Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Блокчейн - есть ли будущее?</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img2.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Блокчейн - есть ли будущее?</a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img" style="background-image: url(img/list-img1.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+                <div class="text">
+                  <h3>
+                    <a href="#">Платформа для управления <br> криптовалютными активами <br> MyWish </a>
+                  </h3>
+                </div>
+              </div>
+              <div class="news">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="#" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news news-hidden">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news news-hidden">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+              <div class="news news-hidden">
+                <div class="img news-small-title" style="background-image: url(img/list-img3.jpg)">
+                  <a href="#" class="news-btn">Bitcoin</a>
+                  <a href="" class="title-link">7 things we’ve learned <br> about Blockchain from <br> Davos 2018</a>
+                  <div class="info">
+                    <span class="date">26 Окт 2017 в 11:39</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="show-more">Показать еще</a>
           </div>
         </div>
-        <p>{{main_item.desc}} <a (click)="loadMore(main_item.id)">Подробнее</a></p>
       </div>
 
-<masonry [options]="myOptions" class="masonry" style="float:left; transition: none !important;">
-        
-	
-	  
-	  	  		<masonry-brick style="transition: none !important;" class="masonry-item" *ngFor="let item of news">
-        <div class="grid-item-bg" style=" position: relative; background-size: cover; box-sizing: border-box;">
-          <div style="position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;"></div>
-          <img style="z-index: 1; position: absolute; top: 0; left: 0; right: 0;
-          bottom: 0;" src="{{item.photo}}">
-          <div class="block-content" style="z-index: 99">
-            <span class="tag"><a href="#">{{item.category}}</a></span>
-            
-            <div class="meta" style="z-index: 99">
-              <span class="date">{{item.created_at}}</span>
-              <span class="spy">0</span>
-              <span class="chat">0</span>
-            </div>
-          </div>
-        </div>
-        <h3><a  (click)="loadMore(item.id)" >{{item.title}}</a></h3>
-      </masonry-brick>
-      
-	  
-      </masonry>

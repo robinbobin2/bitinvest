@@ -55,9 +55,18 @@ class AdminCategoryController extends Controller
                                 'name' => $category->name,
                                 );
             }
-        }
-        
 
+        }
+         elseif($type==5) {
+            foreach ($categories as $category) {
+            $categories_count = $category->ico->count();
+            $catarray[] = array('id' => $category->id,
+                                'count' => $categories_count,
+                                'name' => $category->name,
+                                );
+            }
+        
+        }
         
         
         return response()->json([

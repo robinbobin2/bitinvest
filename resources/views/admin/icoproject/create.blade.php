@@ -87,12 +87,6 @@
 </div>
 
 <div class="form-group">
-<label for="aim">Цель сбора средств</label> 
- <textarea name="aim" id="aim" class="summernote"></textarea>
-</div>
-
-
-<div class="form-group">
 <label for="platform">Платформа</label> 
 <input type="text" value="" name="platform" id="platform" class="form-control">
 </div>

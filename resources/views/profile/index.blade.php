@@ -1,22 +1,5 @@
 @extends('layouts.app') 
-<?php
-
-
-$cryptocompareApi = new Cryptocompare\CryptocompareApi();
-$example1 = $cryptocompareApi->getAvailableCalls();
-// print_r($example1);
-
-$cryptocomparePrice = new Cryptocompare\Price();
-$example2 = $cryptocomparePrice->getSinglePrice("1","BTC","USD","CCCAGG","false");
-// print_r($example2);
-
-
-$cryptocompareCoin = new Cryptocompare\Coin();
-$example3 = $cryptocompareCoin->getList();
-print_r($example3);
-?>
 @section('content')
-{{$example1}}
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

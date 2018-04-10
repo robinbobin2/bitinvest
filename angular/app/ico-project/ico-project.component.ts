@@ -12,17 +12,17 @@ interface Categories {
   count: number;
 
 }
+
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  selector: 'app-ico-project',
+  templateUrl: './ico-project.component.html',
+  styleUrls: ['./ico-project.component.scss']
 })
+export class IcoProjectComponent implements OnInit {
 
-export class NewsComponent implements OnInit {
-
-   categories: Categories[] = [];
+ categories: Categories[] = [];
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
-    let path = "/categoriesraw/1";
+    let path = "/categoriesraw/5";
     const info = http.get(path);
   		info.subscribe(response => {
   			for ( let item of response['cats']) {
@@ -40,13 +40,6 @@ export class NewsComponent implements OnInit {
 
   ngOnInit() {
 
-  }
-  loadCat(id) {
-  	this.router.navigate(['/posts/category', id]);
-   //  console.log('snap');
-   //  this.route.url.subscribe(() => {
-   //  console.log(this.route.snapshot.firstChild.data);
-   // });
   }
 
 

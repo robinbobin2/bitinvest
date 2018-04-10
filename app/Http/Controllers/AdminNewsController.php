@@ -35,7 +35,7 @@ class AdminNewsController extends Controller
 
     public function create()
     {
-        $categories = Category::where('type', 1);
+        $categories = Category::all()->where('type', 1);
         return view('news.create')
             ->with('categories', $categories);
     }

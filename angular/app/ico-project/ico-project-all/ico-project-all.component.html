@@ -1,0 +1,52 @@
+<div class="ico-content">
+				<div class="ico-head">
+					<h1>ICO<span>872</span></h1>
+					<ul class="ico-tabs">
+						<li class="active"><a href="#">Активные (145)</a></li>
+						<li><a href="#">Завершенные (55)</a></li>
+					</ul>
+					<form>
+						<input type="text" placeholder="Поиск по названию">
+						<button type="button"><img src="img/search-icon.png" alt=""></button>
+					</form>
+				</div>
+				<div class="select-wrap select-wrap-ico">
+					<select>
+						<option value="all">Фильтрация: По алфавиту</option>
+						<option value="usd">Фильтрация: По алфавиту</option>
+						<option value="eur">Фильтрация: По алфавиту</option>
+					</select>
+				</div>
+				<div class="project-wrapper active">
+					<div *ngFor="let item of news" class="project-block" [ngClass]="item.status==1 ? ' ' : 'no-bg'">
+						<div class="img-wrap">
+							<a href="/ico/item/{{item.id}}"><img src="{{item.logo}}" alt=""></a>
+						</div>
+						<div class="text-wrap">
+							<div class="text-info">
+								<p><a href="/ico/item/{{item.id}}" class="project-title">{{item.name}}</a><a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>0</a></p>
+							</div>
+							<div class="project-info-content">
+								<div class="info">
+									<p class="status" [ngClass]="item.status==1 ? 'active-status' : 'inactive-status'">Статус: <span>{{item.status == 1? 'Активен': 'Завершен'}}</span></p>
+									<p class="year">от {{item.money_start}} до {{item.money_end}}</p>
+									<p class="last-updated">Последнее обновление: {{item.updated_at}}</p>
+								</div>
+								<div class="progress-bar">
+									<a href="#" class="product-gray-btn">Недвижимость</a>
+									<div class="progress">
+										<span [ngStyle]="{'width': item.current_money/(item.money / 100)+'%' }"></span>
+										<p>${{item.current_money}} из {{item.money}}</p>
+									</div>
+									<a href="#" class="follow"><span class="plus">+</span><span class="text">Следить</span></a>
+								</div>
+							</div>
+						</div>
+						<p class="more-project" [innerHTML]="item.about">
+							</p>
+						<p class="more-project"><a  href="/ico/item/{{item.id}}">Подробнее о проекте</a></p>
+					</div>
+
+				</div>
+				<a href="#" class="show-more">Показать еще</a>
+			</div>

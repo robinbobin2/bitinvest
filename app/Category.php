@@ -26,6 +26,10 @@ class Category extends Model
     {
         return $this->hasMany('App\Review', 'cat_id');
     }
+    public function ico()
+    {
+        return $this->hasMany('App\IcoProject', 'cat_id');
+    }
     
     
 }

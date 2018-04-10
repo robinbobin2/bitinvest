@@ -37,6 +37,8 @@ Route::get('/newsraw', 'NewsViewController@index');
 Route::get('/analyticsraw/', 'AnalyticsViewController@index');
 Route::get('/reviewraw/', 'ReviewViewController@index');
 Route::get('/miningraw/', 'CloudMiningViewController@index');
+Route::get('/icoraw/', 'IcoProjectViewController@index');
+Route::get('/icoraw/{ico}', 'IcoProjectViewController@show');
 Route::get('/interviewraw/', 'InterviewViewController@index');
 Route::get('/newsraw/{news}', 'NewsViewController@show');
 Route::get('/analyticsraw/{analytics}', 'AnalyticsViewController@show');
@@ -102,6 +104,9 @@ Route::get('/cryptocurrency/cmc', "AngularController@serve");
 Route::get('/cryptocurrency/exmo', "AngularController@serve");
 Route::get('/cryptocurrency/crypto', "AngularController@serve");
 Route::get('/cryptocurrency/all', "AngularController@serve");
+Route::get('/ico/all', "AngularController@serve");
+Route::get('/ico/item/{post}', "AngularController@serve");
+Route::get('/ico/category/{category}', "AngularController@serve");
 
 // Route::get('/crypto', "AngularController@serve");
 

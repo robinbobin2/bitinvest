@@ -1,0 +1,369 @@
+<div class="ico-card-content">
+				<a href="/ico/all" class="return"><span>&#60;</span>Вернуться к списку проектов</a>
+				<div class="project-block">
+					<div class="img-wrap">
+						<img src="{{news.logo}}" alt="">
+					</div>
+					<div class="text-wrap">
+						<div class="text-info">
+							<p class="project-title">{{news.name}}<a href="#comment-block" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>0</a></p>
+						</div>
+						<div class="project-info-content">
+							<div class="info">
+								<p class="status" [ngClass]="news.status==1 ? 'active-status' : 'inactive-status'">Статус: <span>{{news.status == 1? 'Активен': 'Завершен'}}</span></p>
+								<p class="year">от {{news.money_start}} до {{news.money_end}}</p>
+								<p class="last-updated">Последнее обновление: {{news.updated_at}}</p>
+							</div>
+							<div class="progress-bar">
+								<a href="#test-popup" class="follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="card-menu">
+					<li><a [routerLink]="['/ico/item', news.id]" fragment="basic-information" >Основа</a></li>
+					<li><a [routerLink]="['/ico/item', news.id]" fragment="distribution-funds">Распределение средств</a></li>
+					<li><a [routerLink]="['/ico/item', news.id]" fragment="team-genesis">Команда</a></li>
+					<li><a [routerLink]="['/ico/item', news.id]" fragment="history-project">История</a></li>
+					<li><a>Whight paper <img src="img/pdf-icon.png" alt=""></a></li>
+					<li><a [routerLink]="['/ico/item', news.id]" fragment="comment-block">Комментарии (5)</a></li>
+					<li><a [routerLink]="['/ico/item', news.id]" fragment="related-projects">Похожие проекты (2)</a></li>
+				</ul>
+				<div class="basic-information" id="basic-information">
+					<div class="basic-information-wrap">
+						<div class="left">
+							<h3 class="ico-title">Основная информация</h3>
+							<ul>
+								<li><span class="gray">Сайт:</span> <span class="black"><a href="{{news.website}}">{{news.website}}</a></span></li>
+								<li><span class="gray">Тип ICO</span><span class="black">{{news.type==1 ? 'ICO' : 'Pre-ICO'}}</span> </li>
+								<li><span class="gray">Категория:</span><span class="black">Социальные сети</span></li>
+								<li><span class="gray">Цель сборов:</span><span class="black">${{news.money}}</span></li>
+								<li><span class="gray">Наличие Эскроу:</span><span class="black">{{news.escrow ==1? 'Да':'Нет'}}</span></li>
+								<li><span class="gray">Наличие рабочего прототипа:</span> <span class="black">Нет</span></li>
+								<li><span class="gray">White paper:</span><span class="black">{{news.white_paper ==1 ? 'Есть': 'Нет'}}</span> </li>
+								<li><span class="gray">Валюты:</span><span class="black">{{news.currencies}}</span> </li>
+								<li><span class="gray">Платформа:</span><span class="black">{{news.platform}}</span> </li>
+								<li><span class="gray">Местоположение:</span><span class="black">{{news.place}}</span> </li>
+							</ul>
+						</div>
+						<div class="right">
+							<h3 class="ico-title">Статистика</h3>
+							<div class="progress">
+										<span [ngStyle]="{'width': news.current_money/(news.money / 100)+'%' }"></span>
+										<p>${{news.current_money}} из {{news.money}}</p>
+									</div>
+							<ul>
+								<li><span>Собрано {{news.current_money/(news.money / 100)}}%</span></li>
+								<li><span>Участвуют {{news.number_people}} чел.</span></li>
+								<li><span>Осталось 25 дней</span></li>
+							</ul>
+						</div>
+					</div>
+					<div class="text-wrap" [innerHTML]="news.about">
+						
+					</div>
+				</div>
+				<div class="distribution-funds" id="distribution-funds">
+					<h3 class="ico-title">Распределение средств</h3>
+					<ul class="persent">
+						<li style="width: 40%" class="gray">40%</li>
+						<li style="width: 30%" class="blue">30%</li>
+						<li style="width: 20%" class="purple">20%</li>
+						<li style="width: 10%" class="green">10%</li>
+					</ul>
+					<ul class="persent-text">
+						<li><span class="bg bg-gray"></span><span class="text text-grya">40% Retailers and customers acquisition, global marketing</span></li>
+						<li><span class="bg bg-blue"></span><span class="text text-blue">30% New markets launch</span></li>
+						<li><span class="bg bg-purple"></span><span class="text text-purple">20% Infrastructure, legal, IT and HR costs for new local offices  </span></li>
+						<li><span class="bg bg-green"></span><span class="text text-green">10% Extra</span></li>
+					</ul>
+				</div>
+				<div class="team-genesis" id="team-genesis">
+					<h3 class="ico-title">Команда {{news.name}}</h3>
+					<ul>
+						<li *ngFor="let member of team">
+							<div class="img-wrap">
+								<img src="{{member.photo}}" alt="">
+							</div>
+							<span class="bold">{{member.name}}</span>
+							<span>{{member.workplace}}</span>
+						</li>
+					</ul>
+				</div>
+				<div class="history-project" id="history-project">
+					<h3 class="ico-title">История развития проекта</h3>
+					<ul>
+						<!-- <li class="gray">
+							<span>Январь, 2017</span>
+							<p>Start of development</p>
+						</li>
+						<li class="green">
+							<span>Январь, 2018</span>
+							<p>Начало приватной продажи токенов</p>
+						</li> -->
+						<li [ngClass]="onState(map.state)" *ngFor="let map of roadMap">
+							<span>{{map.date}}</span>
+							<p [innerHTML]="map.desc"></p>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="comment-block" id="comment-block">
+					<div class="comment-top">
+						<h3>Комментарии (5)</h3>
+						<p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#">авторизоваться</a> или <a href="#">пройти регистрацию.</a></p>
+					</div>
+					<ul class="comment-items">
+						<li>
+							<div class="left">
+								<div class="info">
+									<div class="img-wrap">
+										<img src="img/comment-img1.jpg" alt="">
+									</div>
+									<div class="text-wrap">
+										<p>Иванов Петр (petroff)</p>
+										<span>Добавлен 20.10.2017 в 12:12</span>
+									</div>
+								</div>
+								<p class="comment-text">Отличная статья, будем надеятся что все так и произойдет!</p>
+							</div>
+							<div class="right">
+								<div class="img-wrap"></div>
+								<div class="btn-block">
+									<span class="number-green">4</span>
+									<div class="buttons">
+										<a href="#" class="plus">+</a>
+										<a href="#" class="minus">-</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="left">
+								<div class="info">
+									<div class="img-wrap">
+										<img src="img/comment-img2.jpg" alt="">
+									</div>
+									<div class="text-wrap">
+										<p>Иванов Петр (petroff)</p>
+										<span>Добавлен 20.10.2017 в 12:12</span>
+									</div>
+								</div>
+								<p class="comment-text">Отличная статья, будем надеятся что все так и произойдет! Спасибо.!</p>
+							</div>
+							<div class="right">
+								<div class="img-wrap"></div>
+								<div class="btn-block">
+									<span class="number-red">-2</span>
+									<div class="buttons">
+										<a href="#" class="plus">+</a>
+										<a href="#" class="minus">-</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="left">
+								<div class="info">
+									<div class="img-wrap">
+										<img src="img/comment-img3.jpg" alt="">
+									</div>
+									<div class="text-wrap">
+										<p>Иванов Петр (petroff)</p>
+										<span>Добавлен 20.10.2017 в 12:12</span>
+									</div>
+								</div>
+								<p class="comment-text">Я рассчитываю на рост Битка</p>
+							</div>
+							<div class="right">
+								<div class="img-wrap"></div>
+								<div class="btn-block">
+									<span class="number-green">8</span>
+									<div class="buttons">
+										<a href="#" class="plus">+</a>
+										<a href="#" class="minus">-</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="left">
+								<div class="info">
+									<div class="img-wrap">
+										<img src="img/comment-img2.jpg" alt="">
+									</div>
+									<div class="text-wrap">
+										<p>Иванов Петр (petroff)</p>
+										<span>Добавлен 20.10.2017 в 12:12</span>
+									</div>
+								</div>
+								<p class="comment-text">Я рассчитываю на рост Битка</p>
+							</div>
+							<div class="right">
+								<div class="img-wrap"></div>
+								<div class="btn-block">
+									<span class="number-green">8</span>
+									<div class="buttons">
+										<a href="#" class="plus">+</a>
+										<a href="#" class="minus">-</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="left">
+								<div class="info">
+									<div class="img-wrap">
+										<img src="img/comment-img2.jpg" alt="">
+									</div>
+									<div class="text-wrap">
+										<p>Иванов Петр (petroff)</p>
+										<span>Добавлен 20.10.2017 в 12:12</span>
+									</div>
+								</div>
+								<p class="comment-text">Я рассчитываю на рост Битка</p>
+							</div>
+							<div class="right">
+								<div class="img-wrap"></div>
+								<div class="btn-block">
+									<span class="number-green">8</span>
+									<div class="buttons">
+										<a href="#" class="plus">+</a>
+										<a href="#" class="minus">-</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="hidden">
+							<div class="left">
+								<div class="info">
+									<div class="img-wrap">
+										<img src="img/comment-img3.jpg" alt="">
+									</div>
+									<div class="text-wrap">
+										<p>Иванов Петр (petroff)</p>
+										<span>Добавлен 20.10.2017 в 12:12</span>
+									</div>
+								</div>
+								<p class="comment-text">Я рассчитываю на рост Битка</p>
+							</div>
+							<div class="right">
+								<div class="img-wrap"></div>
+								<div class="btn-block">
+									<span class="number-green">8</span>
+									<div class="buttons">
+										<a href="#" class="plus">+</a>
+										<a href="#" class="minus">-</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="hidden">
+							<div class="left">
+								<div class="info">
+									<div class="img-wrap">
+										<img src="img/comment-img2.jpg" alt="">
+									</div>
+									<div class="text-wrap">
+										<p>Иванов Петр (petroff)</p>
+										<span>Добавлен 20.10.2017 в 12:12</span>
+									</div>
+								</div>
+								<p class="comment-text">Я рассчитываю на рост Битка</p>
+							</div>
+							<div class="right">
+								<div class="img-wrap"></div>
+								<div class="btn-block">
+									<span class="number-green">8</span>
+									<div class="buttons">
+										<a href="#" class="plus">+</a>
+										<a href="#" class="minus">-</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="hidden">
+							<div class="left">
+								<div class="info">
+									<div class="img-wrap">
+										<img src="img/comment-img2.jpg" alt="">
+									</div>
+									<div class="text-wrap">
+										<p>Иванов Петр (petroff)</p>
+										<span>Добавлен 20.10.2017 в 12:12</span>
+									</div>
+								</div>
+								<p class="comment-text">Я рассчитываю на рост Битка</p>
+							</div>
+							<div class="right">
+								<div class="img-wrap"></div>
+								<div class="btn-block">
+									<span class="number-green">8</span>
+									<div class="buttons">
+										<a href="#" class="plus">+</a>
+										<a href="#" class="minus">-</a>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<a href="#" class="show-comments">Показать все комментарии (22)</a>
+				</div>
+				<div class="related-projects" id="related-projects">
+					<h3 class="ico-title">Похожие проекты (2)</h3>
+					<div class="project-block">
+						<div class="img-wrap">
+							<a href="#"><img src="img/project-img1.jpg" alt=""></a>
+						</div>
+						<div class="text-wrap">
+							<div class="text-info">
+								<p><a href="#" class="project-title">Genesis (Дженезис) Mining</a><a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a></p>
+							</div>
+							<div class="project-info-content">
+								<div class="info">
+									<p class="status active-status">Статус: <span>Активен</span></p>
+									<p class="year">от 21.10.2017 до 11.04.2018</p>
+									<p class="last-updated">Последнее обновление: 11.11.2017</p>
+								</div>
+								<div class="progress-bar">
+									<a href="#" class="product-gray-btn">Недвижимость</a>
+									<div class="progress">
+										<span style="width: 15%"></span>
+										<p>$45 000 из 12 110 000</p>
+									</div>
+									<a href="#" class="follow"><span class="plus">+</span><span class="text">Следить</span></a>
+								</div>
+							</div>
+						</div>
+						<p class="more-project">Криптовалюты для облачного майнинга, предоставляемые сервисом Genesis Mining: По алгоритму SHA-256: Bitcoin (BTC)
+							<a href="#">Подробнее о проекте</a></p>
+					</div>
+					<div class="project-block">
+						<div class="img-wrap">
+							<a href="#"><img src="img/project-img1.jpg" alt=""></a>
+						</div>
+						<div class="text-wrap">
+							<div class="text-info">
+								<p><a href="#" class="project-title">Genesis (Дженезис)</a><a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a></p>
+							</div>
+							<div class="project-info-content">
+								<div class="info">
+									<p class="status inactive-status">Статус: <span>Не активен</span></p>
+									<p class="year">от 21.10.2017 до 11.04.2018</p>
+									<p class="last-updated">Последнее обновление: Вчера в 13:45</p>
+								</div>
+								<div class="progress-bar">
+									<a href="#" class="product-gray-btn">Технологии</a>
+									<div class="progress">
+										<span style="width: 15%"></span>
+										<p>$45 000 из 12 110 000</p>
+									</div>
+									<a href="#" class="follow"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
+								</div>
+							</div>
+						</div>
+						<p class="more-project">Криптовалюты для облачного майнинга, предоставляемые сервисом Genesis Mining: По алгоритму SHA-256: Bitcoin (BTC)
+							<a href="#">Подробнее о проекте</a></p>
+					</div>
+				</div>
+			</div>

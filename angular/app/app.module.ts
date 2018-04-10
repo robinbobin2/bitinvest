@@ -38,6 +38,11 @@ import { ObjNgFor } from './obj-ng-for.pipe';
 import { CryptoRootComponent } from './crypto-root/crypto-root.component';
 import { OrderPipe } from './order-pipe/ngx-order.pipe';
 import { FilterNamePipe } from './filter-name.pipe';
+import { IcoProjectComponent } from './ico-project/ico-project.component';
+import { IcoProjectAllComponent } from './ico-project/ico-project-all/ico-project-all.component';
+import { IcoProjectDetailComponent } from './ico-project/ico-project-detail/ico-project-detail.component';
+import { IcoProjectCategoriesComponent } from './ico-project/ico-project-categories/ico-project-categories.component';
+import { ShortenPipePipe } from './shorten-pipe.pipe';
 
 const appRoutes: Routes = [
   {
@@ -99,6 +104,20 @@ const appRoutes: Routes = [
      }
     ]
   },
+    {
+      path:'ico', component:IcoProjectComponent, children: [
+      
+      {
+      path:'item/:id', component:IcoProjectDetailComponent
+     },
+     {
+      path:'category/:id', component:IcoProjectCategoriesComponent
+     },
+     {
+      path:'all', component:IcoProjectAllComponent
+     }
+    ]
+  },
   {
       path:'cloud-mining', component:CloudMiningComponent, children: [
       
@@ -157,7 +176,12 @@ const appRoutes: Routes = [
     ObjNgFor,
     CryptoRootComponent,
     OrderPipe,
-    FilterNamePipe
+    FilterNamePipe,
+    IcoProjectComponent,
+    IcoProjectAllComponent,
+    IcoProjectDetailComponent,
+    IcoProjectCategoriesComponent,
+    ShortenPipePipe
   ],
   imports: [
     BrowserAnimationsModule,
