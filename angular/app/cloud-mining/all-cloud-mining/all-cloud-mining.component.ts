@@ -105,7 +105,7 @@ public myOptions: MasonryOptions = {
   }
 
   loadMore(id) {
-    this.router.navigate(['/mining/item', id]);
+    this.router.navigate(['/cloud-mining/item', id]);
   }
   
   portfolio = { 

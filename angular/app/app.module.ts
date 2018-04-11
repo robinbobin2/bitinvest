@@ -34,7 +34,6 @@ import { CloudMiningComponent } from './cloud-mining/cloud-mining.component';
 import { AllCloudMiningComponent } from './cloud-mining/all-cloud-mining/all-cloud-mining.component';
 import { CloudMiningDetailComponent } from './cloud-mining/cloud-mining-detail/cloud-mining-detail.component';
 import { CryptoAllComponent } from './crypto-all/crypto-all.component';
-import { ObjNgFor } from './obj-ng-for.pipe';
 import { CryptoRootComponent } from './crypto-root/crypto-root.component';
 import { OrderPipe } from './order-pipe/ngx-order.pipe';
 import { FilterNamePipe } from './filter-name.pipe';
@@ -173,7 +172,6 @@ const appRoutes: Routes = [
     AllCloudMiningComponent,
     CloudMiningDetailComponent,
     CryptoAllComponent,
-    ObjNgFor,
     CryptoRootComponent,
     OrderPipe,
     FilterNamePipe,

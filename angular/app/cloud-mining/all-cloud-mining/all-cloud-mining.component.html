@@ -12,9 +12,8 @@
         </div>
         <div class="select-wrap select-wrap-mining">
           <select>
-            <option value="all">Фильтрация: По алфавиту</option>
-            <option value="usd">Фильтрация: По алфавиту</option>
-            <option value="eur">Фильтрация: По алфавиту</option>
+            <option value="alphabet">Фильтрация: По алфавиту</option>
+            <option value="money">Фильтрация: По сумме собраных средств</option>
           </select>
         </div>
 
@@ -25,7 +24,7 @@
             </div>
             <div class="text-wrap">
               <div class="text-info">
-                <p><a href="balant-mining-card.html" class="project-title">{{item.name}}</a><a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>0</a></p>
+                <p><a [routerLink]="['/cloud-mining/item', item.id]" class="project-title">{{item.name}}</a><a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>0</a></p>
               </div>
               <div class="project-info-content">
                 <ul class="info-list">

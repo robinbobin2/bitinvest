@@ -467,7 +467,7 @@ module.exports = ""
 /***/ "./angular/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n    <div class=\"top-head\">\n      <div class=\"wrapper\">\n        <div class=\"logo-block\">\n          <a href=\"home.html\" class=\"logo\"><img src=\"img/logo.png\" alt=\"\"><span>ВСЕ О РЫНКЕ КРИПТОВАЛЮТ</span></a>\n        </div>\n        <form class=\"top-search\">\n          <input type=\"text\" placeholder=\"Поиск по названию криптовалюты, биржи, ICO, хайпа и др...\">\n          <input type=\"submit\">\n        </form>\n        <ul class=\"login\">\n          <li><a href=\"#\"><i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i>Вход</a></li>\n          <li><a href=\"#\"><i class=\"fa fa-user-circle-o\" aria-hidden=\"true\"></i>Регистрация</a></li>\n        </ul>\n      </div>\n    </div>\n    <div class=\"top-menu-wrap\">\n      <div class=\"wrapper\">\n        <ul class=\"top-menu\">\n          <li><a href=\"#\">Новости</a></li>\n          <li><a href=\"#\">Обзоры</a></li>\n          <li><a href=\"#\">Интервью</a></li>\n          <li><a href=\"#\">Аналитика</a></li>\n          <li><a href=\"#\">Вопрос-ответ</a></li>\n          <li class=\"active\"><a href=\"#\">Криптоваюты</a></li>\n          <li><a href=\"#\">Облачный майнинг</a></li>\n          <li><a href=\"#\">ICO</a></li>\n          <li><a href=\"#\">Фонды и хайпы</a></li>\n          <li><a href=\"#\">Биржи</a></li>\n          <li><a href=\"#\">Пулы</a></li>\n        </ul>\n      </div>\n    </div>\n  </header>\n<router-outlet></router-outlet>\n  <footer>\n    <div class=\"footer-wrap\">\n      <p class=\"footer-text\">\n        Это помощник и проводник по рынку крипто-валют, в первую очередь это набор бесплатных инструментов для анализа рынка крипто-валюты: <br> Всегда актуальные новости о крипто-валютах, биржах и новых сервисах в мире криптовалют. Новости собираются автоматически с огромного количества новостных, <br> русскоязычных и англоязычных тематических сайтов с круглосуточным обновлением. <a href=\"#\">Полный текст</a>\n      </p>\n      <form class=\"subscribe\">\n        <input type=\"text\" placeholder=\"Укажите свой e-mail и получайте новости на почту\">\n        <button type=\"button\" class=\"subscribe-btn\">Подписаться</button>\n      </form>\n      <div class=\"social-block\">\n        <h3>Мы в соц. сетях</h3>\n        <ul>\n          <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n        </ul>\n      </div>\n      <p class=\"copyright\">\n        &copy;2017 - Все права защищены. BitInvest.ru - Рынок криптовалют онлайн! <br> О сервисе Контактная информация Реклама Пользовательское соглашение Политика конфиденциальности\n      </p>\n      <a href=\"#\" class=\"anchor\">Вернуться наверх</a>\n    </div>\n  </footer>\n<!-- <app-crypto></app-crypto> -->\n<!-- <app-exmo></app-exmo> -->\n<!-- <app-markets></app-markets> -->\n<!-- <app-cmc></app-cmc> -->"
+module.exports = "<header>\n    <div class=\"top-head\">\n      <div class=\"wrapper\">\n        <div class=\"logo-block\">\n          <a href=\"home.html\" class=\"logo\"><img src=\"img/logo.png\" alt=\"\"><span>ВСЕ О РЫНКЕ КРИПТОВАЛЮТ</span></a>\n        </div>\n        <form class=\"top-search\">\n          <input type=\"text\" placeholder=\"Поиск по названию криптовалюты, биржи, ICO, хайпа и др...\">\n          <input type=\"submit\">\n        </form>\n        <ul class=\"login\">\n          <li><a href=\"#\"><i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i>Вход</a></li>\n          <li><a href=\"#\"><i class=\"fa fa-user-circle-o\" aria-hidden=\"true\"></i>Регистрация</a></li>\n        </ul>\n        <div class=\"setting-top-block\">\n          <a href=\"#\"><img src=\"/img/settings-icon.png\" alt=\"\"></a>\n          <div class=\"img-wrap\"></div>\n          <div class=\"select-wrap\">\n            <select>\n              <option value=\"all\">irinaivanova</option>\n              <option value=\"usd\">irinaivanova</option>\n              <option value=\"eur\">irinaivanova</option>\n            </select>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"top-menu-wrap\">\n      <div class=\"wrapper\">\n        <ul class=\"top-menu\">\n          <li><a href=\"#\">Новости</a></li>\n          <li><a href=\"#\">Обзоры</a></li>\n          <li><a href=\"#\">Интервью</a></li>\n          <li><a href=\"#\">Аналитика</a></li>\n          <li><a href=\"#\">Вопрос-ответ</a></li>\n          <li class=\"active\"><a href=\"#\">Криптоваюты</a></li>\n          <li><a href=\"#\">Облачный майнинг</a></li>\n          <li><a href=\"#\">ICO</a></li>\n          <li><a href=\"#\">Фонды и хайпы</a></li>\n          <li><a href=\"#\">Биржи</a></li>\n          <li><a href=\"#\">Пулы</a></li>\n        </ul>\n      </div>\n    </div>\n  </header>\n<router-outlet></router-outlet>\n  <footer>\n    <div class=\"footer-wrap\">\n      <p class=\"footer-text\">\n        Это помощник и проводник по рынку крипто-валют, в первую очередь это набор бесплатных инструментов для анализа рынка крипто-валюты: <br> Всегда актуальные новости о крипто-валютах, биржах и новых сервисах в мире криптовалют. Новости собираются автоматически с огромного количества новостных, <br> русскоязычных и англоязычных тематических сайтов с круглосуточным обновлением. <a href=\"#\">Полный текст</a>\n      </p>\n      <form class=\"subscribe\">\n        <input type=\"text\" placeholder=\"Укажите свой e-mail и получайте новости на почту\">\n        <button type=\"button\" class=\"subscribe-btn\">Подписаться</button>\n      </form>\n      <div class=\"social-block\">\n        <h3>Мы в соц. сетях</h3>\n        <ul>\n          <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n        </ul>\n      </div>\n      <p class=\"copyright\">\n        &copy;2017 - Все права защищены. BitInvest.ru - Рынок криптовалют онлайн! <br> О сервисе Контактная информация Реклама Пользовательское соглашение Политика конфиденциальности\n      </p>\n      <a href=\"#\" class=\"anchor\">Вернуться наверх</a>\n    </div>\n  </footer>\n<!-- <app-crypto></app-crypto> -->\n<!-- <app-exmo></app-exmo> -->\n<!-- <app-markets></app-markets> -->\n<!-- <app-cmc></app-cmc> -->"
 
 /***/ }),
 
@@ -477,16 +477,23 @@ module.exports = "<header>\n    <div class=\"top-head\">\n      <div class=\"wra
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Welcome to Anvel!';
+    function AppComponent(auth) {
+        window.onload = function () {
+            console.log(auth.checkAuth());
+        };
     }
     return AppComponent;
 }());
@@ -494,10 +501,13 @@ AppComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-root',
         template: __webpack_require__("./angular/app/app.component.html"),
-        styles: [__webpack_require__("./angular/app/app.component.css")]
-    })
+        styles: [__webpack_require__("./angular/app/app.component.css")],
+        providers: [__WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */]) === "function" && _a || Object])
 ], AppComponent);
 
+var _a;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -541,15 +551,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__cloud_mining_all_cloud_mining_all_cloud_mining_component__ = __webpack_require__("./angular/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__ = __webpack_require__("./angular/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__crypto_all_crypto_all_component__ = __webpack_require__("./angular/app/crypto-all/crypto-all.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__obj_ng_for_pipe__ = __webpack_require__("./angular/app/obj-ng-for.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__crypto_root_crypto_root_component__ = __webpack_require__("./angular/app/crypto-root/crypto-root.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__filter_name_pipe__ = __webpack_require__("./angular/app/filter-name.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_component__ = __webpack_require__("./angular/app/ico-project/ico-project.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_all_ico_project_all_component__ = __webpack_require__("./angular/app/ico-project/ico-project-all/ico-project-all.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_detail_ico_project_detail_component__ = __webpack_require__("./angular/app/ico-project/ico-project-detail/ico-project-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__ico_project_ico_project_categories_ico_project_categories_component__ = __webpack_require__("./angular/app/ico-project/ico-project-categories/ico-project-categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__shorten_pipe_pipe__ = __webpack_require__("./angular/app/shorten-pipe.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__crypto_root_crypto_root_component__ = __webpack_require__("./angular/app/crypto-root/crypto-root.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__filter_name_pipe__ = __webpack_require__("./angular/app/filter-name.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__ico_project_ico_project_component__ = __webpack_require__("./angular/app/ico-project/ico-project.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_all_ico_project_all_component__ = __webpack_require__("./angular/app/ico-project/ico-project-all/ico-project-all.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_detail_ico_project_detail_component__ = __webpack_require__("./angular/app/ico-project/ico-project-detail/ico-project-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_categories_ico_project_categories_component__ = __webpack_require__("./angular/app/ico-project/ico-project-categories/ico-project-categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__shorten_pipe_pipe__ = __webpack_require__("./angular/app/shorten-pipe.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -567,7 +576,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // import { MarketsComponent } from './markets/markets.component';
-
 
 
 
@@ -657,15 +665,15 @@ var appRoutes = [
         ]
     },
     {
-        path: 'ico', component: __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_component__["a" /* IcoProjectComponent */], children: [
+        path: 'ico', component: __WEBPACK_IMPORTED_MODULE_37__ico_project_ico_project_component__["a" /* IcoProjectComponent */], children: [
             {
-                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_detail_ico_project_detail_component__["a" /* IcoProjectDetailComponent */]
+                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_detail_ico_project_detail_component__["a" /* IcoProjectDetailComponent */]
             },
             {
-                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_41__ico_project_ico_project_categories_ico_project_categories_component__["a" /* IcoProjectCategoriesComponent */]
+                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_categories_ico_project_categories_component__["a" /* IcoProjectCategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_all_ico_project_all_component__["a" /* IcoProjectAllComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_all_ico_project_all_component__["a" /* IcoProjectAllComponent */]
             }
         ]
     },
@@ -680,7 +688,7 @@ var appRoutes = [
         ]
     },
     {
-        path: 'cryptocurrency', component: __WEBPACK_IMPORTED_MODULE_35__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */], children: [
+        path: 'cryptocurrency', component: __WEBPACK_IMPORTED_MODULE_34__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */], children: [
             {
                 path: 'all', component: __WEBPACK_IMPORTED_MODULE_33__crypto_all_crypto_all_component__["a" /* CryptoAllComponent */]
             },
@@ -729,15 +737,14 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_31__cloud_mining_all_cloud_mining_all_cloud_mining_component__["a" /* AllCloudMiningComponent */],
             __WEBPACK_IMPORTED_MODULE_32__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__["a" /* CloudMiningDetailComponent */],
             __WEBPACK_IMPORTED_MODULE_33__crypto_all_crypto_all_component__["a" /* CryptoAllComponent */],
-            __WEBPACK_IMPORTED_MODULE_34__obj_ng_for_pipe__["a" /* ObjNgFor */],
-            __WEBPACK_IMPORTED_MODULE_35__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */],
-            __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__["a" /* OrderPipe */],
-            __WEBPACK_IMPORTED_MODULE_37__filter_name_pipe__["a" /* FilterNamePipe */],
-            __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_component__["a" /* IcoProjectComponent */],
-            __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_all_ico_project_all_component__["a" /* IcoProjectAllComponent */],
-            __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_detail_ico_project_detail_component__["a" /* IcoProjectDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_41__ico_project_ico_project_categories_ico_project_categories_component__["a" /* IcoProjectCategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_42__shorten_pipe_pipe__["a" /* ShortenPipePipe */]
+            __WEBPACK_IMPORTED_MODULE_34__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */],
+            __WEBPACK_IMPORTED_MODULE_35__order_pipe_ngx_order_pipe__["a" /* OrderPipe */],
+            __WEBPACK_IMPORTED_MODULE_36__filter_name_pipe__["a" /* FilterNamePipe */],
+            __WEBPACK_IMPORTED_MODULE_37__ico_project_ico_project_component__["a" /* IcoProjectComponent */],
+            __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_all_ico_project_all_component__["a" /* IcoProjectAllComponent */],
+            __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_detail_ico_project_detail_component__["a" /* IcoProjectDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_categories_ico_project_categories_component__["a" /* IcoProjectCategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_41__shorten_pipe_pipe__["a" /* ShortenPipePipe */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
@@ -753,14 +760,63 @@ AppModule = __decorate([
         exports: [
             __WEBPACK_IMPORTED_MODULE_2__angular_material__["a" /* MatButtonModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_material__["b" /* MatCheckboxModule */],
-            __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]
+            __WEBPACK_IMPORTED_MODULE_35__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_11__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_11__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_35__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
 //# sourceMappingURL=app.module.js.map
+
+/***/ }),
+
+/***/ "./angular/app/auth.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export User */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var User = (function () {
+    function User() {
+    }
+    return User;
+}());
+
+var AuthService = (function () {
+    function AuthService(http) {
+        this.http = http;
+        this.error = '';
+    }
+    AuthService.prototype.checkAuth = function () {
+        var path = "/angular/user";
+        var info = this.http.get(path);
+        info.subscribe(function (response) {
+            return response;
+        });
+    };
+    return AuthService;
+}());
+AuthService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+], AuthService);
+
+var _a;
+//# sourceMappingURL=auth.service.js.map
 
 /***/ }),
 
@@ -895,7 +951,7 @@ var _a, _b, _c;
 /***/ "./angular/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"mining-content\">\n        <div class=\"mining-head\">\n          <h1>Облачный майнинг<span>872</span></h1>\n          <ul class=\"mining-tabs\">\n            <li class=\"active\"><a href=\"#\">Платит/Ожидание (45)</a></li>\n            <li><a href=\"#\">Не платит</a></li>\n          </ul>\n          <form>\n            <input type=\"text\" placeholder=\"Поиск по названию\" [(ngModel)]=\"filteredName\" name=\"filteredName\">\n            <button type=\"button\"><img src=\"img/search-icon.png\" alt=\"\"></button>\n          </form>\n        </div>\n        <div class=\"select-wrap select-wrap-mining\">\n          <select>\n            <option value=\"all\">Фильтрация: По алфавиту</option>\n            <option value=\"usd\">Фильтрация: По алфавиту</option>\n            <option value=\"eur\">Фильтрация: По алфавиту</option>\n          </select>\n        </div>\n\n        <div class=\"project-wrapper active\">\n          <div class=\"project-block\" *ngFor=\"let item of news | filterName:filteredName:'name'\">\n            <div class=\"img-wrap\">\n              <a href=\"balant-mining-card.html\"><img src=\"{{item.logo}}\" alt=\"\"></a>\n            </div>\n            <div class=\"text-wrap\">\n              <div class=\"text-info\">\n                <p><a href=\"balant-mining-card.html\" class=\"project-title\">{{item.name}}</a><a href=\"#\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>0</a></p>\n              </div>\n              <div class=\"project-info-content\">\n                <ul class=\"info-list\">\n                  <li><span>Статус:</span><span class=\"bold active\">{{item.status == 1 ? 'Платит' : 'Не платит'}}</span></li>\n                  <li><span>Доход в год:</span><span class=\"bold\">{{item.proc}}%</span></li>\n                  <li><span>Существует:</span><span class=\"bold\">{{item.start_days}} дней</span></li>\n                  <li><span>Активность депозита:</span><span class=\"bold\">{{item.depo_date}}</span></li>\n                  <li><span class=\"last-updated\">Последняя выплата: 21.02.2017 в 21:01</span></li>\n                </ul>\n                <div class=\"progress-bar\">\n                  <div class=\"progress\">\n                    <span [ngStyle]=\"{'width':item.percentage+'%'}\"></span>\n                    <p>Депозит: <b>{{item.depo}}$ ({{item.percentage}}%)</b></p>\n                  </div>\n                  <a href=\"#follow-popup\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a>\n                </div>\n              </div>\n            </div>\n            <p class=\"more-project\">{{item.desc}}\n              <a href=\"balant-mining-card.html\">Подробнее о проекте</a></p>\n          </div>\n          \n        <a href=\"#\" class=\"show-more\">Показать еще</a>\n      </div>\n    </div>\n<!-- <table  style=\"width: 100%\">\n\t<tr>\n\t<td><img src=\"{{item.logo}}\" class=\"img-responsive\" width=\"50\"></td>\n\t<td>\n\t\t<h3><a href=\"#\">{{item.name}}</a></h3> -->\n<!-- \t\t<table><tr><td>\n\t\t\t<table>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><p>Статус: <strong>{{item.status == 1 ? 'Платит' : 'Не платит'}}</strong></p>\n\t\t\t\t\t\t<p><strong>Доходность: {{item.proc}}%</strong>/год</p>\n\t\t</td>\n\t\t<td><p>Существует: <strong>{{item.start_days}}</strong> дней</p><p>Активность депозита:<strong> {{item.depo_date}}</strong> дней</p></td>\n\n\t\t\t\t</tr>\n\t\t\t</table>\n\t\t\n\t\t\n\n\t\t</td>\n<td><div style=\"width: 200px;\"><div class=\"progress\" style=\"margin: 5px 0 0\">\n\t\t  <div class=\"progress-bar bg-danger\" role=\"progressbar\" style=\"width: {{item.percentage}}%;\" aria-valuenow=\"100\" aria-valuemin=\"0\" aria-valuemax=\"100\">Депозит: <strong>{{item.depo}}</strong> (<strong>{{item.percentage}}%</strong>)</div>\n\t\t\t</div>\n\t\t</div></td>\n\t</tr></table> -->\n\t\t\n\t\t\n\t\t<!-- <p>Последняя выплата:<strong> {{item.latest_date}}</strong> дней назад</p> -->\n<!--  <form (ngSubmit)=\"submitPortfolio(f, item.id, 'App\\\\CloudMining')\" #f=\"ngForm\">\n        \t<label *ngFor=\"let portfolio of portfolios\"><input ngModel name=\"portfolio_id\" type=\"radio\" value=\"{{portfolio.id}}\"> {{portfolio.name}}</label>\n\n        \t<button type=\"submit\" class=\"btn btn-success\">Следить</button>\n        </form>\n</td>\n\n\n\t</tr>\n\t<tr colspan=\"3\"><td>{{item.desc}}</td></tr> -->\n<!-- Button trigger modal -->\n\n"
+module.exports = "<div class=\"mining-content\">\n        <div class=\"mining-head\">\n          <h1>Облачный майнинг<span>872</span></h1>\n          <ul class=\"mining-tabs\">\n            <li class=\"active\"><a href=\"#\">Платит/Ожидание (45)</a></li>\n            <li><a href=\"#\">Не платит</a></li>\n          </ul>\n          <form>\n            <input type=\"text\" placeholder=\"Поиск по названию\" [(ngModel)]=\"filteredName\" name=\"filteredName\">\n            <button type=\"button\"><img src=\"img/search-icon.png\" alt=\"\"></button>\n          </form>\n        </div>\n        <div class=\"select-wrap select-wrap-mining\">\n          <select>\n            <option value=\"alphabet\">Фильтрация: По алфавиту</option>\n            <option value=\"money\">Фильтрация: По сумме собраных средств</option>\n          </select>\n        </div>\n\n        <div class=\"project-wrapper active\">\n          <div class=\"project-block\" *ngFor=\"let item of news | filterName:filteredName:'name'\">\n            <div class=\"img-wrap\">\n              <a href=\"balant-mining-card.html\"><img src=\"{{item.logo}}\" alt=\"\"></a>\n            </div>\n            <div class=\"text-wrap\">\n              <div class=\"text-info\">\n                <p><a [routerLink]=\"['/cloud-mining/item', item.id]\" class=\"project-title\">{{item.name}}</a><a href=\"#\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>0</a></p>\n              </div>\n              <div class=\"project-info-content\">\n                <ul class=\"info-list\">\n                  <li><span>Статус:</span><span class=\"bold active\">{{item.status == 1 ? 'Платит' : 'Не платит'}}</span></li>\n                  <li><span>Доход в год:</span><span class=\"bold\">{{item.proc}}%</span></li>\n                  <li><span>Существует:</span><span class=\"bold\">{{item.start_days}} дней</span></li>\n                  <li><span>Активность депозита:</span><span class=\"bold\">{{item.depo_date}}</span></li>\n                  <li><span class=\"last-updated\">Последняя выплата: 21.02.2017 в 21:01</span></li>\n                </ul>\n                <div class=\"progress-bar\">\n                  <div class=\"progress\">\n                    <span [ngStyle]=\"{'width':item.percentage+'%'}\"></span>\n                    <p>Депозит: <b>{{item.depo}}$ ({{item.percentage}}%)</b></p>\n                  </div>\n                  <a href=\"#follow-popup\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a>\n                </div>\n              </div>\n            </div>\n            <p class=\"more-project\">{{item.desc}}\n              <a href=\"balant-mining-card.html\">Подробнее о проекте</a></p>\n          </div>\n          \n        <a href=\"#\" class=\"show-more\">Показать еще</a>\n      </div>\n    </div>\n<!-- <table  style=\"width: 100%\">\n\t<tr>\n\t<td><img src=\"{{item.logo}}\" class=\"img-responsive\" width=\"50\"></td>\n\t<td>\n\t\t<h3><a href=\"#\">{{item.name}}</a></h3> -->\n<!-- \t\t<table><tr><td>\n\t\t\t<table>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><p>Статус: <strong>{{item.status == 1 ? 'Платит' : 'Не платит'}}</strong></p>\n\t\t\t\t\t\t<p><strong>Доходность: {{item.proc}}%</strong>/год</p>\n\t\t</td>\n\t\t<td><p>Существует: <strong>{{item.start_days}}</strong> дней</p><p>Активность депозита:<strong> {{item.depo_date}}</strong> дней</p></td>\n\n\t\t\t\t</tr>\n\t\t\t</table>\n\t\t\n\t\t\n\n\t\t</td>\n<td><div style=\"width: 200px;\"><div class=\"progress\" style=\"margin: 5px 0 0\">\n\t\t  <div class=\"progress-bar bg-danger\" role=\"progressbar\" style=\"width: {{item.percentage}}%;\" aria-valuenow=\"100\" aria-valuemin=\"0\" aria-valuemax=\"100\">Депозит: <strong>{{item.depo}}</strong> (<strong>{{item.percentage}}%</strong>)</div>\n\t\t\t</div>\n\t\t</div></td>\n\t</tr></table> -->\n\t\t\n\t\t\n\t\t<!-- <p>Последняя выплата:<strong> {{item.latest_date}}</strong> дней назад</p> -->\n<!--  <form (ngSubmit)=\"submitPortfolio(f, item.id, 'App\\\\CloudMining')\" #f=\"ngForm\">\n        \t<label *ngFor=\"let portfolio of portfolios\"><input ngModel name=\"portfolio_id\" type=\"radio\" value=\"{{portfolio.id}}\"> {{portfolio.name}}</label>\n\n        \t<button type=\"submit\" class=\"btn btn-success\">Следить</button>\n        </form>\n</td>\n\n\n\t</tr>\n\t<tr colspan=\"3\"><td>{{item.desc}}</td></tr> -->\n<!-- Button trigger modal -->\n\n"
 
 /***/ }),
 
@@ -1003,7 +1059,7 @@ var AllCloudMiningComponent = (function () {
     AllCloudMiningComponent.prototype.ngOnInit = function () {
     };
     AllCloudMiningComponent.prototype.loadMore = function (id) {
-        this.router.navigate(['/mining/item', id]);
+        this.router.navigate(['/cloud-mining/item', id]);
     };
     // @ViewChild('f') Form:NgForm;
     AllCloudMiningComponent.prototype.submitPortfolio = function (form, post_id, type) {
@@ -1033,7 +1089,7 @@ var _a, _b, _c;
 /***/ "./angular/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  cloud-mining-detail works!\n</p>\n"
+module.exports = "\t\t\t<div class=\"ico-card-content mining-card-content\">\n\t\t\t\t<a href=\"blatant-mining.html\" class=\"return\"><span>&#60;</span>Вернуться к списку проектов</a>\n\t\t\t\t<div class=\"project-block\">\n\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t<img src=\"img/project-img1.jpg\" alt=\"\">\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t<div class=\"text-info\">\n\t\t\t\t\t\t\t<p class=\"project-title\">Genesis (Дженезис) Mining project<a href=\"#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>5</a></p>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"project-info-content\">\n\t\t\t\t\t\t\t<ul class=\"info-list\">\n\t\t\t\t\t\t\t\t<li><span>Статус:</span><span class=\"bold active\">Платит</span></li>\n\t\t\t\t\t\t\t\t<li><span>Доход в год:</span><span class=\"bold\">350%</span></li>\n\t\t\t\t\t\t\t\t<li><span>Существует:</span><span class=\"bold\">189 дней</span></li>\n\t\t\t\t\t\t\t\t<li><span>Активность депозита:</span><span class=\"bold\">5 дней</span></li>\n\t\t\t\t\t\t\t\t<li><span class=\"last-updated\">Последняя выплата: 21.02.2017 в 21:01</span></li>\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t<div class=\"progress-bar\">\n\t\t\t\t\t\t\t\t<a href=\"#follow-popup\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<ul class=\"card-menu\">\n\t\t\t\t\t<li><a href=\"#basic-information\">Основа</a></li>\n\t\t\t\t\t<li><a href=\"#history-table\">История операций</a></li>\n\t\t\t\t\t<li><a href=\"#comment-block\">Комментарии (5)</a></li>\n\t\t\t\t\t<li><a href=\"#related-projects\">Похожие проекты (2)</a></li>\n\t\t\t\t</ul>\n\t\t\t\t<div class=\"basic-information\" id=\"basic-information\">\n\t\t\t\t\t<div class=\"basic-information-wrap\">\n\t\t\t\t\t\t<div class=\"left\">\n\t\t\t\t\t\t\t<h3 class=\"ico-title\">Основная информация</h3>\n\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t\t<li><span class=\"gray\">Официальный сайт: </span> <span class=\"black\"><a href=\"#\">https://bitwaves.biz/</a></span></li>\n\t\t\t\t\t\t\t\t<li><span class=\"gray\">Язык сайта:</span><span class=\"black\">RU, ENG</span> </li>\n\t\t\t\t\t\t\t\t<li><span class=\"gray\">Рефферальная система:</span><span class=\"black\">Есть</span></li>\n\t\t\t\t\t\t\t\t<li><span class=\"gray\">Еще что-нибудь:</span><span class=\"black\">Еще какое-то свойство</span></li>\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"right\">\n\t\t\t\t\t\t\t<div class=\"progress\">\n\t\t\t\t\t\t\t\t<span style=\"width: 19%\"></span>\n\t\t\t\t\t\t\t\t<p>Депозит: 190$ (19%)</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t<p>Доходность в день от 4 до 7.1 %/сутки, бессрочно. Минимальный депозит 0.005 BTC. <br> Минимальная сумма на вывод 0.0005 BTC. Партнерка 7%, активный депозит не требуется. <br> Ввод-вывод: Bitcoin.</p>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"history-table\" id=\"history-table\">\n\t\t\t\t\t<div class=\"history-title-block\">\n\t\t\t\t\t\t<h2>Котировки BTC/USD на различных биржах</h2>\n\t\t\t\t\t</div>\n\t\t\t\t\t<table>\n\t\t\t\t\t\t<thead>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<th width=\"14%\"><span>Сумма</span></th>\n\t\t\t\t\t\t\t\t<th width=\"22%\"><span>Операция</span></th>\n\t\t\t\t\t\t\t\t<th width=\"48%\"><span>Комментарий</span></th>\n\t\t\t\t\t\t\t\t<th width=\"16%\"><span>Дата</span></th>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t</thead>\n\t\t\t\t\t\t<tbody>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"price\">10.72$</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"operation operation-green\">Вывод средств</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"comment\">Получена выплата: 10.72 USD / 0.00144 BTC (а)</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"date\">10.10.2017 в 12:56</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"price\">10.72$</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"operation operation-green\">Вывод средств</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"comment\">Получена выплата: 10.72 USD</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"date\">10.10.2017 в 12:56</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"price\">1110.20$</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"operation operation-green\">Вывод средств</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"comment\">Получена выплата: 10.72 USD / 0.00144 BTC (а)</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"date\">10.10.2017 в 12:56</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"price\">10.72$</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"operation operation-green\">Вывод средств</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"comment\">Получена выплата: 10.72 USD / 0.00144 BTC (а)</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"date\">10.10.2017 в 12:56</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"price\">10.72$</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"operation operation-red\">Пополнение кошелька</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"comment\">Пополнение тестового депозита</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"date\">10.10.2017 в 12:56</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t<tr class=\"hidden\">\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"price\">10.72$</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"operation operation-red\">Пополнение кошелька</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"comment\">Пополнение тестового депозита</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"date\">10.10.2017 в 12:56</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t<tr class=\"hidden\">\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"price\">10.72$</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"operation operation-red\">Пополнение кошелька</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"comment\">Пополнение тестового депозита</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<span class=\"date\">10.10.2017 в 12:56</span>\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t</tbody>\n\t\t\t\t\t</table>\n\t\t\t\t\t<a href=\"#\" class=\"show-btn\">Показать еще</a>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"comment-block\" id=\"comment-block\">\n\t\t\t\t\t<div class=\"comment-top\">\n\t\t\t\t\t\t<h3>Комментарии (5)</h3>\n\t\t\t\t\t\t<p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#\">авторизоваться</a> или <a href=\"#\">пройти регистрацию.</a></p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<ul class=\"comment-items\">\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<div class=\"left\">\n\t\t\t\t\t\t\t\t<div class=\"info\">\n\t\t\t\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t\t\t\t<img src=\"img/comment-img1.jpg\" alt=\"\">\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t\t\t\t\t<p>Иванов Петр (petroff)</p>\n\t\t\t\t\t\t\t\t\t\t<span>Добавлен 20.10.2017 в 12:12</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<p class=\"comment-text\">Отличная статья, будем надеятся что все так и произойдет!</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"right\">\n\t\t\t\t\t\t\t\t<div class=\"img-wrap\"></div>\n\t\t\t\t\t\t\t\t<div class=\"btn-block\">\n\t\t\t\t\t\t\t\t\t<span class=\"number-green\">4</span>\n\t\t\t\t\t\t\t\t\t<div class=\"buttons\">\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"plus\">+</a>\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"minus\">-</a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<div class=\"left\">\n\t\t\t\t\t\t\t\t<div class=\"info\">\n\t\t\t\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t\t\t\t<img src=\"img/comment-img2.jpg\" alt=\"\">\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t\t\t\t\t<p>Иванов Петр (petroff)</p>\n\t\t\t\t\t\t\t\t\t\t<span>Добавлен 20.10.2017 в 12:12</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<p class=\"comment-text\">Отличная статья, будем надеятся что все так и произойдет! Спасибо.!</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"right\">\n\t\t\t\t\t\t\t\t<div class=\"img-wrap\"></div>\n\t\t\t\t\t\t\t\t<div class=\"btn-block\">\n\t\t\t\t\t\t\t\t\t<span class=\"number-red\">-2</span>\n\t\t\t\t\t\t\t\t\t<div class=\"buttons\">\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"plus\">+</a>\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"minus\">-</a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<div class=\"left\">\n\t\t\t\t\t\t\t\t<div class=\"info\">\n\t\t\t\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t\t\t\t<img src=\"img/comment-img3.jpg\" alt=\"\">\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t\t\t\t\t<p>Иванов Петр (petroff)</p>\n\t\t\t\t\t\t\t\t\t\t<span>Добавлен 20.10.2017 в 12:12</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<p class=\"comment-text\">Я рассчитываю на рост Битка</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"right\">\n\t\t\t\t\t\t\t\t<div class=\"img-wrap\"></div>\n\t\t\t\t\t\t\t\t<div class=\"btn-block\">\n\t\t\t\t\t\t\t\t\t<span class=\"number-green\">8</span>\n\t\t\t\t\t\t\t\t\t<div class=\"buttons\">\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"plus\">+</a>\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"minus\">-</a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<div class=\"left\">\n\t\t\t\t\t\t\t\t<div class=\"info\">\n\t\t\t\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t\t\t\t<img src=\"img/comment-img2.jpg\" alt=\"\">\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t\t\t\t\t<p>Иванов Петр (petroff)</p>\n\t\t\t\t\t\t\t\t\t\t<span>Добавлен 20.10.2017 в 12:12</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<p class=\"comment-text\">Я рассчитываю на рост Битка</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"right\">\n\t\t\t\t\t\t\t\t<div class=\"img-wrap\"></div>\n\t\t\t\t\t\t\t\t<div class=\"btn-block\">\n\t\t\t\t\t\t\t\t\t<span class=\"number-green\">8</span>\n\t\t\t\t\t\t\t\t\t<div class=\"buttons\">\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"plus\">+</a>\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"minus\">-</a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<div class=\"left\">\n\t\t\t\t\t\t\t\t<div class=\"info\">\n\t\t\t\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t\t\t\t<img src=\"img/comment-img2.jpg\" alt=\"\">\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t\t\t\t\t<p>Иванов Петр (petroff)</p>\n\t\t\t\t\t\t\t\t\t\t<span>Добавлен 20.10.2017 в 12:12</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<p class=\"comment-text\">Я рассчитываю на рост Битка</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"right\">\n\t\t\t\t\t\t\t\t<div class=\"img-wrap\"></div>\n\t\t\t\t\t\t\t\t<div class=\"btn-block\">\n\t\t\t\t\t\t\t\t\t<span class=\"number-green\">8</span>\n\t\t\t\t\t\t\t\t\t<div class=\"buttons\">\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"plus\">+</a>\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"minus\">-</a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li class=\"hidden\">\n\t\t\t\t\t\t\t<div class=\"left\">\n\t\t\t\t\t\t\t\t<div class=\"info\">\n\t\t\t\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t\t\t\t<img src=\"img/comment-img3.jpg\" alt=\"\">\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t\t\t\t\t<p>Иванов Петр (petroff)</p>\n\t\t\t\t\t\t\t\t\t\t<span>Добавлен 20.10.2017 в 12:12</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<p class=\"comment-text\">Я рассчитываю на рост Битка</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"right\">\n\t\t\t\t\t\t\t\t<div class=\"img-wrap\"></div>\n\t\t\t\t\t\t\t\t<div class=\"btn-block\">\n\t\t\t\t\t\t\t\t\t<span class=\"number-green\">8</span>\n\t\t\t\t\t\t\t\t\t<div class=\"buttons\">\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"plus\">+</a>\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"minus\">-</a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li class=\"hidden\">\n\t\t\t\t\t\t\t<div class=\"left\">\n\t\t\t\t\t\t\t\t<div class=\"info\">\n\t\t\t\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t\t\t\t<img src=\"img/comment-img2.jpg\" alt=\"\">\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t\t\t\t\t<p>Иванов Петр (petroff)</p>\n\t\t\t\t\t\t\t\t\t\t<span>Добавлен 20.10.2017 в 12:12</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<p class=\"comment-text\">Я рассчитываю на рост Битка</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"right\">\n\t\t\t\t\t\t\t\t<div class=\"img-wrap\"></div>\n\t\t\t\t\t\t\t\t<div class=\"btn-block\">\n\t\t\t\t\t\t\t\t\t<span class=\"number-green\">8</span>\n\t\t\t\t\t\t\t\t\t<div class=\"buttons\">\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"plus\">+</a>\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"minus\">-</a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li class=\"hidden\">\n\t\t\t\t\t\t\t<div class=\"left\">\n\t\t\t\t\t\t\t\t<div class=\"info\">\n\t\t\t\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t\t\t\t<img src=\"img/comment-img2.jpg\" alt=\"\">\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t\t\t\t\t<p>Иванов Петр (petroff)</p>\n\t\t\t\t\t\t\t\t\t\t<span>Добавлен 20.10.2017 в 12:12</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<p class=\"comment-text\">Я рассчитываю на рост Битка</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"right\">\n\t\t\t\t\t\t\t\t<div class=\"img-wrap\"></div>\n\t\t\t\t\t\t\t\t<div class=\"btn-block\">\n\t\t\t\t\t\t\t\t\t<span class=\"number-green\">8</span>\n\t\t\t\t\t\t\t\t\t<div class=\"buttons\">\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"plus\">+</a>\n\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"minus\">-</a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t\t<a href=\"#\" class=\"show-comments\">Показать все комментарии (22)</a>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"related-projects\" id=\"related-projects\">\n\t\t\t\t\t<h3 class=\"ico-title\">Похожие проекты (2)</h3>\n\t\t\t\t\t<div class=\"project-block\">\n\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t<a href=\"#\"><img src=\"img/project-img1.jpg\" alt=\"\"></a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t\t<div class=\"text-info\">\n\t\t\t\t\t\t\t\t<p><a href=\"#\" class=\"project-title\">Genesis (Дженезис) Mining</a><a href=\"#\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>5</a></p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"project-info-content\">\n\t\t\t\t\t\t\t\t<ul class=\"info-list\">\n\t\t\t\t\t\t\t\t\t<li><span>Статус:</span><span class=\"bold active\">Платит</span></li>\n\t\t\t\t\t\t\t\t\t<li><span>Доход в год:</span><span class=\"bold\">350%</span></li>\n\t\t\t\t\t\t\t\t\t<li><span>Существует:</span><span class=\"bold\">189 дней</span></li>\n\t\t\t\t\t\t\t\t\t<li><span>Активность депозита:</span><span class=\"bold\">5 дней</span></li>\n\t\t\t\t\t\t\t\t\t<li><span class=\"last-updated\">Последняя выплата: 21.02.2017 в 21:01</span></li>\n\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t<div class=\"progress-bar\">\n\t\t\t\t\t\t\t\t\t<div class=\"progress\">\n\t\t\t\t\t\t\t\t\t\t<span style=\"width: 19%\"></span>\n\t\t\t\t\t\t\t\t\t\t<p class=\"bold\">Депозит: 190$ (19%)</p>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<a href=\"#follow-popup\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p class=\"more-project\">Криптовалюты для облачного майнинга, предоставляемые сервисом Genesis Mining: По алгоритму SHA-256: Bitcoin (BTC)\n\t\t\t\t\t\t\t<a href=\"#\">Подробнее о проекте</a></p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"project-block\">\n\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t<a href=\"#\"><img src=\"img/project-img1.jpg\" alt=\"\"></a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t\t<div class=\"text-info\">\n\t\t\t\t\t\t\t\t<p><a href=\"#\" class=\"project-title\">Genesis (Дженезис)</a><a href=\"#\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>5</a></p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"project-info-content\">\n\t\t\t\t\t\t\t\t<ul class=\"info-list\">\n\t\t\t\t\t\t\t\t\t<li><span>Статус:</span><span class=\"bold active\">Платит</span></li>\n\t\t\t\t\t\t\t\t\t<li><span>Доход в год:</span><span class=\"bold\">350%</span></li>\n\t\t\t\t\t\t\t\t\t<li><span>Существует:</span><span class=\"bold\">189 дней</span></li>\n\t\t\t\t\t\t\t\t\t<li><span>Активность депозита:</span><span class=\"bold\">5 дней</span></li>\n\t\t\t\t\t\t\t\t\t<li><span class=\"last-updated\">Последняя выплата: 21.02.2017 в 21:01</span></li>\n\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t<div class=\"progress-bar\">\n\t\t\t\t\t\t\t\t\t<div class=\"progress\">\n\t\t\t\t\t\t\t\t\t\t<span style=\"width: 19%\"></span>\n\t\t\t\t\t\t\t\t\t\t<p class=\"bold\">Депозит: 190$ (19%)</p>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"follow\"><span class=\"minus\"><img src=\"img/minus.png\" alt=\"\"></span><span class=\"text text-red\">Следить</span></a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p class=\"more-project\">Криптовалюты для облачного майнинга, предоставляемые сервисом Genesis Mining: По алгоритму SHA-256: Bitcoin (BTC)\n\t\t\t\t\t\t\t<a href=\"#\">Подробнее о проекте</a></p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"project-block\">\n\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t<a href=\"#\"><img src=\"img/project-img1.jpg\" alt=\"\"></a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t\t<div class=\"text-info\">\n\t\t\t\t\t\t\t\t<p><a href=\"#\" class=\"project-title\">Genesis (Дженезис) Mining</a><a href=\"#\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>5</a></p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"project-info-content\">\n\t\t\t\t\t\t\t\t<ul class=\"info-list\">\n\t\t\t\t\t\t\t\t\t<li><span>Статус:</span><span class=\"bold active\">Платит</span></li>\n\t\t\t\t\t\t\t\t\t<li><span>Доход в год:</span><span class=\"bold\">350%</span></li>\n\t\t\t\t\t\t\t\t\t<li><span>Существует:</span><span class=\"bold\">189 дней</span></li>\n\t\t\t\t\t\t\t\t\t<li><span>Активность депозита:</span><span class=\"bold\">5 дней</span></li>\n\t\t\t\t\t\t\t\t\t<li><span class=\"last-updated\">Последняя выплата: 21.02.2017 в 21:01</span></li>\n\t\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t\t\t<div class=\"progress-bar\">\n\t\t\t\t\t\t\t\t\t<p class=\"no-deposite\">Депозита нет</p>\n\t\t\t\t\t\t\t\t\t<a href=\"#follow-popup\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p class=\"more-project\">Криптовалюты для облачного майнинга, предоставляемые сервисом Genesis Mining: По алгоритму SHA-256: Bitcoin (BTC)\n\t\t\t\t\t\t\t<a href=\"#\">Подробнее о проекте</a></p>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>"
 
 /***/ }),
 
@@ -2049,17 +2105,14 @@ var FilterNamePipe = (function () {
         if (filterString === undefined || value.length === 0 || filterString === '') {
             return value;
         }
-        filterString = filterString.toLowerCase();
         var resultArray = [];
-        // for (const item of value) {
-        // 	if(item[propName].toLowerCase() ===filterString.toLowerCase()) {
-        // 		resultArray.push(item)
-        // 	}
-        // }
-        value[propName].filter(function (it) {
-            return it.toLowerCase().includes(filterString);
-        });
-        // return resultArray;
+        for (var _i = 0, value_1 = value; _i < value_1.length; _i++) {
+            var item = value_1[_i];
+            if (item[propName].toLowerCase().includes(filterString.toLowerCase())) {
+                resultArray.push(item);
+            }
+        }
+        return resultArray;
     };
     return FilterNamePipe;
 }());
@@ -3253,38 +3306,6 @@ NewsComponent = __decorate([
 
 var _a, _b, _c;
 //# sourceMappingURL=news.component.js.map
-
-/***/ }),
-
-/***/ "./angular/app/obj-ng-for.pipe.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ObjNgFor; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var ObjNgFor = (function () {
-    function ObjNgFor() {
-    }
-    ObjNgFor.prototype.transform = function (value, args) {
-        if (args === void 0) { args = null; }
-        return Object.keys(value); //.map(key => value[key]);
-    };
-    return ObjNgFor;
-}());
-ObjNgFor = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({
-        name: 'objNgFor'
-    })
-], ObjNgFor);
-
-//# sourceMappingURL=obj-ng-for.pipe.js.map
 
 /***/ }),
 
