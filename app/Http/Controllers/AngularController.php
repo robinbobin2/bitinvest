@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use File;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,12 +26,13 @@ class AngularController extends Controller
     public function user()
     {
         $user = Auth::user();
-        if($user){
-            return json_encode($user);
+        if(!$user){
+            return [
+                'error' => 'User not loggined'
+            ];
         }
-        return [
-            'error' => 'User not loggined'
-        ];
+        $newUser = User::with("Portfolio")->where('id', '=', $user->id)->first();
+        return json_encode($newUser);
     }
 
 
