@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\IcoProject;
 use App\User;
 use File;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,11 @@ class AngularController extends Controller
         }
         $newUser = User::with("Portfolio")->where('id', '=', $user->id)->first();
         return json_encode($newUser);
+    }
+
+    public function funds($id)
+    {
+        return IcoProject::all()->where('ico_id', '=', $id)->toArray();
     }
 
 
