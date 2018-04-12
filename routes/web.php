@@ -109,6 +109,7 @@ Route::get('/ico/all', "AngularController@serve");
 Route::get('/ico/item/{post}', "AngularController@serve");
 Route::get('/ico/category/{category}', "AngularController@serve");
 Route::get('/angular/user/', "AngularController@user");
+Route::get('/angular/funds/{id}', "AngularController@funds");
 
 // Route::get('/crypto', "AngularController@serve");
 
