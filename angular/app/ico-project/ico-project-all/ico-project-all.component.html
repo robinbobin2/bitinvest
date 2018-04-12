@@ -1,9 +1,9 @@
 <div class="ico-content">
 				<div class="ico-head">
-					<h1>ICO<span>872</span></h1>
+					<h1>ICO<span>{{activecount+inactivecount}}</span></h1>
 					<ul class="ico-tabs">
-						<li class="active"><a href="#">Активные (145)</a></li>
-						<li><a href="#">Завершенные (55)</a></li>
+						<li class="active"><a href="#">Активные ({{activecount}})</a></li>
+						<li><a href="#">Завершенные ({{inactivecount}})</a></li>
 					</ul>
 					<form>
 						<input type="text" placeholder="Поиск по названию">
@@ -33,7 +33,7 @@
 									<p class="last-updated">Последнее обновление: {{item.updated_at}}</p>
 								</div>
 								<div class="progress-bar">
-									<a href="#" class="product-gray-btn">Недвижимость</a>
+									<a href="#" class="product-gray-btn">{{item.category.name}}</a>
 									<div class="progress">
 										<span [ngStyle]="{'width': item.current_money/(item.money / 100)+'%' }"></span>
 										<p>${{item.current_money}} из {{item.money}}</p>

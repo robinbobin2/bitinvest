@@ -44,19 +44,7 @@ class AnalyticsViewController extends Controller
 
         $main_news = Analytics::with('photos')->with('category')->where('cat_id', $id)->latest()->get()->where('main', 1)->take(2)->toArray();
         $main_news = array_values($main_news);
-        // $news = $news->toJson();
-        // $news = array_values($news);
-        // $comments = $news->comments();
-        // $photos = $news->photos();
-        // for ($i=0; $i < count($news); $i++) { 
-        //     if($news[$i]->photos){
-        //                 foreach ($news[$i]->photos as $photo) {
-                         
-        //                 // $news[$i]['photos']['file'] = array($photo->file);   # code...
-        //                 // echo $photo->file;
-        //             }
-        //     }
-        // }
+
         return response()->json([
             'news' => $news,
             'main_news' => $main_news,

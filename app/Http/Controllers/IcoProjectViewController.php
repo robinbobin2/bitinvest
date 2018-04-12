@@ -10,22 +10,6 @@ class IcoProjectViewController extends Controller
     public function index() {
         $news = IcoProject::with('category')->latest()->get()->toArray();
         $news = array_values($news);
-
-        // $main_news = Interview::with('photos')->with('category')->latest()->get()->where('main', 1)->take(2)->toArray();
-        // $main_news = array_values($main_news);
-        // $news = $news->toJson();
-        // $news = array_values($news);
-        // $comments = $news->comments();
-        // $photos = $news->photos();
-        // for ($i=0; $i < count($news); $i++) { 
-        //     if($news[$i]->photos){
-        //                 foreach ($news[$i]->photos as $photo) {
-                         
-        //                 // $news[$i]['photos']['file'] = array($photo->file);   # code...
-        //                 // echo $photo->file;
-        //             }
-        //     }
-        // }
         return response()->json(
             $news
             // 'photos'=>$photos
@@ -59,32 +43,33 @@ class IcoProjectViewController extends Controller
         asort($states);
         $closest = key($states);
         $roadmap[$closest]['state'] = 'current';
-        // $user = Auth::user();
-        
-        // $main_news = News::with('photos')->with('category')->get()->where('main', 1)->take(2)->toArray();
-        // $main_news = array_values($main_news);
-        // $news = $news->toJson();
-        // $news = array_values($news);
-        // $comments = $news->comments();
-        // $photos = $news->photos();
-        // for ($i=0; $i < count($news); $i++) { 
-        //     if($news[$i]->photos){
-        //                 foreach ($news[$i]->photos as $photo) {
-                         
-        //                 // $news[$i]['photos']['file'] = array($photo->file);   # code...
-        //                 // echo $photo->file;
-        //             }
-        //     }
-        // }
+        $category = $commentnews->category;
         return response()->json([
             'news'=>$news,
             'comments'=>$comments,
             'team'=>$team,
             'roadmap'=>$roadmap,
+            'category'=>$category
+
         ]);
         // dd($news);
         // return $news->toJson();
 
 
 }
+
+    public function byCat($id) {
+        $news = IcoProject::with('category')->first()->get()->where('cat_id', $id)->toArray();
+        $news = array_values($news);
+
+        return response()->json(
+            $news
+         );
+        // dd($news);
+        // return $news->toJson();
+
+
+    }
+
+
 }

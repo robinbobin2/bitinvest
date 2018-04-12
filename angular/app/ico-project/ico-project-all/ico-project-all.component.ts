@@ -43,20 +43,29 @@ export class IcoProjectAllComponent implements OnInit {
   news_raw: any[];
   news = [];
   main_news: NewsRaw[] = [];
+  activecount = 0;
+  inactivecount = 0;
    constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
-   	let path = "/icoraw";
-   	const info = http.get<Array<NewsRaw>>(path);
-   	info.subscribe(response => {
-   		this.news = response;
-   	});
+   	
 
 
 
    }
 
   ngOnInit() {
-    
-    
+    let path = "/icoraw";
+     const info = this.http.get<Array<NewsRaw>>(path);
+     info.subscribe(response => {
+       this.news = response;
+       console.log(this.news);
+     });
+    for(let item of this.news) {
+      if(item['active'] == 1 ) {
+        this.activecount = this.activecount+1;
+      } else {
+        this.inactivecount = this.inactivecount+1;
+      }
+    }
   }
 
   loadMore(id) {

@@ -5,8 +5,7 @@ import { Observable } from 'rxjs/Rx';
 // import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute, NavigationEnd, Params} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { MasonryOptions } from 'angular2-masonry';
-const scr = 'http://ppql.ru/masonry.js';
+
 interface Category {
   id: number;
   name: string;
@@ -33,23 +32,11 @@ export class NewsRaw {
   styleUrls: ['./analytics-categories.component.scss']
 })
 export class AnalyticsCategoriesComponent implements OnInit {
-public myOptions: MasonryOptions = { 
-      transitionDuration: '0' 
-};
+
 	id;
 	path;
 	info;
-loadAPI: Promise<any>;
 
-    public loadScript() {
-        console.log('preparing to load...')
-        let node = document.createElement('script');
-        node.src = scr;
-        node.type = 'text/javascript';
-        node.async = false;
-        node.charset = 'utf-8';
-        document.getElementsByTagName('body')[0].appendChild(node);
-    }
   news_raw: any[];
 	news: NewsRaw[] = [];
   main_news: NewsRaw[] = [];

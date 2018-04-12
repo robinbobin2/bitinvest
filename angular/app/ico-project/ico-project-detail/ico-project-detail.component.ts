@@ -27,6 +27,14 @@ export class NewsRaw {
   current_money: number;
   number_people: number;
   updated_at: string;
+  category: any;
+}
+export class User {
+  id:number;
+  name: string;
+  email:string;
+  photo_id: number;
+  role_id: number;
 }
 export class CommentRaw {
   id: number;
@@ -58,14 +66,23 @@ news: NewsRaw;
 comments: CommentRaw[] = [];
 team: Array<Team>;
 roadMap: Array<RoadMap>;
+submitted = false;
+commentcount = 0;
+user: User;
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
-    let id = route.snapshot.params['id'];
-    let path = "/icoraw/"+id;
-    const info = http.get(path);
+}
 
-  		info.subscribe(response => {
-  			// console.log(response['news']);
-  			this.news = response['news'][0];
+  ngOnInit() {
+        let id = this.route.snapshot.params['id'];
+    let path = "/icoraw/"+id;
+    const info = this.http.get<NewsRaw>(path);
+
+      info.subscribe(response => {
+        console.log(response['news']);
+        console.log(response);
+        this.news = response['news'][0];
+        this.news.category = response.category.name;
+        console.log(this.news);
         
         for(let item of response['comments']) {
           this.comments.push({
@@ -75,16 +92,13 @@ roadMap: Array<RoadMap>;
           body: item['body'],
           commentable_id:item['commentable_id'],
           photo: item['photo']
-        })
+        });
+          this.commentcount=this.commentcount+1;
         }
         this.team = response['team'];
         this.roadMap = response['roadmap']
 
-  		});
-}
-
-  ngOnInit() {
-
+      });
   	this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
   	try {
       document.querySelector('#' + this.fragment).scrollIntoView();
@@ -95,11 +109,29 @@ roadMap: Array<RoadMap>;
             }
             window.scrollTo(0, 0)
         });
+    const userpath = "/angular/user";
+     const userinfo = this.http.get<User>(userpath);
+     userinfo.subscribe(response => {
+        this.user = {
+            id:response.id,
+            name: response.name,
+            email:response.email,
+            photo_id: response.photo_id,
+            role_id: response.role_id
+
+        };
+        console.log('user');
+        console.log(this.user);
+        console.log(response);
+   });
   }
   comment = { 
     'post_id': '',
     'body': '',
     'commentable_id': '',
+    'name': '',
+    'email': '',
+    'photo': 0,
     'commentable_type': ''
   }
   // @ViewChild('f') Form:NgForm;
@@ -114,7 +146,18 @@ roadMap: Array<RoadMap>;
         (response) => console.log(response),
         (error) => console.log(error)
       );
-    // console.log(post_id + " " + form.value.body + " " + type); 
+      this.comment = { 
+        'post_id': '',
+        'body': form.value.body,
+        'commentable_id': '',
+        'name': this.user.name,
+        'email': this.user.email,
+        'photo': this.user.photo_id,
+        'commentable_type': ''
+      }
+      form.reset();
+      this.submitted = true;
+      this.commentcount=this.commentcount+1;
   }
  goBack() {
  	this.router.navigateByUrl('/ico/all');

@@ -6,7 +6,7 @@
 					</div>
 					<div class="text-wrap">
 						<div class="text-info">
-							<p class="project-title">{{news.name}}<a href="#comment-block" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>0</a></p>
+							<p class="project-title">{{news.name}}<a href="#comment-block" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{commentcount}}</a></p>
 						</div>
 						<div class="project-info-content">
 							<div class="info">
@@ -25,9 +25,9 @@
 					<li><a [routerLink]="['/ico/item', news.id]" fragment="distribution-funds">Распределение средств</a></li>
 					<li><a [routerLink]="['/ico/item', news.id]" fragment="team-genesis">Команда</a></li>
 					<li><a [routerLink]="['/ico/item', news.id]" fragment="history-project">История</a></li>
-					<li><a>Whight paper <img src="img/pdf-icon.png" alt=""></a></li>
-					<li><a [routerLink]="['/ico/item', news.id]" fragment="comment-block">Комментарии (5)</a></li>
-					<li><a [routerLink]="['/ico/item', news.id]" fragment="related-projects">Похожие проекты (2)</a></li>
+					<li><a href="{{news.white_paper}}" target="_blank">White paper <img src="img/pdf-icon.png" alt=""></a></li>
+					<li><a [routerLink]="['/ico/item', news.id]" fragment="comment-block">Комментарии ({{commentcount}})</a></li>
+					<!-- <li><a [routerLink]="['/ico/item', news.id]" fragment="related-projects">Похожие проекты (0)</a></li> -->
 				</ul>
 				<div class="basic-information" id="basic-information">
 					<div class="basic-information-wrap">
@@ -36,11 +36,11 @@
 							<ul>
 								<li><span class="gray">Сайт:</span> <span class="black"><a href="{{news.website}}">{{news.website}}</a></span></li>
 								<li><span class="gray">Тип ICO</span><span class="black">{{news.type==1 ? 'ICO' : 'Pre-ICO'}}</span> </li>
-								<li><span class="gray">Категория:</span><span class="black">Социальные сети</span></li>
+								<li><span class="gray">Категория:</span><span class="black">{{news.category}}</span></li>
 								<li><span class="gray">Цель сборов:</span><span class="black">${{news.money}}</span></li>
 								<li><span class="gray">Наличие Эскроу:</span><span class="black">{{news.escrow ==1? 'Да':'Нет'}}</span></li>
 								<li><span class="gray">Наличие рабочего прототипа:</span> <span class="black">Нет</span></li>
-								<li><span class="gray">White paper:</span><span class="black">{{news.white_paper ==1 ? 'Есть': 'Нет'}}</span> </li>
+								<li><span class="gray">White paper:</span><span class="black">{{news.white_paper ==2 ? 'Есть': 'Нет'}}</span> </li>
 								<li><span class="gray">Валюты:</span><span class="black">{{news.currencies}}</span> </li>
 								<li><span class="gray">Платформа:</span><span class="black">{{news.platform}}</span> </li>
 								<li><span class="gray">Местоположение:</span><span class="black">{{news.place}}</span> </li>
@@ -53,7 +53,7 @@
 										<p>${{news.current_money}} из {{news.money}}</p>
 									</div>
 							<ul>
-								<li><span>Собрано {{news.current_money/(news.money / 100)}}%</span></li>
+								<li><span>Собрано {{news.current_money/(news.money / 100)  | number:'1.0-0'}}%</span></li>
 								<li><span>Участвуют {{news.number_people}} чел.</span></li>
 								<li><span>Осталось 25 дней</span></li>
 							</ul>
@@ -110,70 +110,36 @@
 				</div>
 				<div class="comment-block" id="comment-block">
 					<div class="comment-top">
-						<h3>Комментарии (5)</h3>
-						<p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#">авторизоваться</a> или <a href="#">пройти регистрацию.</a></p>
+								<h3>Добавить новый комментарий</h3>
+								<form (ngSubmit)="submitComment(f, news.id, 'App\\IcoProject')" #f="ngForm">
+									<input type="hidden" ngModel name="post_id" value="{{news?.id}}">
+									<input type="hidden" ngModel name="commentable_type" value="App\News">
+									<textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
+									<button type="submit">Добавить</button>
+								</form>
+								<p *ngIf="submitted">Комментарий успешно добавлен</p>
+							</div>
+					
+					<div style="background: none !important; border: none !important" class="comment-top">
+						<h3>Комментарии ({{commentcount}})</h3>
+						<!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#">авторизоваться</a> или <a href="#">пройти регистрацию.</a></p> -->
+
+					
 					</div>
 					<ul class="comment-items">
-						<li>
+						<!--  -->
+						<li *ngFor="let item of comments">
 							<div class="left">
 								<div class="info">
 									<div class="img-wrap">
-										<img src="img/comment-img1.jpg" alt="">
+										<img src="img/comment-img2.jpg" style="max-width: 35px; height: auto;" alt="">
 									</div>
 									<div class="text-wrap">
-										<p>Иванов Петр (petroff)</p>
-										<span>Добавлен 20.10.2017 в 12:12</span>
+										<p>{{item.email}}</p>
+										<span>Добавлен </span>
 									</div>
 								</div>
-								<p class="comment-text">Отличная статья, будем надеятся что все так и произойдет!</p>
-							</div>
-							<div class="right">
-								<div class="img-wrap"></div>
-								<div class="btn-block">
-									<span class="number-green">4</span>
-									<div class="buttons">
-										<a href="#" class="plus">+</a>
-										<a href="#" class="minus">-</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="left">
-								<div class="info">
-									<div class="img-wrap">
-										<img src="img/comment-img2.jpg" alt="">
-									</div>
-									<div class="text-wrap">
-										<p>Иванов Петр (petroff)</p>
-										<span>Добавлен 20.10.2017 в 12:12</span>
-									</div>
-								</div>
-								<p class="comment-text">Отличная статья, будем надеятся что все так и произойдет! Спасибо.!</p>
-							</div>
-							<div class="right">
-								<div class="img-wrap"></div>
-								<div class="btn-block">
-									<span class="number-red">-2</span>
-									<div class="buttons">
-										<a href="#" class="plus">+</a>
-										<a href="#" class="minus">-</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="left">
-								<div class="info">
-									<div class="img-wrap">
-										<img src="img/comment-img3.jpg" alt="">
-									</div>
-									<div class="text-wrap">
-										<p>Иванов Петр (petroff)</p>
-										<span>Добавлен 20.10.2017 в 12:12</span>
-									</div>
-								</div>
-								<p class="comment-text">Я рассчитываю на рост Битка</p>
+								<p class="comment-text">{{item.body}}</p>
 							</div>
 							<div class="right">
 								<div class="img-wrap"></div>
@@ -186,18 +152,18 @@
 								</div>
 							</div>
 						</li>
-						<li>
+						<li *ngIf="submitted">
 							<div class="left">
 								<div class="info">
 									<div class="img-wrap">
-										<img src="img/comment-img2.jpg" alt="">
+										<img src="{{comment.photo != 0 ? comment.photo : 'img/comment-img2.jpg'}}" style="max-width: 35px; height: auto;" alt="">
 									</div>
 									<div class="text-wrap">
-										<p>Иванов Петр (petroff)</p>
-										<span>Добавлен 20.10.2017 в 12:12</span>
+										<p>{{comment.email}}</p>
+										<!-- <span>Добавлен {{item.created_at}}</span> -->
 									</div>
 								</div>
-								<p class="comment-text">Я рассчитываю на рост Битка</p>
+								<p class="comment-text">{{comment.body}}</p>
 							</div>
 							<div class="right">
 								<div class="img-wrap"></div>
@@ -210,106 +176,11 @@
 								</div>
 							</div>
 						</li>
-						<li>
-							<div class="left">
-								<div class="info">
-									<div class="img-wrap">
-										<img src="img/comment-img2.jpg" alt="">
-									</div>
-									<div class="text-wrap">
-										<p>Иванов Петр (petroff)</p>
-										<span>Добавлен 20.10.2017 в 12:12</span>
-									</div>
-								</div>
-								<p class="comment-text">Я рассчитываю на рост Битка</p>
-							</div>
-							<div class="right">
-								<div class="img-wrap"></div>
-								<div class="btn-block">
-									<span class="number-green">8</span>
-									<div class="buttons">
-										<a href="#" class="plus">+</a>
-										<a href="#" class="minus">-</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="hidden">
-							<div class="left">
-								<div class="info">
-									<div class="img-wrap">
-										<img src="img/comment-img3.jpg" alt="">
-									</div>
-									<div class="text-wrap">
-										<p>Иванов Петр (petroff)</p>
-										<span>Добавлен 20.10.2017 в 12:12</span>
-									</div>
-								</div>
-								<p class="comment-text">Я рассчитываю на рост Битка</p>
-							</div>
-							<div class="right">
-								<div class="img-wrap"></div>
-								<div class="btn-block">
-									<span class="number-green">8</span>
-									<div class="buttons">
-										<a href="#" class="plus">+</a>
-										<a href="#" class="minus">-</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="hidden">
-							<div class="left">
-								<div class="info">
-									<div class="img-wrap">
-										<img src="img/comment-img2.jpg" alt="">
-									</div>
-									<div class="text-wrap">
-										<p>Иванов Петр (petroff)</p>
-										<span>Добавлен 20.10.2017 в 12:12</span>
-									</div>
-								</div>
-								<p class="comment-text">Я рассчитываю на рост Битка</p>
-							</div>
-							<div class="right">
-								<div class="img-wrap"></div>
-								<div class="btn-block">
-									<span class="number-green">8</span>
-									<div class="buttons">
-										<a href="#" class="plus">+</a>
-										<a href="#" class="minus">-</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="hidden">
-							<div class="left">
-								<div class="info">
-									<div class="img-wrap">
-										<img src="img/comment-img2.jpg" alt="">
-									</div>
-									<div class="text-wrap">
-										<p>Иванов Петр (petroff)</p>
-										<span>Добавлен 20.10.2017 в 12:12</span>
-									</div>
-								</div>
-								<p class="comment-text">Я рассчитываю на рост Битка</p>
-							</div>
-							<div class="right">
-								<div class="img-wrap"></div>
-								<div class="btn-block">
-									<span class="number-green">8</span>
-									<div class="buttons">
-										<a href="#" class="plus">+</a>
-										<a href="#" class="minus">-</a>
-									</div>
-								</div>
-							</div>
-						</li>
+
 					</ul>
-					<a href="#" class="show-comments">Показать все комментарии (22)</a>
+					<!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
 				</div>
-				<div class="related-projects" id="related-projects">
+				<!-- <div class="related-projects" id="related-projects">
 					<h3 class="ico-title">Похожие проекты (2)</h3>
 					<div class="project-block">
 						<div class="img-wrap">
@@ -365,5 +236,5 @@
 						<p class="more-project">Криптовалюты для облачного майнинга, предоставляемые сервисом Genesis Mining: По алгоритму SHA-256: Bitcoin (BTC)
 							<a href="#">Подробнее о проекте</a></p>
 					</div>
-				</div>
+				</div> -->
 			</div>

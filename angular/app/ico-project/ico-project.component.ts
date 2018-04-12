@@ -22,24 +22,21 @@ export class IcoProjectComponent implements OnInit {
 
  categories: Categories[] = [];
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
-    let path = "/categoriesraw/5";
-    const info = http.get(path);
-  		info.subscribe(response => {
-  			for ( let item of response['cats']) {
-  				this.categories.push({
-  				  id: item['id'],
-				  name:item['name'],
-				  count: item['count']
-  			});
-  			}
-  			
-  			console.log(this.categories);
 
-  		});
 }
 
   ngOnInit() {
-
+    let path = "/categoriesraw/5";
+    const info = this.http.get(path);
+      info.subscribe(response => {
+        for ( let item of response['cats']) {
+          this.categories.push({
+            id: item['id'],
+          name:item['name'],
+          count: item['count']
+        });
+        }
+      });
   }
 
 

@@ -59,17 +59,14 @@ public myOptions: MasonryOptions = {
    	let path = "/miningraw";
    	const info = http.get(path);
    	info.subscribe(response => {
-       for (let portfolio of response['portfolios']) {
-         this.portfolios.push({
-              id: portfolio['id'],
-              name:portfolio['name'],
-              user_portfolio_type_id: portfolio['user_portfolio_type_id'],
-              user_id: portfolio['user_id']
-         })
-       }
-       // console.log(response['news']);
-       // this.news = response['news'];
-       console.log(response['portfolios']);
+       // for (let portfolio of response['portfolios']) {
+       //   this.portfolios.push({
+       //        id: portfolio['id'],
+       //        name:portfolio['name'],
+       //        user_portfolio_type_id: portfolio['user_portfolio_type_id'],
+       //        user_id: portfolio['user_id']
+       //   })
+       // }
        for (let item of response['news']) {
            this.news.push( {
 		  	id: item.id,

@@ -78,7 +78,7 @@ public function show($id) {
         $comments = $item->comments;
         return response()->json([
             'news' => $item,
-            'comments'=>$comments
+            // 'comments'=>$comments
         ]);
 
 

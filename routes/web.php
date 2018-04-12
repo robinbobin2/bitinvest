@@ -49,6 +49,7 @@ Route::get('/categoriesraw/{type}', "AdminCategoryController@catRaw");
 Route::get('/postsbycat/{category}', "NewsViewController@byCat");
 Route::get('/analyticsbycat/{category}', "AnalyticsViewController@byCat");
 Route::get('/interviewsbycat/{category}', "InterviewViewController@byCat");
+Route::get('/icobycat/{category}', "IcoProjectViewController@byCat");
 Route::get('/reviewbycat/{review}', "ReviewViewController@byCat");
 Route::get('/allcrypto', "CryptoViewController@viewAll");
 Route::get('/cryptocompar', "CryptoController@CryptoCompare");
@@ -109,6 +110,7 @@ Route::get('/ico/all', "AngularController@serve");
 Route::get('/ico/item/{post}', "AngularController@serve");
 Route::get('/ico/category/{category}', "AngularController@serve");
 Route::get('/angular/user/', "AngularController@user");
+Route::get('/angular/funds/{id}', "AngularController@funds");
 
 // Route::get('/crypto', "AngularController@serve");
 
