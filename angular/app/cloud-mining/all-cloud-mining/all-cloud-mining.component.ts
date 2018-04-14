@@ -32,6 +32,7 @@ export class NewsRaw {
     ref_about: string;
     latest_date: number;
     percentage: number;
+    comments_count:number;
     start_days: number;
 
 }
@@ -55,6 +56,9 @@ public myOptions: MasonryOptions = {
 	news: NewsRaw[] = [];
   main_news: NewsRaw[] = [];
   portfolios: Portfolio[] = [];
+  allCount = 0;
+  active = 0;
+  inactive = 0;
    constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
    	let path = "/miningraw";
    	const info = http.get(path);
@@ -85,11 +89,20 @@ public myOptions: MasonryOptions = {
 		    ref_about: item.ref_about,
 		    latest_date: item.latest_date,
 		    percentage: item.percentage,
-		    start_days: item.start_days
+		    start_days: item.start_days,
+        comments_count:item.comments_count,
 
        });
          }
          console.log(this.news);
+         this.allCount = this.news.length;
+         for(let item of this.news) {
+           if(item.status == 1) {
+             this.active ++;
+           } else {
+             this.inactive++;
+           }
+         }
    	});
 
 

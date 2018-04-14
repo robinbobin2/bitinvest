@@ -28,13 +28,13 @@ class IcoProject extends Model
     }
     public function percents()
     {
-        return $this->hasMany('App\IcoPercent', 'ico_id');
+        return $this->hasMany('App\IcoPercent', 'ico_id')->orderByDesc('percent');
     }
     public function category()
     {
         return $this->belongsTo('App\Category', 'cat_id');
     }
     public function comments() {
-        return $this->morphMany('App\Comment', 'commentable');
+        return $this->morphMany('App\Comment', 'commentable')->orderByDesc('created_at');
     }
 }

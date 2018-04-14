@@ -31,6 +31,9 @@ export class NewsRaw {
   current_money: number;
   number_people: number;
   updated_at: string;
+  category: any;
+  logo:string;
+  comments_count:number
 }
 
 @Component({
@@ -39,12 +42,10 @@ export class NewsRaw {
   styleUrls: ['./ico-project-all.component.scss']
 })
 export class IcoProjectAllComponent implements OnInit {
-
-  news_raw: any[];
-  news = [];
-  main_news: NewsRaw[] = [];
-  activecount = 0;
-  inactivecount = 0;
+  news: NewsRaw[] = [];
+  activeCount = 0;
+  inactiveCount = 0;
+  icoCount = 0;
    constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
    	
 
@@ -54,19 +55,52 @@ export class IcoProjectAllComponent implements OnInit {
 
   ngOnInit() {
     let path = "/icoraw";
-     const info = this.http.get<Array<NewsRaw>>(path);
+     const info = this.http.get(path);
      info.subscribe(response => {
-       this.news = response;
-       console.log(this.news);
+       for(let item of response['news']) 
+       {
+         this.news.push( {
+               id: item.id,
+              name: item.name,
+              status: item.status,
+              website:item.website,
+              cat_id:item.cat_id,
+              escrow: item.escrow,
+              type: item.type,
+              white_paper: item.white_paper,
+              currencies: item.currencies,
+              platform: item.platform,
+              place: item.place,
+              about:item.about,
+              money: item.money,
+              money_start: item.money_start,
+              money_end:item.money_end,
+              current_money: item.current_money,
+              number_people: item.number_people,
+              updated_at: item.updated_at,
+              category: item.category['name'],
+              logo:item.logo,
+              comments_count:item.comments_count,
+
+         } );
+       }
+       this.icoCount = this.news.length;
+       for(let item of this.news)
+       {
+         if(item.status == 1) {
+           this.activeCount++;
+         } else {
+           this.inactiveCount++;
+         }
+         
+       }
+     console.log(this.news.length);
      });
-    for(let item of this.news) {
-      if(item['active'] == 1 ) {
-        this.activecount = this.activecount+1;
-      } else {
-        this.inactivecount = this.inactivecount+1;
-      }
-    }
+     
+    
+
   }
+
 
   loadMore(id) {
     this.router.navigate(['/ico/item', id]);

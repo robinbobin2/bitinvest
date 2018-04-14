@@ -204,6 +204,41 @@
 </div>
 <input type="submit" class="btn btn-primary" value="Добавить операцию" /> 
 </form>
+
+<form  enctype="multipart/form-data" method="post" class="col-lg-12" style="margin-top: 20px;" action="{{route('icoproject.updatepercent', $icoproject)}}" >
+
+{{csrf_field()}}
+{{ method_field('post') }}
+<div class="form-group">
+	<h3>Проценты</h3>
+<table class="table table-striped">
+	<tr>
+		<td>Процент</td>
+		<td>Описание</td>
+	</tr>
+	@if($percent)
+	@foreach($percent as $item)
+	<tr>
+		
+		
+		<td>{{$item->percent}}</td>
+		<td>{{$item->name}}</td>
+	</tr>
+	@endforeach
+	@endif
+</table>
+</div>
+<div class="form-group">
+<label for="percent">Процент</label>
+<input class="form-control" name="percent" id="percent">
+
+<label for="name">Описание</label>
+<textarea name="name" class="form-control"></textarea>
+
+</div>
+<input type="submit" class="btn btn-primary" value="Добавить процент" /> 
+</form>
+
 </div>
 <div class="row">
 {{-- @include('includes.formerror') --}}

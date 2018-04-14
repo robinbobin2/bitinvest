@@ -37,7 +37,7 @@ class CloudMiningViewController extends Controller
             $item['percentage'] = $percentage;
             $start_days = round((strtotime("now") - strtotime($item->start))  / (60 * 60 * 24), 0);
             $item['start_days'] = $start_days;
-            
+            $item['comments_count'] = count($item->comments);
     	}
     	$mining = $mining->toArray();
         $news = array_values($mining);
@@ -75,9 +75,11 @@ public function show($id) {
             $item['percentage'] = $percentage;
             $start_days = round((strtotime("now") - strtotime($item->start))  / (60 * 60 * 24), 0);
             $item['start_days'] = $start_days;
-        $comments = $item->comments;
+            $item['comments_count'] = count($item->comments);
+        // $comments = $item->comments;
         return response()->json([
             'news' => $item,
+            // 'comments_count'=>count($comments),
             // 'comments'=>$comments
         ]);
 

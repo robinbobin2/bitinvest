@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\IcoPercent;
 use App\IcoProject;
 use App\User;
 use File;
@@ -38,7 +39,7 @@ class AngularController extends Controller
 
     public function funds($id)
     {
-        return IcoProject::all()->where('ico_id', '=', $id)->toArray();
+        return IcoPercent::all()->where('ico_id', '=', $id)->sortByDesc('percent')->values();
     }
 
 

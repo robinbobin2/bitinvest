@@ -12,7 +12,11 @@ export class News {
   id: number;
   title: string;
   desc: string;
+  // main: number;
+  category:string;
+  photo: string;
   created_at:string;
+  comments_count: number;
 
 }
 export class CommentRaw {
@@ -23,6 +27,13 @@ export class CommentRaw {
   commentable_id:number;
   photo:string;
 }
+export class User {
+  id:number;
+  name: string;
+  email:string;
+  photo_id: number;
+  role_id: number;
+}
 @Component({
   selector: 'app-news-detail',
   templateUrl: './news-detail.component.html',
@@ -31,6 +42,9 @@ export class CommentRaw {
 export class NewsDetailComponent implements OnInit {
 news: News;
 comments: CommentRaw[] = [];
+submitted = false;
+commentcount = 0;
+user: User;
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
     let id = route.snapshot.params['id'];
     let path = "/newsraw/"+id;
@@ -40,7 +54,10 @@ comments: CommentRaw[] = [];
             id: response['news'][0]['id'],
           title: response['news'][0]['title'],
           desc: response['news'][0]['desc'],
-          created_at:response['news'][0]['created_at']
+          created_at:response['news'][0]['created_at'],
+          category:response['category'].name,
+          photo:response['photos'][0].file,
+          comments_count:response['comments_count']
         }
         for(let item of response['comments']) {
           this.comments.push({
@@ -67,6 +84,18 @@ comments: CommentRaw[] = [];
             }
             window.scrollTo(0, 0)
         });
+      const userpath = "/angular/user";
+     const userinfo = this.http.get<User>(userpath);
+     userinfo.subscribe(response => {
+        this.user = {
+            id:response.id,
+            name: response.name,
+            email:response.email,
+            photo_id: response.photo_id,
+            role_id: response.role_id
+
+        };
+   });
   }
   comment = { 
     'post_id': '',
@@ -83,10 +112,19 @@ comments: CommentRaw[] = [];
             'commentable_id': post_id,
             'commentable_type': type
       }, {headers: headers}).subscribe(
-        (response) => console.log(response),
+        (response) => this.comments.unshift({
+            id: response['id'],
+            email:response['email'],
+          author: response['author'],
+          body: response['body'],
+          commentable_id:response['commentable_id'],
+          photo: response['photo']
+        }),
         (error) => console.log(error)
       );
-    console.log(post_id + " " + form.value.body + " " + type); 
+      form.reset();
+      this.submitted = true;
+      this.news.comments_count++;
   }
 
 }

@@ -1,9 +1,9 @@
 <div class="ico-content">
 				<div class="ico-head">
-					<h1>ICO<span></span></h1>
+					<h1>ICO<span>{{icoCount}}</span></h1>
 					<ul class="ico-tabs">
-						<li class="active"><a href="#">Активные ()</a></li>
-						<li><a href="#">Завершенные ()</a></li>
+						<li class="active"><a href="#">Активные ({{activeCount}})</a></li>
+						<li><a href="#">Завершенные ({{inactiveCount}})</a></li>
 					</ul>
 					<form>
 						<input type="text" placeholder="Поиск по названию">
@@ -20,11 +20,11 @@
 				<div class="project-wrapper active">
 					<div *ngFor="let item of news" class="project-block" [ngClass]="item.status==1 ? ' ' : 'no-bg'">
 						<div class="img-wrap">
-							<a href="/ico/item/{{item.id}}"><img src="{{item.logo}}" alt=""></a>
+							<a href="/ico/item/{{item.id}}"><img [src]="item.logo" style="width: 97px; height: 97px" alt=""></a>
 						</div>
 						<div class="text-wrap">
 							<div class="text-info">
-								<p><a href="/ico/item/{{item.id}}" class="project-title">{{item.name}}</a><a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>0</a></p>
+								<p><a href="/ico/item/{{item.id}}" class="project-title">{{item.name}}</a><a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a></p>
 							</div>
 							<div class="project-info-content">
 								<div class="info">
@@ -48,5 +48,5 @@
 					</div>
 
 				</div>
-				<a href="#" class="show-more">Показать еще</a>
+				<!-- <a href="#" class="show-more">Показать еще</a> -->
 			</div>

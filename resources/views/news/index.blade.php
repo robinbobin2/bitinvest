@@ -30,10 +30,12 @@
                                       document.getElementById('delete-news-{{$n->id}}').submit();">
                                       Delete
                                   </a>
-                                  <form id="delete-news-{{$n->id}}" action="/news/{{$n->id}}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
+                                  <form method="post" id="delete-news-{{$n->id}}" class="row" action="{{route('news.destroy', $n->id)}}"  enctype="multipart/form-data">
+                                    {{ method_field('delete') }}
+                                    {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
-                                  </form>
+                                </form>
+                                  
 
                               </td>
                           </tr>

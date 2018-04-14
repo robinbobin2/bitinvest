@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\IcoPercent;
 use App\IcoProject;
 use App\IcoRoadMap;
 use App\IcoTeam;
@@ -79,6 +80,16 @@ class IcoProjectController extends Controller
         return redirect()->back();
     }
 
+    public function updatePercent(Request $request, $id)
+    {
+        $icoproject = IcoProject::findOrFail($id);
+        
+        $percent = new IcoPercent($request->all());
+        $icoproject->percents()->save($percent);
+        return redirect()->back();
+    }
+
+
     /**
      * Display the specified resource.
      *
@@ -103,7 +114,8 @@ class IcoProjectController extends Controller
         $categories = Category::all()->where('type', 5);
         $roadmap = $icoproject->road_map;
         $team = $icoproject->team_members;
-        return view('admin.icoproject.edit', compact('icoproject', 'team','categories', 'roadmap'));
+        $percent = $icoproject->percents;
+        return view('admin.icoproject.edit', compact('icoproject', 'team','categories', 'roadmap', 'percent'));
     }
 
     /**

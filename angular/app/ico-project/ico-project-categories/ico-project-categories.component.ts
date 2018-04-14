@@ -18,12 +18,24 @@ interface Categories {
 }
 export class NewsRaw {
   id: number;
-  title: string;
-  desc: string;
-  main: number;
-  category:string;
-  photo: string;
-  created_at:string;
+  name: string;
+  status: number;
+  website:string;
+  cat_id:number;
+  escrow: number;
+  type: number;
+  white_paper: string;
+  currencies: string;
+  platform: string;
+  place: string;
+  about:string;
+  money: number;
+  money_start: string;
+  money_end:string;
+  current_money: number;
+  number_people: number;
+  updated_at: string;
+  category: any;
 
 }
 @Component({
@@ -36,7 +48,9 @@ export class IcoProjectCategoriesComponent implements OnInit {
 	id;
 	path;
 	info;
-
+  activeCount = 0;
+  inactiveCount = 0;
+  icoCount = 0;
   news_raw: any[];
 	news: Array<NewsRaw> = [];
   // main_news: NewsRaw[] = [];
@@ -47,34 +61,32 @@ export class IcoProjectCategoriesComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
    		(params: Params) => {
-   			this.id = params['id'];
-   			this.news = undefined;
-   			this.news = [];
+        this.activeCount = 0;
+        this.inactiveCount = 0;
+        this.icoCount = 0;
+   		  this.id = params['id'];
+   			this.news.length = 0;
    			this.path = "/icobycat/"+this.id;
   			this.info = this.http.get<Array<NewsRaw>>(this.path);
-     this.info.subscribe(response => {
+       this.info.subscribe(response => {
        this.news = response;
-       for(let item of response) {
-       	this.news.push({
-  id: item.id,
-  title: item.title,
-  desc: item.desc,
-  main: item.main,
-  category:item.category.name,
-  photo: item.photo,
-  created_at:item.photos[0].file
-
-
-       	});
+       this.icoCount = this.news.length;
+       for(let item of this.news)
+       {
+         if(item.status == 1) {
+           this.activeCount++;
+         } else {
+           this.inactiveCount++;
+         }
+         
        }
      });
-     console.log('news');
-    console.log(this.news);
+     
   }
 );
 }
   loadMore(id) {
-    this.router.navigate(['/analytics/item', id]);
+    this.router.navigate(['/ico/item', id]);
   }
   
 

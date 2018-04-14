@@ -55,6 +55,11 @@ export class RoadMap {
   desc: string;
   state:string;
 }
+export class Percent {
+  id:number;
+  percent:number;
+  name: string;
+}
 @Component({
   selector: 'app-ico-project-detail',
   templateUrl: './ico-project-detail.component.html',
@@ -69,6 +74,7 @@ roadMap: Array<RoadMap>;
 submitted = false;
 commentcount = 0;
 user: User;
+percents: Array<Percent> = [];
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
 }
 
@@ -120,19 +126,20 @@ user: User;
             role_id: response.role_id
 
         };
-        console.log('user');
-        console.log(this.user);
-        console.log(response);
    });
-  }
-  comment = { 
-    'post_id': '',
-    'body': '',
-    'commentable_id': '',
-    'name': '',
-    'email': '',
-    'photo': 0,
-    'commentable_type': ''
+
+     const percentpath = "/angular/funds/"+id;
+     const percentinfo = this.http.get<any>(percentpath);
+     percentinfo.subscribe(response => {
+       for(let item of response) {
+         this.percents.push({
+             id:item['id'],
+            percent:item['percent'],
+            name: item['name']
+         });
+       }
+       console.log(this.percents);
+   });
   }
   // @ViewChild('f') Form:NgForm;
   submitComment(form: NgForm, post_id, type) {
@@ -143,24 +150,59 @@ user: User;
             'commentable_id': post_id,
             'commentable_type': type
       }, {headers: headers}).subscribe(
-        (response) => console.log(response),
+        (response) => 
+        this.comments.unshift({
+            id: response['id'],
+            email:response['email'],
+          author: response['author'],
+          body: response['body'],
+          commentable_id:response['commentable_id'],
+          photo: response['photo']
+        }),
         (error) => console.log(error)
       );
-      this.comment = { 
-        'post_id': '',
-        'body': form.value.body,
-        'commentable_id': '',
-        'name': this.user.name,
-        'email': this.user.email,
-        'photo': this.user.photo_id,
-        'commentable_type': ''
-      }
       form.reset();
       this.submitted = true;
       this.commentcount=this.commentcount+1;
   }
  goBack() {
  	this.router.navigateByUrl('/ico/all');
+ }
+ percentClass(percent, type) {
+   if(type=='first') {
+     if(percent >=40) {
+       return 'gray';
+     } else if(percent>=30) {
+       return 'blue';
+     } else if(percent>=20) {
+       return 'purple';
+     } else if(percent>=10) {
+       return 'green';
+     }
+   }
+
+   if(type=='second') {
+     if(percent >=40) {
+       return 'bg-gray';
+     } else if(percent>=30) {
+       return 'bg-blue';
+     } else if(percent>=20) {
+       return 'bg-purple';
+     } else if(percent>=10) {
+       return 'bg-green';
+     }
+   }
+   if(type=='third') {
+     if(percent >=40) {
+       return 'text-grya';
+     } else if(percent>=30) {
+       return 'text-blue';
+     } else if(percent>=20) {
+       return 'text-purple';
+     } else if(percent>=10) {
+       return 'text-green';
+     }
+   }
  }
  onState(state) {
  	if(state == 'past') {

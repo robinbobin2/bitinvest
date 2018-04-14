@@ -27,6 +27,13 @@ export class NewsRaw {
     percentage: string;
     start_days: number;
 }
+export class User {
+  id:number;
+  name: string;
+  email:string;
+  photo_id: number;
+  role_id: number;
+}
 export class History {
 	id: number;
 	price: number;
@@ -55,6 +62,7 @@ comments: CommentRaw[] = [];
 histories: Array<History>=[];
 commentcount = 0;
 submitted = false;
+user: User;
  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
     let id = route.snapshot.params['id'];
     let path = "/miningraw/"+id;
@@ -125,9 +133,18 @@ submitted = false;
             }
             window.scrollTo(0, 0)
         });
-  }
-  comment = { 
-    'body': '',
+  const userpath = "/angular/user";
+     const userinfo = this.http.get<User>(userpath);
+     userinfo.subscribe(response => {
+        this.user = {
+            id:response.id,
+            name: response.name,
+            email:response.email,
+            photo_id: response.photo_id,
+            role_id: response.role_id
+
+        };
+   });
   }
   submitComment(form: NgForm, post_id, type) {
     const headers = new HttpHeaders({'Content-type': 'Application/json '});
@@ -137,12 +154,18 @@ submitted = false;
             'commentable_id': post_id,
             'commentable_type': type
       }, {headers: headers}).subscribe(
-        (response) => console.log(response),
+        (response) => 
+        this.comments.unshift({
+            id: response['id'],
+            email:response['email'],
+          author: response['author'],
+          body: response['body'],
+          commentable_id:response['commentable_id'],
+          photo: response['photo'],
+          created_at: response['created_at']
+        }),
         (error) => console.log(error)
       );
-      this.comment = {
-	    'body': form.value.body
-      }
       form.reset();
       this.submitted = true;
       this.commentcount=this.commentcount+1;

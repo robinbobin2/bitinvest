@@ -123,8 +123,6 @@ class AdminNewsController extends Controller
             'main' => Request::input('main')
         ];
         $news = News::findOrFail($id)->update($data);
-        $this->deleteImages($id);
-        $this->uploadImages($id);
         return redirect('news')
             ->with('message', 'News Updated Successfully');
     }
@@ -138,7 +136,6 @@ class AdminNewsController extends Controller
     public function destroy($id)
     {
         $news = News::findOrFail($id)->delete();
-        $this->deleteImages($id);
         return redirect('news')
             ->with('message', 'News Deleted Successfully!');
     }
@@ -164,20 +161,5 @@ class AdminNewsController extends Controller
             NewsPicture::insert($image_names);
         }
     }
-
-    private function deleteImages($id)
-    {
-        $news_images = NewsPicture::whereNewsId($id)->get();
-        if (!empty($news_images)) {
-            for ($i = 0; $i < count($news_images); $i++) {
-                if (isset($news_images[$i])) {
-                    $file_path = public_path() . '/uploads/news/' . $news_images[$i]->picture;
-                    if (file_exists($file_path)) {
-                        \File::delete($file_path);
-                    }
-                }
-                NewsPicture::find($news_images[$i]['id'])->delete();
-            }
-        }
-    }
+    
 }

@@ -30,6 +30,10 @@ class Category extends Model
     {
         return $this->hasMany('App\IcoProject', 'cat_id');
     }
+    public function mining()
+    {
+        return $this->hasMany('App\CloudMining', 'cat_id');
+    }
     
     
 }

@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class IcoProjectViewController extends Controller
 {
     public function index() {
-        $news = IcoProject::with('category')->latest()->get()->toArray();
+        $news = IcoProject::with('category')->withCount('comments')->latest()->get()->toArray();
         $news = array_values($news);
         return response()->json(
-            $news
+           ['news' => $news]
             // 'photos'=>$photos
         );
         // dd($news);
@@ -30,23 +30,28 @@ class IcoProjectViewController extends Controller
         $news = array_values($news);
         $state = 0;
         $oldstate = 0;
-        $states;
-        foreach ($roadmap as $key => $value) {
-
+        $states = Array();
+        if(!$roadmap->isEmpty())
+        {
+             foreach ($roadmap as $key => $value) {
            $state = strtotime($value['date'])-strtotime('now');
            if($state < 0) {
            $roadmap[$key]['state'] = 'past';
             } else {
                 $states[$key] = $state;
             }
+            }
+            asort($states);
+            $closest = key($states);
+            if ($closest) {
+                $roadmap[$closest]['state'] = 'current';
+            }
         }
-        asort($states);
-        $closest = key($states);
-        $roadmap[$closest]['state'] = 'current';
         $category = $commentnews->category;
         return response()->json([
             'news'=>$news,
             'comments'=>$comments,
+            'comments_count'=>count($comments),
             'team'=>$team,
             'roadmap'=>$roadmap,
             'category'=>$category
@@ -59,7 +64,7 @@ class IcoProjectViewController extends Controller
 }
 
     public function byCat($id) {
-        $news = IcoProject::with('category')->first()->get()->where('cat_id', $id)->toArray();
+        $news = IcoProject::with('category')->latest()->get()->where('cat_id', $id)->toArray();
         $news = array_values($news);
 
         return response()->json(

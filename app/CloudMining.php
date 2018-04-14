@@ -26,6 +26,6 @@ class CloudMining extends Model
     }
     public function comments()
     {
-        return $this->morphMany('App\Comment', 'commentable');
+        return $this->morphMany('App\Comment', 'commentable')->orderByDesc('created_at');
     }
 }

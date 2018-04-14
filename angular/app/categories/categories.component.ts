@@ -40,6 +40,7 @@ export class CategoriesComponent implements OnInit {
 };
 	id;
 	path;
+  countAll = 0;
 	info;
 loadAPI: Promise<any>;
 

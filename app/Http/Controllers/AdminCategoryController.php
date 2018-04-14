@@ -67,6 +67,16 @@ class AdminCategoryController extends Controller
             }
         
         }
+        elseif($type==6) {
+            foreach ($categories as $category) {
+            $categories_count = $category->mining->count();
+            $catarray[] = array('id' => $category->id,
+                                'count' => $categories_count,
+                                'name' => $category->name,
+                                );
+            }
+        
+        }
         
         
         return response()->json([

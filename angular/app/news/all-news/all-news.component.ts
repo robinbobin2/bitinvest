@@ -37,6 +37,7 @@ public myOptions: MasonryOptions = {
   news_raw: any[];
 	news: NewsRaw[] = [];
   main_news: NewsRaw[] = [];
+  countAll = 0;
    constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
    	let path = "/newsraw";
    	const info = http.get(path);
@@ -59,7 +60,7 @@ public myOptions: MasonryOptions = {
          
 
        for (let item of response['main_news']) {
-         console.log(item);
+         console.log(item.photos[0].file);
          this.main_news.push( {
          id: item.id,
           title: item.title,
@@ -70,19 +71,22 @@ public myOptions: MasonryOptions = {
           photo: item.photos[0].file
 
        });
+
        }
    		// this.news.push(response['news']);
      //   this.main_news.push(response['main_news']);
    		// console.log(response['news']);
        console.log(this.news);
-       console.log(this.news[0].photo);
        console.log(this.main_news);
+       this.countAll = this.news.length+this.main_news.length;
    	});
 
 
 
    }
-
+getBack(image) {
+  return 'url('+image+')';
+}
   ngOnInit() {
     
     
