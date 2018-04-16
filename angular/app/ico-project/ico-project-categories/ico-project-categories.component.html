@@ -2,12 +2,12 @@
 				<div class="ico-head">
 					<h1>ICO<span>{{icoCount}}</span></h1>
 					<ul class="ico-tabs">
-						<li class="active"><a href="#">Активные ({{activeCount}})</a></li>
-						<li><a href="#">Завершенные ({{inactiveCount}})</a></li>
+						<li><label for="filter1"><input type="radio" id="filter1" value="1" [(ngModel)]="status" name="status"><a>Активные ({{activeCount}})</a></label></li>
+						<li><label for="filter2"><input type="radio" id="filter2" value="2" [(ngModel)]="status" name="status"><a>Завершенные ({{inactiveCount}})</a></label></li>
 					</ul>
 					<form>
-						<input type="text" placeholder="Поиск по названию">
-						<button type="button"><img src="img/search-icon.png" alt=""></button>
+						<input [(ngModel)]="filteredName" name="filteredName" type="text" placeholder="Поиск по названию">
+						<button type="button"><img src="/img/search-icon.png" alt=""></button>
 					</form>
 				</div>
 				<div class="select-wrap select-wrap-ico">
@@ -18,7 +18,7 @@
 					</select>
 				</div>
 				<div class="project-wrapper active">
-					<div *ngFor="let item of news" class="project-block" [ngClass]="item.status==1 ? ' ' : 'no-bg'">
+					<div *ngFor="let item of news | filterNameActive:status:'status' | filterName:filteredName:'name'" class="project-block" [ngClass]="item.status==1 ? ' ' : 'no-bg'">
 						<div class="img-wrap">
 							<a href="/ico/item/{{item.id}}"><img [src]="item.logo" style="width: 97px; height: 97px" alt=""></a>
 						</div>

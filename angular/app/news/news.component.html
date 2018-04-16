@@ -5,8 +5,8 @@
         <ul class="tag-list">
           <li *ngFor="let category of categories">
             <a
- [routerLink]="['category', category.id]" routerLinkActive="active">{{category.name}}({{category.count}})</a>
-</li>
+           [routerLink]="['/posts/category', category.id]" routerLinkActive="active">{{category.name}}({{category.count}})</a>
+          </li>
         </ul>
         <div class="quotes">
           <h5 class="titles">Котировки криптовалют</h5>

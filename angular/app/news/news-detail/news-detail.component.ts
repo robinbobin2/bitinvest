@@ -104,6 +104,7 @@ user: User;
     'commentable_type': ''
   }
   // @ViewChild('f') Form:NgForm;
+  
   submitComment(form: NgForm, post_id, type) {
     const headers = new HttpHeaders({'Content-type': 'Application/json '});
     this.http.post('/storecomment', {
@@ -112,7 +113,8 @@ user: User;
             'commentable_id': post_id,
             'commentable_type': type
       }, {headers: headers}).subscribe(
-        (response) => this.comments.unshift({
+        (response) => 
+        this.comments.unshift({
             id: response['id'],
             email:response['email'],
           author: response['author'],
@@ -124,7 +126,6 @@ user: User;
       );
       form.reset();
       this.submitted = true;
-      this.news.comments_count++;
+      this.commentcount=this.commentcount+1;
   }
-
 }

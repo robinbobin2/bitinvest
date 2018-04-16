@@ -28,4 +28,8 @@ class CloudMining extends Model
     {
         return $this->morphMany('App\Comment', 'commentable')->orderByDesc('created_at');
     }
+    public function category()
+    {
+        return $this->belongsTo('App\Category', 'cat_id');
+    }
 }

@@ -38,6 +38,12 @@ export class IcoProjectComponent implements OnInit {
         }
       });
   }
-
+ loadCat(id) {
+    this.router.navigate(['/ico/category', id]);
+   //  console.log('snap');
+   //  this.route.url.subscribe(() => {
+   //  console.log(this.route.snapshot.firstChild.data);
+   // });
+  }
 
 }

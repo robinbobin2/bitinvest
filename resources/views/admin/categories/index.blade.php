@@ -25,6 +25,7 @@
   <option value="3">Аналитика</option>
   <option value="4">Обзоры</option>
   <option value="5">ICO проекты</option>
+  <option value="6">Облачный майнинг</option>
 </select>
 </div>
 <input type="submit" class="btn btn-primary" value="Создать категорию" /> 

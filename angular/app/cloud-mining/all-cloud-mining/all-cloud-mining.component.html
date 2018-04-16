@@ -2,8 +2,8 @@
         <div class="mining-head">
           <h1>Облачный майнинг<span>{{allCount}}</span></h1>
           <ul class="mining-tabs">
-            <li class="active"><a href="#">Платит/Ожидание ({{active}})</a></li>
-            <li><a href="#">Не платит ({{inactive}})</a></li>
+            <li><label for="filter1"><input type="radio" id="filter1" value="1" [(ngModel)]="status" name="status"><a>Платит/Ожидание ({{active}})</a></label></li>
+            <li><label for="filter2"><input type="radio" id="filter2" value="2" [(ngModel)]="status" name="status"><a>Не платит ({{inactive}})</a></label></li>
           </ul>
           <form>
             <input type="text" placeholder="Поиск по названию" [(ngModel)]="filteredName" name="filteredName">
@@ -18,7 +18,7 @@
         </div>
 
         <div class="project-wrapper active">
-          <div class="project-block" *ngFor="let item of news | filterName:filteredName:'name'">
+          <div class="project-block" *ngFor="let item of news | filterNameActive:status:'status' | filterName:filteredName:'name'">
             <div class="img-wrap">
               <a href="balant-mining-card.html"><img src="{{item.logo}}" alt="" style="width: 97px; height: 97px"></a>
             </div>

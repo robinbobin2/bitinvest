@@ -36,15 +36,30 @@ $(document).ready(function () {
 	});
 	
 	$(".ico-tabs li a").on("click", function (e) {
-		e.preventDefault();
 		$(".ico-tabs li").removeClass("active");
 		$(this).closest("li").addClass("active");
-
-		var index = $(this).closest("li").index();
-
-		$(".project-wrapper").removeClass("active");
-		$(".project-wrapper").eq(index).addClass("active");
 	});
+	// $(".tag-list li a").on("click", function (e) {
+	// 	$(".tag-list li").removeClass("active");
+	// 	$(this).closest("li").addClass("active");
+	// });
+	
+	$(".mining-tabs li a").on("click", function (e) {
+		// e.preventDefault();
+		$(".mining-tabs li").removeClass("active");
+		$(this).closest("li").addClass("active");
+
+		// var index = $(this).closest("li").index();
+
+		// $(".project-wrapper").removeClass("active");
+		// $(".project-wrapper").eq(index).addClass("active");
+	});
+	
+	$(".mining-content .show-more").on("click", function(e){
+		e.preventDefault();
+		$(".project-block").removeClass("hidden");
+	});
+	
 	
 	$(".news-tabs li a").on("click", function (e) {
 		e.preventDefault();
@@ -98,6 +113,11 @@ $(document).ready(function () {
 		$(".overview-table-wrap table tr.hidden").slideDown(0);
 	});
 	
+	$(".show-btn").on("click", function(e){
+		e.preventDefault();
+		$(".history-table table tr.hidden").slideDown(0);
+	});
+	
 	$(".show-comments").on("click", function(e){
 		e.preventDefault();
 		$(".comment-items li").removeClass("hidden");
@@ -119,7 +139,7 @@ $(document).ready(function () {
 	
 	
 	//  popup init
-	$('.follow').magnificPopup({
+	$('.popup-link').magnificPopup({
 	  removalDelay: 500,
 	  callbacks: {
 		beforeOpen: function() {
@@ -127,6 +147,32 @@ $(document).ready(function () {
 		}
 	  },
 	  midClick: true
+	});
+	
+	$("#follow-popup .add-portfolio").on("click", function(e){
+		e.preventDefault();
+		$("#follow-popup form").removeClass("hidden");
+	});
+	
+	$(".close-text").on("click", function(e){
+		e.preventDefault();
+		$.magnificPopup.close();
+	});
+	
+	$("#follow-popup form button").on("click", function(e){
+		e.preventDefault();
+		var title = $("#follow-popup form input").val();
+		console.log(title);
+		
+		var listItem = '<div class="checkbox-wrap">' +
+							'<input type="checkbox" id="c">' +
+							'<label for="c">' +
+								'<span></span>' + title
+							'</label>' +
+						'</div>';
+		$("#follow-popup .checkbox-list").append(listItem);
+		
+		
 	});
 
 	

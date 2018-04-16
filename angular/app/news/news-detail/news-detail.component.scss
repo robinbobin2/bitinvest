@@ -493,3 +493,25 @@
   margin-left: 18px;
   margin-top: 24px;
 }
+.analytics-block .comment-block {
+  margin-top: 0;
+  margin-bottom: 28px;
+  border-top: 9px solid #e5e5e5;
+  border-bottom: 9px solid #e5e5e5;
+}
+.analytics-block .comment-block .comment-top {
+  border: none;
+  padding: 0;
+  padding-top: 28px;
+  background-color: transparent;
+}
+.analytics-block .comment-block .comment-items {
+  padding: 0;
+  padding-bottom: 8px;
+}
+.analytics-block .comment-block .comment-items li {
+  border: none;
+}
+.innertext {
+  margin-bottom:20px;
+}

@@ -18,7 +18,7 @@ class News extends Model
     	return $this->morphMany('App\Photo', 'imageable');
     }
     public function comments() {
-    	return $this->morphMany('App\Comment', 'commentable');
+    	return $this->morphMany('App\Comment', 'commentable')->orderByDesc('created_at');
     }
     public function category()
     {

@@ -22,7 +22,7 @@ export class CloudMiningComponent implements OnInit {
 
    categories: Categories[] = [];
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
-    let path = "/categoriesraw/1";
+    let path = "/categoriesraw/6";
     const info = http.get(path);
   		info.subscribe(response => {
   			for ( let item of response['cats']) {

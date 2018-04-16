@@ -1,4 +1,4 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { NgModule } from '@angular/core';
@@ -42,6 +42,8 @@ import { IcoProjectAllComponent } from './ico-project/ico-project-all/ico-projec
 import { IcoProjectDetailComponent } from './ico-project/ico-project-detail/ico-project-detail.component';
 import { IcoProjectCategoriesComponent } from './ico-project/ico-project-categories/ico-project-categories.component';
 import { ShortenPipePipe } from './shorten-pipe.pipe';
+import { FilterNameActivePipe } from './filter-name-active.pipe';
+import { CloudMiningCategoriesComponent } from './cloud-mining/cloud-mining-categories/cloud-mining-categories.component';
 
 const appRoutes: Routes = [
   {
@@ -124,6 +126,9 @@ const appRoutes: Routes = [
       path:'item/:id', component:CloudMiningDetailComponent
      },
      {
+      path:'category/:id', component:CloudMiningCategoriesComponent
+     },
+     {
       path:'all', component:AllCloudMiningComponent
      }
     ]
@@ -179,10 +184,12 @@ const appRoutes: Routes = [
     IcoProjectAllComponent,
     IcoProjectDetailComponent,
     IcoProjectCategoriesComponent,
-    ShortenPipePipe
+    ShortenPipePipe,
+    FilterNameActivePipe,
+    CloudMiningCategoriesComponent
   ],
   imports: [
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,

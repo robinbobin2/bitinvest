@@ -22,6 +22,7 @@ export class NewsRaw {
   category:string;
   photo: string;
   created_at:string;
+  comments_count: number;
 
 }
 @Component({
@@ -53,7 +54,8 @@ public myOptions: MasonryOptions = {
           main: item.main,
           created_at:item.created_at,
           category: item.category.name,
-          photo: item.photos[0].file
+          photo: item.photos[0].file,
+          comments_count: item.comments_count
 
        });
          }
@@ -68,7 +70,8 @@ public myOptions: MasonryOptions = {
           main: item.main,
           category:item.category.name,
           created_at:item.created_at,
-          photo: item.photos[0].file
+          photo: item.photos[0].file,
+          comments_count: item.comments_count
 
        });
 

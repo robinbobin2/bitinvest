@@ -113,7 +113,7 @@
 								</form>
 								<p *ngIf="submitted">Комментарий успешно добавлен</p>
 					</div>
-					<div class="comment-top" *ngIf="user.id == undefined">
+					<div class="comment-top" *ngIf="user.id == undefined" style="background: none !important; border: none !important">
 						<h3>Комментарии ({{commentcount}})</h3>
 						<p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#">авторизоваться</a> или <a href="#">пройти регистрацию.</a></p>
 					</div>
@@ -134,7 +134,7 @@
 									</div>
 									<div class="text-wrap">
 										<p>{{item.email}}</p>
-										<span>Добавлен </span>
+										<span>Добавлен {{item.created_at}}</span>
 									</div>
 								</div>
 								<p class="comment-text">{{item.body}}</p>
@@ -142,7 +142,7 @@
 							<div class="right">
 								<div class="img-wrap"></div>
 								<div class="btn-block">
-									<span class="number-green">8</span>
+									<span class="number-green">0</span>
 									<div class="buttons">
 										<a href="#" class="plus">+</a>
 										<a href="#" class="minus">-</a>
