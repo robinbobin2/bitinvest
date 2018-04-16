@@ -118,6 +118,8 @@ Route::get('/angular/funds/{id}', "AngularController@funds");
 // Route::get('/crypto', "AngularController@serve");
 
 Route::get('/crypto/{symbol}', "AngularController@crypto");
+Route::get('/bit/', "BitController@index");
+Route::get('/bit/pair', "BitController@pair");
 // Route::get('/crypto/XRP', "AngularController@serve");
 
 
