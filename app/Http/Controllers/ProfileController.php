@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Photo;
 use App\UserPortfolioType;
 use Auth;
@@ -11,7 +12,8 @@ class ProfileController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -35,7 +37,7 @@ class ProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      */
     public function store(Request $request)
     {
@@ -45,7 +47,7 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      */
     public function show($id)
     {
@@ -55,7 +57,7 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -67,8 +69,8 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -83,10 +85,10 @@ class ProfileController extends Controller
             $input['password'] = bcrypt($request->password);
         }
         if ($file = $request->file('photo_id')) {
-            $name = time(). $file->getClientOriginalName();
+            $name = time() . $file->getClientOriginalName();
             $file->move('images', $name);
 
-            $photo = Photo::create(['file'=>$name]);
+            $photo = Photo::create(['file' => $name]);
 
 
             $input['photo_id'] = $photo->id;
@@ -95,33 +97,38 @@ class ProfileController extends Controller
         $user->update($input);
         return redirect('/profile/');
     }
+
     public function updatePassword(Request $request, $id)
     {
         //
         $user = Auth::user();
         if (bcrypt($request->oldpassword) == Auth::user()->password) {
             # code...
-        
-        if (trim($request->password) == '') {
-            # code...
-            $input = $request->except('password');
-        } else {
-            $input = $request->all();
-            $input['password'] = bcrypt($request->password);
-        }
-        $user->update($input);
+
+            if (trim($request->password) == '') {
+                # code...
+                $input = $request->except('password');
+            } else {
+                $input = $request->all();
+                $input['password'] = bcrypt($request->password);
+            }
+            $user->update($input);
         }
         return redirect('/profile/');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function register()
     {
-        //
+
+    }
+
+    public function delete($id)
+    {
+
+    }
+
+    public function login()
+    {
+
     }
 }
