@@ -8,6 +8,28 @@ $(document).ready(function () {
 		minimumResultsForSearch: -1,
 		dropdownParent: $("#select-currency")
 	});
+	 $("#select-age").on("click", function(e){
+	  e.preventDefault();
+	  if(!$("#select-age .select-items").hasClass("open")){
+	     $("#select-age .select-items").addClass("open");
+	   $("#select-age .select").addClass("open");
+	  }
+	  else{
+	   $("#select-age .select-items").removeClass("open");
+	   $("#select-age .select").removeClass("open")
+	  }
+	 });
+	 $("#select-algo").on("click", function(e){
+	  e.preventDefault();
+	  if(!$("#select-algo .select-items").hasClass("open")){
+	     $("#select-algo .select-items").addClass("open");
+	   $("#select-algo .select").addClass("open");
+	  }
+	  else{
+	   $("#select-algo .select-items").removeClass("open");
+	   $("#select-algo .select").removeClass("open")
+	  }
+	 });
 	 $(".select-wrapper").on("click", function(e){
 	  e.preventDefault();
 	  if(!$(".select-items").hasClass("open")){

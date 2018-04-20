@@ -26,6 +26,8 @@ export class User {
 	telegram: string;
 
 };
+
+const headers = new HttpHeaders({'Content-type': 'Application/json '});
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -58,16 +60,12 @@ checkAuth() {
   		password: form.value.password,
   	}
     // const headers = new HttpHeaders({'Content-type': 'Application/json '});
-    // this.http.post('/storecomment', {
-    //         'post_id': post_id,
-    //         'body': form.value.body,
-    //         'commentable_id': post_id,
-    //         'commentable_type': type
-    //   }, {headers: headers}).subscribe(
-    //     (response) => 
-    //     console.log(response),
-    //     (error) => console.log(error)
-    //   );
+    this.http.post('/profile/login', this.login
+    , {headers: headers}).subscribe(
+        (response) => 
+        console.log(response),
+        (error) => console.log(error)
+      );
     // console.log
     console.log(this.login);
       form.reset();
@@ -79,16 +77,11 @@ checkAuth() {
   		password_repeat: form.value.password_repeat
   	}
     // const headers = new HttpHeaders({'Content-type': 'Application/json '});
-    // this.http.post('/storecomment', {
-    //         'post_id': post_id,
-    //         'body': form.value.body,
-    //         'commentable_id': post_id,
-    //         'commentable_type': type
-    //   }, {headers: headers}).subscribe(
-    //     (response) => 
-    //     console.log(response),
-    //     (error) => console.log(error)
-    //   );
+    this.http.post('/profile/register', this.registration, {headers: headers}).subscribe(
+        (response) => 
+        console.log(response),
+        (error) => console.log(error)
+      );
     // console.log
     console.log(this.registration);
       form.reset();

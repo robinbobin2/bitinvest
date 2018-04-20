@@ -52,6 +52,8 @@ export class CryptoAllComponent implements OnInit {
   // admin= new Array;
   dataUsd: Array<CryptoData> = [];
 order = 'sym';
+algorithm = '';
+age = '';
   reverse: boolean = false;
   /**
    * Example: Use Order pipe in the component
