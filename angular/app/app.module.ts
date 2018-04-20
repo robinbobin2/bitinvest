@@ -44,6 +44,8 @@ import { IcoProjectCategoriesComponent } from './ico-project/ico-project-categor
 import { ShortenPipePipe } from './shorten-pipe.pipe';
 import { FilterNameActivePipe } from './filter-name-active.pipe';
 import { CloudMiningCategoriesComponent } from './cloud-mining/cloud-mining-categories/cloud-mining-categories.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { FilterNameAgePipe } from './filter-name-age.pipe';
 
 const appRoutes: Routes = [
   {
@@ -148,6 +150,9 @@ const appRoutes: Routes = [
        path:'crypto', component:CryptoComponent
      }
     ]
+  },
+    {
+      path:'profile/edit', component:EditProfileComponent
   }
 ];
 @NgModule({
@@ -186,7 +191,9 @@ const appRoutes: Routes = [
     IcoProjectCategoriesComponent,
     ShortenPipePipe,
     FilterNameActivePipe,
-    CloudMiningCategoriesComponent
+    CloudMiningCategoriesComponent,
+    EditProfileComponent,
+    FilterNameAgePipe
   ],
   imports: [
     // BrowserAnimationsModule,

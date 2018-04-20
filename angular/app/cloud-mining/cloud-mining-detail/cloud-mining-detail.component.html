@@ -85,7 +85,7 @@
 				<div class="comment-block" id="comment-block">
 					<div class="comment-top" *ngIf="user.id != undefined">
 								<h3>Добавить новый комментарий</h3>
-								<form (ngSubmit)="submitComment(f, news.id, 'App\\IcoProject')" #f="ngForm">
+								<form (ngSubmit)="submitComment(f, news.id, 'App\\CloudMining')" #f="ngForm">
 									<input type="hidden" ngModel name="post_id" value="{{news?.id}}">
 									<input type="hidden" ngModel name="commentable_type" value="App\News">
 									<textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>

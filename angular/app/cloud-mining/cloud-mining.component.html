@@ -4,9 +4,10 @@
 <aside class="sidebar">
   <h2 class="categories-ico-title">Категории Облачный Майнинг</h2>
         <ul class="tag-list">
+          <li routerLinkActive="active"><a routerLink="/cloud-mining/all" >Все</a></li>
           <li *ngFor="let category of categories">
-          <a
-           [routerLink]="['/cloud-mining/category', category.id]" routerLinkActive="active">{{category.name}}({{category.count}})</a>
+          <a routerLinkActive="active"
+           [routerLink]="['/cloud-mining/category', category.id]" >{{category.name}}({{category.count}})</a>
           </li>
         </ul>
         <div class="quotes">

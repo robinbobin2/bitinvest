@@ -7,9 +7,7 @@ import { Observable } from 'rxjs/Rx';
 // import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MasonryOptions } from 'angular2-masonry';
-
-const scr = 'http://ppql.ru/masonry.js';
+import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 interface Category {
   id: number;
   name: string;
@@ -42,16 +40,19 @@ export class Portfolio {
   user_portfolio_type_id: number;
   user_id: number
 }
+
 @Component({
   selector: 'app-all-cloud-mining',
   templateUrl: './all-cloud-mining.component.html',
   styleUrls: ['./all-cloud-mining.component.scss']
 })
-export class AllCloudMiningComponent implements OnInit {
 
-public myOptions: MasonryOptions = { 
-      transitionDuration: '0' 
-};
+export class AllCloudMiningComponent implements OnInit {
+order: string = '';
+  reverse: boolean = false;
+  /**
+   * @param {OrderPipe} 
+   */
   news_raw: any[];
 	news: NewsRaw[] = [];
   main_news: NewsRaw[] = [];
@@ -59,7 +60,7 @@ public myOptions: MasonryOptions = {
   allCount = 0;
   active = 0;
   inactive = 0;
-   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+   constructor(private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
    	let path = "/miningraw";
    	const info = http.get(path);
    	info.subscribe(response => {
@@ -117,7 +118,13 @@ public myOptions: MasonryOptions = {
   loadMore(id) {
     this.router.navigate(['/cloud-mining/item', id]);
   }
-  
+   setOrder(value: string) {
+     if (this.order === value) {
+       this.reverse = !this.reverse;
+    }
+    this.order = value;
+    console.log(this.order);
+}
   portfolio = { 
       'id': '',
   'name':'',

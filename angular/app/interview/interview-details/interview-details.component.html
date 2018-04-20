@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
 
 <div class="col-lg-4">
 <img *ngFor="let photo of photos" src="{{photo.file}}" style="max-width: 100%; border-radius: 1200px;" />
@@ -20,7 +20,7 @@
 	<input type="hidden" ngModel name="post_id" value="{{news?.id}}">
 	<input type="hidden" ngModel name="commentable_type" value="App\News">
 
-	<!-- <input type="hidden" > -->
+	<input type="hidden" >
 	<textarea ngModel name="body" class="form-control"></textarea>
 	<button type="submit" class="btn btn-success">Опубликовать</button>
 </div>
@@ -36,9 +36,9 @@
                         <img class="media-object" height="64" src="http://placehold.it/64x64" alt="">
                     </a>
                     <div class="media-body">
-                        <h6 class="media-heading">{{item.author}}
-                            <!-- <small>{{$comment->created_at->diffForHumans()}}</small>  -->
-                        </h6>
+                        <h6 class="media-heading">{{item.author}} -->
+                            <!-- <small>{{$comment->created_at->diffForHumans()}}</small> 
+                       </h6>
                         <p>{{item.body}}</p>
                         </div>
                     </div>
@@ -46,4 +46,83 @@
 </div>
 </div>
 </div>
-</div>
+</div> -->
+<div class="interview-card-content">
+                <a routerLink='/interview/all' class="return"><span>&lt;</span>Вернуться к списку интервью</a>
+                <div class="top-block">
+                    <h2>{{news?.title}}</h2>
+                    <div class="info">
+                        <span class="date">{{news?.created_at}}</span>
+                        <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>0</span>
+                        <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{news.comments_count}}</a>
+                    </div>
+                </div>
+                <div class="comment comment-card">
+                    <div class="img-wrap">
+                        <a *ngFor="let photo of photos" href="#"><img style="width: 100px; height: 100px;" src="{{photo.file}}" alt=""></a>
+                    </div>
+                    <div class="text-wrap">
+                        <a href="#" class="name">{{news?.name_credits}}</a>
+                        <span>{{news?.workplace}}</span>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="text-wrap" [innerHTML]="news.desc">
+                    
+                </div>
+    
+                   <!--  -->
+                    <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
+                    <div class="comment-block" id="comment-block">
+                    <div class="comment-top" *ngIf="user.id != undefined">
+                                <h3>Добавить новый комментарий</h3>
+                                <form (ngSubmit)="submitComment(f, news.id, 'App\\Interview')" #f="ngForm">
+                                    <input type="hidden" ngModel name="post_id" value="{{news?.id}}">
+                                    <input type="hidden" ngModel name="commentable_type" value="App\News">
+                                    <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
+                                    <button type="submit">Добавить</button>
+                                </form>
+                                <p *ngIf="submitted">Комментарий успешно добавлен</p>
+                    </div>
+                    <div class="comment-top" *ngIf="user.id == undefined">
+                        <h3>Комментарии ({{news.comments_count}})</h3>
+                        <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#">авторизоваться</a> или <a href="#">пройти регистрацию.</a></p>
+                    </div>
+                    
+                    <div *ngIf="user.id != undefined" style="background: none !important; border: none !important" class="comment-top">
+                        <h3 >Комментарии ({{news.comments_count}})</h3>
+                        <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#">авторизоваться</a> или <a href="#">пройти регистрацию.</a></p> -->
+
+                    
+                    </div>
+                    <ul class="comment-items">
+                        <!--  -->
+                        <li *ngFor="let item of comments">
+                            <div class="left">
+                                <div class="info">
+                                    <div class="img-wrap">
+                                        <img src="img/comment-img2.jpg" style="max-width: 35px; height: auto;" alt="">
+                                    </div>
+                                    <div class="text-wrap">
+                                        <p>{{item.email}}</p>
+                                        <span>Добавлен </span>
+                                    </div>
+                                </div>
+                                <p class="comment-text">{{item.body}}</p>
+                            </div>
+                            <div class="right">
+                                <div class="img-wrap"></div>
+                                <div class="btn-block">
+                                    <span class="number-green">0</span>
+                                    <div class="buttons">
+                                        <a href="#" class="plus">+</a>
+                                        <a href="#" class="minus">-</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
+                </div>
+                </div>

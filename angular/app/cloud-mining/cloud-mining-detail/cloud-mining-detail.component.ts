@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Rx';
 // import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 
 export class NewsRaw {
 	id: number;
@@ -63,7 +64,8 @@ histories: Array<History>=[];
 commentcount = 0;
 submitted = false;
 user: User;
- constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+
+ constructor(private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
     let id = route.snapshot.params['id'];
     let path = "/miningraw/"+id;
 
@@ -171,6 +173,7 @@ user: User;
       this.commentcount=this.commentcount+1;
     // console.log(post_id + " " + form.value.body + " " + type); 
   }
+
  goBack() {
  	this.router.navigateByUrl('/mining/all');
  }

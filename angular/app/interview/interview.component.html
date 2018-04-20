@@ -1,271 +1,313 @@
-<div id="top" class="container">
-      <div class="row">
-            <div class="col-md-9">
+<section class="interview-wrap">
+    <div class="wrapper">
 <router-outlet></router-outlet>
-</div>
-
-  <div class="col-md-3 rightbar">
-    <div class="categories">
-
-<a *ngFor="let category of categories"  style="display: inline-block"
- [routerLink]="['category', category.id]" routerLinkActive="active">{{category.name}}({{category.count}})</a>
+  <aside class="sidebar">
+        <ul class="tag-list">
+          
+<li><a *ngFor="let category of categories"
+ [routerLink]="['category', category.id]" routerLinkActive="active">{{category.name}}({{category.count}})</a></li>
+        </ul>
+        <div class="quotes">
+          <h5 class="titles">Котировки криптовалют</h5>
+          <ul>
+            <li>
+              <a href="#">
+                <span class="crypto">BTC</span>
+                <span class="usd">$5,485</span>
+                <span class="rub">₽328 001</span>
+                <span class="change">-1,25%</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="crypto">ETH</span>
+                <span class="usd usd-red">$570</span>
+                <span class="rub">₽32 001</span>
+                <span class="change">-1,25%</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="crypto">BTC</span>
+                <span class="usd usd-green">$570</span>
+                <span class="rub">₽32 001</span>
+                <span class="change change-green">+12,25%</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="crypto">BTC</span>
+                <span class="usd">$5,485</span>
+                <span class="rub">₽32 001</span>
+                <span class="change">-1,25%</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="crypto">BTC</span>
+                <span class="usd">$570 </span>
+                <span class="rub">₽32 001</span>
+                <span class="change">-1,25%</span>
+              </a>
+            </li>
+          </ul>
+          <a href="#" class="show-all">Показать все котировки</a>
+          <p class="updated">Последнее обновление: 26.10.17, 12:42</p>
+        </div>
+        <div class="top-crypto">
+          <h5 class="titles"><span>ТОП 5</span>криптовалют (% роста)</h5>
+          <div class="periods">
+            <ul class="period-tabs">
+              <li class="active"><a href="#">День</a></li>
+              <li><a href="#">Неделя</a></li>
+              <li><a href="#">Месяц</a></li>
+              <li><a href="#">Год</a></li>
+            </ul>
+            <div class="period-content">
+              <div class="tab-content active">
+                <ul>
+                  <li>
+                    <a href="" class="name">Bitcoin</a>
+                    <span class="price">$2829101929191</span>
+                    <span class="percent">11%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">Ethereum</a>
+                    <span class="price">$2829101929191</span>
+                    <span class="percent">11%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">BitcoinCash</a>
+                    <span class="price">$90819201</span>
+                    <span class="percent">8%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">EthereumClassic</a>
+                    <span class="price">$8790899</span>
+                    <span class="percent">7,2%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">Ripple</a>
+                    <span class="price">$2829</span>
+                    <span class="percent">2%</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab-content">
+                <ul>
+                  <li>
+                    <a href="" class="name">Bitcoin</a>
+                    <span class="price">$2829101929191</span>
+                    <span class="percent">11%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">Ethereum</a>
+                    <span class="price">$2829101929191</span>
+                    <span class="percent">11%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">BitcoinCash</a>
+                    <span class="price">$90819201</span>
+                    <span class="percent">8%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">EthereumClassic</a>
+                    <span class="price">$8790899</span>
+                    <span class="percent">7,2%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">Ripple</a>
+                    <span class="price">$2829</span>
+                    <span class="percent">2%</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab-content">
+                <ul>
+                  <li>
+                    <a href="" class="name">Bitcoin</a>
+                    <span class="price">$2829101929191</span>
+                    <span class="percent">11%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">Ethereum</a>
+                    <span class="price">$2829101929191</span>
+                    <span class="percent">11%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">BitcoinCash</a>
+                    <span class="price">$90819201</span>
+                    <span class="percent">8%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">EthereumClassic</a>
+                    <span class="price">$8790899</span>
+                    <span class="percent">7,2%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">Ripple</a>
+                    <span class="price">$2829</span>
+                    <span class="percent">2%</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab-content">
+                <ul>
+                  <li>
+                    <a href="" class="name">Bitcoin</a>
+                    <span class="price">$2829101929191</span>
+                    <span class="percent">11%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">Ethereum</a>
+                    <span class="price">$2829101929191</span>
+                    <span class="percent">11%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">BitcoinCash</a>
+                    <span class="price">$90819201</span>
+                    <span class="percent">8%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">EthereumClassic</a>
+                    <span class="price">$8790899</span>
+                    <span class="percent">7,2%</span>
+                  </li>
+                  <li>
+                    <a href="" class="name">Ripple</a>
+                    <span class="price">$2829</span>
+                    <span class="percent">2%</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="details">Подробный рейтинг</a>
+        </div>
+        <a href="#" class="banner-black"><img src="img/banner-black.jpg" alt=""></a>
+        <div class="top-services">
+          <h5 class="titles"><span>ТОП 5</span> сервисов <br> облачного майнинга</h5>
+          <ul class="top-ul">
+            <li>
+              <div class="left">
+                <a href="">HashFlare SHA-256 2017</a>
+                <span class="paying">ПЛАТИТ!</span>
+              </div>
+              <div class="right">
+                <span class="persent">489%</span>
+                <span class="days">489 дней</span>
+              </div>
+            </li>
+            <li>
+              <div class="left">
+                <a href="">Bitmakler CMS</a>
+                <span class="paying">ПЛАТИТ!</span>
+              </div>
+              <div class="right">
+                <span class="persent">11%</span>
+                <span class="days">489 дней</span>
+              </div>
+            </li>
+            <li>
+              <div class="left">
+                <a href="">CryptoMining Farm </a>
+                <span class="payment">ОЖИДАНИЕ ВЫПЛАТЫ</span>
+              </div>
+              <div class="right">
+                <span class="persent">11%</span>
+                <span class="days">489 дней</span>
+              </div>
+            </li>
+            <li>
+              <div class="left">
+                <a href="">CMSHP</a>
+                <span class="paying">ПЛАТИТ!</span>
+              </div>
+              <div class="right">
+                <span class="persent">11%</span>
+                <span class="days">489 дней</span>
+              </div>
+            </li>
+            <li>
+              <div class="left">
+                <a href="">Bitmakler CMS</a>
+                <span class="payment">ОЖИДАНИЕ ВЫПЛАТЫ</span>
+              </div>
+              <div class="right">
+                <span class="persent">11%</span>
+                <span class="days">489 дней</span>
+              </div>
+            </li>
+          </ul>
+          <a href="#" class="all-projects">Все проекты (981)</a>
+        </div>
+        <div class="social">
+          <h5 class="titles">Мы в соц.сетях</h5>
+          <ul>
+            <li><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+        <div class="top-fonds">
+          <h5 class="titles"><span>ТОП 5</span> фондов</h5>
+          <ul class="top-ul">
+            <li>
+              <div class="left">
+                <a href="">HashFlare SHA-256 2017</a>
+                <span class="paying">ПЛАТИТ!</span>
+              </div>
+              <div class="right">
+                <span class="persent">489%</span>
+                <span class="days">489 дней</span>
+              </div>
+            </li>
+            <li>
+              <div class="left">
+                <a href="">Bitmakler CMS</a>
+                <span class="paying">ПЛАТИТ!</span>
+              </div>
+              <div class="right">
+                <span class="persent">11%</span>
+                <span class="days">489 дней</span>
+              </div>
+            </li>
+            <li>
+              <div class="left">
+                <a href="">Bitmakler CMS</a>
+                <span class="payment">ОЖИДАНИЕ ВЫПЛАТЫ</span>
+              </div>
+              <div class="right">
+                <span class="persent">11%</span>
+                <span class="days">489 дней</span>
+              </div>
+            </li>
+            <li>
+              <div class="left">
+                <a href="">CMSHP</a>
+                <span class="paying">ПЛАТИТ!</span>
+              </div>
+              <div class="right">
+                <span class="persent">11%</span>
+                <span class="days">489 дней</span>
+              </div>
+            </li>
+            <li>
+              <div class="left">
+                <a href="">Bitmakler CMS</a>
+                <span class="payment">ОЖИДАНИЕ ВЫПЛАТЫ</span>
+              </div>
+              <div class="right">
+                <span class="persent">11%</span>
+                <span class="days">489 дней</span>
+              </div>
+            </li>
+          </ul>
+          <a href="#" class="all-fonds">Все фонды (981)</a>
+        </div>
+      </aside>
     </div>
-  
-  
-  
-  
-    <div class="quotations" style="margin-top:20px; border:1px solid #dee2e6;">
-  
-  <h5 style="margin-bottom:0px;padding:10px;padding-right:0;text-align:left;width:100%;padding-right:2px;float:left; background-color: rgba(0,0,0,.05);">Котировки криптовалют</h5>
-  
-  <table class="table table-striped table-sm" style="margin-bottom:0px;float:left; padding-left: 10px;">
-
-  <tbody>
-    <tr>
-      <th scope="row" ><b style="background:#4a4a4a;color:white;padding:2px">BCC</b></th>
-      <td style="color:red">$100</td>
-      <td class="price">P 32 001</td>
-      <td style="color:green">+15%</td>
-    </tr>
-    <tr>
-      <th scope="row"><b style="background:#4a4a4a;color:white;padding:2px">BCC</b></th>
-      <td style="color:red">$100</td>
-      <td class="price">P 32 001</td>
-      <td style="color:green">+15%</td>
-    </tr>
-    <tr>
-      <th scope="row"><b style="background:#4a4a4a;color:white;padding:2px">BCC</b></th>
-      <td style="color:red">$100</td>
-      <td class="price">P 32 001</td>
-      <td style="color:red">-15%</td>
-    </tr>
-      <tr>
-      <th scope="row"><b style="background:#4a4a4a;color:white;padding:2px">BCC</b></th>
-      <td style="color:red">$100</td>
-      <td class="price">P 32 001</td>
-      <td style="color:green">+15%</td>
-    </tr>
-  
-      <tr>
-      <th scope="row"><b style="background:#4a4a4a;color:white;padding:2px">BCC</b></th>
-      <td style="color:green">$100</td>
-      <td class="price">P 32 001</td>
-      <td style="color:green">+15%</td>
-    </tr>
-  </tbody>
-</table>
-
-<a href="" style="background-color: rgba(0,0,0,.05);" class="all-cot">Показать все котировки</a>
-<p style="width:100%;color:#5b5b5b;padding:10px;background-color: rgba(0,0,0,.05);margin-bottom:0px;font-size:12px;float:left; padding-top: 0; ma">Последнее обновление</p>
-
-
-</div>
-  
-  
-  
-  
-  
-      <div class="quotations top5" style="margin-top:20px; padding: 5px;">
-  
-  <h5 style="margin-bottom:0px;padding:10px;padding-right:0;text-align:center;width:100%; padding-right:2px;float:left;">ТОП 5 Криптовалют (% роста)</h5>
-  
-  <table class="table table-sm" style="margin-bottom:0px;float:left">
-
-  <tbody>
-    <tr>
-      <th style="border-top:none;" scope="row">Bitcoin</th>
-      <td style="border-top:none;">$1231231232</td>
-      <td style="border-top:none;">15%</td>
-
-    </tr>
-    <tr>
-      <th style="border-top:none;" scope="row">Ethereum</th>
-      <td style="border-top:none;">$1231231232</td>
-      <td style="border-top:none;">15%</td>
-
-    </tr>
-    <tr>
-      <th style="border-top:none;" scope="row">BitcoinCash</th>
-      <td style="border-top:none;">$1231231232</td>
-      <td style="border-top:none;">15%</td>
-
-    </tr>
-      <tr>
-      <th style="border-top:none;" scope="row">Ripple</th>
-      <td style="border-top:none;">$1231231232</td>
-      <td style="border-top:none;">15%</td>
-
-    </tr>
-  
-      <tr>
-      <th style="border-top:none;" scope="row">KickCoin</th>
-      <td style="border-top:none;">$1231231232</td>
-      <td style="border-top:none;">15%</td>
-
-    </tr>
-  </tbody>
-</table>
-
-<a href="" style="float:left;width:100%;color:#4a4a4a;padding:0 10px;margin-top:5px;" class="all-cot">Подробный рейтинг</a>
-
-
-
-</div>
-  
-  
-  <div class="quotations" style="margin-top:40px;height:360px;background:#4a4a4a;text-align:center; margin-bottom: 30px;">
-  
-  
-  <h4 style="color:#f58c1b;margin-top:100px;padding:20px">Желаете инвестировать в Bitcoin?</h4>
-  
-  <a class="btn btn-outline" style="background: #f58c1b;
-    color: #fff;
-    text-decoration: none;width:140px;border-radius:0">Нажми на меня</a>
-    
-  </div>
-  
-  
-  
-  
-  
-        <div class="quotations" style="margin-top:20px;padding:10px;">
-  
-  <h5 style="margin-bottom:0px;padding:10px;padding-right:0;text-align:center;width:100%; padding-right:2px;float:left;">ТОП 5 сервисов облачного майнинга</h5>
-  
-  <table class="table table-sm" style="margin-bottom:0px;float:left">
-
-  <tbody>
-    <tr>
-      <th style="border-top:none;" scope="row">HashFlare <p style="color:green;margin-bottom:0;font-size:11px;">ПЛАТИТ</p></th>
-      <td style="border-top:none;text-align:right;font-size:12px;">489% <p style="color:#ddd;margin-bottom:0;font-size:11px;">111 дней</p></td>
-    </tr>
- <tr>
-      <th style="border-top:none;" scope="row">HashFlare <p style="color:green;margin-bottom:0;font-size:11px;">ПЛАТИТ</p></th>
-      <td style="border-top:none;text-align:right;font-size:13px;">489% <p style="color:#ddd;margin-bottom:0;font-size:11px;">111 дней</p></td>
-    </tr>
- <tr>
-      <th style="border-top:none;" scope="row">HashFlare <p style="color:green;margin-bottom:0;font-size:11px;">ПЛАТИТ</p></th>
-      <td style="border-top:none;text-align:right;font-size:13px;">489% <p style="color:#ddd;margin-bottom:0;font-size:11px;">111 дней</p></td>
-    </tr>
- <tr>
-      <th style="border-top:none;" scope="row">HashFlare <p style="color:green;margin-bottom:0;font-size:11px;">ПЛАТИТ</p></th>
-      <td style="border-top:none;text-align:right;font-size:13px;">489% <p style="color:#ddd;margin-bottom:0;font-size:11px;">111 дней</p></td>
-    </tr>
-  
- <tr>
-      <th style="border-top:none;" scope="row">HashFlare <p style="color:green;margin-bottom:0;font-size:11px;">ПЛАТИТ</p></th>
-      <td style="border-top:none;text-align:right;font-size:13px;">489% <p style="color:#ddd;margin-bottom:0;font-size:11px;">111 дней</p></td>
-    </tr>
-  </tbody>
-</table>
-
-<a href="" style="float:left;width:100%;color:#4a4a4a;padding:0 10px;margin-top:5px;"  class="all-cot">Все проекты (987)</a>
-
-
-
-</div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-   <div style="padding-top:20px;border:none;;padding-bottom: 20px;  padding-left: 10px; width:100%;float:left;min-height:5px;">
-  <h4 style="margin-bottom:10px; 
-  font-size: 15px; 
-  font-weight:bold; 
-  font-family: 'PT Sans'; 
-  ">Мы в соц. сетях</h4>
-  
-  
-  <i class="fa fa-vk"></i>
-  <i class="fa fa-instagram"></i>
-  <i class="fa fa-twitter"></i>
-  <i class="fa fa-facebook"></i>
-  </div>
-  
-  
-  
-  
-  
-  
-            <div class="quotations" style="margin-top:20px;padding:10px;margin-bottom:20px;">
-  
-  <h5 style="margin-bottom:0px;padding:10px;padding-right:0;text-align:center;width:100%; padding-right:2px;float:left;">ТОП 5 фондов</h5>
-  
-  <table class="table table-sm" style="margin-bottom:0px;float:left">
-
-  <tbody>
-    <tr>
-      <th style="border-top:none;" scope="row">HashFlare <p style="color:#f58c1b;margin-bottom:0;font-size:12px;">ОЖИДАНИЕ ВЫПЛАТЫ!</p></th>
-      <td style="border-top:none;text-align:right">489% <p style="color:#ddd;margin-bottom:0;font-size:12px;">489 дней</p></td>
-    </tr>
- <tr>
-      <th style="border-top:none;" scope="row">HashFlare <p style="color:green;margin-bottom:0;font-size:11px;">ПЛАТИТ</p></th>
-      <td style="border-top:none;text-align:right">489% <p style="color:#ddd;margin-bottom:0;font-size:11px;">111 дней</p></td>
-    </tr>
- <tr>
-      <th style="border-top:none;" scope="row">HashFlare <p style="color:green;margin-bottom:0;font-size:11px;">ПЛАТИТ</p></th>
-      <td style="border-top:none;text-align:right">489% <p style="color:#ddd;margin-bottom:0;font-size:11px;">111 дней</p></td>
-    </tr>
- <tr>
-      <th style="border-top:none;" scope="row">HashFlare <p style="color:green;margin-bottom:0;font-size:11px;">ПЛАТИТ</p></th>
-      <td style="border-top:none;text-align:right">489% <p style="color:#ddd;margin-bottom:0;font-size:11px;">111 дней</p></td>
-    </tr>
-  
- <tr>
-      <th style="border-top:none;" scope="row">HashFlare <p style="color:green;margin-bottom:0;font-size:11px;">ПЛАТИТ</p></th>
-      <td style="border-top:none;text-align:right">489% <p style="color:#ddd;margin-bottom:0;font-size:11px;">111 дней</p></td>
-    </tr>
-  </tbody>
-</table>
-
-<a href="" style="float:left;width:100%;color:#4a4a4a;padding:0 10px;margin-top:5px;"  class="all-cot">Все фонды (981)</a>
-
-
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="footer">
-  <div class="container">
-  
-  
-  <p style="font-size: 13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  
-  
-  <div style="width:500px;height:70px;padding:15px;background:white;border-radius:50px;margin:0 auto">
-  
-  <input type="text" style="background:white;border:none;width:300px;float:left;height:40px;"/>
-  
-<a class="btn btn-outline" style="background: #f58c1b;
-    color: #fff;
-    text-decoration: none;border-radius:50px;width:120px;float:right;">Подписаться</a>
-</div>
-  
-  <h4 style="margin-top:40px;margin-bottom:18px; font-size: 15px; font-weight: bold">Мы в соц. сетях</h4>
-  
-  
-  <i class="fa fa-vk"></i>
-  <i class="fa fa-instagram"></i>
-  <i class="fa fa-twitter"></i>
-  <i class="fa fa-facebook"></i>
-  
-  
-  
-   <h6 style="margin-top:25px; margin-bottom: 20px;  font-size: 14px;">2017- Все права защищены</h6>
-   <a href="/posts/all#top" style=" font-size: 14px;  color: #000; margin-top: 25px; text-decoration: underline;">Вернуться наверх</a>
-   
-   
-   
-   
-  
-  </div>
-  </div>
+  </section>

@@ -8,7 +8,17 @@ $(document).ready(function () {
 		minimumResultsForSearch: -1,
 		dropdownParent: $("#select-currency")
 	});
-	
+	 $(".select-wrapper").on("click", function(e){
+	  e.preventDefault();
+	  if(!$(".select-items").hasClass("open")){
+	     $(".select-items").addClass("open");
+	   $(".select").addClass("open");
+	  }
+	  else{
+	   $(".select-items").removeClass("open");
+	   $(".select").removeClass("open")
+	  }
+	 });
 	
 
 	$(".crypto-active .show-more").on("click", function (e) {
@@ -66,20 +76,15 @@ $(document).ready(function () {
 		$(".news-tabs li").removeClass("active");
 		$(this).closest("li").addClass("active");
 
-		var index = $(this).closest("li").index();
-
-		$(".news-body .news-tab-content").removeClass("active");
-		$(".news-body .news-tab-content").eq(index).addClass("active");
-		
-		if(!$(".news-body .news-tab-content").eq(index).find('.news-slider').hasClass("slick-initialized")){
-			$(".news-body .news-tab-content").eq(index).find('.news-slider').slick({
-				infinite: true,
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				dots: true,
-				arrows: false,
-			});
-		 }
+		// if(!$(".news-body .news-tab-content").eq(index).find('.news-slider').hasClass("slick-initialized")){
+		// 	$(".news-body .news-tab-content").eq(index).find('.news-slider').slick({
+		// 		infinite: true,
+		// 		slidesToShow: 1,
+		// 		slidesToScroll: 1,
+		// 		dots: true,
+		// 		arrows: false,
+		// 	});
+		//  }
 	});
 	
 	$(".crypto-tab-menu li a").on("click", function (e) {

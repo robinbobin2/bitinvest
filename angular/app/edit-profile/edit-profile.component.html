@@ -1,0 +1,61 @@
+	<section class="setting-wrap">
+		<div class="wrapper">
+			<h2>Настройки аккаунта</h2>
+			<ul class="setting-tabs">
+				<li class="active"><a href="#">Личные данные и пароль</a></li>
+				<li><a href="#">Настройка уведомлений</a></li>
+			</ul>
+			<div class="setting-content">
+				<div class="left">
+					<form>
+						<div class="input-wrap">
+							<label>Электронная почта для уведомлений</label>
+							<input type="text" placeholder="irinaivanova@mail.ru">
+						</div>
+						<div class="input-wrap">
+							<label>Аккаунт telegram (для уведомлений)</label>
+							<input type="text" placeholder="irinaivanova">
+						</div>
+						<div class="input-wrap">
+							<label>Никнейм </label>
+							<input type="text" placeholder="irinaivanova">
+						</div>
+						<button type="button">Сохранить</button>
+					</form>
+					<form>
+						<div class="input-wrap">
+							<label>Ваш старый пароль</label>
+							<input type="password">
+						</div>
+						<div class="input-wrap">
+							<label>Новый пароль</label>
+							<input type="password">
+						</div>
+						<div class="input-wrap">
+							<div class="error-input">
+								<label>Повторите Ваш новый пароль</label>
+								<input type="password">
+								<p><img src="img/close-password.png" alt="">Пароли не совпадают</p>
+							</div>
+						</div>
+						<button type="button" class="disabled">Изменить</button>
+					</form>
+				</div>
+				<div class="right">
+					<div class="img-wrap"></div>
+					<form class="upload">
+						<div class="input-wrap">
+							<input type="file" id="files" name="files" class="input-file ng-pristine ng-valid ng-touched" files-model="" ng-model="project.fileList">
+							<label for="files">
+								<span class="add-image">
+								Выбрать и загрузить фото
+								</span>
+								<output id="list"></output>
+							</label>
+						</div>
+						<a href="#"><img src="img/basket-icon.png" alt="">Удалить фото</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CloudMining;
 use App\DepoHistory;
+use App\Category;
 use Illuminate\Http\Request;
 
 class CloudMiningController extends Controller
@@ -28,7 +29,8 @@ class CloudMiningController extends Controller
     public function create()
     {
         //
-        return view('admin.mining.create');
+        $categories = Category::all()->where('type', 6);
+        return view('admin.mining.create', compact('categories'));
     }
 
     /**

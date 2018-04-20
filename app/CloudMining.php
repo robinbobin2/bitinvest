@@ -13,7 +13,8 @@ class CloudMining extends Model
     	return $this->uploads.$photo;
     }
     protected $fillable = [
-        'name', 'proc', 'depo', 'recieved', 'status', 'desc', 'ref', 'depo_date', 'website', 'lang', 'start', 'logo'
+        'name', 'proc', 'depo', 'recieved', 'status', 'desc', 'ref', 
+        'depo_date', 'website', 'lang', 'start', 'logo', 'cat_id'
     ];
 
     public function history()

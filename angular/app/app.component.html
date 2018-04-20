@@ -8,34 +8,34 @@
           <input type="text" placeholder="Поиск по названию криптовалюты, биржи, ICO, хайпа и др...">
           <input type="submit">
         </form>
-        <ul class="login">
-          <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Вход</a></li>
-          <li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Регистрация</a></li>
+        <ul class="login"  *ngIf="!user.id">
+          <li><a href="#login-popup" class="popup-link" data-effect="mfp-zoom-in"><i class="fa fa-sign-out" aria-hidden="true"></i>Вход</a></li>
+          <li><a href="#check-popup" class="popup-link" data-effect="mfp-zoom-in"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Регистрация</a></li>
         </ul>
-        <!-- <div class="setting-top-block">
-          <a href="#"><img src="/img/settings-icon.png" alt=""></a>
+        <div class="setting-top-block" *ngIf="user.id">
+          <a routerLink="/profile/edit"><img src="/img/settings-icon.png" alt=""></a>
           <div class="img-wrap"></div>
           <div class="select-wrap">
             <select>
-              <option value="all">irinaivanova</option>
-              <option value="usd">irinaivanova</option>
-              <option value="eur">irinaivanova</option>
+              <option value="all">{{user.name}}</option>
+              <option value="usd">{{user.email}}</option>
+              <!-- <option value="eur">irinaivanova</option> -->
             </select>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
     <div class="top-menu-wrap">
       <div class="wrapper">
         <ul class="top-menu">
-          <li><a href="#">Новости</a></li>
-          <li><a href="#">Обзоры</a></li>
-          <li><a href="#">Интервью</a></li>
-          <li><a href="#">Аналитика</a></li>
+          <li><a routerLink="/posts/all">Новости</a></li>
+          <li><a routerLink="/review/all">Обзоры</a></li>
+          <li><a routerLink="/interview/all">Интервью</a></li>
+          <li><a routerLink="/analytics/all">Аналитика</a></li>
           <li><a href="#">Вопрос-ответ</a></li>
           <li class="active"><a href="#">Криптоваюты</a></li>
-          <li><a href="#">Облачный майнинг</a></li>
-          <li><a href="#">ICO</a></li>
+          <li><a  routerLink="/cloud-mining/all">Облачный майнинг</a></li>
+          <li><a  routerLink="/ico/all">ICO</a></li>
           <li><a href="#">Фонды и хайпы</a></li>
           <li><a href="#">Биржи</a></li>
           <li><a href="#">Пулы</a></li>
@@ -68,6 +68,73 @@
       <a href="#" class="anchor">Вернуться наверх</a>
     </div>
   </footer>
+  <div id="check-popup" class="popup mfp-with-anim mfp-hide">
+    <div class="popup-body">
+      <h2>Регистрация</h2>
+      <p>Зарегистрируйтесь и получите <br> полный доступ к функционалу проекта</p>
+      <form (ngSubmit)="onSignup(signup)" #signup="ngForm">
+        <input type="text" name="email" ngModel placeholder="Напишите свой email" email required >
+        <input type="password" name="password" ngModel placeholder="Придумайте себе пароль" required minlength='6'>
+        <input type="password" name="password_repeat" ngModel placeholder="Повторите пароль" required minlength='6' validateEqual="password">
+        <input [disabled]="!signup.valid" type="submit" value="Зарегистрироваться" >
+      </form>
+    </div>
+    <div class="popup-footer">
+      <p>Авторизация через социальные сети</p>
+      <div class="social">
+        <ul>
+          <li><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <a href="#login-popup" class="popup-link" data-effect="mfp-zoom-in">У меня уже есть аккаунт</a>
+  </div>
+  <div id="login-popup" class="popup mfp-with-anim mfp-hide">
+    <div class="popup-body">
+      <h2>Вход</h2>
+      <form  (ngSubmit)="onSingin(f)" #f="ngForm">
+        <input type="text" ngModel name="email" placeholder="Ваш адрес электронной почты" email required>
+        <input type="password" ngModel name="password" placeholder="Ваш пароль" required 
+        minlength='6'>
+        <input [disabled]="!f.valid" type="submit" value="Выполнить вход">
+      </form>
+      <a href="#password-popup" class="forgot-password popup-link" data-effect="mfp-zoom-in">Я забыл пароль</a>
+    </div>
+    <div class="popup-footer">
+      <p>Авторизация через социальные сети</p>
+      <div class="social">
+        <ul>
+          <li><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <a href="#check-popup" class="popup-link" data-effect="mfp-zoom-in">Новая регистрация</a>
+  </div>
+  <div id="password-popup" class="popup mfp-with-anim mfp-hide">
+    <div class="popup-body">
+      <h2>Я забыл пароль!</h2>
+      <p>Для восстановления пароля введите адрес <br> электронной почты, указанный при регистрации</p>
+      <form  (ngSubmit)="onRestore(lostPass)" #lostPass="ngForm">
+        <input type="text" name="email" ngModel placeholder="Ваш адрес электронной почты" email required>
+        <a href="#done-popup" data-effect="mfp-zoom-in" class="popup-link">Восстановить пароль</a>
+      </form>
+      <a href="#" class="close-text">Отменить</a>
+    </div>
+  </div>
+  <div id="done-popup" class="popup mfp-with-anim mfp-hide">
+    <div class="popup-body">
+      <h2>Готово!</h2>
+      <p>Ваш новый пароль отправлен на указанный <br> адрес электронной почты</p>
+      <a href="#login-popup" class="sign-in popup-link" data-effect="mfp-zoom-in">Выполнить вход</a><br>
+      <a href="#" class="close-notification close-text">Закрыть уведомление</a>
+    </div>
+  </div>
 <!-- <app-crypto></app-crypto> -->
 <!-- <app-exmo></app-exmo> -->
 <!-- <app-markets></app-markets> -->

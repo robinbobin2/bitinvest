@@ -24,7 +24,7 @@ Route::get('/chart',['as' => 'chart.example', 'uses' =>'ChartController@example'
 
 
 Route::get('profile/',  ['as' => 'profile.index', 'uses' => 'ProfileController@index']);
-Route::get('profile/{user}',  ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+// Route::get('profile/{user}',  ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 Route::get('users/raw', function() {
 	return User::all();
 });
@@ -112,6 +112,7 @@ Route::get('/cryptocurrency/all', "AngularController@serve");
 Route::get('/ico/all', "AngularController@serve");
 Route::get('/ico/item/{post}', "AngularController@serve");
 Route::get('/ico/category/{category}', "AngularController@serve");
+Route::get('/profile/edit', ['as' => 'profile.edit', 'uses' => "AngularController@serve"]);
 Route::get('/angular/user/', "AngularController@user");
 Route::get('/angular/funds/{id}', "AngularController@funds");
 

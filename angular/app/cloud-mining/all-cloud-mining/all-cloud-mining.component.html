@@ -10,21 +10,32 @@
             <button type="button"><img src="img/search-icon.png" alt=""></button>
           </form>
         </div>
-        <div class="select-wrap select-wrap-mining">
-          <select>
-            <option value="alphabet">Фильтрация: По алфавиту</option>
-            <option value="money">Фильтрация: По сумме собраных средств</option>
+<!--         <div class="select-wrap select-wrap-mining">
+          <select [(ngModel)]="order" name="order">
+            <option [value]="'name'"><span (click)="setOrder('name')">Фильтрация: По</span></option>
+            <option [value]="'percentage'">Фильтрация: По сумме собраных средств</option>
           </select>
-        </div>
-
+          <button  (click)="setOrder('name')">по алфавиту</button>
+          <button  (click)="setOrder('percentage')">по сумме</button>
+        </div> -->
+   <div class="select-wrapper">
+     <div class="select">
+      <span class="text"><span style="padding-top: 12px;">{{order == 'name' ? 'По алфавиту' : 'По сумме собранных средств'}}</span></span>
+      <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
+     </div>
+     <ul class="select-items">
+      <li (click)="setOrder('name')"><a >Фильтрация: По алфавиту</a></li>
+      <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li>
+     </ul>
+    </div>
         <div class="project-wrapper active">
-          <div class="project-block" *ngFor="let item of news | filterNameActive:status:'status' | filterName:filteredName:'name'">
+          <div class="project-block" *ngFor="let item of news | filterNameActive:status:'status' | filterName:filteredName:'name' | orderBy: order:reverse:'case-insensitive'">
             <div class="img-wrap">
               <a href="balant-mining-card.html"><img src="{{item.logo}}" alt="" style="width: 97px; height: 97px"></a>
             </div>
             <div class="text-wrap">
               <div class="text-info">
-                <p><a href="/cloud-mining/item/{{item.id}}" class="project-title">{{item.name}}</a><a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a></p>
+                <p><a href="/cloud-mining/item/{{item.id}}" class="project-title">{{item.name}}</a><a href="/cloud-mining/item/{{item.id}}#comment-block" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a></p>
               </div>
               <div class="project-info-content">
                 <ul class="info-list">
@@ -44,7 +55,7 @@
               </div>
             </div>
             <p class="more-project">{{item.desc}}
-              <a href="balant-mining-card.html">Подробнее о проекте</a></p>
+              <a >Подробнее о проекте</a></p>
           </div>
           
         <a href="#" class="show-more">Показать еще</a>

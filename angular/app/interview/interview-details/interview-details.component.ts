@@ -12,9 +12,13 @@ export class News {
   id: number;
   title: string;
   desc: string;
-  name_credits:string;
-  workplace: string;
+  // main: number;
+  // category:string;
+  // photo: string;
   created_at:string;
+  workplace: string;
+  name_credits: string;
+  comments_count: number;
 
 }
 export class CommentRaw {
@@ -29,6 +33,13 @@ export class Photos {
   id: number;
   file:string;
 }
+export class User {
+  id:number;
+  name: string;
+  email:string;
+  photo_id: number;
+  role_id: number;
+}
 @Component({
   selector: 'app-interview-details',
   templateUrl: './interview-details.component.html',
@@ -38,6 +49,8 @@ export class InterviewDetailsComponent implements OnInit {
 news: News;
 comments: CommentRaw[] = [];
 photos: Photos[] = [];
+commentcount = 0;
+user: User;
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
     let id = route.snapshot.params['id'];
     let path = "/interviewraw/"+id;
@@ -49,7 +62,10 @@ photos: Photos[] = [];
           desc: response['news'][0]['desc'],
           name_credits: response['news'][0]['name_credits'],
           workplace: response['news'][0]['workplace'],
-          created_at:response['news'][0]['created_at']
+          created_at:response['news'][0]['created_at'],
+          // photo:response['news'][0]['photos']['file'],
+          comments_count: response['comments_count'],
+          // category: response['news'][0]['category'].name
         }
         for(let item of response['comments']) {
           this.comments.push({
@@ -76,6 +92,18 @@ photos: Photos[] = [];
 }
 
   ngOnInit() {
+    const userpath = "/angular/user";
+     const userinfo = this.http.get<User>(userpath);
+     userinfo.subscribe(response => {
+        this.user = {
+            id:response.id,
+            name: response.name,
+            email:response.email,
+            photo_id: response.photo_id,
+            role_id: response.role_id
+
+        };
+   });
     this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
                 return;
@@ -98,10 +126,17 @@ photos: Photos[] = [];
             'commentable_id': post_id,
             'commentable_type': type
       }, {headers: headers}).subscribe(
-        (response) => console.log(response),
+        (response) => this.comments.unshift({
+            id: response['id'],
+            email:response['email'],
+          author: response['author'],
+          body: response['body'],
+          commentable_id:response['commentable_id'],
+          photo: response['photo']
+        }),
         (error) => console.log(error)
       );
-    console.log(post_id + " " + form.value.body + " " + type); 
+    this.news.comments_count++;
   }
 
 }

@@ -22,7 +22,9 @@ export class NewsRaw {
   category:string;
   photo: string;
   created_at:string;
-
+  workplace: string;
+  name_credits: string;
+  comments_count: string;
 }
 @Component({
   selector: 'app-all-interview',
@@ -37,6 +39,7 @@ public myOptions: MasonryOptions = {
   news_raw: any[];
 	news: NewsRaw[] = [];
   main_news: NewsRaw[] = [];
+  allCount = 0;
    constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
    	let path = "/interviewraw";
    	const info = http.get(path);
@@ -52,7 +55,10 @@ public myOptions: MasonryOptions = {
           main: item.main,
           created_at:item.created_at,
           category: item.category.name,
-          photo: item.photos[0].file
+          photo: item.photos[0].file,
+          name_credits:item.name_credits,
+          workplace:item.workplace,
+          comments_count:item.comments_count
 
        });
          }
@@ -67,7 +73,10 @@ public myOptions: MasonryOptions = {
           main: item.main,
           category:item.category.name,
           created_at:item.created_at,
-          photo: item.photos[0].file
+          photo: item.photos[0].file,
+          name_credits:item.name_credits,
+          workplace:item.workplace,
+          comments_count:item.comments_count
 
        });
        }
@@ -77,6 +86,7 @@ public myOptions: MasonryOptions = {
        console.log(this.news);
        console.log(this.news[0].photo);
        console.log(this.main_news);
+       this.allCount = this.main_news.length+this.news.length;
    	});
 
 

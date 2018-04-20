@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Rx';
 // import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { MasonryOptions } from 'angular2-masonry';
  
+import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
  interface Category {
   id: number;
   name: string;
@@ -46,7 +46,12 @@ export class IcoProjectAllComponent implements OnInit {
   activeCount = 0;
   inactiveCount = 0;
   icoCount = 0;
-   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+  order: string = '';
+  reverse: boolean = false;
+  /**
+   * @param {OrderPipe} 
+   */
+   constructor(private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
    	
 
 
@@ -101,7 +106,13 @@ export class IcoProjectAllComponent implements OnInit {
 
   }
 
-
+setOrder(value: string) {
+     if (this.order === value) {
+       this.reverse = !this.reverse;
+    }
+    this.order = value;
+    console.log(this.order);
+}
   loadMore(id) {
     this.router.navigate(['/ico/item', id]);
     

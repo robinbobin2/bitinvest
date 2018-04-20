@@ -25,40 +25,16 @@ export class Cripto {
   desc: string;
   algo: string;
 }
-export interface DataUsd {
-  sym: any;
-  year: any;
-  algo: any;
-  desc: any;
-  price: any;
-  lastupdate: any;
-  mktcap: any;
-  vol24hours: any;
-  open24hours: any;
-  low24hours: any;
-  high24hours: any;
-  lasttrade: any;
-  CHANGEPCT24HOUR;
-  CHANGEPCTDAY;
 
-}
 export interface CryptoData {
-  name: string;
   sym: string;
+  last: number;
+  now: number;
+  min:number;
+  max: number;
+  value:number;
   year: number;
   algo: string;
-  price: number;
-  prevprice: number;
-}
-export class DataEur {
-  price: any;
-  lastupdate: any;
-  mktcap: any;
-  vol24hours: any;
-  open24hours: any;
-  low24hours: any;
-  high24hours: any;
-  lasttrade: any;
 
 }
 var dataRub;
@@ -72,12 +48,10 @@ var dataEur;
 
 export class CryptoAllComponent implements OnInit {
 
-  dataRub: DataRub;
 
-  dataEur: DataEur;
   // admin= new Array;
   dataUsd: Array<CryptoData> = [];
-order: string = 'data.price';
+order = 'sym';
   reverse: boolean = false;
   /**
    * Example: Use Order pipe in the component
@@ -98,51 +72,55 @@ order: string = 'data.price';
         let year = admin[index].year;
         let algo = admin[index].algo;
         let desc = 'DESC';
-        const path = "http://www.ppql.ru/ccxt/vendor/ccxt/ccxt/masall.php?sym="+symbol;
+        const path = "/bit/pair?pair="+symbol+"/USDT";
         const info = http.get(path);
         info.subscribe(response => {
-          var usd_data = response;
+          console.log(response);
+         //  var usd_data = response;
             
               this.dataUsd[index]={
-                name: name,
+                // name: name,
                 sym:symbol,
                 year:year,
                 algo:algo,
-                price: usd_data['math'],
-                prevprice: usd_data['math'],
+                last: response['last'],
+                now: response['now'],
+                min: response['min'],
+                max: response['max'],
+                value: response['value'],
          };   
       });
       }
     });
-    Observable.interval(5000).subscribe(wait => {
-    alldata.subscribe(response => {
-      console.log(response);
-      let admin = response;
-      for (var _i = 0; _i < admin.length; ++_i) {
-        // console.log(this.admin[i].symbol);
-        let index = _i;
-        let name = admin[index].name;
-        let symbol = admin[index].symbol;
-        let year = admin[index].year;
-        let algo = admin[index].algo;
-        let desc = 'DESC';
-        const path = "http://www.ppql.ru/ccxt/vendor/ccxt/ccxt/masall.php?sym="+symbol;
-        const info = http.get(path);
-        info.subscribe(response => {
-          var usd_data = response;
-              // console.log(this.dataUsd[index]);
-              let prevprice = this.dataUsd[index].price
-               this.dataUsd[index].name=name;
-               this.dataUsd[index].sym=symbol;
-                this.dataUsd[index].year=year;
-                this.dataUsd[index].algo=algo;
-                this.dataUsd[index].price= usd_data['math'];
-                this.dataUsd[index].prevprice= prevprice;
-      });
-      }
-    });
+    // Observable.interval(1000).subscribe(wait => {
+    // alldata.subscribe(response => {
+    //   // console.log(response);
+    //   let admin = response;
+    //   for (var _i = 0; _i < admin.length; ++_i) {
+    //     // console.log(this.admin[i].symbol);
+    //     let index = _i;
+    //     let name = admin[index].name;
+    //     let symbol = admin[index].symbol;
+    //     let year = admin[index].year;
+    //     let algo = admin[index].algo;
+    //     let desc = 'DESC';
+    //     const path = "/bit/pair?pair="+symbol+"/USDT";
+    //     const info = http.get(path);
+    //     info.subscribe(response => {
+    //       var usd_data = response;
+    //           // console.log(this.dataUsd[index]);
+    //           // let prevprice = this.dataUsd[index].price
+    //            // this.dataUsd[index].name=name;
+    //            this.dataUsd[index].sym=symbol;
+    //             this.dataUsd[index].year=year;
+    //             this.dataUsd[index].algo=algo;
+    //             this.dataUsd[index].now= response['now'];
+    //             this.dataUsd[index].last= response['last'];
+    //   });
+    //   }
+    // });
     
-    });
+    // });
   }
   
   setOrder(value: string) {
@@ -155,8 +133,8 @@ order: string = 'data.price';
 
   ngOnInit() {
   }
-  isNegative(value) {
-    if(parseInt(value) > 0) {
+  isNegative(now, min) {
+    if((parseInt(now, 10)-parseInt(min, 10)) > 0) {
       return false;
     } 
     return true;

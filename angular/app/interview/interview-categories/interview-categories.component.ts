@@ -25,6 +25,9 @@ export class NewsRaw {
   category:string;
   photo: string;
   created_at:string;
+  workplace: string;
+  name_credits: string;
+  comments_count: string;
 
 }
 @Component({
@@ -53,6 +56,7 @@ loadAPI: Promise<any>;
   news_raw: any[];
 	news: NewsRaw[] = [];
   main_news: NewsRaw[] = [];
+  allCount = 0;
 
    constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
    }
@@ -65,6 +69,7 @@ loadAPI: Promise<any>;
    			this.main_news.length = 0;
    			this.path = "/interviewsbycat/"+this.id;
   			this.info = this.http.get(this.path);
+        this.allCount = 0;
    			this.info.subscribe(response => {
        // console.log(response['news']);
        // this.news = response['news'];
@@ -77,7 +82,10 @@ loadAPI: Promise<any>;
           main: item.main,
           created_at:item.created_at,
           category: item.category.name,
-          photo: item.photos[0].file
+          photo: item.photos[0].file,
+          name_credits:item.name_credits,
+          workplace:item.workplace,
+          comments_count:item.comments_count
 
        });
          }
@@ -90,16 +98,19 @@ loadAPI: Promise<any>;
           title: item.title,
           desc: item.desc,
           main: item.main,
-          category:item.category.name,
           created_at:item.created_at,
-          photo: item.photos[0].file
+          category: item.category.name,
+          photo: item.photos[0].file,
+          name_credits:item.name_credits,
+          workplace:item.workplace,
+          comments_count:item.comments_count
 
        });
        }
    		// this.news.push(response['news']);
      //   this.main_news.push(response['main_news']);
    		// console.log(response['news']);
-       
+       this.allCount = this.main_news.length+this.news.length;
    	});
    		}
    		);

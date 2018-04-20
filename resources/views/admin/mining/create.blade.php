@@ -14,7 +14,21 @@
 <label for="name">Название</label> 
 <input type="text" value="" name="name" id="name" class="form-control">
 </div>
+<div class="form-group{{ $errors->has('cat_id') ? ' has-error' : '' }}">
+                            <label for="cat_id" class="control-label">Категория</label>
 
+                                  <select class="form-control" name="cat_id" id="cat_id">
+                                    @foreach($categories as $cat)
+                                        <option @if(old('cat_id')) selected  @endif value="{{$cat->id}}">{{$cat->name}}</option>
+                                    @endforeach
+                                  </select>
+
+                                @if ($errors->has('cat_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('cat_id') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
 
 <div class="form-group">
 <label for="start">Дата запуска</label> 

@@ -9,10 +9,10 @@ class InterviewViewController extends Controller
 {
     //
     public function index() {
-        $news = Interview::with('photos')->with('category')->latest()->get()->where('main', 0)->toArray();
+        $news = Interview::with('photos')->with('category')->withCount('comments')->latest()->get()->where('main', 0)->toArray();
         $news = array_values($news);
 
-        $main_news = Interview::with('photos')->with('category')->latest()->get()->where('main', 1)->take(2)->toArray();
+        $main_news = Interview::with('photos')->with('category')->withCount('comments')->latest()->get()->where('main', 1)->take(3)->toArray();
         $main_news = array_values($main_news);
         // $news = $news->toJson();
         // $news = array_values($news);
@@ -39,10 +39,10 @@ class InterviewViewController extends Controller
     }
 
     public function byCat($id) {
-        $news = Interview::with('photos')->with('category')->where('cat_id', $id)->latest()->get()->where('main', 0)->toArray();
+        $news = Interview::with('photos')->with('category')->withCount('comments')->where('cat_id', $id)->latest()->get()->where('main', 0)->toArray();
         $news = array_values($news);
 
-        $main_news = Interview::with('photos')->with('category')->where('cat_id', $id)->latest()->get()->where('main', 1)->take(2)->toArray();
+        $main_news = Interview::with('photos')->with('category')->withCount('comments')->where('cat_id', $id)->latest()->get()->where('main', 1)->take(3)->toArray();
         $main_news = array_values($main_news);
         // $news = $news->toJson();
         // $news = array_values($news);
@@ -74,7 +74,7 @@ class InterviewViewController extends Controller
         $comments = $commentnews->comments;
         $photos = $commentnews->photos;
         $news = array_values($news);
-        $user = Auth::user();
+        // $user = Auth::user();
         
         // $main_news = News::with('photos')->with('category')->get()->where('main', 1)->take(2)->toArray();
         // $main_news = array_values($main_news);
@@ -93,9 +93,10 @@ class InterviewViewController extends Controller
         // }
         return response()->json([
             'news'=>$news,
-            'user'=>$user,
+            // 'user'=>$user,
             'comments'=>$comments,
-            'photos'=>$photos
+            'photos'=>$photos,
+            'comments_count'=>count($comments)
             // 'main_news' => $main_news,
             // 'photos'=>$photos
         ]);
