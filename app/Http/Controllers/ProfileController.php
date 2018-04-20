@@ -3,19 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Photo;
+use App\User;
 use App\UserPortfolioType;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     public function index()
     {
@@ -117,18 +113,40 @@ class ProfileController extends Controller
         return redirect('/profile/');
     }
 
-    public function register()
+    /**
+     * @param Request $request
+     * @throws \Exception
+     */
+    public function register(Request $request)
     {
+        if($request->request->get("password") != $request->request->get("password_repeat")){
+            throw new \Exception("Пароли не совпадают", 404);
+        }
+        $user = new User();
+        $user->password = Hash::make($request->request->get("password"));
+        $user->email = $request->request->get("email");
 
+        $user->save();
     }
 
+    /**
+     * @param $id
+     * @throws \Exception
+     */
     public function delete($id)
     {
-
+        /** @var User $user */
+        $user = User::where('id', $id)->first();
+        $user->delete();
     }
 
-    public function login()
+    public function login(Request $request)
     {
+        $credentials = $request->only('email', 'password');
 
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            return redirect()->intended('dashboard');
+        }
     }
 }

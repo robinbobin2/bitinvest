@@ -59,7 +59,6 @@ Route::get('/cryptocompar', "CryptoController@CryptoCompare");
 // ENDRAW
 
 
-Route::post('/test', "testcontr@store");
 Route::group(['middleware'=>'admin'], function() {
 	Route::resource('admin/categories', 'AdminCategoryController');
 	Route::resource('admin/analytics', 'AnalyticsController');
@@ -121,9 +120,9 @@ Route::get('/angular/funds/{id}', "AngularController@funds");
 Route::get('/crypto/{symbol}', "AngularController@crypto");
 Route::get('/bit/', "BitController@index");
 Route::get('/bit/pair', "BitController@pair");
-Route::get('/profile/register', "ProfileController@register");
+Route::post('/profile/register', "ProfileController@register");
 Route::get('/profile/delete/{id}', "ProfileController@delete");
-Route::get('/profile/login', "ProfileController@login");
+Route::post('/profile/login', "ProfileController@login");
 Route::get('/profile/edit/{id}', "ProfileController@edit");
 // Route::get('/crypto/XRP', "AngularController@serve");
 

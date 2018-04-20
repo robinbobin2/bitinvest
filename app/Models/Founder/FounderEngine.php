@@ -16,7 +16,7 @@ class FounderEngine
 {
     public function sendRequest($request)
     {
-        $exchanges = DB::select("select * from exchanges");
+        $exchanges = DB::select("select * from showExchanges");
         $response = [];
         foreach ($exchanges as $exchange){
             $response[$exchange->currency][$exchange->time] = $exchange->value;
