@@ -44,6 +44,11 @@ class BitController extends Controller
 
     public function exchange($id)
     {
-        return DB::select("CALL getExchange($id)");
+        $exchanges = DB::select("CALL getExchange($id)");
+        $response = [];
+        foreach ($exchanges as $exchange) {
+            $response[$exchange->currency] = $exchange->value;
+        }
+        return $response;
     }
 }
