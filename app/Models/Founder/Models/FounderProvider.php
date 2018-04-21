@@ -44,7 +44,12 @@ abstract class FounderProvider
             $exchange->currency = $rate['symbol'] ? $rate['symbol'] : $this->getDefaultRelation();
             $exchange->exchangeId = $this->getExchangeId();
             $exchange->createTime = time();
-            $exchange->save();
+            try{
+                $exchange->save();
+            }
+            catch (\Exception $e){
+
+            }
         }
 
     }
