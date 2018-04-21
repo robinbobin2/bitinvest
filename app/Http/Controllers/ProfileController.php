@@ -56,9 +56,12 @@ class ProfileController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
         $user = Auth::user();
+        if($request->isMethod("POST")){
+//            echo "hello";die();
+        }
         return view('profile.edit', compact('user'));
     }
 
@@ -145,8 +148,7 @@ class ProfileController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            // Authentication passed...
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/posts/all');
         }
     }
 }

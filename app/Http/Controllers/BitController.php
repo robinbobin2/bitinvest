@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Founder\FounderEngine;
+use App\Models\Founder\Models\Providers\PoloniexProvider;
 use App\Models\SearchForm;
 use Illuminate\Support\Facades\DB;
 
@@ -33,11 +34,16 @@ class BitController extends Controller
 
     public function pair()
     {
-        $exchanges = DB::select("CALL getPair('".$_GET['pair']."')");
+        $exchanges = DB::select("CALL getPair('" . $_GET['pair'] . "')");
         $response = [];
-        foreach ($exchanges as $exchange){
+        foreach ($exchanges as $exchange) {
             $response[$exchange->row] = $exchange->value;
         }
         return $response;
+    }
+
+    public function exchange($id)
+    {
+        return DB::select("CALL getExchange($id)");
     }
 }
