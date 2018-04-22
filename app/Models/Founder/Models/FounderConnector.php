@@ -540,6 +540,7 @@ abstract class FounderConnector
         if ($this->curl_options)
             curl_setopt_array($this->curl, $this->curl_options);
         $result = curl_exec($this->curl);
+
         curl_reset($this->curl);
         if ($this->parseJsonResponse) {
             $result = json_decode($result, true);
@@ -695,5 +696,31 @@ abstract class FounderConnector
     {
         $parts = explode('.', preg_replace('/0+$/', '', $string));
         return (count($parts) > 1) ? strlen($parts[1]) : 0;
+    }
+
+    public function parse_order_book ($orderbook, $timestamp = null, $bids_key = 'bids', $asks_key = 'asks', $price_key = 0, $amount_key = 1) {
+        return array (
+            'bids' => is_array ($orderbook) && array_key_exists ($bids_key, $orderbook) ?
+                $this->parse_bids_asks ($orderbook[$bids_key], $price_key, $amount_key) :
+                array (),
+            'asks' => is_array ($orderbook) && array_key_exists ($asks_key, $orderbook) ?
+                $this->parse_bids_asks ($orderbook[$asks_key], $price_key, $amount_key) :
+                array (),
+            'timestamp' => $timestamp,
+            'datetime' => isset ($timestamp) ? $this->iso8601 ($timestamp) : null,
+            'nonce' => null,
+        );
+    }
+
+    public function parse_bids_asks ($bidasks, $price_key = 0, $amount_key = 0) {
+        $result = array ();
+        $array = is_array ($bidasks) ? array_values ($bidasks) : array ();
+        foreach ($array as $bidask)
+            $result[] = $this->parse_bid_ask ($bidask, $price_key, $amount_key);
+        return $result;
+    }
+
+    public function parse_bid_ask ($bidask, $price_key = 0, $amount_key = 0) {
+        return array (floatval ($bidask[$price_key]), floatval ($bidask[$amount_key]));
     }
 }

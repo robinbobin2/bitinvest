@@ -75,10 +75,8 @@ class Rabbit extends Command
 
         /** @var AMQPChannel $channel */
         $channel = $message->delivery_info['channel'];
-        $channel->basic_publish(
-            $newMessage, '', $message->get('reply_to'));
-        $channel->basic_ack(
-            $message->delivery_info['delivery_tag']);
+        $channel->basic_publish($newMessage, '', $message->get('reply_to'));
+        $channel->basic_ack($message->delivery_info['delivery_tag']);
 
         return $message;
     }

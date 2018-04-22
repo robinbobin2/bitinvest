@@ -20,6 +20,8 @@ abstract class FounderProvider
      */
     protected $connector;
 
+    protected $exchange;
+
     protected function getConnector()
     {
         if (!$this->connector) {
@@ -34,20 +36,21 @@ abstract class FounderProvider
 
     public function save($response)
     {
-        foreach ($response as $rate){
-            if(!$rate['last']){
+        foreach ($response as $rate) {
+            if (!$rate['last']) {
                 continue;
             }
             $exchange = new ExchangeRate();
             $exchange->value = $rate['last'];
             $exchange->volume = $rate['baseVolume'];
+            $exchange->bid = $rate['bid'];
+            $exchange->ask = $rate['ask'];
             $exchange->currency = $rate['symbol'] ? $rate['symbol'] : $this->getDefaultRelation();
             $exchange->exchangeId = $this->getExchangeId();
             $exchange->createTime = time();
-            try{
+            try {
                 $exchange->save();
-            }
-            catch (\Exception $e){
+            } catch (\Exception $e) {
 
             }
         }

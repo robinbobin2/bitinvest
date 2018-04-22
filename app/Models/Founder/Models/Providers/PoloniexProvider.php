@@ -45,4 +45,10 @@ class PoloniexProvider extends FounderProvider
     {
         return 1;
     }
+
+    public function orders()
+    {
+        $orders = $this->getConnector()->fetch_tickers();
+        echo json_encode($orders);die();
+    }
 }

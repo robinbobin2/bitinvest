@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Founder\FounderEngine;
+use App\Models\Founder\Models\Providers\HitBTCProvider;
 use App\Models\Founder\Models\Providers\PoloniexProvider;
 use App\Models\SearchForm;
 use Illuminate\Support\Facades\DB;
@@ -47,7 +48,9 @@ class BitController extends Controller
         $exchanges = DB::select("CALL getExchange($id)");
         $response = [];
         foreach ($exchanges as $exchange) {
-            $response[$exchange->currency] = $exchange->value;
+            $currency = $exchange->currency;
+            unset($exchange->currency);
+            $response[$currency] = $exchange;
         }
         return $response;
     }

@@ -615,6 +615,7 @@ class HitBTCConnector extends FounderConnector
     {
         $this->load_markets();
         $tickers = $this->publicGetTicker([]);
+
         $ids = is_array($tickers) ? array_keys($tickers) : array();
         $result = array();
         for ($i = 0; $i < count($ids); $i++) {
