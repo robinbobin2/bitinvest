@@ -103,13 +103,13 @@ age = '';
               this.dataUsd[index].value = response['value'];
       });
         const bitpath = "/bit";
-        const bitinfo = http.get(path);
+        const bitinfo = http.get(bitpath);
         bitinfo.subscribe(response => {
           // console.log(response);
          //  var usd_data = response;
             
-              this.dataUsd[index].day = response[this.dataUsd[index].sym+"/USDT"]['day'];
-              this.dataUsd[index].week = response[this.dataUsd[index].sym+"/USDT"]['week'];
+              this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
+              this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
       });
       }
     });
