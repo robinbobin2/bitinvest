@@ -544,13 +544,14 @@ var AppComponent = (function () {
         this.router.navigate(['/profile/edit']);
     };
     AppComponent.prototype.onSignup = function (form) {
+        var _this = this;
         this.registration = {
             email: form.value.email,
             password: form.value.password,
             password_repeat: form.value.password_repeat
         };
         this.http.post('/profile/register', this.registration, { headers: headers }).subscribe(function (response) {
-            return console.log(response);
+            return _this.router.navigate(['/profile/edit']);
         }, function (error) { return console.log(error); });
         // console.log
         console.log(this.registration);
@@ -2267,7 +2268,7 @@ var _a, _b, _c, _d;
 /***/ "./angular/app/edit-profile/edit-profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\t<section class=\"setting-wrap\">\n\t\t<div class=\"wrapper\">\n\t\t\t<h2>Настройки аккаунта</h2>\n\t\t\t<ul class=\"setting-tabs\">\n\t\t\t\t<li class=\"active\"><a href=\"#\">Личные данные и пароль</a></li>\n\t\t\t\t<li><a href=\"#\">Настройка уведомлений</a></li>\n\t\t\t</ul>\n\t\t\t<div class=\"setting-content\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<form>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Электронная почта для уведомлений</label>\n\t\t\t\t\t\t\t<input type=\"text\" placeholder=\"irinaivanova@mail.ru\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Аккаунт telegram (для уведомлений)</label>\n\t\t\t\t\t\t\t<input type=\"text\" placeholder=\"irinaivanova\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Никнейм </label>\n\t\t\t\t\t\t\t<input type=\"text\" placeholder=\"irinaivanova\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button type=\"button\">Сохранить</button>\n\t\t\t\t\t</form>\n\t\t\t\t\t<form>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Ваш старый пароль</label>\n\t\t\t\t\t\t\t<input type=\"password\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Новый пароль</label>\n\t\t\t\t\t\t\t<input type=\"password\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<div class=\"error-input\">\n\t\t\t\t\t\t\t\t<label>Повторите Ваш новый пароль</label>\n\t\t\t\t\t\t\t\t<input type=\"password\">\n\t\t\t\t\t\t\t\t<p><img src=\"img/close-password.png\" alt=\"\">Пароли не совпадают</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button type=\"button\" class=\"disabled\">Изменить</button>\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"right\">\n\t\t\t\t\t<div class=\"img-wrap\"></div>\n\t\t\t\t\t<form class=\"upload\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<input type=\"file\" id=\"files\" name=\"files\" class=\"input-file ng-pristine ng-valid ng-touched\" files-model=\"\" ng-model=\"project.fileList\">\n\t\t\t\t\t\t\t<label for=\"files\">\n\t\t\t\t\t\t\t\t<span class=\"add-image\">\n\t\t\t\t\t\t\t\tВыбрать и загрузить фото\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t<output id=\"list\"></output>\n\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<a href=\"#\"><img src=\"img/basket-icon.png\" alt=\"\">Удалить фото</a>\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</section>"
+module.exports = "\t<section class=\"setting-wrap\">\n\t\t<div class=\"wrapper\">\n\t\t\t<h2>Настройки аккаунта</h2>\n\t\t\t<ul class=\"setting-tabs\">\n\t\t\t\t<li class=\"active\"><a href=\"#\">Личные данные и пароль</a></li>\n\t\t\t\t<li><a href=\"#\">Настройка уведомлений</a></li>\n\t\t\t</ul>\n\t\t\t<div class=\"setting-content\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<form (ngSubmit)=\"onUpdate(update)\" #update=\"ngForm\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Электронная почта для уведомлений</label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.email\" name=\"email\" placeholder=\"irinaivanova@mail.ru\" required email>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Аккаунт telegram (для уведомлений)</label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.telegram\"  name=\"telegram\" placeholder=\"irinaivanova\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Никнейм </label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.name\"  name=\"name\" placeholder=\"irinaivanova\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button type=\"submit\">Сохранить</button>\n            <p *ngIf=\"submitted\">Изменения успешно сохранены</p>\n\t\t\t\t\t</form>\n\t\t\t\t\t<form (ngSubmit)=\"onUpdatePass(updatePass)\" #updatePass=\"ngForm\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Ваш старый пароль</label>\n\t\t\t\t\t\t\t<input type=\"password\" ngModel name=\"oldpassword\" required>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Новый пароль</label>\n\t\t\t\t\t\t\t<input type=\"password\" ngModel name=\"password\"  required>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<div >\n\t\t\t\t\t\t\t\t<label>Повторите Ваш новый пароль</label>\n\t\t\t\t\t\t\t\t<input type=\"password\" name=\"password_repeat\"  ngModel required>\n\t\t\t\t\t\t\t\t<!-- <p><img src=\"img/close-password.png\" alt=\"\">Пароли не совпадают</p> -->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button type=\"submit\" >Изменить</button>\n            <p *ngIf=\"submittedPass\">Пароль успешно изменен</p>\n\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"right\">\n\t\t\t\t\t<div class=\"img-wrap\"></div>\n\t\t\t\t\t<form class=\"upload\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<input type=\"file\" id=\"files\" name=\"files\" class=\"input-file ng-pristine ng-valid ng-touched\" files-model=\"\" ng-model=\"project.fileList\">\n\t\t\t\t\t\t\t<label for=\"files\">\n\t\t\t\t\t\t\t\t<span class=\"add-image\">\n\t\t\t\t\t\t\t\tВыбрать и загрузить фото\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t<output id=\"list\"></output>\n\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<a href=\"#\"><img src=\"img/basket-icon.png\" alt=\"\">Удалить фото</a>\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</section>"
 
 /***/ }),
 
@@ -2282,8 +2283,13 @@ module.exports = ""
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export User */
+/* unused harmony export NewData */
+/* unused harmony export NewPass */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditProfileComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2294,10 +2300,67 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+var User = (function () {
+    function User() {
+    }
+    return User;
+}());
+
+;
+var NewData = (function () {
+    function NewData() {
+    }
+    return NewData;
+}());
+
+;
+var NewPass = (function () {
+    function NewPass() {
+    }
+    return NewPass;
+}());
+
+;
+var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
 var EditProfileComponent = (function () {
-    function EditProfileComponent() {
+    function EditProfileComponent(auth, http) {
+        this.auth = auth;
+        this.http = http;
+        this.submitted = false;
+        this.submittedPass = false;
     }
     EditProfileComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.auth
+            .getUser()
+            .subscribe(function (response) {
+            _this.user = response;
+            _this.auth.setUser(_this.user);
+        });
+    };
+    EditProfileComponent.prototype.onUpdate = function (form) {
+        this.newData = {
+            email: form.value.email,
+            telegram: form.value.telegram,
+            name: form.value.name
+        };
+        this.http.patch('users/' + this.user.id + '/update', this.newData, { headers: headers }).subscribe(function (response) { return response; }, function (error) { return console.log(error); });
+        this.submitted = true;
+        console.log(this.user);
+        console.log(this.newData);
+    };
+    EditProfileComponent.prototype.onUpdatePass = function (form) {
+        this.newPass = {
+            oldpassword: form.value.oldpassword,
+            password: form.value.password,
+            password_repeat: form.value.password_repeat
+        };
+        this.http.patch('users/' + this.user.id + '/updatepass', this.newPass, { headers: headers }).subscribe(function (response) { return response; }, function (error) { return console.log(error); });
+        this.submittedPass = true;
+        console.log(this.user);
+        console.log(this.newPass);
     };
     return EditProfileComponent;
 }());
@@ -2307,9 +2370,10 @@ EditProfileComponent = __decorate([
         template: __webpack_require__("./angular/app/edit-profile/edit-profile.component.html"),
         styles: [__webpack_require__("./angular/app/edit-profile/edit-profile.component.scss")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object])
 ], EditProfileComponent);
 
+var _a, _b;
 //# sourceMappingURL=edit-profile.component.js.map
 
 /***/ }),

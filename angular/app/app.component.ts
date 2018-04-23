@@ -85,7 +85,7 @@ checkAuth() {
   	}
     this.http.post('/profile/register', this.registration, {headers: headers}).subscribe(
         (response) => 
-        console.log(response),
+        this.router.navigate(['/profile/edit']),
         (error) => console.log(error)
       );
     // console.log

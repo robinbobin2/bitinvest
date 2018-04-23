@@ -7,38 +7,41 @@
 			</ul>
 			<div class="setting-content">
 				<div class="left">
-					<form>
+					<form (ngSubmit)="onUpdate(update)" #update="ngForm">
 						<div class="input-wrap">
 							<label>Электронная почта для уведомлений</label>
-							<input type="text" placeholder="irinaivanova@mail.ru">
+							<input type="text" [(ngModel)]="user.email" name="email" placeholder="irinaivanova@mail.ru" required email>
 						</div>
 						<div class="input-wrap">
 							<label>Аккаунт telegram (для уведомлений)</label>
-							<input type="text" placeholder="irinaivanova">
+							<input type="text" [(ngModel)]="user.telegram"  name="telegram" placeholder="irinaivanova">
 						</div>
 						<div class="input-wrap">
 							<label>Никнейм </label>
-							<input type="text" placeholder="irinaivanova">
+							<input type="text" [(ngModel)]="user.name"  name="name" placeholder="irinaivanova">
 						</div>
-						<button type="button">Сохранить</button>
+						<button type="submit">Сохранить</button>
+            <p *ngIf="submitted">Изменения успешно сохранены</p>
 					</form>
-					<form>
+					<form (ngSubmit)="onUpdatePass(updatePass)" #updatePass="ngForm">
 						<div class="input-wrap">
 							<label>Ваш старый пароль</label>
-							<input type="password">
+							<input type="password" ngModel name="oldpassword" required>
 						</div>
 						<div class="input-wrap">
 							<label>Новый пароль</label>
-							<input type="password">
+							<input type="password" ngModel name="password"  required>
 						</div>
 						<div class="input-wrap">
-							<div class="error-input">
+							<div >
 								<label>Повторите Ваш новый пароль</label>
-								<input type="password">
-								<p><img src="img/close-password.png" alt="">Пароли не совпадают</p>
+								<input type="password" name="password_repeat"  ngModel required>
+								<!-- <p><img src="img/close-password.png" alt="">Пароли не совпадают</p> -->
 							</div>
 						</div>
-						<button type="button" class="disabled">Изменить</button>
+						<button type="submit" >Изменить</button>
+            <p *ngIf="submittedPass">Пароль успешно изменен</p>
+
 					</form>
 				</div>
 				<div class="right">

@@ -128,8 +128,13 @@ class ProfileController extends Controller
         $user = new User();
         $user->password = Hash::make($request->request->get("password"));
         $user->email = $request->request->get("email");
+        $user->telegram = '';
+        $user->name = $user->email;
+        $user->role_id = 2;
+        $user->photo_id = 0;
 
         $user->save();
+        Auth::loginUsingId($user->id);
     }
 
     /**
