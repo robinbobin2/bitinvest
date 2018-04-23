@@ -1875,8 +1875,8 @@ var CryptoAllComponent = (function () {
                 bitinfo.subscribe(function (response) {
                     // console.log(response);
                     //  var usd_data = response;
-                    _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
-                    _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
+                    _this.dataUsd[index].day = response[_this.dataUsd[index].sym + "/USDT"]['day'];
+                    _this.dataUsd[index].week = response[_this.dataUsd[index].sym + "/USDT"]['week'];
                 });
             };
             for (var _i = 0; _i < admin.length; ++_i) {
