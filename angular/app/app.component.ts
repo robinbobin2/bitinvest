@@ -69,7 +69,7 @@ checkAuth() {
       );
     // console.log
       form.reset();
-      this.router.navigate('/profile/edit');
+      this.router.navigate(['/profile/edit']);
   }
   onSignup(form: NgForm) {
   	this.registration = {

@@ -74,7 +74,7 @@ age = '';
         let year = admin[index].year;
         let algo = admin[index].algo;
         let desc = 'DESC';
-        const path = "/bit/pair?pair="+symbol+"/USDT";
+        const path = "/bit";
         const info = http.get(path);
         info.subscribe(response => {
           console.log(response);
@@ -85,12 +85,14 @@ age = '';
                 sym:symbol,
                 year:year,
                 algo:algo,
-                last: response['last'],
-                now: response['now'],
-                min: response['min'],
-                max: response['max'],
-                value: response['value'],
-         };   
+                last: response[symbol+"\/USD"]['last'],
+                now: response[symbol+"\/USD"]['now'],
+                min: response[symbol+"\/USD"]['min'],
+                max: response[symbol+"\/USD"]['max'],
+                value: response[symbol+"\/USD"]['value'],
+         };  
+
+       console.log(this.dataUsd); 
       });
       }
     });
