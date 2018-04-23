@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import {Router, ActivatedRoute} from '@angular/router';
 import { MinLengthValidator } from '@angular/forms';
 
 
@@ -40,7 +41,7 @@ login: Login;
 lostPass: LostPass;
 registration: Registration;
 user: User;
-	constructor(public auth: AuthService,private http:HttpClient) {
+	constructor(public auth: AuthService,private http:HttpClient, private router:Router) {
 	
 	console.log(this.user);
 	console.log('user');
@@ -67,8 +68,8 @@ checkAuth() {
         (error) => console.log(error)
       );
     // console.log
-    console.log(this.login);
       form.reset();
+      this.router.navigate('/profile/edit');
   }
   onSignup(form: NgForm) {
   	this.registration = {
