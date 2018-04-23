@@ -81,7 +81,18 @@ age = '';
         info.subscribe(response => {
           console.log(response);
          //  var usd_data = response;
-            
+            this.dataUsd[index] = {
+                sym: '',
+                last: 0,
+                now: 0,
+                min:0,
+                max: 0,
+                value:0,
+                year: 0,
+                algo: '',
+                week: 0,
+                day: 0,
+            }
               this.dataUsd[index].sym = symbol;
               this.dataUsd[index].algo = algo;
               this.dataUsd[index].year = year;
