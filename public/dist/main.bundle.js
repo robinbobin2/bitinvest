@@ -1847,19 +1847,19 @@ var CryptoAllComponent = (function () {
                 var path = "/bit";
                 var info = http.get(path);
                 info.subscribe(function (response) {
-                    console.log(response);
+                    // console.log(response);
                     //  var usd_data = response;
                     _this.dataUsd[index] = {
                         // name: name,
                         sym: symbol,
                         year: year,
                         algo: algo,
-                        last: response[symbol + "/USD"]['last'],
-                        now: response[symbol + "/USD"]['now'],
-                        min: response[symbol + "/USD"]['min'],
-                        max: response[symbol + "/USD"]['max'],
-                        value: response[symbol + "/USD"]['value'],
-                        week: response[symbol + "/USD"]['week'],
+                        last: response[symbol + "/USDT"]['last'],
+                        now: response[symbol + "/USDT"]['now'],
+                        min: response[symbol + "/USDT"]['min'],
+                        max: response[symbol + "/USDT"]['max'],
+                        value: response[symbol + "/USDT"]['value'],
+                        week: response[symbol + "/USDT"]['week'],
                     };
                     console.log(_this.dataUsd);
                 });

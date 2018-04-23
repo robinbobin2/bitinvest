@@ -78,7 +78,7 @@ age = '';
         const path = "/bit";
         const info = http.get(path);
         info.subscribe(response => {
-          console.log(response);
+          // console.log(response);
          //  var usd_data = response;
             
               this.dataUsd[index]={
@@ -86,12 +86,12 @@ age = '';
                 sym:symbol,
                 year:year,
                 algo:algo,
-                last: response[symbol+"/USD"]['last'],
-                now: response[symbol+"/USD"]['now'],
-                min: response[symbol+"/USD"]['min'],
-                max: response[symbol+"/USD"]['max'],
-                value: response[symbol+"/USD"]['value'],
-                week: response[symbol+"/USD"]['week'],
+                last: response[symbol+"/USDT"]['last'],
+                now: response[symbol+"/USDT"]['now'],
+                min: response[symbol+"/USDT"]['min'],
+                max: response[symbol+"/USDT"]['max'],
+                value: response[symbol+"/USDT"]['value'],
+                week: response[symbol+"/USDT"]['week'],
          };  
 
        console.log(this.dataUsd); 
