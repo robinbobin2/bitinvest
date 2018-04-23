@@ -154,12 +154,12 @@
 								<span class="year">{{data.year}}</span>
 							</td>
 							<td>
-								<span [ngClass]="isNegative(data.now, data.min)==true ? 'change-red' : 'change-green'">{{data.now - data.min | number: '1.2'}}</span>
+								<span [ngClass]="isNegative(data.week)==true ? 'change-red' : 'change-green'">{{data.day | number: '1.2'}}</span>
 
 							</td>
 							<td>
 								<div class="difference">
-									<!-- <span [ngClass]="isNegative(data.CHANGEPCT24HOUR)==true ? 'change-red' : 'change-green'">{{data.CHANGEPCT24HOUR}}%({{data.CHANGEPCT24HOUR-data.CHANGEPCTDAY}})</span> -->
+									<span [ngClass]="isNegative(data.week)==true ? 'change-red' : 'change-green'">{{ | number: '1.2'}})</span>
 									<div class="buttons">
 										<button class="right">></button>
 										<button class="plus">+</button>

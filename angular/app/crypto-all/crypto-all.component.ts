@@ -35,7 +35,8 @@ export interface CryptoData {
   value:number;
   year: number;
   algo: string;
-  week:string;
+  week: number;
+  day: number;
 
 }
 var dataRub;
@@ -75,26 +76,29 @@ age = '';
         let year = admin[index].year;
         let algo = admin[index].algo;
         let desc = 'DESC';
-        const path = "/bit";
+        const path = "/bit/pair?pair="+symbol+"/USDT";
         const info = http.get(path);
         info.subscribe(response => {
+          console.log(response);
+         //  var usd_data = response;
+            
+              this.dataUsd[index].sym = symbol;
+              this.dataUsd[index].algo = algo;
+              this.dataUsd[index].year = year;
+              this.dataUsd[index].last = response['last'];
+              this.dataUsd[index].now = response['now'];
+              this.dataUsd[index].min = response['min'];
+              this.dataUsd[index].max = response['max'];
+              this.dataUsd[index].value = response['value'];
+      });
+        const bitpath = "/bit";
+        const bitinfo = http.get(path);
+        bitinfo.subscribe(response => {
           // console.log(response);
          //  var usd_data = response;
             
-              this.dataUsd[index]={
-                // name: name,
-                sym:symbol,
-                year:year,
-                algo:algo,
-                last: response[symbol+"/USDT"]['last'],
-                now: response[symbol+"/USDT"]['now'],
-                min: response[symbol+"/USDT"]['min'],
-                max: response[symbol+"/USDT"]['max'],
-                value: response[symbol+"/USDT"]['value'],
-                week: response[symbol+"/USDT"]['week'],
-         };  
-
-       console.log(this.dataUsd); 
+              this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
+              this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
       });
       }
     });
@@ -139,8 +143,8 @@ age = '';
 
   ngOnInit() {
   }
-  isNegative(now, min) {
-    if((parseInt(now, 10)-parseInt(min, 10)) > 0) {
+  isNegative(now) {
+    if((parseInt(now)) >= 0) {
       return false;
     } 
     return true;
