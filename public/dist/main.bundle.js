@@ -1854,11 +1854,12 @@ var CryptoAllComponent = (function () {
                         sym: symbol,
                         year: year,
                         algo: algo,
-                        last: response[symbol + "\/USD"]['last'],
-                        now: response[symbol + "\/USD"]['now'],
-                        min: response[symbol + "\/USD"]['min'],
-                        max: response[symbol + "\/USD"]['max'],
-                        value: response[symbol + "\/USD"]['value'],
+                        last: response[symbol + "/USD"]['last'],
+                        now: response[symbol + "/USD"]['now'],
+                        min: response[symbol + "/USD"]['min'],
+                        max: response[symbol + "/USD"]['max'],
+                        value: response[symbol + "/USD"]['value'],
+                        week: response[symbol + "/USD"]['week'],
                     };
                     console.log(_this.dataUsd);
                 });
