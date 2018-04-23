@@ -21,6 +21,12 @@
     <input type="text" class="form-control"  id="name" name="name" value="{{$crypto->name}}"  />
     <label for="symbol">Трёхбуквенное обозначение</label>
     <input type="text" class="form-control" id="symbol" value="{{$crypto->symbol}}" name="symbol" />
+    <label for="year">Год</label>
+    <input type="text" class="form-control" id="year" name="year" value="{{$crypto->year}}"  />
+    <label for="algo">Алгоритм</label>
+    <input type="text" class="form-control" id="algo" name="algo" value="{{$crypto->algo}}"  />
+    <label for="desc">Описание</label>
+    <textarea class="summernote" name="desc">{{$crypto->desc}}</textarea>
     <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Редактировать</button>
 </div>
 

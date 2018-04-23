@@ -15,6 +15,8 @@ class ChangeAlgoFieldTypeInCryptoStatsTable extends Migration
     {
         Schema::table('crypto_stats', function (Blueprint $table) {
             //
+            $table->dropColumn('algo');
+            $table->string('algo');
         });
     }
 
@@ -27,6 +29,8 @@ class ChangeAlgoFieldTypeInCryptoStatsTable extends Migration
     {
         Schema::table('crypto_stats', function (Blueprint $table) {
             //
+            $table->integer('algo');
+            $table->dropColumn('algo');
         });
     }
 }
