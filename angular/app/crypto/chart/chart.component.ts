@@ -28,7 +28,7 @@ loadAPI: Promise<any>;
                     "container_id": "tradingview_4e1cc"
                   }
                     );
-},100);
+},200);
   }
 
 }

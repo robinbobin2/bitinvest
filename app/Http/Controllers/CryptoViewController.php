@@ -13,4 +13,10 @@ class CryptoViewController extends Controller
             $crypto
         );
 	}
+	public function viewCrypto($symbol) {
+		$crypto = CryptoStat::where('symbol', $symbol)->with('comments')->withCount('comments')->first();
+		return response()->json(
+            $crypto
+        );
+	}
 }

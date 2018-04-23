@@ -19,7 +19,14 @@ user: User;
 error = '';
 info;
   constructor(private http:HttpClient ) {
-
+    this.user = {
+        id:0,
+        name: '',
+        email:'',
+        photo_id: 0,
+        role_id: 0,
+        telegram:'',
+    }
   }
   
   public getUser(): Observable<User> {
@@ -29,5 +36,18 @@ info;
       this.user = response;
       return this.user;
     })
+  }
+  public setUser(user) {
+  this.user = user;
+  }
+  public getUserInfo() {
+  return this.user;
+  }
+  public isLogged() {
+  if(this.user.id ==0) {
+    return false;
+  } else {
+    return true;
+  }
   }
 }

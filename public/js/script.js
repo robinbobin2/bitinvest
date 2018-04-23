@@ -20,6 +20,7 @@ $(document).ready(function () {
 	  }
 	 });
 	 $("#select-algo").on("click", function(e){
+	 	console.log('123123123123123');
 	  e.preventDefault();
 	  if(!$("#select-algo .select-items").hasClass("open")){
 	     $("#select-algo .select-items").addClass("open");

@@ -46,6 +46,7 @@ import { FilterNameActivePipe } from './filter-name-active.pipe';
 import { CloudMiningCategoriesComponent } from './cloud-mining/cloud-mining-categories/cloud-mining-categories.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FilterNameAgePipe } from './filter-name-age.pipe';
+import { ChartComponent } from './crypto/chart/chart.component';
 
 const appRoutes: Routes = [
   {
@@ -193,7 +194,8 @@ const appRoutes: Routes = [
     FilterNameActivePipe,
     CloudMiningCategoriesComponent,
     EditProfileComponent,
-    FilterNameAgePipe
+    FilterNameAgePipe,
+    ChartComponent
   ],
   imports: [
     // BrowserAnimationsModule,

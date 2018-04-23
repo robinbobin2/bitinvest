@@ -105,13 +105,13 @@ user: User;
   }
   // @ViewChild('f') Form:NgForm;
   
-  submitComment(form: NgForm, post_id, type) {
+  submitComment(form: NgForm) {
     const headers = new HttpHeaders({'Content-type': 'Application/json '});
     this.http.post('/storecomment', {
-            'post_id': post_id,
+            'post_id': form.value.post_id,
             'body': form.value.body,
-            'commentable_id': post_id,
-            'commentable_type': type
+            'commentable_id': form.value.post_id,
+            'commentable_type': form.value.type
       }, {headers: headers}).subscribe(
         (response) => 
         this.comments.unshift({

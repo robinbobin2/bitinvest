@@ -53,6 +53,7 @@ Route::get('/interviewsbycat/{category}', "InterviewViewController@byCat");
 Route::get('/icobycat/{category}', "IcoProjectViewController@byCat");
 Route::get('/reviewbycat/{review}', "ReviewViewController@byCat");
 Route::get('/allcrypto', "CryptoViewController@viewAll");
+Route::get('/allcrypto/{symbol}', "CryptoViewController@viewCrypto");
 Route::get('/cryptocompar', "CryptoController@CryptoCompare");
 
 
