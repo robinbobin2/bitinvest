@@ -56,7 +56,8 @@ export class Stock {
 @Component({
   selector: 'app-crypto',
   templateUrl: './crypto.component.html',
-  styleUrls: ['./crypto.component.css']
+  styleUrls: ['./crypto.component.css'],
+  providers: [StocksService]
 })
 export class CryptoComponent implements OnInit {
   comments: CommentRaw[] = [];
@@ -72,7 +73,7 @@ export class CryptoComponent implements OnInit {
   }; 
   commentcount = 0;
   stocks: Stock[] = [];
-  constructor(private http:HttpClient,private stocksServise:StocksService, private router:Router, private route:ActivatedRoute, 
+  constructor(private http:HttpClient,public stocksServise:StocksService, private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
   }
 
