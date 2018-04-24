@@ -8,6 +8,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import {AuthService} from '../auth.service';
 import {AddCommentService} from '../add-comment.service';
+import {StocksService} from '../stocks.service';
 
 export interface CryptoData {
   id: number
@@ -43,6 +44,15 @@ export class CommentRaw {
   commentable_id:number;
   photo:string;
 }
+export class Stock {
+  exchangeId: number;
+  volume: number;
+  value: number;
+  percent:number;
+  bid:number;
+  ask: number;
+  currency: string;
+}
 @Component({
   selector: 'app-crypto',
   templateUrl: './crypto.component.html',
@@ -61,57 +71,20 @@ export class CryptoComponent implements OnInit {
 
   }; 
   commentcount = 0;
-
-  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute, 
+  stocks: Stock[] = [];
+  constructor(private http:HttpClient,private stocksServise:StocksService, private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
-
-
-  //   Observable.interval(2000).subscribe(wait => {
-  //     info.subscribe(response => {
-  //   var data = response['DISPLAY'][symbol];
-  //   var eur_data = response['DISPLAY'][symbol]['EUR'];
-  //   var usd_data = response['DISPLAY'][symbol]['USD'];
-  //   var rub_data = response['DISPLAY'][symbol]['RUB'];
-  //   this.dataRub ={
-  //                  price: rub_data.PRICE,
-  //         lastupdate: rub_data.LASTUPDATE,
-  //         mktcap: rub_data.MKTCAP,
-  //         vol24hours: rub_data.VOLUME24HOUR,
-  //         open24hours: rub_data.OPEN24HOUR,
-  //         low24hours: rub_data.LOW24HOUR,
-  //         high24hours: rub_data.HIGH24HOUR,
-  //         lasttrade: rub_data.LASTTRADEID
-  //              };
-  //        this.dataEur ={
-  //                  price: eur_data.PRICE,
-  //         lastupdate: eur_data.LASTUPDATE,
-  //         mktcap: eur_data.MKTCAP,
-  //         vol24hours: eur_data.VOLUME24HOUR,
-  //         open24hours: eur_data.OPEN24HOUR,
-  //         low24hours: eur_data.LOW24HOUR,
-  //         high24hours: eur_data.HIGH24HOUR,
-  //         lasttrade: eur_data.LASTTRADEID
-  //              };
-
-  //        this.dataUsd ={
-  //                  price: usd_data.PRICE,
-  //         lastupdate: usd_data.LASTUPDATE,
-  //         mktcap: usd_data.MKTCAP,
-  //         vol24hours: usd_data.VOLUME24HOUR,
-  //         open24hours: usd_data.OPEN24HOUR,
-  //         low24hours: usd_data.LOW24HOUR,
-  //         high24hours: usd_data.HIGH24HOUR,
-  //         lasttrade: usd_data.LASTTRADEID
-  //              };
-
-  //   });
-  
-
-
-  // });
   }
 
   ngOnInit() {
+    this.stocksServise.getStocks('BTC/USDT')
+    .subscribe(response => {
+        this.stocks = response;
+        console.log(this.stocks);
+      });
+
+
+
 
     let symbol = this.route.snapshot.params['sym'];
     let path = "/bit/pair?pair="+symbol+"/USDT";

@@ -2104,11 +2104,13 @@ module.exports = "<div class=\"single-top-block\" *ngIf=\"!is_logged\">\n    <di
 "use strict";
 /* unused harmony export User */
 /* unused harmony export CommentRaw */
+/* unused harmony export Stock */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CryptoComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2120,6 +2122,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 // import { interval } from 'rxjs/Observable/interval';
+
 
 
 
@@ -2136,35 +2139,16 @@ var CommentRaw = (function () {
     return CommentRaw;
 }());
 
+var Stock = (function () {
+    function Stock() {
+    }
+    return Stock;
+}());
+
 var CryptoComponent = (function () {
-    function CryptoComponent(http, router, route, auth) {
-        //   Observable.interval(2000).subscribe(wait => {
-        //     info.subscribe(response => {
-        //   var data = response['DISPLAY'][symbol];
-        //   var eur_data = response['DISPLAY'][symbol]['EUR'];
-        //   var usd_data = response['DISPLAY'][symbol]['USD'];
-        //   var rub_data = response['DISPLAY'][symbol]['RUB'];
-        //   this.dataRub ={
-        //                  price: rub_data.PRICE,
-        //         lastupdate: rub_data.LASTUPDATE,
-        //         mktcap: rub_data.MKTCAP,
-        //         vol24hours: rub_data.VOLUME24HOUR,
-        //         open24hours: rub_data.OPEN24HOUR,
-        //         low24hours: rub_data.LOW24HOUR,
-        //         high24hours: rub_data.HIGH24HOUR,
-        //         lasttrade: rub_data.LASTTRADEID
-        //              };
-        //        this.dataEur ={
-        //                  price: eur_data.PRICE,
-        //         lastupdate: eur_data.LASTUPDATE,
-        //         mktcap: eur_data.MKTCAP,
-        //         vol24hours: eur_data.VOLUME24HOUR,
-        //         open24hours: eur_data.OPEN24HOUR,
-        //         low24hours: eur_data.LOW24HOUR,
-        //         high24hours: eur_data.HIGH24HOUR,
-        //         lasttrade: eur_data.LASTTRADEID
-        //              };
+    function CryptoComponent(http, stocksServise, router, route, auth) {
         this.http = http;
+        this.stocksServise = stocksServise;
         this.router = router;
         this.route = route;
         this.auth = auth;
@@ -2178,21 +2162,15 @@ var CryptoComponent = (function () {
             telegram: '',
         };
         this.commentcount = 0;
-        //        this.dataUsd ={
-        //                  price: usd_data.PRICE,
-        //         lastupdate: usd_data.LASTUPDATE,
-        //         mktcap: usd_data.MKTCAP,
-        //         vol24hours: usd_data.VOLUME24HOUR,
-        //         open24hours: usd_data.OPEN24HOUR,
-        //         low24hours: usd_data.LOW24HOUR,
-        //         high24hours: usd_data.HIGH24HOUR,
-        //         lasttrade: usd_data.LASTTRADEID
-        //              };
-        //   });
-        // });
+        this.stocks = [];
     }
     CryptoComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.stocksServise.getStocks('BTC/USDT')
+            .subscribe(function (response) {
+            _this.stocks = response;
+            console.log(_this.stocks);
+        });
         var symbol = this.route.snapshot.params['sym'];
         var path = "/bit/pair?pair=" + symbol + "/USDT";
         var info = this.http.get(path);
@@ -2257,10 +2235,10 @@ CryptoComponent = __decorate([
         template: __webpack_require__("./angular/app/crypto/crypto.component.html"),
         styles: [__webpack_require__("./angular/app/crypto/crypto.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AuthService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AuthService */]) === "function" && _e || Object])
 ], CryptoComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=crypto.component.js.map
 
 /***/ }),
@@ -2346,7 +2324,7 @@ var EditProfileComponent = (function () {
             telegram: form.value.telegram,
             name: form.value.name
         };
-        this.http.patch('users/' + this.user.id + '/update', this.newData, { headers: headers }).subscribe(function (response) { return response; }, function (error) { return console.log(error); });
+        this.http.patch('/profile/update', this.newData, { headers: headers }).subscribe(function (response) { return response; }, function (error) { return console.log(error); });
         this.submitted = true;
         console.log(this.user);
         console.log(this.newData);
@@ -4993,6 +4971,51 @@ ShortenPipePipe = __decorate([
 ], ShortenPipePipe);
 
 //# sourceMappingURL=shorten-pipe.pipe.js.map
+
+/***/ }),
+
+/***/ "./angular/app/stocks.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export Stock */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StocksService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var Stock = (function () {
+    function Stock() {
+    }
+    return Stock;
+}());
+
+var StocksService = (function () {
+    function StocksService(http) {
+        this.http = http;
+        this.path = '/bit/info';
+    }
+    StocksService.prototype.getStocks = function (pairs) {
+        return this.http.get(this.path + '?pair=' + pairs);
+    };
+    return StocksService;
+}());
+StocksService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+], StocksService);
+
+var _a;
+//# sourceMappingURL=stocks.service.js.map
 
 /***/ }),
 

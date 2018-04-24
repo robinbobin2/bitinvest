@@ -57,7 +57,7 @@ onUpdate(form) {
 		telegram: form.value.telegram,
 		name: form.value.name
 	} 
-    this.http.patch('users/'+this.user.id+'/update', this.newData, {headers: headers}).subscribe(
+    this.http.patch('/profile/update', this.newData, {headers: headers}).subscribe(
         (response) => response,
         (error) => console.log(error)
       );
