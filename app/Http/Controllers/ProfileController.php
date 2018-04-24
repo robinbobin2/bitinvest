@@ -150,10 +150,15 @@ class ProfileController extends Controller
 
     public function login(Request $request)
     {
+        $status = 'denied';
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/posts/all');
+            $status = 'success';
         }
+
+        return [
+            'status' => $status
+        ];
     }
 }
