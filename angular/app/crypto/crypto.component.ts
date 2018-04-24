@@ -78,6 +78,7 @@ export class CryptoComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('stocks');
     this.stocksServise.getStocks('BTC/USDT')
     .subscribe(response => {
         this.stocks = response;

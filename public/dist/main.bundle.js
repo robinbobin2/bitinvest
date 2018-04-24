@@ -2166,6 +2166,7 @@ var CryptoComponent = (function () {
     }
     CryptoComponent.prototype.ngOnInit = function () {
         var _this = this;
+        console.log('stocks');
         this.stocksServise.getStocks('BTC/USDT')
             .subscribe(function (response) {
             _this.stocks = response;
