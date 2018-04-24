@@ -59,7 +59,7 @@ class ProfileController extends Controller
     public function edit($id, Request $request)
     {
         $user = Auth::user();
-        if($request->isMethod("POST")){
+        if ($request->isMethod("POST")) {
 //            echo "hello";die();
         }
         return view('profile.edit', compact('user'));
@@ -99,21 +99,11 @@ class ProfileController extends Controller
 
     public function updatePassword(Request $request, $id)
     {
-        //
         $user = Auth::user();
-        if (bcrypt($request->oldpassword) == Auth::user()->password) {
-            # code...
-
-            if (trim($request->password) == '') {
-                # code...
-                $input = $request->except('password');
-            } else {
-                $input = $request->all();
-                $input['password'] = bcrypt($request->password);
-            }
+        if (Hash::check($request->oldpassword, Auth::user()->password)) {            # code...
+            $input['password'] = Hash::make($request->get("password"));
             $user->update($input);
         }
-        return redirect('/profile/');
     }
 
     /**
@@ -122,7 +112,7 @@ class ProfileController extends Controller
      */
     public function register(Request $request)
     {
-        if($request->request->get("password") != $request->request->get("password_repeat")){
+        if ($request->request->get("password") != $request->request->get("password_repeat")) {
             throw new \Exception("Пароли не совпадают", 404);
         }
         $user = new User();
