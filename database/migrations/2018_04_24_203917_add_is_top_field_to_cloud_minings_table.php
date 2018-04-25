@@ -15,7 +15,7 @@ class AddIsTopFieldToCloudMiningsTable extends Migration
     {
         Schema::table('cloud_minings', function (Blueprint $table) {
             //
-            $table->integer('is_top')->default(0);
+            $table->integer('is_top')->default(1);
         });
     }
 

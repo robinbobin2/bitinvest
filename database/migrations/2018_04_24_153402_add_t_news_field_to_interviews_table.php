@@ -15,7 +15,7 @@ class AddTNewsFieldToInterviewsTable extends Migration
     {
         Schema::table('interviews', function (Blueprint $table) {
             //
-            $table->integer('to_news')->default(0);
+            $table->integer('to_news')->default(1);
         });
     }
 
