@@ -95,7 +95,7 @@
   	@else
   	<option value="1">Да</option>
 	<option value="0" selected>Нет</option>
-  
+  	@endif
 </select>
 
 </div>
