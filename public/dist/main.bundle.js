@@ -2295,7 +2295,7 @@ var _a, _b, _c, _d, _e;
 /***/ "./angular/app/edit-profile/edit-profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\t<section class=\"setting-wrap\">\n\t\t<div class=\"wrapper\">\n\t\t\t<h2>Настройки аккаунта</h2>\n\t\t\t<ul class=\"setting-tabs\">\n\t\t\t\t<li class=\"active\"><a href=\"#\">Личные данные и пароль</a></li>\n\t\t\t\t<li><a href=\"#\">Настройка уведомлений</a></li>\n\t\t\t</ul>\n\t\t\t<div class=\"setting-content\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<form (ngSubmit)=\"onUpdate(update)\" #update=\"ngForm\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Электронная почта для уведомлений</label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.email\" name=\"email\" placeholder=\"irinaivanova@mail.ru\" required email>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Аккаунт telegram (для уведомлений)</label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.telegram\"  name=\"telegram\" placeholder=\"irinaivanova\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Никнейм </label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.name\"  name=\"name\" placeholder=\"irinaivanova\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button type=\"submit\">Сохранить</button>\n            <p *ngIf=\"submitted\">Изменения успешно сохранены</p>\n\t\t\t\t\t</form>\n\t\t\t\t\t<form (ngSubmit)=\"onUpdatePass(updatePass)\" #updatePass=\"ngForm\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Ваш старый пароль</label>\n\t\t\t\t\t\t\t<input type=\"password\" ngModel name=\"oldpassword\" required>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Новый пароль</label>\n\t\t\t\t\t\t\t<input type=\"password\" ngModel name=\"password\"  required>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<div >\n\t\t\t\t\t\t\t\t<label>Повторите Ваш новый пароль</label>\n\t\t\t\t\t\t\t\t<input type=\"password\" name=\"password_repeat\"  ngModel required>\n\t\t\t\t\t\t\t\t<!-- <p><img src=\"img/close-password.png\" alt=\"\">Пароли не совпадают</p> -->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button type=\"submit\" >Изменить</button>\n            <p *ngIf=\"submittedPass\">Пароль успешно изменен</p>\n\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"right\">\n\t\t\t\t\t<div class=\"img-wrap\"></div>\n\t\t\t\t\t<form class=\"upload\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<input type=\"file\" id=\"files\" name=\"files\" class=\"input-file ng-pristine ng-valid ng-touched\" files-model=\"\" ng-model=\"project.fileList\">\n\t\t\t\t\t\t\t<label for=\"files\">\n\t\t\t\t\t\t\t\t<span class=\"add-image\">\n\t\t\t\t\t\t\t\tВыбрать и загрузить фото\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t<output id=\"list\"></output>\n\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<a href=\"#\"><img src=\"img/basket-icon.png\" alt=\"\">Удалить фото</a>\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</section>"
+module.exports = "\t<section class=\"setting-wrap\">\n\t\t<div class=\"wrapper\">\n\t\t\t<h2>Настройки аккаунта</h2>\n\t\t\t<ul class=\"setting-tabs\">\n\t\t\t\t<li class=\"active\"><a href=\"#\">Личные данные и пароль</a></li>\n\t\t\t\t<li><a href=\"#\">Настройка уведомлений</a></li>\n\t\t\t</ul>\n\t\t\t<div class=\"setting-content\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<form (ngSubmit)=\"onUpdate(update)\" #update=\"ngForm\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Электронная почта для уведомлений</label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.email\" name=\"email\" placeholder=\"irinaivanova@mail.ru\" required email>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Аккаунт telegram (для уведомлений)</label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.telegram\"  name=\"telegram\" placeholder=\"irinaivanova\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Никнейм </label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.name\"  name=\"name\" placeholder=\"irinaivanova\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button type=\"submit\">Сохранить</button>\n            <p *ngIf=\"submitted\">Изменения успешно сохранены</p>\n\t\t\t\t\t</form>\n\t\t\t\t\t<form (ngSubmit)=\"onUpdatePass(updatePass)\" #updatePass=\"ngForm\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Ваш старый пароль</label>\n\t\t\t\t\t\t\t<input type=\"password\" ngModel name=\"oldpassword\" required>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Новый пароль</label>\n\t\t\t\t\t\t\t<input type=\"password\" ngModel name=\"password\"  required>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<div >\n\t\t\t\t\t\t\t\t<label>Повторите Ваш новый пароль</label>\n\t\t\t\t\t\t\t\t<input type=\"password\" name=\"password_repeat\"  ngModel required>\n\t\t\t\t\t\t\t\t<!-- <p><img src=\"img/close-password.png\" alt=\"\">Пароли не совпадают</p> -->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button type=\"submit\" >Изменить</button>\n            <p *ngIf=\"submittedPass\">Пароль успешно изменен</p>\n            <p *ngIf=\"error !=''\">{{error}}</p>\n\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"right\">\n\t\t\t\t\t<div class=\"img-wrap\"></div>\n\t\t\t\t\t<form class=\"upload\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<input type=\"file\" id=\"files\" name=\"files\" class=\"input-file ng-pristine ng-valid ng-touched\" files-model=\"\" ng-model=\"project.fileList\">\n\t\t\t\t\t\t\t<label for=\"files\">\n\t\t\t\t\t\t\t\t<span class=\"add-image\">\n\t\t\t\t\t\t\t\tВыбрать и загрузить фото\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t<output id=\"list\"></output>\n\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<a href=\"#\"><img src=\"img/basket-icon.png\" alt=\"\">Удалить фото</a>\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</section>"
 
 /***/ }),
 
@@ -2355,6 +2355,7 @@ var EditProfileComponent = (function () {
     function EditProfileComponent(auth, http) {
         this.auth = auth;
         this.http = http;
+        this.error = '';
         this.submitted = false;
         this.submittedPass = false;
     }
@@ -2368,24 +2369,29 @@ var EditProfileComponent = (function () {
         });
     };
     EditProfileComponent.prototype.onUpdate = function (form) {
+        var _this = this;
         this.newData = {
             email: form.value.email,
             telegram: form.value.telegram,
             name: form.value.name
         };
-        this.http.patch('/profile/update', this.newData, { headers: headers }).subscribe(function (response) { return response; }, function (error) { return console.log(error); });
+        this.http.patch('/users/' + this.user.id + '/update', this.newData, { headers: headers }).subscribe(function (response) { return response; }, function (error) { return console.log(error); });
         this.submitted = true;
-        console.log(this.user);
-        console.log(this.newData);
+        this.auth
+            .getUser()
+            .subscribe(function (response) {
+            _this.user = response;
+            _this.auth.setUser(_this.user);
+        });
     };
     EditProfileComponent.prototype.onUpdatePass = function (form) {
+        var _this = this;
         this.newPass = {
             oldpassword: form.value.oldpassword,
             password: form.value.password,
             password_repeat: form.value.password_repeat
         };
-        this.http.patch('users/' + this.user.id + '/updatepass', this.newPass, { headers: headers }).subscribe(function (response) { return response; }, function (error) { return console.log(error); });
-        this.submittedPass = true;
+        this.http.patch('users/' + this.user.id + '/updatepass', this.newPass, { headers: headers }).subscribe(function (response) { _this.submittedPass = true; _this.error = ''; }, function (error) { return _this.error = 'Неправильный пароль'; });
         console.log(this.user);
         console.log(this.newPass);
     };

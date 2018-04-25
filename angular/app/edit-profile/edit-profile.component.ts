@@ -32,7 +32,7 @@ const headers = new HttpHeaders({'Content-type': 'Application/json '});
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent implements OnInit {
-
+  error = '';
   user: User;
   newPass: NewPass;
   newData: NewData;
@@ -57,13 +57,19 @@ onUpdate(form) {
 		telegram: form.value.telegram,
 		name: form.value.name
 	} 
-    this.http.patch('/profile/update', this.newData, {headers: headers}).subscribe(
+    this.http.patch('/users/'+this.user.id+'/update', this.newData, {headers: headers}).subscribe(
         (response) => response,
         (error) => console.log(error)
       );
     this.submitted = true;
-    console.log(this.user);
-    console.log(this.newData);
+    this.auth
+      .getUser()
+      .subscribe(
+        (response) => {
+          this.user = response;
+          this.auth.setUser(this.user);
+        }
+      );
 }
 
 onUpdatePass(form) {
@@ -74,10 +80,9 @@ onUpdatePass(form) {
 	} 
     this.http.patch('users/'+this.user.id+'/updatepass', 
     	this.newPass, {headers: headers}).subscribe(
-        (response) => response,
-        (error) => console.log(error)
+        (response) => { this.submittedPass = true; this.error = ''},
+        (error) => this.error = 'Неправильный пароль'
       );
-    this.submittedPass = true;
     console.log(this.user);
     console.log(this.newPass);
 }
