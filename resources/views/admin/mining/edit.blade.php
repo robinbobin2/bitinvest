@@ -89,8 +89,13 @@
 <div class="form-group">
 <label for="is_top">Топ бирж</label> 
 <select name="is_top"  class="form-control">
-  <option value="1" {{$mining->is_top == 1 ? 'selected'}}>Да</option>
-  <option value="0" {{$mining->is_top == 0 ? 'selected'}}>Нет</option>
+	@if($mining->is_top ==1) 
+	<option value="1" selected>Да</option>
+	<option value="0">Нет</option>
+  	@else
+  	<option value="1">Да</option>
+	<option value="0" selected>Нет</option>
+  
 </select>
 
 </div>
