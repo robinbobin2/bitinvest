@@ -86,6 +86,13 @@
 
 </div>
 
+<div class="form-group">
+<label for="is_top">Топ бирж</label> 
+<select name="is_top"  class="form-control">
+  <option value="1" {{$mining->is_top == 1 ? 'selected'}}>Да</option>
+  <option value="0" {{$mining->is_top == 0 ? 'selected'}}>Нет</option>
+</select>
+
 </div>
 <input type="submit" class="btn btn-success" value="Редактировать сервис" /> 
 </form>

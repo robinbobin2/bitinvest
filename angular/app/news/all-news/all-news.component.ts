@@ -23,6 +23,16 @@ export class NewsRaw {
   cat_id: number;
 
 }
+export class Interview {
+    id: number;
+  title: string;
+  desc: string;
+  main: number;
+  category:string;
+  photo: string;
+  workplace: string;
+  name_credits: string;
+}
 @Component({
   selector: 'app-all-news',
   templateUrl: './all-news.component.html',
@@ -46,6 +56,7 @@ export class AllNewsComponent implements OnInit {
        // console.log(response['news']);
        // this.news = response['news'];
        for (let item of response['news']) {
+         
          console.log(item.photos[0].file);
            this.news.push( {
          id: item.id,

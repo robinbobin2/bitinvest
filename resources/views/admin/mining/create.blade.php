@@ -110,6 +110,16 @@
 
 
 </div>
+
+<div class="form-group">
+<label for="is_top">Топ бирж</label> 
+<select name="is_top"  class="form-control">
+  <option value="1">Да</option>
+  <option value="0">Нет</option>
+</select>
+
+
+</div>
 <input type="submit" class="btn btn-primary" value="Создать категорию" /> 
 </form>
 </div>

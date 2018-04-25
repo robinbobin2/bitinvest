@@ -1,0 +1,16 @@
+<div class="quotes">
+          <h5 class="titles">Котировки криптовалют</h5>
+          <ul>
+            <li *ngFor="let item of dataUsd">
+              <a href="#">
+                <span class="crypto">{{item.sym}}</span>
+                <span class="usd">${{item.now | number:'1.0-1'}}</span>
+                <span class="rub">₽{{item.now*60 | number:'1.0-1'}}</span>
+                <span class="change">{{item.now-item.last | number:'1.0-1'}}</span>
+              </a>
+            </li>
+            
+          </ul>
+          <a routerLink="/cryptocurrency/all" class="show-all">Показать все котировки</a>
+          <p class="updated">Последнее обновление: 26.10.17, 12:42</p>
+        </div>

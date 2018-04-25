@@ -85,6 +85,13 @@ public function show($id) {
 
 
     }
+
+public function topfive() {
+        $item = CloudMining::latest()->where('is_top', 1)->take(5)->get()->toArray();
+        return response()->json(
+            $item
+        );
+    }
     public function byCat($id) {
         $mining = CloudMining::latest()->where('cat_id', $id)->get();
         foreach ($mining as $item) {

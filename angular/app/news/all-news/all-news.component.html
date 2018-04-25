@@ -10,7 +10,7 @@
         <div class="news-body">
           <div class="news-tab-content active">
             <div class="main-news">
-              <div class="news" *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive'">
+              <div  *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.workplace ? 'trust' : 'news'">
                 <div class="img" [ngStyle]="{'background-image':'url('+item.photo+')'}">
                   <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category}}</a>
                   <a href="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
@@ -39,6 +39,12 @@
                   </h3>
                 </div>
               </div>
+              <a href="#" class="trust">
+                <div class="img-wrap"><img src="img/trust.png" alt=""></div>
+                <h4>Как вложиться <br>в криптовалюту?</h4>
+                <p class="name">Александр Александров</p>
+                <span>SEO ICOTrust</span>
+              </a>
             </div>
             <!-- <a href="#" class="show-more">Показать еще</a> -->
           </div>

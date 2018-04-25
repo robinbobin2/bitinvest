@@ -37,6 +37,7 @@ Route::get('/newsraw', 'NewsViewController@index');
 Route::get('/analyticsraw/', 'AnalyticsViewController@index');
 Route::get('/reviewraw/', 'ReviewViewController@index');
 Route::get('/miningraw/', 'CloudMiningViewController@index');
+Route::get('/miningraw/top', 'CloudMiningViewController@topfive');
 Route::get('/miningraw/{mining}', 'CloudMiningViewController@show');
 Route::get('/miningbycat/{category}', 'CloudMiningViewController@byCat');
 Route::get('/icoraw/', 'IcoProjectViewController@index');

@@ -1,0 +1,17 @@
+<div class="top-services">
+          <h5 class="titles"><span>ТОП 5</span> сервисов <br> облачного майнинга</h5>
+          <ul class="top-ul">
+            <li *ngFor="let item of topfive">
+              <div class="left">
+                <a href="">{{item.name}}</a>
+                <span class="paying">ПЛАТИТ!</span>
+              </div>
+              <div class="right">
+                <span class="persent">{{item.proc}}%</span>
+                <span class="days">24 дней</span>
+              </div>
+            </li>
+            
+          </ul>
+          <a routerLink="/cloud-mining/all" class="all-projects">Все проекты (981)</a>
+        </div>

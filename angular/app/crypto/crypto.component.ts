@@ -78,8 +78,9 @@ export class CryptoComponent implements OnInit {
   }
 
   ngOnInit() {
+    let symbol = this.route.snapshot.params['sym'];
     console.log('stocks');
-    this.stocksServise.getStocks('BTC/USDT')
+    this.stocksServise.getStocks(symbol+'/USDT')
     .subscribe(response => {
         this.stocks = response;
         console.log(this.stocks);
@@ -88,7 +89,7 @@ export class CryptoComponent implements OnInit {
 
 
 
-    let symbol = this.route.snapshot.params['sym'];
+    
     let path = "/bit/pair?pair="+symbol+"/USDT";
     const info = this.http.get<CryptoData>(path);
       info.subscribe(response => {

@@ -47,6 +47,10 @@ import { CloudMiningCategoriesComponent } from './cloud-mining/cloud-mining-cate
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FilterNameAgePipe } from './filter-name-age.pipe';
 import { ChartComponent } from './crypto/chart/chart.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { CloudMiningTopComponent } from './sidebar/cloud-mining-top/cloud-mining-top.component';
+import { StocksSidebarComponent } from './sidebar/stocks-sidebar/stocks-sidebar.component';
+
 
 const appRoutes: Routes = [
   {
@@ -195,7 +199,10 @@ const appRoutes: Routes = [
     CloudMiningCategoriesComponent,
     EditProfileComponent,
     FilterNameAgePipe,
-    ChartComponent
+    ChartComponent,
+    SidebarComponent,
+    CloudMiningTopComponent,
+    StocksSidebarComponent
   ],
   imports: [
     // BrowserAnimationsModule,
