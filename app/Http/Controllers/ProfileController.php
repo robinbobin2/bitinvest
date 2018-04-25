@@ -70,31 +70,24 @@ class ProfileController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function update(Request $request, $id)
     {
-        //
         $user = Auth::user();
-        if (trim($request->password) == '') {
-            # code...
-            $input = $request->except('password');
-        } else {
-            $input = $request->all();
-            $input['password'] = bcrypt($request->password);
+        if($request->request->get("email")){
+            $user->email = $request->request->get("email");
         }
-        if ($file = $request->file('photo_id')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
-
-            $photo = Photo::create(['file' => $name]);
-
-
-            $input['photo_id'] = $photo->id;
-            # code...
+        if($request->request->get("name")){
+            $user->name = $request->request->get("name");
         }
-        $user->update($input);
-        return redirect('/profile/');
+        if($request->request->get("telegram")){
+            $user->telegram = $request->request->get("telegram");
+        }
+        $user->update();
+        return [
+            'status' => 'success'
+        ];
     }
 
     public function updatePassword(Request $request, $id)
