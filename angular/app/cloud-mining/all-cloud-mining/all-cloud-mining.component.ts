@@ -8,11 +8,12 @@ import { Observable } from 'rxjs/Rx';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
+import { AuthService } from '../../auth.service';
 interface Category {
   id: number;
   name: string;
 }
-
+const headers = new HttpHeaders({'Content-type': 'Application/json '});
 export class NewsRaw {
   id: number;
     name:string;
@@ -44,7 +45,8 @@ export class Portfolio {
 @Component({
   selector: 'app-all-cloud-mining',
   templateUrl: './all-cloud-mining.component.html',
-  styleUrls: ['./all-cloud-mining.component.scss']
+  styleUrls: ['./all-cloud-mining.component.scss'],
+  providers: [AuthService]
 })
 
 export class AllCloudMiningComponent implements OnInit {
@@ -57,11 +59,29 @@ order: string = '';
 	news: NewsRaw[] = [];
   main_news: NewsRaw[] = [];
   portfolios: Portfolio[] = [];
+  selectedItem: NewsRaw;
   allCount = 0;
   active = 0;
   inactive = 0;
-   constructor(private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+  portfoliosInfo = [];
+  portfolioAdded = false;
+  getUserPortfolio = [];
+  addPortfolio: any;
+  checkPortfolio = false;
+   constructor(private authService: AuthService, private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
    	let path = "/miningraw";
+     let portfolioUrl = '/angular/userportfolio';
+     const portfolioInfo = http.get<any>(portfolioUrl);
+     portfolioInfo.subscribe(
+       response => {
+         if(response['error']) {
+           // code...
+         } else {
+         this.portfoliosInfo = response['mining'];
+         console.log(this.portfoliosInfo);
+         }
+       },
+       );
    	const info = http.get(path);
    	info.subscribe(response => {
        // for (let portfolio of response['portfolios']) {
@@ -95,7 +115,7 @@ order: string = '';
 
        });
          }
-         console.log(this.news);
+         // console.log(this.news);
          this.allCount = this.news.length;
          for(let item of this.news) {
            if(item.status == 1) {
@@ -111,12 +131,44 @@ order: string = '';
    }
 
   ngOnInit() {
-    
+   this.authService.getUser().subscribe(
+     response => this.getUserPortfolio = response['portfolio']
+   );
+
     
   }
 
   loadMore(id) {
     this.router.navigate(['/cloud-mining/item', id]);
+  }
+  callCheck(id) {
+    if(this.checkInPortfolio(id)) {
+      this.checkPortfolio = true;
+    }
+    this.checkPortfolio = false;
+  }
+  checkInPortfolio(id) {
+
+        for(let item of this.portfoliosInfo) {
+          for(let it of item) {
+            if(it.id ) {
+                     
+              if(it.id == id) {
+                return true;
+              }
+            }
+        }
+      }
+    return false;
+  }
+
+  removePortfolio(id) {
+    const removeUrl = '/angular/userportfolio/remove/';
+    const removePost = this.http.get(removeUrl+id);
+    removePost.subscribe(
+      response =>
+      error => console.log(error)
+    )
   }
    setOrder(value: string) {
      if (this.order === value) {
@@ -131,12 +183,20 @@ order: string = '';
   'user_portfolio_type_id': '',
   'user_id': 4,
   }
-  // @ViewChild('f') Form:NgForm;
-  submitPortfolio(form: NgForm, post_id, type) {
-    const headers = new HttpHeaders({'Content-type': 'Application/json '});
+  createPortfolio(form: NgForm) {
+
+    this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 1},{headers: headers})
+    .subscribe(
+      response => {this.getUserPortfolio.push(response); form.reset()},
+      error => console.log(error)
+     )
+
+  }
+  submitPortfolio( post_id, type) {
+    
     this.http.post('/storeportfolio', {
             'user_portfollable_id': post_id,
-            'user_portfolio_id':form.value.portfolio_id,
+            'user_portfolio_id':this.addPortfolio,
             'user_portfollable_type': type
       }, 
       {headers: headers}).subscribe(

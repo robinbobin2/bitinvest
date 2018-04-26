@@ -198,7 +198,7 @@ $(document).ready(function () {
 								'<span></span>' + title
 							'</label>' +
 						'</div>';
-		$("#follow-popup .checkbox-list").append(listItem);
+		// $("#follow-popup .checkbox-list").append(listItem);
 		
 		
 	});

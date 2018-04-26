@@ -115,6 +115,9 @@ Route::get('/ico/item/{post}', "AngularController@serve");
 Route::get('/ico/category/{category}', "AngularController@serve");
 Route::get('/profile/edit', ['as' => 'profile.edit', 'uses' => "AngularController@serve"]);
 Route::get('/angular/user/', "AngularController@user");
+Route::get('/angular/userportfolio/', "AngularController@portfolio");
+Route::get('/angular/userportfolio/remove/{id}', "AngularController@removePortfolio");
+Route::post('/angular/userportfolio/create', "AngularController@createPortfolio");
 Route::get('/angular/funds/{id}', "AngularController@funds");
 
 // Route::get('/crypto', "AngularController@serve");
