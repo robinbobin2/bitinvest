@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\UserPortfolioType;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,7 +86,10 @@ Route::resource('comments', 'CommentsController');
 Route::post('/storecomment', 'CommentsController@storeRaw');
 Route::post('/storeportfolio', 'UserPortfolioController@storeRaw');
 Route::resource('news', 'AdminNewsController');
+Route::get('/seed', function() {
+	UserPortfolioType::create(['name'=>'Облачный майнинг']);
 
+});
 
 
 // ANGULAR
@@ -115,6 +119,9 @@ Route::get('/ico/item/{post}', "AngularController@serve");
 Route::get('/ico/category/{category}', "AngularController@serve");
 Route::get('/profile/edit', ['as' => 'profile.edit', 'uses' => "AngularController@serve"]);
 Route::get('/angular/user/', "AngularController@user");
+Route::get('/angular/userportfolio/', "AngularController@portfolio");
+Route::get('/angular/userportfolio/remove/{id}', "AngularController@removePortfolio");
+Route::post('/angular/userportfolio/create', "AngularController@createPortfolio");
 Route::get('/angular/funds/{id}', "AngularController@funds");
 
 // Route::get('/crypto', "AngularController@serve");

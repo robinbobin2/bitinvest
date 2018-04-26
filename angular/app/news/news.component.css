@@ -2,7 +2,12 @@
   background: #f9f9f9;
     font-family: "PT Sans";
   }
-  
+  aside {
+    margin-right:-20px;
+  }
+  .news-content {
+    margin-left:-30px;
+  }
   .container {
         max-width: 1180px !important;
       }

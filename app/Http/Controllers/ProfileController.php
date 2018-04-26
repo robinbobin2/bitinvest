@@ -96,6 +96,9 @@ class ProfileController extends Controller
         if (Hash::check($request->oldpassword, Auth::user()->password)) {            # code...
             $input['password'] = Hash::make($request->get("password"));
             $user->update($input);
+            return response()->json(['success' => 'success'], 200);
+        } else {
+            return abort(401);
         }
     }
 
