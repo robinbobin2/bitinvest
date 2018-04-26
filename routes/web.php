@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\UserPortfolioType;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,7 +86,10 @@ Route::resource('comments', 'CommentsController');
 Route::post('/storecomment', 'CommentsController@storeRaw');
 Route::post('/storeportfolio', 'UserPortfolioController@storeRaw');
 Route::resource('news', 'AdminNewsController');
+Route::get('/seed', function() {
+	UserPortfolioType::create(['name'=>'Облачный майнинг']);
 
+});
 
 
 // ANGULAR
