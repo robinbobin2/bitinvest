@@ -18,20 +18,29 @@ use App\Models\Founder\Models\Test\Bit2C;
 class Bit2CProvider extends FounderProvider
 {
 
+    /**
+     * @return Bit2CConnector
+     */
     protected function getConnector()
     {
-        return new Bit2CConnector();
+        /** @var Bit2CConnector $connector */
+        $connector = parent::getConnector();
+        return $connector;
     }
 
     public function search(Request $request)
     {
-        $market = new Bit2C();
-        $response = $market->fetch_ticker($this->getDefaultRelation());
+        $response = $this->getConnector()->fetch_tickers();
         return $response;
     }
 
     public function getExchangeId()
     {
         return 5;
+    }
+
+    protected function getConnectorClass()
+    {
+        return new Bit2CConnector();
     }
 }

@@ -17,21 +17,29 @@ use App\Models\Founder\Models\Test\Exchange;
 
 class BinanceProvider extends FounderProvider
 {
-
+    /**
+     * @return BinanceConnector
+     */
     protected function getConnector()
     {
-        return new BinanceConnector();
+        /** @var BinanceConnector $connector */
+        $connector = parent::getConnector();
+        return $connector;
     }
 
     public function search(Request $request)
     {
-        $market = new Binance();
-        $response = $market->fetch_ticker($this->getDefaultRelation());
+        $response = $this->getConnector()->fetch_tickers();
         return $response;
     }
 
     public function getExchangeId()
     {
         return 4;
+    }
+
+    protected function getConnectorClass()
+    {
+        return new BinanceConnector();
     }
 }

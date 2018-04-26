@@ -723,4 +723,38 @@ abstract class FounderConnector
     public function parse_bid_ask ($bidask, $price_key = 0, $amount_key = 0) {
         return array (floatval ($bidask[$price_key]), floatval ($bidask[$amount_key]));
     }
+
+    public function find_symbol ($string, $market = null) {
+        if (!isset ($market))
+            $market = $this->find_market ($string);
+        if (gettype ($market) === 'array' && count (array_filter (array_keys ($market), 'is_string')) !== 0)
+            return $market['symbol'];
+        return $string;
+    }
+
+    public function find_market ($string)
+    {
+        if (!isset ($this->markets))
+            throw new ExchangeError ($this->id . ' markets not loaded');
+        if (gettype($string) === 'string') {
+            if (isset ($this->markets_by_id[$string]))
+                return $this->markets_by_id[$string];
+            if (isset ($this->markets[$string]))
+                return $this->markets[$string];
+        }
+    }
+
+    public function filter_by_array ($objects, $key, $values = null, $indexed = true) {
+        $objects = array_values ($objects);
+        // return all of them if no $symbols were passed in the first argument
+        if ($values === null)
+            return $indexed ? $this->index_by ($objects, $key) : $objects;
+        $result = array ();
+        for ($i = 0; $i < count ($objects); $i++) {
+            $value = isset ($objects[$i][$key]) ? $objects[$i][$key] : null;
+            if (in_array ($value, $values))
+                $result[] = $objects[$i];
+        }
+        return $indexed ? $this->index_by ($result, $key) : $result;
+    }
 }

@@ -17,20 +17,29 @@ use App\Models\Founder\Models\Test\BitBay;
 
 class BitBayProvider extends FounderProvider
 {
+    /**
+     * @return BitBayConnector
+     */
     protected function getConnector()
     {
-        return new BitBayConnector();
+        /** @var BitBayConnector $connector */
+        $connector = parent::getConnector();
+        return $connector;
     }
 
     public function search(Request $request)
     {
-        $market = new BitBay();
-        $response = $market->fetch_ticker($this->getDefaultRelation());
+        $response = $this->getConnector()->fetch_tickers();
         return $response;
     }
 
     public function getExchangeId()
     {
         return 7;
+    }
+
+    protected function getConnectorClass()
+    {
+        return new BitBayConnector();
     }
 }
