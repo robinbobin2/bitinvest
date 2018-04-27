@@ -8,3 +8,6 @@ input.ng-invalid.ng-touched {
 input:disabled {
 	background: #fabc7a !important;
 }
+b {
+	font-weight: bold !important;
+}
