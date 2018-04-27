@@ -32,8 +32,8 @@ export class AllNewsComponent implements OnInit {
 	news= [];
   main_news= [];
   countAll = 0;
-  order: string = '';
-  reverse: boolean = false;
+  order: string = 'id';
+  reverse: boolean = true;
   /**
    * @param {OrderPipe} 
    */

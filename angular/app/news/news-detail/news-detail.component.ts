@@ -59,6 +59,7 @@ user: User;
           photo:response['photos'][0].file,
           comments_count:response['comments_count']
         }
+        this.commentcount = response['comments_count'];
         for(let item of response['comments']) {
           this.comments.push({
             id: item['id'],
@@ -105,15 +106,15 @@ user: User;
   }
   // @ViewChild('f') Form:NgForm;
   
-  submitComment(form: NgForm) {
+  submitComment(form: NgForm, post_id, type) {
     const headers = new HttpHeaders({'Content-type': 'Application/json '});
     this.http.post('/storecomment', {
-            'post_id': form.value.post_id,
+            'post_id': post_id,
             'body': form.value.body,
-            'commentable_id': form.value.post_id,
-            'commentable_type': form.value.type
+            'commentable_id': post_id,
+            'commentable_type': type
       }, {headers: headers}).subscribe(
-        (response) => 
+        (response) => {
         this.comments.unshift({
             id: response['id'],
             email:response['email'],
@@ -121,11 +122,13 @@ user: User;
           body: response['body'],
           commentable_id:response['commentable_id'],
           photo: response['photo']
-        }),
+        })
+        this.submitted = true;
+      this.commentcount=this.commentcount+1;
+       },
         (error) => console.log(error)
       );
       form.reset();
-      this.submitted = true;
-      this.commentcount=this.commentcount+1;
+      
   }
 }

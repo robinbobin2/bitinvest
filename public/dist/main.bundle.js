@@ -4008,7 +4008,7 @@ module.exports = ".news-content {\nwidth: 880px !important;\n  /*width: 100%;*/\
 /***/ "./angular/app/news/all-news/all-news.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"news-content\">\n        <div class=\"news-head\">\n          <h1>Новости<span>{{countAll}}</span></h1>\n          <ul class=\"news-tabs\">\n            <li class=\"active\"><a (click)=\"setOrder('id')\">Новое за сегодня</a></li>\n            <li><a (click)=\"setOrder('views_count')\">Самое популярное</a></li>\n            <li><a  (click)=\"setOrder('comments_count')\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n        <div class=\"news-body\">\n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div  *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.workplace ? 'trust' : 'news'\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')'}\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                    <a  href=\"/posts/post/{{item.id}}#comment-block\"  class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p [innerHTML]=\"item.desc\"> </p> <p><a href=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.name_credits ? 'trust' : 'news'\">\n                <div *ngIf=\"item.name_credits\" class=\"img-wrap\"><img src=\"img/trust.png\" alt=\"\"></div>\n                <h4 *ngIf=\"item.name_credits\">{{item.title}}</h4>\n                <p *ngIf=\"item.name_credits\" class=\"name\">{{item.name_credits}}</p>\n                <span *ngIf=\"item.name_credits\">{{item.workplace}}</span>\n                <div *ngIf=\"!item.name_credits\" class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')' }\">\n                  <a [routerLink]=\"['/ico/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div *ngIf=\"!item.name_credits\" class=\"text\">\n                  <h3>\n                    <a href=\"#\">{{item.title}}</a>\n                  </h3>\n                </div>\n              </div>\n              \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n          \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n\n"
+module.exports = "<div class=\"news-content\">\n        <div class=\"news-head\">\n          <h1>Новости<span>{{countAll}}</span></h1>\n          <ul class=\"news-tabs\">\n            <li class=\"active\"><a (click)=\"setOrder('id')\">Новое за сегодня</a></li>\n            <li><a (click)=\"setOrder('views_count')\">Самое популярное</a></li>\n            <li><a  (click)=\"setOrder('comments_count')\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n        <div class=\"news-body\">\n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div  *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.workplace ? 'trust' : 'news'\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                    <a  href=\"/posts/post/{{item.id}}#comment-block\"  class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p [innerHTML]=\"item.desc\"> </p> <p><a href=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.name_credits ? 'trust' : 'news'\">\n                <div *ngIf=\"item.name_credits\" class=\"img-wrap\"><img src=\"img/trust.png\" alt=\"\"></div>\n                <h4 *ngIf=\"item.name_credits\">{{item.title}}</h4>\n                <p *ngIf=\"item.name_credits\" class=\"name\">{{item.name_credits}}</p>\n                <span *ngIf=\"item.name_credits\">{{item.workplace}}</span>\n                <div *ngIf=\"!item.name_credits\" class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div *ngIf=\"!item.name_credits\" class=\"text\">\n                  <h3>\n                    <a [routerLink]=\"['/posts/post', item.id]\">{{item.title}}</a>\n                  </h3>\n                </div>\n              </div>\n              \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n          \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n\n"
 
 /***/ }),
 
@@ -4055,8 +4055,8 @@ var AllNewsComponent = (function () {
         this.news = [];
         this.main_news = [];
         this.countAll = 0;
-        this.order = '';
-        this.reverse = false;
+        this.order = 'id';
+        this.reverse = true;
         var path = "/newsraw";
         var info = http.get(path);
         info.subscribe(function (response) {
@@ -4232,6 +4232,7 @@ var NewsDetailComponent = (function () {
                 photo: response['photos'][0].file,
                 comments_count: response['comments_count']
             };
+            _this.commentcount = response['comments_count'];
             for (var _i = 0, _a = response['comments']; _i < _a.length; _i++) {
                 var item = _a[_i];
                 _this.comments.push({
@@ -4269,16 +4270,16 @@ var NewsDetailComponent = (function () {
         });
     };
     // @ViewChild('f') Form:NgForm;
-    NewsDetailComponent.prototype.submitComment = function (form) {
+    NewsDetailComponent.prototype.submitComment = function (form, post_id, type) {
         var _this = this;
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
         this.http.post('/storecomment', {
-            'post_id': form.value.post_id,
+            'post_id': post_id,
             'body': form.value.body,
-            'commentable_id': form.value.post_id,
-            'commentable_type': form.value.type
+            'commentable_id': post_id,
+            'commentable_type': type
         }, { headers: headers }).subscribe(function (response) {
-            return _this.comments.unshift({
+            _this.comments.unshift({
                 id: response['id'],
                 email: response['email'],
                 author: response['author'],
@@ -4286,10 +4287,10 @@ var NewsDetailComponent = (function () {
                 commentable_id: response['commentable_id'],
                 photo: response['photo']
             });
+            _this.submitted = true;
+            _this.commentcount = _this.commentcount + 1;
         }, function (error) { return console.log(error); });
         form.reset();
-        this.submitted = true;
-        this.commentcount = this.commentcount + 1;
     };
     return NewsDetailComponent;
 }());
@@ -4317,7 +4318,7 @@ module.exports = "   body{\n  background: #f9f9f9;\n    font-family: \"PT Sans\"
 /***/ "./angular/app/news/news.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n        <ul class=\"tag-list\">\n          <li> <a\n           [routerLink]=\"['/posts/all']\" routerLinkActive=\"active\">Все новости</a></li>\n          <li *ngFor=\"let category of categories\">\n            <a\n           [routerLink]=\"['/posts/category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n        <app-sidebar></app-sidebar>\n      </aside>\n    </div>\n  </section>"
+module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n        <ul class=\"tag-list\">\n          <li> <a\n           [routerLink]=\"['/posts/all']\" routerLinkActive=\"active\">Все новости</a></li>\n          <li *ngFor=\"let category of categories\">\n            <a\n           [routerLink]=\"['/posts/category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n        <!-- <app-sidebar></app-sidebar> -->\n      </aside>\n    </div>\n  </section>"
 
 /***/ }),
 
