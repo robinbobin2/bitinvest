@@ -10,8 +10,10 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.4/summernote.css" rel="stylesheet">
+
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.4/summernote.min.js"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -241,7 +243,6 @@
                           </div>
                         </div>
 
-
     <!-- Scripts -->
     <script>
 $(document).ready(function(){
@@ -252,7 +253,19 @@ $(document).ready(function(){
         window.open(route_prefix + '?type=' + options.type || 'file', 'FileManager', 'width=900,height=600');
         window.SetUrl = cb;
     };
-    
+    var blockQuoteButton = function (context) {
+    var ui = $.summernote.ui;
+    var button = ui.button({
+      className: 'note-btn-blockquote',
+      contents: 'Цитата',
+      tooltip: 'Цитата',
+      click: function () {
+        context.invoke('editor.formatBlock', 'blockquote')
+        }
+      });
+
+     return button.render();   // return button as jquery object 
+     }
     // Define LFM summernote button
     var LFMButton = function(context) {
         var ui = $.summernote.ui;
@@ -272,21 +285,48 @@ $(document).ready(function(){
     
     // Initialize summernote with LFM button in the popover button group
     // Please note that you can add this button to any other button group you'd like
-    $('#summernote').summernote({
+    $('.summernote').summernote({
+       height: ($(window).height() - 250),
+        focus: false,
         toolbar: [
-        ['style', ['bold', 'italic', 'underline', 'clear']],
+
+        ['style', ['bold', 'italic', 'underline', 'clear', 'quote']],
     ['font', ['strikethrough', 'superscript', 'subscript']],
     ['fontsize', ['fontsize']],
     ['color', ['color']],
     ['para', ['ul', 'ol', 'paragraph']],
     ['height', ['height']],
-            ['popovers', ['lfm']],
-        ],
-        buttons: {
-            lfm: LFMButton
-        }
-    })
-   
+            ],
+        oninit: function() {
+            // Add "open" - "save" buttons
+            var noteBtn = '<button id="makeSnote" type="button" class="btn btn-default btn-sm btn-small" title="Identify a music note" data-event="something" tabindex="-1"><i class="fa fa-music"></i></button>';            
+            var fileGroup = '<div class="note-file btn-group">' + noteBtn + '</div>';
+            $(fileGroup).appendTo($('.note-toolbar'));
+            // Button tooltips
+            $('#makeSnote').tooltip({container: 'body', placement: 'bottom'});
+            // Button events
+            $('#makeSnote').click(function(event) {
+                var highlight = window.getSelection(),  
+                    spn = document.createElement('div'),
+                    range = highlight.getRangeAt(0)
+                spn.innerHTML = '<img src="img/quote-left.png" alt="" class="quote-left">';
+                spn.innerHTML += highlight;
+                spn.style.border = '3px solid #e5e5e5';
+                spn.style.padding = '35px';
+                spn.style.marginBottom = '25px';
+                spn.style.textAlign= 'center';
+                spn.style.fontSize= '24px';
+                spn.style.color= '#000';
+                spn.style.lineHeight= '28px';
+                spn.innerHTML += '<img src="img/quote-right.png" alt="" class="quote-right">';
+                spn.className = 'blockquote-block';  
+            
+                range.deleteContents();
+                range.insertNode(spn);
+            });
+         },
+        
+    });
 });
 </script>
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}

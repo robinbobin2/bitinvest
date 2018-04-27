@@ -86,12 +86,12 @@
                     </div>
                     <div class="comment-top" *ngIf="user.id == undefined">
                         <h3>Комментарии ({{news.comments_count}})</h3>
-                        <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#">авторизоваться</a> или <a href="#">пройти регистрацию.</a></p>
+                        <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
                     </div>
                     
                     <div *ngIf="user.id != undefined" style="background: none !important; border: none !important" class="comment-top">
                         <h3 >Комментарии ({{news.comments_count}})</h3>
-                        <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#">авторизоваться</a> или <a href="#">пройти регистрацию.</a></p> -->
+                        <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
 
                     
                     </div>

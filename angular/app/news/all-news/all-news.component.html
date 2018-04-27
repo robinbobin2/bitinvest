@@ -21,7 +21,7 @@
                   </div>
                 </div>
                 <div class="text">
-                  <p [innerHTML]="item.desc"> </p> <p><a href="/posts/post/{{item.id}}">Подробнее</a></p>
+                  <p>{{item.desc | striphtml |excerpt:140}} <a href="/posts/post/{{item.id}}">Подробнее</a></p> 
                 </div>
               </div>
             </div>
@@ -41,6 +41,10 @@
                   <h3>
                     <a [routerLink]="['/posts/post', item.id]">{{item.title}}</a>
                   </h3>
+                </div>
+
+                <div *ngIf="!item.name_credits" class="text2">
+                  <p>{{item.desc | striphtml |excerpt:80}}</p>
                 </div>
               </div>
               

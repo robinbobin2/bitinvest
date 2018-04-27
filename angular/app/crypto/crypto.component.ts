@@ -131,9 +131,9 @@ export class CryptoComponent implements OnInit {
   submitComment(form: NgForm, post_id, type) {
     const headers = new HttpHeaders({'Content-type': 'Application/json '});
     this.http.post('/storecomment', {
-            'post_id': form.value.post_id,
+            'post_id': post_id,
             'body': form.value.body,
-            'commentable_id': form.value.post_id,
+            'commentable_id': post_id,
             'commentable_type': type
       }, {headers: headers}).subscribe(
         (response) => 

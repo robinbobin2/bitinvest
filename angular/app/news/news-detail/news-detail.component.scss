@@ -515,3 +515,37 @@
 .innertext {
   margin-bottom:20px;
 }
+
+.blockquote-block {
+  border: 3px solid #e5e5e5;
+  padding: 35px;
+  margin-bottom: 25px;
+}
+@media (max-width: 600px) {
+  .blockquote-block {
+    padding: 30px;
+  }
+}
+.blockquote-block p {
+  text-align: center;
+  font-size: 24px;
+  color: #000;
+  line-height: 28px;
+}
+@media (max-width: 600px) {
+  .blockquote-block p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .blockquote-block p br {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .blockquote-block p img {
+    position: absolute;
+  }
+  .blockquote-block p img:first-child {
+    left: 25px;
+  }
+}

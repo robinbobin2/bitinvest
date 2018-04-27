@@ -52,6 +52,10 @@ import { CloudMiningTopComponent } from './sidebar/cloud-mining-top/cloud-mining
 import { StocksSidebarComponent } from './sidebar/stocks-sidebar/stocks-sidebar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PortfolioComponent } from './profile/portfolio/portfolio.component';
+import { ImportPipe } from './import.pipe';
+import { SafeHtmlPipe } from './safe-html.pipe';
+import { StriphtmlPipe } from './striphtml.pipe';
+import { ExcerptPipe } from './excerpt.pipe';
 
 
 const appRoutes: Routes = [
@@ -214,7 +218,11 @@ const appRoutes: Routes = [
     CloudMiningTopComponent,
     StocksSidebarComponent,
     ProfileComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    ImportPipe,
+    SafeHtmlPipe,
+    StriphtmlPipe,
+    ExcerptPipe
   ],
   imports: [
     // BrowserAnimationsModule,
