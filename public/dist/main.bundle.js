@@ -544,14 +544,13 @@ var AppComponent = (function () {
         this.router.navigate(['/profile/edit']);
     };
     AppComponent.prototype.onSignup = function (form) {
-        var _this = this;
         this.registration = {
             email: form.value.email,
             password: form.value.password,
             password_repeat: form.value.password_repeat
         };
         this.http.post('/profile/register', this.registration, { headers: headers }).subscribe(function (response) {
-            return _this.router.navigate(['/profile/edit']);
+            return window.location.replace("/profile/portfolio");
         }, function (error) { return console.log(error); });
         // console.log
         console.log(this.registration);
@@ -651,6 +650,8 @@ var _a, _b, _c, _d;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__sidebar_sidebar_component__ = __webpack_require__("./angular/app/sidebar/sidebar.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__sidebar_cloud_mining_top_cloud_mining_top_component__ = __webpack_require__("./angular/app/sidebar/cloud-mining-top/cloud-mining-top.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__sidebar_stocks_sidebar_stocks_sidebar_component__ = __webpack_require__("./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__profile_profile_component__ = __webpack_require__("./angular/app/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__profile_portfolio_portfolio_component__ = __webpack_require__("./angular/app/profile/portfolio/portfolio.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -668,6 +669,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // import { MarketsComponent } from './markets/markets.component';
+
+
 
 
 
@@ -807,7 +810,14 @@ var appRoutes = [
         ]
     },
     {
-        path: 'profile/edit', component: __WEBPACK_IMPORTED_MODULE_43__edit_profile_edit_profile_component__["a" /* EditProfileComponent */]
+        path: 'profile', component: __WEBPACK_IMPORTED_MODULE_49__profile_profile_component__["a" /* ProfileComponent */], children: [
+            {
+                path: 'edit', component: __WEBPACK_IMPORTED_MODULE_43__edit_profile_edit_profile_component__["a" /* EditProfileComponent */]
+            },
+            {
+                path: 'portfolio', component: __WEBPACK_IMPORTED_MODULE_50__profile_portfolio_portfolio_component__["a" /* PortfolioComponent */]
+            },
+        ]
     }
 ];
 var AppModule = (function () {
@@ -858,7 +868,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_45__crypto_chart_chart_component__["a" /* ChartComponent */],
             __WEBPACK_IMPORTED_MODULE_46__sidebar_sidebar_component__["a" /* SidebarComponent */],
             __WEBPACK_IMPORTED_MODULE_47__sidebar_cloud_mining_top_cloud_mining_top_component__["a" /* CloudMiningTopComponent */],
-            __WEBPACK_IMPORTED_MODULE_48__sidebar_stocks_sidebar_stocks_sidebar_component__["a" /* StocksSidebarComponent */]
+            __WEBPACK_IMPORTED_MODULE_48__sidebar_stocks_sidebar_stocks_sidebar_component__["a" /* StocksSidebarComponent */],
+            __WEBPACK_IMPORTED_MODULE_49__profile_profile_component__["a" /* ProfileComponent */],
+            __WEBPACK_IMPORTED_MODULE_50__profile_portfolio_portfolio_component__["a" /* PortfolioComponent */]
         ],
         imports: [
             // BrowserAnimationsModule,
@@ -1199,6 +1211,7 @@ var AllCloudMiningComponent = (function () {
         this.portfolioAdded = false;
         this.getUserPortfolio = [];
         this.checkPortfolio = false;
+        this.show = false;
         this.portfolio = {
             'id': '',
             'name': '',
@@ -1277,6 +1290,9 @@ var AllCloudMiningComponent = (function () {
         this.checkPortfolio = false;
     };
     AllCloudMiningComponent.prototype.checkInPortfolio = function (id) {
+        if (this.portfoliosInfo == undefined) {
+            return false;
+        }
         for (var _i = 0, _a = this.portfoliosInfo; _i < _a.length; _i++) {
             var item = _a[_i];
             for (var _b = 0, item_1 = item; _b < item_1.length; _b++) {
@@ -1314,7 +1330,7 @@ var AllCloudMiningComponent = (function () {
             'user_portfollable_id': post_id,
             'user_portfolio_id': this.addPortfolio,
             'user_portfollable_type': type
-        }, { headers: headers }).subscribe(function (response) { return console.log(response); }, function (error) { return console.log(error); });
+        }, { headers: headers }).subscribe(function (response) { return window.location.replace("/profile/portfolio"); }, function (error) { return console.log(error); });
     };
     return AllCloudMiningComponent;
 }());
@@ -4574,6 +4590,215 @@ OrderPipe = OrderPipe_1 = __decorate([
 
 var OrderPipe_1;
 //# sourceMappingURL=ngx-order.pipe.js.map
+
+/***/ }),
+
+/***/ "./angular/app/portfolio.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PortfolioService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var PortfolioService = (function () {
+    function PortfolioService(http) {
+        this.http = http;
+        this.portfolios = [];
+    }
+    // public getUser() {
+    // return this.http
+    //   .get<any>('/angular/user');
+    // }
+    PortfolioService.prototype.getPortfolioNames = function () {
+        return this.http
+            .get('/angular/user');
+    };
+    PortfolioService.prototype.getPortfolioById = function (id) {
+        return this.http
+            .get('/angular/userportfolio/' + id);
+    };
+    PortfolioService.prototype.deletePortfolioCat = function (id) {
+        return this.http
+            .get('/angular/userportfolio/deletecat/' + id);
+    };
+    PortfolioService.prototype.removePortfolio = function (id) {
+        return this.http.get('/angular/userportfolio/remove/' + id);
+    };
+    return PortfolioService;
+}());
+PortfolioService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+], PortfolioService);
+
+var _a;
+//# sourceMappingURL=portfolio.service.js.map
+
+/***/ }),
+
+/***/ "./angular/app/profile/portfolio/portfolio.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<section class=\"my-portfolio\">\n    <div class=\"wrapper\">\n      <div class=\"portfolio-head\">\n        <h2>Мой портфель<a href=\"#\">+</a></h2>\n        <p>Отслеживайте все важные изменения по монетам, биржам, майнингу, ico проектам и др. Вся информация в одном месте! <br>\nНастраивайте индивидуальные уведомления...</p>\n      </div>\n      <div class=\"table-wrap img-table\" *ngFor=\"let item of portfolioNames; let i = index\">\n        <div class=\"table-title\">\n          <h3>{{item.name}}</h3>\n          <div class=\"buttons\">\n            <a href=\"#\"><img src=\"/img/setting-icon-table.png\" alt=\"\"></a>\n            <a (click)=\"onDelete(item.id, i)\" class=\"basket\"><img src=\"/img/basket-white.png\" alt=\"\"></a>\n          </div>\n        </div>\n        <table class=\"table crypto-table\">\n          <thead>\n            <tr>\n              <th width=\"27%\" [class.active]=\"order === 'name'\"\n                            (click)=\"setOrder('name')\">\n                <span>Название</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"13%\" class=\"active\" [class.active]=\"order === 'proc'\"\n                            (click)=\"setOrder('proc')\">\n                <span>Доходность</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"13%\" >\n                <span>Существует</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"13%\" [class.active]=\"order === 'depo'\"\n                            (click)=\"setOrder('depo')\">\n                <span>Депозит</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"13%\">\n                <span>Получено</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"21%\" [class.active]=\"order === 'status'\"\n                            (click)=\"setOrder('status')\">\n                <span>Статус</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index\">\n              <td>\n                <a href=\"crypto-single.html\">\n                  <div class=\"img-wrap\">\n                    <img src=\"{{portfolioItem.logo}}\" alt=\"\">\n                  </div>\n                  <span>{{portfolioItem.name}}</span>\n                </a>\n              </td>\n              <td>\n                <p><span class=\"bold\">{{portfolioItem.proc}}% / год</span></p>\n              </td>\n              <td>\n                <span>189 дней</span>\n              </td>\n              <td>\n                <span class=\"bold\">${{portfolioItem.depo}}</span>\n              </td>\n              <td>\n                <span>$ 90 (15%)</span>\n              </td>           \n              <td>\n                <div class=\"difference\">\n                  <span [ngClass]=\"portfolioItem.status == 1 ? 'green' : 'red'\">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span>\n                  <div class=\"buttons\">\n                    <a href=\"#\" class=\"setting\"><img src=\"/img/setting-icon-table.png\" alt=\"\"></a>\n                    <a (click)=\"onRemove(item.id, portfolioItem.id, in)\" class=\"minus\"><img src=\"/img/minus.png\" alt=\"\"></a>\n                  </div>\n                </div>\n              </td>\n            </tr>\n            <tr class=\"no-bg\">\n              <td colspan=\"3\" class=\"no-border\">\n                <a href=\"#\" class=\"add\">+Добавить облачный майнинг в портфель</a>\n                <form>\n                  <input type=\"text\" placeholder=\"Введите название...\">\n                  <button type=\"submit\">Добавить</button>\n                </form>\n              </td>\n              <td class=\"no-border\">\n                <span class=\"bold\">$178</span>\n              </td>           \n              <td class=\"no-border\">\n                <span class=\"red\">$1370</span>\n              </td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n    </div>\n  </section>"
+
+/***/ }),
+
+/***/ "./angular/app/profile/portfolio/portfolio.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./angular/app/profile/portfolio/portfolio.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PortfolioComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__portfolio_service__ = __webpack_require__("./angular/app/portfolio.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var PortfolioComponent = (function () {
+    /**
+     * Example: Use Order pipe in the component
+     *
+     * @param {OrderPipe} orderPipe
+     */
+    function PortfolioComponent(orderPipe, portfolioService) {
+        var _this = this;
+        this.orderPipe = orderPipe;
+        this.portfolioService = portfolioService;
+        this.order = 'proc';
+        this.portfolioNames = [];
+        this.portfolios = [];
+        this.reverse = false;
+        portfolioService.getPortfolioNames().subscribe(function (res) {
+            _this.portfolioNames = res['portfolio'];
+            console.log(_this.portfolioNames);
+            var _loop_1 = function (item) {
+                console.log('asd');
+                _this.portfolioService.getPortfolioById(item.id)
+                    .subscribe(function (res) { if (res.length > 0) {
+                    _this.portfolios[item.id] = res;
+                } console.log(_this.portfolios); });
+            };
+            for (var _i = 0, _a = _this.portfolioNames; _i < _a.length; _i++) {
+                var item = _a[_i];
+                _loop_1(item);
+            }
+        });
+    }
+    PortfolioComponent.prototype.setOrder = function (value) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+    };
+    PortfolioComponent.prototype.onDelete = function (id, index) {
+        var _this = this;
+        this.portfolioService.deletePortfolioCat(id).subscribe(function (res) {
+            if (index > -1) {
+                _this.portfolioNames.splice(index, 1);
+            }
+        });
+    };
+    PortfolioComponent.prototype.onRemove = function (itemid, id, index) {
+        var _this = this;
+        this.portfolioService.removePortfolio(id).subscribe(function (res) {
+            if (index > -1) {
+                _this.portfolios[itemid].splice(index, 1);
+            }
+        });
+    };
+    PortfolioComponent.prototype.ngOnInit = function () {
+    };
+    return PortfolioComponent;
+}());
+PortfolioComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-portfolio',
+        template: __webpack_require__("./angular/app/profile/portfolio/portfolio.component.html"),
+        styles: [__webpack_require__("./angular/app/profile/portfolio/portfolio.component.scss")],
+        providers: [__WEBPACK_IMPORTED_MODULE_1__portfolio_service__["a" /* PortfolioService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__portfolio_service__["a" /* PortfolioService */]) === "function" && _b || Object])
+], PortfolioComponent);
+
+var _a, _b;
+//# sourceMappingURL=portfolio.component.js.map
+
+/***/ }),
+
+/***/ "./angular/app/profile/profile.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<router-outlet></router-outlet>"
+
+/***/ }),
+
+/***/ "./angular/app/profile/profile.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./angular/app/profile/profile.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ProfileComponent = (function () {
+    function ProfileComponent() {
+    }
+    ProfileComponent.prototype.ngOnInit = function () {
+    };
+    return ProfileComponent;
+}());
+ProfileComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-profile',
+        template: __webpack_require__("./angular/app/profile/profile.component.html"),
+        styles: [__webpack_require__("./angular/app/profile/profile.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], ProfileComponent);
+
+//# sourceMappingURL=profile.component.js.map
 
 /***/ }),
 

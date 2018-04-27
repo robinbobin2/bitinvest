@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\CloudMining;
 use App\IcoPercent;
 use App\IcoProject;
 use App\User;
 use App\UserPortfolio;
 use App\UserPortfolioType;
 use App\UserPortfollable;
-use Illuminate\Http\Request;
 use File;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AngularController extends Controller
@@ -59,6 +60,19 @@ class AngularController extends Controller
         }
         return json_encode($userPortfolio);
     }
+    public function byportfolio($id) 
+    {
+        $user = Auth::user();
+        if(!$user){
+            return abort(401);
+        }
+        $portfolio_items = UserPortfollable::all()->where('user_portfolio_id', $id);
+        $items = [];
+        foreach ($portfolio_items as $portfolio_item) {
+            $items[] = CloudMining::where('id', $portfolio_item->user_portfollable_id)->first();
+        }
+        return json_encode($items);
+    }
     public function createPortfolio(Request $request) {
         $user = Auth::user();
         if(!$user){
@@ -81,6 +95,20 @@ class AngularController extends Controller
             ];
         }
         $portfolio = UserPortfollable::where('user_portfollable_id', $id)->where('user_portfollable_type', 'App\CloudMining')->delete();
+        return [
+                'success' => 'Portfolio deleted'
+            ];
+    }
+
+    public function deletePortfolioCat($id) 
+    {
+        $user = Auth::user();
+        if(!$user){
+            return [
+                'error' => 'User not loggined'
+            ];
+        }
+        $portfolio = UserPortfolio::findOrFail($id)->delete();
         return [
                 'success' => 'Portfolio deleted'
             ];

@@ -121,6 +121,7 @@ class ProfileController extends Controller
 
         $user->save();
         Auth::loginUsingId($user->id);
+        return $user;
     }
 
     /**
