@@ -1326,11 +1326,12 @@ var AllCloudMiningComponent = (function () {
             .subscribe(function (response) { _this.getUserPortfolio.push(response); form.reset(); }, function (error) { return console.log(error); });
     };
     AllCloudMiningComponent.prototype.submitPortfolio = function (post_id, type) {
+        var _this = this;
         this.http.post('/storeportfolio', {
             'user_portfollable_id': post_id,
             'user_portfolio_id': this.addPortfolio,
             'user_portfollable_type': type
-        }, { headers: headers }).subscribe(function (response) { return window.location.replace("/profile/portfolio"); }, function (error) { return console.log(error); });
+        }, { headers: headers }).subscribe(function (response) { return _this.router.navigate(['/profile/portfolio']); }, function (error) { return console.log(error); });
     };
     return AllCloudMiningComponent;
 }());

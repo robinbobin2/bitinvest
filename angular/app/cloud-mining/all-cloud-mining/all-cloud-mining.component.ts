@@ -204,7 +204,7 @@ order: string = '';
             'user_portfollable_type': type
       }, 
       {headers: headers}).subscribe(
-        (response) => window.location.replace("/profile/portfolio"),
+        (response) => this.router.navigate(['/profile/portfolio']),
         (error) => console.log(error)
       );
   }
