@@ -17,20 +17,29 @@ use App\Models\Founder\Models\Test\BitBank;
 
 class BitBankProvider extends FounderProvider
 {
+    /**
+     * @return BitBankConnector
+     */
     protected function getConnector()
     {
-        return new BitBankConnector();
+        /** @var BitBankConnector $connector */
+        $connector = parent::getConnector();
+        return $connector;
     }
 
     public function search(Request $request)
     {
-        $market = new BitBank();
-        $response = $market->fetch_ticker($this->getDefaultRelation());
+        $response = $this->getConnector()->fetch_tickers();
         return $response;
     }
 
     public function getExchangeId()
     {
         return 6;
+    }
+
+    protected function getConnectorClass()
+    {
+        return new BitBankConnector();
     }
 }

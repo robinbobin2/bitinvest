@@ -36,15 +36,16 @@ abstract class FounderProvider
 
     public function save($response)
     {
+        sleep(1);
         foreach ($response as $rate) {
-            if (!$rate['last']) {
+            if (empty($rate['last']) || empty($rate['symbol'])) {
                 continue;
             }
             $exchange = new ExchangeRate();
             $exchange->value = $rate['last'];
             $exchange->volume = $rate['baseVolume'];
-            $exchange->bid = $rate['bid'];
-            $exchange->ask = $rate['ask'];
+            $exchange->bid = isset($rate['bid']) ? $rate['bid'] : null;
+            $exchange->ask = isset($rate['ask']) ? $rate['ask'] : null;
             $exchange->currency = $rate['symbol'] ? $rate['symbol'] : $this->getDefaultRelation();
             $exchange->exchangeId = $this->getExchangeId();
             $exchange->createTime = time();

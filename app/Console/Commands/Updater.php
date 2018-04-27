@@ -15,6 +15,8 @@ use App\Models\Founder\Models\Providers\Bit2CProvider;
 use App\Models\Founder\Models\Providers\BitBankProvider;
 use App\Models\Founder\Models\Providers\BitBayProvider;
 use App\Models\Founder\Models\Providers\BitFinexProvider;
+use App\Models\Founder\Models\Providers\BitMarketProvider;
+use App\Models\Founder\Models\Providers\BitMexProvider;
 use App\Models\Founder\Models\Providers\HitBTCProvider;
 use App\Models\Founder\Models\Providers\PoloniexProvider;
 use App\Models\Founder\Models\Rabbit\RabbitTestHandler;
@@ -61,10 +63,12 @@ class Updater extends \Illuminate\Console\Command
 //        PoloniexProvider::class,
         HitBTCProvider::class,
         BiBoxProvider::class,
-//        BinanceProvider::class,
+        BinanceProvider::class,
 //        Bit2CProvider::class,
 //        BitBayProvider::class,
-//        BitFinexProvider::class
+        BitFinexProvider::class,
+//        BitMarketProvider::class,
+//        BitMexProvider::class
     ];
 
     /**
