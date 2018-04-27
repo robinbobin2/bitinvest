@@ -4318,7 +4318,7 @@ module.exports = "   body{\n  background: #f9f9f9;\n    font-family: \"PT Sans\"
 /***/ "./angular/app/news/news.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n        <ul class=\"tag-list\">\n          <li> <a\n           [routerLink]=\"['/posts/all']\" routerLinkActive=\"active\">Все новости</a></li>\n          <li *ngFor=\"let category of categories\">\n            <a\n           [routerLink]=\"['/posts/category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n        <!-- <app-sidebar></app-sidebar> -->\n      </aside>\n    </div>\n  </section>"
+module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n        <ul class=\"tag-list\">\n          <li> <a\n           [routerLink]=\"['/posts/all']\" routerLinkActive=\"active\">Все новости</a></li>\n          <li *ngFor=\"let category of categories\">\n            <a\n           [routerLink]=\"['/posts/category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n        <app-sidebar></app-sidebar>\n      </aside>\n    </div>\n  </section>"
 
 /***/ }),
 
