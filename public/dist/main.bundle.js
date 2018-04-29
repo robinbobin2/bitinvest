@@ -564,7 +564,8 @@ var AppComponent = (function () {
         form.reset();
     };
     AppComponent.prototype.checkUser = function () {
-        if (this.user.error == '') {
+        // console.log(this.user.error);
+        if (this.user.error == 'User not loggined') {
             return false;
         }
         else {
