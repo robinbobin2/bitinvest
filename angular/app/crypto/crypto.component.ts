@@ -148,6 +148,7 @@ export class CryptoComponent implements OnInit {
         (error) => console.log(error)
       );
       form.reset();
+      console.log(form);
       this.commentcount=this.commentcount+1;
   }
 

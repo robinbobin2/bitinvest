@@ -10,6 +10,8 @@ export class User {
 	photo_id: number;
 	role_id: number;
 	telegram: string;
+  photo: any;
+  error: any;
 
 };
 export class NewData {	

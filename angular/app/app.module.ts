@@ -50,6 +50,12 @@ import { ChartComponent } from './crypto/chart/chart.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CloudMiningTopComponent } from './sidebar/cloud-mining-top/cloud-mining-top.component';
 import { StocksSidebarComponent } from './sidebar/stocks-sidebar/stocks-sidebar.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PortfolioComponent } from './profile/portfolio/portfolio.component';
+import { ImportPipe } from './import.pipe';
+import { SafeHtmlPipe } from './safe-html.pipe';
+import { StriphtmlPipe } from './striphtml.pipe';
+import { ExcerptPipe } from './excerpt.pipe';
 
 
 const appRoutes: Routes = [
@@ -156,9 +162,17 @@ const appRoutes: Routes = [
      }
     ]
   },
-    {
-      path:'profile/edit', component:EditProfileComponent
+  {
+  path:'profile', component:ProfileComponent, children: [
+      {
+      path:'edit', component:EditProfileComponent
+      },
+      {
+      path:'portfolio', component:PortfolioComponent
+     },
+    ]
   }
+    
 ];
 @NgModule({
   declarations: [
@@ -202,7 +216,13 @@ const appRoutes: Routes = [
     ChartComponent,
     SidebarComponent,
     CloudMiningTopComponent,
-    StocksSidebarComponent
+    StocksSidebarComponent,
+    ProfileComponent,
+    PortfolioComponent,
+    ImportPipe,
+    SafeHtmlPipe,
+    StriphtmlPipe,
+    ExcerptPipe
   ],
   imports: [
     // BrowserAnimationsModule,

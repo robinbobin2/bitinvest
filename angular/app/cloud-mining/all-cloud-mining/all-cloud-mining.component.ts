@@ -68,6 +68,8 @@ order: string = '';
   getUserPortfolio = [];
   addPortfolio: any;
   checkPortfolio = false;
+  removed = false;
+  show = false;
    constructor(private authService: AuthService, private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
    	let path = "/miningraw";
      let portfolioUrl = '/angular/userportfolio';
@@ -148,7 +150,10 @@ order: string = '';
     this.checkPortfolio = false;
   }
   checkInPortfolio(id) {
-
+      if(this.portfoliosInfo == undefined) {
+        return false;
+      }
+        
         for(let item of this.portfoliosInfo) {
           for(let it of item) {
             if(it.id ) {
@@ -166,7 +171,7 @@ order: string = '';
     const removeUrl = '/angular/userportfolio/remove/';
     const removePost = this.http.get(removeUrl+id);
     removePost.subscribe(
-      response =>
+      response => this.removed = true,
       error => console.log(error)
     )
   }
@@ -200,7 +205,7 @@ order: string = '';
             'user_portfollable_type': type
       }, 
       {headers: headers}).subscribe(
-        (response) => console.log(response),
+        (response) => this.router.navigate(['/profile/portfolio']),
         (error) => console.log(error)
       );
   }

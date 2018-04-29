@@ -103,9 +103,23 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
         <script type="text/javascript">
         $(document).ready(function() {
-            $('.summernote').summernote({
-               height: 300,
-            });
+           $('.summernote').summernote({
+        toolbar: [
+
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['fontsize', ['fontsize']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['height', ['height']],
+            ['popovers', ['lfm']],
+        ],
+        buttons: {
+            lfm: LFMButton,blockQuoteButton
+        },
+        styleTags: ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+
+    })
         });
     </script>
 @endpush  

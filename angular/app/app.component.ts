@@ -26,6 +26,8 @@ export class User {
 	photo_id: number;
 	role_id: number;
 	telegram: string;
+  photo: any;
+  error: any;
 
 };
 declare var $:any;
@@ -85,7 +87,7 @@ checkAuth() {
   	}
     this.http.post('/profile/register', this.registration, {headers: headers}).subscribe(
         (response) => 
-        this.router.navigate(['/profile/edit']),
+        window.location.replace("/profile/portfolio"),
         (error) => console.log(error)
       );
     // console.log
@@ -99,6 +101,14 @@ checkAuth() {
     console.log(this.lostPass);
       form.reset();
   }
+  checkUser() {
+    // console.log(this.user.error);
+  if(this.user.error == 'User not loggined') {
+    return false;
+  } else {
+    return true;
+  }
+  }
   ngOnInit() {
   	this.auth
       .getUser()
@@ -106,6 +116,7 @@ checkAuth() {
         (response) => {
           this.user = response;
           this.auth.setUser(this.user);
+          console.log(this.user);
         }
       );
 

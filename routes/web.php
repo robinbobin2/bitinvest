@@ -38,6 +38,7 @@ Route::get('/newsraw', 'NewsViewController@index');
 Route::get('/analyticsraw/', 'AnalyticsViewController@index');
 Route::get('/reviewraw/', 'ReviewViewController@index');
 Route::get('/miningraw/', 'CloudMiningViewController@index');
+Route::get('/miningraw/search', 'CloudMiningViewController@search');
 Route::get('/miningraw/top', 'CloudMiningViewController@topfive');
 Route::get('/miningraw/{mining}', 'CloudMiningViewController@show');
 Route::get('/miningbycat/{category}', 'CloudMiningViewController@byCat');
@@ -86,10 +87,6 @@ Route::resource('comments', 'CommentsController');
 Route::post('/storecomment', 'CommentsController@storeRaw');
 Route::post('/storeportfolio', 'UserPortfolioController@storeRaw');
 Route::resource('news', 'AdminNewsController');
-Route::get('/seed', function() {
-	UserPortfolioType::create(['name'=>'Облачный майнинг']);
-
-});
 
 
 // ANGULAR
@@ -118,10 +115,13 @@ Route::get('/ico/all', "AngularController@serve");
 Route::get('/ico/item/{post}', "AngularController@serve");
 Route::get('/ico/category/{category}', "AngularController@serve");
 Route::get('/profile/edit', ['as' => 'profile.edit', 'uses' => "AngularController@serve"]);
+Route::get('/profile/portfolio', ['as' => 'profile.portfolio', 'uses' => "AngularController@serve"]);
 Route::get('/angular/user/', "AngularController@user");
 Route::get('/angular/userportfolio/', "AngularController@portfolio");
 Route::get('/angular/userportfolio/remove/{id}', "AngularController@removePortfolio");
 Route::post('/angular/userportfolio/create', "AngularController@createPortfolio");
+Route::get('/angular/userportfolio/{id}', "AngularController@byportfolio");
+Route::get('/angular/userportfolio/deletecat/{id}', "AngularController@deletePortfolioCat");
 Route::get('/angular/funds/{id}', "AngularController@funds");
 
 // Route::get('/crypto', "AngularController@serve");

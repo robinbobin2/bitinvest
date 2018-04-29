@@ -112,12 +112,12 @@
             <div class="comment-block">
               <div class="comment-top"  *ngIf="!user.id">
                 <h3>Комментарии ({{commentcount}})</h3>
-                <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#">авторизоваться</a> или <a href="#">пройти регистрацию.</a></p>
+                <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
               </div>
               <div class="comment-top"  *ngIf="user.id">
                 <h3>Добавить новый комментарий</h3>
-                <form (ngSubmit)="submitComment(f, dataUsd.id, 'App\\CryptoStat')" #f="ngForm">
-                                    <input type="hidden" ngModel name="post_id" value="1">
+                <form (ngSubmit)="submitComment(f, 'App\\CryptoStat')" #f="ngForm">
+                                    <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
                                     <input type="hidden" ngModel name="type" value="App\CryptoStat">
                                     <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
                                     <button type="submit">Добавить</button>
@@ -414,12 +414,12 @@
             <div class="comment-block">
               <div class="comment-top"  *ngIf="!user.id">
                 <h3>Комментарии ({{commentcount}})</h3>
-                <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#">авторизоваться</a> или <a href="#">пройти регистрацию.</a></p>
+                <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
               </div>
               <div class="comment-top"  *ngIf="user.id">
                 <h3>Добавить новый комментарий</h3>
-                 <form (ngSubmit)="submitComment(f, dataUsd.id, 'App\\CryptoStat')" #f="ngForm">
-                                    <input type="hidden" ngModel name="post_id" value="1">
+                 <form (ngSubmit)="submitComment(f, 'App\\CryptoStat')" #f="ngForm">
+                                    <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
                                     <input type="hidden" ngModel name="type" value="App\CryptoStat">
                                     <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
                                     <button type="submit">Добавить</button>

@@ -41,4 +41,14 @@
 <div class="row">
 
 </div>
+ <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $('.summernote').summernote({
+               height: 200,
+            });
+        });
+    </script>
 @endsection
