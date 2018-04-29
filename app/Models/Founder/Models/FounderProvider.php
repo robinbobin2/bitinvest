@@ -26,13 +26,19 @@ abstract class FounderProvider
     {
         if (!$this->connector) {
             $this->connector = $this->getConnectorClass();
+            $this->connector->exchangeId = $this->getExchangeId();
         }
         return $this->connector;
     }
 
     abstract protected function getConnectorClass();
 
-    abstract public function search(Request $request);
+    public function search(Request $request)
+    {
+        $response = $this->getConnector()->fetch_tickers();
+        return $response;
+    }
+
 
     public function save($response)
     {
@@ -46,7 +52,7 @@ abstract class FounderProvider
             $exchange->volume = $rate['baseVolume'];
             $exchange->bid = isset($rate['bid']) ? $rate['bid'] : null;
             $exchange->ask = isset($rate['ask']) ? $rate['ask'] : null;
-            $exchange->currency = $rate['symbol'] ? $rate['symbol'] : $this->getDefaultRelation();
+            $exchange->currency = $rate['symbol'];
             $exchange->exchangeId = $this->getExchangeId();
             $exchange->createTime = time();
             try {

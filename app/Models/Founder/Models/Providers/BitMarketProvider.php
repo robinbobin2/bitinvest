@@ -23,8 +23,7 @@ class BitMarketProvider extends FounderProvider
 
     public function search(Request $request)
     {
-        $response = $this->getConnector()->fetch_tickers();
-        return $response;
+        return [];
     }
 
     /**
