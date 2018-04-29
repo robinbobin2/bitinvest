@@ -205,3 +205,14 @@ $(document).ready(function () {
 
 	
 });
+
+
+$(".add").on("click", function(e){
+		e.preventDefault();
+		$(this).closest("td").find("form").show();
+	});
+	
+	$(".add").dblclick( function(e){
+		e.preventDefault();
+		$(this).closest("td").find("form").hide();
+	});

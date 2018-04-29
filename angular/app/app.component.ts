@@ -26,6 +26,8 @@ export class User {
 	photo_id: number;
 	role_id: number;
 	telegram: string;
+  photo: any;
+  error: any;
 
 };
 declare var $:any;
@@ -99,6 +101,13 @@ checkAuth() {
     console.log(this.lostPass);
       form.reset();
   }
+  checkUser() {
+  if(this.user.error == '') {
+    return false;
+  } else {
+    return true;
+  }
+  }
   ngOnInit() {
   	this.auth
       .getUser()
@@ -106,6 +115,7 @@ checkAuth() {
         (response) => {
           this.user = response;
           this.auth.setUser(this.user);
+          console.log(this.user);
         }
       );
 

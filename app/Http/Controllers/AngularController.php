@@ -38,7 +38,7 @@ class AngularController extends Controller
                 'error' => 'User not loggined'
             ];
         }
-        $newUser = User::with("Portfolio")->where('id', '=', $user->id)->first();
+        $newUser = User::with("Portfolio")->with('photo')->where('id', '=', $user->id)->first();
         return json_encode($newUser);
     }
     public function portfolio() 

@@ -10,6 +10,8 @@ export class User {
 	photo_id: number;
 	role_id: number;
   telegram:string;
+  photo:any;
+  error: string;
 }
 @Injectable()
 
@@ -26,6 +28,8 @@ info;
         photo_id: 0,
         role_id: 0,
         telegram:'',
+        photo: [],
+        error: '',
     }
   }
   

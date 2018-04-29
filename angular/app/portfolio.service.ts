@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+const headers = new HttpHeaders({'Content-type': 'Application/json '});
 
 @Injectable()
 export class PortfolioService {
@@ -30,5 +31,14 @@ export class PortfolioService {
   }
   public removePortfolio(id) {
     return this.http.get('/angular/userportfolio/remove/'+id);
+  }
+  public submitPortfolio( post_id, id, type) {
+    
+    return this.http.post('/storeportfolio', {
+            'user_portfollable_id': id,
+            'user_portfolio_id':post_id,
+            'user_portfollable_type': type
+      }, 
+      {headers: headers})
   }
 }

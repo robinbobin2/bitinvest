@@ -80,11 +80,18 @@
             </tr>
             <tr class="no-bg">
               <td colspan="3" class="no-border">
-                <a href="#" class="add">+Добавить облачный майнинг в портфель</a>
+                <a class="add">+Добавить облачный майнинг в портфель</a>
                 <form>
-                  <input type="text" placeholder="Введите название...">
-                  <button type="submit">Добавить</button>
+                  <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value)" >
+                  <button type="submit" (click)="onAdd(item.id, result_id)">Добавить</button>
                 </form>
+                <ul *ngIf="results">
+                <li *ngFor="let result of results | slice:0:9">
+                  <a (click)="searchLine = result.name; result_id=result.id" target="_blank">
+                   {{ result.name }}
+                  </a>
+                </li>
+              </ul>
               </td>
               <td class="no-border">
                 <span class="bold">$178</span>

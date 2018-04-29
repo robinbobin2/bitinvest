@@ -68,6 +68,7 @@ order: string = '';
   getUserPortfolio = [];
   addPortfolio: any;
   checkPortfolio = false;
+  removed = false;
   show = false;
    constructor(private authService: AuthService, private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
    	let path = "/miningraw";
@@ -170,7 +171,7 @@ order: string = '';
     const removeUrl = '/angular/userportfolio/remove/';
     const removePost = this.http.get(removeUrl+id);
     removePost.subscribe(
-      response =>
+      response => this.removed = true,
       error => console.log(error)
     )
   }

@@ -21,12 +21,12 @@
                   </div>
                 </div>
                 <div class="text">
-                  <p>{{item.desc | striphtml |excerpt:140}} <a href="/posts/post/{{item.id}}">Подробнее</a></p> 
+                  <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p> 
                 </div>
               </div>
             </div>
             <div class="news-list">
-              <div *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.name_credits ? 'trust' : 'news'">
+              <div *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.name_credits ? 'trust' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
                 <div *ngIf="item.name_credits" class="img-wrap"><img src="img/trust.png" alt=""></div>
                 <h4 *ngIf="item.name_credits">{{item.title}}</h4>
                 <p *ngIf="item.name_credits" class="name">{{item.name_credits}}</p>
