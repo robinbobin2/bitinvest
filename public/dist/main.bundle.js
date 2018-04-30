@@ -2339,6 +2339,8 @@ var CryptoComponent = (function () {
                 });
             }
             _this.commentcount = response['comments_count'];
+            console.log('IDIDIDID');
+            console.log(_this.dataUsd.id);
         });
         this.auth
             .getUser()
