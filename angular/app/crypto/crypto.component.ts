@@ -95,6 +95,7 @@ export class CryptoComponent implements OnInit {
       info.subscribe(response => {
         this.dataUsd = response;
         this.dataUsd.sym = symbol;
+        console.log(this.dataUsd);
       });
     let infoCryptoPath = "/allcrypto/"+symbol;
     const infoCrypto = this.http.get<CryptoData>(infoCryptoPath);
