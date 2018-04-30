@@ -116,7 +116,7 @@
               </div>
               <div class="comment-top"  *ngIf="user.id">
                 <h3>Добавить новый комментарий</h3>
-                <form (ngSubmit)="submitComment(f, 1, 'App\\CryptoStat')" #f="ngForm">
+                <form (ngSubmit)="submitComment(f, dataUsd.id, 'App\\CryptoStat')" #f="ngForm">
                                     <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
                                     <input type="hidden" ngModel name="type" value="App\CryptoStat">
                                     <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
@@ -418,7 +418,7 @@
               </div>
               <div class="comment-top"  *ngIf="user.id">
                 <h3>Добавить новый комментарий</h3>
-                  <form (ngSubmit)="submitComment(f, 1, 'App\\CryptoStat')" #f="ngForm">
+                  <form (ngSubmit)="submitComment(f, dataUsd.id, 'App\\CryptoStat')" #f="ngForm">
                                     <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
                                     <input type="hidden" ngModel name="type" value="App\CryptoStat">
                                     <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
