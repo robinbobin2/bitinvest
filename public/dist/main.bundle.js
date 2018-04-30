@@ -2325,11 +2325,11 @@ var CryptoComponent = (function () {
         infoCrypto.subscribe(function (response) {
             console.log(response);
             console.log(response.id);
-            _this.dataUsd.name = response['name'];
-            _this.dataUsd.id = response['id'];
-            _this.dataUsd.year = response['year'];
-            _this.dataUsd.algo = response['algo'];
-            _this.dataUsd.desc = response['desc'];
+            _this.dataUsd.name = response.name;
+            _this.dataUsd.id = response.id;
+            _this.dataUsd.year = response.year;
+            _this.dataUsd.algo = response.algo;
+            _this.dataUsd.desc = response.desc;
             for (var _i = 0, _a = response['comments']; _i < _a.length; _i++) {
                 var item = _a[_i];
                 _this.comments.push({
