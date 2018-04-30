@@ -99,7 +99,7 @@ export class CryptoComponent implements OnInit {
       });
     let infoCryptoPath = "/allcrypto/"+symbol;
     console.log(infoCryptoPath);
-    const infoCrypto = this.http.get<CryptoData>(infoCryptoPath);
+    const infoCrypto = this.http.get<any>(infoCryptoPath);
     console.log(infoCrypto);
       infoCrypto.subscribe(response => {
         console.log(response);
