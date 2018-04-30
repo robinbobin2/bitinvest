@@ -121,7 +121,8 @@ export class CryptoComponent implements OnInit {
         }
       this.commentcount = response['comments_count'];
       console.log('IDIDIDID');
-      console.log(this.dataUsd.id);
+      // console.log(this.dataUsd.id);
+      console.log(this.dataUsd);
       });
         this.auth
       .getUser()
