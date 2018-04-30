@@ -29,7 +29,7 @@ export interface PositionData {
   year: number;
   algo: string;
   id: number;
-  sym: string;
+  symbol: string;
 }
 export class User {  
   id:number;

@@ -2,7 +2,7 @@
     <div class="wrapper">
       <a routerLink="/cryptocurrency/all" class="return"><span>&#60;</span>Вернуться к списку криптовалют</a>
       <div class="currency">
-        <h2>{{data?.sym}}/USD - {{data?.name}} Доллар США</h2>
+        <h2>{{data?.symbol}}/USD - {{data?.name}} Доллар США</h2>
         <ul>
           <li class="active"><a href="#">USD</a></li><!-- 
           <li><a href="#">EUR</a></li>
@@ -57,12 +57,12 @@
           <div class="tab-content active">
             <div class="overview-content">
               <div class="overview-block">
-                <h3>{{data?.sym}}/USD График криптовалюты</h3>
+                <h3>{{data?.symbol}}/USD График криптовалюты</h3>
                 <app-chart></app-chart>
               </div>
               <div class="overview-table-wrap">
                 <div class="overview-title-block">
-                  <h2>Котировки {{data?.sym}}/USD на различных биржах</h2>
+                  <h2>Котировки {{data?.symbol}}/USD на различных биржах</h2>
                 </div>
                 <table>
                   <thead>
@@ -158,11 +158,11 @@
 
           <div class="tab-content">
             <div class="overview-block">
-              <h3>Потоковый график {{data?.sym}}/USD</h3>
+              <h3>Потоковый график {{data?.symbol}}/USD</h3>
               <app-chart></app-chart>
             </div>
             <div class="overview-block overview-block-2">
-              <h3>Интерактивный график {{data?.sym}}/USD</h3>
+              <h3>Интерактивный график {{data?.symbol}}/USD</h3>
               <app-chart></app-chart>
             </div>
           </div>
@@ -701,7 +701,7 @@
           </div>
 
           <div class="tab-content description-content">
-            <h2>Описание {{data?.sym}} ({{dataUsd?.name}})</h2>
+            <h2>Описание {{data?.symbol}} ({{dataUsd?.name}})</h2>
             <div [innerHTML]='data?.desc'></div>
           </div>
 
@@ -709,7 +709,7 @@
       </div>
       <aside class="sidebar">
         <div class="description">
-          <h5 class="titles">Описание {{data?.sym}} ({{data?.name}})</h5>
+          <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
           <div [innerHTML]='data?.desc'></div>
             <br> <p><a href="#">Подробнее</a><p>
         </div>
