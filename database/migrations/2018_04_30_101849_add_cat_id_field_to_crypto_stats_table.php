@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAlgoFieldToCryptoStatsTable extends Migration
+class AddCatIdFieldToCryptoStatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,8 @@ class AddAlgoFieldToCryptoStatsTable extends Migration
     {
         Schema::table('crypto_stats', function (Blueprint $table) {
             //
-            $table->string('algo');
+            $table->integer('cat_id_news')->default(1);
+            $table->integer('cat_id_analytics')->default(1);
         });
     }
 
@@ -28,7 +29,8 @@ class AddAlgoFieldToCryptoStatsTable extends Migration
     {
         Schema::table('crypto_stats', function (Blueprint $table) {
             //
-            $table->dropColumn('algo');
+            $table->dropColumn('cat_id_analytics');
+            $table->dropColumn('cat_id_news');
         });
     }
 }

@@ -30,6 +30,8 @@ export interface PositionData {
   algo: string;
   id: number;
   symbol: string;
+  cat_id_news: number;
+  cat_id_analytics: number;
 }
 export class User {  
   id:number;
@@ -78,11 +80,14 @@ export class CryptoComponent implements OnInit {
   }; 
   commentcount = 0;
   stocks: Stock[] = [];
+  main_news: any;
+  news: any;
   constructor(private http:HttpClient,public stocksServise:StocksService, private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
   }
 
   ngOnInit() {
+
     let symbol = this.route.snapshot.params['sym'];
     console.log('stocks');
     this.stocksServise.getStocks(symbol+'/USDT')
@@ -118,9 +123,14 @@ export class CryptoComponent implements OnInit {
 
         }
       this.commentcount = response['comments_count'];
-      console.log('IDIDIDID');
-      // console.log(this.dataUsd.id);
-      console.log(this.dataUsd);
+      let newsUrl = "/postsbycat/"+this.data.cat_id_news;
+        let newsInfo = this.http.get<any>(newsUrl);
+         newsInfo.subscribe(response => {
+        this.main_news = response['main_news'];
+       this.news = response['news'];
+       console.log(this.news);
+       console.log(this.main_news);
+     });
       });
         this.auth
       .getUser()
