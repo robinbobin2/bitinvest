@@ -176,8 +176,13 @@ class BitFinexConnector extends FounderConnector
     public function fetch_markets () {
         $markets = $this->v1GetSymbolsDetails ();
         $result = array ();
-        for ($p = 0; $p < count ($markets); $p++) {
-            $market = $markets[$p];
+        if(!$markets){
+            $markets = [];
+        }
+        foreach ($markets as $market){
+            if(!isset($market['pair'])){
+                continue;
+            }
             $id = strtoupper ($market['pair']);
             $baseId = mb_substr ($id, 0, 3);
             $quoteId = mb_substr ($id, 3, 6);

@@ -9,6 +9,7 @@
 namespace App\Models\Founder\Models;
 
 
+use App\Models\Founder\Models\Custom\SupplierLog;
 const TRUNCATE = 0;
 const ROUND = 1;
 
@@ -20,6 +21,8 @@ const PAD_WITH_ZERO = 1;
 
 abstract class FounderConnector
 {
+    public $exchangeId = 0;
+
     public $commonCurrencies = array(
         'XBT' => 'BTC',
         'BCC' => 'BCH',
@@ -540,7 +543,7 @@ abstract class FounderConnector
         if ($this->curl_options)
             curl_setopt_array($this->curl, $this->curl_options);
         $result = curl_exec($this->curl);
-
+        SupplierLog::log($url, $result, $this->getExchangeId());
         curl_reset($this->curl);
         if ($this->parseJsonResponse) {
             $result = json_decode($result, true);
@@ -756,5 +759,18 @@ abstract class FounderConnector
                 $result[] = $objects[$i];
         }
         return $indexed ? $this->index_by ($result, $key) : $result;
+    }
+
+    public static function parse8601 ($timestamp) {
+        $time = strtotime ($timestamp) * 1000;
+        if (preg_match ('/\.(?<milliseconds>[0-9]{1,3})/', $timestamp, $match)) {
+            $time += (int) str_pad($match['milliseconds'], 3, '0', STR_PAD_RIGHT);
+        }
+        return $time;
+    }
+
+    public function getExchangeId()
+    {
+        return $this->exchangeId;
     }
 }
