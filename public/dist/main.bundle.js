@@ -2327,7 +2327,7 @@ var CryptoComponent = (function () {
         infoCrypto.subscribe(function (response) {
             console.log(response);
             _this.dataUsd['name'] = response['name'];
-            _this.dataUsd['id'] = response['id'];
+            _this.dataUsd.id = response['id'];
             _this.dataUsd['year'] = response['year'];
             _this.dataUsd['algo'] = response['algo'];
             _this.dataUsd['desc'] = response['desc'];

@@ -104,7 +104,7 @@ export class CryptoComponent implements OnInit {
       infoCrypto.subscribe(response => {
         console.log(response);
         this.dataUsd['name'] = response['name'];
-        this.dataUsd['id'] = response['id'];
+        this.dataUsd.id = response['id'];
         this.dataUsd['year'] = response['year'];
         this.dataUsd['algo'] = response['algo'];
         this.dataUsd['desc'] = response['desc'];
