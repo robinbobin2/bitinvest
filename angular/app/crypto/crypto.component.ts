@@ -11,21 +11,25 @@ import {AddCommentService} from '../add-comment.service';
 import {StocksService} from '../stocks.service';
 
 export interface CryptoData {
-  id: number
-  sym: string;
+
   last: number;
   now: number;
   min:number;
   max: number;
   value:number;
-  year: number;
-  algo: string;
+  
   week: number;
   day: number;
+
+
+}
+export interface PositionData {
   name: string;
   desc: string;
-
-
+  year: number;
+  algo: string;
+  id: number;
+  sym: string;
 }
 export class User {  
   id:number;
@@ -62,6 +66,7 @@ export class Stock {
 export class CryptoComponent implements OnInit {
   comments: CommentRaw[] = [];
   dataUsd: CryptoData;
+  data: PositionData;
   user: User = {
       id:0,
       name: '',
@@ -94,15 +99,12 @@ export class CryptoComponent implements OnInit {
     const info = this.http.get<CryptoData>(path);
       info.subscribe(response => {
         this.dataUsd = response;
-        this.dataUsd.sym = symbol;
         console.log(this.dataUsd);
       });
     let infoCryptoPath = "/allcrypto/"+symbol;
-    const infoCrypto = this.http.get<CryptoData>(infoCryptoPath);
+    const infoCrypto = this.http.get<PositionData>(infoCryptoPath);
       infoCrypto.subscribe(response => {
-        console.log(response)
-        console.log(response.id);
-        this.dataUsd = response;
+        this.data = response;
         for(let item of response['comments']) {
           this.comments.push({ 
               id: item.id,
@@ -130,13 +132,13 @@ export class CryptoComponent implements OnInit {
       );
   }
 
-  submitComment(form: NgForm, type) {
+  submitComment(form: NgForm,post_id, type) {
 
     const headers = new HttpHeaders({'Content-type': 'Application/json '});
     this.http.post('/storecomment', {
-            'post_id': this.dataUsd.id,
+            'post_id': post_id,
             'body': form.value.body,
-            'commentable_id': this.dataUsd.id,
+            'commentable_id': post_id,
             'commentable_type': type
       }, {headers: headers}).subscribe(
         (response) => 

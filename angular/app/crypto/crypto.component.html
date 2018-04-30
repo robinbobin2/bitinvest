@@ -2,7 +2,7 @@
     <div class="wrapper">
       <a routerLink="/cryptocurrency/all" class="return"><span>&#60;</span>Вернуться к списку криптовалют</a>
       <div class="currency">
-        <h2>{{dataUsd?.sym}}/USD - {{dataUsd?.name}} Доллар США</h2>
+        <h2>{{data?.sym}}/USD - {{data?.name}} Доллар США</h2>
         <ul>
           <li class="active"><a href="#">USD</a></li><!-- 
           <li><a href="#">EUR</a></li>
@@ -34,7 +34,7 @@
           <li><span>Дневной диапазон</span><span><span class="red">{{dataUsd?.min | number:'1.0-1'}}</span> <span class="black">/</span> <span class="green">{{dataUsd?.max | number:'1.0-1'}}</span></span>
           </li>
           <li><span>Капитализация</span><span class="black">$ 95 113 177 098</span></li>
-          <li><span>Алгоритм</span><span class="black">{{dataUsd?.algo}}</span></li>
+          <li><span>Алгоритм</span><span class="black">{{data?.algo}}</span></li>
           <li><span>Всего монет / Получено</span><span class="black">21 000 000 000 / 89 000 891 (52%)</span></li>
         </ul>
       </div>
@@ -57,12 +57,12 @@
           <div class="tab-content active">
             <div class="overview-content">
               <div class="overview-block">
-                <h3>{{dataUsd?.sym}}/USD График криптовалюты</h3>
+                <h3>{{data?.sym}}/USD График криптовалюты</h3>
                 <app-chart></app-chart>
               </div>
               <div class="overview-table-wrap">
                 <div class="overview-title-block">
-                  <h2>Котировки {{dataUsd?.sym}}/USD на различных биржах</h2>
+                  <h2>Котировки {{data?.sym}}/USD на различных биржах</h2>
                 </div>
                 <table>
                   <thead>
@@ -116,7 +116,7 @@
               </div>
               <div class="comment-top"  *ngIf="user.id">
                 <h3>Добавить новый комментарий</h3>
-                <form (ngSubmit)="submitComment(f, 'App\\CryptoStat')" #f="ngForm">
+                <form (ngSubmit)="submitComment(f,data.id, 'App\\CryptoStat')" #f="ngForm">
                                     <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
                                     <input type="hidden" ngModel name="type" value="App\CryptoStat">
                                     <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
@@ -158,11 +158,11 @@
 
           <div class="tab-content">
             <div class="overview-block">
-              <h3>Потоковый график {{dataUsd?.sym}}/USD</h3>
+              <h3>Потоковый график {{data?.sym}}/USD</h3>
               <app-chart></app-chart>
             </div>
             <div class="overview-block overview-block-2">
-              <h3>Интерактивный график {{dataUsd?.sym}}/USD</h3>
+              <h3>Интерактивный график {{data?.sym}}/USD</h3>
               <app-chart></app-chart>
             </div>
           </div>
@@ -418,7 +418,7 @@
               </div>
               <div class="comment-top"  *ngIf="user.id">
                 <h3>Добавить новый комментарий</h3>
-                  <form (ngSubmit)="submitComment(f, 'App\\CryptoStat')" #f="ngForm">
+                  <form (ngSubmit)="submitComment(f,data.id, 'App\\CryptoStat')" #f="ngForm">
                                     <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
                                     <input type="hidden" ngModel name="type" value="App\CryptoStat">
                                     <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
@@ -701,16 +701,16 @@
           </div>
 
           <div class="tab-content description-content">
-            <h2>Описание {{dataUsd?.sym}} ({{dataUsd?.name}})</h2>
-            <div [innerHTML]='dataUsd?.desc'></div>
+            <h2>Описание {{data?.sym}} ({{dataUsd?.name}})</h2>
+            <div [innerHTML]='data?.desc'></div>
           </div>
 
         </div>
       </div>
       <aside class="sidebar">
         <div class="description">
-          <h5 class="titles">Описание {{dataUsd?.sym}} ({{dataUsd?.name}})</h5>
-          <div [innerHTML]='dataUsd?.desc'></div>
+          <h5 class="titles">Описание {{data?.sym}} ({{data?.name}})</h5>
+          <div [innerHTML]='data?.desc'></div>
             <br> <p><a href="#">Подробнее</a><p>
         </div>
         <div class="quotes">
