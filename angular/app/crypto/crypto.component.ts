@@ -93,7 +93,8 @@ export class CryptoComponent implements OnInit {
     let path = "/bit/pair?pair="+symbol+"/USDT";
     const info = this.http.get<CryptoData>(path);
       info.subscribe(response => {
-        this.dataUsd = response;
+        this.dataUsd.min = response.min;
+        this.dataUsd.max = response.max;
         this.dataUsd.sym = symbol;
         console.log(this.dataUsd);
       });

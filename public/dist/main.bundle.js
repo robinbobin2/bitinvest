@@ -2316,7 +2316,8 @@ var CryptoComponent = (function () {
         var path = "/bit/pair?pair=" + symbol + "/USDT";
         var info = this.http.get(path);
         info.subscribe(function (response) {
-            _this.dataUsd = response;
+            _this.dataUsd.min = response.min;
+            _this.dataUsd.max = response.max;
             _this.dataUsd.sym = symbol;
             console.log(_this.dataUsd);
         });
