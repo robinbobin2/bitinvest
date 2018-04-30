@@ -2320,7 +2320,7 @@ var CryptoComponent = (function () {
             _this.dataUsd.sym = symbol;
             console.log(_this.dataUsd);
         });
-        var infoCryptoPath = "/allcrypto/" + symbol;
+        var infoCryptoPath = "/allcrypto/" + this.dataUsd.sym;
         var infoCrypto = this.http.get(infoCryptoPath);
         infoCrypto.subscribe(function (response) {
             _this.dataUsd.name = response['name'];
