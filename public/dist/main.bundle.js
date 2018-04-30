@@ -2317,20 +2317,19 @@ var CryptoComponent = (function () {
         var info = this.http.get(path);
         info.subscribe(function (response) {
             _this.dataUsd = response;
-            _this.dataUsd['sym'] = symbol;
+            _this.dataUsd.sym = symbol;
             console.log(_this.dataUsd);
         });
         var infoCryptoPath = "/allcrypto/" + symbol;
-        console.log(infoCryptoPath);
         var infoCrypto = this.http.get(infoCryptoPath);
-        console.log(infoCrypto);
         infoCrypto.subscribe(function (response) {
             console.log(response);
-            _this.dataUsd['name'] = response['name'];
+            console.log(response.id);
+            _this.dataUsd.name = response['name'];
             _this.dataUsd.id = response['id'];
-            _this.dataUsd['year'] = response['year'];
-            _this.dataUsd['algo'] = response['algo'];
-            _this.dataUsd['desc'] = response['desc'];
+            _this.dataUsd.year = response['year'];
+            _this.dataUsd.algo = response['algo'];
+            _this.dataUsd.desc = response['desc'];
             for (var _i = 0, _a = response['comments']; _i < _a.length; _i++) {
                 var item = _a[_i];
                 _this.comments.push({
