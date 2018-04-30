@@ -94,17 +94,17 @@ export class CryptoComponent implements OnInit {
     const info = this.http.get<CryptoData>(path);
       info.subscribe(response => {
         this.dataUsd = response;
-        this.dataUsd.sym = symbol;
+        this.dataUsd['sym'] = symbol;
         console.log(this.dataUsd);
       });
-    let infoCryptoPath = "/allcrypto/"+this.dataUsd.sym;
+    let infoCryptoPath = "/allcrypto/"+symbol;
     const infoCrypto = this.http.get<CryptoData>(infoCryptoPath);
       infoCrypto.subscribe(response => {
-        this.dataUsd.name = response['name'];
-        this.dataUsd.id = response['id'];
-        this.dataUsd.year = response['year'];
-        this.dataUsd.algo = response['algo'];
-        this.dataUsd.desc = response['desc'];
+        this.dataUsd['name'] = response['name'];
+        this.dataUsd['id'] = response['id'];
+        this.dataUsd['year'] = response['year'];
+        this.dataUsd['algo'] = response['algo'];
+        this.dataUsd['desc'] = response['desc'];
         for(let item of response['comments']) {
           this.comments.push({ 
               id: item.id,
