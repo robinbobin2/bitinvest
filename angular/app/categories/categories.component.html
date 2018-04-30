@@ -21,7 +21,7 @@
                   </div>
                 </div>
                 <div class="text">
-                  <p [innerHTML]="item.desc"> </p><a routerLink="/posts/post/{{item.id}}">Подробнее</a>
+                  <p>{{item.desc | striphtml |excerpt:80}}  <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
                 </div>
               </div>
             </div>
@@ -37,6 +37,9 @@
                   <h3>
                     <a routerLink="/posts/post/{{item.id}}">{{item.title}}</a>
                   </h3>
+                </div>
+                <div class="text2">
+                  <p>{{item.desc | striphtml |excerpt:80}}</p>
                 </div>
               </div>
             </div>
