@@ -70,11 +70,12 @@ order: string = '';
   checkPortfolio = false;
   removed = false;
   show = false;
+  portfolioInfo:any;
    constructor(private authService: AuthService, private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
    	let path = "/miningraw";
      let portfolioUrl = '/angular/userportfolio';
-     const portfolioInfo = http.get<any>(portfolioUrl);
-     portfolioInfo.subscribe(
+     this.portfolioInfo = http.get<any>(portfolioUrl);
+     this.portfolioInfo.subscribe(
        response => {
          if(response['error']) {
            // code...
@@ -171,7 +172,18 @@ order: string = '';
     const removeUrl = '/angular/userportfolio/remove/';
     const removePost = this.http.get(removeUrl+id);
     removePost.subscribe(
-      response => this.removed = true,
+      response => {
+        this.portfolioInfo.subscribe(res=>{
+          if(res['error']) {
+           // code...
+         } else {
+         this.portfoliosInfo = res['mining'];
+         console.log(this.portfoliosInfo);
+         }
+       }),
+        this.checkInPortfolio(id);
+
+      },
       error => console.log(error)
     )
   }

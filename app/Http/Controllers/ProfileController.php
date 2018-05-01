@@ -101,6 +101,14 @@ class ProfileController extends Controller
             return abort(401);
         }
     }
+    public function lostPassword(Request $request)
+    {
+        if (User::where('email', $request->email)->firstOrFail()) {            # code...
+            return response(200);
+        } else {
+            return abort(401);
+        }
+    }
 
     /**
      * @param Request $request

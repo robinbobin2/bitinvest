@@ -50,15 +50,7 @@ export class CommentRaw {
   commentable_id:number;
   photo:string;
 }
-export class Stock {
-  exchangeId: number;
-  volume: number;
-  value: number;
-  percent:number;
-  bid:number;
-  ask: number;
-  currency: string;
-}
+
 @Component({
   selector: 'app-crypto',
   templateUrl: './crypto.component.html',
@@ -79,7 +71,7 @@ export class CryptoComponent implements OnInit {
 
   }; 
   commentcount = 0;
-  stocks: Stock[] = [];
+  stocks=[];
   main_news: any;
   news: any;
   constructor(private http:HttpClient,public stocksServise:StocksService, private router:Router, private route:ActivatedRoute, 

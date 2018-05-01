@@ -50,9 +50,9 @@
                     <span [ngStyle]="{'width':item.percentage+'%'}"></span>
                     <p>Депозит: <b>{{item.depo}}$ ({{item.percentage}}%)</b></p>
                   </div>
-                  <a href="#follow-popup" *ngIf="!checkInPortfolio(item.id) || removed==true" (click)="selectedItem = item" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+                  <a href="#follow-popup" *ngIf="!checkInPortfolio(item.id)" (click)="selectedItem = item" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
 
-                  <a  class="follow"  *ngIf="checkInPortfolio(item.id) || removed==false"  (click)="removePortfolio(item.id)"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
+                  <a  class="follow"  *ngIf="checkInPortfolio(item.id)"  (click)="removePortfolio(item.id)"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
                 </div>
               </div>
             </div>

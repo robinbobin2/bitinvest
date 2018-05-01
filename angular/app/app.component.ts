@@ -45,7 +45,8 @@ export class AppComponent implements OnInit {
   lostPass: LostPass;
   registration: Registration;
   user: User;
- 
+  lostPassSuccess = false;
+   errorLostPass = '';
 	constructor(public auth: AuthService, private http:HttpClient, 
     private router:Router, private activatedRoute: ActivatedRoute) {
 	
@@ -98,8 +99,11 @@ checkAuth() {
   	this.lostPass = {
   		email: form.value.email
   	}
-    console.log(this.lostPass);
-      form.reset();
+    this.http.post('/profile/restorepass', this.lostPass, {headers: headers}).subscribe(
+        (response) => this.lostPassSuccess = true,
+        (error) => {console.log(error); 
+          this.errorLostPass = 'Данного email-адреса нет в базе';}
+      );
   }
   checkUser() {
     // console.log(this.user.error);

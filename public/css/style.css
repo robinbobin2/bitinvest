@@ -4918,4 +4918,6 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
     line-height: 22px;
   }
 }
-
+.trust {
+  cursor: pointer;
+}

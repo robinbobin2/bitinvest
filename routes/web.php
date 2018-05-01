@@ -134,6 +134,7 @@ Route::get('/bit/info', "BitController@info");
 Route::post('/profile/register', "ProfileController@register");
 Route::get('/profile/delete/{id}', "ProfileController@delete");
 Route::post('/profile/login', "ProfileController@login");
+Route::post('/profile/restorepass', "ProfileController@lostPassword");
 Route::get('/profile/edit/{id}', "ProfileController@edit");
 // Route::get('/crypto/XRP', "AngularController@serve");
 
