@@ -2323,13 +2323,13 @@ var CryptoComponent = (function () {
             console.log(_this.stocks);
         });
         var path = "/bit/pair?pair=" + symbol + "/USDT";
-        var info = this.http.get(path);
+        var info = this.http.get(path).publishReplay(1).refCount();
         info.subscribe(function (response) {
             _this.dataUsd = response;
             console.log(_this.dataUsd);
         });
         var infoCryptoPath = "/allcrypto/" + symbol;
-        var infoCrypto = this.http.get(infoCryptoPath);
+        var infoCrypto = this.http.get(infoCryptoPath).publishReplay(1).refCount();
         infoCrypto.subscribe(function (response) {
             _this.data = response;
             for (var _i = 0, _a = response['comments']; _i < _a.length; _i++) {
@@ -2345,7 +2345,7 @@ var CryptoComponent = (function () {
             }
             _this.commentcount = response['comments_count'];
             var newsUrl = "/postsbycat/" + _this.data.cat_id_news;
-            var newsInfo = _this.http.get(newsUrl);
+            var newsInfo = _this.http.get(newsUrl).publishReplay(1).refCount();
             newsInfo.subscribe(function (response) {
                 _this.main_news = response['main_news'];
                 _this.news = response['news'];

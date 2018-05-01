@@ -93,13 +93,13 @@ export class CryptoComponent implements OnInit {
 
     
     let path = "/bit/pair?pair="+symbol+"/USDT";
-    const info = this.http.get<CryptoData>(path);
+    const info = this.http.get<CryptoData>(path).publishReplay(1).refCount();
       info.subscribe(response => {
         this.dataUsd = response;
         console.log(this.dataUsd);
       });
     let infoCryptoPath = "/allcrypto/"+symbol;
-    const infoCrypto = this.http.get<PositionData>(infoCryptoPath);
+    const infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
       infoCrypto.subscribe(response => {
         this.data = response;
         for(let item of response['comments']) {
@@ -116,7 +116,7 @@ export class CryptoComponent implements OnInit {
         }
       this.commentcount = response['comments_count'];
       let newsUrl = "/postsbycat/"+this.data.cat_id_news;
-        let newsInfo = this.http.get<any>(newsUrl);
+        let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
          newsInfo.subscribe(response => {
         this.main_news = response['main_news'];
        this.news = response['news'];
