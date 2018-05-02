@@ -54,6 +54,10 @@ class Rabbit extends Command
         $channel->basic_consume('rpc_queue', '', false, false, false, false, [$this, 'callback']);
 
         while (count($channel->callbacks)) {
+            if ($this->timeToLeave()) {
+                exec("screen -d -m -S my_bg_session php /var/www/bit/artisan rabbit:start");
+                die();
+            }
             $channel->wait();
         }
 

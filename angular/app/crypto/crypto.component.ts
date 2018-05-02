@@ -84,7 +84,9 @@ export class CryptoComponent implements OnInit {
   ngOnInit() {
 
     let symbol = this.route.snapshot.params['sym'];
-    console.log('stocks');
+    if(localStorage.getItem(symbol)) {
+      this.dataUsd = JSON.parse(localStorage.getItem(symbol));
+    }
     this.stocksServise.getStocks(symbol+'/USDT')
     .subscribe(response => {
         this.stocks = response;
@@ -110,7 +112,7 @@ export class CryptoComponent implements OnInit {
         this.dataUsd.value = response['value'];
         this.dataUsd.week = response['week'];
         this.dataUsd.day = response['day'];
-        console.log(this.dataUsd);
+        localStorage.setItem(symbol, JSON.stringify(this.dataUsd))
       });
 
     });
@@ -174,7 +176,5 @@ export class CryptoComponent implements OnInit {
       console.log(form);
       this.commentcount=this.commentcount+1;
   }
-ngOnDestroy() {
-  this.obs.unsubscribe();
-}
+
 }

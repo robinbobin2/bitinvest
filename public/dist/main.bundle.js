@@ -517,6 +517,16 @@ var AppComponent = (function () {
         this.http = http;
         this.router = router;
         this.activatedRoute = activatedRoute;
+        this.user = {
+            id: 0,
+            name: '',
+            email: '',
+            photo_id: 0,
+            role_id: 0,
+            telegram: '',
+            photo: 0,
+            error: 0,
+        };
         this.loginError = '';
         this.lostPassSuccess = false;
         this.errorLostPass = '';
@@ -685,6 +695,7 @@ var _a, _b, _c, _d;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__safe_html_pipe__ = __webpack_require__("./angular/app/safe-html.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__striphtml_pipe__ = __webpack_require__("./angular/app/striphtml.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__excerpt_pipe__ = __webpack_require__("./angular/app/excerpt.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__ = __webpack_require__("./angular/app/sidebar-resolver.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -702,6 +713,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // import { MarketsComponent } from './markets/markets.component';
+
 
 
 
@@ -929,7 +941,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCheckboxModule */],
             __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */], __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -1974,7 +1986,7 @@ var _a;
 /***/ "./angular/app/crypto-all/crypto-all.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\t<h1>{{dataUsd.sym}}</h1>\n\t<section class=\"crypto-active\">\n\t\t<div class=\"wrapper\">\n\t\t\t<div class=\"select-block\">\n\t\t\t\t<a href=\"#\"><h3>Криптовалюты</h3></a>\n\t\t\t\t<div class=\"filters\">\n\t\t\t\t\t<form>\n\t\t\t\t\t\t<div class=\"select-wrap\">\n\t\t\t\t\t\t\t<select>\n\t\t\t\t\t\t\t\t<option value=\"all\">Валюта: Любая</option>\n\t\t\t\t\t\t\t\t<option value=\"usd\">Валюта: USD</option>\n\t\t\t\t\t\t\t\t<option value=\"eur\">Валюта: EUR</option>\n\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"select-wrapper1\" id=\"select-algo\">\n\t\t\t\t\t     <div class=\"select\">\n\t\t\t\t\t      <span class=\"text\"><span style=\"padding-top: 12px;\">{{algorithm !='' ? algorithm : 'Алгоритм: Все'}}</span></span>\n\t\t\t\t\t      <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n\t\t\t\t\t     </div>\n\t\t\t\t\t     <ul class=\"select-items\">\n\t\t\t\t\t     \t<li (click)=\"algorithm=''\"> <a >Алгоритм: Все</a></li>\n\t\t\t\t\t      <li *ngFor=\"let data of dataUsd\" (click)=\"algorithm=data.algo\"><a >Алгоритм: {{data.algo}}</a></li>\n\t\t\t\t\t      <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n\t\t\t\t\t     </ul>\n\t\t\t\t\t    </div><!-- \n\t\t\t\t\t\t<div class=\"select-wrap\">\n\t\t\t\t\t\t\t<select>\n\t\t\t\t\t\t\t\t<option value=\"all\">Алгоритм: Все</option>\n\t\t\t\t\t\t\t\t<option value=\"SHA-256\">Алгоритм: SHA-256</option>\n\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t</div> -->\n\t\t\t\t\t\t<!-- <div class=\"select-wrap\">\n\t\t\t\t\t\t\t<select [(ngModel)]=\"age\" name=\"age\">\n\t\t\t\t\t\t\t\t<option [value]=\"\">Возраст: Любой</option>\n\t\t\t\t\t\t\t\t<option *ngFor=\"let data of dataUsd\" [ngValue]=\"data.year\">Возраст: {{data.year}}</option>\n\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t</div> -->\n\t\t\t\t\t\t<div class=\"select-wrapper1\" id=\"select-age\">\n\t\t\t\t\t     <div class=\"select\">\n\t\t\t\t\t      <span class=\"text\"><span style=\"padding-top: 12px;\">{{age !='' ? age : 'Возраст: Все'}}</span></span>\n\t\t\t\t\t      <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n\t\t\t\t\t     </div>\n\t\t\t\t\t     <ul class=\"select-items\">\n\t\t\t\t\t     \t<li (click)=\"age=''\"> <a >Возраст: Все</a></li>\n\t\t\t\t\t      <li *ngFor=\"let data of dataUsd\" (click)=\"age=data.year\"><a >Возраст: {{data.year}}</a></li>\n\t\t\t\t\t      <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n\t\t\t\t\t     </ul>\n\t\t\t\t\t    </div>\n\t\t\t\t\t\t<div class=\"select-wrap select-big\">\n\t\t\t\t\t\t\t<select>\n\t\t\t\t\t\t\t\t<option value=\"all\">Рейтинг: Лидер роста</option>\n\t\t\t\t\t\t\t\t<option value=\"all\">Рейтинг: Лидер роста</option>\n\t\t\t\t\t\t\t\t<option value=\"all\">Рейтинг: Лидер роста</option>\n\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<input type=\"text\" placeholder=\"Поиск по названию монеты...\" [(ngModel)]=\"filteredName\" name=\"filteredName\" value=\"\">\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"table-wrap\">\n\t\t\t\t<table class=\"table crypto-table\">\n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th width=\"4.4%\">\n\t\t\t\t\t\t\t\t<span>#</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th [class.active]=\"order === 'sym'\"\n                      \t\t\t(click)=\"setOrder('sym')\"\n                      \t\t\t width=\"12.9%\">\n\t\t\t\t\t\t\t\t<span>Название</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th [class.active]=\"order === 'now'\"\n                      \t\t\t(click)=\"setOrder('now')\"\n                      \t\t\twidth=\"10%\">\n\t\t\t\t\t\t\t\t<span>Стоимость</span>\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th\n\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t width=\"10.8%\">\n\t\t\t\t\t\t\t\t<span>Капитализация</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th \n                      \t\t\twidth=\"11.2%\">\n\t\t\t\t\t\t\t\t<span>Всего / Получено</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th [class.active]=\"order === 'value'\"\n                      \t\t\t(click)=\"setOrder('value')\"\n\t\t\t\t\t\t\t\n                      \t\t\twidth=\"8.4%\">\n\t\t\t\t\t\t\t\t<span>Торги (24ч)</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th \n\t\t\t\t\t\t\t[class.active]=\"order === 'algo'\"\n                      \t\t\t(click)=\"setOrder('algo')\"\n                      \t\t\twidth=\"6.3%\">\n\t\t\t\t\t\t\t\t<span>Алгоритм</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th [class.active]=\"order === 'year'\"\n                      \t\t\t(click)=\"setOrder('year')\"\n                      \t\t\twidth=\"4.7%\">\n\t\t\t\t\t\t\t\t<span>Год</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th \n                      \t\t\twidth=\"11%\">\n\t\t\t\t\t\t\t\t<span>Изм. за 24ч</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th \n                      \t\t\twidth=\"20.3%\">\n\t\t\t\t\t\t\t\t<span>Изм. за 7д</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody>\n\n\t\t\t\t\t\t<tr *ngFor=\"let data of dataUsd | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index\">\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span>{{i+1}}</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t\t\t<!-- <img src=\"img/bitcoin-icon.png\" alt=\"\"> -->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<span>{{data.sym}}<!-- Bitcoin (BTC) --></span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"price\">${{data.now | number: '1.2'}}</span>\n\t\t\t\t\t\t\t\t<span class=\"change\">({{data.now - data.last | number: '1.2'}})</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"capitalization\"></span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"total\"></span>\n\t\t\t\t\t\t\t\t<!-- <span class=\"received\">890 910</span> -->\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"bargaining\">${{data.value | number: '1.2'}}</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"algorithm\">{{data.algo}}</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"year\">{{data.year}}</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span [ngClass]=\"isNegative(data.day)==true ? 'change-red' : 'change-green'\">{{data.day | percent}}</span>\n\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<div class=\"difference\">\n\t\t\t\t\t\t\t\t\t<span [ngClass]=\"isNegative(data.week)==true ? 'change-red' : 'change-green'\">{{ data.week | percent}}</span>\n\t\t\t\t\t\t\t\t\t<div class=\"buttons\">\n\t\t\t\t\t\t\t\t\t\t<button class=\"right\"><a [routerLink]=\"['/crypto', data.sym]\">></a></button>\n\t\t\t\t\t\t\t\t\t\t<button class=\"plus\">+</button>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr class=\"hidden\">\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span>122</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t\t\t<img src=\"img/bitcoin-icon.png\" alt=\"\">\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<span>Bitcoin (BTC)</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"price\">$9,200</span>\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"capitalization\">$95,113,177,098</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"total\">21 000 000 000</span>\n\t\t\t\t\t\t\t\t<span class=\"received\">890 910</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"bargaining\">$95,113,177</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"algorithm\">SHA-256</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"year\">2009</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"change-green\">+ 3,5% (+200,09)</span>\n\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<div class=\"difference\">\n\t\t\t\t\t\t\t\t\t<span class=\"change-red\">-2,3% (-201,11)</span>\n\t\t\t\t\t\t\t\t\t<div class=\"buttons\">\n\t\t\t\t\t\t\t\t\t\t<button class=\"right\">></button>\n\t\t\t\t\t\t\t\t\t\t<button class=\"plus\">+</button>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t</table>\n\t\t\t</div>\n\t\t\t<!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n\t\t</div>\n\t</section>"
+module.exports = "\t<h1>{{dataUsd.sym}}</h1>\n\t<section class=\"crypto-active\">\n\t\t<div class=\"wrapper\">\n\t\t\t<div class=\"select-block\">\n\t\t\t\t<a href=\"#\"><h3>Криптовалюты</h3></a>\n\t\t\t\t<div class=\"filters\">\n\t\t\t\t\t<form>\n\t\t\t\t\t\t<div class=\"select-wrap\">\n\t\t\t\t\t\t\t<select>\n\t\t\t\t\t\t\t\t<option value=\"all\">Валюта: Любая</option>\n\t\t\t\t\t\t\t\t<option value=\"usd\">Валюта: USD</option>\n\t\t\t\t\t\t\t\t<option value=\"eur\">Валюта: EUR</option>\n\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"select-wrapper1\" id=\"select-algo\">\n\t\t\t\t\t     <div class=\"select\">\n\t\t\t\t\t      <span class=\"text\"><span style=\"padding-top: 12px;\">{{algorithm !='' ? algorithm : 'Алгоритм: Все'}}</span></span>\n\t\t\t\t\t      <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n\t\t\t\t\t     </div>\n\t\t\t\t\t     <ul class=\"select-items\">\n\t\t\t\t\t     \t<li (click)=\"algorithm=''\"> <a >Алгоритм: Все</a></li>\n\t\t\t\t\t      <li *ngFor=\"let data of dataUsd\" (click)=\"algorithm=data?.algo\"><a >Алгоритм: {{data?.algo}}</a></li>\n\t\t\t\t\t      <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n\t\t\t\t\t     </ul>\n\t\t\t\t\t    </div><!-- \n\t\t\t\t\t\t<div class=\"select-wrap\">\n\t\t\t\t\t\t\t<select>\n\t\t\t\t\t\t\t\t<option value=\"all\">Алгоритм: Все</option>\n\t\t\t\t\t\t\t\t<option value=\"SHA-256\">Алгоритм: SHA-256</option>\n\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t</div> -->\n\t\t\t\t\t\t<!-- <div class=\"select-wrap\">\n\t\t\t\t\t\t\t<select [(ngModel)]=\"age\" name=\"age\">\n\t\t\t\t\t\t\t\t<option [value]=\"\">Возраст: Любой</option>\n\t\t\t\t\t\t\t\t<option *ngFor=\"let data of dataUsd\" [ngValue]=\"data?.year\">Возраст: {{data?.year}}</option>\n\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t</div> -->\n\t\t\t\t\t\t<div class=\"select-wrapper1\" id=\"select-age\">\n\t\t\t\t\t     <div class=\"select\">\n\t\t\t\t\t      <span class=\"text\"><span style=\"padding-top: 12px;\">{{age !='' ? age : 'Возраст: Все'}}</span></span>\n\t\t\t\t\t      <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n\t\t\t\t\t     </div>\n\t\t\t\t\t     <ul class=\"select-items\">\n\t\t\t\t\t     \t<li (click)=\"age=''\"> <a >Возраст: Все</a></li>\n\t\t\t\t\t      <li *ngFor=\"let data of dataUsd\" (click)=\"age=data?.year\"><a >Возраст: {{data?.year}}</a></li>\n\t\t\t\t\t      <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n\t\t\t\t\t     </ul>\n\t\t\t\t\t    </div>\n\t\t\t\t\t\t<div class=\"select-wrap select-big\">\n\t\t\t\t\t\t\t<select>\n\t\t\t\t\t\t\t\t<option value=\"all\">Рейтинг: Лидер роста</option>\n\t\t\t\t\t\t\t\t<option value=\"all\">Рейтинг: Лидер роста</option>\n\t\t\t\t\t\t\t\t<option value=\"all\">Рейтинг: Лидер роста</option>\n\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<input type=\"text\" placeholder=\"Поиск по названию монеты...\" [(ngModel)]=\"filteredName\" name=\"filteredName\" value=\"\">\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"table-wrap\">\n\t\t\t\t<table class=\"table crypto-table\">\n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th width=\"4.4%\">\n\t\t\t\t\t\t\t\t<span>#</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th [class.active]=\"order === 'sym'\"\n                      \t\t\t(click)=\"setOrder('sym')\"\n                      \t\t\t width=\"12.9%\">\n\t\t\t\t\t\t\t\t<span>Название</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th [class.active]=\"order === 'now'\"\n                      \t\t\t(click)=\"setOrder('now')\"\n                      \t\t\twidth=\"10%\">\n\t\t\t\t\t\t\t\t<span>Стоимость</span>\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th\n\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t width=\"10.8%\">\n\t\t\t\t\t\t\t\t<span>Капитализация</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th \n                      \t\t\twidth=\"11.2%\">\n\t\t\t\t\t\t\t\t<span>Всего / Получено</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th [class.active]=\"order === 'value'\"\n                      \t\t\t(click)=\"setOrder('value')\"\n\t\t\t\t\t\t\t\n                      \t\t\twidth=\"8.4%\">\n\t\t\t\t\t\t\t\t<span>Торги (24ч)</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th \n\t\t\t\t\t\t\t[class.active]=\"order === 'algo'\"\n                      \t\t\t(click)=\"setOrder('algo')\"\n                      \t\t\twidth=\"6.3%\">\n\t\t\t\t\t\t\t\t<span>Алгоритм</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th [class.active]=\"order === 'year'\"\n                      \t\t\t(click)=\"setOrder('year')\"\n                      \t\t\twidth=\"4.7%\">\n\t\t\t\t\t\t\t\t<span>Год</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th \n                      \t\t\twidth=\"11%\">\n\t\t\t\t\t\t\t\t<span>Изм. за 24ч</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t<th \n                      \t\t\twidth=\"20.3%\">\n\t\t\t\t\t\t\t\t<span>Изм. за 7д</span>\n\t\t\t\t\t\t\t\t<img src=\"img/arr-top-table.png\" alt=\"\">\n\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody>\n\n\t\t\t\t\t\t<tr *ngFor=\"let data of dataUsd  | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index\">\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span>{{i+1}}</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t\t\t<!-- <img src=\"img/bitcoin-icon.png\" alt=\"\"> -->\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<span>{{data.sym}}<!-- Bitcoin (BTC) --></span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"price\">${{data.now | number: '1.2'}}</span>\n\t\t\t\t\t\t\t\t<span class=\"change\">({{data.now - data.last | number: '1.2'}})</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"capitalization\"></span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"total\"></span>\n\t\t\t\t\t\t\t\t<!-- <span class=\"received\">890 910</span> -->\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"bargaining\">${{data.value | number: '1.2'}}</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"algorithm\">{{data?.algo}}</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"year\">{{data?.year}}</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span [ngClass]=\"isNegative(data.day)==true ? 'change-red' : 'change-green'\">{{data.day | percent}}</span>\n\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<div class=\"difference\">\n\t\t\t\t\t\t\t\t\t<span [ngClass]=\"isNegative(data.week)==true ? 'change-red' : 'change-green'\">{{ data.week | percent}}</span>\n\t\t\t\t\t\t\t\t\t<div class=\"buttons\">\n\t\t\t\t\t\t\t\t\t\t<button class=\"right\"><a [routerLink]=\"['/crypto', data.sym]\">></a></button>\n\t\t\t\t\t\t\t\t\t\t<button class=\"plus\">+</button>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr class=\"hidden\">\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span>122</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t\t\t<img src=\"img/bitcoin-icon.png\" alt=\"\">\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<span>Bitcoin (BTC)</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"price\">$9,200</span>\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"capitalization\">$95,113,177,098</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"total\">21 000 000 000</span>\n\t\t\t\t\t\t\t\t<span class=\"received\">890 910</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"bargaining\">$95,113,177</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"algorithm\">SHA-256</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"year\">2009</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<span class=\"change-green\">+ 3,5% (+200,09)</span>\n\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<div class=\"difference\">\n\t\t\t\t\t\t\t\t\t<span class=\"change-red\">-2,3% (-201,11)</span>\n\t\t\t\t\t\t\t\t\t<div class=\"buttons\">\n\t\t\t\t\t\t\t\t\t\t<button class=\"right\">></button>\n\t\t\t\t\t\t\t\t\t\t<button class=\"plus\">+</button>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t</table>\n\t\t\t</div>\n\t\t\t<!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n\t\t</div>\n\t</section>"
 
 /***/ }),
 
@@ -1993,9 +2005,10 @@ module.exports = ".select-wrapper1 {\n  width: 144px;\n  position: relative;\n  
 /* unused harmony export Cripto */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CryptoAllComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2005,6 +2018,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 // import { interval } from 'rxjs/Observable/interval';
 
@@ -2031,67 +2045,6 @@ var CryptoAllComponent = (function () {
      * @param {OrderPipe} orderPipe
      */
     function CryptoAllComponent(orderPipe, http, router, route) {
-        var _this = this;
-        this.orderPipe = orderPipe;
-        this.http = http;
-        this.router = router;
-        this.route = route;
-        // admin= new Array;
-        this.dataUsd = [];
-        this.order = 'sym';
-        this.algorithm = '';
-        this.age = '';
-        this.reverse = false;
-        var alldata = http.get('/allcrypto');
-        alldata.subscribe(function (response) {
-            // console.log(response);
-            var admin = response;
-            var _loop_1 = function () {
-                // console.log(this.admin[i].symbol);
-                var index = _i;
-                var symbol = admin[index].symbol;
-                var year = admin[index].year;
-                var algo = admin[index].algo;
-                var desc = 'DESC';
-                var path = "/bit/pair?pair=" + symbol + "/USDT";
-                var info = http.get(path);
-                info.subscribe(function (response) {
-                    console.log(response);
-                    //  var usd_data = response;
-                    _this.dataUsd[index] = {
-                        sym: '',
-                        last: 0,
-                        now: 0,
-                        min: 0,
-                        max: 0,
-                        value: 0,
-                        year: 0,
-                        algo: '',
-                        week: 0,
-                        day: 0,
-                    };
-                    _this.dataUsd[index].sym = symbol;
-                    _this.dataUsd[index].algo = algo;
-                    _this.dataUsd[index].year = year;
-                    _this.dataUsd[index].last = response['last'];
-                    _this.dataUsd[index].now = response['now'];
-                    _this.dataUsd[index].min = response['min'];
-                    _this.dataUsd[index].max = response['max'];
-                    _this.dataUsd[index].value = response['value'];
-                });
-                var bitpath = "/bit";
-                var bitinfo = http.get(bitpath);
-                bitinfo.subscribe(function (response) {
-                    // console.log(response);
-                    //  var usd_data = response;
-                    _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
-                    _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
-                });
-            };
-            for (var _i = 0; _i < admin.length; ++_i) {
-                _loop_1();
-            }
-        });
         // Observable.interval(1000).subscribe(wait => {
         // alldata.subscribe(response => {
         //   // console.log(response);
@@ -2119,6 +2072,16 @@ var CryptoAllComponent = (function () {
         //   });
         //   }
         // });
+        this.orderPipe = orderPipe;
+        this.http = http;
+        this.router = router;
+        this.route = route;
+        // admin= new Array;
+        this.dataUsd = [];
+        this.order = 'sym';
+        this.algorithm = '';
+        this.age = '';
+        this.reverse = false;
         // });
     }
     CryptoAllComponent.prototype.setOrder = function (value) {
@@ -2128,12 +2091,91 @@ var CryptoAllComponent = (function () {
         this.order = value;
     };
     CryptoAllComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (localStorage.getItem('data')) {
+            this.dataUsd = JSON.parse(localStorage.getItem('data'));
+            // console.log(this.dataUsd);
+        }
+        var alldata = this.http.get('/allcrypto');
+        this.data = alldata.subscribe(function (response) {
+            // console.log(response);
+            var admin = response;
+            var _loop_1 = function () {
+                // console.log(this.admin[i].symbol);
+                var index = _i;
+                var symbol = admin[index].symbol;
+                var year = admin[index].year;
+                var algo = admin[index].algo;
+                var desc = 'DESC';
+                var path = "/bit/pair?pair=" + symbol + "/USDT";
+                var info = _this.http.get(path);
+                if (localStorage.getItem('data')) {
+                }
+                else {
+                    _this.dataUsd[index] = {
+                        sym: '',
+                        last: 0,
+                        now: 0,
+                        min: 0,
+                        max: 0,
+                        value: 0,
+                        year: 0,
+                        algo: '',
+                        week: 0,
+                        day: 0,
+                    };
+                }
+                info.subscribe(function (response) {
+                    // console.log(response);
+                    //  var usd_data = response;
+                    _this.dataUsd[index].sym = symbol;
+                    _this.dataUsd[index].algo = algo;
+                    _this.dataUsd[index].year = year;
+                    _this.dataUsd[index].last = response['last'];
+                    _this.dataUsd[index].now = response['now'];
+                    _this.dataUsd[index].min = response['min'];
+                    _this.dataUsd[index].max = response['max'];
+                    _this.dataUsd[index].value = response['value'];
+                });
+                __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1400).take(50).subscribe(function (wait) {
+                    info.subscribe(function (response) {
+                        // console.log(response);
+                        //  var usd_data = response;
+                        _this.dataUsd[index].sym = symbol;
+                        _this.dataUsd[index].algo = algo;
+                        _this.dataUsd[index].year = year;
+                        _this.dataUsd[index].last = response['last'];
+                        _this.dataUsd[index].now = response['now'];
+                        _this.dataUsd[index].min = response['min'];
+                        _this.dataUsd[index].max = response['max'];
+                        _this.dataUsd[index].value = response['value'];
+                        localStorage.removeItem('data');
+                        localStorage.setItem('data', JSON.stringify(_this.dataUsd));
+                    });
+                });
+                var bitpath = "/bit";
+                var bitinfo = _this.http.get(bitpath);
+                bitinfo.subscribe(function (response) {
+                    // console.log(response);
+                    //  var usd_data = response;
+                    // localStorage.setItem('data', JSON.stringify(this.dataUsd));
+                    _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
+                    _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
+                });
+            };
+            for (var _i = 0; _i < admin.length; ++_i) {
+                _loop_1();
+            }
+        });
     };
     CryptoAllComponent.prototype.isNegative = function (now) {
         if ((parseInt(now)) >= 0) {
             return false;
         }
         return true;
+    };
+    CryptoAllComponent.prototype.ngOnDestroy = function () {
+        this.data.unsubscribe();
     };
     return CryptoAllComponent;
 }());
@@ -2143,7 +2185,7 @@ CryptoAllComponent = __decorate([
         template: __webpack_require__("./angular/app/crypto-all/crypto-all.component.html"),
         styles: [__webpack_require__("./angular/app/crypto-all/crypto-all.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
 ], CryptoAllComponent);
 
 var _a, _b, _c, _d;
@@ -2286,7 +2328,7 @@ module.exports = ".comment-block {\n  margin-top: 30px;\n}\n.comment-block .comm
 /***/ "./angular/app/crypto/crypto.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"single-top-block\" *ngIf=\"!is_logged\">\n    <div class=\"wrapper\">\n      <a routerLink=\"/cryptocurrency/all\" class=\"return\"><span>&#60;</span>Вернуться к списку криптовалют</a>\n      <div class=\"currency\">\n        <h2>{{data?.symbol}}/USD - {{data?.name}} Доллар США</h2>\n        <ul>\n          <li class=\"active\"><a href=\"#\">USD</a></li><!-- \n          <li><a href=\"#\">EUR</a></li>\n          <li><a href=\"#\">RUR</a></li> -->\n          <li>\n            <div id=\"select-currency\" class=\"select-wrap select-gray\">\n          <!--     <select>\n                <option value=\"all\">Еще</option>\n                <option value=\"gbp\">GBP</option>\n                <option value=\"gel\">GEL</option>\n              </select> -->\n            </div>\n          </li>\n          <li class=\"follow\"><a href=\"#follow-popup\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a></li>\n        </ul>\n      </div>\n      <div class=\"price-block\">\n        <div class=\"last-update\">\n          <div class=\"prices-wrap\">\n            <span class=\"black-price\">${{dataUsd?.now | number:'1.0-1'}}</span>\n            <span class=\"red-price\">{{dataUsd?.now - dataUsd?.last | number:'1.0-1'}}</span>\n            <span class=\"bg-price\">{{dataUsd?.now - dataUsd?.last | percent}}</span>\n          </div>\n          <p>Последнее обновление 1 сек. назад</p>\n        </div>\n        <ul>\n          <li><span>Объем за 24ч.</span><span class=\"black\">{{dataUsd?.value | number:'1.0-1'}}</span></li>\n          <li><span>Спрос / Предложение</span><span class=\"black\">6.203,3 / 6.206,0</span></li>\n          <li><span>Дневной диапазон</span><span><span class=\"red\">{{dataUsd?.min | number:'1.0-1'}}</span> <span class=\"black\">/</span> <span class=\"green\">{{dataUsd?.max | number:'1.0-1'}}</span></span>\n          </li>\n          <li><span>Капитализация</span><span class=\"black\">$ 95 113 177 098</span></li>\n          <li><span>Алгоритм</span><span class=\"black\">{{data?.algo}}</span></li>\n          <li><span>Всего монет / Получено</span><span class=\"black\">21 000 000 000 / 89 000 891 (52%)</span></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n\n\n  <section class=\"crypto-single-wrap\">\n    <div class=\"wrapper\">\n      <div class=\"crypto-single-content\">\n        <ul class=\"crypto-tab-menu\">\n          <li class=\"active\"><a href=\"#\">Обзор</a></li>\n          <li><a href=\"javascript:;\">График</a></li>\n          <li><a href=\"javascript:;\">Новости</a></li>\n          <li><a href=\"javascript:;\">Комментарии ({{commentcount}})</a></li>\n          <li><a href=\"javascript:;\">Аналитика</a></li>\n          <li><a href=\"javascript:;\">Описание</a></li>\n        </ul>\n        <div class=\"tab-content-wrap\">\n          <div class=\"tab-content active\">\n            <div class=\"overview-content\">\n              <div class=\"overview-block\">\n                <h3>{{data?.symbol}}/USD График криптовалюты</h3>\n                <app-chart></app-chart>\n              </div>\n              <div class=\"overview-table-wrap\">\n                <div class=\"overview-title-block\">\n                  <h2>Котировки {{data?.symbol}}/USD на различных биржах</h2>\n                </div>\n                <table>\n                  <thead>\n                    <tr>\n                      <th width=\"23%\"><span>Биржа</span></th>\n                      <th width=\"10%\"><span>Стоимост</span></th>\n                      <th width=\"10%\"><span>Спрос</span></th>\n                      <th width=\"15%\"><span>Предложение</span></th>\n                      <th width=\"15%\"><span>Объем за 24ч.</span></th>\n                      <th width=\"11%\"><span>Рост</span></th>\n                      <th width=\"16%\"><span>Обновлено</span></th>\n                    </tr>\n                  </thead>\n                  <tbody>\n                    <tr *ngFor=\"let stock of stocks\">\n                      <td>\n                        <a href=\"#\">\n                          <!-- <span class=\"img-wrap\"><img src=\"img/bitfinex-icon.png\" alt=\"\"></span> -->\n                          <span class=\"text\">{{stock.name}}</span>\n                        </a>\n                      </td>\n                      <td>\n                        <span class=\"cost cost-green\">${{stock.value | number:'1.0-1'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"demand\">${{stock.ask | number:'1.0-1'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"sentence\">${{stock.bid | number:'1.0-1'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"amount\">{{stock.volume | number:'1.0-1'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"growth-green\">${{stock.percent | number:'1.0-1'}}%</span>\n                      </td>\n                      <td>\n                        <span class=\"updated\">10.10.2017 в 12:56</span>\n                      </td>\n                    </tr>\n                    \n                  </tbody>\n                </table>\n                <!-- <a href=\"#\" class=\"show-exchange\">Показать все биржи (105)</a> -->\n              </div>\n            </div>\n            <div class=\"comment-block\">\n              <div class=\"comment-top\"  *ngIf=\"!user.id\">\n                <h3>Комментарии ({{commentcount}})</h3>\n                <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n              </div>\n              <div class=\"comment-top\"  *ngIf=\"user.id\">\n                <h3>Добавить новый комментарий</h3>\n                <form (ngSubmit)=\"submitComment(f,data.id, 'App\\\\CryptoStat')\" #f=\"ngForm\">\n                                    <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{dataUsd?.id}}\">\n                                    <input type=\"hidden\" ngModel name=\"type\" value=\"App\\CryptoStat\">\n                                    <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                                    <button type=\"submit\">Добавить</button>\n                </form>\n              </div>\n              <h3 class=\"total-comments\"  *ngIf=\"user.id\">Всего комментариев ({{commentcount}})</h3>\n              <ul class=\"comment-items\">\n                        <!--  -->\n                        <li *ngFor=\"let item of comments\">\n                            <div class=\"left\">\n                                <div class=\"info\">\n                                    <div class=\"img-wrap\">\n                                        <img src=\"img/comment-img2.jpg\" style=\"max-width: 35px; height: auto;\" alt=\"\">\n                                    </div>\n                                    <div class=\"text-wrap\">\n                                        <p>{{item.email}}</p>\n                                        <span>Добавлен </span>\n                                    </div>\n                                </div>\n                                <p class=\"comment-text\">{{item.body}}</p>\n                            </div>\n                            <div class=\"right\">\n                                <div class=\"img-wrap\"></div>\n                                <div class=\"btn-block\">\n                                    <span class=\"number-green\">0</span>\n                                    <div class=\"buttons\">\n                                        <a href=\"#\" class=\"plus\">+</a>\n                                        <a href=\"#\" class=\"minus\">-</a>\n                                    </div>\n                                </div>\n                            </div>\n                        </li>\n\n                    </ul>\n              <!-- <a href=\"#\" class=\"show-comments\">Показать все комментарии (22)</a> -->\n            </div>\n          </div>\n\n          <div class=\"tab-content\">\n            <div class=\"overview-block\">\n              <h3>Потоковый график {{data?.symbol}}/USD</h3>\n              <app-chart></app-chart>\n            </div>\n            <div class=\"overview-block overview-block-2\">\n              <h3>Интерактивный график {{data?.symbol}}/USD</h3>\n              <app-chart></app-chart>\n            </div>\n          </div>\n\n          <div class=\"tab-content news-wrapper\">\n              <div class=\"news-body\">\n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div class=\"news\" *ngFor=\"let item of main_news\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                  <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                    <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>0</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml | excerpt:140}}<a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div class=\"news\" *ngFor=\"let item of news\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                  <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <h3>\n                    <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                  </h3>\n                </div>\n                <div class=\"text2\">\n                <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n            </div>\n            </div>\n          </div>\n        </div>\n\n          <div class=\"tab-content comment-wrap\">\n            <div class=\"comment-block\">\n              <div class=\"comment-top\"  *ngIf=\"!user.id\">\n                <h3>Комментарии ({{commentcount}})</h3>\n                <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n              </div>\n              <div class=\"comment-top\"  *ngIf=\"user.id\">\n                <h3>Добавить новый комментарий</h3>\n                  <form (ngSubmit)=\"submitComment(f,data.id, 'App\\\\CryptoStat')\" #f=\"ngForm\">\n                                    <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{dataUsd?.id}}\">\n                                    <input type=\"hidden\" ngModel name=\"type\" value=\"App\\CryptoStat\">\n                                    <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                                    <button type=\"submit\">Добавить</button>\n                </form>\n              </div>\n              <h3 class=\"total-comments\"  *ngIf=\"user.id\">Всего комментариев ({{commentcount}})</h3>\n              <ul class=\"comment-items\">\n                        <!--  -->\n                        <li *ngFor=\"let item of comments\">\n                            <div class=\"left\">\n                                <div class=\"info\">\n                                    <div class=\"img-wrap\">\n                                        <img src=\"img/comment-img2.jpg\" style=\"max-width: 35px; height: auto;\" alt=\"\">\n                                    </div>\n                                    <div class=\"text-wrap\">\n                                        <p>{{item.email}}</p>\n                                        <span>Добавлен </span>\n                                    </div>\n                                </div>\n                                <p class=\"comment-text\">{{item.body}}</p>\n                            </div>\n                            <div class=\"right\">\n                                <div class=\"img-wrap\"></div>\n                                <div class=\"btn-block\">\n                                    <span class=\"number-green\">0</span>\n                                    <div class=\"buttons\">\n                                        <a href=\"#\" class=\"plus\">+</a>\n                                        <a href=\"#\" class=\"minus\">-</a>\n                                    </div>\n                                </div>\n                            </div>\n                        </li>\n\n                    </ul>\n            </div>\n          </div>\n\n          <div class=\"tab-content news-wrapper\">\n            <div class=\"news-body\">\n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div class=\"news\" *ngFor=\"let item of main_news\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                  <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                    <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>0</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml | excerpt:140}}<a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div class=\"news\" *ngFor=\"let item of news\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                  <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <h3>\n                    <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                  </h3>\n                </div>\n                <div class=\"text2\">\n                <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n            </div>\n            </div>\n          </div>\n          </div>\n\n          <div class=\"tab-content description-content\">\n            <h2>Описание {{data?.symbol}} ({{dataUsd?.name}})</h2>\n            <div [innerHTML]='data?.desc'></div>\n          </div>\n\n        </div>\n      </div>\n      <aside class=\"sidebar\">\n        <div class=\"description\">\n          <h5 class=\"titles\">Описание {{data?.symbol}} ({{data?.name}})</h5>\n          <div [innerHTML]='data?.desc'></div>\n            <br> <p><a href=\"#\">Подробнее</a><p>\n        </div>\n        <app-sidebar></app-sidebar>\n      </aside>\n    </div>\n  </section>\n\n\n\n\n\n<!-- <div class=\"container\">\n\t<h1 style=\"font-weight: bold\">Bitcoin</h1>\n\t<input checked=\"checked\" type=\"radio\" name=\"cur\" value=\"usd\" id=\"usd\"><label for=\"usd\">USD</label>\n\t<input type=\"radio\" name=\"cur\" value=\"rub\" id=\"rub\"><label for=\"rub\">RUB</label>\n\t<input type=\"radio\" name=\"cur\" value=\"eur\" id=\"eur\"><label for=\"eur\">EUR</label>\n\t<div class=\"rub\">\n\t<div class=\"row\">\n\t\t<div class=\"col-lg-12\">\n\t\t\t<h2>{{dataRub.price}}</h2><pre>{{dataRub.lastupdate}}</pre>\n\t\t</div>\t\n\t</div>\n\t<table class=\"table\">\n\t\t<thead><tr><th>Капитализация</th><th>Об. 24ч</th><th>Откр. 24ч</th><th>Low/High 24ч</th><th>Последняя сделка</th></tr></thead>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t{{dataRub.mktcap}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataRub.vol24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataRub.open24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataRub.low24hours}} / {{dataRub.high24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataRub.lasttrade}}\n\t\t\t</td>\n\t\t</tr>\n\t</table>\n\n</div>\n\n\t<div class=\"usd\">\n\t<div class=\"row\">\n\t\t<div class=\"col-lg-12\">\n\t\t\t<h2>{{dataUsd.price}}</h2><pre>{{dataUsd.lastupdate}}</pre>\n\t\t</div>\t\n\t</div>\n\t<table class=\"table\">\n\t\t<thead><tr><th>Капитализация</th><th>Об. 24ч</th><th>Откр. 24ч</th><th>Low/High 24ч</th><th>Последняя сделка</th></tr></thead>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t{{dataUsd.mktcap}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataUsd.vol24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataUsd.open24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataUsd.low24hours}} / {{dataUsd.high24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataUsd.lasttrade}}\n\t\t\t</td>\n\t\t</tr>\n\t</table>\n\n</div>\n\n\t<div class=\"eur\">\n\t<div class=\"row\">\n\t\t<div class=\"col-lg-12\">\n\t\t\t<h2>{{dataEur.price}}</h2><pre>{{dataEur.lastupdate}}</pre>\n\t\t</div>\t\n\t</div>\n\t<table class=\"table\">\n\t\t<thead><tr><th>Капитализация</th><th>Об. 24ч</th><th>Откр. 24ч</th><th>Low/High 24ч</th><th>Последняя сделка</th></tr></thead>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t{{dataEur.mktcap}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataEur.vol24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataEur.open24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataEur.low24hours}} / {{dataEur.high24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataEur.lasttrade}}\n\t\t\t</td>\n\t\t</tr>\n\t</table>\n\n</div>\n</div>\n<p>\n  \n</p>\n -->"
+module.exports = "<div class=\"single-top-block\" *ngIf=\"!is_logged\">\n    <div class=\"wrapper\">\n      <a routerLink=\"/cryptocurrency/all\" class=\"return\"><span>&#60;</span>Вернуться к списку криптовалют</a>\n      <div class=\"currency\">\n        <h2>{{data?.symbol}}/USD - {{data?.name}} Доллар США</h2>\n        <ul>\n          <li class=\"active\"><a href=\"#\">USD</a></li><!-- \n          <li><a href=\"#\">EUR</a></li>\n          <li><a href=\"#\">RUR</a></li> -->\n          <li>\n            <div id=\"select-currency\" class=\"select-wrap select-gray\">\n          <!--     <select>\n                <option value=\"all\">Еще</option>\n                <option value=\"gbp\">GBP</option>\n                <option value=\"gel\">GEL</option>\n              </select> -->\n            </div>\n          </li>\n          <li class=\"follow\"><a href=\"#follow-popup\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a></li>\n        </ul>\n      </div>\n      <div class=\"price-block\">\n        <div class=\"last-update\">\n          <div class=\"prices-wrap\">\n            <span class=\"black-price\">${{dataUsd?.now | number:'1.0-1'}}</span>\n            <span class=\"red-price\">{{dataUsd?.now - dataUsd?.last | number:'1.0-1'}}</span>\n            <span class=\"bg-price\">{{dataUsd?.now - dataUsd?.last | percent}}</span>\n          </div>\n          <p>Последнее обновление 1 сек. назад</p>\n        </div>\n        <ul>\n          <li><span>Объем за 24ч.</span><span class=\"black\">{{dataUsd?.value | number:'1.0-1'}}</span></li>\n          <li><span>Спрос / Предложение</span><span class=\"black\">6.203,3 / 6.206,0</span></li>\n          <li><span>Дневной диапазон</span><span><span class=\"red\">{{dataUsd?.min | number:'1.0-1'}}</span> <span class=\"black\">/</span> <span class=\"green\">{{dataUsd?.max | number:'1.0-1'}}</span></span>\n          </li>\n          <li><span>Капитализация</span><span class=\"black\">$ 95 113 177 098</span></li>\n          <li><span>Алгоритм</span><span class=\"black\">{{data?.algo}}</span></li>\n          <li><span>Всего монет / Получено</span><span class=\"black\">21 000 000 000 / 89 000 891 (52%)</span></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n\n\n  <section class=\"crypto-single-wrap\">\n    <div class=\"wrapper\">\n      <div class=\"crypto-single-content\">\n        <ul class=\"crypto-tab-menu\">\n          <li class=\"active\"><a href=\"#\">Обзор</a></li>\n          <li><a href=\"javascript:;\">График</a></li>\n          <li><a href=\"javascript:;\">Новости</a></li>\n          <li><a href=\"javascript:;\">Комментарии ({{commentcount}})</a></li>\n          <li><a href=\"javascript:;\">Аналитика</a></li>\n          <li><a href=\"javascript:;\">Описание</a></li>\n        </ul>\n        <div class=\"tab-content-wrap\">\n          <div class=\"tab-content active\">\n            <div class=\"overview-content\">\n              <div class=\"overview-block\">\n                <h3>{{data?.symbol}}/USD График криптовалюты</h3>\n                <app-chart></app-chart>\n              </div>\n              <div class=\"overview-table-wrap\">\n                <div class=\"overview-title-block\">\n                  <h2>Котировки {{data?.symbol}}/USD на различных биржах</h2>\n                </div>\n                <table>\n                  <thead>\n                    <tr>\n                      <th width=\"23%\"><span>Биржа</span></th>\n                      <th width=\"10%\"><span>Стоимост</span></th>\n                      <th width=\"10%\"><span>Спрос</span></th>\n                      <th width=\"15%\"><span>Предложение</span></th>\n                      <th width=\"15%\"><span>Объем за 24ч.</span></th>\n                      <th width=\"11%\"><span>Рост</span></th>\n                      <th width=\"16%\"><span>Обновлено</span></th>\n                    </tr>\n                  </thead>\n                  <tbody>\n                    <tr *ngFor=\"let stock of stocks\">\n                      <td>\n                        <a href=\"#\">\n                          <!-- <span class=\"img-wrap\"><img src=\"img/bitfinex-icon.png\" alt=\"\"></span> -->\n                          <span class=\"text\">{{stock.name}}</span>\n                        </a>\n                      </td>\n                      <td>\n                        <span class=\"cost cost-green\">${{stock.value | number:'1.0-1'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"demand\">${{stock.ask | number:'1.0-1'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"sentence\">${{stock.bid | number:'1.0-1'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"amount\">{{stock.volume | number:'1.0-1'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"growth-green\">${{stock.percent | number:'1.0-1'}}%</span>\n                      </td>\n                      <td>\n                        <span class=\"updated\">10.10.2017 в 12:56</span>\n                      </td>\n                    </tr>\n                    \n                  </tbody>\n                </table>\n                <!-- <a href=\"#\" class=\"show-exchange\">Показать все биржи (105)</a> -->\n              </div>\n            </div>\n            <div class=\"comment-block\">\n              <div class=\"comment-top\"  *ngIf=\"!user.id\">\n                <h3>Комментарии ({{commentcount}})</h3>\n                <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n              </div>\n              <div class=\"comment-top\"  *ngIf=\"user.id\">\n                <h3>Добавить новый комментарий</h3>\n                <form (ngSubmit)=\"submitComment(f,data.id, 'App\\\\CryptoStat')\" #f=\"ngForm\">\n                                    <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{dataUsd?.id}}\">\n                                    <input type=\"hidden\" ngModel name=\"type\" value=\"App\\CryptoStat\">\n                                    <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                                    <button type=\"submit\">Добавить</button>\n                </form>\n              </div>\n              <h3 class=\"total-comments\"  *ngIf=\"user.id\">Всего комментариев ({{commentcount}})</h3>\n              <ul class=\"comment-items\">\n                        <!--  -->\n                        <li *ngFor=\"let item of comments\">\n                            <div class=\"left\">\n                                <div class=\"info\">\n                                    <div class=\"img-wrap\">\n                                        <img src=\"img/comment-img2.jpg\" style=\"max-width: 35px; height: auto;\" alt=\"\">\n                                    </div>\n                                    <div class=\"text-wrap\">\n                                        <p>{{item.email}}</p>\n                                        <span>Добавлен </span>\n                                    </div>\n                                </div>\n                                <p class=\"comment-text\">{{item.body}}</p>\n                            </div>\n                            <div class=\"right\">\n                                <div class=\"img-wrap\"></div>\n                                <div class=\"btn-block\">\n                                    <span class=\"number-green\">0</span>\n                                    <div class=\"buttons\">\n                                        <a href=\"#\" class=\"plus\">+</a>\n                                        <a href=\"#\" class=\"minus\">-</a>\n                                    </div>\n                                </div>\n                            </div>\n                        </li>\n\n                    </ul>\n              <!-- <a href=\"#\" class=\"show-comments\">Показать все комментарии (22)</a> -->\n            </div>\n          </div>\n\n          <div class=\"tab-content\">\n            <div class=\"overview-block\">\n              <h3>Потоковый график {{data?.symbol}}/USD</h3>\n              <app-chart></app-chart>\n            </div>\n            <div class=\"overview-block overview-block-2\">\n              <h3>Интерактивный график {{data?.symbol}}/USD</h3>\n              <app-chart></app-chart>\n            </div>\n          </div>\n\n          <div class=\"tab-content news-wrapper\">\n              <div class=\"news-body\">\n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div class=\"news\" *ngFor=\"let item of main_news\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                  <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                    <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>0</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml | excerpt:140}}<a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div class=\"news\" *ngFor=\"let item of news\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                  <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <h3>\n                    <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                  </h3>\n                </div>\n                <div class=\"text2\">\n                <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n            </div>\n            </div>\n          </div>\n        </div>\n\n          <div class=\"tab-content comment-wrap\">\n            <div class=\"comment-block\">\n              <div class=\"comment-top\"  *ngIf=\"!user.id\">\n                <h3>Комментарии ({{commentcount}})</h3>\n                <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n              </div>\n              <div class=\"comment-top\"  *ngIf=\"user.id\">\n                <h3>Добавить новый комментарий</h3>\n                  <form (ngSubmit)=\"submitComment(f,data.id, 'App\\\\CryptoStat')\" #f=\"ngForm\">\n                                    <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{dataUsd?.id}}\">\n                                    <input type=\"hidden\" ngModel name=\"type\" value=\"App\\CryptoStat\">\n                                    <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                                    <button type=\"submit\">Добавить</button>\n                </form>\n              </div>\n              <h3 class=\"total-comments\"  *ngIf=\"user.id\">Всего комментариев ({{commentcount}})</h3>\n              <ul class=\"comment-items\">\n                        <!--  -->\n                        <li *ngFor=\"let item of comments\">\n                            <div class=\"left\">\n                                <div class=\"info\">\n                                    <div class=\"img-wrap\">\n                                        <img src=\"img/comment-img2.jpg\" style=\"max-width: 35px; height: auto;\" alt=\"\">\n                                    </div>\n                                    <div class=\"text-wrap\">\n                                        <p>{{item.email}}</p>\n                                        <span>Добавлен </span>\n                                    </div>\n                                </div>\n                                <p class=\"comment-text\">{{item.body}}</p>\n                            </div>\n                            <div class=\"right\">\n                                <div class=\"img-wrap\"></div>\n                                <div class=\"btn-block\">\n                                    <span class=\"number-green\">0</span>\n                                    <div class=\"buttons\">\n                                        <a href=\"#\" class=\"plus\">+</a>\n                                        <a href=\"#\" class=\"minus\">-</a>\n                                    </div>\n                                </div>\n                            </div>\n                        </li>\n\n                    </ul>\n            </div>\n          </div>\n\n          <div class=\"tab-content news-wrapper\">\n            <div class=\"news-body\">\n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div class=\"news\" *ngFor=\"let item of main_news\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                  <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                    <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>0</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml | excerpt:140}}<a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div class=\"news\" *ngFor=\"let item of news\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                  <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <h3>\n                    <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                  </h3>\n                </div>\n                <div class=\"text2\">\n                <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n            </div>\n            </div>\n          </div>\n          </div>\n\n          <div class=\"tab-content description-content\">\n            <h2>Описание {{data?.symbol}} ({{dataUsd?.name}})</h2>\n            <div [innerHTML]='data?.desc'></div>\n          </div>\n\n        </div>\n      </div>\n      <aside class=\"sidebar\">\n        <div class=\"description\">\n          <h5 class=\"titles\">Описание {{data?.symbol}} ({{data?.name}})</h5>\n          <div [innerHTML]='data?.desc'></div>\n            <br> <p><a  href=\"javascript:;\">Подробнее</a><p>\n        </div>\n        <app-sidebar></app-sidebar>\n      </aside>\n    </div>\n  </section>\n\n\n\n\n\n<!-- <div class=\"container\">\n\t<h1 style=\"font-weight: bold\">Bitcoin</h1>\n\t<input checked=\"checked\" type=\"radio\" name=\"cur\" value=\"usd\" id=\"usd\"><label for=\"usd\">USD</label>\n\t<input type=\"radio\" name=\"cur\" value=\"rub\" id=\"rub\"><label for=\"rub\">RUB</label>\n\t<input type=\"radio\" name=\"cur\" value=\"eur\" id=\"eur\"><label for=\"eur\">EUR</label>\n\t<div class=\"rub\">\n\t<div class=\"row\">\n\t\t<div class=\"col-lg-12\">\n\t\t\t<h2>{{dataRub.price}}</h2><pre>{{dataRub.lastupdate}}</pre>\n\t\t</div>\t\n\t</div>\n\t<table class=\"table\">\n\t\t<thead><tr><th>Капитализация</th><th>Об. 24ч</th><th>Откр. 24ч</th><th>Low/High 24ч</th><th>Последняя сделка</th></tr></thead>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t{{dataRub.mktcap}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataRub.vol24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataRub.open24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataRub.low24hours}} / {{dataRub.high24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataRub.lasttrade}}\n\t\t\t</td>\n\t\t</tr>\n\t</table>\n\n</div>\n\n\t<div class=\"usd\">\n\t<div class=\"row\">\n\t\t<div class=\"col-lg-12\">\n\t\t\t<h2>{{dataUsd.price}}</h2><pre>{{dataUsd.lastupdate}}</pre>\n\t\t</div>\t\n\t</div>\n\t<table class=\"table\">\n\t\t<thead><tr><th>Капитализация</th><th>Об. 24ч</th><th>Откр. 24ч</th><th>Low/High 24ч</th><th>Последняя сделка</th></tr></thead>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t{{dataUsd.mktcap}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataUsd.vol24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataUsd.open24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataUsd.low24hours}} / {{dataUsd.high24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataUsd.lasttrade}}\n\t\t\t</td>\n\t\t</tr>\n\t</table>\n\n</div>\n\n\t<div class=\"eur\">\n\t<div class=\"row\">\n\t\t<div class=\"col-lg-12\">\n\t\t\t<h2>{{dataEur.price}}</h2><pre>{{dataEur.lastupdate}}</pre>\n\t\t</div>\t\n\t</div>\n\t<table class=\"table\">\n\t\t<thead><tr><th>Капитализация</th><th>Об. 24ч</th><th>Откр. 24ч</th><th>Low/High 24ч</th><th>Последняя сделка</th></tr></thead>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t{{dataEur.mktcap}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataEur.vol24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataEur.open24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataEur.low24hours}} / {{dataEur.high24hours}}\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t{{dataEur.lasttrade}}\n\t\t\t</td>\n\t\t</tr>\n\t</table>\n\n</div>\n</div>\n<p>\n  \n</p>\n -->"
 
 /***/ }),
 
@@ -2354,7 +2396,9 @@ var CryptoComponent = (function () {
     CryptoComponent.prototype.ngOnInit = function () {
         var _this = this;
         var symbol = this.route.snapshot.params['sym'];
-        console.log('stocks');
+        if (localStorage.getItem(symbol)) {
+            this.dataUsd = JSON.parse(localStorage.getItem(symbol));
+        }
         this.stocksServise.getStocks(symbol + '/USDT')
             .subscribe(function (response) {
             _this.stocks = response;
@@ -2375,7 +2419,7 @@ var CryptoComponent = (function () {
                 _this.dataUsd.value = response['value'];
                 _this.dataUsd.week = response['week'];
                 _this.dataUsd.day = response['day'];
-                console.log(_this.dataUsd);
+                localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
             });
         });
         var infoCryptoPath = "/allcrypto/" + symbol;
@@ -2431,9 +2475,6 @@ var CryptoComponent = (function () {
         form.reset();
         console.log(form);
         this.commentcount = this.commentcount + 1;
-    };
-    CryptoComponent.prototype.ngOnDestroy = function () {
-        this.obs.unsubscribe();
     };
     return CryptoComponent;
 }());
@@ -5690,6 +5731,110 @@ ShortenPipePipe = __decorate([
 
 /***/ }),
 
+/***/ "./angular/app/sidebar-resolver.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export DataRub */
+/* unused harmony export Cripto */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SidebarResolverService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var DataRub = (function () {
+    function DataRub() {
+    }
+    return DataRub;
+}());
+
+var Cripto = (function () {
+    function Cripto() {
+    }
+    return Cripto;
+}());
+
+var dataRub;
+var dataEur;
+var SidebarResolverService = (function () {
+    function SidebarResolverService(http) {
+        this.http = http;
+        this.dataUsd = [];
+    }
+    SidebarResolverService.prototype.resolve = function (route) {
+        var _this = this;
+        var alldata = this.http.get('/allcrypto');
+        alldata.subscribe(function (response) {
+            // console.log(response);
+            var admin = response;
+            var _loop_1 = function () {
+                // console.log(this.admin[i].symbol);
+                var index = _i;
+                var symbol = admin[index].symbol;
+                var year = admin[index].year;
+                var algo = admin[index].algo;
+                var desc = 'DESC';
+                var path = "/bit/pair?pair=" + symbol + "/USDT";
+                var info = _this.http.get(path);
+                info.subscribe(function (response) {
+                    console.log(response);
+                    //  var usd_data = response;
+                    _this.dataUsd[index] = {
+                        sym: '',
+                        last: 0,
+                        now: 0,
+                        min: 0,
+                        max: 0,
+                        value: 0,
+                        year: 0,
+                        algo: '',
+                        week: 0,
+                        day: 0,
+                    };
+                    _this.dataUsd[index].sym = symbol;
+                    _this.dataUsd[index].algo = algo;
+                    _this.dataUsd[index].year = year;
+                    _this.dataUsd[index].last = response['last'];
+                    _this.dataUsd[index].now = response['now'];
+                    _this.dataUsd[index].min = response['min'];
+                    _this.dataUsd[index].max = response['max'];
+                    _this.dataUsd[index].value = response['value'];
+                });
+                var bitpath = "/bit";
+                var bitinfo = _this.http.get(bitpath);
+                bitinfo.subscribe(function (response) {
+                    // console.log(response);
+                    //  var usd_data = response;
+                    _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
+                    _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
+                });
+            };
+            for (var _i = 0; _i < admin.length; ++_i) {
+                _loop_1();
+            }
+        });
+    };
+    return SidebarResolverService;
+}());
+SidebarResolverService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+], SidebarResolverService);
+
+var _a;
+//# sourceMappingURL=sidebar-resolver.service.js.map
+
+/***/ }),
+
 /***/ "./angular/app/sidebar/cloud-mining-top/cloud-mining-top.component.html":
 /***/ (function(module, exports) {
 
@@ -5816,9 +5961,11 @@ module.exports = ""
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export Cripto */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StocksSidebarComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5830,6 +5977,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+var Cripto = (function () {
+    function Cripto() {
+    }
+    return Cripto;
+}());
+
 var StocksSidebarComponent = (function () {
     function StocksSidebarComponent(http) {
         this.http = http;
@@ -5837,8 +5991,12 @@ var StocksSidebarComponent = (function () {
     }
     StocksSidebarComponent.prototype.ngOnInit = function () {
         var _this = this;
+        if (localStorage.getItem('data')) {
+            this.dataUsd = JSON.parse(localStorage.getItem('data'));
+            // console.log(this.dataUsd);
+        }
         var alldata = this.http.get('/allcrypto');
-        alldata.subscribe(function (response) {
+        this.data = alldata.subscribe(function (response) {
             // console.log(response);
             var admin = response;
             var _loop_1 = function () {
@@ -5850,9 +6008,9 @@ var StocksSidebarComponent = (function () {
                 var desc = 'DESC';
                 var path = "/bit/pair?pair=" + symbol + "/USDT";
                 var info = _this.http.get(path);
-                info.subscribe(function (response) {
-                    console.log(response);
-                    //  var usd_data = response;
+                if (localStorage.getItem('data')) {
+                }
+                else {
                     _this.dataUsd[index] = {
                         sym: '',
                         last: 0,
@@ -5865,6 +6023,10 @@ var StocksSidebarComponent = (function () {
                         week: 0,
                         day: 0,
                     };
+                }
+                info.subscribe(function (response) {
+                    // console.log(response);
+                    //  var usd_data = response;
                     _this.dataUsd[index].sym = symbol;
                     _this.dataUsd[index].algo = algo;
                     _this.dataUsd[index].year = year;
@@ -5874,11 +6036,25 @@ var StocksSidebarComponent = (function () {
                     _this.dataUsd[index].max = response['max'];
                     _this.dataUsd[index].value = response['value'];
                 });
+                __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */].interval(1400).take(50).subscribe(function (wait) {
+                    info.subscribe(function (response) {
+                        // console.log(response);
+                        //  var usd_data = response;
+                        _this.dataUsd[index].last = response['last'];
+                        _this.dataUsd[index].now = response['now'];
+                        _this.dataUsd[index].min = response['min'];
+                        _this.dataUsd[index].max = response['max'];
+                        _this.dataUsd[index].value = response['value'];
+                        localStorage.removeItem('data');
+                        localStorage.setItem('data', JSON.stringify(_this.dataUsd));
+                    });
+                });
                 var bitpath = "/bit";
                 var bitinfo = _this.http.get(bitpath);
                 bitinfo.subscribe(function (response) {
                     // console.log(response);
                     //  var usd_data = response;
+                    // localStorage.setItem('data', JSON.stringify(this.dataUsd));
                     _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
                     _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
                 });
@@ -5887,6 +6063,9 @@ var StocksSidebarComponent = (function () {
                 _loop_1();
             }
         });
+    };
+    StocksSidebarComponent.prototype.ngOnDestroy = function () {
+        this.data.unsubscribe();
     };
     return StocksSidebarComponent;
 }());

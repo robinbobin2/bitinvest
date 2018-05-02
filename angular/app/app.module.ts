@@ -56,6 +56,7 @@ import { ImportPipe } from './import.pipe';
 import { SafeHtmlPipe } from './safe-html.pipe';
 import { StriphtmlPipe } from './striphtml.pipe';
 import { ExcerptPipe } from './excerpt.pipe';
+import {SidebarResolverService} from './sidebar-resolver.service';
 
 
 const appRoutes: Routes = [
@@ -242,7 +243,7 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     OrderPipe
   ],
-  providers: [HttpClientModule, OrderPipe],
+  providers: [HttpClientModule, OrderPipe, SidebarResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

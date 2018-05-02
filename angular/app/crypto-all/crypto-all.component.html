@@ -19,7 +19,7 @@
 					     </div>
 					     <ul class="select-items">
 					     	<li (click)="algorithm=''"> <a >Алгоритм: Все</a></li>
-					      <li *ngFor="let data of dataUsd" (click)="algorithm=data.algo"><a >Алгоритм: {{data.algo}}</a></li>
+					      <li *ngFor="let data of dataUsd" (click)="algorithm=data?.algo"><a >Алгоритм: {{data?.algo}}</a></li>
 					      <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
 					     </ul>
 					    </div><!-- 
@@ -32,7 +32,7 @@
 						<!-- <div class="select-wrap">
 							<select [(ngModel)]="age" name="age">
 								<option [value]="">Возраст: Любой</option>
-								<option *ngFor="let data of dataUsd" [ngValue]="data.year">Возраст: {{data.year}}</option>
+								<option *ngFor="let data of dataUsd" [ngValue]="data?.year">Возраст: {{data?.year}}</option>
 							</select>
 						</div> -->
 						<div class="select-wrapper1" id="select-age">
@@ -42,7 +42,7 @@
 					     </div>
 					     <ul class="select-items">
 					     	<li (click)="age=''"> <a >Возраст: Все</a></li>
-					      <li *ngFor="let data of dataUsd" (click)="age=data.year"><a >Возраст: {{data.year}}</a></li>
+					      <li *ngFor="let data of dataUsd" (click)="age=data?.year"><a >Возраст: {{data?.year}}</a></li>
 					      <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
 					     </ul>
 					    </div>
@@ -123,7 +123,7 @@
 					</thead>
 					<tbody>
 
-						<tr *ngFor="let data of dataUsd | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index">
+						<tr *ngFor="let data of dataUsd  | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index">
 							<td>
 								<span>{{i+1}}</span>
 							</td>
@@ -148,10 +148,10 @@
 								<span class="bargaining">${{data.value | number: '1.2'}}</span>
 							</td>
 							<td>
-								<span class="algorithm">{{data.algo}}</span>
+								<span class="algorithm">{{data?.algo}}</span>
 							</td>
 							<td>
-								<span class="year">{{data.year}}</span>
+								<span class="year">{{data?.year}}</span>
 							</td>
 							<td>
 								<span [ngClass]="isNegative(data.day)==true ? 'change-red' : 'change-green'">{{data.day | percent}}</span>

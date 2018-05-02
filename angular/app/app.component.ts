@@ -44,7 +44,16 @@ export class AppComponent implements OnInit {
   login: Login;
   lostPass: LostPass;
   registration: Registration;
-  user: User;
+  user: User = {
+  id:0,
+  name: '',
+  email:'',
+  photo_id: 0,
+  role_id: 0,
+  telegram: '',
+  photo: 0,
+  error: 0,
+  };
   loginError = '';
   lostPassSuccess = false;
    errorLostPass = '';
