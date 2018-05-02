@@ -33,6 +33,11 @@ export class StocksSidebarComponent implements OnInit {
 data: any;
 
   ngOnInit() {
+    if(localStorage.getItem('data')) {
+      this.dataUsd = JSON.parse(localStorage.getItem('data'));
+      // console.log(this.dataUsd);
+      
+    }
     const alldata = this.http.get<Array<Cripto>>('/allcrypto');
 
     this.data = alldata.subscribe(response => {
