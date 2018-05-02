@@ -58,6 +58,8 @@ class AngularController extends Controller
         }
         foreach ($portfolios as $portfolio) {
             $userPortfolio['mining'][] = $portfolio->minings;
+            $userPortfolio['ico'][] = $portfolio->ico;
+
         }
         return json_encode($userPortfolio);
     }
@@ -69,10 +71,19 @@ class AngularController extends Controller
             return abort(401);
         }
         $portfolio_items = UserPortfollable::all()->where('user_portfolio_id', $id);
+        $port_items = UserPortfolio::all()->where('id', $id);
         $items = [];
-        foreach ($portfolio_items as $portfolio_item) {
-            $items[] = CloudMining::where('id', $portfolio_item->user_portfollable_id)->first();
+        $items['ico'] = [];
+        $items['mining'] = [];
+        foreach ($port_items as $item) {
+            $items['ico'] = $item->ico;
+            $items['mining'] = $item->minings;
         }
+        // foreach ($portfolio_items as $portfolio_item) {
+        //     $items['mining'] = CloudMining::where('id', $portfolio_item->user_portfollable_id)->first();
+        //     $ico = IcoProject::all();
+        //     $items['ico'] = $portfolio_item->ico();
+        // }
         return json_encode($items);
     }
 
@@ -103,6 +114,19 @@ class AngularController extends Controller
         return [
             'success' => 'Portfolio deleted'
         ];
+    }
+    public function icoRemovePortfolio($id) 
+    {
+        $user = Auth::user();
+        if(!$user){
+            return [
+                'error' => 'User not loggined'
+            ];
+        }
+        $portfolio = UserPortfollable::where('user_portfollable_id', $id)->where('user_portfollable_type', 'App\IcoProject')->delete();
+        return [
+                'success' => 'Portfolio deleted'
+            ];
     }
 
     public function deletePortfolioCat($id)

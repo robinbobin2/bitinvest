@@ -33,19 +33,26 @@ export class PortfolioComponent implements OnInit {
         this.results = results;
         console.log(results);
       });
-  	portfolioService.getPortfolioNames().subscribe(
-  		res => {
-  			this.portfolioNames = res['portfolio']; console.log(this.portfolioNames)
-  			for(let item of this.portfolioNames) {
-	  		console.log('asd');
-	  		this.portfolioService.getPortfolioById(item.id)
-	  		.subscribe(
-	  			res => {if (res.length > 0) {this.portfolios[item.id] = res } console.log(this.portfolios) }
-	  		)
-  	}
-  		}
-  	);
   	
+  	
+   }
+   getPorts(type) {
+     this.portfolioService.getPortfolioNames().subscribe(
+      res => {
+        this.portfolioNames = res['portfolio']; console.log(this.portfolioNames)
+        for(let item of this.portfolioNames) {
+        console.log('asd');
+        this.portfolioService.getPortfolioById(item.id)
+        .subscribe(
+          res => {if (res[type].length > 0) {this.portfolios[item.id] = res[type] } 
+          console.log(res)
+          console.log(this.portfolios)
+
+           }
+        )
+    }
+      }
+    );
    }
    setOrder(value: string) {
     if (this.order === value) {
@@ -87,7 +94,8 @@ export class PortfolioComponent implements OnInit {
    }
   ngOnInit() {
   	
-
+  this.getPorts('mining');
+  this.getPorts('ico');
   }
 
 }

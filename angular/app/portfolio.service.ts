@@ -26,8 +26,12 @@ export class PortfolioService {
     .get<any>('/angular/userportfolio/'+id);
   }
   public deletePortfolioCat(id) {
-  	return this.http
+    return this.http
     .get<any>('/angular/userportfolio/deletecat/'+id);
+  }
+    public createPortfolioCat(name, type) {
+    return this.http
+    .post('/angular/userportfolio/create', {'name': name, 'user_portfolio_type_id': type},{headers: headers})
   }
   public removePortfolio(id) {
     return this.http.get('/angular/userportfolio/remove/'+id);
@@ -41,4 +45,6 @@ export class PortfolioService {
       }, 
       {headers: headers})
   }
+
+
 }

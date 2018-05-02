@@ -33,6 +33,17 @@ info;
     }
   }
   
+  public uploadPhoto(photo) {
+    var headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    let path = '/profile/updatephoto';
+    const formData: FormData = new FormData();
+    formData.append('photo', photo);
+    // console.log(formData.get('photo'));
+    // console.log(formData.get('photo'));
+    
+    return this.http.post(path, formData);
+  } 
   public getUser(): Observable<User> {
   return this.http
     .get<User>('/angular/user')
@@ -45,10 +56,14 @@ info;
   this.user = user;
   }
   public getUserInfo() {
-  return this.user;
+ if(this.user.id != undefined) {
+   console.log(this.user.id);
+   return true;
+ }
+  return false;
   }
   public isLogged() {
-  if(this.user.id ==0) {
+  if(this.user.id == 0) {
     return false;
   } else {
     return true;

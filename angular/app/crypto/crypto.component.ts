@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 import { OnChanges } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
@@ -11,21 +11,27 @@ import {AddCommentService} from '../add-comment.service';
 import {StocksService} from '../stocks.service';
 
 export interface CryptoData {
-  id: number
-  sym: string;
+
   last: number;
   now: number;
   min:number;
   max: number;
   value:number;
-  year: number;
-  algo: string;
+  
   week: number;
   day: number;
+
+
+}
+export interface PositionData {
   name: string;
   desc: string;
-
-
+  year: number;
+  algo: string;
+  id: number;
+  symbol: string;
+  cat_id_news: number;
+  cat_id_analytics: number;
 }
 export class User {  
   id:number;
@@ -44,15 +50,7 @@ export class CommentRaw {
   commentable_id:number;
   photo:string;
 }
-export class Stock {
-  exchangeId: number;
-  volume: number;
-  value: number;
-  percent:number;
-  bid:number;
-  ask: number;
-  currency: string;
-}
+
 @Component({
   selector: 'app-crypto',
   templateUrl: './crypto.component.html',
@@ -62,6 +60,7 @@ export class Stock {
 export class CryptoComponent implements OnInit {
   comments: CommentRaw[] = [];
   dataUsd: CryptoData;
+  data: PositionData;
   user: User = {
       id:0,
       name: '',
@@ -72,12 +71,18 @@ export class CryptoComponent implements OnInit {
 
   }; 
   commentcount = 0;
-  stocks: Stock[] = [];
-  constructor(private http:HttpClient,public stocksServise:StocksService, private router:Router, private route:ActivatedRoute, 
+  stocks=[];
+  main_news: any;
+  news: any;
+  info: any;
+  obs: any;
+  constructor(private http:HttpClient,public stocksServise:StocksService, 
+    private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
   }
 
   ngOnInit() {
+
     let symbol = this.route.snapshot.params['sym'];
     console.log('stocks');
     this.stocksServise.getStocks(symbol+'/USDT')
@@ -91,19 +96,28 @@ export class CryptoComponent implements OnInit {
 
     
     let path = "/bit/pair?pair="+symbol+"/USDT";
-    const info = this.http.get<CryptoData>(path);
-      info.subscribe(response => {
+    this.info = this.http.get<CryptoData>(path).publishReplay(1).refCount();
+      this.info.subscribe(response => {
         this.dataUsd = response;
-        this.dataUsd.sym = symbol;
+        console.log(this.dataUsd);
       });
+    this.obs = Observable.interval(1500).take(100).subscribe(wait => {
+      this.info.subscribe(response => {
+        this.dataUsd.now = response['now'];
+        this.dataUsd.last = response['last'];
+        this.dataUsd.min = response['min'];
+        this.dataUsd.max = response['max'];
+        this.dataUsd.value = response['value'];
+        this.dataUsd.week = response['week'];
+        this.dataUsd.day = response['day'];
+        console.log(this.dataUsd);
+      });
+
+    });
     let infoCryptoPath = "/allcrypto/"+symbol;
-    const infoCrypto = this.http.get<CryptoData>(infoCryptoPath);
+    const infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
       infoCrypto.subscribe(response => {
-        this.dataUsd.name = response['name'];
-        this.dataUsd.id = response['id'];
-        this.dataUsd.year = response['year'];
-        this.dataUsd.algo = response['algo'];
-        this.dataUsd.desc = response['desc'];
+        this.data = response;
         for(let item of response['comments']) {
           this.comments.push({ 
               id: item.id,
@@ -117,6 +131,14 @@ export class CryptoComponent implements OnInit {
 
         }
       this.commentcount = response['comments_count'];
+      let newsUrl = "/postsbycat/"+this.data.cat_id_news;
+        let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
+         newsInfo.subscribe(response => {
+        this.main_news = response['main_news'];
+       this.news = response['news'];
+       console.log(this.news);
+       console.log(this.main_news);
+     });
       });
         this.auth
       .getUser()
@@ -128,7 +150,8 @@ export class CryptoComponent implements OnInit {
       );
   }
 
-  submitComment(form: NgForm, post_id, type) {
+  submitComment(form: NgForm,post_id, type) {
+
     const headers = new HttpHeaders({'Content-type': 'Application/json '});
     this.http.post('/storecomment', {
             'post_id': post_id,
@@ -151,5 +174,7 @@ export class CryptoComponent implements OnInit {
       console.log(form);
       this.commentcount=this.commentcount+1;
   }
-
+ngOnDestroy() {
+  this.obs.unsubscribe();
+}
 }

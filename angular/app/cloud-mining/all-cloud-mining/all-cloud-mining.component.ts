@@ -70,11 +70,19 @@ order: string = '';
   checkPortfolio = false;
   removed = false;
   show = false;
-   constructor(private authService: AuthService, private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+  portfolioInfo:any;
+   constructor(private authService: AuthService, 
+     private orderPipe: OrderPipe, 
+     private http:HttpClient, 
+     private router:Router, 
+     private route:ActivatedRoute) 
+
+   {
+
    	let path = "/miningraw";
      let portfolioUrl = '/angular/userportfolio';
-     const portfolioInfo = http.get<any>(portfolioUrl);
-     portfolioInfo.subscribe(
+     this.portfolioInfo = http.get<any>(portfolioUrl);
+     this.portfolioInfo.subscribe(
        response => {
          if(response['error']) {
            // code...
@@ -139,6 +147,15 @@ order: string = '';
 
     
   }
+  checkAuth() {
+    if(this.authService.getUserInfo()) {
+      console.log(true);
+      return true;
+    }
+    console.log(false);
+    return(false);
+    
+  }
 
   loadMore(id) {
     this.router.navigate(['/cloud-mining/item', id]);
@@ -171,11 +188,23 @@ order: string = '';
     const removeUrl = '/angular/userportfolio/remove/';
     const removePost = this.http.get(removeUrl+id);
     removePost.subscribe(
-      response => this.removed = true,
+      response => {
+        this.portfolioInfo.subscribe(res=>{
+          if(res['error']) {
+           // code...
+         } else {
+         this.portfoliosInfo = res['mining'];
+         console.log(this.portfoliosInfo);
+         }
+       }),
+        this.checkInPortfolio(id);
+
+      },
       error => console.log(error)
     )
   }
-   setOrder(value: string) {
+
+setOrder(value: string) {
      if (this.order === value) {
        this.reverse = !this.reverse;
     }
@@ -188,6 +217,7 @@ order: string = '';
   'user_portfolio_type_id': '',
   'user_id': 4,
   }
+  
   createPortfolio(form: NgForm) {
 
     this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 1},{headers: headers})

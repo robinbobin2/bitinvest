@@ -119,6 +119,7 @@ Route::get('/profile/portfolio', ['as' => 'profile.portfolio', 'uses' => "Angula
 Route::get('/angular/user/', "AngularController@user");
 Route::get('/angular/userportfolio/', "AngularController@portfolio");
 Route::get('/angular/userportfolio/remove/{id}', "AngularController@removePortfolio");
+Route::get('/angular/userportfolio/ico/remove/{id}', "AngularController@icoRemovePortfolio");
 Route::post('/angular/userportfolio/create', "AngularController@createPortfolio");
 Route::get('/angular/userportfolio/{id}', "AngularController@byportfolio");
 Route::get('/angular/userportfolio/deletecat/{id}', "AngularController@deletePortfolioCat");
@@ -135,7 +136,10 @@ Route::get('/bit/info', "BitController@info");
 Route::post('/profile/register', "ProfileController@register");
 Route::get('/profile/delete/{id}', "ProfileController@delete");
 Route::post('/profile/login', "ProfileController@login");
+Route::post('/profile/restorepass', "ProfileController@lostPassword");
+Route::post('/profile/updatephoto', "ProfileController@updatePhoto");
 Route::get('/profile/edit/{id}', "ProfileController@edit");
+
 // Route::get('/crypto/XRP', "AngularController@serve");
 
 

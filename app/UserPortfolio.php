@@ -21,5 +21,9 @@ class UserPortfolio extends Model
     {
         return $this->morphedByMany('App\CloudMining', 'user_portfollable');
     }
+    public function ico()
+    {
+        return $this->morphedByMany('App\IcoProject', 'user_portfollable');
+    }
     //
 }

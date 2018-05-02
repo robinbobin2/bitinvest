@@ -57,20 +57,20 @@
                 </a>
               </td>
               <td>
-                <p><span class="bold">{{portfolioItem.proc}}% / год</span></p>
+                <!-- <p><span class="bold">{{portfolioItem.proc}}% / год</span></p> -->
               </td>
               <td>
                 <span>189 дней</span>
               </td>
               <td>
-                <span class="bold">${{portfolioItem.depo}}</span>
+                <!-- <span class="bold">${{portfolioItem.depo}}</span> -->
               </td>
               <td>
                 <span>$ 90 (15%)</span>
               </td>           
               <td>
                 <div class="difference">
-                  <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span>
+                <!--   <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span> -->
                   <div class="buttons">
                     <a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>
                     <a (click)="onRemove(item.id, portfolioItem.id, in)" class="minus"><img src="/img/minus.png" alt=""></a>

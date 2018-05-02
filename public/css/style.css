@@ -4918,4 +4918,9 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
     line-height: 22px;
   }
 }
-
+.trust {
+  cursor: pointer;
+}
+.news-content {
+  margin-left: -32px !important;
+}

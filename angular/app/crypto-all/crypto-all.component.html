@@ -154,12 +154,12 @@
 								<span class="year">{{data.year}}</span>
 							</td>
 							<td>
-								<span [ngClass]="isNegative(data.day)==true ? 'change-red' : 'change-green'">{{data.day | number: '1.2'}}</span>
+								<span [ngClass]="isNegative(data.day)==true ? 'change-red' : 'change-green'">{{data.day | percent}}</span>
 
 							</td>
 							<td>
 								<div class="difference">
-									<span [ngClass]="isNegative(data.week)==true ? 'change-red' : 'change-green'">{{ data.week | number: '1.2'}}</span>
+									<span [ngClass]="isNegative(data.week)==true ? 'change-red' : 'change-green'">{{ data.week | percent}}</span>
 									<div class="buttons">
 										<button class="right"><a [routerLink]="['/crypto', data.sym]">></a></button>
 										<button class="plus">+</button>

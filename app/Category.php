@@ -22,6 +22,14 @@ class Category extends Model
     {
         return $this->hasMany('App\Analytics', 'cat_id');
     }
+    public function crypto_analytics()
+    {
+        return $this->hasMany('App\CryptoStat', 'cat_id_analytics');
+    }
+    public function crypto_news()
+    {
+        return $this->hasMany('App\CryptoStat', 'cat_id_news');
+    }
     public function reviews()
     {
         return $this->hasMany('App\Review', 'cat_id');
