@@ -178,7 +178,5 @@ export class CryptoComponent implements OnInit {
       console.log(form);
       this.commentcount=this.commentcount+1;
   }
-ngOnDestroy() {
-  this.obs.unsubscribe();
-}
+
 }

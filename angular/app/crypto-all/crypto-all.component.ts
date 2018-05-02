@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 import { OnChanges } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
@@ -56,6 +56,7 @@ export class CryptoAllComponent implements OnInit {
 order = 'sym';
 algorithm = '';
 age = '';
+data: any;
   reverse: boolean = false;
   /**
    * Example: Use Order pipe in the component
@@ -109,14 +110,14 @@ age = '';
     if(localStorage.getItem('data')) {
       this.dataUsd = JSON.parse('['+localStorage.getItem('data')+']');
       // console.log(this.dataUsd);
-      localStorage.removeItem('data');
+      
     }
     
     
 
     const alldata = this.http.get<Array<Cripto>>('/allcrypto');
     
-    alldata.subscribe(response => {
+    this.data = alldata.subscribe(response => {
       // console.log(response);
       let admin = response;
       for (var _i = 0; _i < admin.length; ++_i) {
@@ -128,6 +129,7 @@ age = '';
         let desc = 'DESC';
         const path = "/bit/pair?pair="+symbol+"/USDT";
         const info = this.http.get(path);
+         Observable.interval(1400).take(50).subscribe(wait =>{
         info.subscribe(response => {
           // console.log(response);
          //  var usd_data = response;
@@ -152,19 +154,10 @@ age = '';
               this.dataUsd[index].max = response['max'];
               this.dataUsd[index].value = response['value'];
               
-              // console.log(this.dataUsd);
-      });
-        Observable.interval(1400).take(50).subscribe(wait =>{
-         info.subscribe(response => {
-              this.dataUsd[index].last = response['last'];
-              this.dataUsd[index].now = response['now'];
-              this.dataUsd[index].min = response['min'];
-              this.dataUsd[index].max = response['max'];
-              this.dataUsd[index].value = response['value'];
               
-              // console.log(this.dataUsd);
+              
       });
-       });
+      });
         const bitpath = "/bit";
         const bitinfo = this.http.get(bitpath);
         bitinfo.subscribe(response => {
@@ -173,12 +166,7 @@ age = '';
          // localStorage.setItem('data', JSON.stringify(this.dataUsd));
               // this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
               // this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
-              if(localStorage.getItem('data')) {
-                let old = localStorage.getItem('data');
-                localStorage.setItem('data', old+', '+JSON.stringify(this.dataUsd[index]))
-              } else {
-                localStorage.setItem('data', JSON.stringify(this.dataUsd[index]))
-              }
+              
       });
         
       }
@@ -190,5 +178,9 @@ age = '';
     } 
     return true;
   }
+  ngOnDestroy() {
+    localStorage.setItem('data', JSON.stringify(this.dataUsd));
+  this.data.unsubscribe();
+}
 
 }
