@@ -86,8 +86,6 @@ export class CryptoComponent implements OnInit {
     let symbol = this.route.snapshot.params['sym'];
     if(localStorage.getItem(symbol)) {
       this.dataUsd = JSON.parse(localStorage.getItem(symbol));
-      // console.log(this.dataUsd);
-      localStorage.removeItem('data');
     }
     this.stocksServise.getStocks(symbol+'/USDT')
     .subscribe(response => {

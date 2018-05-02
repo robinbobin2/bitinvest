@@ -2397,9 +2397,7 @@ var CryptoComponent = (function () {
         var _this = this;
         var symbol = this.route.snapshot.params['sym'];
         if (localStorage.getItem(symbol)) {
-            this.dataUsd = JSON.parse('[' + localStorage.getItem(symbol) + ']');
-            // console.log(this.dataUsd);
-            localStorage.removeItem('data');
+            this.dataUsd = JSON.parse(localStorage.getItem(symbol));
         }
         this.stocksServise.getStocks(symbol + '/USDT')
             .subscribe(function (response) {
@@ -6065,6 +6063,9 @@ var StocksSidebarComponent = (function () {
                 _loop_1();
             }
         });
+    };
+    StocksSidebarComponent.prototype.ngOnDestroy = function () {
+        this.data.unsubscribe();
     };
     return StocksSidebarComponent;
 }());
