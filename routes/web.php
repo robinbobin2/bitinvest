@@ -131,6 +131,7 @@ Route::get('/crypto/{symbol}', "AngularController@crypto");
 Route::get('/bit/', "BitController@index");
 Route::get('/bit/exchange/{id}', "BitController@exchange");
 Route::get('/bit/pair', "BitController@pair");
+Route::get('/bit/volumes', "BitController@exchangesVolume");
 Route::get('/bit/info', "BitController@info");
 Route::post('/profile/register', "ProfileController@register");
 Route::get('/profile/delete/{id}', "ProfileController@delete");

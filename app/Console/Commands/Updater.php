@@ -54,7 +54,7 @@ class Updater extends \Illuminate\Console\Command
 
 
     private $suppliers = [
-        PoloniexProvider::class,
+//        PoloniexProvider::class,
         HitBTCProvider::class,
         BiBoxProvider::class,
         BinanceProvider::class,
@@ -91,9 +91,15 @@ class Updater extends \Illuminate\Console\Command
             $newRequest->setProvider($supplier);
             $this->handler->call($newRequest);
         }
-        while (count($this->handler->test)) {
-            $this->handler->getChannel()->wait();
+        try{
+            while (count($this->handler->test)) {
+                $this->handler->getChannel()->wait();
+            }
         }
+        catch (\Exception $e){
+            $this->handle();
+        }
+
         return null;
     }
 

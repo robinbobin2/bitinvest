@@ -464,8 +464,6 @@ class CoinexConnector extends FounderConnector
                 '602' => '\\ccxt\\InvalidOrder',
                 '606' => '\\ccxt\\InvalidOrder',
             );
-            $ErrorClass = $this->safe_value($responseCodes, $code, '\\ccxt\\ExchangeError');
-            throw new $ErrorClass ($response['message']);
         }
         return $response;
     }
