@@ -2148,6 +2148,8 @@ var CryptoAllComponent = (function () {
                     // localStorage.setItem('data', JSON.stringify(this.dataUsd));
                     _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
                     _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
+                    console.log('asdasd');
+                    console.log(_this.dataUsd);
                     if (localStorage.getItem('data')) {
                         var old = localStorage.getItem('data');
                         localStorage.setItem('data', old + ', ' + JSON.stringify(_this.dataUsd[index]));
@@ -5981,7 +5983,6 @@ var StocksSidebarComponent = (function () {
         if (localStorage.getItem('data')) {
             this.dataUsd = JSON.parse('[' + localStorage.getItem('data') + ']');
             // console.log(this.dataUsd);
-            localStorage.removeItem('data');
         }
         var alldata = this.http.get('/allcrypto');
         alldata.subscribe(function (response) {

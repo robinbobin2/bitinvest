@@ -26,7 +26,7 @@ export class StocksSidebarComponent implements OnInit {
     if(localStorage.getItem('data')) {
       this.dataUsd = JSON.parse('['+localStorage.getItem('data')+']');
       // console.log(this.dataUsd);
-      localStorage.removeItem('data');
+      
     }
   	const alldata = this.http.get<any>('/allcrypto');
     alldata.subscribe(response => {
