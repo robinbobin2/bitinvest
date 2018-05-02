@@ -163,7 +163,7 @@ age = '';
         bitinfo.subscribe(response => {
           // console.log(response);
          //  var usd_data = response;
-         localStorage.setItem('data', JSON.stringify(this.dataUsd));
+         // localStorage.setItem('data', JSON.stringify(this.dataUsd));
               this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
               this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
       });

@@ -2135,7 +2135,7 @@ var CryptoAllComponent = (function () {
                 bitinfo.subscribe(function (response) {
                     // console.log(response);
                     //  var usd_data = response;
-                    localStorage.setItem('data', JSON.stringify(_this.dataUsd));
+                    // localStorage.setItem('data', JSON.stringify(this.dataUsd));
                     _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
                     _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
                 });
