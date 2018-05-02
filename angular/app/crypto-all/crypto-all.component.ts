@@ -129,6 +129,8 @@ data: any;
         let desc = 'DESC';
         const path = "/bit/pair?pair="+symbol+"/USDT";
         const info = this.http.get(path);
+        if(localStorage.getItem('data')) {
+        } else {
         this.dataUsd[index] = {
                 sym: '',
                 last: 0,
@@ -141,6 +143,7 @@ data: any;
                 week: 0,
                 day: 0,
             }
+        }
         info.subscribe(response => {
           // console.log(response);
          //  var usd_data = response;

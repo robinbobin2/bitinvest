@@ -2110,18 +2110,22 @@ var CryptoAllComponent = (function () {
                 var desc = 'DESC';
                 var path = "/bit/pair?pair=" + symbol + "/USDT";
                 var info = _this.http.get(path);
-                _this.dataUsd[index] = {
-                    sym: '',
-                    last: 0,
-                    now: 0,
-                    min: 0,
-                    max: 0,
-                    value: 0,
-                    year: 0,
-                    algo: '',
-                    week: 0,
-                    day: 0,
-                };
+                if (localStorage.getItem('data')) {
+                }
+                else {
+                    _this.dataUsd[index] = {
+                        sym: '',
+                        last: 0,
+                        now: 0,
+                        min: 0,
+                        max: 0,
+                        value: 0,
+                        year: 0,
+                        algo: '',
+                        week: 0,
+                        day: 0,
+                    };
+                }
                 info.subscribe(function (response) {
                     // console.log(response);
                     //  var usd_data = response;
