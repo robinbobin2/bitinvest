@@ -685,6 +685,7 @@ var _a, _b, _c, _d;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__safe_html_pipe__ = __webpack_require__("./angular/app/safe-html.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__striphtml_pipe__ = __webpack_require__("./angular/app/striphtml.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__excerpt_pipe__ = __webpack_require__("./angular/app/excerpt.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__ = __webpack_require__("./angular/app/sidebar-resolver.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -748,12 +749,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var appRoutes = [
     {
         path: 'crypto/:sym', component: __WEBPACK_IMPORTED_MODULE_6__crypto_crypto_component__["a" /* CryptoComponent */]
     },
     {
-        path: 'posts', component: __WEBPACK_IMPORTED_MODULE_12__news_news_component__["a" /* NewsComponent */], children: [
+        path: 'posts', component: __WEBPACK_IMPORTED_MODULE_12__news_news_component__["a" /* NewsComponent */], resolve: { sidebar: __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */] }, children: [
             {
                 path: 'post/:id', component: __WEBPACK_IMPORTED_MODULE_13__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */]
             },
@@ -766,7 +768,7 @@ var appRoutes = [
         ]
     },
     {
-        path: 'analytics', component: __WEBPACK_IMPORTED_MODULE_17__analytics_analytics_component__["a" /* AnalyticsComponent */], children: [
+        path: 'analytics', component: __WEBPACK_IMPORTED_MODULE_17__analytics_analytics_component__["a" /* AnalyticsComponent */], resolve: { sidebar: __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */] }, children: [
             {
                 path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_19__analytics_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */]
             },
@@ -779,7 +781,7 @@ var appRoutes = [
         ]
     },
     {
-        path: 'interview', component: __WEBPACK_IMPORTED_MODULE_21__interview_interview_component__["a" /* InterviewComponent */], children: [
+        path: 'interview', component: __WEBPACK_IMPORTED_MODULE_21__interview_interview_component__["a" /* InterviewComponent */], resolve: { sidebar: __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */] }, children: [
             {
                 path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_23__interview_interview_details_interview_details_component__["a" /* InterviewDetailsComponent */]
             },
@@ -792,7 +794,7 @@ var appRoutes = [
         ]
     },
     {
-        path: 'review', component: __WEBPACK_IMPORTED_MODULE_25__review_review_component__["a" /* ReviewComponent */], children: [
+        path: 'review', component: __WEBPACK_IMPORTED_MODULE_25__review_review_component__["a" /* ReviewComponent */], resolve: { sidebar: __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */] }, children: [
             {
                 path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_27__review_review_detail_review_detail_component__["a" /* ReviewDetailComponent */]
             },
@@ -805,7 +807,7 @@ var appRoutes = [
         ]
     },
     {
-        path: 'ico', component: __WEBPACK_IMPORTED_MODULE_36__ico_project_ico_project_component__["a" /* IcoProjectComponent */], children: [
+        path: 'ico', component: __WEBPACK_IMPORTED_MODULE_36__ico_project_ico_project_component__["a" /* IcoProjectComponent */], resolve: { sidebar: __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */] }, children: [
             {
                 path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_detail_ico_project_detail_component__["a" /* IcoProjectDetailComponent */]
             },
@@ -818,7 +820,7 @@ var appRoutes = [
         ]
     },
     {
-        path: 'cloud-mining', component: __WEBPACK_IMPORTED_MODULE_29__cloud_mining_cloud_mining_component__["a" /* CloudMiningComponent */], children: [
+        path: 'cloud-mining', component: __WEBPACK_IMPORTED_MODULE_29__cloud_mining_cloud_mining_component__["a" /* CloudMiningComponent */], resolve: { sidebar: __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */] }, children: [
             {
                 path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_31__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__["a" /* CloudMiningDetailComponent */]
             },
@@ -831,7 +833,7 @@ var appRoutes = [
         ]
     },
     {
-        path: 'cryptocurrency', component: __WEBPACK_IMPORTED_MODULE_33__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */], children: [
+        path: 'cryptocurrency', component: __WEBPACK_IMPORTED_MODULE_33__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */], resolve: { sidebar: __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */] }, children: [
             {
                 path: 'all', component: __WEBPACK_IMPORTED_MODULE_32__crypto_all_crypto_all_component__["a" /* CryptoAllComponent */]
             },
@@ -929,7 +931,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCheckboxModule */],
             __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */], __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -5690,6 +5692,94 @@ ShortenPipePipe = __decorate([
 
 /***/ }),
 
+/***/ "./angular/app/sidebar-resolver.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SidebarResolverService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var SidebarResolverService = (function () {
+    function SidebarResolverService(http) {
+        this.http = http;
+        this.dataUsd = [];
+    }
+    SidebarResolverService.prototype.resolve = function (route) {
+        var _this = this;
+        var alldata = this.http.get('/allcrypto');
+        alldata.subscribe(function (response) {
+            // console.log(response);
+            var admin = response;
+            var _loop_1 = function () {
+                // console.log(this.admin[i].symbol);
+                var index = _i;
+                var symbol = admin[index].symbol;
+                var year = admin[index].year;
+                var algo = admin[index].algo;
+                var desc = 'DESC';
+                var path = "/bit/pair?pair=" + symbol + "/USDT";
+                var info = _this.http.get(path);
+                info.subscribe(function (response) {
+                    console.log(response);
+                    //  var usd_data = response;
+                    _this.dataUsd[index] = {
+                        sym: '',
+                        last: 0,
+                        now: 0,
+                        min: 0,
+                        max: 0,
+                        value: 0,
+                        year: 0,
+                        algo: '',
+                        week: 0,
+                        day: 0,
+                    };
+                    _this.dataUsd[index].sym = symbol;
+                    _this.dataUsd[index].algo = algo;
+                    _this.dataUsd[index].year = year;
+                    _this.dataUsd[index].last = response['last'];
+                    _this.dataUsd[index].now = response['now'];
+                    _this.dataUsd[index].min = response['min'];
+                    _this.dataUsd[index].max = response['max'];
+                    _this.dataUsd[index].value = response['value'];
+                });
+                var bitpath = "/bit";
+                var bitinfo = _this.http.get(bitpath);
+                bitinfo.subscribe(function (response) {
+                    // console.log(response);
+                    //  var usd_data = response;
+                    _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
+                    _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
+                });
+            };
+            for (var _i = 0; _i < admin.length; ++_i) {
+                _loop_1();
+            }
+        });
+    };
+    return SidebarResolverService;
+}());
+SidebarResolverService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+], SidebarResolverService);
+
+var _a;
+//# sourceMappingURL=sidebar-resolver.service.js.map
+
+/***/ }),
+
 /***/ "./angular/app/sidebar/cloud-mining-top/cloud-mining-top.component.html":
 /***/ (function(module, exports) {
 
@@ -5819,6 +5909,7 @@ module.exports = ""
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StocksSidebarComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5830,15 +5921,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var StocksSidebarComponent = (function () {
-    function StocksSidebarComponent(http) {
+    function StocksSidebarComponent(http, route) {
         this.http = http;
+        this.route = route;
         this.dataUsd = [];
     }
     StocksSidebarComponent.prototype.ngOnInit = function () {
         var _this = this;
         var alldata = this.http.get('/allcrypto');
-        alldata.subscribe(function (response) {
+        this.route.data.subscribe(function (response) {
             // console.log(response);
             var admin = response;
             var _loop_1 = function () {
@@ -5896,10 +5989,10 @@ StocksSidebarComponent = __decorate([
         template: __webpack_require__("./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.html"),
         styles: [__webpack_require__("./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object])
 ], StocksSidebarComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=stocks-sidebar.component.js.map
 
 /***/ }),

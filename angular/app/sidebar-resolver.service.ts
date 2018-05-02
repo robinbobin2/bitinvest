@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
-
+import {Router, ActivatedRoute,ActivatedRouteSnapshot, Resolve, } from '@angular/router';
 export interface CryptoData {
   sym: string;
   last: number;
@@ -16,18 +15,14 @@ export interface CryptoData {
   day: number;
 
 }
-@Component({
-  selector: 'app-stocks-sidebar',
-  templateUrl: './stocks-sidebar.component.html',
-  styleUrls: ['./stocks-sidebar.component.scss']
-})
-export class StocksSidebarComponent implements OnInit {
- dataUsd: Array<CryptoData> = [];
-  constructor(private http:HttpClient, private route:ActivatedRoutew) { }
+@Injectable()
+export class SidebarResolverService implements Resolve<any> {
+dataUsd: Array<CryptoData> = [];
+  constructor(private http:HttpClient) { }
 
-  ngOnInit() {
+  resolve(route:ActivatedRouteSnapshot) {
   	const alldata = this.http.get<any>('/allcrypto');
-    this.route.data.subscribe(response => {
+    alldata.subscribe(response => {
     // console.log(response);
       let admin = response;
       for (var _i = 0; _i < admin.length; ++_i) {
