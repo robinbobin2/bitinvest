@@ -82,10 +82,6 @@ data: any;
         info.subscribe(response => {
           // console.log(response);
          //  var usd_data = response;
-            
-              this.dataUsd[index].sym = symbol;
-              this.dataUsd[index].algo = algo;
-              this.dataUsd[index].year = year;
               this.dataUsd[index].last = response['last'];
               this.dataUsd[index].now = response['now'];
               this.dataUsd[index].min = response['min'];

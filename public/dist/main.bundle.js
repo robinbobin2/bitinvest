@@ -6038,9 +6038,6 @@ var StocksSidebarComponent = (function () {
                     info.subscribe(function (response) {
                         // console.log(response);
                         //  var usd_data = response;
-                        _this.dataUsd[index].sym = symbol;
-                        _this.dataUsd[index].algo = algo;
-                        _this.dataUsd[index].year = year;
                         _this.dataUsd[index].last = response['last'];
                         _this.dataUsd[index].now = response['now'];
                         _this.dataUsd[index].min = response['min'];
