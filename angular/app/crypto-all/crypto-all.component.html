@@ -19,7 +19,7 @@
 					     </div>
 					     <ul class="select-items">
 					     	<li (click)="algorithm=''"> <a >Алгоритм: Все</a></li>
-					      <li *ngFor="let data of dataUsd" (click)="algorithm=data.algo"><a >Алгоритм: {{data.algo}}</a></li>
+					      <li *ngFor="let data of dataUsd" (click)="algorithm=data?.algo"><a >Алгоритм: {{data?.algo}}</a></li>
 					      <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
 					     </ul>
 					    </div><!-- 
@@ -148,7 +148,7 @@
 								<span class="bargaining">${{data.value | number: '1.2'}}</span>
 							</td>
 							<td>
-								<span class="algorithm">{{data.algo}}</span>
+								<span class="algorithm">{{data?.algo}}</span>
 							</td>
 							<td>
 								<span class="year">{{data.year}}</span>
