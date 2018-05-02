@@ -24,7 +24,7 @@ export class StocksSidebarComponent implements OnInit {
 
   ngOnInit() {
     if(localStorage.getItem('data')) {
-      this.dataUsd = JSON.parse('['+localStorage.getItem('data')+']');
+      this.dataUsd = JSON.parse(localStorage.getItem('data'));
       // console.log(this.dataUsd);
       
     }
@@ -41,10 +41,9 @@ export class StocksSidebarComponent implements OnInit {
         let desc = 'DESC';
         const path = "/bit/pair?pair="+symbol+"/USDT";
         const info = this.http.get(path);
-        info.subscribe(response => {
-          console.log(response);
-         //  var usd_data = response;
-            this.dataUsd[index] = {
+        if(localStorage.getItem('data')) {
+        } else {
+        this.dataUsd[index] = {
                 sym: '',
                 last: 0,
                 now: 0,
@@ -56,6 +55,11 @@ export class StocksSidebarComponent implements OnInit {
                 week: 0,
                 day: 0,
             }
+        }
+        info.subscribe(response => {
+          console.log(response);
+         //  var usd_data = response;
+            
               this.dataUsd[index].sym = symbol;
               this.dataUsd[index].algo = algo;
               this.dataUsd[index].year = year;

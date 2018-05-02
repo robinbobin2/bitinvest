@@ -5985,7 +5985,7 @@ var StocksSidebarComponent = (function () {
     StocksSidebarComponent.prototype.ngOnInit = function () {
         var _this = this;
         if (localStorage.getItem('data')) {
-            this.dataUsd = JSON.parse('[' + localStorage.getItem('data') + ']');
+            this.dataUsd = JSON.parse(localStorage.getItem('data'));
             // console.log(this.dataUsd);
         }
         var alldata = this.http.get('/allcrypto');
@@ -6001,9 +6001,9 @@ var StocksSidebarComponent = (function () {
                 var desc = 'DESC';
                 var path = "/bit/pair?pair=" + symbol + "/USDT";
                 var info = _this.http.get(path);
-                info.subscribe(function (response) {
-                    console.log(response);
-                    //  var usd_data = response;
+                if (localStorage.getItem('data')) {
+                }
+                else {
                     _this.dataUsd[index] = {
                         sym: '',
                         last: 0,
@@ -6016,6 +6016,10 @@ var StocksSidebarComponent = (function () {
                         week: 0,
                         day: 0,
                     };
+                }
+                info.subscribe(function (response) {
+                    console.log(response);
+                    //  var usd_data = response;
                     _this.dataUsd[index].sym = symbol;
                     _this.dataUsd[index].algo = algo;
                     _this.dataUsd[index].year = year;
