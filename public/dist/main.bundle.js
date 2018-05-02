@@ -517,6 +517,16 @@ var AppComponent = (function () {
         this.http = http;
         this.router = router;
         this.activatedRoute = activatedRoute;
+        this.user = {
+            id: 0,
+            name: '',
+            email: '',
+            photo_id: 0,
+            role_id: 0,
+            telegram: '',
+            photo: 0,
+            error: 0,
+        };
         this.loginError = '';
         this.lostPassSuccess = false;
         this.errorLostPass = '';
@@ -2127,11 +2137,6 @@ var CryptoAllComponent = (function () {
                 });
                 __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1400).take(50).subscribe(function (wait) {
                     info.subscribe(function (response) {
-                        // console.log(response);
-                        //  var usd_data = response;
-                        _this.dataUsd[index].sym = symbol;
-                        _this.dataUsd[index].algo = algo;
-                        _this.dataUsd[index].year = year;
                         _this.dataUsd[index].last = response['last'];
                         _this.dataUsd[index].now = response['now'];
                         _this.dataUsd[index].min = response['min'];
@@ -2148,8 +2153,6 @@ var CryptoAllComponent = (function () {
                     // localStorage.setItem('data', JSON.stringify(this.dataUsd));
                     _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
                     _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
-                    console.log('asdasd');
-                    console.log(_this.dataUsd);
                     if (localStorage.getItem('data')) {
                         var old = localStorage.getItem('data');
                         localStorage.setItem('data', old + ', ' + JSON.stringify(_this.dataUsd[index]));

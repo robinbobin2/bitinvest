@@ -156,12 +156,6 @@ age = '';
       });
         Observable.interval(1400).take(50).subscribe(wait =>{
          info.subscribe(response => {
-          // console.log(response);
-         //  var usd_data = response;
-            
-              this.dataUsd[index].sym = symbol;
-              this.dataUsd[index].algo = algo;
-              this.dataUsd[index].year = year;
               this.dataUsd[index].last = response['last'];
               this.dataUsd[index].now = response['now'];
               this.dataUsd[index].min = response['min'];
@@ -179,8 +173,6 @@ age = '';
          // localStorage.setItem('data', JSON.stringify(this.dataUsd));
               this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
               this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
-              console.log('asdasd');
-              console.log(this.dataUsd);
               if(localStorage.getItem('data')) {
                 let old = localStorage.getItem('data');
                 localStorage.setItem('data', old+', '+JSON.stringify(this.dataUsd[index]))
