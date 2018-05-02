@@ -65,54 +65,7 @@ age = '';
   constructor(private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
       
        
-    const alldata = http.get<Array<Cripto>>('/allcrypto');
-    alldata.subscribe(response => {
-      // console.log(response);
-      let admin = response;
-      for (var _i = 0; _i < admin.length; ++_i) {
-        // console.log(this.admin[i].symbol);
-        let index = _i;
-        let symbol = admin[index].symbol;
-        let year = admin[index].year;
-        let algo = admin[index].algo;
-        let desc = 'DESC';
-        const path = "/bit/pair?pair="+symbol+"/USDT";
-        const info = http.get(path);
-        info.subscribe(response => {
-          console.log(response);
-         //  var usd_data = response;
-            this.dataUsd[index] = {
-                sym: '',
-                last: 0,
-                now: 0,
-                min:0,
-                max: 0,
-                value:0,
-                year: 0,
-                algo: '',
-                week: 0,
-                day: 0,
-            }
-              this.dataUsd[index].sym = symbol;
-              this.dataUsd[index].algo = algo;
-              this.dataUsd[index].year = year;
-              this.dataUsd[index].last = response['last'];
-              this.dataUsd[index].now = response['now'];
-              this.dataUsd[index].min = response['min'];
-              this.dataUsd[index].max = response['max'];
-              this.dataUsd[index].value = response['value'];
-      });
-        const bitpath = "/bit";
-        const bitinfo = http.get(bitpath);
-        bitinfo.subscribe(response => {
-          // console.log(response);
-         //  var usd_data = response;
-            
-              this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
-              this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
-      });
-      }
-    });
+    
     // Observable.interval(1000).subscribe(wait => {
     // alldata.subscribe(response => {
     //   // console.log(response);
@@ -153,6 +106,70 @@ age = '';
   }
 
   ngOnInit() {
+    if(localStorage.getItem('data')) {
+      this.dataUsd = JSON.parse('['+localStorage.getItem('data')+']');
+      // console.log(this.dataUsd);
+      localStorage.removeItem('data');
+    }
+    
+
+    const alldata = this.http.get<Array<Cripto>>('/allcrypto');
+    
+    alldata.subscribe(response => {
+      // console.log(response);
+      let admin = response;
+      for (var _i = 0; _i < admin.length; ++_i) {
+        // console.log(this.admin[i].symbol);
+        let index = _i;
+        let symbol = admin[index].symbol;
+        let year = admin[index].year;
+        let algo = admin[index].algo;
+        let desc = 'DESC';
+        const path = "/bit/pair?pair="+symbol+"/USDT";
+        const info = this.http.get(path);
+        info.subscribe(response => {
+          // console.log(response);
+         //  var usd_data = response;
+            this.dataUsd[index] = {
+                sym: '',
+                last: 0,
+                now: 0,
+                min:0,
+                max: 0,
+                value:0,
+                year: 0,
+                algo: '',
+                week: 0,
+                day: 0,
+            }
+              this.dataUsd[index].sym = symbol;
+              this.dataUsd[index].algo = algo;
+              this.dataUsd[index].year = year;
+              this.dataUsd[index].last = response['last'];
+              this.dataUsd[index].now = response['now'];
+              this.dataUsd[index].min = response['min'];
+              this.dataUsd[index].max = response['max'];
+              this.dataUsd[index].value = response['value'];
+              if(localStorage.getItem('data')) {
+                let old = localStorage.getItem('data');
+                localStorage.setItem('data', old+', '+JSON.stringify(this.dataUsd[index]))
+              } else {
+                localStorage.setItem('data', JSON.stringify(this.dataUsd[index]))
+              }
+              // console.log(this.dataUsd);
+      });
+        const bitpath = "/bit";
+        const bitinfo = this.http.get(bitpath);
+        bitinfo.subscribe(response => {
+          // console.log(response);
+         //  var usd_data = response;
+         localStorage.setItem('data', JSON.stringify(this.dataUsd));
+              this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
+              this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
+      });
+        
+      }
+    });
   }
   isNegative(now) {
     if((parseInt(now)) >= 0) {

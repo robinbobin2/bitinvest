@@ -2,6 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import {Router, ActivatedRoute,ActivatedRouteSnapshot, Resolve, } from '@angular/router';
+export class DataRub {
+  price: any;
+  lastupdate: any;
+  mktcap: any;
+  vol24hours: any;
+  open24hours: any;
+  low24hours: any;
+  high24hours: any;
+  lasttrade: any;
+
+}
+export class Cripto {
+  id: number;
+  name:string;
+  symbol:string;
+  year:number;
+  desc: string;
+  algo: string;
+}
+
 export interface CryptoData {
   sym: string;
   last: number;
@@ -15,15 +35,17 @@ export interface CryptoData {
   day: number;
 
 }
+var dataRub;
+var dataEur;
 @Injectable()
 export class SidebarResolverService implements Resolve<any> {
 dataUsd: Array<CryptoData> = [];
   constructor(private http:HttpClient) { }
 
   resolve(route:ActivatedRouteSnapshot) {
-  	const alldata = this.http.get<any>('/allcrypto');
+  	const alldata = this.http.get<Array<Cripto>>('/allcrypto');
     alldata.subscribe(response => {
-    // console.log(response);
+      // console.log(response);
       let admin = response;
       for (var _i = 0; _i < admin.length; ++_i) {
         // console.log(this.admin[i].symbol);

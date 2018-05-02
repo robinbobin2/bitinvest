@@ -64,7 +64,7 @@ const appRoutes: Routes = [
     path:'crypto/:sym', component: CryptoComponent
   },
   {
-      path:'posts', component:NewsComponent, resolve: {sidebar: SidebarResolverService}, children: [
+      path:'posts', component:NewsComponent, children: [
       
       {
       path:'post/:id', component:NewsDetailComponent
@@ -78,7 +78,7 @@ const appRoutes: Routes = [
     ]
   },
   {
-      path:'analytics', component:AnalyticsComponent, resolve: {sidebar: SidebarResolverService}, children: [
+      path:'analytics', component:AnalyticsComponent, children: [
       
       {
       path:'item/:id', component:AnalyticsDetailComponent
@@ -92,7 +92,7 @@ const appRoutes: Routes = [
     ]
   },
   {
-      path:'interview', component:InterviewComponent, resolve: {sidebar: SidebarResolverService}, children: [
+      path:'interview', component:InterviewComponent, children: [
       
       {
       path:'item/:id', component:InterviewDetailsComponent
@@ -106,7 +106,7 @@ const appRoutes: Routes = [
     ]
   },
     {
-      path:'review', component:ReviewComponent, resolve: {sidebar: SidebarResolverService}, children: [
+      path:'review', component:ReviewComponent, children: [
       
       {
       path:'item/:id', component:ReviewDetailComponent
@@ -120,7 +120,7 @@ const appRoutes: Routes = [
     ]
   },
     {
-      path:'ico', component:IcoProjectComponent, resolve: {sidebar: SidebarResolverService}, children: [
+      path:'ico', component:IcoProjectComponent, children: [
       
       {
       path:'item/:id', component:IcoProjectDetailComponent
@@ -134,7 +134,7 @@ const appRoutes: Routes = [
     ]
   },
   {
-      path:'cloud-mining', component:CloudMiningComponent, resolve: {sidebar: SidebarResolverService}, children: [
+      path:'cloud-mining', component:CloudMiningComponent, children: [
       
       {
       path:'item/:id', component:CloudMiningDetailComponent
@@ -148,7 +148,7 @@ const appRoutes: Routes = [
     ]
   },
   {
-      path:'cryptocurrency', component:CryptoRootComponent, resolve: {sidebar: SidebarResolverService}, children: [
+      path:'cryptocurrency', component:CryptoRootComponent, children: [
       {
         path: 'all', component:CryptoAllComponent
       },

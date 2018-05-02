@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
-
 export interface CryptoData {
   sym: string;
   last: number;
@@ -23,11 +20,16 @@ export interface CryptoData {
 })
 export class StocksSidebarComponent implements OnInit {
  dataUsd: Array<CryptoData> = [];
-  constructor(private http:HttpClient, private route:ActivatedRoutew) { }
+  constructor(private http:HttpClient) { }
 
   ngOnInit() {
+    if(localStorage.getItem('data')) {
+      this.dataUsd = JSON.parse('['+localStorage.getItem('data')+']');
+      // console.log(this.dataUsd);
+      localStorage.removeItem('data');
+    }
   	const alldata = this.http.get<any>('/allcrypto');
-    this.route.data.subscribe(response => {
+    alldata.subscribe(response => {
     // console.log(response);
       let admin = response;
       for (var _i = 0; _i < admin.length; ++_i) {
@@ -62,6 +64,12 @@ export class StocksSidebarComponent implements OnInit {
               this.dataUsd[index].min = response['min'];
               this.dataUsd[index].max = response['max'];
               this.dataUsd[index].value = response['value'];
+              if(localStorage.getItem('data')) {
+                let old = localStorage.getItem('data');
+                localStorage.setItem('data', old+', '+JSON.stringify(this.dataUsd[index]))
+              } else {
+                localStorage.setItem('data', JSON.stringify(this.dataUsd[index]))
+              }
       });
         const bitpath = "/bit";
         const bitinfo = this.http.get(bitpath);
