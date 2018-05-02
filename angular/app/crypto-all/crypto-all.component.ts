@@ -110,7 +110,7 @@ data: any;
     if(localStorage.getItem('data')) {
       this.dataUsd = JSON.parse('['+localStorage.getItem('data')+']');
       // console.log(this.dataUsd);
-      
+      localStorage.removeItem('data');
     }
     
     
@@ -129,7 +129,6 @@ data: any;
         let desc = 'DESC';
         const path = "/bit/pair?pair="+symbol+"/USDT";
         const info = this.http.get(path);
-         Observable.interval(1400).take(50).subscribe(wait =>{
         info.subscribe(response => {
           // console.log(response);
          //  var usd_data = response;
@@ -155,7 +154,38 @@ data: any;
               this.dataUsd[index].value = response['value'];
               
               
-              localStorage.setItem('data', JSON.stringify(this.dataUsd));
+              if(localStorage.getItem('data')) {
+                let old = localStorage.getItem('data');
+                localStorage.setItem('data', old+', '+JSON.stringify(this.dataUsd[index]))
+              } else {
+                localStorage.setItem('data', JSON.stringify(this.dataUsd[index]))
+              }
+      });
+         Observable.interval(1400).take(50).subscribe(wait =>{
+        info.subscribe(response => {
+          // console.log(response);
+         //  var usd_data = response;
+            this.dataUsd[index] = {
+                sym: '',
+                last: 0,
+                now: 0,
+                min:0,
+                max: 0,
+                value:0,
+                year: 0,
+                algo: '',
+                week: 0,
+                day: 0,
+            }
+              this.dataUsd[index].sym = symbol;
+              this.dataUsd[index].algo = algo;
+              this.dataUsd[index].year = year;
+              this.dataUsd[index].last = response['last'];
+              this.dataUsd[index].now = response['now'];
+              this.dataUsd[index].min = response['min'];
+              this.dataUsd[index].max = response['max'];
+              this.dataUsd[index].value = response['value'];
+              
       });
       });
         const bitpath = "/bit";
@@ -179,7 +209,7 @@ data: any;
     return true;
   }
   ngOnDestroy() {
-    
+
   this.data.unsubscribe();
 }
 
