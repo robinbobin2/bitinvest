@@ -2095,8 +2095,8 @@ var CryptoAllComponent = (function () {
         if (localStorage.getItem('data')) {
             this.dataUsd = JSON.parse('[' + localStorage.getItem('data') + ']');
             // console.log(this.dataUsd);
+            localStorage.removeItem('data');
         }
-        localStorage.removeItem('data');
         var alldata = this.http.get('/allcrypto');
         alldata.subscribe(function (response) {
             // console.log(response);
@@ -2151,8 +2151,8 @@ var CryptoAllComponent = (function () {
                     // console.log(response);
                     //  var usd_data = response;
                     // localStorage.setItem('data', JSON.stringify(this.dataUsd));
-                    _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
-                    _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
+                    // this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
+                    // this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
                     if (localStorage.getItem('data')) {
                         var old = localStorage.getItem('data');
                         localStorage.setItem('data', old + ', ' + JSON.stringify(_this.dataUsd[index]));

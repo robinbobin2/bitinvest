@@ -109,9 +109,9 @@ age = '';
     if(localStorage.getItem('data')) {
       this.dataUsd = JSON.parse('['+localStorage.getItem('data')+']');
       // console.log(this.dataUsd);
-      
+      localStorage.removeItem('data');
     }
-    localStorage.removeItem('data');
+    
     
 
     const alldata = this.http.get<Array<Cripto>>('/allcrypto');
@@ -171,8 +171,8 @@ age = '';
           // console.log(response);
          //  var usd_data = response;
          // localStorage.setItem('data', JSON.stringify(this.dataUsd));
-              this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
-              this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
+              // this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
+              // this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
               if(localStorage.getItem('data')) {
                 let old = localStorage.getItem('data');
                 localStorage.setItem('data', old+', '+JSON.stringify(this.dataUsd[index]))
