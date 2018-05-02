@@ -60,4 +60,9 @@ class BitController extends Controller
         $exchanges = DB::select("CALL byCurrencies('".$_GET['pair']."')");
         return $exchanges;
     }
+
+    public function exchangesVolume()
+    {
+        return DB::select("SELECT * FROM exchangeVolumes");
+    }
 }

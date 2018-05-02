@@ -33,7 +33,7 @@ class AngularController extends Controller
     public function user()
     {
         $user = Auth::user();
-        if(!$user){
+        if (!$user) {
             return [
                 'error' => 'User not loggined'
             ];
@@ -41,10 +41,11 @@ class AngularController extends Controller
         $newUser = User::with("Portfolio")->with('photo')->where('id', '=', $user->id)->first();
         return json_encode($newUser);
     }
-    public function portfolio() 
+
+    public function portfolio()
     {
         $user = Auth::user();
-        if(!$user){
+        if (!$user) {
             return [
                 'error' => 'User not loggined'
             ];
@@ -60,10 +61,11 @@ class AngularController extends Controller
         }
         return json_encode($userPortfolio);
     }
-    public function byportfolio($id) 
+
+    public function byportfolio($id)
     {
         $user = Auth::user();
-        if(!$user){
+        if (!$user) {
             return abort(401);
         }
         $portfolio_items = UserPortfollable::all()->where('user_portfolio_id', $id);
@@ -73,9 +75,11 @@ class AngularController extends Controller
         }
         return json_encode($items);
     }
-    public function createPortfolio(Request $request) {
+
+    public function createPortfolio(Request $request)
+    {
         $user = Auth::user();
-        if(!$user){
+        if (!$user) {
             return abort(401);
         }
         $newPortfolio = new UserPortfolio;
@@ -86,38 +90,37 @@ class AngularController extends Controller
         return $newPortfolio;
 
     }
-    public function removePortfolio($id) 
+
+    public function removePortfolio($id)
     {
         $user = Auth::user();
-        if(!$user){
+        if (!$user) {
             return [
                 'error' => 'User not loggined'
             ];
         }
-        $portfolio = UserPortfollable::where('user_portfollable_id', $id)->where('user_portfollable_type', 'App\CloudMining')->delete();
+        UserPortfollable::where('user_portfollable_id', $id)->where('user_portfollable_type', 'App\CloudMining')->delete();
         return [
-                'success' => 'Portfolio deleted'
-            ];
+            'success' => 'Portfolio deleted'
+        ];
     }
 
-    public function deletePortfolioCat($id) 
+    public function deletePortfolioCat($id)
     {
         $user = Auth::user();
-        if(!$user){
+        if (!$user) {
             return [
                 'error' => 'User not loggined'
             ];
         }
-        $portfolio = UserPortfolio::findOrFail($id)->delete();
+        UserPortfolio::findOrFail($id)->delete();
         return [
-                'success' => 'Portfolio deleted'
-            ];
+            'success' => 'Portfolio deleted'
+        ];
     }
 
     public function funds($id)
     {
         return IcoPercent::all()->where('ico_id', '=', $id)->sortByDesc('percent')->values();
     }
-
-
 }

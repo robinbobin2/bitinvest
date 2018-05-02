@@ -48,7 +48,7 @@ class RabbitTestHandler
     /**
      * @var Request[]
      */
-    private $queue = [];
+    public $queue = [];
 
     /**
      * @var Request[]
