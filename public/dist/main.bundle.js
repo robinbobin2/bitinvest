@@ -2111,6 +2111,7 @@ var CryptoAllComponent = (function () {
                 var path = "/bit/pair?pair=" + symbol + "/USDT";
                 var info = _this.http.get(path);
                 if (localStorage.getItem('data')) {
+                    _this.dataUsd[index] = JSON.parse('[' + localStorage.getItem('data') + ']')[index];
                 }
                 else {
                     _this.dataUsd[index] = {

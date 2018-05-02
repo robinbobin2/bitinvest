@@ -130,6 +130,7 @@ data: any;
         const path = "/bit/pair?pair="+symbol+"/USDT";
         const info = this.http.get(path);
         if(localStorage.getItem('data')) {
+          this.dataUsd[index] = JSON.parse('['+localStorage.getItem('data')+']')[index];
         } else {
         this.dataUsd[index] = {
                 sym: '',
