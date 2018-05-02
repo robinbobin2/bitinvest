@@ -154,12 +154,7 @@ data: any;
               this.dataUsd[index].value = response['value'];
               
               
-              if(localStorage.getItem('data')) {
-                let old = localStorage.getItem('data');
-                localStorage.setItem('data', old+', '+JSON.stringify(this.dataUsd[index]))
-              } else {
-                localStorage.setItem('data', JSON.stringify(this.dataUsd[index]))
-              }
+              
       });
          Observable.interval(1400).take(50).subscribe(wait =>{
         info.subscribe(response => {
@@ -196,7 +191,12 @@ data: any;
          // localStorage.setItem('data', JSON.stringify(this.dataUsd));
               this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
               this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
-              
+              if(localStorage.getItem('data')) {
+                let old = localStorage.getItem('data');
+                localStorage.setItem('data', old+', '+JSON.stringify(this.dataUsd[index]))
+              } else {
+                localStorage.setItem('data', JSON.stringify(this.dataUsd[index]))
+              }
       });
         
       }
