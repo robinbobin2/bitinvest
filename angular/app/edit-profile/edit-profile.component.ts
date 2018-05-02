@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {AuthService} from '../auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Http} from '@angular/http';
 import { NgForm } from '@angular/forms';
 import { MinLengthValidator } from '@angular/forms';
+
 export class User {	
 	id:number;
 	name: string;
@@ -40,8 +42,9 @@ export class EditProfileComponent implements OnInit {
   newData: NewData;
   submitted = false;
   submittedPass = false;
-  constructor(public auth: AuthService, private http:HttpClient) { }
-
+  fileToUpload: File;
+  constructor(public auth: AuthService, private http:HttpClient, private _http:Http) { }
+@ViewChild('fileInput') fileInput
   ngOnInit() {
   	this.auth
       .getUser()
@@ -53,6 +56,34 @@ export class EditProfileComponent implements OnInit {
       );
   }
 
+uploadFileToActivity(photo: File) {
+    
+}
+handleFileInput() {
+  const image  = this.fileInput.nativeElement;
+    console.log(image.files);
+   let pathUrl = '/profile/updatephoto';
+   this.fileToUpload = image.files[0]
+   console.log(this.fileToUpload);
+    const formData: FormData = new FormData();
+    formData.append('photo', this.fileToUpload, this.fileToUpload.name);
+    // console.log(formData.get('photo'));
+    // console.log(formData.get('photo'));
+    const header = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+    this.http.post(pathUrl, formData).subscribe(data => {
+      console.log(data);
+      this.auth
+      .getUser()
+      .subscribe(
+        (response) => {
+          this.user = response;
+          this.auth.setUser(this.user);
+        }
+      );
+      }, error => {
+        console.log(error);
+      });
+}
 onUpdate(form) {
 	this.newData={
 		email: form.value.email,

@@ -24,7 +24,7 @@
           <div class="prices-wrap">
             <span class="black-price">${{dataUsd?.now | number:'1.0-1'}}</span>
             <span class="red-price">{{dataUsd?.now - dataUsd?.last | number:'1.0-1'}}</span>
-            <span class="bg-price">{{dataUsd?.now - dataUsd?.last | number:'1.0-1'}}</span>
+            <span class="bg-price">{{dataUsd?.now - dataUsd?.last | percent}}</span>
           </div>
           <p>Последнее обновление 1 сек. назад</p>
         </div>

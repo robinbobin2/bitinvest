@@ -119,11 +119,12 @@ class ProfileController extends Controller
         if ($request->request->get("password") != $request->request->get("password_repeat")) {
             throw new \Exception("Пароли не совпадают", 404);
         }
+        $parts = explode("@", $request->request->get("email"));
         $user = new User();
         $user->password = Hash::make($request->request->get("password"));
         $user->email = $request->request->get("email");
         $user->telegram = '';
-        $user->name = $user->email;
+        $user->name = $parts[0];
         $user->role_id = 2;
         $user->photo_id = 0;
 
@@ -155,5 +156,23 @@ class ProfileController extends Controller
         return [
             'status' => $status
         ];
+    }
+    public function updatePhoto(Request $request)
+    {
+        $user = Auth::user();
+        if ($file = $request->file('photo')) {
+            $name = time(). $file->getClientOriginalName();
+            $file->move('images', $name);
+
+            $photo = Photo::create(['file'=>$name]);
+
+
+            $input['photo_id'] = $photo->id;
+            # code...
+            $user->update($input);
+            return [
+                'status'=> 'success'
+            ];
+        }
     }
 }

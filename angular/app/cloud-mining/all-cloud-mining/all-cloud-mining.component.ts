@@ -71,7 +71,14 @@ order: string = '';
   removed = false;
   show = false;
   portfolioInfo:any;
-   constructor(private authService: AuthService, private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+   constructor(private authService: AuthService, 
+     private orderPipe: OrderPipe, 
+     private http:HttpClient, 
+     private router:Router, 
+     private route:ActivatedRoute) 
+
+   {
+
    	let path = "/miningraw";
      let portfolioUrl = '/angular/userportfolio';
      this.portfolioInfo = http.get<any>(portfolioUrl);
@@ -140,6 +147,15 @@ order: string = '';
 
     
   }
+  checkAuth() {
+    if(this.authService.getUserInfo()) {
+      console.log(true);
+      return true;
+    }
+    console.log(false);
+    return(false);
+    
+  }
 
   loadMore(id) {
     this.router.navigate(['/cloud-mining/item', id]);
@@ -187,7 +203,8 @@ order: string = '';
       error => console.log(error)
     )
   }
-   setOrder(value: string) {
+
+setOrder(value: string) {
      if (this.order === value) {
        this.reverse = !this.reverse;
     }
@@ -200,6 +217,7 @@ order: string = '';
   'user_portfolio_type_id': '',
   'user_id': 4,
   }
+  
   createPortfolio(form: NgForm) {
 
     this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 1},{headers: headers})

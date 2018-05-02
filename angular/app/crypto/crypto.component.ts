@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 import { OnChanges } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
@@ -74,7 +74,10 @@ export class CryptoComponent implements OnInit {
   stocks=[];
   main_news: any;
   news: any;
-  constructor(private http:HttpClient,public stocksServise:StocksService, private router:Router, private route:ActivatedRoute, 
+  info: any;
+  obs: any;
+  constructor(private http:HttpClient,public stocksServise:StocksService, 
+    private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
   }
 
@@ -93,11 +96,24 @@ export class CryptoComponent implements OnInit {
 
     
     let path = "/bit/pair?pair="+symbol+"/USDT";
-    const info = this.http.get<CryptoData>(path).publishReplay(1).refCount();
-      info.subscribe(response => {
+    this.info = this.http.get<CryptoData>(path).publishReplay(1).refCount();
+      this.info.subscribe(response => {
         this.dataUsd = response;
         console.log(this.dataUsd);
       });
+    this.obs = Observable.interval(1500).take(100).subscribe(wait => {
+      this.info.subscribe(response => {
+        this.dataUsd.now = response['now'];
+        this.dataUsd.last = response['last'];
+        this.dataUsd.min = response['min'];
+        this.dataUsd.max = response['max'];
+        this.dataUsd.value = response['value'];
+        this.dataUsd.week = response['week'];
+        this.dataUsd.day = response['day'];
+        console.log(this.dataUsd);
+      });
+
+    });
     let infoCryptoPath = "/allcrypto/"+symbol;
     const infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
       infoCrypto.subscribe(response => {
@@ -158,5 +174,7 @@ export class CryptoComponent implements OnInit {
       console.log(form);
       this.commentcount=this.commentcount+1;
   }
-
+ngOnDestroy() {
+  this.obs.unsubscribe();
+}
 }

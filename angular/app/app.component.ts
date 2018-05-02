@@ -45,6 +45,7 @@ export class AppComponent implements OnInit {
   lostPass: LostPass;
   registration: Registration;
   user: User;
+  loginError = '';
   lostPassSuccess = false;
    errorLostPass = '';
 	constructor(public auth: AuthService, private http:HttpClient, 
@@ -71,13 +72,31 @@ checkAuth() {
     this.http.post('/profile/login', this.login
     , {headers: headers}).subscribe(
         (response) => 
-        this.auth.setUser(response),
+        {
+          console.log(response);
+          if(response['status'] == 'denied') {
+            console.log(response);
+            this.loginError = 'Неправильные логин или пароль';
+          } else if(response['status'] == 'success') {
+            this.auth
+            .getUser()
+            .subscribe(
+              (response) => {
+                this.user = response;
+                this.auth.setUser(this.user);
+                console.log(this.user);
+              }
+            );
+          this.router.navigate(['/profile/edit']);
+          }
+          
+        },
         (error) => console.log(error)
       );
     // console.log
       form.reset();
 
-      this.router.navigate(['/profile/edit']);
+      
 
   }
   onSignup(form: NgForm) {

@@ -4921,3 +4921,6 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
 .trust {
   cursor: pointer;
 }
+.news-content {
+  margin-left: -32px !important;
+}

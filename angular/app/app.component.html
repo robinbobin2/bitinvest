@@ -29,17 +29,17 @@
     <div class="top-menu-wrap">
       <div class="wrapper">
         <ul class="top-menu">
-          <li routerLinkActive="active"><a routerLink="/posts/all" >Новости</a></li>
-          <li routerLinkActive="active"><a routerLink="/review/all">Обзоры</a></li>
-          <li routerLinkActive="active"><a routerLink="/interview/all">Интервью</a></li>
-          <li routerLinkActive="active"><a routerLink="/analytics/all">Аналитика</a></li>
-          <li routerLinkActive="active"><a href="#">Вопрос-ответ</a></li>
+          <li routerLinkActive="active" [ngClass]="rla.isActive?'active':''" #rla="routerLinkActive"><a [routerLink]="['/posts/all']" >Новости</a></li>
+          <li routerLinkActive="active"><a [routerLink]="['/review/all']">Обзоры</a></li>
+          <li routerLinkActive="active"><a [routerLink]="['/interview/all']">Интервью</a></li>
+          <li routerLinkActive="active"><a [routerLink]="['/analytics/all']">Аналитика</a></li>
+          <li><a >Вопрос-ответ</a></li>
           <li routerLinkActive="active"><a routerLink="/cryptocurrency/all">Криптоваюты</a></li>
-          <li routerLinkActive="active"><a  routerLink="/cloud-mining/all">Облачный майнинг</a></li>
+          <li routerLinkActive="active"  [routerLinkActiveOptions]="{exact: false}"><a  routerLink="/cloud-mining/all">Облачный майнинг</a></li>
           <li routerLinkActive="active"><a  routerLink="/ico/all">ICO</a></li>
-          <li routerLinkActive="active"><a href="#">Фонды и хайпы</a></li>
-          <li routerLinkActive="active"><a href="#">Биржи</a></li>
-          <li routerLinkActive="active"><a href="#">Пулы</a></li>
+          <li><a >Фонды и хайпы</a></li>
+          <li><a >Биржи</a></li>
+          <li><a >Пулы</a></li>
         </ul>
       </div>
     </div>
@@ -100,6 +100,7 @@
         <input type="text" ngModel name="email" placeholder="Ваш адрес электронной почты" email required>
         <input type="password" ngModel name="password" placeholder="Ваш пароль" required 
         minlength='6'>
+        <p *ngIf="loginError">{{loginError}}</p>
         <input [disabled]="!f.valid" type="submit" value="Выполнить вход">
       </form>
       <a href="#password-popup" class="forgot-password popup-link" data-effect="mfp-zoom-in">Я забыл пароль</a>
