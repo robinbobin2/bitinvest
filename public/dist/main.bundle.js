@@ -2160,14 +2160,14 @@ var CryptoAllComponent = (function () {
                     // localStorage.setItem('data', JSON.stringify(this.dataUsd));
                     _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
                     _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
-                    if (localStorage.getItem('data')) {
-                        var old = localStorage.getItem('data');
-                        localStorage.setItem('data', old + ', ' + JSON.stringify(_this.dataUsd[index]));
-                    }
-                    else {
-                        localStorage.setItem('data', JSON.stringify(_this.dataUsd[index]));
-                    }
                 });
+                if (localStorage.getItem('data')) {
+                    var old = localStorage.getItem('data');
+                    localStorage.setItem('data', old + ', ' + JSON.stringify(_this.dataUsd[index]));
+                }
+                else {
+                    localStorage.setItem('data', JSON.stringify(_this.dataUsd[index]));
+                }
             };
             for (var _i = 0; _i < admin.length; ++_i) {
                 _loop_1();
