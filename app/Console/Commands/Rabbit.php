@@ -28,8 +28,6 @@ class Rabbit extends Command
      */
     private $connection;
 
-    private $createTime = 0;
-
     /**
      * Create a new command instance.
      *
@@ -56,10 +54,6 @@ class Rabbit extends Command
         $channel->basic_consume('rpc_queue', '', false, false, false, false, [$this, 'callback']);
 
         while (count($channel->callbacks)) {
-            if ($this->timeToLeave()) {
-                exec("screen -d -m -S my_bg_session php /var/www/bit/artisan rabbit:start");
-                die();
-            }
             $channel->wait();
         }
 
@@ -102,13 +96,5 @@ class Rabbit extends Command
     public function getChannel()
     {
         return $this->getConnection()->channel();
-    }
-
-    public function timeToLeave()
-    {
-        if ((time() - $this->createTime) > 360) {
-            return true;
-        }
-        return false;
     }
 }
