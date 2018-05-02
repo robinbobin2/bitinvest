@@ -173,6 +173,12 @@ data: any;
               this.dataUsd[index].min = response['min'];
               this.dataUsd[index].max = response['max'];
               this.dataUsd[index].value = response['value'];
+              if(localStorage.getItem('data')) {
+                let old = localStorage.getItem('data');
+                localStorage.setItem('data', old+', '+JSON.stringify(this.dataUsd[index]))
+              } else {
+                localStorage.setItem('data', JSON.stringify(this.dataUsd[index]))
+              }
               
       });
       });
@@ -186,12 +192,7 @@ data: any;
               this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
               
       });
-        if(localStorage.getItem('data')) {
-                let old = localStorage.getItem('data');
-                localStorage.setItem('data', old+', '+JSON.stringify(this.dataUsd[index]))
-              } else {
-                localStorage.setItem('data', JSON.stringify(this.dataUsd[index]))
-              }
+        
       }
     });
   }
