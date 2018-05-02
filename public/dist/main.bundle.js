@@ -2110,21 +2110,21 @@ var CryptoAllComponent = (function () {
                 var desc = 'DESC';
                 var path = "/bit/pair?pair=" + symbol + "/USDT";
                 var info = _this.http.get(path);
+                _this.dataUsd[index] = {
+                    sym: '',
+                    last: 0,
+                    now: 0,
+                    min: 0,
+                    max: 0,
+                    value: 0,
+                    year: 0,
+                    algo: '',
+                    week: 0,
+                    day: 0,
+                };
                 info.subscribe(function (response) {
                     // console.log(response);
                     //  var usd_data = response;
-                    _this.dataUsd[index] = {
-                        sym: '',
-                        last: 0,
-                        now: 0,
-                        min: 0,
-                        max: 0,
-                        value: 0,
-                        year: 0,
-                        algo: '',
-                        week: 0,
-                        day: 0,
-                    };
                     _this.dataUsd[index].sym = symbol;
                     _this.dataUsd[index].algo = algo;
                     _this.dataUsd[index].year = year;
@@ -2138,18 +2138,6 @@ var CryptoAllComponent = (function () {
                     info.subscribe(function (response) {
                         // console.log(response);
                         //  var usd_data = response;
-                        _this.dataUsd[index] = {
-                            sym: '',
-                            last: 0,
-                            now: 0,
-                            min: 0,
-                            max: 0,
-                            value: 0,
-                            year: 0,
-                            algo: '',
-                            week: 0,
-                            day: 0,
-                        };
                         _this.dataUsd[index].sym = symbol;
                         _this.dataUsd[index].algo = algo;
                         _this.dataUsd[index].year = year;
