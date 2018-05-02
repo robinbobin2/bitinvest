@@ -2150,13 +2150,7 @@ var CryptoAllComponent = (function () {
                         _this.dataUsd[index].min = response['min'];
                         _this.dataUsd[index].max = response['max'];
                         _this.dataUsd[index].value = response['value'];
-                        if (localStorage.getItem('data')) {
-                            var old = localStorage.getItem('data');
-                            localStorage.setItem('data', old + ', ' + JSON.stringify(_this.dataUsd[index]));
-                        }
-                        else {
-                            localStorage.setItem('data', JSON.stringify(_this.dataUsd[index]));
-                        }
+                        localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                     });
                 });
                 var bitpath = "/bit";
