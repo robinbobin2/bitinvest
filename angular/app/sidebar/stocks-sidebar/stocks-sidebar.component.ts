@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 export interface CryptoData {
@@ -111,5 +111,8 @@ data: any;
       }
     });
   }
+ngOnDestroy() {
 
+  this.data.unsubscribe();
+}
 }

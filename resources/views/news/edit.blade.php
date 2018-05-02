@@ -57,11 +57,11 @@
                             </div>
 
                         <div class="form-group{{ $errors->has('main') ? ' has-error' : '' }}">
-                            <label for="main" class="col-md-4 control-label">Status</label>
+                            <label for="main" class="col-md-4 control-label">Главная</label>
                             <div class="col-md-12">
                                 <select class="form-control" name="main" id="main">
-                                    <option @if(old('main')) selected @elseif($news->main == '0') selected @endif value="0">No</option>
-                                    <option @if(old('main')) selected @elseif($news->main == '1') selected  @endif value="1">Yes</option>
+                                    <option @if($news->main == '0') selected="selected" @endif value="0">Нет</option>
+                                    <option @if($news->main == '1') selected="selected  @endif value="1">Да</option>
                                 </select>
                                 @if ($errors->has('main'))
                                     <span class="help-block">
@@ -91,14 +91,4 @@
     </div>
 </div>
 
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
-    </script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
-        <script type="text/javascript">
-        $(document).ready(function() {
-            $('.summernote').summernote({
-               height: 300,
-            });
-        });
-    </script>
 @endsection

@@ -59,12 +59,12 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('main') ? ' has-error' : '' }}">
-                            <label for="main" class="col-md-4 control-label">General</label>
+                            <label for="main" class="col-md-4 control-label">Главная</label>
 
                             <div class="col-md-12">
                                 <select class="form-control" name="main" id="main">
-                                        <option @if(old('main')) selected  @endif value="0">No</option>
-                                        <option @if(old('main')) selected  @endif value="1">Yes</option>
+                                        <option @if(old('main')) selected  @endif value="0">Нет</option>
+                                        <option @if(old('main')) selected  @endif value="1">Да</option>
                                 </select>
 
                                 @if ($errors->has('main'))
