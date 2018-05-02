@@ -2093,7 +2093,7 @@ var CryptoAllComponent = (function () {
     CryptoAllComponent.prototype.ngOnInit = function () {
         var _this = this;
         if (localStorage.getItem('data')) {
-            this.dataUsd = JSON.parse('[' + localStorage.getItem('data') + ']');
+            this.dataUsd = JSON.parse(localStorage.getItem('data'));
             // console.log(this.dataUsd);
         }
         var alldata = this.http.get('/allcrypto');

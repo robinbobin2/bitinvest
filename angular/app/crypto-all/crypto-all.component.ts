@@ -108,7 +108,7 @@ data: any;
 
   ngOnInit() {
     if(localStorage.getItem('data')) {
-      this.dataUsd = JSON.parse('['+localStorage.getItem('data')+']');
+      this.dataUsd = JSON.parse(localStorage.getItem('data'));
       // console.log(this.dataUsd);
       
     }
