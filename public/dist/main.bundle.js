@@ -2133,6 +2133,7 @@ var CryptoAllComponent = (function () {
                         _this.dataUsd[index].min = response['min'];
                         _this.dataUsd[index].max = response['max'];
                         _this.dataUsd[index].value = response['value'];
+                        localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                     });
                 });
                 var bitpath = "/bit";
@@ -2141,8 +2142,8 @@ var CryptoAllComponent = (function () {
                     // console.log(response);
                     //  var usd_data = response;
                     // localStorage.setItem('data', JSON.stringify(this.dataUsd));
-                    // this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
-                    // this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
+                    _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
+                    _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
                 });
             };
             for (var _i = 0; _i < admin.length; ++_i) {
@@ -2157,7 +2158,6 @@ var CryptoAllComponent = (function () {
         return true;
     };
     CryptoAllComponent.prototype.ngOnDestroy = function () {
-        localStorage.setItem('data', JSON.stringify(this.dataUsd));
         this.data.unsubscribe();
     };
     return CryptoAllComponent;

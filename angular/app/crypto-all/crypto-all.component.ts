@@ -155,7 +155,7 @@ data: any;
               this.dataUsd[index].value = response['value'];
               
               
-              
+              localStorage.setItem('data', JSON.stringify(this.dataUsd));
       });
       });
         const bitpath = "/bit";
@@ -164,8 +164,8 @@ data: any;
           // console.log(response);
          //  var usd_data = response;
          // localStorage.setItem('data', JSON.stringify(this.dataUsd));
-              // this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
-              // this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
+              this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
+              this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
               
       });
         
@@ -179,7 +179,7 @@ data: any;
     return true;
   }
   ngOnDestroy() {
-    localStorage.setItem('data', JSON.stringify(this.dataUsd));
+    
   this.data.unsubscribe();
 }
 
