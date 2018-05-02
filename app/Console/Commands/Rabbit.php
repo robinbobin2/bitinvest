@@ -36,7 +36,6 @@ class Rabbit extends Command
     public function __construct()
     {
         $this->connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
-        $this->createTime = time();
         parent::__construct();
     }
 
