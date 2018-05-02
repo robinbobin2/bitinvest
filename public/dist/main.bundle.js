@@ -5963,9 +5963,11 @@ module.exports = ""
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export Cripto */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StocksSidebarComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5977,6 +5979,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+var Cripto = (function () {
+    function Cripto() {
+    }
+    return Cripto;
+}());
+
 var StocksSidebarComponent = (function () {
     function StocksSidebarComponent(http) {
         this.http = http;
@@ -5984,12 +5993,8 @@ var StocksSidebarComponent = (function () {
     }
     StocksSidebarComponent.prototype.ngOnInit = function () {
         var _this = this;
-        if (localStorage.getItem('data')) {
-            this.dataUsd = JSON.parse(localStorage.getItem('data'));
-            // console.log(this.dataUsd);
-        }
         var alldata = this.http.get('/allcrypto');
-        alldata.subscribe(function (response) {
+        this.data = alldata.subscribe(function (response) {
             // console.log(response);
             var admin = response;
             var _loop_1 = function () {
@@ -6018,7 +6023,7 @@ var StocksSidebarComponent = (function () {
                     };
                 }
                 info.subscribe(function (response) {
-                    console.log(response);
+                    // console.log(response);
                     //  var usd_data = response;
                     _this.dataUsd[index].sym = symbol;
                     _this.dataUsd[index].algo = algo;
@@ -6028,19 +6033,29 @@ var StocksSidebarComponent = (function () {
                     _this.dataUsd[index].min = response['min'];
                     _this.dataUsd[index].max = response['max'];
                     _this.dataUsd[index].value = response['value'];
-                    if (localStorage.getItem('data')) {
-                        var old = localStorage.getItem('data');
-                        localStorage.setItem('data', old + ', ' + JSON.stringify(_this.dataUsd[index]));
-                    }
-                    else {
-                        localStorage.setItem('data', JSON.stringify(_this.dataUsd[index]));
-                    }
+                });
+                __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */].interval(1400).take(50).subscribe(function (wait) {
+                    info.subscribe(function (response) {
+                        // console.log(response);
+                        //  var usd_data = response;
+                        _this.dataUsd[index].sym = symbol;
+                        _this.dataUsd[index].algo = algo;
+                        _this.dataUsd[index].year = year;
+                        _this.dataUsd[index].last = response['last'];
+                        _this.dataUsd[index].now = response['now'];
+                        _this.dataUsd[index].min = response['min'];
+                        _this.dataUsd[index].max = response['max'];
+                        _this.dataUsd[index].value = response['value'];
+                        localStorage.removeItem('data');
+                        localStorage.setItem('data', JSON.stringify(_this.dataUsd));
+                    });
                 });
                 var bitpath = "/bit";
                 var bitinfo = _this.http.get(bitpath);
                 bitinfo.subscribe(function (response) {
                     // console.log(response);
                     //  var usd_data = response;
+                    // localStorage.setItem('data', JSON.stringify(this.dataUsd));
                     _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
                     _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
                 });

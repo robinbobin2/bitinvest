@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Rx';
 export interface CryptoData {
   sym: string;
   last: number;
@@ -13,6 +14,14 @@ export interface CryptoData {
   day: number;
 
 }
+export class Cripto {
+  id: number;
+  name:string;
+  symbol:string;
+  year:number;
+  desc: string;
+  algo: string;
+}
 @Component({
   selector: 'app-stocks-sidebar',
   templateUrl: './stocks-sidebar.component.html',
@@ -21,16 +30,13 @@ export interface CryptoData {
 export class StocksSidebarComponent implements OnInit {
  dataUsd: Array<CryptoData> = [];
   constructor(private http:HttpClient) { }
+data: any;
 
   ngOnInit() {
-    if(localStorage.getItem('data')) {
-      this.dataUsd = JSON.parse(localStorage.getItem('data'));
-      // console.log(this.dataUsd);
-      
-    }
-  	const alldata = this.http.get<any>('/allcrypto');
-    alldata.subscribe(response => {
-    // console.log(response);
+    const alldata = this.http.get<Array<Cripto>>('/allcrypto');
+
+    this.data = alldata.subscribe(response => {
+      // console.log(response);
       let admin = response;
       for (var _i = 0; _i < admin.length; ++_i) {
         // console.log(this.admin[i].symbol);
@@ -57,7 +63,7 @@ export class StocksSidebarComponent implements OnInit {
             }
         }
         info.subscribe(response => {
-          console.log(response);
+          // console.log(response);
          //  var usd_data = response;
             
               this.dataUsd[index].sym = symbol;
@@ -68,22 +74,39 @@ export class StocksSidebarComponent implements OnInit {
               this.dataUsd[index].min = response['min'];
               this.dataUsd[index].max = response['max'];
               this.dataUsd[index].value = response['value'];
-              if(localStorage.getItem('data')) {
-                let old = localStorage.getItem('data');
-                localStorage.setItem('data', old+', '+JSON.stringify(this.dataUsd[index]))
-              } else {
-                localStorage.setItem('data', JSON.stringify(this.dataUsd[index]))
-              }
+              
+              
+              
+      });
+         Observable.interval(1400).take(50).subscribe(wait =>{
+        info.subscribe(response => {
+          // console.log(response);
+         //  var usd_data = response;
+            
+              this.dataUsd[index].sym = symbol;
+              this.dataUsd[index].algo = algo;
+              this.dataUsd[index].year = year;
+              this.dataUsd[index].last = response['last'];
+              this.dataUsd[index].now = response['now'];
+              this.dataUsd[index].min = response['min'];
+              this.dataUsd[index].max = response['max'];
+              this.dataUsd[index].value = response['value'];
+              localStorage.removeItem('data');
+              localStorage.setItem('data',JSON.stringify(this.dataUsd))
+              
+      });
       });
         const bitpath = "/bit";
         const bitinfo = this.http.get(bitpath);
         bitinfo.subscribe(response => {
           // console.log(response);
          //  var usd_data = response;
-            
+         // localStorage.setItem('data', JSON.stringify(this.dataUsd));
               this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
               this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
+              
       });
+        
       }
     });
   }
