@@ -2092,11 +2092,6 @@ var CryptoAllComponent = (function () {
     };
     CryptoAllComponent.prototype.ngOnInit = function () {
         var _this = this;
-        if (localStorage.getItem('data')) {
-            this.dataUsd = JSON.parse('[' + localStorage.getItem('data') + ']');
-            // console.log(this.dataUsd);
-            localStorage.removeItem('data');
-        }
         var alldata = this.http.get('/allcrypto');
         this.data = alldata.subscribe(function (response) {
             // console.log(response);
