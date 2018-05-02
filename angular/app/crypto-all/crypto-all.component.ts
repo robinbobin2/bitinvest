@@ -107,6 +107,11 @@ data: any;
   }
 
   ngOnInit() {
+    if(localStorage.getItem('data')) {
+      this.dataUsd = JSON.parse('['+localStorage.getItem('data')+']');
+      // console.log(this.dataUsd);
+      
+    }
     
     
 
@@ -125,7 +130,6 @@ data: any;
         const path = "/bit/pair?pair="+symbol+"/USDT";
         const info = this.http.get(path);
         if(localStorage.getItem('data')) {
-          this.dataUsd[index] = JSON.parse('['+localStorage.getItem('data')+']')[index];
         } else {
         this.dataUsd[index] = {
                 sym: '',
@@ -169,6 +173,7 @@ data: any;
               this.dataUsd[index].min = response['min'];
               this.dataUsd[index].max = response['max'];
               this.dataUsd[index].value = response['value'];
+              localStorage.removeItem('data');
               localStorage.setItem('data',JSON.stringify(this.dataUsd))
               
       });

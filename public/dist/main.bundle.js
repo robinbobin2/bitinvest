@@ -2092,6 +2092,10 @@ var CryptoAllComponent = (function () {
     };
     CryptoAllComponent.prototype.ngOnInit = function () {
         var _this = this;
+        if (localStorage.getItem('data')) {
+            this.dataUsd = JSON.parse('[' + localStorage.getItem('data') + ']');
+            // console.log(this.dataUsd);
+        }
         var alldata = this.http.get('/allcrypto');
         this.data = alldata.subscribe(function (response) {
             // console.log(response);
@@ -2106,7 +2110,6 @@ var CryptoAllComponent = (function () {
                 var path = "/bit/pair?pair=" + symbol + "/USDT";
                 var info = _this.http.get(path);
                 if (localStorage.getItem('data')) {
-                    _this.dataUsd[index] = JSON.parse('[' + localStorage.getItem('data') + ']')[index];
                 }
                 else {
                     _this.dataUsd[index] = {
@@ -2146,6 +2149,7 @@ var CryptoAllComponent = (function () {
                         _this.dataUsd[index].min = response['min'];
                         _this.dataUsd[index].max = response['max'];
                         _this.dataUsd[index].value = response['value'];
+                        localStorage.removeItem('data');
                         localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                     });
                 });
