@@ -106,7 +106,7 @@ class Rabbit extends Command
 
     public function timeToLeave()
     {
-        if ((time() - $this->createTime) > 360) {
+        if ((time() - $this->createTime) > 720) {
             return true;
         }
         return false;
