@@ -109,8 +109,9 @@ age = '';
     if(localStorage.getItem('data')) {
       this.dataUsd = JSON.parse('['+localStorage.getItem('data')+']');
       // console.log(this.dataUsd);
-      localStorage.removeItem('data');
+      
     }
+    localStorage.removeItem('data');
     
 
     const alldata = this.http.get<Array<Cripto>>('/allcrypto');
@@ -150,14 +151,26 @@ age = '';
               this.dataUsd[index].min = response['min'];
               this.dataUsd[index].max = response['max'];
               this.dataUsd[index].value = response['value'];
-              if(localStorage.getItem('data')) {
-                let old = localStorage.getItem('data');
-                localStorage.setItem('data', old+', '+JSON.stringify(this.dataUsd[index]))
-              } else {
-                localStorage.setItem('data', JSON.stringify(this.dataUsd[index]))
-              }
+              
               // console.log(this.dataUsd);
       });
+        Observable.interval(1400).take(50).subscribe(wait =>{
+         info.subscribe(response => {
+          // console.log(response);
+         //  var usd_data = response;
+            
+              this.dataUsd[index].sym = symbol;
+              this.dataUsd[index].algo = algo;
+              this.dataUsd[index].year = year;
+              this.dataUsd[index].last = response['last'];
+              this.dataUsd[index].now = response['now'];
+              this.dataUsd[index].min = response['min'];
+              this.dataUsd[index].max = response['max'];
+              this.dataUsd[index].value = response['value'];
+              
+              // console.log(this.dataUsd);
+      });
+       });
         const bitpath = "/bit";
         const bitinfo = this.http.get(bitpath);
         bitinfo.subscribe(response => {
@@ -166,6 +179,12 @@ age = '';
          // localStorage.setItem('data', JSON.stringify(this.dataUsd));
               this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
               this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
+              if(localStorage.getItem('data')) {
+                let old = localStorage.getItem('data');
+                localStorage.setItem('data', old+', '+JSON.stringify(this.dataUsd[index]))
+              } else {
+                localStorage.setItem('data', JSON.stringify(this.dataUsd[index]))
+              }
       });
         
       }

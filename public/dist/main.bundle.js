@@ -1995,9 +1995,10 @@ module.exports = ".select-wrapper1 {\n  width: 144px;\n  position: relative;\n  
 /* unused harmony export Cripto */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CryptoAllComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2007,6 +2008,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 // import { interval } from 'rxjs/Observable/interval';
 
@@ -2083,8 +2085,8 @@ var CryptoAllComponent = (function () {
         if (localStorage.getItem('data')) {
             this.dataUsd = JSON.parse('[' + localStorage.getItem('data') + ']');
             // console.log(this.dataUsd);
-            localStorage.removeItem('data');
         }
+        localStorage.removeItem('data');
         var alldata = this.http.get('/allcrypto');
         alldata.subscribe(function (response) {
             // console.log(response);
@@ -2121,14 +2123,22 @@ var CryptoAllComponent = (function () {
                     _this.dataUsd[index].min = response['min'];
                     _this.dataUsd[index].max = response['max'];
                     _this.dataUsd[index].value = response['value'];
-                    if (localStorage.getItem('data')) {
-                        var old = localStorage.getItem('data');
-                        localStorage.setItem('data', old + ', ' + JSON.stringify(_this.dataUsd[index]));
-                    }
-                    else {
-                        localStorage.setItem('data', JSON.stringify(_this.dataUsd[index]));
-                    }
                     // console.log(this.dataUsd);
+                });
+                __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1400).take(50).subscribe(function (wait) {
+                    info.subscribe(function (response) {
+                        // console.log(response);
+                        //  var usd_data = response;
+                        _this.dataUsd[index].sym = symbol;
+                        _this.dataUsd[index].algo = algo;
+                        _this.dataUsd[index].year = year;
+                        _this.dataUsd[index].last = response['last'];
+                        _this.dataUsd[index].now = response['now'];
+                        _this.dataUsd[index].min = response['min'];
+                        _this.dataUsd[index].max = response['max'];
+                        _this.dataUsd[index].value = response['value'];
+                        // console.log(this.dataUsd);
+                    });
                 });
                 var bitpath = "/bit";
                 var bitinfo = _this.http.get(bitpath);
@@ -2138,6 +2148,13 @@ var CryptoAllComponent = (function () {
                     // localStorage.setItem('data', JSON.stringify(this.dataUsd));
                     _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
                     _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
+                    if (localStorage.getItem('data')) {
+                        var old = localStorage.getItem('data');
+                        localStorage.setItem('data', old + ', ' + JSON.stringify(_this.dataUsd[index]));
+                    }
+                    else {
+                        localStorage.setItem('data', JSON.stringify(_this.dataUsd[index]));
+                    }
                 });
             };
             for (var _i = 0; _i < admin.length; ++_i) {
@@ -2159,7 +2176,7 @@ CryptoAllComponent = __decorate([
         template: __webpack_require__("./angular/app/crypto-all/crypto-all.component.html"),
         styles: [__webpack_require__("./angular/app/crypto-all/crypto-all.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
 ], CryptoAllComponent);
 
 var _a, _b, _c, _d;
@@ -2370,7 +2387,11 @@ var CryptoComponent = (function () {
     CryptoComponent.prototype.ngOnInit = function () {
         var _this = this;
         var symbol = this.route.snapshot.params['sym'];
-        console.log('stocks');
+        if (localStorage.getItem(symbol)) {
+            this.dataUsd = JSON.parse('[' + localStorage.getItem(symbol) + ']');
+            // console.log(this.dataUsd);
+            localStorage.removeItem('data');
+        }
         this.stocksServise.getStocks(symbol + '/USDT')
             .subscribe(function (response) {
             _this.stocks = response;
@@ -2391,7 +2412,7 @@ var CryptoComponent = (function () {
                 _this.dataUsd.value = response['value'];
                 _this.dataUsd.week = response['week'];
                 _this.dataUsd.day = response['day'];
-                console.log(_this.dataUsd);
+                localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
             });
         });
         var infoCryptoPath = "/allcrypto/" + symbol;
