@@ -2077,7 +2077,7 @@ var CryptoAllComponent = (function () {
             localStorage.removeItem('data');
             localStorage.setItem('data', JSON.stringify(_this.dataUsd));
         });
-        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(3000).take(50).concatMap(function () { return _this.stocksServise.getCrypto(); })
+        __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(3000).take(50).concatMap(function () { return _this.stocksServise.getCrypto(); })
             .map(function (response) { return _this.response = response; });
         var alldata = this.http.get('/allcrypto');
         this.data = alldata.subscribe(function (response) {

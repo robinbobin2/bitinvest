@@ -97,9 +97,8 @@ if(localStorage.getItem('data')) {
             localStorage.removeItem('data');
               localStorage.setItem('data',JSON.stringify(this.dataUsd))
           });
-    this.cryptoData = Observable.interval(3000).take(50).concatMap(()=>this.stocksServise.getCrypto())
+    Observable.interval(3000).take(50).concatMap(()=>this.stocksServise.getCrypto())
         .map((response)=>this.response = response)
-    
     
 
     const alldata = this.http.get<Array<Cripto>>('/allcrypto');
