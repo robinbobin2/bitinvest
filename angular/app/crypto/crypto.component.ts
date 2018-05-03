@@ -76,7 +76,7 @@ export class CryptoComponent implements OnInit {
   news: any;
   info: any;
   obs: any;
-  constructor(private http:HttpClient,public stocksServise:StocksService, 
+  constructor(private http:HttpClient,private stocksServise:StocksService, 
     private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
   }

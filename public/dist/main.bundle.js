@@ -2005,9 +2005,9 @@ module.exports = ".select-wrapper1 {\n  width: 144px;\n  position: relative;\n  
 /* unused harmony export Cripto */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CryptoAllComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2019,8 +2019,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 // import { interval } from 'rxjs/Observable/interval';
+
 
 
 
@@ -2044,7 +2044,7 @@ var CryptoAllComponent = (function () {
      *
      * @param {OrderPipe} orderPipe
      */
-    function CryptoAllComponent(orderPipe, http, router, route) {
+    function CryptoAllComponent(orderPipe, http, router, route, stocksServise) {
         // Observable.interval(1000).subscribe(wait => {
         // alldata.subscribe(response => {
         //   // console.log(response);
@@ -2076,6 +2076,7 @@ var CryptoAllComponent = (function () {
         this.http = http;
         this.router = router;
         this.route = route;
+        this.stocksServise = stocksServise;
         // admin= new Array;
         this.dataUsd = [];
         this.order = 'sym';
@@ -2125,43 +2126,44 @@ var CryptoAllComponent = (function () {
                         day: 0,
                     };
                 }
-                info.subscribe(function (response) {
-                    // console.log(response);
-                    //  var usd_data = response;
+                _this.stocksServise.getCrypto()
+                    .subscribe(function (response) {
                     _this.dataUsd[index].sym = symbol;
                     _this.dataUsd[index].algo = algo;
                     _this.dataUsd[index].year = year;
-                    _this.dataUsd[index].last = response['last'];
-                    _this.dataUsd[index].now = response['now'];
-                    _this.dataUsd[index].min = response['min'];
-                    _this.dataUsd[index].max = response['max'];
-                    _this.dataUsd[index].value = response['value'];
-                });
-                __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1400).take(50).subscribe(function (wait) {
-                    info.subscribe(function (response) {
-                        // console.log(response);
-                        //  var usd_data = response;
-                        _this.dataUsd[index].sym = symbol;
-                        _this.dataUsd[index].algo = algo;
-                        _this.dataUsd[index].year = year;
-                        _this.dataUsd[index].last = response['last'];
-                        _this.dataUsd[index].now = response['now'];
-                        _this.dataUsd[index].min = response['min'];
-                        _this.dataUsd[index].max = response['max'];
-                        _this.dataUsd[index].value = response['value'];
-                        localStorage.removeItem('data');
-                        localStorage.setItem('data', JSON.stringify(_this.dataUsd));
-                    });
-                });
-                var bitpath = "/bit";
-                var bitinfo = _this.http.get(bitpath);
-                bitinfo.subscribe(function (response) {
-                    // console.log(response);
-                    //  var usd_data = response;
-                    // localStorage.setItem('data', JSON.stringify(this.dataUsd));
+                    _this.dataUsd[index].last = response[symbol + '/USDT']['last'];
+                    _this.dataUsd[index].now = response[symbol + '/USDT']['now'];
+                    _this.dataUsd[index].min = response[symbol + '/USDT']['min'];
+                    _this.dataUsd[index].max = response[symbol + '/USDT']['max'];
+                    _this.dataUsd[index].value = response[symbol + '/USDT']['value'];
                     _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
                     _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
                 });
+                //    Observable.interval(1400).take(50).subscribe(wait =>{
+                //   info.subscribe(response => {
+                //     // console.log(response);
+                //    //  var usd_data = response;
+                //         this.dataUsd[index].sym = symbol;
+                //         this.dataUsd[index].algo = algo;
+                //         this.dataUsd[index].year = year;
+                //         this.dataUsd[index].last = response['last'];
+                //         this.dataUsd[index].now = response['now'];
+                //         this.dataUsd[index].min = response['min'];
+                //         this.dataUsd[index].max = response['max'];
+                //         this.dataUsd[index].value = response['value'];
+                //         localStorage.removeItem('data');
+                //         localStorage.setItem('data',JSON.stringify(this.dataUsd))
+                // });
+                // });
+                //   const bitpath = "/bit";
+                //   const bitinfo = this.http.get(bitpath);
+                //   bitinfo.subscribe(response => {
+                //     // console.log(response);
+                //    //  var usd_data = response;
+                //    // localStorage.setItem('data', JSON.stringify(this.dataUsd));
+                //         this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
+                //         this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
+                // });
             };
             for (var _i = 0; _i < admin.length; ++_i) {
                 _loop_1();
@@ -2183,12 +2185,13 @@ CryptoAllComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-crypto-all',
         template: __webpack_require__("./angular/app/crypto-all/crypto-all.component.html"),
-        styles: [__webpack_require__("./angular/app/crypto-all/crypto-all.component.scss")]
+        styles: [__webpack_require__("./angular/app/crypto-all/crypto-all.component.scss")],
+        providers: [__WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */]],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */]) === "function" && _e || Object])
 ], CryptoAllComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=crypto-all.component.js.map
 
 /***/ }),
@@ -6106,9 +6109,13 @@ var StocksService = (function () {
     function StocksService(http) {
         this.http = http;
         this.path = '/bit/info';
+        this.bitPath = '/bit/';
     }
     StocksService.prototype.getStocks = function (pairs) {
         return this.http.get(this.path + '?pair=' + pairs).publishReplay(1).refCount();
+    };
+    StocksService.prototype.getCrypto = function () {
+        return this.http.get(this.bitPath).publishReplay(1).refCount();
     };
     return StocksService;
 }());
