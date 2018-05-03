@@ -10,6 +10,7 @@ export class StocksService {
   bitPath = '/bit/';
   observ: any;
   returnPath: any;
+  obs: any;
   public getStocks(pairs) {
 
   	return this.http.get<any>(this.path+'?pair='+pairs).publishReplay(1).refCount();

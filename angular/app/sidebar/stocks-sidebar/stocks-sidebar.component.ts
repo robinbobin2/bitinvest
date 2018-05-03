@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {StocksService} from '../../stocks.service';
 import { Observable } from 'rxjs/Rx';
 export interface CryptoData {
   sym: string;
@@ -29,7 +30,9 @@ export class Cripto {
 })
 export class StocksSidebarComponent implements OnInit {
  dataUsd: Array<CryptoData> = [];
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+    private stocksServise:StocksService
+    ) { }
 data: any;
 
   ngOnInit() {
@@ -50,62 +53,22 @@ data: any;
         let year = admin[index].year;
         let algo = admin[index].algo;
         let desc = 'DESC';
-        const path = "/bit/pair?pair="+symbol+"/USDT";
-        const info = this.http.get(path);
-        if(localStorage.getItem('data')) {
-        } else {
-        this.dataUsd[index] = {
-                sym: '',
-                last: 0,
-                now: 0,
-                min:0,
-                max: 0,
-                value:0,
-                year: 0,
-                algo: '',
-                week: 0,
-                day: 0,
-            }
-        }
-        info.subscribe(response => {
-          // console.log(response);
-         //  var usd_data = response;
-            
-              this.dataUsd[index].sym = symbol;
+        Observable.interval(1400).take(50).subscribe(wait =>{
+        this.stocksServise.getCrypto()
+        .subscribe(response => {
+            this.dataUsd[index].sym = symbol;
               this.dataUsd[index].algo = algo;
               this.dataUsd[index].year = year;
-              this.dataUsd[index].last = response['last'];
-              this.dataUsd[index].now = response['now'];
-              this.dataUsd[index].min = response['min'];
-              this.dataUsd[index].max = response['max'];
-              this.dataUsd[index].value = response['value'];
-              
-              
-              
-      });
-         Observable.interval(5000).take(50).subscribe(wait =>{
-        info.subscribe(response => {
-          // console.log(response);
-         //  var usd_data = response;
-              this.dataUsd[index].last = response['last'];
-              this.dataUsd[index].now = response['now'];
-              this.dataUsd[index].min = response['min'];
-              this.dataUsd[index].max = response['max'];
-              this.dataUsd[index].value = response['value'];
-              localStorage.removeItem('data');
-              localStorage.setItem('data',JSON.stringify(this.dataUsd))
-              
-      });
-      });
-        const bitpath = "/bit";
-        const bitinfo = this.http.get(bitpath);
-        bitinfo.subscribe(response => {
-          // console.log(response);
-         //  var usd_data = response;
-         // localStorage.setItem('data', JSON.stringify(this.dataUsd));
+              this.dataUsd[index].last = response[symbol+'/USDT']['last'];
+              this.dataUsd[index].now = response[symbol+'/USDT']['now'];
+              this.dataUsd[index].min = response[symbol+'/USDT']['min'];
+              this.dataUsd[index].max = response[symbol+'/USDT']['max'];
+              this.dataUsd[index].value = response[symbol+'/USDT']['value'];
               this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
               this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
-              
+              localStorage.removeItem('data');
+              localStorage.setItem('data',JSON.stringify(this.dataUsd))
+          });
       });
         
       }

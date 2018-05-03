@@ -135,8 +135,6 @@ data: any;
         let year = admin[index].year;
         let algo = admin[index].algo;
         let desc = 'DESC';
-        const path = "/bit/pair?pair="+symbol+"/USDT";
-        const info = this.http.get(path);
         if(localStorage.getItem('data')) {
         } else {
         this.dataUsd[index] = {
@@ -153,7 +151,7 @@ data: any;
             }
         }
 
-        Observable.interval(500).take(50).subscribe(wait =>{
+        Observable.interval(1400).take(50).subscribe(wait =>{
         this.stocksServise.getCrypto()
         .subscribe(response => {
             this.dataUsd[index].sym = symbol;
@@ -170,33 +168,6 @@ data: any;
               localStorage.setItem('data',JSON.stringify(this.dataUsd))
           });
       });
-      //    Observable.interval(1400).take(50).subscribe(wait =>{
-      //   info.subscribe(response => {
-      //     // console.log(response);
-      //    //  var usd_data = response;
-            
-      //         this.dataUsd[index].sym = symbol;
-      //         this.dataUsd[index].algo = algo;
-      //         this.dataUsd[index].year = year;
-      //         this.dataUsd[index].last = response['last'];
-      //         this.dataUsd[index].now = response['now'];
-      //         this.dataUsd[index].min = response['min'];
-      //         this.dataUsd[index].max = response['max'];
-      //         this.dataUsd[index].value = response['value'];
-              
-              
-      // });
-      // });
-      //   const bitpath = "/bit";
-      //   const bitinfo = this.http.get(bitpath);
-      //   bitinfo.subscribe(response => {
-      //     // console.log(response);
-      //    //  var usd_data = response;
-      //    // localStorage.setItem('data', JSON.stringify(this.dataUsd));
-      //         this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
-      //         this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
-              
-      // });
         
       }
     });

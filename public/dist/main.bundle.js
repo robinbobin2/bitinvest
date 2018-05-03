@@ -2110,8 +2110,6 @@ var CryptoAllComponent = (function () {
                 var year = admin[index].year;
                 var algo = admin[index].algo;
                 var desc = 'DESC';
-                var path = "/bit/pair?pair=" + symbol + "/USDT";
-                var info = _this.http.get(path);
                 if (localStorage.getItem('data')) {
                 }
                 else {
@@ -2128,7 +2126,7 @@ var CryptoAllComponent = (function () {
                         day: 0,
                     };
                 }
-                __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(500).take(50).subscribe(function (wait) {
+                __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1400).take(50).subscribe(function (wait) {
                     _this.stocksServise.getCrypto()
                         .subscribe(function (response) {
                         _this.dataUsd[index].sym = symbol;
@@ -2145,29 +2143,6 @@ var CryptoAllComponent = (function () {
                         localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                     });
                 });
-                //    Observable.interval(1400).take(50).subscribe(wait =>{
-                //   info.subscribe(response => {
-                //     // console.log(response);
-                //    //  var usd_data = response;
-                //         this.dataUsd[index].sym = symbol;
-                //         this.dataUsd[index].algo = algo;
-                //         this.dataUsd[index].year = year;
-                //         this.dataUsd[index].last = response['last'];
-                //         this.dataUsd[index].now = response['now'];
-                //         this.dataUsd[index].min = response['min'];
-                //         this.dataUsd[index].max = response['max'];
-                //         this.dataUsd[index].value = response['value'];
-                // });
-                // });
-                //   const bitpath = "/bit";
-                //   const bitinfo = this.http.get(bitpath);
-                //   bitinfo.subscribe(response => {
-                //     // console.log(response);
-                //    //  var usd_data = response;
-                //    // localStorage.setItem('data', JSON.stringify(this.dataUsd));
-                //         this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
-                //         this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
-                // });
             };
             for (var _i = 0; _i < admin.length; ++_i) {
                 _loop_1();
@@ -5973,7 +5948,8 @@ module.exports = ""
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StocksSidebarComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5986,6 +5962,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Cripto = (function () {
     function Cripto() {
     }
@@ -5993,8 +5970,9 @@ var Cripto = (function () {
 }());
 
 var StocksSidebarComponent = (function () {
-    function StocksSidebarComponent(http) {
+    function StocksSidebarComponent(http, stocksServise) {
         this.http = http;
+        this.stocksServise = stocksServise;
         this.dataUsd = [];
     }
     StocksSidebarComponent.prototype.ngOnInit = function () {
@@ -6014,57 +5992,22 @@ var StocksSidebarComponent = (function () {
                 var year = admin[index].year;
                 var algo = admin[index].algo;
                 var desc = 'DESC';
-                var path = "/bit/pair?pair=" + symbol + "/USDT";
-                var info = _this.http.get(path);
-                if (localStorage.getItem('data')) {
-                }
-                else {
-                    _this.dataUsd[index] = {
-                        sym: '',
-                        last: 0,
-                        now: 0,
-                        min: 0,
-                        max: 0,
-                        value: 0,
-                        year: 0,
-                        algo: '',
-                        week: 0,
-                        day: 0,
-                    };
-                }
-                info.subscribe(function (response) {
-                    // console.log(response);
-                    //  var usd_data = response;
-                    _this.dataUsd[index].sym = symbol;
-                    _this.dataUsd[index].algo = algo;
-                    _this.dataUsd[index].year = year;
-                    _this.dataUsd[index].last = response['last'];
-                    _this.dataUsd[index].now = response['now'];
-                    _this.dataUsd[index].min = response['min'];
-                    _this.dataUsd[index].max = response['max'];
-                    _this.dataUsd[index].value = response['value'];
-                });
-                __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */].interval(5000).take(50).subscribe(function (wait) {
-                    info.subscribe(function (response) {
-                        // console.log(response);
-                        //  var usd_data = response;
-                        _this.dataUsd[index].last = response['last'];
-                        _this.dataUsd[index].now = response['now'];
-                        _this.dataUsd[index].min = response['min'];
-                        _this.dataUsd[index].max = response['max'];
-                        _this.dataUsd[index].value = response['value'];
+                __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["a" /* Observable */].interval(1400).take(50).subscribe(function (wait) {
+                    _this.stocksServise.getCrypto()
+                        .subscribe(function (response) {
+                        _this.dataUsd[index].sym = symbol;
+                        _this.dataUsd[index].algo = algo;
+                        _this.dataUsd[index].year = year;
+                        _this.dataUsd[index].last = response[symbol + '/USDT']['last'];
+                        _this.dataUsd[index].now = response[symbol + '/USDT']['now'];
+                        _this.dataUsd[index].min = response[symbol + '/USDT']['min'];
+                        _this.dataUsd[index].max = response[symbol + '/USDT']['max'];
+                        _this.dataUsd[index].value = response[symbol + '/USDT']['value'];
+                        _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
+                        _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
                         localStorage.removeItem('data');
                         localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                     });
-                });
-                var bitpath = "/bit";
-                var bitinfo = _this.http.get(bitpath);
-                bitinfo.subscribe(function (response) {
-                    // console.log(response);
-                    //  var usd_data = response;
-                    // localStorage.setItem('data', JSON.stringify(this.dataUsd));
-                    _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
-                    _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
                 });
             };
             for (var _i = 0; _i < admin.length; ++_i) {
@@ -6083,10 +6026,10 @@ StocksSidebarComponent = __decorate([
         template: __webpack_require__("./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.html"),
         styles: [__webpack_require__("./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__stocks_service__["a" /* StocksService */]) === "function" && _b || Object])
 ], StocksSidebarComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=stocks-sidebar.component.js.map
 
 /***/ }),
