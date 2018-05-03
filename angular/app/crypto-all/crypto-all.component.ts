@@ -152,6 +152,8 @@ data: any;
                 day: 0,
             }
         }
+
+        Observable.interval(1400).take(50).subscribe(wait =>{
         this.stocksServise.getCrypto()
         .subscribe(response => {
             this.dataUsd[index].sym = symbol;
@@ -165,6 +167,7 @@ data: any;
               this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
               this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
           });
+      });
       //    Observable.interval(1400).take(50).subscribe(wait =>{
       //   info.subscribe(response => {
       //     // console.log(response);

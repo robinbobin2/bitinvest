@@ -2005,10 +2005,11 @@ module.exports = ".select-wrapper1 {\n  width: 144px;\n  position: relative;\n  
 /* unused harmony export Cripto */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CryptoAllComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2018,6 +2019,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 // import { interval } from 'rxjs/Observable/interval';
 
@@ -2126,18 +2128,20 @@ var CryptoAllComponent = (function () {
                         day: 0,
                     };
                 }
-                _this.stocksServise.getCrypto()
-                    .subscribe(function (response) {
-                    _this.dataUsd[index].sym = symbol;
-                    _this.dataUsd[index].algo = algo;
-                    _this.dataUsd[index].year = year;
-                    _this.dataUsd[index].last = response[symbol + '/USDT']['last'];
-                    _this.dataUsd[index].now = response[symbol + '/USDT']['now'];
-                    _this.dataUsd[index].min = response[symbol + '/USDT']['min'];
-                    _this.dataUsd[index].max = response[symbol + '/USDT']['max'];
-                    _this.dataUsd[index].value = response[symbol + '/USDT']['value'];
-                    _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
-                    _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
+                __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1400).take(50).subscribe(function (wait) {
+                    _this.stocksServise.getCrypto()
+                        .subscribe(function (response) {
+                        _this.dataUsd[index].sym = symbol;
+                        _this.dataUsd[index].algo = algo;
+                        _this.dataUsd[index].year = year;
+                        _this.dataUsd[index].last = response[symbol + '/USDT']['last'];
+                        _this.dataUsd[index].now = response[symbol + '/USDT']['now'];
+                        _this.dataUsd[index].min = response[symbol + '/USDT']['min'];
+                        _this.dataUsd[index].max = response[symbol + '/USDT']['max'];
+                        _this.dataUsd[index].value = response[symbol + '/USDT']['value'];
+                        _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
+                        _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
+                    });
                 });
                 //    Observable.interval(1400).take(50).subscribe(wait =>{
                 //   info.subscribe(response => {
@@ -2186,9 +2190,9 @@ CryptoAllComponent = __decorate([
         selector: 'app-crypto-all',
         template: __webpack_require__("./angular/app/crypto-all/crypto-all.component.html"),
         styles: [__webpack_require__("./angular/app/crypto-all/crypto-all.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */]],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */]) === "function" && _e || Object])
 ], CryptoAllComponent);
 
 var _a, _b, _c, _d, _e;
@@ -6115,8 +6119,7 @@ var StocksService = (function () {
         return this.http.get(this.path + '?pair=' + pairs).publishReplay(1).refCount();
     };
     StocksService.prototype.getCrypto = function () {
-        this.returnPath = this.http.get(this.bitPath).publishReplay(1).refCount();
-        return this.returnPath.asObservable().interval(1000);
+        return this.returnPath = this.http.get(this.bitPath).publishReplay(1).refCount();
     };
     return StocksService;
 }());
