@@ -2,19 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {StocksService} from '../../stocks.service';
 import { Observable } from 'rxjs/Rx';
-export interface CryptoData {
-  sym: string;
-  last: number;
-  now: number;
-  min:number;
-  max: number;
-  value:number;
-  year: number;
-  algo: string;
-  week: number;
-  day: number;
-
-}
 export class Cripto {
   id: number;
   name:string;
@@ -30,7 +17,7 @@ export class Cripto {
   providers: [StocksService],
 })
 export class StocksSidebarComponent implements OnInit {
- dataUsd: Array<CryptoData> = [];
+ dataUsd:any;
   constructor(private http:HttpClient,
     private stocksServise:StocksService
     ) { }
@@ -42,10 +29,12 @@ response: any;
       // console.log(this.dataUsd);
       
     }
-    Observable.interval(1400).take(50).subscribe(wait =>{
+    Observable.interval(3000).take(50).subscribe(wait =>{
         this.stocksServise.getCrypto()
         .subscribe(response => {
             this.response = response;
+            localStorage.removeItem('data');
+              localStorage.setItem('data',JSON.stringify(this.dataUsd))
           });
       });
     const alldata = this.http.get<Array<Cripto>>('/allcrypto');
@@ -71,8 +60,7 @@ response: any;
               this.dataUsd[index].value = this.response[symbol+'/USDT']['value'];
               this.dataUsd[index].day = this.response[symbol+"/USDT"]['day'];
               this.dataUsd[index].week = this.response[symbol+"/USDT"]['week'];
-              localStorage.removeItem('data');
-              localStorage.setItem('data',JSON.stringify(this.dataUsd))
+              
         
       }
     });
