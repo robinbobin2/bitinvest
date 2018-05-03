@@ -97,7 +97,7 @@ if(localStorage.getItem('data')) {
             localStorage.removeItem('data');
               localStorage.setItem('data',JSON.stringify(this.dataUsd))
           });
-    Observable.interval(3000).take(50).concatMap(()=>this.stocksServise.getCrypto())
+    this.cryptoData=Observable.interval(3000).take(50).concatMap(()=>this.stocksServise.getCrypto())
         .map((response)=>this.response = response).subscribe();
     
 
