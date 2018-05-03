@@ -2128,7 +2128,7 @@ var CryptoAllComponent = (function () {
                         day: 0,
                     };
                 }
-                __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1400).take(50).subscribe(function (wait) {
+                __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(500).take(50).subscribe(function (wait) {
                     _this.stocksServise.getCrypto()
                         .subscribe(function (response) {
                         _this.dataUsd[index].sym = symbol;

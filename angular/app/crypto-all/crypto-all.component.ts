@@ -153,7 +153,7 @@ data: any;
             }
         }
 
-        Observable.interval(1400).take(50).subscribe(wait =>{
+        Observable.interval(500).take(50).subscribe(wait =>{
         this.stocksServise.getCrypto()
         .subscribe(response => {
             this.dataUsd[index].sym = symbol;
