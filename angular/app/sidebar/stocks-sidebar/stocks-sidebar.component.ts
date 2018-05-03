@@ -26,7 +26,8 @@ export class Cripto {
 @Component({
   selector: 'app-stocks-sidebar',
   templateUrl: './stocks-sidebar.component.html',
-  styleUrls: ['./stocks-sidebar.component.scss']
+  styleUrls: ['./stocks-sidebar.component.scss'],
+  providers: [StocksService],
 })
 export class StocksSidebarComponent implements OnInit {
  dataUsd: Array<CryptoData> = [];
