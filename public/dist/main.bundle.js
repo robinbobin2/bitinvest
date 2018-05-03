@@ -2412,6 +2412,7 @@ var CryptoComponent = (function () {
         });
         this.obs = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1500).take(100).subscribe(function (wait) {
             _this.info.subscribe(function (response) {
+                console.log(response);
                 _this.dataUsd.now = response['now'];
                 _this.dataUsd.last = response['last'];
                 _this.dataUsd.min = response['min'];

@@ -104,7 +104,9 @@ export class CryptoComponent implements OnInit {
         console.log(this.dataUsd);
       });
     this.obs = Observable.interval(1500).take(100).subscribe(wait => {
+
       this.info.subscribe(response => {
+        console.log(response);
         this.dataUsd.now = response['now'];
         this.dataUsd.last = response['last'];
         this.dataUsd.min = response['min'];
