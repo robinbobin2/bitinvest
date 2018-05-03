@@ -6059,7 +6059,7 @@ var StocksService = (function () {
     function StocksService(http) {
         this.http = http;
         this.path = '/bit/info';
-        this.bitPath = '/bit';
+        this.bitPath = '/bit/';
     }
     StocksService.prototype.getStocks = function (pairs) {
         return this.http.get(this.path + '?pair=' + pairs).publishReplay(1).refCount();
