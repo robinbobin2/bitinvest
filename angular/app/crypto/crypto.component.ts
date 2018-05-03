@@ -77,6 +77,7 @@ export class CryptoComponent implements OnInit {
   info: any;
   obs: any;
   resp: any;
+  infoCrypto: any;
 cryptoData: any;
   constructor(private http:HttpClient,private stocksServise:StocksService, 
     private router:Router, private route:ActivatedRoute, 
@@ -98,7 +99,12 @@ cryptoData: any;
 
 
 
-    
+    this.stocksServise.getCrypto()
+        .map((response)=>{
+          this.dataUsd = response[symbol+'/USDT'];
+          localStorage.removeItem(symbol);
+          localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
+        }).subscribe();
     this.cryptoData=Observable.interval(1000).take(50).concatMap(()=>this.stocksServise.getCrypto())
         .map((response)=>{
           this.dataUsd = response[symbol+'/USDT'];
@@ -106,8 +112,8 @@ cryptoData: any;
           localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
         }).subscribe();
     let infoCryptoPath = "/allcrypto/"+symbol;
-    const infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
-      infoCrypto.subscribe(response => {
+    this.infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
+      this.infoCrypto.subscribe(response => {
         this.data = response;
         for(let item of response['comments']) {
           this.comments.push({ 
@@ -165,5 +171,9 @@ cryptoData: any;
       console.log(form);
       this.commentcount=this.commentcount+1;
   }
+ngOnDestroy() {
 
+  this.infoCrypto.unsubscribe();
+  this.cryptoData.unsubscribe();
+}
 }
