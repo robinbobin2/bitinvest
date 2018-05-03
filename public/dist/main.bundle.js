@@ -2089,7 +2089,17 @@ var CryptoAllComponent = (function () {
                 var year = admin[index].year;
                 var algo = admin[index].algo;
                 var desc = 'DESC';
-                if (localStorage.getItem('data')) {
+                if (_this.dataUsd[index]) {
+                    _this.dataUsd[index].sym = symbol;
+                    _this.dataUsd[index].algo = algo;
+                    _this.dataUsd[index].year = year;
+                    _this.dataUsd[index].last = _this.response[symbol + '/USDT']['last'];
+                    _this.dataUsd[index].now = _this.response[symbol + '/USDT']['now'];
+                    _this.dataUsd[index].min = _this.response[symbol + '/USDT']['min'];
+                    _this.dataUsd[index].max = _this.response[symbol + '/USDT']['max'];
+                    _this.dataUsd[index].value = _this.response[symbol + '/USDT']['value'];
+                    _this.dataUsd[index].day = _this.response[symbol + "/USDT"]['day'];
+                    _this.dataUsd[index].week = _this.response[symbol + "/USDT"]['week'];
                 }
                 else {
                     _this.dataUsd[index] = {
@@ -2105,16 +2115,6 @@ var CryptoAllComponent = (function () {
                         day: 0,
                     };
                 }
-                _this.dataUsd[index].sym = symbol;
-                _this.dataUsd[index].algo = algo;
-                _this.dataUsd[index].year = year;
-                _this.dataUsd[index].last = _this.response[symbol + '/USDT']['last'];
-                _this.dataUsd[index].now = _this.response[symbol + '/USDT']['now'];
-                _this.dataUsd[index].min = _this.response[symbol + '/USDT']['min'];
-                _this.dataUsd[index].max = _this.response[symbol + '/USDT']['max'];
-                _this.dataUsd[index].value = _this.response[symbol + '/USDT']['value'];
-                _this.dataUsd[index].day = _this.response[symbol + "/USDT"]['day'];
-                _this.dataUsd[index].week = _this.response[symbol + "/USDT"]['week'];
             }
         });
     };
