@@ -2467,7 +2467,7 @@ var CryptoComponent = (function () {
         this.commentcount = this.commentcount + 1;
     };
     CryptoComponent.prototype.ngOnDestroy = function () {
-        this.infoCrypto.unsubscribe();
+        // this.infoCrypto.unsubscribe();
         this.cryptoData.unsubscribe();
     };
     return CryptoComponent;

@@ -173,7 +173,7 @@ cryptoData: any;
   }
 ngOnDestroy() {
 
-  this.infoCrypto.unsubscribe();
+  // this.infoCrypto.unsubscribe();
   this.cryptoData.unsubscribe();
 }
 }
