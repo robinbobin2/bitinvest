@@ -8,6 +8,7 @@ export class StocksService {
   constructor(private http:HttpClient) {  }
   path = '/bit/info';
   bitPath = '/bit/';
+  observ: any;
   public getStocks(pairs) {
 
   	return this.http.get<any>(this.path+'?pair='+pairs).publishReplay(1).refCount();
@@ -15,7 +16,7 @@ export class StocksService {
   }
 
   public getCrypto() {
-  	return this.http.get<any>(this.bitPath).publishReplay(1).refCount();
+  	return this.observ.interval(1000).subscribe(this.http.get<any>(this.bitPath).publishReplay(1).refCount());
   }
 
 

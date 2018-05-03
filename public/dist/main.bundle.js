@@ -6115,7 +6115,7 @@ var StocksService = (function () {
         return this.http.get(this.path + '?pair=' + pairs).publishReplay(1).refCount();
     };
     StocksService.prototype.getCrypto = function () {
-        return this.http.get(this.bitPath).publishReplay(1).refCount();
+        return this.observ.interval(1000).subscribe(this.http.get(this.bitPath).publishReplay(1).refCount());
     };
     return StocksService;
 }());
