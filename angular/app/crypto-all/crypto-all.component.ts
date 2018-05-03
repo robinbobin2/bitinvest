@@ -166,6 +166,8 @@ data: any;
               this.dataUsd[index].value = response[symbol+'/USDT']['value'];
               this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
               this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
+              localStorage.removeItem('data');
+              localStorage.setItem('data',JSON.stringify(this.dataUsd))
           });
       });
       //    Observable.interval(1400).take(50).subscribe(wait =>{
@@ -181,8 +183,7 @@ data: any;
       //         this.dataUsd[index].min = response['min'];
       //         this.dataUsd[index].max = response['max'];
       //         this.dataUsd[index].value = response['value'];
-      //         localStorage.removeItem('data');
-      //         localStorage.setItem('data',JSON.stringify(this.dataUsd))
+              
               
       // });
       // });

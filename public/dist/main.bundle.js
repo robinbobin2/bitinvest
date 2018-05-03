@@ -2141,6 +2141,8 @@ var CryptoAllComponent = (function () {
                         _this.dataUsd[index].value = response[symbol + '/USDT']['value'];
                         _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
                         _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
+                        localStorage.removeItem('data');
+                        localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                     });
                 });
                 //    Observable.interval(1400).take(50).subscribe(wait =>{
@@ -2155,8 +2157,6 @@ var CryptoAllComponent = (function () {
                 //         this.dataUsd[index].min = response['min'];
                 //         this.dataUsd[index].max = response['max'];
                 //         this.dataUsd[index].value = response['value'];
-                //         localStorage.removeItem('data');
-                //         localStorage.setItem('data',JSON.stringify(this.dataUsd))
                 // });
                 // });
                 //   const bitpath = "/bit";
