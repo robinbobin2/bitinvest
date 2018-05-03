@@ -5981,37 +5981,35 @@ var StocksSidebarComponent = (function () {
             this.dataUsd = JSON.parse(localStorage.getItem('data'));
             // console.log(this.dataUsd);
         }
+        __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["a" /* Observable */].interval(1400).take(50).subscribe(function (wait) {
+            _this.stocksServise.getCrypto()
+                .subscribe(function (response) {
+                _this.response = response;
+            });
+        });
         var alldata = this.http.get('/allcrypto');
         this.data = alldata.subscribe(function (response) {
             // console.log(response);
             var admin = response;
-            var _loop_1 = function () {
+            for (var _i = 0; _i < admin.length; ++_i) {
                 // console.log(this.admin[i].symbol);
                 var index = _i;
                 var symbol = admin[index].symbol;
                 var year = admin[index].year;
                 var algo = admin[index].algo;
                 var desc = 'DESC';
-                __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["a" /* Observable */].interval(1400).take(50).subscribe(function (wait) {
-                    _this.stocksServise.getCrypto()
-                        .subscribe(function (response) {
-                        _this.dataUsd[index].sym = symbol;
-                        _this.dataUsd[index].algo = algo;
-                        _this.dataUsd[index].year = year;
-                        _this.dataUsd[index].last = response[symbol + '/USDT']['last'];
-                        _this.dataUsd[index].now = response[symbol + '/USDT']['now'];
-                        _this.dataUsd[index].min = response[symbol + '/USDT']['min'];
-                        _this.dataUsd[index].max = response[symbol + '/USDT']['max'];
-                        _this.dataUsd[index].value = response[symbol + '/USDT']['value'];
-                        _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
-                        _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
-                        localStorage.removeItem('data');
-                        localStorage.setItem('data', JSON.stringify(_this.dataUsd));
-                    });
-                });
-            };
-            for (var _i = 0; _i < admin.length; ++_i) {
-                _loop_1();
+                _this.dataUsd[index].sym = symbol;
+                _this.dataUsd[index].algo = algo;
+                _this.dataUsd[index].year = year;
+                _this.dataUsd[index].last = _this.response[symbol + '/USDT']['last'];
+                _this.dataUsd[index].now = _this.response[symbol + '/USDT']['now'];
+                _this.dataUsd[index].min = _this.response[symbol + '/USDT']['min'];
+                _this.dataUsd[index].max = _this.response[symbol + '/USDT']['max'];
+                _this.dataUsd[index].value = _this.response[symbol + '/USDT']['value'];
+                _this.dataUsd[index].day = _this.response[symbol + "/USDT"]['day'];
+                _this.dataUsd[index].week = _this.response[symbol + "/USDT"]['week'];
+                localStorage.removeItem('data');
+                localStorage.setItem('data', JSON.stringify(_this.dataUsd));
             }
         });
     };
