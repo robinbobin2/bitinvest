@@ -83,7 +83,7 @@ data: any;
               
               
       });
-         Observable.interval(1400).take(50).subscribe(wait =>{
+         Observable.interval(5000).take(50).subscribe(wait =>{
         info.subscribe(response => {
           // console.log(response);
          //  var usd_data = response;

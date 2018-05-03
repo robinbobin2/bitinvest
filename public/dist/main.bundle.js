@@ -6037,7 +6037,7 @@ var StocksSidebarComponent = (function () {
                     _this.dataUsd[index].max = response['max'];
                     _this.dataUsd[index].value = response['value'];
                 });
-                __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */].interval(1400).take(50).subscribe(function (wait) {
+                __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */].interval(5000).take(50).subscribe(function (wait) {
                     info.subscribe(function (response) {
                         // console.log(response);
                         //  var usd_data = response;
