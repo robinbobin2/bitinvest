@@ -2075,8 +2075,6 @@ var CryptoAllComponent = (function () {
         this.stocksServise.getCrypto()
             .subscribe(function (response) {
             _this.resp = response;
-            localStorage.removeItem('data');
-            localStorage.setItem('data', JSON.stringify(_this.dataUsd));
         });
         this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).take(50).concatMap(function () { return _this.stocksServise.getCrypto(); })
             .map(function (response) { _this.resp = response; console.log(_this.resp); }).subscribe(function () {
@@ -2118,6 +2116,8 @@ var CryptoAllComponent = (function () {
                             day: 0,
                         };
                     }
+                    localStorage.removeItem('data');
+                    localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                 }
             });
         });
@@ -2129,7 +2129,7 @@ var CryptoAllComponent = (function () {
         return true;
     };
     CryptoAllComponent.prototype.ngOnDestroy = function () {
-        this.data.unsubscribe();
+        // this.data.unsubscribe();
         this.cryptoData.unsubscribe();
     };
     return CryptoAllComponent;

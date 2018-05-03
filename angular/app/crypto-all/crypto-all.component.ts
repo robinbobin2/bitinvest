@@ -95,8 +95,7 @@ if(localStorage.getItem('data')) {
     this.stocksServise.getCrypto()
         .subscribe(response => {
             this.resp = response;
-            localStorage.removeItem('data');
-              localStorage.setItem('data',JSON.stringify(this.dataUsd))
+            
           });
     this.cryptoData=Observable.interval(1000).take(50).concatMap(()=>this.stocksServise.getCrypto())
         .map((response)=>{this.resp = response; console.log(this.resp)}).subscribe(()=>{
@@ -144,6 +143,8 @@ if(localStorage.getItem('data')) {
               day: 0,
           }
         }
+        localStorage.removeItem('data');
+            localStorage.setItem('data',JSON.stringify(this.dataUsd))
        }
     });
     });
@@ -156,7 +157,7 @@ if(localStorage.getItem('data')) {
   }
   ngOnDestroy() {
 
-  this.data.unsubscribe();
+  // this.data.unsubscribe();
   this.cryptoData.unsubscribe();
 }
 
