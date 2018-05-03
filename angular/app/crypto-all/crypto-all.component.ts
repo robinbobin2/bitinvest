@@ -106,12 +106,14 @@ if(localStorage.getItem('data')) {
       // console.log(response);
       let admin = response;
       for (var _i = 0; _i < admin.length; ++_i) {
+        
         // console.log(this.admin[i].symbol);
         let index = _i;
         let symbol = admin[index].symbol;
         let year = admin[index].year;
         let algo = admin[index].algo;
         let desc = 'DESC';
+        console.log(this.response[symbol+'/USDT']['last'])
         if(this.dataUsd[index]) {
                 this.dataUsd[index].sym = symbol;
                 this.dataUsd[index].algo = algo;
@@ -127,7 +129,7 @@ if(localStorage.getItem('data')) {
           
         } else {
           this.dataUsd[index] = {
-              sym: '',
+              sym: '12',
               last: 0,
               now: 0,
               min:0,

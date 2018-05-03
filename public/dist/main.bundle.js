@@ -2089,6 +2089,7 @@ var CryptoAllComponent = (function () {
                 var year = admin[index].year;
                 var algo = admin[index].algo;
                 var desc = 'DESC';
+                console.log(_this.response[symbol + '/USDT']['last']);
                 if (_this.dataUsd[index]) {
                     _this.dataUsd[index].sym = symbol;
                     _this.dataUsd[index].algo = algo;
@@ -2103,7 +2104,7 @@ var CryptoAllComponent = (function () {
                 }
                 else {
                     _this.dataUsd[index] = {
-                        sym: '',
+                        sym: '12',
                         last: 0,
                         now: 0,
                         min: 0,
