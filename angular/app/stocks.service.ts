@@ -7,7 +7,7 @@ export class StocksService {
 
   constructor(private http:HttpClient) {  }
   path = '/bit/info';
-  bitPath = '/bit/';
+  bitPath = '/bit';
   observ: any;
   returnPath: any;
   obs: any;
