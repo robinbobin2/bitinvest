@@ -2070,6 +2070,7 @@ var CryptoAllComponent = (function () {
         var alldata = this.http.get('/allcrypto');
         if (localStorage.getItem('data')) {
             this.dataUsd = JSON.parse(localStorage.getItem('data'));
+            console.log(this.dataUsd);
         }
         this.stocksServise.getCrypto()
             .subscribe(function (response) {
@@ -2077,7 +2078,7 @@ var CryptoAllComponent = (function () {
             localStorage.removeItem('data');
             localStorage.setItem('data', JSON.stringify(_this.dataUsd));
         });
-        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(3000).take(50).concatMap(function () { return _this.stocksServise.getCrypto(); })
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).take(50).concatMap(function () { return _this.stocksServise.getCrypto(); })
             .map(function (response) { _this.resp = response; console.log(_this.resp); }).subscribe(function () {
             _this.data = alldata.subscribe(function (response) {
                 // console.log(response);
