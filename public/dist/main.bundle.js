@@ -2069,7 +2069,6 @@ var CryptoAllComponent = (function () {
         var _this = this;
         if (localStorage.getItem('data')) {
             this.dataUsd = JSON.parse(localStorage.getItem('data'));
-            // console.log(this.dataUsd);
         }
         this.stocksServise.getCrypto()
             .subscribe(function (response) {
@@ -2090,6 +2089,22 @@ var CryptoAllComponent = (function () {
                 var year = admin[index].year;
                 var algo = admin[index].algo;
                 var desc = 'DESC';
+                if (localStorage.getItem('data')) {
+                }
+                else {
+                    _this.dataUsd[index] = {
+                        sym: '',
+                        last: 0,
+                        now: 0,
+                        min: 0,
+                        max: 0,
+                        value: 0,
+                        year: 0,
+                        algo: '',
+                        week: 0,
+                        day: 0,
+                    };
+                }
                 _this.dataUsd[index].sym = symbol;
                 _this.dataUsd[index].algo = algo;
                 _this.dataUsd[index].year = year;
