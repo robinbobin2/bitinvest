@@ -2072,12 +2072,12 @@ var CryptoAllComponent = (function () {
         }
         this.stocksServise.getCrypto()
             .subscribe(function (response) {
-            _this.response = response;
+            _this.resp = response;
             localStorage.removeItem('data');
             localStorage.setItem('data', JSON.stringify(_this.dataUsd));
         });
         this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(3000).take(50).concatMap(function () { return _this.stocksServise.getCrypto(); })
-            .map(function (response) { _this.response = response; console.log(_this.response); }).subscribe();
+            .map(function (response) { _this.resp = response; console.log(_this.resp); }).subscribe();
         var alldata = this.http.get('/allcrypto');
         this.data = alldata.subscribe(function (response) {
             // console.log(response);
@@ -2089,18 +2089,19 @@ var CryptoAllComponent = (function () {
                 var year = admin[index].year;
                 var algo = admin[index].algo;
                 var desc = 'DESC';
-                console.log(_this.response[symbol + '/USDT']['last']);
+                console.log('asdasdasd');
+                console.log(_this.resp[symbol + '/USDT']['last']);
                 if (_this.dataUsd[index]) {
                     _this.dataUsd[index].sym = symbol;
                     _this.dataUsd[index].algo = algo;
                     _this.dataUsd[index].year = year;
-                    _this.dataUsd[index].last = _this.response[symbol + '/USDT']['last'];
-                    _this.dataUsd[index].now = _this.response[symbol + '/USDT']['now'];
-                    _this.dataUsd[index].min = _this.response[symbol + '/USDT']['min'];
-                    _this.dataUsd[index].max = _this.response[symbol + '/USDT']['max'];
-                    _this.dataUsd[index].value = _this.response[symbol + '/USDT']['value'];
-                    _this.dataUsd[index].day = _this.response[symbol + "/USDT"]['day'];
-                    _this.dataUsd[index].week = _this.response[symbol + "/USDT"]['week'];
+                    _this.dataUsd[index].last = _this.resp[symbol + '/USDT']['last'];
+                    _this.dataUsd[index].now = _this.resp[symbol + '/USDT']['now'];
+                    _this.dataUsd[index].min = _this.resp[symbol + '/USDT']['min'];
+                    _this.dataUsd[index].max = _this.resp[symbol + '/USDT']['max'];
+                    _this.dataUsd[index].value = _this.resp[symbol + '/USDT']['value'];
+                    _this.dataUsd[index].day = _this.resp[symbol + "/USDT"]['day'];
+                    _this.dataUsd[index].week = _this.resp[symbol + "/USDT"]['week'];
                 }
                 else {
                     _this.dataUsd[index] = {

@@ -59,7 +59,7 @@ order = 'sym';
 algorithm = '';
 age = '';
 data: any;
-response: any;
+resp: any;
 cryptoData: any;
   reverse: boolean = false;
   /**
@@ -91,12 +91,12 @@ if(localStorage.getItem('data')) {
       }
     this.stocksServise.getCrypto()
         .subscribe(response => {
-            this.response = response;
+            this.resp = response;
             localStorage.removeItem('data');
               localStorage.setItem('data',JSON.stringify(this.dataUsd))
           });
     this.cryptoData=Observable.interval(3000).take(50).concatMap(()=>this.stocksServise.getCrypto())
-        .map((response)=>{this.response = response; console.log(this.response)}).subscribe();
+        .map((response)=>{this.resp = response; console.log(this.resp)}).subscribe();
     
 
     const alldata = this.http.get<Array<Cripto>>('/allcrypto');
@@ -113,18 +113,19 @@ if(localStorage.getItem('data')) {
         let year = admin[index].year;
         let algo = admin[index].algo;
         let desc = 'DESC';
-        console.log(this.response[symbol+'/USDT']['last'])
+        console.log('asdasdasd');
+        console.log(this.resp[symbol+'/USDT']['last'])
         if(this.dataUsd[index]) {
                 this.dataUsd[index].sym = symbol;
                 this.dataUsd[index].algo = algo;
                 this.dataUsd[index].year = year;
-                this.dataUsd[index].last = this.response[symbol+'/USDT']['last'];
-                this.dataUsd[index].now = this.response[symbol+'/USDT']['now'];
-                this.dataUsd[index].min = this.response[symbol+'/USDT']['min'];
-                this.dataUsd[index].max = this.response[symbol+'/USDT']['max'];
-                this.dataUsd[index].value = this.response[symbol+'/USDT']['value'];
-                this.dataUsd[index].day = this.response[symbol+"/USDT"]['day'];
-                this.dataUsd[index].week = this.response[symbol+"/USDT"]['week'];
+                this.dataUsd[index].last = this.resp[symbol+'/USDT']['last'];
+                this.dataUsd[index].now = this.resp[symbol+'/USDT']['now'];
+                this.dataUsd[index].min = this.resp[symbol+'/USDT']['min'];
+                this.dataUsd[index].max = this.resp[symbol+'/USDT']['max'];
+                this.dataUsd[index].value = this.resp[symbol+'/USDT']['value'];
+                this.dataUsd[index].day = this.resp[symbol+"/USDT"]['day'];
+                this.dataUsd[index].week = this.resp[symbol+"/USDT"]['week'];
                 
           
         } else {
