@@ -2077,7 +2077,7 @@ var CryptoAllComponent = (function () {
             localStorage.removeItem('data');
             localStorage.setItem('data', JSON.stringify(_this.dataUsd));
         });
-        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).take(50).subscribe(function (wait) {
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(3000).take(50).subscribe(function (wait) {
             _this.stocksServise.getCrypto()
                 .subscribe(function (response) {
                 _this.response = response;
