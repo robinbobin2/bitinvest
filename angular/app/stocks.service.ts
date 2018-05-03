@@ -17,6 +17,7 @@ export class StocksService {
   }
 
   public getCrypto() {
+  	this.returnPath = this.http.get<any>(this.bitPath).publishReplay(1).refCount();
   	return this.returnPath.interval(1000);
   }
 
