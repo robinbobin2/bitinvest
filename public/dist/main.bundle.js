@@ -5980,12 +5980,16 @@ var StocksSidebarComponent = (function () {
             this.dataUsd = JSON.parse(localStorage.getItem('data'));
             // console.log(this.dataUsd);
         }
-        __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["a" /* Observable */].interval(3000).take(50).subscribe(function (wait) {
+        this.stocksServise.getCrypto()
+            .subscribe(function (response) {
+            _this.response = response;
+            localStorage.removeItem('data');
+            localStorage.setItem('data', JSON.stringify(_this.dataUsd));
+        });
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["a" /* Observable */].interval(3000).take(50).subscribe(function (wait) {
             _this.stocksServise.getCrypto()
                 .subscribe(function (response) {
                 _this.response = response;
-                localStorage.removeItem('data');
-                localStorage.setItem('data', JSON.stringify(_this.dataUsd));
             });
         });
         var alldata = this.http.get('/allcrypto');
@@ -6014,6 +6018,7 @@ var StocksSidebarComponent = (function () {
     };
     StocksSidebarComponent.prototype.ngOnDestroy = function () {
         this.data.unsubscribe();
+        this.cryptoData.unsubscribe();
     };
     return StocksSidebarComponent;
 }());

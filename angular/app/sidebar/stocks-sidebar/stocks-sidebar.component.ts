@@ -23,18 +23,23 @@ export class StocksSidebarComponent implements OnInit {
     ) { }
 data: any;
 response: any;
+cryptoData: any;
   ngOnInit() {
     if(localStorage.getItem('data')) {
       this.dataUsd = JSON.parse(localStorage.getItem('data'));
       // console.log(this.dataUsd);
       
     }
-    Observable.interval(3000).take(50).subscribe(wait =>{
-        this.stocksServise.getCrypto()
+    this.stocksServise.getCrypto()
         .subscribe(response => {
             this.response = response;
             localStorage.removeItem('data');
               localStorage.setItem('data',JSON.stringify(this.dataUsd))
+          });
+    this.cryptoData = Observable.interval(3000).take(50).subscribe(wait =>{
+        this.stocksServise.getCrypto()
+        .subscribe(response => {
+            this.response = response;
           });
       });
     const alldata = this.http.get<Array<Cripto>>('/allcrypto');
@@ -68,5 +73,6 @@ response: any;
 ngOnDestroy() {
 
   this.data.unsubscribe();
+  this.cryptoData.unsubscribe();
 }
 }
