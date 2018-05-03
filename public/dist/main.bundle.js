@@ -2105,7 +2105,7 @@ var CryptoAllComponent = (function () {
                     }
                     else {
                         _this.dataUsd[index] = {
-                            sym: '12',
+                            sym: '',
                             last: 0,
                             now: 0,
                             min: 0,
@@ -2359,25 +2359,12 @@ var CryptoComponent = (function () {
             _this.stocks = response;
             console.log(_this.stocks);
         });
-        var path = "/bit/pair?pair=" + symbol + "/USDT";
-        this.info = this.http.get(path).publishReplay(1).refCount();
-        this.info.subscribe(function (response) {
-            _this.dataUsd = response;
-            console.log(_this.dataUsd);
-        });
-        this.obs = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1500).take(100).subscribe(function (wait) {
-            _this.info.subscribe(function (response) {
-                console.log(response);
-                _this.dataUsd.now = response['now'];
-                _this.dataUsd.last = response['last'];
-                _this.dataUsd.min = response['min'];
-                _this.dataUsd.max = response['max'];
-                _this.dataUsd.value = response['value'];
-                _this.dataUsd.week = response['week'];
-                _this.dataUsd.day = response['day'];
-                localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
-            });
-        });
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).take(50).concatMap(function () { return _this.stocksServise.getCrypto(); })
+            .map(function (response) {
+            _this.dataUsd = response[symbol + '/USDT'];
+            localStorage.removeItem(symbol);
+            localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
+        }).subscribe();
         var infoCryptoPath = "/allcrypto/" + symbol;
         var infoCrypto = this.http.get(infoCryptoPath).publishReplay(1).refCount();
         infoCrypto.subscribe(function (response) {
@@ -5949,40 +5936,58 @@ var StocksSidebarComponent = (function () {
     }
     StocksSidebarComponent.prototype.ngOnInit = function () {
         var _this = this;
+        var alldata = this.http.get('/allcrypto');
         if (localStorage.getItem('data')) {
             this.dataUsd = JSON.parse(localStorage.getItem('data'));
-            // console.log(this.dataUsd);
         }
         this.stocksServise.getCrypto()
             .subscribe(function (response) {
-            _this.response = response;
+            _this.resp = response;
             localStorage.removeItem('data');
             localStorage.setItem('data', JSON.stringify(_this.dataUsd));
         });
         this.cryptoData = __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["a" /* Observable */].interval(3000).take(50).concatMap(function () { return _this.stocksServise.getCrypto(); })
-            .map(function (response) { return _this.response = response; }).subscribe();
-        var alldata = this.http.get('/allcrypto');
-        this.data = alldata.subscribe(function (response) {
-            // console.log(response);
-            var admin = response;
-            for (var _i = 0; _i < admin.length; ++_i) {
-                // console.log(this.admin[i].symbol);
-                var index = _i;
-                var symbol = admin[index].symbol;
-                var year = admin[index].year;
-                var algo = admin[index].algo;
-                var desc = 'DESC';
-                _this.dataUsd[index].sym = symbol;
-                _this.dataUsd[index].algo = algo;
-                _this.dataUsd[index].year = year;
-                _this.dataUsd[index].last = _this.response[symbol + '/USDT']['last'];
-                _this.dataUsd[index].now = _this.response[symbol + '/USDT']['now'];
-                _this.dataUsd[index].min = _this.response[symbol + '/USDT']['min'];
-                _this.dataUsd[index].max = _this.response[symbol + '/USDT']['max'];
-                _this.dataUsd[index].value = _this.response[symbol + '/USDT']['value'];
-                _this.dataUsd[index].day = _this.response[symbol + "/USDT"]['day'];
-                _this.dataUsd[index].week = _this.response[symbol + "/USDT"]['week'];
-            }
+            .map(function (response) { _this.resp = response; console.log(_this.resp); }).subscribe(function () {
+            _this.data = alldata.subscribe(function (response) {
+                // console.log(response);
+                var admin = response;
+                for (var _i = 0; _i < admin.length; ++_i) {
+                    // console.log(this.admin[i].symbol);
+                    var index = _i;
+                    var symbol = admin[index].symbol;
+                    var year = admin[index].year;
+                    var algo = admin[index].algo;
+                    var desc = 'DESC';
+                    console.log('asdasdasd');
+                    console.log(_this.resp[symbol + '/USDT']['last']);
+                    if (_this.dataUsd[index]) {
+                        _this.dataUsd[index].sym = symbol;
+                        _this.dataUsd[index].algo = algo;
+                        _this.dataUsd[index].year = year;
+                        _this.dataUsd[index].last = _this.resp[symbol + '/USDT']['last'];
+                        _this.dataUsd[index].now = _this.resp[symbol + '/USDT']['now'];
+                        _this.dataUsd[index].min = _this.resp[symbol + '/USDT']['min'];
+                        _this.dataUsd[index].max = _this.resp[symbol + '/USDT']['max'];
+                        _this.dataUsd[index].value = _this.resp[symbol + '/USDT']['value'];
+                        _this.dataUsd[index].day = _this.resp[symbol + "/USDT"]['day'];
+                        _this.dataUsd[index].week = _this.resp[symbol + "/USDT"]['week'];
+                    }
+                    else {
+                        _this.dataUsd[index] = {
+                            sym: '',
+                            last: 0,
+                            now: 0,
+                            min: 0,
+                            max: 0,
+                            value: 0,
+                            year: 0,
+                            algo: '',
+                            week: 0,
+                            day: 0,
+                        };
+                    }
+                }
+            });
         });
     };
     StocksSidebarComponent.prototype.ngOnDestroy = function () {

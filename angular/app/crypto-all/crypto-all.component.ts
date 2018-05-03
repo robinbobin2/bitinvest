@@ -86,7 +86,7 @@ cryptoData: any;
   }
 
   ngOnInit() {
-    
+
     const alldata = this.http.get<Array<Cripto>>('/allcrypto');
 if(localStorage.getItem('data')) {
       this.dataUsd = JSON.parse(localStorage.getItem('data'));
@@ -131,7 +131,7 @@ if(localStorage.getItem('data')) {
           
         } else {
           this.dataUsd[index] = {
-              sym: '12',
+              sym: '',
               last: 0,
               now: 0,
               min:0,

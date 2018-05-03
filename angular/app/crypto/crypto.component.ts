@@ -76,6 +76,8 @@ export class CryptoComponent implements OnInit {
   news: any;
   info: any;
   obs: any;
+  resp: any;
+cryptoData: any;
   constructor(private http:HttpClient,private stocksServise:StocksService, 
     private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
@@ -97,27 +99,12 @@ export class CryptoComponent implements OnInit {
 
 
     
-    let path = "/bit/pair?pair="+symbol+"/USDT";
-    this.info = this.http.get<CryptoData>(path).publishReplay(1).refCount();
-      this.info.subscribe(response => {
-        this.dataUsd = response;
-        console.log(this.dataUsd);
-      });
-    this.obs = Observable.interval(1500).take(100).subscribe(wait => {
-
-      this.info.subscribe(response => {
-        console.log(response);
-        this.dataUsd.now = response['now'];
-        this.dataUsd.last = response['last'];
-        this.dataUsd.min = response['min'];
-        this.dataUsd.max = response['max'];
-        this.dataUsd.value = response['value'];
-        this.dataUsd.week = response['week'];
-        this.dataUsd.day = response['day'];
-        localStorage.setItem(symbol, JSON.stringify(this.dataUsd))
-      });
-
-    });
+    this.cryptoData=Observable.interval(1000).take(50).concatMap(()=>this.stocksServise.getCrypto())
+        .map((response)=>{
+          this.dataUsd = response[symbol+'/USDT'];
+          localStorage.removeItem(symbol);
+          localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
+        }).subscribe();
     let infoCryptoPath = "/allcrypto/"+symbol;
     const infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
       infoCrypto.subscribe(response => {
