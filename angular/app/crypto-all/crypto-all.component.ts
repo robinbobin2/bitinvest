@@ -86,6 +86,8 @@ cryptoData: any;
   }
 
   ngOnInit() {
+    
+    const alldata = this.http.get<Array<Cripto>>('/allcrypto');
 if(localStorage.getItem('data')) {
       this.dataUsd = JSON.parse(localStorage.getItem('data'));
       }
@@ -96,10 +98,9 @@ if(localStorage.getItem('data')) {
               localStorage.setItem('data',JSON.stringify(this.dataUsd))
           });
     this.cryptoData=Observable.interval(3000).take(50).concatMap(()=>this.stocksServise.getCrypto())
-        .map((response)=>{this.resp = response; console.log(this.resp)}).subscribe();
+        .map((response)=>{this.resp = response; console.log(this.resp)}).subscribe(()=>{
     
 
-    const alldata = this.http.get<Array<Cripto>>('/allcrypto');
     
     this.data = alldata.subscribe(response => {
 
@@ -143,6 +144,7 @@ if(localStorage.getItem('data')) {
           }
         }
        }
+    });
     });
   }
   isNegative(now) {

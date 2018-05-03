@@ -2067,6 +2067,7 @@ var CryptoAllComponent = (function () {
     };
     CryptoAllComponent.prototype.ngOnInit = function () {
         var _this = this;
+        var alldata = this.http.get('/allcrypto');
         if (localStorage.getItem('data')) {
             this.dataUsd = JSON.parse(localStorage.getItem('data'));
         }
@@ -2077,47 +2078,47 @@ var CryptoAllComponent = (function () {
             localStorage.setItem('data', JSON.stringify(_this.dataUsd));
         });
         this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(3000).take(50).concatMap(function () { return _this.stocksServise.getCrypto(); })
-            .map(function (response) { _this.resp = response; console.log(_this.resp); }).subscribe();
-        var alldata = this.http.get('/allcrypto');
-        this.data = alldata.subscribe(function (response) {
-            // console.log(response);
-            var admin = response;
-            for (var _i = 0; _i < admin.length; ++_i) {
-                // console.log(this.admin[i].symbol);
-                var index = _i;
-                var symbol = admin[index].symbol;
-                var year = admin[index].year;
-                var algo = admin[index].algo;
-                var desc = 'DESC';
-                console.log('asdasdasd');
-                console.log(_this.resp[symbol + '/USDT']['last']);
-                if (_this.dataUsd[index]) {
-                    _this.dataUsd[index].sym = symbol;
-                    _this.dataUsd[index].algo = algo;
-                    _this.dataUsd[index].year = year;
-                    _this.dataUsd[index].last = _this.resp[symbol + '/USDT']['last'];
-                    _this.dataUsd[index].now = _this.resp[symbol + '/USDT']['now'];
-                    _this.dataUsd[index].min = _this.resp[symbol + '/USDT']['min'];
-                    _this.dataUsd[index].max = _this.resp[symbol + '/USDT']['max'];
-                    _this.dataUsd[index].value = _this.resp[symbol + '/USDT']['value'];
-                    _this.dataUsd[index].day = _this.resp[symbol + "/USDT"]['day'];
-                    _this.dataUsd[index].week = _this.resp[symbol + "/USDT"]['week'];
+            .map(function (response) { _this.resp = response; console.log(_this.resp); }).subscribe(function () {
+            _this.data = alldata.subscribe(function (response) {
+                // console.log(response);
+                var admin = response;
+                for (var _i = 0; _i < admin.length; ++_i) {
+                    // console.log(this.admin[i].symbol);
+                    var index = _i;
+                    var symbol = admin[index].symbol;
+                    var year = admin[index].year;
+                    var algo = admin[index].algo;
+                    var desc = 'DESC';
+                    console.log('asdasdasd');
+                    console.log(_this.resp[symbol + '/USDT']['last']);
+                    if (_this.dataUsd[index]) {
+                        _this.dataUsd[index].sym = symbol;
+                        _this.dataUsd[index].algo = algo;
+                        _this.dataUsd[index].year = year;
+                        _this.dataUsd[index].last = _this.resp[symbol + '/USDT']['last'];
+                        _this.dataUsd[index].now = _this.resp[symbol + '/USDT']['now'];
+                        _this.dataUsd[index].min = _this.resp[symbol + '/USDT']['min'];
+                        _this.dataUsd[index].max = _this.resp[symbol + '/USDT']['max'];
+                        _this.dataUsd[index].value = _this.resp[symbol + '/USDT']['value'];
+                        _this.dataUsd[index].day = _this.resp[symbol + "/USDT"]['day'];
+                        _this.dataUsd[index].week = _this.resp[symbol + "/USDT"]['week'];
+                    }
+                    else {
+                        _this.dataUsd[index] = {
+                            sym: '12',
+                            last: 0,
+                            now: 0,
+                            min: 0,
+                            max: 0,
+                            value: 0,
+                            year: 0,
+                            algo: '',
+                            week: 0,
+                            day: 0,
+                        };
+                    }
                 }
-                else {
-                    _this.dataUsd[index] = {
-                        sym: '12',
-                        last: 0,
-                        now: 0,
-                        min: 0,
-                        max: 0,
-                        value: 0,
-                        year: 0,
-                        algo: '',
-                        week: 0,
-                        day: 0,
-                    };
-                }
-            }
+            });
         });
     };
     CryptoAllComponent.prototype.isNegative = function (now) {
