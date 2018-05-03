@@ -107,8 +107,6 @@ if(localStorage.getItem('data')) {
         let year = admin[index].year;
         let algo = admin[index].algo;
         let desc = 'DESC';
-        console.log('asdasdasd');
-        console.log(this.resp[symbol+'/USDT']['last'])
         if(this.dataUsd[index]) {
                 this.dataUsd[index].sym = symbol;
                 this.dataUsd[index].algo = algo;
