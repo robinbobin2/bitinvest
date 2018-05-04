@@ -30,11 +30,13 @@ export class IcoProjectComponent implements OnInit {
     const info = this.http.get(path);
       info.subscribe(response => {
         for ( let item of response['cats']) {
-          this.categories.push({
+          if(item['count'] > 0) {
+            this.categories.push({
             id: item['id'],
           name:item['name'],
           count: item['count']
         });
+          }
         }
       });
   }

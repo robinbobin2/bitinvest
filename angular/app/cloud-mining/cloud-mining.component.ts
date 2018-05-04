@@ -26,11 +26,13 @@ export class CloudMiningComponent implements OnInit {
     const info = http.get(path);
   		info.subscribe(response => {
   			for ( let item of response['cats']) {
-  				this.categories.push({
-  				  id: item['id'],
-				  name:item['name'],
-				  count: item['count']
-  			});
+  			if(item['count'] > 0) {
+            this.categories.push({
+            id: item['id'],
+          name:item['name'],
+          count: item['count']
+        });
+          }
   			}
   			
   			console.log(this.categories);

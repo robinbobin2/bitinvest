@@ -61,7 +61,7 @@ age = '';
 data: any;
 resp: any;
 cryptoData: any;
-  reverse: boolean = false;
+  reverse: boolean = true;
   /**
    * Example: Use Order pipe in the component
    *
