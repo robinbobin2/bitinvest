@@ -4,9 +4,8 @@ import { OnChanges } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 // import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute, NavigationEnd, Params} from '@angular/router';
+import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import { HttpClient } from '@angular/common/http';
-import { MasonryOptions } from 'angular2-masonry';
-const scr = 'http://ppql.ru/masonry.js';
 interface Category {
   id: number;
   name: string;
@@ -25,6 +24,7 @@ export class NewsRaw {
   category:string;
   photo: string;
   created_at:string;
+  comments_count: number;
 
 }
 @Component({
@@ -35,29 +35,19 @@ export class NewsRaw {
 
 
 export class CategoriesComponent implements OnInit {
-	public myOptions: MasonryOptions = { 
-      transitionDuration: '0' 
-};
 	id;
 	path;
   countAll = 0;
 	info;
-loadAPI: Promise<any>;
-
-    public loadScript() {
-        console.log('preparing to load...')
-        let node = document.createElement('script');
-        node.src = scr;
-        node.type = 'text/javascript';
-        node.async = false;
-        node.charset = 'utf-8';
-        document.getElementsByTagName('body')[0].appendChild(node);
-    }
   news_raw: any[];
 	news: NewsRaw[] = [];
   main_news: NewsRaw[] = [];
-
-   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+  order: string = 'id';
+  reverse: boolean = true;
+/**
+   * @param {OrderPipe} 
+   */
+   constructor(private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
 
    	
 
@@ -85,7 +75,8 @@ loadAPI: Promise<any>;
           main: item.main,
           created_at:item.created_at,
           category: item.category.name,
-          photo: item.photos[0].file
+          photo: item.photos[0].file,
+          comments_count: item.comments_count
 
        });
          }
@@ -100,26 +91,27 @@ loadAPI: Promise<any>;
           main: item.main,
           category:item.category.name,
           created_at:item.created_at,
-          photo: item.photos[0].file
+          photo: item.photos[0].file,
+          comments_count: item.comments_count
+
 
        });
        }
-   		// this.news.push(response['news']);
-     //   this.main_news.push(response['main_news']);
-   		// console.log(response['news']);
-       console.log(this.news);
-       console.log(this.news[0].photo);
-       console.log(this.main_news);
+
+       this.countAll = this.news.length+this.main_news.length;
+
    	});
    		}
    		);
     
   }
-
-  loadMore(id) {
-    this.router.navigate(['/posts/post', id]);
-  }
-  
+setOrder(value: string) {
+     if (this.order === value) {
+       this.reverse = !this.reverse;
+    }
+    this.order = value;
+    console.log(this.order);
+}
 
 }
 

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\NewsRequest;
 use App\News;
-// use App\Models\NewsPicture;
+use App\Photo;
 use Request;
 use Validator;
-use App\Http\Requests\NewsRequest;
 
 class AdminNewsController extends Controller
 {
@@ -102,9 +102,12 @@ class AdminNewsController extends Controller
     {
         $news = News::find($id);
         $categories = Category::all();
+        $photo = $news->photos;
+
         return view('news.edit')
             ->with('news', $news)
-            ->with('categories', $categories);
+            ->with('categories', $categories)
+            ->with('photo', $photo);
     }
 
     /**
@@ -122,7 +125,24 @@ class AdminNewsController extends Controller
             'cat_id' => Request::input('cat_id'),
             'main' => Request::input('main')
         ];
-        $news = News::findOrFail($id)->update($data);
+        $news = News::findOrFail($id);
+        $news->update($data);
+       
+        if ($file = Request::file('image')) {
+            
+            $name = time() . $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+            // $photo = Photo::create(['file'=>$name]);
+
+            $data['images'] = $photo->id; 
+            $photo = $news->photos->first();
+            $photo->delete();
+             $photo = Photo::create(['file'=>$name]);
+             $news->photos()->save($photo);
+            
+        }
         return redirect('news')
             ->with('message', 'News Updated Successfully');
     }

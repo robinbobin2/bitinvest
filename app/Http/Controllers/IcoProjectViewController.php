@@ -64,7 +64,7 @@ class IcoProjectViewController extends Controller
 }
 
     public function byCat($id) {
-        $news = IcoProject::with('category')->latest()->get()->where('cat_id', $id)->toArray();
+        $news = IcoProject::with('category')->withCount('comments')->latest()->get()->where('cat_id', $id)->toArray();
         $news = array_values($news);
 
         return response()->json(

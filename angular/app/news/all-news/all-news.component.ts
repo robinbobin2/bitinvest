@@ -11,16 +11,7 @@ interface Category {
   name: string;
 }
 
-export class Interview {
-    id: number;
-  title: string;
-  desc: string;
-  main: number;
-  category:string;
-  photo: string;
-  workplace: string;
-  name_credits: string;
-}
+
 @Component({
   selector: 'app-all-news',
   templateUrl: './all-news.component.html',
@@ -32,8 +23,8 @@ export class AllNewsComponent implements OnInit {
 	news= [];
   main_news= [];
   countAll = 0;
-  order: string = 'id';
-  reverse: boolean = true;
+  order: string = 'position';
+  reverse: boolean = false;
   /**
    * @param {OrderPipe} 
    */

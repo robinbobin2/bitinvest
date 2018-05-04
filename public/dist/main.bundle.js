@@ -1042,7 +1042,7 @@ var _a;
 /***/ "./angular/app/categories/categories.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"news-content\">\n        <div class=\"news-head\">\n          <h1>Новости<span>{{countAll}}</span></h1>\n          <ul class=\"news-tabs\">\n            <li class=\"active\"><a href=\"#\">Новое за сегодня</a></li>\n            <li><a href=\"#\">Самое популярное</a></li>\n            <li><a href=\"#\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n        <div class=\"news-body\">\n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div class=\"news\" *ngFor=\"let item of main_news\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')'}\">\n                  <a href=\"#\" class=\"news-btn\">{{item.category}}</a>\n                  <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                    <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>0</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml |excerpt:80}}  <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div class=\"news\" *ngFor=\"let item of news\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')' }\">\n                  <a href=\"#\" class=\"news-btn\">{{item.category}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <h3>\n                    <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                  </h3>\n                </div>\n                <div class=\"text2\">\n                  <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n          \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n\n"
+module.exports = "<div class=\"news-content\">\n        <div class=\"news-head\">\n          <h1>Новости<span>{{countAll}}</span></h1>\n          <ul class=\"news-tabs\">\n            <li class=\"active\"><a (click)=\"setOrder('id')\">Новое за сегодня</a></li>\n            <li><a (click)=\"setOrder('views_count')\">Самое популярное</a></li>\n            <li><a  (click)=\"setOrder('comments_count')\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n        <div class=\"news-body\">\n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div class=\"news\" *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')'}\">\n                  <a routerLink=\"/posts/category/{{item.cat_id}}\" class=\"news-btn\">{{item.category}}</a>\n                  <a routerLink=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                    <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml |excerpt:80}}  <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div class=\"news\" *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')' }\">\n                  <a routerLink=\"/posts/category/{{item.cat_id}}\" class=\"news-btn\">{{item.category}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <h3>\n                    <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                  </h3>\n                </div>\n                <div class=\"text2\">\n                  <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n            </div>\n          </div>\n          \n            </div>\n          </div>\n\n"
 
 /***/ }),
 
@@ -1061,7 +1061,8 @@ module.exports = ".news-content {\n  width: 880px !important;\n  /*width: 100%;*
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoriesComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1075,7 +1076,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // import { interval } from 'rxjs/Observable/interval';
 
 
-var scr = 'http://ppql.ru/masonry.js';
+
 var NewsRaw = (function () {
     function NewsRaw() {
     }
@@ -1083,26 +1084,20 @@ var NewsRaw = (function () {
 }());
 
 var CategoriesComponent = (function () {
-    function CategoriesComponent(http, router, route) {
+    /**
+       * @param {OrderPipe}
+       */
+    function CategoriesComponent(orderPipe, http, router, route) {
+        this.orderPipe = orderPipe;
         this.http = http;
         this.router = router;
         this.route = route;
-        this.myOptions = {
-            transitionDuration: '0'
-        };
         this.countAll = 0;
         this.news = [];
         this.main_news = [];
+        this.order = 'id';
+        this.reverse = true;
     }
-    CategoriesComponent.prototype.loadScript = function () {
-        console.log('preparing to load...');
-        var node = document.createElement('script');
-        node.src = scr;
-        node.type = 'text/javascript';
-        node.async = false;
-        node.charset = 'utf-8';
-        document.getElementsByTagName('body')[0].appendChild(node);
-    };
     CategoriesComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
@@ -1124,7 +1119,8 @@ var CategoriesComponent = (function () {
                         main: item.main,
                         created_at: item.created_at,
                         category: item.category.name,
-                        photo: item.photos[0].file
+                        photo: item.photos[0].file,
+                        comments_count: item.comments_count
                     });
                 }
                 for (var _b = 0, _c = response['main_news']; _b < _c.length; _b++) {
@@ -1137,20 +1133,20 @@ var CategoriesComponent = (function () {
                         main: item.main,
                         category: item.category.name,
                         created_at: item.created_at,
-                        photo: item.photos[0].file
+                        photo: item.photos[0].file,
+                        comments_count: item.comments_count
                     });
                 }
-                // this.news.push(response['news']);
-                //   this.main_news.push(response['main_news']);
-                // console.log(response['news']);
-                console.log(_this.news);
-                console.log(_this.news[0].photo);
-                console.log(_this.main_news);
+                _this.countAll = _this.news.length + _this.main_news.length;
             });
         });
     };
-    CategoriesComponent.prototype.loadMore = function (id) {
-        this.router.navigate(['/posts/post', id]);
+    CategoriesComponent.prototype.setOrder = function (value) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+        console.log(this.order);
     };
     return CategoriesComponent;
 }());
@@ -1160,10 +1156,10 @@ CategoriesComponent = __decorate([
         template: __webpack_require__("./angular/app/categories/categories.component.html"),
         styles: [__webpack_require__("./angular/app/categories/categories.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
 ], CategoriesComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=categories.component.js.map
 
 /***/ }),
@@ -2395,11 +2391,16 @@ var CryptoComponent = (function () {
         if (localStorage.getItem(symbol)) {
             this.dataUsd = JSON.parse(localStorage.getItem(symbol));
         }
-        this.stocksServise.getStocks(symbol + '/USDT')
-            .subscribe(function (response) {
+        if (localStorage.getItem(symbol + 'USD stocks')) {
+            this.stocks = JSON.parse(localStorage.getItem(symbol + 'USD stocks'));
+        }
+        __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).take(50).concatMap(function () {
+            return _this.stocksServise.getStocks(symbol + '/USDT');
+        })
+            .map(function (response) {
             _this.stocks = response;
-            console.log(_this.stocks);
-        });
+            localStorage.setItem(symbol + 'USD stocks', JSON.stringify(_this.stocks));
+        }).subscribe();
         this.stocksServise.getCrypto()
             .map(function (response) {
             _this.dataUsd = response[symbol + '/USDT'];
@@ -3137,7 +3138,7 @@ FilterNamePipe = __decorate([
 /***/ "./angular/app/ico-project/ico-project-all/ico-project-all.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ico-content\">\n\t\t\t\t<div class=\"ico-head\">\n\t\t\t\t\t<h1>ICO<span>{{icoCount}}</span></h1>\n\t\t\t\t\t<ul class=\"ico-tabs\">\n\t\t\t\t\t\t<li><label for=\"filter1\"><input type=\"radio\" id=\"filter1\" value=\"1\" [(ngModel)]=\"status\" name=\"status\"><a>Активные ({{activeCount}})</a></label></li>\n\t\t\t\t\t\t<li><label for=\"filter2\"><input type=\"radio\" id=\"filter2\" value=\"2\" [(ngModel)]=\"status\" name=\"status\"><a>Завершенные ({{inactiveCount}})</a></label></li>\n\t\t\t\t\t</ul>\n\t\t\t\t\t<form>\n\t\t\t\t\t\t<input [(ngModel)]=\"filteredName\" name=\"filteredName\" type=\"text\" placeholder=\"Поиск по названию\">\n\t\t\t\t\t\t<button type=\"button\"><img src=\"/img/search-icon.png\" alt=\"\"></button>\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t\t   <div class=\"select-wrapper\">\n\t\t\t\t     <div class=\"select\">\n\t\t\t\t      <span class=\"text\"><span style=\"padding-top: 12px;\">{{order == 'name' ? 'По алфавиту' : 'По сумме собранных средств'}}</span></span>\n\t\t\t\t      <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n\t\t\t\t     </div>\n\t\t\t\t     <ul class=\"select-items\">\n\t\t\t\t      <li (click)=\"setOrder('name')\"><a >Фильтрация: По алфавиту</a></li>\n\t\t\t\t      <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li>\n\t\t\t\t     </ul>\n\t\t\t\t    </div>\n\t\t\t\t<div class=\"project-wrapper active\">\n\t\t\t\t\t<div *ngFor=\"let item of news | filterNameActive:status:'status' | filterName:filteredName:'name' | orderBy: order:reverse:'case-insensitive'\" class=\"project-block\" [ngClass]=\"item.status==1 ? ' ' : 'no-bg'\">\n\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t<a href=\"/ico/item/{{item.id}}\"><img [src]=\"item.logo\" style=\"width: 97px; height: 97px\" alt=\"\"></a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t\t<div class=\"text-info\">\n\t\t\t\t\t\t\t\t<p><a href=\"/ico/item/{{item.id}}\" class=\"project-title\">{{item.name}}</a><a href=\"/ico/item/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a></p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"project-info-content\">\n\t\t\t\t\t\t\t\t<div class=\"info\">\n\t\t\t\t\t\t\t\t\t<p class=\"status\" [ngClass]=\"item.status==1 ? 'active-status' : 'inactive-status'\">Статус: <span>{{item.status == 1? 'Активен': 'Завершен'}}</span></p>\n\t\t\t\t\t\t\t\t\t<p class=\"year\">от {{item.money_start}} до {{item.money_end}}</p>\n\t\t\t\t\t\t\t\t\t<p class=\"last-updated\">Последнее обновление: {{item.updated_at}}</p>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"progress-bar\">\n\t\t\t\t\t\t\t\t\t<a [routerLink]=\"['/ico/category', item.cat_id]\" class=\"product-gray-btn\">{{item.category}}</a>\n\t\t\t\t\t\t\t\t\t<div class=\"progress\">\n\t\t\t\t\t\t\t\t\t\t<span [ngStyle]=\"{'width': item.current_money/(item.money / 100)+'%' }\"></span>\n\t\t\t\t\t\t\t\t\t\t<p>${{item.current_money}} из {{item.money}}</p>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<a href=\"#login-popup\" *ngIf=\"!checkAuth()\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a>\n                  <a href=\"#follow-popup\" *ngIf=\"!checkInPortfolio(item.id) && checkAuth()\" (click)=\"selectedItem = item\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a>\n\n                  <a class=\"follow\"  *ngIf=\"checkInPortfolio(item.id) && checkAuth()\"  (click)=\"removePortfolio(item.id, 'App\\\\IcoProject')\"><span class=\"minus\"><img src=\"img/minus.png\" alt=\"\"></span><span class=\"text text-red\">Следить</span></a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p class=\"more-project\" [innerHTML]=\"item.about\">\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t<p class=\"more-project\"><a  href=\"/ico/item/{{item.id}}\">Подробнее о проекте</a></p>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t\t<!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n\t\t\t</div>\n<div id=\"follow-popup\" class=\"popup mfp-with-anim mfp-hide\">\n    <div class=\"popup-body\">\n      <h2>Следить за {{selectedItem?.name}}</h2>\n      <p>Выберите портфель для сохранения {{selectedItem?.name}}</p>\n      <div class=\"checkbox-list\">\n        <div class=\"checkbox-wrap\" *ngFor=\"let portfolio of getUserPortfolio; let i = index\">\n          <input type=\"radio\" name=\"id\" [(ngModel)]=\"addPortfolio\" value=\"{{portfolio.id}}\" checked=\"checked\" id=\"{{i}}\">\n          <label for=\"{{i}}\">\n            <span></span>{{portfolio.name}}\n          </label>\n        </div>\n      </div>\n      <a href=\"#\" class=\"add-portfolio\">+Добавить портфель</a>\n      <form class=\"hidden\" #f=\"ngForm\">\n        <input type=\"text\" ngModel name=\"name\" required=\"\" placeholder=\"Введите название...\">\n        <button (click)=\"createPortfolio(f)\" type=\"submit\">Добавить</button>\n      </form>\n    </div>\n    <div class=\"save-block\">\n      <a (click)=\"submitPortfolio(selectedItem?.id, 'App\\\\IcoProject')\" class=\"save-settings\">Сохранить настройки</a>\n      <a href=\"#\" class=\"close-text\">Отменить и закрыть</a>\n    </div>\n  </div>"
+module.exports = "<div class=\"ico-content\">\n\t\t\t\t<div class=\"ico-head\">\n\t\t\t\t\t<h1>ICO<span>{{icoCount}}</span></h1>\n\t\t\t\t\t<ul class=\"ico-tabs\">\n\t\t\t\t\t\t<li><label for=\"filter1\"><input type=\"radio\" id=\"filter1\" value=\"1\" [(ngModel)]=\"status\" name=\"status\"><a>Активные ({{activeCount}})</a></label></li>\n\t\t\t\t\t\t<li><label for=\"filter2\"><input type=\"radio\" id=\"filter2\" value=\"2\" [(ngModel)]=\"status\" name=\"status\"><a>Завершенные ({{inactiveCount}})</a></label></li>\n\t\t\t\t\t</ul>\n\t\t\t\t\t<form>\n\t\t\t\t\t\t<input [(ngModel)]=\"filteredName\" name=\"filteredName\" type=\"text\" placeholder=\"Поиск по названию\">\n\t\t\t\t\t\t<button type=\"button\"><img src=\"/img/search-icon.png\" alt=\"\"></button>\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t\t   <div class=\"select-wrapper\">\n\t\t\t\t     <div class=\"select\">\n\t\t\t\t      <span class=\"text\"><span style=\"padding-top: 12px;\">{{order == 'name' ? 'По алфавиту' : 'По сумме собранных средств'}}</span></span>\n\t\t\t\t      <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n\t\t\t\t     </div>\n\t\t\t\t     <ul class=\"select-items\">\n\t\t\t\t      <li (click)=\"setOrder('name')\"><a >Фильтрация: По алфавиту</a></li>\n\t\t\t\t      <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li>\n\t\t\t\t     </ul>\n\t\t\t\t    </div>\n\t\t\t\t<div class=\"project-wrapper active\">\n\t\t\t\t\t<div *ngFor=\"let item of news | filterNameActive:status:'status' | filterName:filteredName:'name' | orderBy: order:reverse:'case-insensitive'\" class=\"project-block\" [ngClass]=\"item.status==1 ? ' ' : 'no-bg'\">\n\t\t\t\t\t\t<div class=\"img-wrap\">\n\t\t\t\t\t\t\t<a href=\"/ico/item/{{item.id}}\"><img [src]=\"item.logo\" style=\"width: 97px; height: 97px\" alt=\"\"></a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"text-wrap\">\n\t\t\t\t\t\t\t<div class=\"text-info\">\n\t\t\t\t\t\t\t\t<p><a href=\"/ico/item/{{item.id}}\" class=\"project-title\">{{item.name}}</a><a href=\"/ico/item/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a></p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"project-info-content\">\n\t\t\t\t\t\t\t\t<div class=\"info\">\n\t\t\t\t\t\t\t\t\t<p class=\"status\" [ngClass]=\"item.status==1 ? 'active-status' : 'inactive-status'\">Статус: <span>{{item.status == 1? 'Активен': 'Завершен'}}</span></p>\n\t\t\t\t\t\t\t\t\t<p class=\"year\">от {{item.money_start}} до {{item.money_end}}</p>\n\t\t\t\t\t\t\t\t\t<p class=\"last-updated\">Последнее обновление: {{item.updated_at}}</p>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"progress-bar\">\n\t\t\t\t\t\t\t\t\t<a [routerLink]=\"['/ico/category', item.cat_id]\" class=\"product-gray-btn\">{{item.category}}</a>\n\t\t\t\t\t\t\t\t\t<div class=\"progress\">\n\t\t\t\t\t\t\t\t\t\t<span [ngStyle]=\"{'width': item.current_money/(item.money / 100)+'%' }\"></span>\n\t\t\t\t\t\t\t\t\t\t<p>${{item.current_money}} из {{item.money}}</p>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<a href=\"#login-popup\" *ngIf=\"!checkAuth()\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a>\n                  <a href=\"#follow-popup\" *ngIf=\"!checkInPortfolio(item.id) && checkAuth()\" (click)=\"selectedItem = item\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a>\n\n                  <a class=\"follow\"  *ngIf=\"checkInPortfolio(item.id) && checkAuth()\"  (click)=\"removePortfolio(item.id, 'App\\\\IcoProject')\"><span class=\"minus\"><img src=\"img/minus.png\" alt=\"\"></span><span class=\"text text-red\">Следить</span></a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<p class=\"more-project\">\n              {{item.about | striphtml |excerpt:80}} <a  href=\"/ico/item/{{item.id}}\"> Подробнее о проекте</a></p>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t\t<!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n\t\t\t</div>\n<div id=\"follow-popup\" class=\"popup mfp-with-anim mfp-hide\">\n    <div class=\"popup-body\">\n      <h2>Следить за {{selectedItem?.name}}</h2>\n      <p>Выберите портфель для сохранения {{selectedItem?.name}}</p>\n      <div class=\"checkbox-list\">\n        <div class=\"checkbox-wrap\" *ngFor=\"let portfolio of getUserPortfolio; let i = index\">\n          <input type=\"radio\" name=\"id\" [(ngModel)]=\"addPortfolio\" value=\"{{portfolio.id}}\" checked=\"checked\" id=\"{{i}}\">\n          <label for=\"{{i}}\">\n            <span></span>{{portfolio.name}}\n          </label>\n        </div>\n      </div>\n      <a href=\"#\" class=\"add-portfolio\">+Добавить портфель</a>\n      <form class=\"hidden\" #f=\"ngForm\">\n        <input type=\"text\" ngModel name=\"name\" required=\"\" placeholder=\"Введите название...\">\n        <button (click)=\"createPortfolio(f)\" type=\"submit\">Добавить</button>\n      </form>\n    </div>\n    <div class=\"save-block\">\n      <a (click)=\"submitPortfolio(selectedItem?.id, 'App\\\\IcoProject')\" class=\"save-settings\">Сохранить настройки</a>\n      <a href=\"#\" class=\"close-text\">Отменить и закрыть</a>\n    </div>\n  </div>"
 
 /***/ }),
 
@@ -4322,7 +4323,7 @@ module.exports = ".news-content {\nwidth: 880px !important;\n}\n.main-news .news
 /***/ "./angular/app/news/all-news/all-news.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"news-content\">\n        <div class=\"news-head\">\n          <h1>Новости<span>{{countAll}}</span></h1>\n          <ul class=\"news-tabs\">\n            <li class=\"active\"><a (click)=\"setOrder('id')\">Новое за сегодня</a></li>\n            <li><a (click)=\"setOrder('views_count')\">Самое популярное</a></li>\n            <li><a  (click)=\"setOrder('comments_count')\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n        <div class=\"news-body\">\n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div  *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.workplace ? 'trust' : 'news'\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                    <a  href=\"/posts/post/{{item.id}}#comment-block\"  class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml | excerpt:140}} <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p> \n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.name_credits ? 'trust' : 'news'\" [routerLink]=\"item.name_credits ? ['/interview/item', item.id] : null\">\n                <div *ngIf=\"item.name_credits\" class=\"img-wrap\"><img src=\"img/trust.png\" alt=\"\"></div>\n                <h4 *ngIf=\"item.name_credits\">{{item.title}}</h4>\n                <p *ngIf=\"item.name_credits\" class=\"name\">{{item.name_credits}}</p>\n                <span *ngIf=\"item.name_credits\">{{item.workplace}}</span>\n                <div *ngIf=\"!item.name_credits\" class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div *ngIf=\"!item.name_credits\" class=\"text\">\n                  <h3>\n                    <a [routerLink]=\"['/posts/post', item.id]\">{{item.title}}</a>\n                  </h3>\n                </div>\n\n                <div *ngIf=\"!item.name_credits\" class=\"text2\">\n                  <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n              \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n          \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n\n"
+module.exports = "<div class=\"news-content\">\n        <div class=\"news-head\">\n          <h1>Новости<span>{{countAll}}</span></h1>\n          <ul class=\"news-tabs\">\n            <li class=\"active\"><a (click)=\"setOrder('id')\">Новое за сегодня</a></li>\n            <li><a (click)=\"setOrder('views_count')\">Самое популярное</a></li>\n            <li><a  (click)=\"setOrder('comments_count')\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n        <div class=\"news-body\">\n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div  *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.workplace ? 'news trust' : 'news'\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                    <a  href=\"/posts/post/{{item.id}}#comment-block\"  class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml | excerpt:140}} <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p> \n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.name_credits ? 'trust' : 'news'\" [routerLink]=\"item.name_credits ? ['/interview/item', item.id] : null\">\n                <div *ngIf=\"item.name_credits\" class=\"img-wrap\"><img src=\"img/trust.png\" alt=\"\"></div>\n                <h4 *ngIf=\"item.name_credits\">{{item.title}}</h4>\n                <p *ngIf=\"item.name_credits\" class=\"name\">{{item.name_credits}}</p>\n                <span *ngIf=\"item.name_credits\">{{item.workplace}}</span>\n                <div *ngIf=\"!item.name_credits\" class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div *ngIf=\"!item.name_credits\" class=\"text\">\n                  <h3>\n                    <a [routerLink]=\"['/posts/post', item.id]\">{{item.title}}</a>\n                  </h3>\n                </div>\n\n                <div *ngIf=\"!item.name_credits\" class=\"text2\">\n                  <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n              \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n          \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n\n"
 
 /***/ }),
 
@@ -4330,7 +4331,6 @@ module.exports = "<div class=\"news-content\">\n        <div class=\"news-head\"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export Interview */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllNewsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
@@ -4350,12 +4350,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var Interview = (function () {
-    function Interview() {
-    }
-    return Interview;
-}());
-
 var AllNewsComponent = (function () {
     /**
      * @param {OrderPipe}
@@ -4369,8 +4363,8 @@ var AllNewsComponent = (function () {
         this.news = [];
         this.main_news = [];
         this.countAll = 0;
-        this.order = 'id';
-        this.reverse = true;
+        this.order = 'position';
+        this.reverse = false;
         var path = "/newsraw";
         var info = http.get(path);
         info.subscribe(function (response) {
