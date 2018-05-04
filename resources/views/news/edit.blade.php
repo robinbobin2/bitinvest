@@ -72,9 +72,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label  class="col-md-4 control-label">Upload Images</label>
+                            <label  class="col-md-4 control-label">Upload Image</label>
+
                             <div class="col-md-12">
-                                <input type="file" class="form-control" name="images[]" multiple="multiple">
+                                <input type="file" class="form-control" name="image" multiple="multiple">
                             </div>
                         </div>
                         <div class="form-group">
@@ -87,6 +88,10 @@
                     </form>
                 </div>
             </div>
+        </div>
+        
+        <div class="col-md-4">
+            <img style="max-width: 100%;" src="{{$photo[0]->file}}">
         </div>
     </div>
 </div>

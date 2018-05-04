@@ -4920,6 +4920,7 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
 }
 .trust {
   cursor: pointer;
+  min-height: 280px !important;
 }
 .news-content {
   margin-left: -32px !important;

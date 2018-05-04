@@ -49,7 +49,8 @@ class InterviewController extends Controller
             'cat_id' => $request->input('cat_id'),
             'main' => $request->input('main'),
             'name_credits'=>$request->input('name_credits'),
-            'workplace'=>$request->input('workplace')
+            'workplace'=>$request->input('workplace'),
+            'to_news'=>$request->input('to_news'),
         ];
          if ($file = $request->file('image')) {
             
@@ -116,6 +117,7 @@ class InterviewController extends Controller
             'main' => $request->input('main'),
             'name_credits'=>$request->input('name_credits'),
             'workplace'=>$request->input('workplace'),
+            'to_news'=>$request->input('to_news'),
 
         ];
         $news = Interview::findOrFail($id)->update($data);

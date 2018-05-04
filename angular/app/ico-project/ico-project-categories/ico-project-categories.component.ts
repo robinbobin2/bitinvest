@@ -36,6 +36,7 @@ export class NewsRaw {
   number_people: number;
   updated_at: string;
   category: any;
+  comments_count: number;
 
 }
 @Component({

@@ -48,9 +48,8 @@
 								</div>
 							</div>
 						</div>
-						<p class="more-project" [innerHTML]="item.about">
-							</p>
-						<p class="more-project"><a  href="/ico/item/{{item.id}}">Подробнее о проекте</a></p>
+						<p class="more-project">
+              {{item.about | striphtml |excerpt:80}} <a  href="/ico/item/{{item.id}}"> Подробнее о проекте</a></p>
 					</div>
 
 				</div>

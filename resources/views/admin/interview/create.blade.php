@@ -33,7 +33,7 @@
                             <input type="text" id="name_credits" name="name_credits">
                             </div>
 
-                             <label for="workplace" class="col-md-4 control-label">Должность и место работы</label>
+                            <label for="workplace" class="col-md-4 control-label">Должность и место работы</label>
 
                             <div class="col-md-12">
                             <input type="text" id="workplace" name="workplace">
@@ -42,7 +42,7 @@
 
                         </div>
                         <div class="form-group{{ $errors->has('desc') ? ' has-error' : '' }}">
-                            <label for="desc" class="col-md-4 control-label">Description</label>
+                            <label for="desc" class="col-md-4 control-label"></label>
 
                             <div class="col-md-12">
                                 <!-- <input id="desc" type="text" class="form-control summernote" name="desc" value="{{ old('desc') }}" required> -->
@@ -75,12 +75,35 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('main') ? ' has-error' : '' }}">
-                            <label for="main" class="col-md-4 control-label">General</label>
+                            <label for="main" class="col-md-4 control-label">На главную</label>
 
                             <div class="col-md-12">
                                 <select class="form-control" name="main" id="main">
-                                        <option @if(old('main')) selected  @endif value="0">No</option>
-                                        <option @if(old('main')) selected  @endif value="1">Yes</option>
+                                        @if (Input::old('main') == 1)
+                                                  <option value="1" selected="selected">Да</option>
+                                                  <option value="0">Нет</option>
+                                            @else
+                                                  <option value="1">Да</option>
+                                                  <option value="0" selected="selected">Нет</option>
+                                            @endif
+                                </select>
+
+                                @if ($errors->has('main'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('main') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('main') ? ' has-error' : '' }}">
+                            <label for="main" class="col-md-4 control-label">В новости</label>
+
+                            <div class="col-md-12">
+                                <select class="form-control" name="to_news" id="main">
+                                         
+                                                  <option value="1" selected="selected">Да</option>
+                                                  <option value="0">Нет</option>
                                 </select>
 
                                 @if ($errors->has('main'))

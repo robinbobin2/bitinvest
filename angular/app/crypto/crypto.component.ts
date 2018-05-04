@@ -90,11 +90,16 @@ cryptoData: any;
     if(localStorage.getItem(symbol)) {
       this.dataUsd = JSON.parse(localStorage.getItem(symbol));
     }
-    this.stocksServise.getStocks(symbol+'/USDT')
-    .subscribe(response => {
+
+    if(localStorage.getItem(symbol+'USD stocks')) {
+      this.stocks = JSON.parse(localStorage.getItem(symbol+'USD stocks'));
+      }
+    Observable.interval(1000).take(50).concatMap(()=>
+    this.stocksServise.getStocks(symbol+'/USDT'))
+    .map(response => {
         this.stocks = response;
-        console.log(this.stocks);
-      });
+        localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks))
+      }).subscribe();
 
 
 

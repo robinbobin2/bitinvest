@@ -75,15 +75,17 @@
                         <div class="form-group{{ $errors->has('main') ? ' has-error' : '' }}">
                             <label for="main" class="col-md-4 control-label">Status</label>
                             <div class="col-md-12">
-                                <select class="form-control" name="main" id="main">
-                                    <option @if(old('main')) selected @elseif($news->main == '0') selected @endif value="0">No</option>
-                                    <option @if(old('main')) selected @elseif($news->main == '1') selected  @endif value="1">Yes</option>
+                                <select class="form-control" name="to_news" id="to_news">
+                                         @if($news->to_news ==1)
+                                            <option value="1" selected="selected">Да</option>
+                                            <option value="0">Нет</option>
+                                        @else
+                                            <option value="1">Да</option>
+                                            <option value="0" selected="selected">Нет</option>
+                                        @endif
                                 </select>
-                                @if ($errors->has('main'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('main') }}</strong>
-                                    </span>
-                                @endif
+
+                               
                             </div>
                         </div>
 

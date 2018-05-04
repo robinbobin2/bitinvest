@@ -14,7 +14,8 @@ class Interview extends Model
         'cat_id',
         'main',
         'name_credits',
-        'workplace'
+        'workplace',
+        'to_news'
     ];
     //
     public function photos() {
