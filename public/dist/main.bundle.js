@@ -1810,11 +1810,13 @@ var CloudMiningComponent = (function () {
         info.subscribe(function (response) {
             for (var _i = 0, _a = response['cats']; _i < _a.length; _i++) {
                 var item = _a[_i];
-                _this.categories.push({
-                    id: item['id'],
-                    name: item['name'],
-                    count: item['count']
-                });
+                if (item['count'] > 0) {
+                    _this.categories.push({
+                        id: item['id'],
+                        name: item['name'],
+                        count: item['count']
+                    });
+                }
             }
             console.log(_this.categories);
         });
@@ -2053,7 +2055,7 @@ var CryptoAllComponent = (function () {
         this.order = 'now';
         this.algorithm = '';
         this.age = '';
-        this.reverse = false;
+        this.reverse = true;
     }
     CryptoAllComponent.prototype.setOrder = function (value) {
         if (this.order === value) {
@@ -3767,11 +3769,13 @@ var IcoProjectComponent = (function () {
         info.subscribe(function (response) {
             for (var _i = 0, _a = response['cats']; _i < _a.length; _i++) {
                 var item = _a[_i];
-                _this.categories.push({
-                    id: item['id'],
-                    name: item['name'],
-                    count: item['count']
-                });
+                if (item['count'] > 0) {
+                    _this.categories.push({
+                        id: item['id'],
+                        name: item['name'],
+                        count: item['count']
+                    });
+                }
             }
         });
     };
@@ -4687,11 +4691,13 @@ var NewsComponent = (function () {
         info.subscribe(function (response) {
             for (var _i = 0, _a = response['cats']; _i < _a.length; _i++) {
                 var item = _a[_i];
-                _this.categories.push({
-                    id: item['id'],
-                    name: item['name'],
-                    count: item['count']
-                });
+                if (item['count'] > 0) {
+                    _this.categories.push({
+                        id: item['id'],
+                        name: item['name'],
+                        count: item['count']
+                    });
+                }
             }
             console.log(_this.categories);
         });
