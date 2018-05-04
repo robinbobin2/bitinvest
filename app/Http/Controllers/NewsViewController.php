@@ -18,9 +18,11 @@ class NewsViewController extends Controller
         $main_news = array_values($main_news);
         $n = 7;
 
-        for ($i=0; $i < count($interviews); $i++) { 
+        for ($i=0; $i < count($interviews); $i++) {
+        if ($news[$n]) {
                    array_splice( $news, $n, 0, [$interviews[$i]] );
                    $n += 9;
+               }
                }
                
             
