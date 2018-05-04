@@ -28,18 +28,13 @@ cryptoData: any;
     const alldata = this.http.get<Array<Cripto>>('/allcrypto');
 if(localStorage.getItem('data')) {
       this.dataUsd = JSON.parse(localStorage.getItem('data'));
-      console.log(this.dataUsd);
       }
     this.stocksServise.getCrypto()
         .subscribe(response => {
             this.resp = response;
             this.data = alldata.subscribe(response => {
-
-      // console.log(response);
       let admin = response;
       for (var _i = 0; _i < admin.length; ++_i) {
-        
-        // console.log(this.admin[i].symbol);
         let index = _i;
         let symbol = admin[index].symbol;
         let year = admin[index].year;
@@ -94,8 +89,6 @@ if(localStorage.getItem('data')) {
         let year = admin[index].year;
         let algo = admin[index].algo;
         let desc = 'DESC';
-        console.log('asdasdasd');
-        console.log(this.resp[symbol+'/USDT']['last'])
         if(this.dataUsd[index]) {
                 this.dataUsd[index].sym = symbol;
                 this.dataUsd[index].algo = algo;

@@ -78,6 +78,8 @@ export class CryptoComponent implements OnInit {
   obs: any;
   resp: any;
   infoCrypto: any;
+  stocksData: any;
+  cryptoFirst:any;
 cryptoData: any;
   constructor(private http:HttpClient,private stocksServise:StocksService, 
     private router:Router, private route:ActivatedRoute, 
@@ -94,7 +96,7 @@ cryptoData: any;
     if(localStorage.getItem(symbol+'USD stocks')) {
       this.stocks = JSON.parse(localStorage.getItem(symbol+'USD stocks'));
       }
-    Observable.interval(1000).take(50).concatMap(()=>
+    this.stocksData = Observable.interval(1000).take(50).concatMap(()=>
     this.stocksServise.getStocks(symbol+'/USDT'))
     .map(response => {
         this.stocks = response;
@@ -104,7 +106,7 @@ cryptoData: any;
 
 
 
-    this.stocksServise.getCrypto()
+    this.cryptoFirst = this.stocksServise.getCrypto()
         .map((response)=>{
           this.dataUsd = response[symbol+'/USDT'];
           localStorage.removeItem(symbol);
@@ -198,5 +200,7 @@ ngOnDestroy() {
 
   // this.infoCrypto.unsubscribe();
   this.cryptoData.unsubscribe();
+  this.stocksData.unsubscribe();
+  this.cryptoFirst.unsubscribe();
 }
 }
