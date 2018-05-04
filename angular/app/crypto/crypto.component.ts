@@ -176,6 +176,24 @@ cryptoData: any;
       console.log(form);
       this.commentcount=this.commentcount+1;
   }
+  isNegative(now) {
+    if((parseInt(now)) >= 0) {
+      return false;
+    } 
+    return true;
+  }
+  isNegativeMath(now, last) {
+    if((parseInt(now)-parseInt(last)) >= 0) {
+      return false;
+    } 
+    return true;
+  }
+  comparePrice(now, last) {
+    if(parseInt(now)>parseInt(last)) {
+      return true;
+    } 
+    return false;
+  }
 ngOnDestroy() {
 
   // this.infoCrypto.unsubscribe();

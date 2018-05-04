@@ -55,7 +55,7 @@ export class CryptoAllComponent implements OnInit {
 
   // admin= new Array;
   dataUsd: Array<CryptoData> = [];
-order = 'sym';
+order = 'now';
 algorithm = '';
 age = '';
 data: any;
@@ -193,6 +193,12 @@ if(localStorage.getItem('data')) {
   }
   isNegative(now) {
     if((parseInt(now)) >= 0) {
+      return false;
+    } 
+    return true;
+  }
+  isNegativeMath(now, last) {
+    if((parseInt(now)-parseInt(last)) >= 0) {
       return false;
     } 
     return true;
