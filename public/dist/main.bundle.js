@@ -5966,7 +5966,7 @@ SidebarComponent = __decorate([
 /***/ "./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"quotes\">\n          <h5 class=\"titles\">Котировки криптовалют</h5>\n          <ul>\n            <li *ngFor=\"let item of dataUsd\">\n              <a routerLink=\"/crypto/{{item.sym}}\">\n                <span class=\"crypto\">{{item.sym}}</span>\n                <span class=\"usd\">${{item.now | number:'1.0-1'}}</span>\n                <span class=\"rub\">₽{{item.now*60 | number:'1.0-1'}}</span>\n                <span class=\"change\">{{item.now-item.last | number:'1.0-1'}}</span>\n              </a>\n            </li>\n            \n          </ul>\n          <a routerLink=\"/cryptocurrency/all\" class=\"show-all\">Показать все котировки</a>\n          <p class=\"updated\">Последнее обновление: 26.10.17, 12:42</p>\n        </div>"
+module.exports = "<div class=\"quotes\">\n          <h5 class=\"titles\">Котировки криптовалют</h5>\n          <ul>\n            <img src=\"/img/load.gif\" *ngIf=\"load==true\" style=\"display: block;\n            margin: 10px auto;\">\n            <li *ngFor=\"let item of dataUsd\">\n              <a routerLink=\"/crypto/{{item.sym}}\">\n                <span class=\"crypto\">{{item.sym}}</span>\n                <span class=\"usd\">${{item.now | number:'1.0-1'}}</span>\n                <span class=\"rub\">₽{{item.now*60 | number:'1.0-1'}}</span>\n                <span class=\"change\">{{item.now-item.last | number:'1.0-1'}}</span>\n              </a>\n            </li>\n            \n          </ul>\n          <a routerLink=\"/cryptocurrency/all\" class=\"show-all\">Показать все котировки</a>\n          <p class=\"updated\">Последнее обновление: 26.10.17, 12:42</p>\n        </div>"
 
 /***/ }),
 
@@ -6010,11 +6010,14 @@ var StocksSidebarComponent = (function () {
     function StocksSidebarComponent(http, stocksServise) {
         this.http = http;
         this.stocksServise = stocksServise;
+        this.dataUsd = [];
+        this.load = true;
     }
     StocksSidebarComponent.prototype.ngOnInit = function () {
         var _this = this;
         var alldata = this.http.get('/allcrypto');
         if (localStorage.getItem('data')) {
+            this.load = false;
             this.dataUsd = JSON.parse(localStorage.getItem('data'));
         }
         this.stocksServise.getCrypto()
@@ -6054,6 +6057,7 @@ var StocksSidebarComponent = (function () {
                             day: 0,
                         };
                     }
+                    _this.load = false;
                     localStorage.removeItem('data');
                     localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                 }

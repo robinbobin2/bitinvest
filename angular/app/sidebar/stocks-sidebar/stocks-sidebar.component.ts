@@ -17,16 +17,18 @@ export class Cripto {
   providers: [StocksService],
 })
 export class StocksSidebarComponent implements OnInit {
- dataUsd:any;
+ dataUsd:any=[];
   constructor(private http:HttpClient,
     private stocksServise:StocksService
     ) { }
 data: any;
 resp: any;
 cryptoData: any;
+load:boolean = true;
   ngOnInit() {
     const alldata = this.http.get<Array<Cripto>>('/allcrypto');
 if(localStorage.getItem('data')) {
+      this.load = false;
       this.dataUsd = JSON.parse(localStorage.getItem('data'));
       }
     this.stocksServise.getCrypto()
@@ -67,6 +69,7 @@ if(localStorage.getItem('data')) {
               day: 0,
           }
         }
+        this.load = false;
         localStorage.removeItem('data');
             localStorage.setItem('data',JSON.stringify(this.dataUsd))
        }
