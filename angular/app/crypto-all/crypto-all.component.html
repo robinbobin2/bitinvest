@@ -122,7 +122,8 @@
 						</tr>
 					</thead>
 					<tbody>
-
+          <img src="/img/load.gif" *ngIf="load==true" style="display: block;
+            margin: 10px auto; width: 25px; height: 25px;">
 						<tr *ngFor="let data of dataUsd  | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index">
 							<td>
 								<span>{{i+1}}</span>

@@ -2,7 +2,7 @@
           <h5 class="titles">Котировки криптовалют</h5>
           <ul>
             <img src="/img/load.gif" *ngIf="load==true" style="display: block;
-            margin: 10px auto;">
+            margin: 10px auto; width: 15px; height: 15px;">
             <li *ngFor="let item of dataUsd">
               <a routerLink="/crypto/{{item.sym}}">
                 <span class="crypto">{{item.sym}}</span>
