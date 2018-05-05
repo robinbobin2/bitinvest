@@ -60,12 +60,16 @@ class CommentsController extends Controller
             'post_id' => $request->input('post_id'),
             'author' => $user->name,
             'email' => $user->email,
-            'photo' => '',
             'body' => $request->input('body'),
             'commentable_id' => $request->input('post_id'),
             'commentable_type' => $request->input('commentable_type'),
 
         ];
+        if ($user->photo) {
+            $data['photo']=$user->photo->file;
+        } else {
+            $data['photo']='http://placehold.it/200x200';
+        }
 
         $comment = Comment::create($data);
         return $comment;
