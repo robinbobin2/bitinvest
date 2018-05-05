@@ -19,7 +19,9 @@ class FounderEngine
         $exchanges = DB::select("select * from showExchanges");
         $response = [];
         foreach ($exchanges as $exchange){
-            $response[$exchange->currency][$exchange->time] = $exchange->value;
+            $currency = $exchange->currency;
+            unset($exchange->currency);
+            $response[$currency] = $exchange;
         }
         return $response;
     }
