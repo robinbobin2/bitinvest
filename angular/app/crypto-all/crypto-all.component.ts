@@ -52,6 +52,7 @@ var dataEur;
 
 export class CryptoAllComponent implements OnInit {
 
+load:boolean = true;
 
   // admin= new Array;
   dataUsd: Array<CryptoData> = [];
@@ -90,7 +91,7 @@ cryptoData: any;
     const alldata = this.http.get<Array<Cripto>>('/allcrypto');
 if(localStorage.getItem('data')) {
       this.dataUsd = JSON.parse(localStorage.getItem('data'));
-      console.log(this.dataUsd);
+      this.load = false;
       }
     this.stocksServise.getCrypto()
         .subscribe(response => {
@@ -134,6 +135,7 @@ if(localStorage.getItem('data')) {
               day: 0,
           }
         }
+      this.load = false;
         localStorage.removeItem('data');
             localStorage.setItem('data',JSON.stringify(this.dataUsd))
        }
