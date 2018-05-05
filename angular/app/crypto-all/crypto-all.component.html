@@ -123,7 +123,7 @@
 					</thead>
 					<tbody style="position: relative;">
           <img src="/img/load.gif" *ngIf="load==true" style="display: block;
-            margin: 10px auto; width: 25px; height: 25px; position: relative; left: 45%">
+            margin: 10px auto; width: 25px; height: 25px; position: relative; left: 100%">
 						<tr *ngFor="let data of dataUsd  | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index">
 							<td>
 								<span>{{i+1}}</span>
@@ -134,7 +134,7 @@
 								</div>
 								<span>{{data.sym}}<!-- Bitcoin (BTC) --></span>
 							</td>
-							<td>
+							<td [ngClass]="isNegativeMath(data.now, data.last)==true ? 'red-bg' : 'green-bg'">
 								<span class="price">${{data.now | number: '1.2'}}</span>
 								<span [ngClass]="isNegativeMath(data.now, data.last)==true ? 'change-red' : 'change'">({{data.now - data.last | number: '1.2'}})</span>
 							</td>

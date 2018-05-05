@@ -1,5 +1,5 @@
-<div class="single-top-block" *ngIf="!is_logged">
-    <div class="wrapper">
+<div class="single-top-block">
+    <div class="wrapper" style="max-width: 1150px;">
       <a routerLink="/cryptocurrency/all" class="return"><span>&#60;</span>Вернуться к списку криптовалют</a>
       <div class="currency">
         <h2>{{data?.symbol}}/USD - {{data?.name}} Доллар США</h2>
@@ -22,7 +22,7 @@
       <div class="price-block">
         <div class="last-update">
           <div class="prices-wrap">
-            <span [ngClass]="comparePrice(dataUsd.now, dataUsd.last)==true ? 'black-price' : 'red-price'">${{dataUsd?.now | number:'1.0-1'}}</span>
+            <span [ngClass]="comparePrice(dataUsd.now, dataUsd.last)==true ? 'green-price' : 'red-price'">${{dataUsd?.now | number:'1.0-1'}}</span>
             <span [ngClass]="isNegativeMath(dataUsd.now, dataUsd.last)==true ? 'red-price' : 'green-price'">{{dataUsd?.now - dataUsd?.last | number:'1.0-1'}}</span>
             <span class="bg-price">{{(dataUsd?.now - dataUsd?.last)/100 | percent:'1.0-1'}}</span>
           </div>
@@ -72,7 +72,7 @@
                       <th width="10%"><span>Спрос</span></th>
                       <th width="15%"><span>Предложение</span></th>
                       <th width="15%"><span>Объем за 24ч.</span></th>
-                      <th width="11%"><span>Рост</span></th>
+                      <th width="11%"><span>Изменение за 24 ч.</span></th>
                       <th width="16%"><span>Обновлено</span></th>
                     </tr>
                   </thead>
