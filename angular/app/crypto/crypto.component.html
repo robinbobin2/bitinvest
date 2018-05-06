@@ -1,9 +1,9 @@
 <div class="single-top-block">
-    <div class="wrapper" style="max-width: 1150px;">
-      <a routerLink="/cryptocurrency/all" class="return"><span>&#60;</span>Вернуться к списку криптовалют</a>
-      <div class="currency">
-        <h2>{{data?.symbol}}/USD - {{data?.name}} Доллар США</h2>
-        <ul>
+  <div class="wrapper" style="max-width: 1150px;">
+    <a routerLink="/cryptocurrency/all" class="return"><span>&#60;</span>Вернуться к списку криптовалют</a>
+    <div class="currency">
+      <h2>{{data?.symbol}}/USD - {{data?.name}} Доллар США</h2>
+      <ul>
           <li class="active"><a href="#">USD</a></li><!-- 
           <li><a href="#">EUR</a></li>
           <li><a href="#">RUR</a></li> -->
@@ -24,7 +24,7 @@
           <div class="prices-wrap">
             <span [ngClass]="comparePrice(dataUsd.now, dataUsd.last)==true ? 'green-price' : 'red-price'">${{dataUsd?.now | number:'1.0-1'}}</span>
             <span [ngClass]="isNegativeMath(dataUsd.now, dataUsd.last)==true ? 'red-price' : 'green-price'">{{dataUsd?.now - dataUsd?.last | number:'1.0-1'}}</span>
-            <span class="bg-price">{{(dataUsd?.now - dataUsd?.last)/100 | percent:'1.0-1'}}</span>
+            <span class="bg-price">{{(dataUsd?.now/ dataUsd?.last)-1 | number:'1.2-3'}}</span>
           </div>
           <p>Последнее обновление 1 сек. назад</p>
         </div>
@@ -117,41 +117,41 @@
               <div class="comment-top"  *ngIf="user.id">
                 <h3>Добавить новый комментарий</h3>
                 <form (ngSubmit)="submitComment(f,data.id, 'App\\CryptoStat')" #f="ngForm">
-                                    <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
-                                    <input type="hidden" ngModel name="type" value="App\CryptoStat">
-                                    <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
-                                    <button type="submit">Добавить</button>
+                  <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
+                  <input type="hidden" ngModel name="type" value="App\CryptoStat">
+                  <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
+                  <button type="submit">Добавить</button>
                 </form>
               </div>
               <h3 class="total-comments"  *ngIf="user.id">Всего комментариев ({{commentcount}})</h3>
               <ul class="comment-items">
-                        <!--  -->
-                        <li *ngFor="let item of comments">
-                            <div class="left">
-                                <div class="info">
-                                    <div class="img-wrap">
-                                        <img src="img/comment-img2.jpg" style="max-width: 35px; height: auto;" alt="">
-                                    </div>
-                                    <div class="text-wrap">
-                                        <p>{{item.email}}</p>
-                                        <span>Добавлен </span>
-                                    </div>
-                                </div>
-                                <p class="comment-text">{{item.body}}</p>
-                            </div>
-                            <div class="right">
-                                <div class="img-wrap"></div>
-                                <div class="btn-block">
-                                    <span class="number-green">0</span>
-                                    <div class="buttons">
-                                        <a href="#" class="plus">+</a>
-                                        <a href="#" class="minus">-</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                <!--  -->
+                <li *ngFor="let item of comments">
+                  <div class="left">
+                    <div class="info">
+                      <div class="img-wrap">
+                        <img src="img/comment-img2.jpg" style="max-width: 35px; height: auto;" alt="">
+                      </div>
+                      <div class="text-wrap">
+                        <p>{{item.email}}</p>
+                        <span>Добавлен </span>
+                      </div>
+                    </div>
+                    <p class="comment-text">{{item.body}}</p>
+                  </div>
+                  <div class="right">
+                    <div class="img-wrap"></div>
+                    <div class="btn-block">
+                      <span class="number-green">0</span>
+                      <div class="buttons">
+                        <a href="#" class="plus">+</a>
+                        <a href="#" class="minus">-</a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
 
-                    </ul>
+              </ul>
               <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
             </div>
           </div>
@@ -168,45 +168,45 @@
           </div>
 
           <div class="tab-content news-wrapper">
-              <div class="news-body">
-          <div class="news-tab-content active">
-            <div class="main-news">
-              <div class="news" *ngFor="let item of main_news">
-                <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')'}">
-                  <a href="#" class="news-btn">{{item.category.name}}</a>
-                  <a href="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
-                  <div class="info">
-                    <span class="date">{{item.created_at}}</span>
-                    <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>0</span>
-                    <a href="/posts/post/{{item.id}}#comment-block" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>0</a>
+            <div class="news-body">
+              <div class="news-tab-content active">
+                <div class="main-news">
+                  <div class="news" *ngFor="let item of main_news">
+                    <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')'}">
+                      <a href="#" class="news-btn">{{item.category.name}}</a>
+                      <a href="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
+                      <div class="info">
+                        <span class="date">{{item.created_at}}</span>
+                        <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>0</span>
+                        <a href="/posts/post/{{item.id}}#comment-block" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>0</a>
+                      </div>
+                    </div>
+                    <div class="text">
+                      <p>{{item.desc | striphtml | excerpt:140}}<a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
+                    </div>
                   </div>
                 </div>
-                <div class="text">
-                  <p>{{item.desc | striphtml | excerpt:140}}<a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="news-list">
-              <div class="news" *ngFor="let item of news">
-                <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
-                  <a href="#" class="news-btn">{{item.category.name}}</a>
-                  <div class="info">
-                    <span class="date">{{item.created_at}}</span>
+                <div class="news-list">
+                  <div class="news" *ngFor="let item of news">
+                    <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
+                      <a href="#" class="news-btn">{{item.category.name}}</a>
+                      <div class="info">
+                        <span class="date">{{item.created_at}}</span>
+                      </div>
+                    </div>
+                    <div class="text">
+                      <h3>
+                        <a routerLink="/posts/post/{{item.id}}">{{item.title}}</a>
+                      </h3>
+                    </div>
+                    <div class="text2">
+                      <p>{{item.desc | striphtml |excerpt:80}}</p>
+                    </div>
                   </div>
                 </div>
-                <div class="text">
-                  <h3>
-                    <a routerLink="/posts/post/{{item.id}}">{{item.title}}</a>
-                  </h3>
-                </div>
-                <div class="text2">
-                <p>{{item.desc | striphtml |excerpt:80}}</p>
-                </div>
               </div>
-            </div>
             </div>
           </div>
-        </div>
 
           <div class="tab-content comment-wrap">
             <div class="comment-block">
@@ -216,84 +216,84 @@
               </div>
               <div class="comment-top"  *ngIf="user.id">
                 <h3>Добавить новый комментарий</h3>
-                  <form (ngSubmit)="submitComment(f,data.id, 'App\\CryptoStat')" #f="ngForm">
-                                    <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
-                                    <input type="hidden" ngModel name="type" value="App\CryptoStat">
-                                    <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
-                                    <button type="submit">Добавить</button>
+                <form (ngSubmit)="submitComment(f,data.id, 'App\\CryptoStat')" #f="ngForm">
+                  <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
+                  <input type="hidden" ngModel name="type" value="App\CryptoStat">
+                  <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
+                  <button type="submit">Добавить</button>
                 </form>
               </div>
               <h3 class="total-comments"  *ngIf="user.id">Всего комментариев ({{commentcount}})</h3>
               <ul class="comment-items">
-                        <!--  -->
-                        <li *ngFor="let item of comments">
-                            <div class="left">
-                                <div class="info">
-                                    <div class="img-wrap">
-                                        <img src="img/comment-img2.jpg" style="max-width: 35px; height: auto;" alt="">
-                                    </div>
-                                    <div class="text-wrap">
-                                        <p>{{item.email}}</p>
-                                        <span>Добавлен </span>
-                                    </div>
-                                </div>
-                                <p class="comment-text">{{item.body}}</p>
-                            </div>
-                            <div class="right">
-                                <div class="img-wrap"></div>
-                                <div class="btn-block">
-                                    <span class="number-green">0</span>
-                                    <div class="buttons">
-                                        <a href="#" class="plus">+</a>
-                                        <a href="#" class="minus">-</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                <!--  -->
+                <li *ngFor="let item of comments">
+                  <div class="left">
+                    <div class="info">
+                      <div class="img-wrap">
+                        <img src="img/comment-img2.jpg" style="max-width: 35px; height: auto;" alt="">
+                      </div>
+                      <div class="text-wrap">
+                        <p>{{item.email}}</p>
+                        <span>Добавлен </span>
+                      </div>
+                    </div>
+                    <p class="comment-text">{{item.body}}</p>
+                  </div>
+                  <div class="right">
+                    <div class="img-wrap"></div>
+                    <div class="btn-block">
+                      <span class="number-green">0</span>
+                      <div class="buttons">
+                        <a href="#" class="plus">+</a>
+                        <a href="#" class="minus">-</a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
 
-                    </ul>
+              </ul>
             </div>
           </div>
 
           <div class="tab-content news-wrapper">
             <div class="news-body">
-          <div class="news-tab-content active">
-            <div class="main-news">
-              <div class="news" *ngFor="let item of main_news">
-                <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')'}">
-                  <a href="#" class="news-btn">{{item.category.name}}</a>
-                  <a href="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
-                  <div class="info">
-                    <span class="date">{{item.created_at}}</span>
-                    <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>0</span>
-                    <a href="/posts/post/{{item.id}}#comment-block" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>0</a>
+              <div class="news-tab-content active">
+                <div class="main-news">
+                  <div class="news" *ngFor="let item of main_news">
+                    <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')'}">
+                      <a href="#" class="news-btn">{{item.category.name}}</a>
+                      <a href="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
+                      <div class="info">
+                        <span class="date">{{item.created_at}}</span>
+                        <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>0</span>
+                        <a href="/posts/post/{{item.id}}#comment-block" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>0</a>
+                      </div>
+                    </div>
+                    <div class="text">
+                      <p>{{item.desc | striphtml | excerpt:140}}<a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
+                    </div>
                   </div>
                 </div>
-                <div class="text">
-                  <p>{{item.desc | striphtml | excerpt:140}}<a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
+                <div class="news-list">
+                  <div class="news" *ngFor="let item of news">
+                    <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
+                      <a href="#" class="news-btn">{{item.category.name}}</a>
+                      <div class="info">
+                        <span class="date">{{item.created_at}}</span>
+                      </div>
+                    </div>
+                    <div class="text">
+                      <h3>
+                        <a routerLink="/posts/post/{{item.id}}">{{item.title}}</a>
+                      </h3>
+                    </div>
+                    <div class="text2">
+                      <p>{{item.desc | striphtml |excerpt:80}}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="news-list">
-              <div class="news" *ngFor="let item of news">
-                <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
-                  <a href="#" class="news-btn">{{item.category.name}}</a>
-                  <div class="info">
-                    <span class="date">{{item.created_at}}</span>
-                  </div>
-                </div>
-                <div class="text">
-                  <h3>
-                    <a routerLink="/posts/post/{{item.id}}">{{item.title}}</a>
-                  </h3>
-                </div>
-                <div class="text2">
-                <p>{{item.desc | striphtml |excerpt:80}}</p>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
           </div>
 
           <div class="tab-content description-content">
@@ -307,110 +307,207 @@
         <div class="description">
           <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
           <div [innerHTML]='data?.desc'></div>
-            <br> <p><a  href="javascript:;">Подробнее</a><p>
-        </div>
-        <app-sidebar></app-sidebar>
-      </aside>
-    </div>
-  </section>
-
-
-
-
-
-<!-- <div class="container">
-	<h1 style="font-weight: bold">Bitcoin</h1>
-	<input checked="checked" type="radio" name="cur" value="usd" id="usd"><label for="usd">USD</label>
-	<input type="radio" name="cur" value="rub" id="rub"><label for="rub">RUB</label>
-	<input type="radio" name="cur" value="eur" id="eur"><label for="eur">EUR</label>
-	<div class="rub">
-	<div class="row">
-		<div class="col-lg-12">
-			<h2>{{dataRub.price}}</h2><pre>{{dataRub.lastupdate}}</pre>
-		</div>	
-	</div>
-	<table class="table">
-		<thead><tr><th>Капитализация</th><th>Об. 24ч</th><th>Откр. 24ч</th><th>Low/High 24ч</th><th>Последняя сделка</th></tr></thead>
-		<tr>
-			<td>
-				{{dataRub.mktcap}}
-			</td>
-			<td>
-				{{dataRub.vol24hours}}
-			</td>
-			<td>
-				{{dataRub.open24hours}}
-			</td>
-			<td>
-				{{dataRub.low24hours}} / {{dataRub.high24hours}}
-			</td>
-			<td>
-				{{dataRub.lasttrade}}
-			</td>
-		</tr>
-	</table>
-
-</div>
-
-	<div class="usd">
-	<div class="row">
-		<div class="col-lg-12">
-			<h2>{{dataUsd.price}}</h2><pre>{{dataUsd.lastupdate}}</pre>
-		</div>	
-	</div>
-	<table class="table">
-		<thead><tr><th>Капитализация</th><th>Об. 24ч</th><th>Откр. 24ч</th><th>Low/High 24ч</th><th>Последняя сделка</th></tr></thead>
-		<tr>
-			<td>
-				{{dataUsd.mktcap}}
-			</td>
-			<td>
-				{{dataUsd.vol24hours}}
-			</td>
-			<td>
-				{{dataUsd.open24hours}}
-			</td>
-			<td>
-				{{dataUsd.low24hours}} / {{dataUsd.high24hours}}
-			</td>
-			<td>
-				{{dataUsd.lasttrade}}
-			</td>
-		</tr>
-	</table>
-
-</div>
-
-	<div class="eur">
-	<div class="row">
-		<div class="col-lg-12">
-			<h2>{{dataEur.price}}</h2><pre>{{dataEur.lastupdate}}</pre>
-		</div>	
-	</div>
-	<table class="table">
-		<thead><tr><th>Капитализация</th><th>Об. 24ч</th><th>Откр. 24ч</th><th>Low/High 24ч</th><th>Последняя сделка</th></tr></thead>
-		<tr>
-			<td>
-				{{dataEur.mktcap}}
-			</td>
-			<td>
-				{{dataEur.vol24hours}}
-			</td>
-			<td>
-				{{dataEur.open24hours}}
-			</td>
-			<td>
-				{{dataEur.low24hours}} / {{dataEur.high24hours}}
-			</td>
-			<td>
-				{{dataEur.lasttrade}}
-			</td>
-		</tr>
-	</table>
-
-</div>
-</div>
-<p>
-  
-</p>
- -->
+          <br> <p><a href="javascript:;">Подробнее</a><p>
+          </div>
+          <div class="top-crypto">
+            <h5 class="titles"><span>ТОП 5</span>криптовалют (% роста)</h5>
+            <div class="periods">
+              <ul class="period-tabs">
+                <li class="active"><a href="#">День</a></li>
+                <li><a href="#">Неделя</a></li>
+                <li><a href="#">Месяц</a></li>
+                <li><a href="#">Год</a></li>
+              </ul>
+              <div class="period-content">
+                <div class="tab-content active">
+                  <ul>
+                    <li>
+                      <a href="" class="name">Bitcoin</a>
+                      <span class="price">$2829101929191</span>
+                      <span class="percent">11%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">Ethereum</a>
+                      <span class="price">$2829101929191</span>
+                      <span class="percent">11%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">BitcoinCash</a>
+                      <span class="price">$90819201</span>
+                      <span class="percent">8%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">EthereumClassic</a>
+                      <span class="price">$8790899</span>
+                      <span class="percent">7,2%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">Ripple</a>
+                      <span class="price">$2829</span>
+                      <span class="percent">2%</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tab-content">
+                  <ul>
+                    <li>
+                      <a href="" class="name">Bitcoin</a>
+                      <span class="price">$2829101929191</span>
+                      <span class="percent">11%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">Ethereum</a>
+                      <span class="price">$2829101929191</span>
+                      <span class="percent">11%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">BitcoinCash</a>
+                      <span class="price">$90819201</span>
+                      <span class="percent">8%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">EthereumClassic</a>
+                      <span class="price">$8790899</span>
+                      <span class="percent">7,2%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">Ripple</a>
+                      <span class="price">$2829</span>
+                      <span class="percent">2%</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tab-content">
+                  <ul>
+                    <li>
+                      <a href="" class="name">Bitcoin</a>
+                      <span class="price">$2829101929191</span>
+                      <span class="percent">11%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">Ethereum</a>
+                      <span class="price">$2829101929191</span>
+                      <span class="percent">11%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">BitcoinCash</a>
+                      <span class="price">$90819201</span>
+                      <span class="percent">8%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">EthereumClassic</a>
+                      <span class="price">$8790899</span>
+                      <span class="percent">7,2%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">Ripple</a>
+                      <span class="price">$2829</span>
+                      <span class="percent">2%</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tab-content">
+                  <ul>
+                    <li>
+                      <a href="" class="name">Bitcoin</a>
+                      <span class="price">$2829101929191</span>
+                      <span class="percent">11%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">Ethereum</a>
+                      <span class="price">$2829101929191</span>
+                      <span class="percent">11%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">BitcoinCash</a>
+                      <span class="price">$90819201</span>
+                      <span class="percent">8%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">EthereumClassic</a>
+                      <span class="price">$8790899</span>
+                      <span class="percent">7,2%</span>
+                    </li>
+                    <li>
+                      <a href="" class="name">Ripple</a>
+                      <span class="price">$2829</span>
+                      <span class="percent">2%</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="details">Подробный рейтинг</a>
+          </div>
+          <a href="#" class="banner-black"><img src="img/banner-black.jpg" alt=""></a>
+          <app-cloud-mining-top></app-cloud-mining-top>
+          <div class="social">
+            <h5 class="titles">Мы в соц.сетях</h5>
+            <ul>
+              <li><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+          <div class="top-fonds">
+            <h5 class="titles"><span>ТОП 5</span> фондов</h5>
+            <ul class="top-ul">
+              <li>
+                <div class="left">
+                  <a href="">HashFlare SHA-256 2017</a>
+                  <span class="paying">ПЛАТИТ!</span>
+                </div>
+                <div class="right">
+                  <span class="persent">489%</span>
+                  <span class="days">489 дней</span>
+                </div>
+              </li>
+              <li>
+                <div class="left">
+                  <a href="">Bitmakler CMS</a>
+                  <span class="paying">ПЛАТИТ!</span>
+                </div>
+                <div class="right">
+                  <span class="persent">11%</span>
+                  <span class="days">489 дней</span>
+                </div>
+              </li>
+              <li>
+                <div class="left">
+                  <a href="">Bitmakler CMS</a>
+                  <span class="payment">ОЖИДАНИЕ ВЫПЛАТЫ</span>
+                </div>
+                <div class="right">
+                  <span class="persent">11%</span>
+                  <span class="days">489 дней</span>
+                </div>
+              </li>
+              <li>
+                <div class="left">
+                  <a href="">CMSHP</a>
+                  <span class="paying">ПЛАТИТ!</span>
+                </div>
+                <div class="right">
+                  <span class="persent">11%</span>
+                  <span class="days">489 дней</span>
+                </div>
+              </li>
+              <li>
+                <div class="left">
+                  <a href="">Bitmakler CMS</a>
+                  <span class="payment">ОЖИДАНИЕ ВЫПЛАТЫ</span>
+                </div>
+                <div class="right">
+                  <span class="persent">11%</span>
+                  <span class="days">489 дней</span>
+                </div>
+              </li>
+            </ul>
+            <a href="#" class="all-fonds">Все фонды (981)</a>
+          </div>
+        </aside>
+      </div>
+    </section>

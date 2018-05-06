@@ -13,15 +13,15 @@
 							</select>
 						</div>
 						<div class="select-wrapper1" id="select-algo">
-					     <div class="select">
-					      <span class="text"><span style="padding-top: 12px;">{{algorithm !='' ? algorithm : 'Алгоритм: Все'}}</span></span>
-					      <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
-					     </div>
-					     <ul class="select-items">
-					     	<li (click)="algorithm=''"> <a >Алгоритм: Все</a></li>
-					      <li *ngFor="let data of dataUsd" (click)="algorithm=data?.algo"><a >Алгоритм: {{data?.algo}}</a></li>
-					      <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
-					     </ul>
+              <div class="select">
+               <span class="text"><span style="padding-top: 12px;">{{algorithm !='' ? algorithm : 'Алгоритм: Все'}}</span></span>
+               <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
+             </div>
+             <ul class="select-items">
+               <li (click)="algorithm=''"> <a >Алгоритм: Все</a></li>
+               <li *ngFor="let data of dataUsd" (click)="algorithm=data?.algo"><a >Алгоритм: {{data?.algo}}</a></li>
+               <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
+             </ul>
 					    </div><!-- 
 						<div class="select-wrap">
 							<select>
@@ -36,185 +36,185 @@
 							</select>
 						</div> -->
 						<div class="select-wrapper1" id="select-age">
-					     <div class="select">
-					      <span class="text"><span style="padding-top: 12px;">{{age !='' ? age : 'Возраст: Все'}}</span></span>
-					      <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
-					     </div>
-					     <ul class="select-items">
-					     	<li (click)="age=''"> <a >Возраст: Все</a></li>
-					      <li *ngFor="let data of dataUsd" (click)="age=data?.year"><a >Возраст: {{data?.year}}</a></li>
-					      <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
-					     </ul>
-					    </div>
-						<div class="select-wrap select-big">
-							<select>
-								<option value="all">Рейтинг: Лидер роста</option>
-								<option value="all">Рейтинг: Лидер роста</option>
-								<option value="all">Рейтинг: Лидер роста</option>
-							</select>
-						</div>
-						<input type="text" placeholder="Поиск по названию монеты..." [(ngModel)]="filteredName" name="filteredName" value="">
-					</form>
-				</div>
-			</div>
-			<div class="table-wrap">
-				<table class="table crypto-table">
-					<thead>
-						<tr>
-							<th width="4.4%">
-								<span>#</span>
-								<img src="img/arr-top-table.png" alt="">
-							</th>
-							<th [class.active]="order === 'sym'"
-                      			(click)="setOrder('sym')"
-                      			 width="12.9%">
-								<span>Название</span>
-								<img src="img/arr-top-table.png" alt="">
-							</th>
-							<th [class.active]="order === 'now'"
-                      			(click)="setOrder('now')"
-                      			width="10%">
-								<span>Стоимость</span>
-								
-								<img src="img/arr-top-table.png" alt="">
-							</th>
-							<th
-							 
-							 width="10.8%">
-								<span>Капитализация</span>
-								<img src="img/arr-top-table.png" alt="">
-							</th>
-							<th 
-                      			width="11.2%">
-								<span>Всего / Получено</span>
-								<img src="img/arr-top-table.png" alt="">
-							</th>
-							<th [class.active]="order === 'value'"
-                      			(click)="setOrder('value')"
-							
-                      			width="8.4%">
-								<span>Торги (24ч)</span>
-								<img src="img/arr-top-table.png" alt="">
-							</th>
-							<th 
-							[class.active]="order === 'algo'"
-                      			(click)="setOrder('algo')"
-                      			width="6.3%">
-								<span>Алгоритм</span>
-								<img src="img/arr-top-table.png" alt="">
-							</th>
-							<th [class.active]="order === 'year'"
-                      			(click)="setOrder('year')"
-                      			width="4.7%">
-								<span>Год</span>
-								<img src="img/arr-top-table.png" alt="">
-							</th>
-							<th 
-                      			width="11%">
-								<span>Изм. за 24ч</span>
-								<img src="img/arr-top-table.png" alt="">
-							</th>
-							<th 
-                      			width="20.3%">
-								<span>Изм. за 7д</span>
-								<img src="img/arr-top-table.png" alt="">
-							</th>
-						</tr>
-					</thead>
-					<tbody style="position: relative;">
-          <img src="/img/load.gif" *ngIf="load==true" style="display: block;
-            margin: 10px auto; width: 25px; height: 25px; position: absolute; left: 46%">
-						<tr *ngFor="let data of dataUsd  | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index">
-							<td>
-								<span>{{i+1}}</span>
-							</td>
-							<td>
-								<div class="img-wrap">
-									<!-- <img src="img/bitcoin-icon.png" alt=""> -->
-								</div>
-								<span>{{data.sym}}<!-- Bitcoin (BTC) --></span>
-							</td>
-							<td [ngClass]="isNegativeMath(data.now, data.last)==true ? 'red-bg' : 'green-bg'">
-								<span class="price">${{data.now | number: '1.2'}}</span>
-								<span [ngClass]="isNegativeMath(data.now, data.last)==true ? 'change-red' : 'change'">({{data.now - data.last | number: '1.2'}})</span>
-							</td>
-							<td>
-								<span class="capitalization"></span>
-							</td>
-							<td>
-								<span class="total"></span>
-								<!-- <span class="received">890 910</span> -->
-							</td>
-							<td>
-								<span class="bargaining">{{data.value | number: '1.2'}}</span>
-							</td>
-							<td>
-								<span class="algorithm">{{data?.algo}}</span>
-							</td>
-							<td>
-								<span class="year">{{data?.year}}</span>
-							</td>
-							<td>
-								<span [ngClass]="isNegative(data.day)==true ? 'change-red' : 'change-green'">{{data.day/100 | percent:'1.2'}}</span>
+              <div class="select">
+               <span class="text"><span style="padding-top: 12px;">{{age !='' ? age : 'Возраст: Все'}}</span></span>
+               <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
+             </div>
+             <ul class="select-items">
+               <li (click)="age=''"> <a >Возраст: Все</a></li>
+               <li *ngFor="let data of dataUsd" (click)="age=data?.year"><a >Возраст: {{data?.year}}</a></li>
+               <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
+             </ul>
+           </div>
+           <div class="select-wrap select-big">
+             <select>
+              <option value="all">Рейтинг: Лидер роста</option>
+              <option value="all">Рейтинг: Лидер роста</option>
+              <option value="all">Рейтинг: Лидер роста</option>
+            </select>
+          </div>
+          <input type="text" placeholder="Поиск по названию монеты..." [(ngModel)]="filteredName" name="filteredName" value="">
+        </form>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table class="table crypto-table">
+       <thead>
+        <tr>
+         <th width="4.4%">
+          <span>#</span>
+          <img src="img/arr-top-table.png" alt="">
+        </th>
+        <th [class.active]="order === 'sym'"
+        (click)="setOrder('sym')"
+        width="12.9%">
+        <span>Название</span>
+        <img src="img/arr-top-table.png" alt="">
+      </th>
+      <th [class.active]="order === 'now'"
+      (click)="setOrder('now')"
+      width="10%">
+      <span>Стоимость</span>
 
-							</td>
-							<td>
-								<div class="difference">
-									<span [ngClass]="isNegative(data.week)==true ? 'change-red' : 'change-green'">{{ data.week/100 | percent:'1.2'}}</span>
-									<div class="buttons">
-										<button class="right"><a [routerLink]="['/crypto', data.sym]">></a></button>
-										<button class="plus">+</button>
-									</div>
-								</div>
-							</td>
-						</tr>
-						<tr class="hidden">
-							<td>
-								<span>122</span>
-							</td>
-							<td>
-								<div class="img-wrap">
-									<img src="img/bitcoin-icon.png" alt="">
-								</div>
-								<span>Bitcoin (BTC)</span>
-							</td>
-							<td>
-								<span class="price">$9,200</span>
-								
-							</td>
-							<td>
-								<span class="capitalization">$95,113,177,098</span>
-							</td>
-							<td>
-								<span class="total">21 000 000 000</span>
-								<span class="received">890 910</span>
-							</td>
-							<td>
-								<span class="bargaining">$95,113,177</span>
-							</td>
-							<td>
-								<span class="algorithm">SHA-256</span>
-							</td>
-							<td>
-								<span class="year">2009</span>
-							</td>
-							<td>
-								<span class="change-green">+ 3,5% (+200,09)</span>
+      <img src="img/arr-top-table.png" alt="">
+    </th>
+    <th
 
-							</td>
-							<td>
-								<div class="difference">
-									<span class="change-red">-2,3% (-201,11)</span>
-									<div class="buttons">
-										<button class="right">></button>
-										<button class="plus">+</button>
-									</div>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<!-- <a href="#" class="show-more">Показать еще</a> -->
-		</div>
-	</section>
+    width="10.8%">
+    <span>Капитализация</span>
+    <img src="img/arr-top-table.png" alt="">
+  </th>
+  <th 
+  width="11.2%">
+  <span>Всего / Получено</span>
+  <img src="img/arr-top-table.png" alt="">
+</th>
+<th [class.active]="order === 'value'"
+(click)="setOrder('value')"
+
+width="8.4%">
+<span>Торги (24ч)</span>
+<img src="img/arr-top-table.png" alt="">
+</th>
+<th 
+[class.active]="order === 'algo'"
+(click)="setOrder('algo')"
+width="6.3%">
+<span>Алгоритм</span>
+<img src="img/arr-top-table.png" alt="">
+</th>
+<th [class.active]="order === 'year'"
+(click)="setOrder('year')"
+width="4.7%">
+<span>Год</span>
+<img src="img/arr-top-table.png" alt="">
+</th>
+<th 
+width="11%">
+<span>Изм. за 24ч</span>
+<img src="img/arr-top-table.png" alt="">
+</th>
+<th 
+width="20.3%">
+<span>Изм. за 7д</span>
+<img src="img/arr-top-table.png" alt="">
+</th>
+</tr>
+</thead>
+<tbody style="position: relative;">
+  <img src="/img/load.gif" *ngIf="load==true" style="display: block;
+  margin: 10px auto; width: 25px; height: 25px; position: absolute; left: 46%">
+  <tr *ngFor="let data of dataUsd  | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index">
+   <td>
+    <span>{{i+1}}</span>
+  </td>
+  <td>
+    <div class="img-wrap">
+     <!-- <img src="img/bitcoin-icon.png" alt=""> -->
+   </div>
+   <span>{{data.sym}}<!-- Bitcoin (BTC) --></span>
+ </td>
+ <td [ngClass]="isNegativeMath(data.now, data.last)==true ? 'red-bg' : 'green-bg'">
+  <span class="price">${{data.now | number: '1.2'}}</span>
+  <span [ngClass]="isNegativeMath(data.now, data.last)==true ? 'change-red' : 'change'">({{data.now - data.last | number: '1.2'}})</span>
+</td>
+<td>
+  <span class="capitalization"></span>
+</td>
+<td>
+  <span class="total"></span>
+  <!-- <span class="received">890 910</span> -->
+</td>
+<td>
+  <span class="bargaining">{{data.value | number: '1.2'}}</span>
+</td>
+<td>
+  <span class="algorithm">{{data?.algo}}</span>
+</td>
+<td>
+  <span class="year">{{data?.year}}</span>
+</td>
+<td>
+  <span [ngClass]="isNegative(data.day)==true ? 'change-red' : 'change-green'">{{data.day/100 | percent:'1.2'}}</span>
+
+</td>
+<td>
+  <div class="difference">
+   <span [ngClass]="isNegative(data.week)==true ? 'change-red' : 'change-green'">{{ data.week/100 | percent:'1.2'}}</span>
+   <div class="buttons">
+    <button class="right"><a [routerLink]="['/crypto', data.sym]">></a></button>
+    <button class="plus">+</button>
+  </div>
+</div>
+</td>
+</tr>
+<tr class="hidden">
+ <td>
+  <span>122</span>
+</td>
+<td>
+  <div class="img-wrap">
+   <img src="img/bitcoin-icon.png" alt="">
+ </div>
+ <span>Bitcoin (BTC)</span>
+</td>
+<td>
+  <span class="price">$9,200</span>
+
+</td>
+<td>
+  <span class="capitalization">$95,113,177,098</span>
+</td>
+<td>
+  ><span class="total">21 000 000 000</span>
+  <span class="received">890 910</span>
+</td>
+<td>
+  <span class="bargaining">$95,113,177</span>
+</td>
+<td>
+  <span class="algorithm">SHA-256</span>
+</td>
+<td>
+  <span class="year">2009</span>
+</td>
+<td>
+  <span class="change-green">+ 3,5% (+200,09)</span>
+
+</td>
+<td>
+  <div class="difference">
+   <span class="change-red">-2,3% (-201,11)</span>
+   <div class="buttons">
+    <button class="right">></button>
+    <button class="plus">+</button>
+  </div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- <a href="#" class="show-more">Показать еще</a> -->
+</div>
+</section>
