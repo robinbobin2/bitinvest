@@ -104,34 +104,34 @@
 
 					
 					</div>
-					<ul class="comment-items">
-						<!--  -->
-						<li *ngFor="let item of comments">
-							<div class="left">
-								<div class="info">
-									<div class="img-wrap">
-										<img src="{{item.photo}}" style="max-width: 35px; height: auto;" alt="">
-									</div>
-									<div class="text-wrap">
-										<p>{{item.author}}</p>
-										<span>Добавлен {{item.created_at}}</span>
-									</div>
-								</div>
-								<p class="comment-text">{{item.body}}</p>
-							</div>
-							<div class="right">
-								<div class="img-wrap"></div>
-								<div class="btn-block">
-									<span class="number-green">0</span>
-									<div class="buttons">
-										<a href="#" class="plus">+</a>
-										<a href="#" class="minus">-</a>
-									</div>
-								</div>
-							</div>
-						</li>
+          <ul class="comment-items">
+            <!--  -->
+            <li *ngFor="let item of comments">
+             <div class="left">
+              <div class="info">
+               <div class="img-wrap">
+                <img src="{{item.photo}}" style="max-width: 35px; height: auto;" alt="">
+              </div>
+              <div class="text-wrap">
+                <p>{{item.author}}</p>
+                <span>Добавлен {{item.created_at}}</span>
+              </div>
+            </div>
+            <p class="comment-text">{{item.body}}</p>
+          </div>
+          <div class="right">
+            <div class="img-wrap"></div>
+            <div class="btn-block">
+             <span class="number-green">0</span>
+             <div class="buttons">
+              <a href="#" class="plus">+</a>
+              <a href="#" class="minus">-</a>
+            </div>
+          </div>
+        </div>
+      </li>
 
-					</ul>
+    </ul>
 					<!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
 				</div>
 				<!-- <div class="related-projects" id="related-projects">

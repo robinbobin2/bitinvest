@@ -1,0 +1,160 @@
+<section class="crypto-active exchanges">
+    <div class="wrapper">
+      <div class="select-block">
+      <h1 class="table-title-big">Биржи<span>{{count}}</span><a href="balant-mining-filter.html"><img src="img/mining-icon.png" alt=""></a></h1>
+        <!-- <div class="filters">
+          <div class="select-wrapper">
+            <div class="select">
+              <span class="text">Пара: Все</span>
+              <a href="#"><img src="img/select-drop-icon.png" alt=""></a>
+            </div>
+            <ul class="select-items">
+              <li><a href="#">Пара: Все</a></li>
+              <li><a href="#">Пара: Все</a></li>
+              <li><a href="#">Пара: Все</a></li>
+            </ul>
+          </div>
+          <div class="select-wrapper">
+            <div class="select">
+              <span class="text">Язык</span>
+              <a href="#"><img src="img/select-drop-icon.png" alt=""></a>
+            </div>
+            <ul class="select-items">
+              <li><a href="#">Язык</a></li>
+              <li><a href="#">Язык</a></li>
+              <li><a href="#">Язык</a></li>
+            </ul>
+          </div>
+          <div class="select-wrapper">
+            <div class="select">
+              <span class="text">Страна: Любая</span>
+              <a href="#"><img src="img/select-drop-icon.png" alt=""></a>
+            </div>
+            <ul class="select-items">
+              <li><a href="#">Страна: Любая</a></li>
+              <li><a href="#">Страна: Любая</a></li>
+              <li><a href="#">Страна: Любая</a></li>
+            </ul>
+          </div>
+        </div> -->
+      </div>
+      <div class="table-wrap">
+        <table class="table crypto-table">
+          <thead>
+            <tr>
+              <th width="4.4%">
+                <span>#</span>
+                <img src="img/arr-top-table.png" alt="">
+              </th>
+              <th width="12.9%">
+                <span>Название</span>
+                <img src="img/arr-top-table.png" alt="">
+              </th>
+              <th width="10%" class="active">
+                <span>Объем ( $ за 24 ч.)</span>
+                <img src="img/arr-top-table.png" alt="">
+              </th>
+              <th width="10.8%">
+                <span>Объем BTC (за 24ч.)</span>
+                <img src="img/arr-top-table.png" alt="">
+              </th>
+              <th width="7.1%">
+                <span>Кол-во пар</span>
+                <img src="img/arr-top-table.png" alt="">
+              </th>
+              <th width="12.5%">
+                <span>Поддержка языков</span>
+                <img src="img/arr-top-table.png" alt="">
+              </th>
+              <th width="4.7%">
+                <span>Год</span>
+                <img src="img/arr-top-table.png" alt="">
+              </th>
+              <th width="17%">
+                <span>Страна</span>
+                <img src="img/arr-top-table.png" alt="">
+              </th>
+              <th width="20.6%">
+                <span>Рейтинг</span>
+                <img src="img/arr-top-table.png" alt="">
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of exchanges; let i = index">
+              <td>
+                <span>{{i}}</span>
+              </td>
+              <td>
+                <a >
+                  <div class="img-wrap">
+                    <img src="/images/{{item.logo}}" style="width: 100%; height: 100%;" alt="">
+                  </div>
+                  <span>{{item.name}}</span>
+                </a>
+              </td>
+              <td>
+                <span class="amount-bold"> </span>
+              </td>
+              <td>
+                <span> </span>
+              </td>
+              <td>
+                <span> </span>
+              </td>
+              <td>
+                <div class="img-wrap-small">
+                  <!-- <img src="img/rus-icon.png" alt="">
+                  <img src="img/usa-icon.png" alt="">
+                  <img src="img/usa-icon.png" alt="">
+                  <img src="img/usa-icon.png" alt="">
+                  <img src="img/usa-icon.png" alt="">
+                  <span class="text">+5</span> -->
+                  {{item.languages}}
+                </div>
+              </td>
+              <td>
+                <span class="year">{{item.year}}</span>
+              </td>
+              <td>
+                <span class="sity">{{item.country}}</span>
+              </td>
+              <td>
+                <div class="difference">
+                  <!-- <div class="stars-wrap">
+                    <img src="img/stars.png" alt="">
+                    <span>135</span>
+                  </div> -->
+                  <p class="no-ratings">Оценок еще нет</p>
+                  <div class="buttons">
+                    <button class="right">></button>
+                    <button class="plus">+</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+     <!--  <div class="table-wrap-mobile">
+        <table class="table">
+          <thead>
+            <th width="43%">
+              <span>Название</span>
+            </th>
+            <th width="43%">
+              <span>Объем</span>
+            </th>
+            <th width="14%">
+              <span>Пар</span>
+            </th>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+        <a href="#" class="show-exchanges">Показать еще биржи</a>
+      </div>
+      <a href="#" class="show-more">Показать еще</a> -->
+    </div>
+  </section>

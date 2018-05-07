@@ -69,6 +69,7 @@ Route::group(['middleware'=>'admin'], function() {
 	Route::resource('admin/interview', 'InterviewController');
 	Route::resource('admin/mining', 'CloudMiningController');
 	Route::resource('admin/icoproject', 'IcoProjectController');
+	Route::resource('admin/exchanges', 'StocksController');
 	Route::post('admin/mining/updatehistory/{id}',  ['as' => 'mining.updatehistory', 'uses' => 'CloudMiningController@updateHistory']);
 	Route::post('admin/icoproject/updateteam/{id}',  ['as' => 'icoproject.updateteam', 'uses' => 'IcoProjectController@updateTeam']);
 	Route::post('admin/icoproject/updatepercent/{id}',  ['as' => 'icoproject.updatepercent', 'uses' => 'IcoProjectController@updatePercent']);
@@ -111,6 +112,7 @@ Route::get('/cryptocurrency/cmc', "AngularController@serve");
 Route::get('/cryptocurrency/exmo', "AngularController@serve");
 Route::get('/cryptocurrency/crypto', "AngularController@serve");
 Route::get('/cryptocurrency/all', "AngularController@serve");
+Route::get('/exchanges', "AngularController@serve");
 Route::get('/ico/all', "AngularController@serve");
 Route::get('/ico/item/{post}', "AngularController@serve");
 Route::get('/ico/category/{category}', "AngularController@serve");
@@ -124,6 +126,7 @@ Route::post('/angular/userportfolio/create', "AngularController@createPortfolio"
 Route::get('/angular/userportfolio/{id}', "AngularController@byportfolio");
 Route::get('/angular/userportfolio/deletecat/{id}', "AngularController@deletePortfolioCat");
 Route::get('/angular/funds/{id}', "AngularController@funds");
+Route::get('/angular/exchanges/', "AngularController@exchanges");
 
 // Route::get('/crypto', "AngularController@serve");
 

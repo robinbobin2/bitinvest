@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CloudMining;
 use App\IcoPercent;
 use App\IcoProject;
+use App\Stock;
 use App\User;
 use App\UserPortfolio;
 use App\UserPortfolioType;
@@ -146,5 +147,9 @@ class AngularController extends Controller
     public function funds($id)
     {
         return IcoPercent::all()->where('ico_id', '=', $id)->sortByDesc('percent')->values();
+    }
+    public function exchanges()
+    {
+        return Stock::all()->toArray();
     }
 }

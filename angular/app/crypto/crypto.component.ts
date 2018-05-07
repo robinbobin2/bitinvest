@@ -104,6 +104,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.load = false;
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
       for(let item of this.stocks) {
+        
         if(this.bid_ask.ask < item.ask) {
         this.bid_ask.ask = item.ask
         }
