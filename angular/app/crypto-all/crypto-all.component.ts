@@ -134,25 +134,26 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
 
          let admin = response;
          for (var _i = 0; _i < admin.length; ++_i) {
-
         // console.log(this.admin[i].symbol);
         let index = _i;
         let symbol = admin[index].symbol;
         let year = admin[index].year;
         let algo = admin[index].algo;
         let desc = 'DESC';
+           this.animtype[index] = '';
+        
         if(this.dataUsd[index].now != this.resp[symbol+'/USDT']['now']) {
           this.first_time = false;
-        
-        if(this.dataUsd[index].now > this.resp[symbol+'/USDT']['now']) {
-          
 
-          this.animtype[index] = 'greenbg';
-        } else {
+          if(this.dataUsd[index].now > this.resp[symbol+'/USDT']['now']) {
 
-          this.animtype[index] = 'redbg';
 
-        }
+            this.animtype[index] = 'greenbg';
+          } else {
+
+            this.animtype[index] = 'redbg';
+
+          }
         }
         this.dataUsd[index].sym = symbol;
         this.dataUsd[index].algo = algo;
@@ -169,7 +170,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         localStorage.setItem('data',JSON.stringify(this.dataUsd))
         
         
-        this.animtype[index] = '';
+        
         console.log(this.animtype[index]);
       }
       
@@ -195,12 +196,12 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
    isNegativeMath(now, last) {
      this.object = "{'background': 'white'}";
      if(this.first_time == false) {
-     
+
        if((parseInt(now)-parseInt(last)) >= 0) {
          this.object = "{ 'background': 'white', 'animation': 'greenbg 2s', '-webkit-animation': 'greenbg 2s'  }";
 
        } else if(parseInt(now)-parseInt(last) == 0) {
-         } else {
+       } else {
          this.object = "{ 'background': 'white', 'animation': 'redbg 2s', '-webkit-animation': 'redbg 2s'  }";
        }
      }

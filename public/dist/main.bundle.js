@@ -2125,6 +2125,7 @@ var CryptoAllComponent = (function () {
                     var year = admin[index].year;
                     var algo = admin[index].algo;
                     var desc = 'DESC';
+                    _this.animtype[index] = '';
                     if (_this.dataUsd[index].now != _this.resp[symbol + '/USDT']['now']) {
                         _this.first_time = false;
                         if (_this.dataUsd[index].now > _this.resp[symbol + '/USDT']['now']) {
@@ -2146,7 +2147,6 @@ var CryptoAllComponent = (function () {
                     _this.dataUsd[index].week = _this.resp[symbol + "/USDT"]['week'];
                     localStorage.removeItem('data');
                     localStorage.setItem('data', JSON.stringify(_this.dataUsd));
-                    _this.animtype[index] = '';
                     console.log(_this.animtype[index]);
                 }
             });
