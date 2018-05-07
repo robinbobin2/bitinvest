@@ -178,14 +178,17 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
    }
 
    isNegativeMath(now, last) {
+     let bg = 'bg';
      if(this.first_time == false) {
      
        if((parseInt(now)-parseInt(last)) >= 0) {
-         return 'green-bg';
+         bg = 'green-bg';
+         setTimeout(() => bg = 'bg', 1000)
+
        } else if(parseInt(now)-parseInt(last) == 0) {
-         return 'bg';
-       } else {
-         return 'red-bg';
+         } else {
+         bg = 'red-bg';
+         setTimeout(() => bg = 'bg', 1000)
        }
      } else {
        return 'bg';
