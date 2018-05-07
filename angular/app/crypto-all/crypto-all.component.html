@@ -117,7 +117,7 @@ width="20.3%">
    </div>
    <span>{{data.sym}}</span>
  </td>
- <td [ngClass]="isNegativeMath(data.now, data.last)==true ? 'red-bg' : 'green-bg'">
+ <td [ngClass]="isNegativeMath(data.now, data.last)">
   <span class="price">${{data.now | number: '1.2'}}</span>
   <span *ngIf="first_time ==false" [ngClass]="isNegativeMath(data.now, data.last)==true ? 'change-red' : 'change'">({{data.now - data.last | number: '1.2'}})</span>
 </td>
@@ -134,12 +134,12 @@ width="20.3%">
   <span class="year">{{data?.year}}</span>
 </td>
 <td>
-  <span [ngClass]="isNegative(data.day)==true ? 'change-red' : 'change-green'">{{(data.now/data.day)-1 | number:'1.2'}}</span>
+  <span [ngClass]="isNegativePercent(data.now, data.day)==true ? 'change-red' : 'change-green'">{{(data.now/data.day)*100 | number:'1.2'}}</span>
 
 </td>
 <td>
   <div class="difference">
-   <span [ngClass]="isNegative(data.week)==true ? 'change-red' : 'change-green'">{{ (data.now/data.week)-1 | number:'1.2'}}</span>
+   <span [ngClass]="isNegativePercent(data.now, data.week)==true ? 'change-red' : 'change-green'">{{ (data.now/data.week)*100 | number:'1.2'}}</span>
    <div class="buttons">
     <button class="right"><a [routerLink]="['/crypto', data.sym]">></a></button>
     <button class="plus">+</button>

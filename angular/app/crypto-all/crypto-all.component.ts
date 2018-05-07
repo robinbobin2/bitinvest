@@ -174,8 +174,8 @@ if(localStorage.getItem('data')) {
     });
     });
   }
-  isNegative(now) {
-    if((parseInt(now)) >= 0) {
+  isNegativePercent(now, last) {
+    if(((parseInt(now)/parseInt(last))*100) >= 0) {
       return false;
     } 
     return true;
