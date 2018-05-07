@@ -4979,6 +4979,27 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
       100%  {background: white;}
     }
 
+ @keyframes greencolor
+    {
+      0%   {color: #e7f3e2;}
+      100%  {color: #000;}
+    }
+ @-webkit-keyframes greencolor
+    {
+      0%   {color: #e7f3e2;}
+      100%  {color: #000;}
+    }
+@keyframes redcolor /* Safari and Chrome - necessary duplicate */
+    {
+      0%   {color: #e7f3e2;}
+      100%  {color:#000;}
+    }
+    @-webkit-keyframes redcolor /* Safari and Chrome - necessary duplicate */
+    {
+      0%   {color: #e7f3e2;}
+      100%  {color:#000;}
+    }
+
 @media (max-width: 600px) {
   .exchanges {
     padding-bottom: 11px;

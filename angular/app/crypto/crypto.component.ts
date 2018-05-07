@@ -78,6 +78,8 @@ export class CryptoComponent implements OnInit, OnDestroy {
   lowest: number;
   cryptoData: any;
   bid_ask: {bid: number; ask: number;} = {bid: 0, ask: 0};
+  animtype = '';
+  diff = 0;
   constructor(private http:HttpClient,private stocksService:StocksService,
     private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
@@ -153,10 +155,26 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
     this.cryptoData=Observable.interval(1000).take(50).concatMap(()=>this.stocksService.getCrypto())
     .map((response)=>{
+      this.animtype = '';
+      if(this.dataUsd.now != response[symbol+'/USDT'].now) {
+        this.diff = response[symbol+'/USDT'].now-this.dataUsd.now;
+
+        if(this.dataUsd.now > response[symbol+'/USDT'].now) {
+
+            this.animtype = 'redcolor';
+          } else {
+            this.animtype = 'greencolor';
+          }
+      }
       this.dataUsd = response[symbol+'/USDT'];
+
       localStorage.removeItem(symbol);
+
       localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
+
     }).subscribe();
+
+
     this.auth
     .getUser()
     .subscribe(
@@ -192,7 +210,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     this.commentcount=this.commentcount+1;
   }
   isNegative(now) {
-    if((parseInt(now)) >= 0) {
+    if(now >= 0) {
       return false;
     } 
     return true;

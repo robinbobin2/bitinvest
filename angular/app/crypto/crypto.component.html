@@ -22,7 +22,7 @@
       <div class="price-block">
         <div class="last-update">
           <div class="prices-wrap">
-            <span [ngClass]="comparePrice(dataUsd.now, dataUsd.last)==true ? 'green-price' : 'red-price'">${{dataUsd?.now | number:'1.0-1'}}</span>
+            <span [ngStyle]="{ 'animation': animtype+' 2s', '-webkit-animation': animtype+' 2s'  }>${{dataUsd?.now | number:'1.0-1'}}</span>
             <span [ngClass]="isNegativeMath(dataUsd.now, dataUsd.last)==true ? 'red-price' : 'green-price'">{{dataUsd?.now - dataUsd?.last | number:'1.0-1'}}</span>
             <span [ngClass]="isNegativePercent(dataUsd.now, dataUsd.last) ? 'bg-price' : 'bg-price-green'">{{countPercent(dataUsd.now, dataUsd.last) | number:'1.2-3'}}</span>
           </div>
@@ -96,7 +96,7 @@
                         <span class="sentence" *ngIf="!stock.bid">-</span>
                       </td>
                       <td>
-                        <span class="amount">${{stock.volume | number:'1.0-1'}}</span>
+                        <span class="amount">${{stock.volume | number:'1.0-2'}}</span>
                       </td>
                       <td>
                         <span [ngClass]="isNegative(stock.percent) ? 'growth-red':'growth-green'">${{stock.percent | number:'1.0-3'}}%</span>
