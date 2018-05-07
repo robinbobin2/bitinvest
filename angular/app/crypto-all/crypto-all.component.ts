@@ -167,6 +167,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
           this.animtype[index] = 'redbg';
 
         }
+        console.log(this.animtype[index]);
       }
       
     });

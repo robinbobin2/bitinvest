@@ -2148,6 +2148,7 @@ var CryptoAllComponent = (function () {
                         _this.animtype[index] = '';
                         _this.animtype[index] = 'redbg';
                     }
+                    console.log(_this.animtype[index]);
                 }
             });
         });
