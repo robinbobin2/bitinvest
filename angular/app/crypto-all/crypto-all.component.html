@@ -134,12 +134,12 @@ width="20.3%">
   <span class="year">{{data?.year}}</span>
 </td>
 <td>
-  <span [ngClass]="isNegativePercent(data.now, data.day)==true ? 'change-red' : 'change-green'">{{(data.now/data.day)*100 | number:'1.2'}}</span>
+  <span [ngClass]="isNegativePercent(data.now, data.day)==true ? 'change-red' : 'change-green'">{{ countPercent(data.now, data.day)}}</span>
 
 </td>
 <td>
   <div class="difference">
-   <span [ngClass]="isNegativePercent(data.now, data.week)==true ? 'change-red' : 'change-green'">{{ (data.now/data.week)*100 | number:'1.2'}}</span>
+   <span [ngClass]="isNegativePercent(data.now, data.week)==true ? 'change-red' : 'change-green'">{{ countPercent(data.now, data.week)}}</span>
    <div class="buttons">
     <button class="right"><a [routerLink]="['/crypto', data.sym]">></a></button>
     <button class="plus">+</button>

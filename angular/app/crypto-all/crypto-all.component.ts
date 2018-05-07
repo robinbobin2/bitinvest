@@ -60,10 +60,10 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      private route:ActivatedRoute,
      private StockService:StocksService
      ) { 
-     
-     
+
+
    }
-   
+
    setOrder(value: string) {
      if (this.order === value) {
        this.reverse = !this.reverse;
@@ -87,7 +87,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
       // console.log(response);
       let admin = response;
       for (var _i = 0; _i < admin.length; ++_i) {
-        
+
         // console.log(this.admin[i].symbol);
         let index = _i;
         let symbol = admin[index].symbol;
@@ -105,7 +105,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
           this.dataUsd[index].value = this.resp[symbol+'/USDT']['value'];
           this.dataUsd[index].day = this.resp[symbol+"/USDT"]['day'];
           this.dataUsd[index].week = this.resp[symbol+"/USDT"]['week'];
-          
+
           
         } else {
           this.dataUsd[index] = {
@@ -130,10 +130,10 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      this.data = alldata.subscribe(response => {
        this.cryptoData=Observable.interval(1000).concatMap(()=>this.StockService.getCrypto())
        .map((response)=>{this.resp = response; console.log(this.resp)}).subscribe(()=>{
-         
+
          let admin = response;
          for (var _i = 0; _i < admin.length; ++_i) {
-           
+
         // console.log(this.admin[i].symbol);
         let index = _i;
         let symbol = admin[index].symbol;
@@ -153,7 +153,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         this.dataUsd[index].value = this.resp[symbol+'/USDT']['value'];
         this.dataUsd[index].day = this.resp[symbol+"/USDT"]['day'];
         this.dataUsd[index].week = this.resp[symbol+"/USDT"]['week'];
-        
+
         localStorage.removeItem('data');
         localStorage.setItem('data',JSON.stringify(this.dataUsd))
       }
@@ -167,20 +167,28 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      } 
      return true;
    }
+   countPercent(now, last) {
+     return (parseInt(now)-parseInt(last)) / (parseInt(now)+parseInt(last));
+   }
    isNegativePercent(now, last) {
-     if(((parseInt(now)/parseInt(last))*100) >= 0) {
+     if(((parseInt(now)-parseInt(last)) /  ((parseInt(now)+parseInt(last)) / 2)  * 100) >= 0) {
        return false;
      } 
      return true;
    }
 
    isNegativeMath(now, last) {
-     if((parseInt(now)-parseInt(last)) >= 0) {
-       return 'green-bg';
-     } else if(parseInt(now)-parseInt(last) == 0 || this.first_time == true) {
-       return 'bg';
+     if(this.first_time == true) {
+     
+       if((parseInt(now)-parseInt(last)) >= 0) {
+         return 'green-bg';
+       } else if(parseInt(now)-parseInt(last) == 0) {
+         return 'bg';
+       } else {
+         return 'red-bg';
+       }
      } else {
-       return 'red-bg';
+       return 'bg';
      }
    }
 
