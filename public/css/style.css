@@ -1123,9 +1123,15 @@ footer .footer-wrap .anchor:hover {
 
 .crypto-table td.green-bg {
   background: #e7f3e2;
+  animation: greenbg 2s; /* animation-name followed by duration in seconds*/
+         /* you could also use milliseconds (ms) or something like 2.5s */
+  -webkit-animation: greenbg 2s; /* Chrome and Safari */
 }
 .crypto-table td.red-bg {
   background: #fedcdc;
+  animation: redbg 2s; /* animation-name followed by duration in seconds*/
+         /* you could also use milliseconds (ms) or something like 2.5s */
+  -webkit-animation: redbg 2s; /* Chrome and Safari */
 }
 
 .overview-block {
@@ -4932,3 +4938,28 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
 .news-content {
   margin-left: -32px !important;
 }
+
+
+ @keyframes redbg
+    {
+      0%   {background: #fedcdc;}
+      100%  {background: white;}
+    }
+
+    @-webkit-keyframes redbg /* Safari and Chrome - necessary duplicate */
+    {
+      0%   {background: #fedcdc;}
+      100%  {background: white;}
+    }
+ @keyframes greenbg
+    {
+      0%   {background: #e7f3e2;}
+      100%  {background: white;}
+    }
+
+    @-webkit-keyframes redbg /* Safari and Chrome - necessary duplicate */
+    {
+      0%   {background: #e7f3e2;}
+      100%  {background: white;}
+    }
+
