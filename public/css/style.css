@@ -1485,6 +1485,22 @@ footer .footer-wrap .anchor:hover {
   font-size: 14px;
   color: #fff;
 }
+.single-top-block .price-block .last-update .prices-wrap .bg-price-green {
+  width: 58px;
+  height: 24px;
+  background: green;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #fff;
+}
 .single-top-block .price-block .last-update p {
   color: #616162;
   font-size: 12px;

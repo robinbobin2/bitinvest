@@ -75,7 +75,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
   infoCrypto: any;
   stocksData: any;
   cryptoFirst:any;
+  lowest: number;
   cryptoData: any;
+  bid_ask: {bid: number; ask: number;} = {bid: 0, ask: 0};
   constructor(private http:HttpClient,private stocksService:StocksService,
     private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
@@ -101,6 +103,15 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.stocks = response;
       this.load = false;
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
+      for(let item of this.stocks) {
+        if(this.bid_ask.ask < item.ask) {
+        this.bid_ask.ask = item.ask
+        }
+        if(this.bid_ask.bid < item.bid) {
+        this.bid_ask.bid = item.bid
+        }
+
+      }
     }).subscribe();
 
 
@@ -197,6 +208,15 @@ export class CryptoComponent implements OnInit, OnDestroy {
     } 
     return false;
   }
+  countPercent(now, last) {
+     return (now-last) / (now+last) * 100;
+   }
+   isNegativePercent(now, last) {
+     if(((parseInt(now)-parseInt(last)) /  ((parseInt(now)+parseInt(last)) / 2)  * 100) >= 0) {
+       return false;
+     } 
+     return true;
+   }
   ngOnDestroy() {
 
     this.cryptoData.unsubscribe();
