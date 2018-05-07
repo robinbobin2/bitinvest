@@ -88,19 +88,21 @@
                         <span class="cost cost-green">${{stock.value | number:'1.0-1'}}</span>
                       </td>
                       <td>
-                        <span class="demand">${{stock.ask | number:'1.0-1'}}</span>
+                        <span class="demand" *ngIf="stock.ask">${{stock.ask | number:'1.0-1'}}</span>
+                        <span class="demand" *ngIf="!stock.ask">-</span>
                       </td>
                       <td>
-                        <span class="sentence">${{stock.bid | number:'1.0-1'}}</span>
+                        <span class="sentence" *ngIf="stock.bid">${{stock.bid | number:'1.0-1'}}</span>
+                        <span class="sentence" *ngIf="!stock.bid">-</span>
                       </td>
                       <td>
                         <span class="amount">${{stock.volume | number:'1.0-1'}}</span>
                       </td>
                       <td>
-                        <span [ngClass]="isNegative(stock.percent) ? 'growth-red':'growth-green'">${{stock.percent | number:'1.0-5'}}%</span>
+                        <span [ngClass]="isNegative(stock.percent) ? 'growth-red':'growth-green'">${{stock.percent | number:'1.0-3'}}%</span>
                       </td>
                       <td>
-                        <span class="updated">10.10.2017 в 12:56</span>
+                        <span class="updated"></span>
                       </td>
                     </tr>
                     

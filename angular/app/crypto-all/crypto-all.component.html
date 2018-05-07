@@ -141,7 +141,7 @@ width="20.3%">
   <div class="difference">
    <span [ngClass]="isNegativePercent(data.now, data.week)==true ? 'change-red' : 'change-green'">{{ countPercent(data.now, data.week) | number: '1.2'}}%</span>
    <div class="buttons">
-    <button class="right"><a [routerLink]="['/crypto', data.sym]">></a></button>
+    <button class="right" [routerLink]="['/crypto', data.sym]">></button>
     <button class="plus">+</button>
   </div>
 </div>
