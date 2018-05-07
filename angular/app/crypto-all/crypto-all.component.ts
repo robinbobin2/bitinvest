@@ -194,8 +194,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      return bg;
    }
    onHighlight(value) {
-     setTimeout(() => value = 'bg', 200)
-     return value;
+     setTimeout(() => {value = 'bg', 200; return value;})
+     
    }
    ngOnDestroy() {
 

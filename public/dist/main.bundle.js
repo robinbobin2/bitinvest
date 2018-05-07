@@ -2170,8 +2170,7 @@ var CryptoAllComponent = (function () {
         return bg;
     };
     CryptoAllComponent.prototype.onHighlight = function (value) {
-        setTimeout(function () { return value = 'bg'; }, 200);
-        return value;
+        setTimeout(function () { value = 'bg', 200; return value; });
     };
     CryptoAllComponent.prototype.ngOnDestroy = function () {
         // this.data.unsubscribe();
