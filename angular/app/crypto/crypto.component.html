@@ -23,7 +23,7 @@
         <div class="last-update">
           <div class="prices-wrap">
             <span class="price" [ngStyle]="{ 'animation': animtype+' 1s', '-webkit-animation': animtype+' 1s'  }">${{dataUsd?.now | number:'1.0-1'}}</span>
-            <span ngStyle]="{ 'animation': animtype+' 1s', '-webkit-animation': animtype+' 1s'  }">{{dataUsd?.now - dataUsd?.last | number:'1.0-1'}}</span>
+            <span class="price" [ngStyle]="{ 'animation': animtype+' 1s', '-webkit-animation': animtype+' 1s'  }">{{dataUsd?.now - dataUsd?.last | number:'1.0-1'}}</span>
             <span [ngStyle]="{ 'animation': animtypebg+' 1s', '-webkit-animation': animtypebg+' 1s'  }">{{countPercent(dataUsd.now, dataUsd.last) | number:'1.2-3'}}%</span>
           </div>
           <p>Последнее обновление 1 сек. назад</p>
