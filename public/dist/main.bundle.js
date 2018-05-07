@@ -2159,18 +2159,18 @@ var CryptoAllComponent = (function () {
         return true;
     };
     CryptoAllComponent.prototype.isNegativeMath = function (now, last) {
-        var bg = "{'background': 'white'}";
+        this.object = "{'background': 'white'}";
         if (this.first_time == false) {
             if ((parseInt(now) - parseInt(last)) >= 0) {
-                bg = "{ 'background': 'white', 'animation': 'greenbg 2s', '-webkit-animation': 'greenbg 2s'  }";
+                this.object = "{ 'background': 'white', 'animation': 'greenbg 2s', '-webkit-animation': 'greenbg 2s'  }";
             }
             else if (parseInt(now) - parseInt(last) == 0) {
             }
             else {
-                bg = "{ 'background': 'white', 'animation': 'redbg 2s', '-webkit-animation': 'redbg 2s'  }";
+                this.object = "{ 'background': 'white', 'animation': 'redbg 2s', '-webkit-animation': 'redbg 2s'  }";
             }
         }
-        return bg;
+        return this.object;
     };
     CryptoAllComponent.prototype.ngOnDestroy = function () {
         // this.data.unsubscribe();
