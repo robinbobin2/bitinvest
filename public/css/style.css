@@ -4988,6 +4988,35 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
       100%  {background: white;}
     }
 
+
+
+ @keyframes redbgw
+    {
+      0%   {background: #fedcdc; color: white}
+      100%  {background: white; color: black}
+    }
+
+    @-webkit-keyframes redbgw /* Safari and Chrome - necessary duplicate */
+    {
+      0%   {background: #fedcdc; color: white}
+      100%  {background: white; color: black}
+    }
+
+ @keyframes greenbgw
+    {
+      0%   {background: #e7f3e2;color: white}
+      100%  {background: white; color: black}
+    }
+
+    @-webkit-keyframes greenbgw /* Safari and Chrome - necessary duplicate */
+    {
+      0%   {background: #e7f3e2;color: white}
+      100%  {background: white; color: black}
+    }
+
+
+
+
  @keyframes greencolor
     {
       0%   {color: #e7f3e2;}
@@ -4995,12 +5024,12 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
     }
  @-webkit-keyframes greencolor
     {
-      0%   {color: #e7f3e2 !important;}
+      0%   {color: green !important;}
       100%  {color: #000;}
     }
 @keyframes redcolor /* Safari and Chrome - necessary duplicate */
     {
-      0%   {color: #e7f3e2 !important;}
+      0%   {color: red !important;}
       100%  {color:#000;}
     }
     @-webkit-keyframes redcolor /* Safari and Chrome - necessary duplicate */

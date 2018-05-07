@@ -79,6 +79,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
   cryptoData: any;
   bid_ask: {bid: number; ask: number;} = {bid: 0, ask: 0};
   animtype = '';
+  animtypebg = '';
   diff = 0;
   constructor(private http:HttpClient,private stocksService:StocksService,
     private router:Router, private route:ActivatedRoute, 
@@ -162,7 +163,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
         if(this.dataUsd.now > response[symbol+'/USDT'].now) {
 
             this.animtype = 'redcolor';
+            this.animtypebg = 'redbgw';
           } else {
+            this.animtypebg = 'greenbgw';
             this.animtype = 'greencolor';
           }
       }
