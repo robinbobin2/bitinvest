@@ -1122,13 +1122,13 @@ footer .footer-wrap .anchor:hover {
 }
 
 .crypto-table td.green-bg {
-  background: #e7f3e2;
+  background: white;
   animation: greenbg 2s; /* animation-name followed by duration in seconds*/
          /* you could also use milliseconds (ms) or something like 2.5s */
   -webkit-animation: greenbg 2s; /* Chrome and Safari */
 }
 .crypto-table td.red-bg {
-  background: #fedcdc;
+  background: white;
   animation: redbg 2s; /* animation-name followed by duration in seconds*/
          /* you could also use milliseconds (ms) or something like 2.5s */
   -webkit-animation: redbg 2s; /* Chrome and Safari */
