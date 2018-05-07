@@ -2465,16 +2465,16 @@ var CryptoComponent = (function () {
                 console.log(_this.main_news);
             });
         });
-        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).take(50).concatMap(function () { return _this.stocksService.getCrypto(); })
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1200).concatMap(function () { return _this.stocksService.getCrypto(); })
             .map(function (response) {
             _this.animtype = '';
             if (_this.dataUsd.now != response[symbol + '/USDT'].now) {
                 _this.diff = response[symbol + '/USDT'].now - _this.dataUsd.now;
                 if (_this.dataUsd.now > response[symbol + '/USDT'].now) {
-                    _this.animtype = 'redbg';
+                    _this.animtype = 'redcolor';
                 }
                 else {
-                    _this.animtype = 'greenbg';
+                    _this.animtype = 'greencolor';
                 }
             }
             _this.dataUsd = response[symbol + '/USDT'];

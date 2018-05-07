@@ -153,7 +153,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.cryptoData=Observable.interval(1000).take(50).concatMap(()=>this.stocksService.getCrypto())
+    this.cryptoData=Observable.interval(1200).concatMap(()=>this.stocksService.getCrypto())
     .map((response)=>{
       this.animtype = '';
       if(this.dataUsd.now != response[symbol+'/USDT'].now) {
@@ -161,9 +161,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
         if(this.dataUsd.now > response[symbol+'/USDT'].now) {
 
-            this.animtype = 'redbg';
+            this.animtype = 'redcolor';
           } else {
-            this.animtype = 'greenbg';
+            this.animtype = 'greencolor';
           }
       }
       this.dataUsd = response[symbol+'/USDT'];
