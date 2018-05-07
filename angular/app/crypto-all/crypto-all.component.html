@@ -117,7 +117,7 @@ width="20.3%">
    </div>
    <span>{{data.sym}}</span>
  </td>
- <td [ngStyle]="isNegativeMath(data.now, data.last)">
+ <td [ngStyle]="{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">
   <span class="price">${{data.now | number: '1.2'}}</span>
   <span *ngIf="first_time ==false" [ngClass]="isNegativePercent(data.now, data.last)==true ? 'change-red' : 'change'">({{data.now - data.last | number: '1.2'}})</span>
 </td>

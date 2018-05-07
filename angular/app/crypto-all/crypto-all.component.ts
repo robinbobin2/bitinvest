@@ -49,6 +49,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
   cryptoData: any;
   first_time:boolean = true;
   reverse: boolean = true;
+  animtype = [];
   /**
    * Example: Use Order pipe in the component
    *
@@ -156,8 +157,14 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
 
         localStorage.removeItem('data');
         localStorage.setItem('data',JSON.stringify(this.dataUsd))
-      }
+        if(this.dataUsd[index].now > this.dataUsd[index].last) {
+          this.animtype[index] = 'greenbg';
+        } else {
+          this.animtype[index] = 'redbg';
 
+        }
+      }
+      
     });
      });
    }
