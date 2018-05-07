@@ -2118,38 +2118,30 @@ var CryptoAllComponent = (function () {
                     var year = admin[index].year;
                     var algo = admin[index].algo;
                     var desc = 'DESC';
-                    if (_this.dataUsd[index]) {
-                        _this.dataUsd[index].sym = symbol;
-                        _this.dataUsd[index].algo = algo;
-                        _this.dataUsd[index].year = year;
-                        _this.dataUsd[index].last = _this.resp[symbol + '/USDT']['last'];
-                        _this.dataUsd[index].now = _this.resp[symbol + '/USDT']['now'];
-                        _this.dataUsd[index].min = _this.resp[symbol + '/USDT']['min'];
-                        _this.dataUsd[index].max = _this.resp[symbol + '/USDT']['max'];
-                        _this.dataUsd[index].value = _this.resp[symbol + '/USDT']['value'];
-                        _this.dataUsd[index].day = _this.resp[symbol + "/USDT"]['day'];
-                        _this.dataUsd[index].week = _this.resp[symbol + "/USDT"]['week'];
+                    if (_this.dataUsd[index].now != _this.resp[symbol + '/USDT']['now']) {
+                        _this.first_time = false;
                     }
-                    else {
-                        _this.dataUsd[index] = {
-                            sym: '',
-                            last: 0,
-                            now: 0,
-                            min: 0,
-                            max: 0,
-                            value: 0,
-                            year: 0,
-                            algo: '',
-                            week: 0,
-                            day: 0,
-                        };
-                    }
+                    _this.dataUsd[index].sym = symbol;
+                    _this.dataUsd[index].algo = algo;
+                    _this.dataUsd[index].year = year;
+                    _this.dataUsd[index].last = _this.resp[symbol + '/USDT']['last'];
+                    _this.dataUsd[index].now = _this.resp[symbol + '/USDT']['now'];
+                    _this.dataUsd[index].min = _this.resp[symbol + '/USDT']['min'];
+                    _this.dataUsd[index].max = _this.resp[symbol + '/USDT']['max'];
+                    _this.dataUsd[index].value = _this.resp[symbol + '/USDT']['value'];
+                    _this.dataUsd[index].day = _this.resp[symbol + "/USDT"]['day'];
+                    _this.dataUsd[index].week = _this.resp[symbol + "/USDT"]['week'];
                     localStorage.removeItem('data');
                     localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                 }
-                _this.first_time = false;
             });
         });
+    };
+    CryptoAllComponent.prototype.isNegative = function (now) {
+        if ((parseInt(now)) >= 0) {
+            return false;
+        }
+        return true;
     };
     CryptoAllComponent.prototype.isNegativePercent = function (now, last) {
         if (((parseInt(now) / parseInt(last)) * 100) >= 0) {
