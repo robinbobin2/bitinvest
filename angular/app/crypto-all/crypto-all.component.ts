@@ -168,7 +168,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      return true;
    }
    countPercent(now, last) {
-     return (parseInt(now)-parseInt(last)) / (parseInt(now)+parseInt(last));
+     return (now-last) / (now+last) * 100;
    }
    isNegativePercent(now, last) {
      if(((parseInt(now)-parseInt(last)) /  ((parseInt(now)+parseInt(last)) / 2)  * 100) >= 0) {
@@ -178,7 +178,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
    }
 
    isNegativeMath(now, last) {
-     if(this.first_time == true) {
+     if(this.first_time == false) {
      
        if((parseInt(now)-parseInt(last)) >= 0) {
          return 'green-bg';
