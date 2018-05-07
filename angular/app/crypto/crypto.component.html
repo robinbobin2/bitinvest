@@ -35,7 +35,7 @@
           </li>
           <li><span>Капитализация</span><span class="black">$ 95 113 177 098</span></li>
           <li><span>Алгоритм</span><span class="black">{{data?.algo}}</span></li>
-          <li><span>Всего монет / Получено</span><span class="black">21 000 000 000 / 89 000 891 (52%)</span></li>
+          <!-- <li><span>Всего монет / Получено</span><span class="black">21 000 000 000 / 89 000 891 (52%)</span></li> -->
         </ul>
       </div>
     </div>
@@ -71,9 +71,9 @@
                       <th width="10%"><span>Стоимост</span></th>
                       <th width="10%"><span>Спрос</span></th>
                       <th width="15%"><span>Предложение</span></th>
-                      <th width="15%"><span>Объем за 24ч.</span></th>
+                      <th width="15%"><span>Объем за 24ч. (BTC)</span></th>
                       <th width="11%"><span>Изменение за 24 ч.</span></th>
-                      <th width="16%"><span>Обновлено</span></th>
+                      <!-- <th width="16%"><span>Обновлено</span></th> -->
                     </tr>
                   </thead>
                   <tbody>
@@ -96,14 +96,14 @@
                         <span class="sentence" *ngIf="!stock.bid">-</span>
                       </td>
                       <td>
-                        <span class="amount">${{stock.volume | number:'1.0-2'}}</span>
+                        <span class="amount">{{stock.volume | number:'1.0-2'}}</span>
                       </td>
                       <td>
                         <span [ngClass]="isNegative(stock.percent) ? 'growth-red':'growth-green'">${{stock.percent | number:'1.0-3'}}%</span>
                       </td>
-                      <td>
+                      <!-- <td>
                         <span class="updated"></span>
-                      </td>
+                      </td> -->
                     </tr>
                     
                   </tbody>

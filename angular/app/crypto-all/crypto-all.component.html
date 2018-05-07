@@ -76,7 +76,7 @@
 (click)="setOrder('value')"
 
 width="8.4%">
-<span>Торги (24ч)</span>
+<span>Объем BTC (за 24 ч.)</span>
 <img src="img/arr-top-table.png" alt="">
 </th>
 <th 
@@ -112,10 +112,10 @@ width="20.3%">
     <span>{{i+1}}</span>
   </td>
   <td>
-    <div class="img-wrap">
+    <div class="img-wrap" [routerLink]="['/crypto', data.sym]">
      <!-- <img src="img/bitcoin-icon.png" alt=""> -->
    </div>
-   <span>{{data.sym}}</span>
+   <span [routerLink]="['/crypto', data.sym]">{{data.sym}}</span>
  </td>
  <td [ngStyle]="{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">
   <span class="price">${{data.now | number: '1.2'}}</span>
