@@ -2157,13 +2157,13 @@ var CryptoAllComponent = (function () {
         if (this.first_time == false) {
             if ((parseInt(now) - parseInt(last)) >= 0) {
                 bg = 'green-bg';
-                setTimeout(function () { return bg = 'bg'; }, 1000);
+                setTimeout(function () { return bg = 'bg'; }, 2000);
             }
             else if (parseInt(now) - parseInt(last) == 0) {
             }
             else {
                 bg = 'red-bg';
-                setTimeout(function () { return bg = 'bg'; }, 1000);
+                setTimeout(function () { return bg = 'bg'; }, 2000);
             }
         }
         else {

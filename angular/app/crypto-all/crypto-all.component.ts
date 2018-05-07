@@ -183,12 +183,12 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      
        if((parseInt(now)-parseInt(last)) >= 0) {
          bg = 'green-bg';
-         setTimeout(() => bg = 'bg', 1000)
+         setTimeout(() => bg = 'bg', 2000)
 
        } else if(parseInt(now)-parseInt(last) == 0) {
          } else {
          bg = 'red-bg';
-         setTimeout(() => bg = 'bg', 1000)
+         setTimeout(() => bg = 'bg', 2000)
        }
      } else {
        return 'bg';
