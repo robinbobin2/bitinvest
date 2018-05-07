@@ -50,6 +50,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
   first_time:boolean = true;
   reverse: boolean = true;
   animtype = [];
+  diff = [];
   /**
    * Example: Use Order pipe in the component
    *
@@ -141,17 +142,18 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         let algo = admin[index].algo;
         let desc = 'DESC';
            this.animtype[index] = '';
-        
+
         if(this.dataUsd[index].now != this.resp[symbol+'/USDT']['now']) {
           this.first_time = false;
 
           if(this.dataUsd[index].now > this.resp[symbol+'/USDT']['now']) {
 
 
-            this.animtype[index] = 'greenbg';
+            this.animtype[index] = 'redbg';
+            this.diff[index] = this.resp[symbol+'/USDT']['now']-this.dataUsd[index].now;
           } else {
 
-            this.animtype[index] = 'redbg';
+            this.animtype[index] = 'greenbg';
 
           }
         }
