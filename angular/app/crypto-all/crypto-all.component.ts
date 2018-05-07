@@ -142,17 +142,16 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         let algo = admin[index].algo;
         let desc = 'DESC';
            this.animtype[index] = '';
+           this.diff[index] = 0;
 
         if(this.dataUsd[index].now != this.resp[symbol+'/USDT']['now']) {
           this.first_time = false;
-
+          this.diff[index] = this.resp[symbol+'/USDT']['now']-this.dataUsd[index].now;
           if(this.dataUsd[index].now > this.resp[symbol+'/USDT']['now']) {
 
 
             this.animtype[index] = 'redbg';
-            this.diff[index] = this.resp[symbol+'/USDT']['now']-this.dataUsd[index].now;
           } else {
-
             this.animtype[index] = 'greenbg';
 
           }
@@ -171,9 +170,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         localStorage.removeItem('data');
         localStorage.setItem('data',JSON.stringify(this.dataUsd))
         
-        
-        
-        console.log(this.animtype[index]);
       }
       
     });
