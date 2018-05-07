@@ -2141,9 +2141,11 @@ var CryptoAllComponent = (function () {
                     localStorage.removeItem('data');
                     localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                     if (_this.dataUsd[index].now > _this.dataUsd[index].last) {
+                        _this.animtype[index] = '';
                         _this.animtype[index] = 'greenbg';
                     }
                     else {
+                        _this.animtype[index] = '';
                         _this.animtype[index] = 'redbg';
                     }
                 }
