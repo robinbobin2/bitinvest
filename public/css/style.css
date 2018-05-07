@@ -1469,6 +1469,14 @@ footer .footer-wrap .anchor:hover {
   margin-right: 11px;
   display: inline-block;
 }
+.single-top-block .price-block .last-update .prices-wrap .price {
+  font-size: 32px;
+  font-weight: bold;
+  color: #000;
+  margin-right: 11px;
+  display: inline-block;
+
+}
 .single-top-block .price-block .last-update .prices-wrap .bg-price {
   width: 58px;
   height: 24px;
@@ -4967,13 +4975,14 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
       0%   {background: #fedcdc;}
       100%  {background: white;}
     }
+    
  @keyframes greenbg
     {
       0%   {background: #e7f3e2;}
       100%  {background: white;}
     }
 
-    @-webkit-keyframes redbg /* Safari and Chrome - necessary duplicate */
+    @-webkit-keyframes greenbg /* Safari and Chrome - necessary duplicate */
     {
       0%   {background: #e7f3e2;}
       100%  {background: white;}
