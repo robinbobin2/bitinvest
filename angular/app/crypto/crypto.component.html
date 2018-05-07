@@ -51,7 +51,7 @@
           <li><a href="javascript:;">Новости</a></li>
           <li><a href="javascript:;">Комментарии ({{commentcount}})</a></li>
           <li><a href="javascript:;">Аналитика</a></li>
-          <li><a href="javascript:;">Описание</a></li>
+          <li class="desc"><a href="javascript:;" >Описание</a></li>
         </ul>
         <div class="tab-content-wrap">
           <div class="tab-content active">
@@ -307,7 +307,7 @@
         <div class="description">
           <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
           <div [innerHTML]='data?.desc'></div>
-          <br> <p><a href="javascript:;">Подробнее</a><p>
+          <br> <p><a class="more-sidebar" href="javascript:;">Подробнее</a><p>
           </div>
           <div class="top-crypto">
             <h5 class="titles"><span>ТОП 5</span>криптовалют (% роста)</h5>

@@ -22,19 +22,7 @@
                <li *ngFor="let data of dataUsd" (click)="algorithm=data?.algo"><a >Алгоритм: {{data?.algo}}</a></li>
                <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
              </ul>
-					    </div><!-- 
-						<div class="select-wrap">
-							<select>
-								<option value="all">Алгоритм: Все</option>
-								<option value="SHA-256">Алгоритм: SHA-256</option>
-							</select>
-						</div> -->
-						<!-- <div class="select-wrap">
-							<select [(ngModel)]="age" name="age">
-								<option [value]="">Возраст: Любой</option>
-								<option *ngFor="let data of dataUsd" [ngValue]="data?.year">Возраст: {{data?.year}}</option>
-							</select>
-						</div> -->
+					    </div>
 						<div class="select-wrapper1" id="select-age">
               <div class="select">
                <span class="text"><span style="padding-top: 12px;">{{age !='' ? age : 'Возраст: Все'}}</span></span>
@@ -80,15 +68,10 @@
     </th>
     <th
 
-    width="10.8%">
+    width="22%">
     <span>Капитализация</span>
     <img src="img/arr-top-table.png" alt="">
   </th>
-  <th 
-  width="11.2%">
-  <span>Всего / Получено</span>
-  <img src="img/arr-top-table.png" alt="">
-</th>
 <th [class.active]="order === 'value'"
 (click)="setOrder('value')"
 
@@ -132,18 +115,14 @@ width="20.3%">
     <div class="img-wrap">
      <!-- <img src="img/bitcoin-icon.png" alt=""> -->
    </div>
-   <span>{{data.sym}}<!-- Bitcoin (BTC) --></span>
+   <span>{{data.sym}}</span>
  </td>
  <td [ngClass]="isNegativeMath(data.now, data.last)==true ? 'red-bg' : 'green-bg'">
   <span class="price">${{data.now | number: '1.2'}}</span>
-  <span [ngClass]="isNegativeMath(data.now, data.last)==true ? 'change-red' : 'change'">({{data.now - data.last | number: '1.2'}})</span>
+  <span *ngIf="first_time ==false" [ngClass]="isNegativeMath(data.now, data.last)==true ? 'change-red' : 'change'">({{data.now - data.last | number: '1.2'}})</span>
 </td>
 <td>
   <span class="capitalization"></span>
-</td>
-<td>
-  <span class="total"></span>
-  <!-- <span class="received">890 910</span> -->
 </td>
 <td>
   <span class="bargaining">{{data.value | number: '1.2'}}</span>
@@ -155,12 +134,12 @@ width="20.3%">
   <span class="year">{{data?.year}}</span>
 </td>
 <td>
-  <span [ngClass]="isNegative(data.day)==true ? 'change-red' : 'change-green'">{{data.day/100 | percent:'1.2'}}</span>
+  <span [ngClass]="isNegative(data.day)==true ? 'change-red' : 'change-green'">{{(data.now/data.day)-1 | number:'1.2'}}</span>
 
 </td>
 <td>
   <div class="difference">
-   <span [ngClass]="isNegative(data.week)==true ? 'change-red' : 'change-green'">{{ data.week/100 | percent:'1.2'}}</span>
+   <span [ngClass]="isNegative(data.week)==true ? 'change-red' : 'change-green'">{{ (data.now/data.week)-1 | number:'1.2'}}</span>
    <div class="buttons">
     <button class="right"><a [routerLink]="['/crypto', data.sym]">></a></button>
     <button class="plus">+</button>

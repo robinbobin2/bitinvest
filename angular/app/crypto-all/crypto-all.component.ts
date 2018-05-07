@@ -1,23 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import {StocksService} from '../stocks.service';
 import { OrderPipe } from '../order-pipe/ngx-order.pipe';
-export class DataRub {
-  price: any;
-  lastupdate: any;
-  mktcap: any;
-  vol24hours: any;
-  open24hours: any;
-  low24hours: any;
-  high24hours: any;
-  lasttrade: any;
 
-}
 export class Cripto {
   id: number;
   name:string;
@@ -40,8 +27,6 @@ export interface CryptoData {
   day: number;
 
 }
-var dataRub;
-var dataEur;
 
 @Component({
   selector: 'app-crypto-all',
@@ -50,7 +35,7 @@ var dataEur;
   providers: [StocksService],
 })
 
-export class CryptoAllComponent implements OnInit {
+export class CryptoAllComponent implements OnInit, OnDestroy {
 
 load:boolean = true;
 
@@ -62,6 +47,7 @@ age = '';
 data: any;
 resp: any;
 cryptoData: any;
+first_time:boolean = true;
   reverse: boolean = true;
   /**
    * Example: Use Order pipe in the component
@@ -72,7 +58,7 @@ cryptoData: any;
     private http:HttpClient, 
     private router:Router, 
     private route:ActivatedRoute,
-    private stocksServise:StocksService
+    private StockService:StocksService
     ) { 
       
     
@@ -93,7 +79,7 @@ if(localStorage.getItem('data')) {
       this.dataUsd = JSON.parse(localStorage.getItem('data'));
       this.load = false;
       }
-    this.stocksServise.getCrypto()
+    this.StockService.getCrypto()
         .subscribe(response => {
             this.resp = response;
             this.data = alldata.subscribe(response => {
@@ -141,14 +127,10 @@ if(localStorage.getItem('data')) {
        }
     });
           });
-    this.cryptoData=Observable.interval(1000).take(50).concatMap(()=>this.stocksServise.getCrypto())
-        .map((response)=>{this.resp = response; console.log(this.resp)}).subscribe(()=>{
-    
-
-    
     this.data = alldata.subscribe(response => {
-
-      // console.log(response);
+    this.cryptoData=Observable.interval(1000).concatMap(()=>this.StockService.getCrypto())
+        .map((response)=>{this.resp = response; console.log(this.resp)}).subscribe(()=>{
+            
       let admin = response;
       for (var _i = 0; _i < admin.length; ++_i) {
         
@@ -158,8 +140,6 @@ if(localStorage.getItem('data')) {
         let year = admin[index].year;
         let algo = admin[index].algo;
         let desc = 'DESC';
-        console.log('asdasdasd');
-        console.log(this.resp[symbol+'/USDT']['last'])
         if(this.dataUsd[index]) {
                 this.dataUsd[index].sym = symbol;
                 this.dataUsd[index].algo = algo;
@@ -190,6 +170,7 @@ if(localStorage.getItem('data')) {
         localStorage.removeItem('data');
             localStorage.setItem('data',JSON.stringify(this.dataUsd))
        }
+       this.first_time = false;
     });
     });
   }
@@ -199,12 +180,17 @@ if(localStorage.getItem('data')) {
     } 
     return true;
   }
+
   isNegativeMath(now, last) {
     if((parseInt(now)-parseInt(last)) >= 0) {
-      return false;
-    } 
-    return true;
+      return 'green-bg';
+    } else if(parseInt(now)-parseInt(last) == 0 || this.first_time == true) {
+      return 'bg';
+    } else {
+      return 'red-bg';
+    }
   }
+
   ngOnDestroy() {
 
   // this.data.unsubscribe();

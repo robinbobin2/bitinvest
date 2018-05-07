@@ -72,6 +72,14 @@ $(document).ready(function () {
 		$(".ico-tabs li").removeClass("active");
 		$(this).closest("li").addClass("active");
 	});
+
+	$(".crypto-table th").on("click", function (e) {
+		if ($(this).hasClass("active-img")) {
+			$(this).removeClass("active-img");
+		} else {
+			$(this).addClass("active-img");
+		}
+	});
 	// $(".tag-list li a").on("click", function (e) {
 	// 	$(".tag-list li").removeClass("active");
 	// 	$(this).closest("li").addClass("active");
@@ -130,6 +138,25 @@ $(document).ready(function () {
 			});
 		 }
 	});
+
+	$("a.more-sidebar").on("click", function (e) {
+		e.preventDefault();
+		$(".crypto-tab-menu li").removeClass("active");
+		$('.desc').addClass("active");
+		$(".tab-content-wrap .tab-content").removeClass("active");
+		$('.description-content').addClass("active");
+		
+		if($(".tab-content-wrap .tab-content.active").hasClass("news-wrapper") && !$('.tab-content-wrap .tab-content.active .news-slider').hasClass("slick-initialized")){
+			$('.tab-content-wrap .tab-content.active .news-slider').slick({
+				infinite: true,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				dots: true,
+				arrows: false,
+			});
+		 }
+	});
+
 	
 	$(".news-body .show-more").on("click", function(e){
 		e.preventDefault();

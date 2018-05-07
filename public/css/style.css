@@ -587,7 +587,7 @@ select:focus {
 .table thead tr th.active {
   background: #383c46;
 }
-.table thead tr th.active img {
+.table thead tr th.active.active-img img {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
