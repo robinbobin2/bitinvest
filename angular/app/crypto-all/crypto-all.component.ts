@@ -157,7 +157,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
 
         localStorage.removeItem('data');
         localStorage.setItem('data',JSON.stringify(this.dataUsd))
-        this.animtype[index] = '';
+        
         if(this.dataUsd[index].now > this.dataUsd[index].last) {
           
 
@@ -167,6 +167,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
           this.animtype[index] = 'redbg';
 
         }
+        this.animtype[index] = '';
         console.log(this.animtype[index]);
       }
       
