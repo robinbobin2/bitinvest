@@ -50,7 +50,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
   first_time:boolean = true;
   reverse: boolean = true;
   animtype = [];
-  diff = [];
+  diff:Array<number> = [];
   /**
    * Example: Use Order pipe in the component
    *
@@ -176,7 +176,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      });
    }
    isNegative(now) {
-     if((parseInt(now)) >= 0) {
+     if(now >= 0) {
        return false;
      } 
      return true;

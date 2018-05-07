@@ -2155,7 +2155,7 @@ var CryptoAllComponent = (function () {
         });
     };
     CryptoAllComponent.prototype.isNegative = function (now) {
-        if ((parseInt(now)) >= 0) {
+        if (now >= 0) {
             return false;
         }
         return true;
