@@ -2430,8 +2430,8 @@ var CryptoComponent = (function () {
             return _this.stocksService.getStocks(symbol + '/USDT');
         })
             .map(function (response) {
-            _this.animstock[_i] = '';
             for (var _i = 0; _i < _this.stocks.length; ++_i) {
+                _this.animstock[_i] = '';
                 if (_this.stocks[_i].value > response[_i].value) {
                     _this.animstock[_i] = 'greencolor';
                     _this.stocks[_i].value = response[_i].value;
