@@ -2876,6 +2876,7 @@ var ExchangesComponent = (function () {
         this.exchanges = [];
         this.count = 0;
         this.volumes = [];
+        this.exchange_volumes = [];
     }
     ExchangesComponent.prototype.ngOnInit = function () {
         var _this = this;
