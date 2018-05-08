@@ -117,6 +117,36 @@ export class CryptoComponent implements OnInit, OnDestroy {
       }
 
     }
+
+      this.stocksService.getStocks(symbol+'/USDT').subscribe(response => {
+
+      this.stocks = response;
+      this.load = false;
+      localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
+      for(let item of this.stocks) {
+        if(this.volume === 0) {
+        
+          for(let item of this.stocks) {
+            this.volume = this.volume+item.volume;
+          }
+          
+        } else {
+          this.volume = 0;
+          for(let item of this.stocks) {
+            this.volume = this.volume+item.volume;
+          }
+        }
+        if(this.bid_ask.ask < item.ask) {
+        this.bid_ask.ask = item.ask
+        localStorage.setItem('ask', JSON.stringify(this.bid_ask.ask))
+        }
+        if(this.bid_ask.bid < item.bid) {
+        this.bid_ask.bid = item.bid
+        localStorage.setItem('bid', JSON.stringify(this.bid_ask.bid))
+        }
+
+      }
+    });
     this.stocksData = Observable.interval(1000).take(50).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USDT'))
     .map(response => {

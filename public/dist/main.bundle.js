@@ -2433,6 +2433,35 @@ var CryptoComponent = (function () {
                 }
             }
         }
+        this.stocksService.getStocks(symbol + '/USDT').subscribe(function (response) {
+            _this.stocks = response;
+            _this.load = false;
+            localStorage.setItem(symbol + 'USD stocks', JSON.stringify(_this.stocks));
+            for (var _a = 0, _b = _this.stocks; _a < _b.length; _a++) {
+                var item = _b[_a];
+                if (_this.volume === 0) {
+                    for (var _c = 0, _d = _this.stocks; _c < _d.length; _c++) {
+                        var item_1 = _d[_c];
+                        _this.volume = _this.volume + item_1.volume;
+                    }
+                }
+                else {
+                    _this.volume = 0;
+                    for (var _e = 0, _f = _this.stocks; _e < _f.length; _e++) {
+                        var item_2 = _f[_e];
+                        _this.volume = _this.volume + item_2.volume;
+                    }
+                }
+                if (_this.bid_ask.ask < item.ask) {
+                    _this.bid_ask.ask = item.ask;
+                    localStorage.setItem('ask', JSON.stringify(_this.bid_ask.ask));
+                }
+                if (_this.bid_ask.bid < item.bid) {
+                    _this.bid_ask.bid = item.bid;
+                    localStorage.setItem('bid', JSON.stringify(_this.bid_ask.bid));
+                }
+            }
+        });
         this.stocksData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).take(50).concatMap(function () {
             return _this.stocksService.getStocks(symbol + '/USDT');
         })
@@ -2464,15 +2493,15 @@ var CryptoComponent = (function () {
                 var item = _b[_a];
                 if (_this.volume === 0) {
                     for (var _c = 0, _d = _this.stocks; _c < _d.length; _c++) {
-                        var item_1 = _d[_c];
-                        _this.volume = _this.volume + item_1.volume;
+                        var item_3 = _d[_c];
+                        _this.volume = _this.volume + item_3.volume;
                     }
                 }
                 else {
                     _this.volume = 0;
                     for (var _e = 0, _f = _this.stocks; _e < _f.length; _e++) {
-                        var item_2 = _f[_e];
-                        _this.volume = _this.volume + item_2.volume;
+                        var item_4 = _f[_e];
+                        _this.volume = _this.volume + item_4.volume;
                     }
                 }
                 if (_this.bid_ask.ask < item.ask) {
