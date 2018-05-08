@@ -72,7 +72,7 @@
                       <th width="10%"><span>Спрос</span></th>
                       <th width="15%"><span>Предложение</span></th>
                       <th width="15%"><span>Объем за 24ч. (BTC)</span></th>
-                      <th width="11%"><span>Изменение за 24 ч.</span></th>
+                      <th width="11%"><span>Изм. за 24 ч.</span></th>
                       <th width="16%"><span>Обновлено</span></th>
                     </tr>
                   </thead>
@@ -100,10 +100,10 @@
                         <span class="amount">{{stock.volume | number:'1.0-2'}}</span>
                       </td>
                       <td>
-                        <span [ngStyle]="{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s'}">${{stock.percent | number:'1.0-3'}}%</span>
+                        <span class="growth-green" [ngStyle]="{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s', 'color': 'black'}">{{stock.percent | number:'1.0-3'}}%</span>
                       </td>
                       <td>
-                        <span class="updated">{{stock | date:'mediumTime'}}</span>
+                        <span class="updated">{{stock.time | date:'mediumTime'}}</span>
                       </td>
                     </tr>
                     

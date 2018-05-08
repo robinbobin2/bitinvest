@@ -115,11 +115,21 @@ export class CryptoComponent implements OnInit, OnDestroy {
       for (var _i = 0; _i < this.stocks.length; ++_i) {
         if(this.stocks[_i].value > response[_i].value) {
           this.animstock[_i] = 'greencolor';
+          this.stocks[_i].value = response[_i].value
+          this.stocks[_i].percent = response[_i].percent
+          this.stocks[_i].bid = response[_i].bid
+          this.stocks[_i].ask = response[_i].ask
+          this.stocks[_i].volume = response[_i].volume
         } else if(this.stocks[_i].value < response[_i].value) {
           this.animstock[_i] = 'redcolor';
+          this.stocks[_i].percent = response[_i].percent
+          this.stocks[_i].value = response[_i].value
+          this.stocks[_i].bid = response[_i].bid
+          this.stocks[_i].ask = response[_i].ask
+          this.stocks[_i].volume = response[_i].volume
+          
         }
       }
-      this.stocks = response;
       this.load = false;
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
       for(let item of this.stocks) {
