@@ -73,11 +73,11 @@
                       <th width="15%"><span>Предложение</span></th>
                       <th width="15%"><span>Объем за 24ч. (BTC)</span></th>
                       <th width="11%"><span>Изменение за 24 ч.</span></th>
-                      <!-- <th width="16%"><span>Обновлено</span></th> -->
+                      <th width="16%"><span>Обновлено</span></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let stock of stocks">
+                    <tr *ngFor="let stock of stocks; let i = index">
                       <td>
                         <a href="#">
                           <!-- <span class="img-wrap"><img src="img/bitfinex-icon.png" alt=""></span> -->
@@ -85,7 +85,7 @@
                         </a>
                       </td>
                       <td>
-                        <span class="cost cost-green">${{stock.value | number:'1.0-1'}}</span>
+                        <span class="cost" [ngStyle]="{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s'  }">${{stock.value | number:'1.0-1'}}</span>
                       </td>
                       <td>
                         <span class="demand" *ngIf="stock.ask">${{stock.ask | number:'1.0-1'}}</span>
@@ -99,11 +99,11 @@
                         <span class="amount">{{stock.volume | number:'1.0-2'}}</span>
                       </td>
                       <td>
-                        <span [ngClass]="isNegative(stock.percent) ? 'growth-red':'growth-green'">${{stock.percent | number:'1.0-3'}}%</span>
+                        <span [ngStyle]="{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s'>${{stock.percent | number:'1.0-3'}}%</span>
                       </td>
-                      <!-- <td>
-                        <span class="updated"></span>
-                      </td> -->
+                      <td>
+                        <span class="updated">{{stock | date:mediumTime}}</span>
+                      </td>
                     </tr>
                     
                   </tbody>

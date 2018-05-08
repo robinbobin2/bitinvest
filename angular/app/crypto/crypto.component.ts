@@ -82,6 +82,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
   animtypebg = '';
   diff = 0;
   volume = 0;
+  animstock = [];
   constructor(private http:HttpClient,private stocksService:StocksService,
     private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
@@ -111,6 +112,13 @@ export class CryptoComponent implements OnInit, OnDestroy {
     this.stocksData = Observable.interval(1000).take(50).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USDT'))
     .map(response => {
+      for (var _i = 0; _i < this.stocks.length; ++_i) {
+        if(this.stocks[_i].value > response[_i].value) {
+          this.animstock[_i] = 'greencolor';
+        } else if(this.stocks[_i].value < response[_i].value) {
+          this.animstock[_i] = 'redcolor';
+        }
+      }
       this.stocks = response;
       this.load = false;
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
@@ -173,7 +181,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.cryptoData=Observable.interval(500).concatMap(()=>this.stocksService.getCrypto())
+    this.cryptoData=Observable.interval(1200).concatMap(()=>this.stocksService.getCrypto())
     .map((response)=>{
       this.animtype = '';
 
