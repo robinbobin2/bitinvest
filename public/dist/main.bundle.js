@@ -2486,18 +2486,15 @@ var CryptoComponent = (function () {
                 console.log(_this.main_news);
             });
         });
-        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(2000).concatMap(function () { return _this.stocksService.getCrypto(); })
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(500).concatMap(function () { return _this.stocksService.getCrypto(); })
             .map(function (response) {
             _this.animtype = '';
-            _this.animtypebg = '';
             if (_this.dataUsd.now != response[symbol + '/USDT'].now) {
                 _this.diff = response[symbol + '/USDT'].now - _this.dataUsd.now;
                 if (_this.dataUsd.now > response[symbol + '/USDT'].now) {
                     _this.animtype = 'redcolor';
-                    _this.animtypebg = 'redbgw';
                 }
                 else {
-                    _this.animtypebg = 'greenbgw';
                     _this.animtype = 'greencolor';
                 }
             }

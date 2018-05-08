@@ -173,19 +173,17 @@ export class CryptoComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.cryptoData=Observable.interval(2000).concatMap(()=>this.stocksService.getCrypto())
+    this.cryptoData=Observable.interval(500).concatMap(()=>this.stocksService.getCrypto())
     .map((response)=>{
       this.animtype = '';
-      this.animtypebg = '';
+
       if(this.dataUsd.now != response[symbol+'/USDT'].now) {
         this.diff = response[symbol+'/USDT'].now-this.dataUsd.now;
 
         if(this.dataUsd.now > response[symbol+'/USDT'].now) {
 
             this.animtype = 'redcolor';
-            this.animtypebg = 'redbgw';
           } else {
-            this.animtypebg = 'greenbgw';
             this.animtype = 'greencolor';
           }
       }
