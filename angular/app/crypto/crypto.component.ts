@@ -13,7 +13,7 @@ export interface CryptoData {
   min:number;
   max: number;
   value:number;
-  
+  prev: number;
   week: number;
   day: number;
 
@@ -198,9 +198,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.animtype = '';
 
       if(this.dataUsd.now != response[symbol+'/USDT'].now) {
-        
-        this.diff = response[symbol+'/USDT'].now-this.dataUsd.now;
 
+        this.diff = response[symbol+'/USDT'].now-this.dataUsd.now;
+        this.dataUsd.prev = this.dataUsd.now;
         if(this.dataUsd.now > response[symbol+'/USDT'].now) {
 
             this.animtype = 'redcolor';
