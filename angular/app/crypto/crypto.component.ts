@@ -173,7 +173,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.cryptoData=Observable.interval(1600).concatMap(()=>this.stocksService.getCrypto())
+    this.cryptoData=Observable.interval(2000).concatMap(()=>this.stocksService.getCrypto())
     .map((response)=>{
       this.animtype = '';
       this.animtypebg = '';
