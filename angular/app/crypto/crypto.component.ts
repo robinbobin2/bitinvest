@@ -96,6 +96,14 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.dataUsd = JSON.parse(localStorage.getItem(symbol));
       
     }
+    if(localStorage.getItem('bid')) {
+      this.bid_ask.bid = JSON.parse(localStorage.getItem('bid'));
+      
+    }
+    if(localStorage.getItem('ask')) {
+      this.bid_ask.ask = JSON.parse(localStorage.getItem('ask'));
+      
+    }
 
     if(localStorage.getItem(symbol+'USD stocks')) {
       this.stocks = JSON.parse(localStorage.getItem(symbol+'USD stocks'));
@@ -149,9 +157,11 @@ export class CryptoComponent implements OnInit, OnDestroy {
         }
         if(this.bid_ask.ask < item.ask) {
         this.bid_ask.ask = item.ask
+        localStorage.setItem('ask', JSON.stringify(this.bid_ask.ask))
         }
         if(this.bid_ask.bid < item.bid) {
         this.bid_ask.bid = item.bid
+        localStorage.setItem('bid', JSON.stringify(this.bid_ask.bid))
         }
 
       }

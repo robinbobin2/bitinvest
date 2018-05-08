@@ -2417,6 +2417,12 @@ var CryptoComponent = (function () {
         if (localStorage.getItem(symbol)) {
             this.dataUsd = JSON.parse(localStorage.getItem(symbol));
         }
+        if (localStorage.getItem('bid')) {
+            this.bid_ask.bid = JSON.parse(localStorage.getItem('bid'));
+        }
+        if (localStorage.getItem('ask')) {
+            this.bid_ask.ask = JSON.parse(localStorage.getItem('ask'));
+        }
         if (localStorage.getItem(symbol + 'USD stocks')) {
             this.stocks = JSON.parse(localStorage.getItem(symbol + 'USD stocks'));
             this.load = false;
@@ -2469,9 +2475,11 @@ var CryptoComponent = (function () {
                 }
                 if (_this.bid_ask.ask < item.ask) {
                     _this.bid_ask.ask = item.ask;
+                    localStorage.setItem('ask', JSON.stringify(_this.bid_ask.ask));
                 }
                 if (_this.bid_ask.bid < item.bid) {
                     _this.bid_ask.bid = item.bid;
+                    localStorage.setItem('bid', JSON.stringify(_this.bid_ask.bid));
                 }
             }
         }).subscribe();
