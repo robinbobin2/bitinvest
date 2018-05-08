@@ -5024,18 +5024,18 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
     }
  @-webkit-keyframes greencolor
     {
-      0%   {color: green !important;}
+      0%   {color: green;}
       100%  {color: #000;}
     }
 @keyframes redcolor /* Safari and Chrome - necessary duplicate */
     {
       0%   {color: red !important;}
-      100%  {color:#000;}
+      100%  {color:#000 !important;}
     }
     @-webkit-keyframes redcolor /* Safari and Chrome - necessary duplicate */
     {
-      0%   {color: red;}
-      100%  {color:#000;}
+      0%   {color: red !important;}
+      100%  {color:#000 !important;}
     }
 
 @media (max-width: 600px) {
