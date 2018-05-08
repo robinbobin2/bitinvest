@@ -24,5 +24,8 @@ export class StocksService {
   public getExchanges() {
     return this.http.get<any>('/angular/exchanges').publishReplay(1).refCount();
   }
+  public getVolumes() {
+    return this.http.get<any>('/bit/volumes').publishReplay(1).refCount();
+  }
 
 }

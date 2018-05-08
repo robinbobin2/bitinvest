@@ -17,10 +17,21 @@ import {StocksService} from '../stocks.service';
 export class ExchangesComponent implements OnInit {
   exchanges = [];
   count = 0;
+  volumes = []
+  exchange_volumes: Array<{'btc':number; 'usd': number}>;
   constructor(private http:HttpClient, private stockService:StocksService) { }
 
   ngOnInit() {
-  	this.stockService.getExchanges().subscribe(res => {this.exchanges = res; this.count = this.exchanges.length});
+    this.stockService.getExchanges().subscribe(res => {this.exchanges = res; this.count = this.exchanges.length});
+  	this.stockService.getVolumes().subscribe(res => {
+      this.volumes = res
+      for(let item of this.volumes) {
+        this.exchange_volumes[item.name] = {
+          'btc': item.btc,
+          'usd': item.usd
+        }
+      }
+    });
   }
 
 }

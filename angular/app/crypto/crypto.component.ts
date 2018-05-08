@@ -138,10 +138,12 @@ export class CryptoComponent implements OnInit, OnDestroy {
         }
         if(this.bid_ask.ask < item.ask) {
         this.bid_ask.ask = item.ask
+        localStorage.removeItem('ask')
         localStorage.setItem('ask', JSON.stringify(this.bid_ask.ask))
         }
         if(this.bid_ask.bid < item.bid) {
         this.bid_ask.bid = item.bid
+        localStorage.removeItem('bid')
         localStorage.setItem('bid', JSON.stringify(this.bid_ask.bid))
         }
 
