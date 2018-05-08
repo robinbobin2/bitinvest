@@ -198,6 +198,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.animtype = '';
 
       if(this.dataUsd.now != response[symbol+'/USDT'].now) {
+        
         this.diff = response[symbol+'/USDT'].now-this.dataUsd.now;
 
         if(this.dataUsd.now > response[symbol+'/USDT'].now) {
