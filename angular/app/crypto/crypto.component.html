@@ -103,7 +103,7 @@
                         <span class="growth-green" [ngStyle]="{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s', 'color': 'black'}">{{stock.percent | number:'1.0-3'}}%</span>
                       </td>
                       <td>
-                        <span class="updated">{{stock.time | date}}</span>
+                        <span class="updated">{{stock.time | date:'shortDate':'mediumTime'}}</span>
                       </td>
                     </tr>
                     
