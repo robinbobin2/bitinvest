@@ -5027,12 +5027,12 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
       0%   {color: green;}
       100%  {color: #000;}
     }
-@keyframes redcolor /* Safari and Chrome - necessary duplicate */
+@keyframes redcolor 
     {
       0%   {color: red !important;}
       100%  {color:#000 !important;}
     }
-    @-webkit-keyframes redcolor /* Safari and Chrome - necessary duplicate */
+    @-webkit-keyframes redcolor 
     {
       0%   {color: red !important;}
       100%  {color:#000 !important;}
