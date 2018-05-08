@@ -129,6 +129,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
           this.stocks[_i].percent = response[_i].percent
           this.stocks[_i].bid = response[_i].bid
           this.stocks[_i].ask = response[_i].ask
+          this.stocks[_i].time = response[_i].time
           this.stocks[_i].volume = response[_i].volume
         } else if(this.stocks[_i].value < response[_i].value) {
           this.animstock[_i] = 'redcolor';
@@ -136,6 +137,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
           this.stocks[_i].value = response[_i].value
           this.stocks[_i].bid = response[_i].bid
           this.stocks[_i].ask = response[_i].ask
+          this.stocks[_i].time = response[_i].time
           this.stocks[_i].volume = response[_i].volume
 
         }
