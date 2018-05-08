@@ -68,7 +68,7 @@
                   <thead>
                     <tr>
                       <th width="23%"><span>Биржа</span></th>
-                      <th width="10%"><span>Стоимост</span></th>
+                      <th width="10%"><span>Стоимость</span></th>
                       <th width="10%"><span>Спрос</span></th>
                       <th width="15%"><span>Предложение</span></th>
                       <th width="15%"><span>Объем за 24ч. (BTC)</span></th>
@@ -85,7 +85,8 @@
                         </a>
                       </td>
                       <td>
-                        <span class="cost" [ngStyle]="{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s'  }">${{stock.value | number:'1.0-1'}}</span>
+                        <span class="cost" 
+                        [ngStyle]="{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s'}">${{stock.value | number:'1.0-1'}}</span>
                       </td>
                       <td>
                         <span class="demand" *ngIf="stock.ask">${{stock.ask | number:'1.0-1'}}</span>
@@ -99,10 +100,10 @@
                         <span class="amount">{{stock.volume | number:'1.0-2'}}</span>
                       </td>
                       <td>
-                        <span [ngStyle]="{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s'>${{stock.percent | number:'1.0-3'}}%</span>
+                        <span [ngStyle]="{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s'}>${{stock.percent | number:'1.0-3'}}%</span>
                       </td>
                       <td>
-                        <span class="updated">{{stock | date:mediumTime}}</span>
+                        <span class="updated">{{stock | date:'mediumTime'}}</span>
                       </td>
                     </tr>
                     
