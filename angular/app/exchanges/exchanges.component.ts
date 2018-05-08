@@ -18,7 +18,12 @@ export class ExchangesComponent implements OnInit {
   exchanges = [];
   count = 0;
   volumes = []
-  exchange_volumes: Array<{'btc':number; 'usd': number}>;
+  exchange_volumes: {
+    'key': {
+      'btc': number;
+      'usd': number;
+    }
+  };
   constructor(private http:HttpClient, private stockService:StocksService) { }
 
   ngOnInit() {
