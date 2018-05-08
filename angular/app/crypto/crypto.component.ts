@@ -81,6 +81,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
   animtype = '';
   animtypebg = '';
   diff = 0;
+  volume = 0;
   constructor(private http:HttpClient,private stocksService:StocksService,
     private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
@@ -98,6 +99,13 @@ export class CryptoComponent implements OnInit, OnDestroy {
     if(localStorage.getItem(symbol+'USD stocks')) {
       this.stocks = JSON.parse(localStorage.getItem(symbol+'USD stocks'));
       this.load = false;
+      if(this.volume === 0) {
+        
+        for(let item of this.stocks) {
+          this.volume = this.volume+item.volume;
+        }
+
+      }
 
     }
     this.stocksData = Observable.interval(1000).take(50).concatMap(()=>
@@ -107,7 +115,18 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.load = false;
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
       for(let item of this.stocks) {
+        if(this.volume === 0) {
         
+          for(let item of this.stocks) {
+            this.volume = this.volume+item.volume;
+          }
+          
+        } else {
+          this.volume = 0;
+          for(let item of this.stocks) {
+            this.volume = this.volume+item.volume;
+          }
+        }
         if(this.bid_ask.ask < item.ask) {
         this.bid_ask.ask = item.ask
         }

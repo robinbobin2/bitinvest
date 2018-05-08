@@ -29,7 +29,7 @@
           <p>Последнее обновление 1 сек. назад</p>
         </div>
         <ul>
-          <li><span>Объем за 24ч.</span><span class="black">{{dataUsd?.value | number:'1.0-1'}}</span></li>
+          <li><span>Объем за 24ч.</span><span class="black">{{volume | number:'1.0-1'}}</span></li>
           <li><span>Спрос / Предложение</span><span class="black">{{bid_ask.ask | number:'1.0-2'}} / {{bid_ask.bid | number:'1.0-2'}}</span></li>
           <li><span>Дневной диапазон</span><span><span class="red">{{dataUsd?.min | number:'1.0-1'}}</span> <span class="black">/</span> <span class="green">{{dataUsd?.max | number:'1.0-1'}}</span></span>
           </li>
