@@ -112,6 +112,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     this.stocksData = Observable.interval(1000).take(50).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USDT'))
     .map(response => {
+      this.animstock[_i] = '';
       for (var _i = 0; _i < this.stocks.length; ++_i) {
         if(this.stocks[_i].value > response[_i].value) {
           this.animstock[_i] = 'greencolor';
@@ -127,7 +128,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
           this.stocks[_i].bid = response[_i].bid
           this.stocks[_i].ask = response[_i].ask
           this.stocks[_i].volume = response[_i].volume
-          
+
         }
       }
       this.load = false;
