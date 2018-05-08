@@ -13,7 +13,6 @@ export interface CryptoData {
   min:number;
   max: number;
   value:number;
-  prev: number;
   week: number;
   day: number;
 
@@ -83,6 +82,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
   diff = 0;
   volume = 0;
   animstock = [];
+  prev = 0;
   constructor(private http:HttpClient,private stocksService:StocksService,
     private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
@@ -200,7 +200,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       if(this.dataUsd.now != response[symbol+'/USDT'].now) {
 
         this.diff = response[symbol+'/USDT'].now-this.dataUsd.now;
-        this.dataUsd.prev = this.dataUsd.now;
+        this.prev = this.dataUsd.now;
         if(this.dataUsd.now > response[symbol+'/USDT'].now) {
 
             this.animtype = 'redcolor';

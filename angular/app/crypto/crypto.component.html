@@ -23,8 +23,8 @@
         <div class="last-update">
           <div class="prices-wrap">
             <span class="price" [ngStyle]="{ 'animation': animtype+' 2s', '-webkit-animation': animtype+' 2s'  }">${{dataUsd?.now | number:'1.0-1'}}</span>
-            <span *ngIf="dataUsd.prev !== undefined" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.1-2'}}</span>
-            <span *ngIf="dataUsd.prev !== undefined" [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">{{countPercent(dataUsd.now, dataUsd.prev) | number:'1.2-3'}}%</span>
+            <span *ngIf="prev !== 0" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.1-2'}}</span>
+            <span *ngIf="prev !== 0" [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">{{countPercent(dataUsd.now, dataUsd.prev) | number:'1.2-3'}}%</span>
           </div>
           <p>Последнее обновление 1 сек. назад</p>
         </div>
