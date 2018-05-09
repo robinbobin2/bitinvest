@@ -50,9 +50,7 @@ export class ExchangeComponent implements OnInit {
    });
 
      this.stockService.getCrypto().subscribe(crypto => {
-     	for(let item of crypto) {
-     		console.log(item)
-     	}
+     	console.log(crypto);
      	
 
      });
