@@ -39,7 +39,7 @@
           <li><a href="#general">Общее</a></li>
           <li><a href="#coins">Доступные монеты ({{exchange.coins_count}})</a></li>
           <li><a href="#output">Способы вывода</a></li>
-          <li><a href="#exchanges-table">Доступные пары</a></li>
+          <li><a href="#exchanges-table">Доступные пары ({{count_pairs}})</a></li>
           <li><a href="#comment-block">Комментарии ({{commentcount}})</a></li>
           <li><a href="#news">Новости</a></li>
         </ul>
@@ -84,7 +84,7 @@
         </div>
         <div class="history-table exchanges-table" id="exchanges-table">
           <div class="history-title-block exchanges-title-block">
-            <h2>Доступные пары (0)</h2>
+            <h2>Доступные пары ({{count_pairs}})</h2>
             <form><input type="text" placeholder="Введите монету, например: BTC"></form>
             <span>Обновлено: 10.11.2017 в 12:45</span>
           </div>
@@ -99,24 +99,24 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let pair of pairs">
+              <tr *ngFor="let pair of pairs; let i = index" [ngClass]="i > 24 ? 'hidden'">
                 <td>
                   <span class="price">{{pair.currency}}</span>
                 </td>
                 <td>
-                  <span>0.000409</span>
+                  <span>{{pair.bid | number:'1.1-2'}}</span>
                 </td>
                 <td>
-                  <span class="green">+5,7%</span>
+                  <span [ngClass]="pair.percent > 0 ? 'green': 'red' ">{{pair.percent | number:'1.2-3'}}%</span>
                 </td>
                 <td>
-                  <span>12.2848</span>
+                  <span>{{pair.volume | number:'1.2-3'}}</span>
                 </td>
                 <td>
-                  <span class="green">+5,7%</span>
+                  <span [ngClass]="pair.value > 0 ? 'green': 'red' ">{{pair.value | number:'1.2-3'}}%</span>
                 </td>
               </tr>
               
             </tbody>
           </table>
-          
+          <a href="#" class="show-btn">Показать еще пары</a>

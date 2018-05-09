@@ -22,6 +22,7 @@ export class ExchangeComponent implements OnInit {
  pairs = [];
  Observable = Observable;
  stocks=[];
+ count_pairs = 0;
  constructor(private http:HttpClient, 
  	private stockService:StocksService, 
  	private router:Router, 
@@ -56,12 +57,12 @@ export class ExchangeComponent implements OnInit {
      	let keys = Object.keys(crypto);
      	for(let item of keys) {
 	     	this.stocks.push( 
-	     		this.stockService.getStocks(item).map(res => {
-	     			for(let result of res) {
-	     			if(result.name == this.name) {
-	     				this.pairs.push(result);
-	     				console.log(this.pairs);
-	     			}
+	     		this.stockService.getStocks(item).map(result => {
+	     			for(let res of result) {
+		     			if(res.name == this.name) {
+		     				this.pairs.push(res);
+		     				this.count_pairs = this.pairs.length;
+		     			}
 	     			}
 
 	     		})
@@ -69,7 +70,7 @@ export class ExchangeComponent implements OnInit {
      	}
      	Observable.from(this.stocks)
 		  .concatAll()
-		  .subscribe(() => console.log(this.pairs));
+		  .subscribe();
      	
 
      });
