@@ -68,7 +68,7 @@ export class ExchangeComponent implements OnInit {
      	}
      	Observable.from(this.stocks)
 		  .concatAll()
-		  .subscribe();
+		  .subscribe(x => console.log(x));
      	
 
      });

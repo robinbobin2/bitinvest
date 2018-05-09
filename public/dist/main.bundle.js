@@ -2926,7 +2926,7 @@ var ExchangeComponent = (function () {
             }
             __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].from(_this.stocks)
                 .concatAll()
-                .subscribe();
+                .subscribe(function (x) { return console.log(x); });
         });
     };
     ExchangeComponent.prototype.submitComment = function (form, post_id, type) {
