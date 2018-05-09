@@ -2918,7 +2918,13 @@ var ExchangeComponent = (function () {
             for (var _i = 0, keys_1 = keys; _i < keys_1.length; _i++) {
                 var item = keys_1[_i];
                 _this.stocks.push(_this.stockService.getStocks(item).map(function (res) {
-                    _this.pairs.push(res);
+                    for (var _i = 0, res_1 = res; _i < res_1.length; _i++) {
+                        var item_1 = res_1[_i];
+                        if (item_1.name == _this.name) {
+                            _this.pairs.push(item_1);
+                            console.log(_this.pairs);
+                        }
+                    }
                 }));
             }
             __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].from(_this.stocks)
