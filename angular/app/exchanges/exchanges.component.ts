@@ -18,6 +18,7 @@ export class ExchangesComponent implements OnInit {
   count = 0;
   volumes = []
   exchange_volumes = [];
+  language = '';
   constructor(private http:HttpClient, private stockService:StocksService) { }
 
   ngOnInit() {
