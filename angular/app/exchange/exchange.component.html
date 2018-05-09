@@ -1,0 +1,258 @@
+<section class="ico-wrap exchanges-card-wrap">
+    <div class="wrapper">
+      <div class="ico-card-content">
+        <a [routerLink]="['/exchanges']" class="return"><span>&#60;</span>Вернуться к списку бирж</a>
+        <div class="project-block">
+          <div class="img-wrap">
+            <img src="/images/{{exchange.logo}}" alt="">
+          </div>
+          <div class="text-wrap">
+            <div class="text-info">
+              <p class="project-title">Биржа {{exchange.name}}</p>
+            </div>
+            <div class="project-info-content">
+              <!-- <div class="info">
+                <div class="rating-wrap">
+                  <fieldset class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                  </fieldset>
+                  <span class="number">135</span>
+                </div>
+                <p class="last-updated">Для того чтобы оставить оценку бирже, Вам необходимо авторзоваться или зарегистрироваться.</p>
+              </div> -->
+              <div class="progress-bar">
+                <a href="#follow-popup" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="card-menu">
+          <li><a href="#general">Общее</a></li>
+          <li><a href="#coins">Доступные монеты ({{echange.coins_count}})</a></li>
+          <li><a href="#output">Способы вывода</a></li>
+          <li><a href="#exchanges-table">Доступные пары</a></li>
+          <li><a href="#comment-block">Комментарии ({{commentcount}})</a></li>
+          <li><a href="#news">Новости</a></li>
+        </ul>
+        <div class="basic-information" id="general">
+          <div class="basic-information-wrap">
+            <div class="left">
+              <h3 class="ico-title">Информация о бирже</h3>
+              <ul>
+                <li><span class="gray">Официальный сайт:</span> <span class="black"><a href="{{exchange.logo}}">{{exchange.website}}</a></span></li>
+                <li><span class="gray">Рефферальная система:</span><span class="black">{{exchange.ref}}</span> </li>
+                <li><span class="gray">Год основания биржи:</span><span class="black">{{exchange.year}}</span></li>
+                <li><span class="gray">Язык интерфейса:</span>
+                  <span class="black">
+                    <p>{{exchange.languages}}</p>
+                    <!-- <div class="img-wrap-small">
+                      <img src="img/rus-icon.png" alt="">
+                      <img src="img/usa-icon.png" alt="">
+                      <img src="img/usa-icon.png" alt="">
+                      <img src="img/usa-icon.png" alt="">
+                      <img src="img/usa-icon.png" alt="">
+                    </div> -->
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-wrap">
+            <p>{{exchange.desc}}</p>
+          </div>
+        </div>
+        <div class="distribution-funds" id="coins">
+          <h3 class="ico-title">Доступные монеты ({{exchange.coins_count}})</h3>
+          <ul>
+            <li *ngFor="let coin of exchange.coins">
+              <div class="img-wrap"><img src="img/coins-icon.png" alt=""></div><span>{{coin.name}} ({{coin.symbol}})</span></li>
+            
+          </ul>
+          <div class="footer-text" id="output">
+            <h3 class="ico-title">Способы вывода средств</h3>
+            <p>{{exchange.exchange}}</p>
+          </div>
+        </div>
+        <div class="history-table exchanges-table" id="exchanges-table">
+          <div class="history-title-block exchanges-title-block">
+            <h2>Доступные пары (0)</h2>
+            <form><input type="text" placeholder="Введите монету, например: BTC"></form>
+            <span>Обновлено: 10.11.2017 в 12:45</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th width="22%"><span>Пара</span></th>
+                <th width="15%"><span>Курс</span></th>
+                <th width="16%"><span>Рост за 24ч.</span></th>
+                <th width="18%"><span>Объем BTC за 24ч.</span></th>
+                <th width="29%"><span>Рост объема за 24 ч.</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pair of pairs">
+                <td>
+                  <span class="price">{{pair.currency}}</span>
+                </td>
+                <td>
+                  <span>0.000409</span>
+                </td>
+                <td>
+                  <span class="green">+5,7%</span>
+                </td>
+                <td>
+                  <span>12.2848</span>
+                </td>
+                <td>
+                  <span class="green">+5,7%</span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <a href="#" class="show-btn">Показать еще пары</a>
+        </div>
+        <div class="comment-block" id="comment-block">
+                    <div class="comment-top" *ngIf="user.id != undefined">
+                                <h3>Добавить новый комментарий</h3>
+                                <form (ngSubmit)="submitComment(f, exchange.id, 'App\\Stock')" #f="ngForm">
+                                    <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
+                                    <button type="submit">Добавить</button>
+                                </form>
+                    </div>
+                    <div class="comment-top" *ngIf="user.id == undefined">
+                        <h3>Комментарии ({{news.comments_count}})</h3>
+                        <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
+                    </div>
+                    
+                    <div *ngIf="user.id != undefined" style="background: none !important; border: none !important" class="comment-top">
+                        <h3 >Комментарии ({{commentcount}})</h3>
+                        <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
+
+                    
+                    </div>
+                    <ul class="comment-items">
+                        <!--  -->
+                        <li *ngFor="let item of comments">
+                            <div class="left">
+                                <div class="info">
+                                    <div class="img-wrap">
+                                        <img src="{{item.photo}}" style="max-width: 35px; height: auto;" alt="">
+                                    </div>
+                                    <div class="text-wrap">
+                                        <p>{{item.author}}</p>
+                                        <span>Добавлен {{item.created_at}}</span>
+                                    </div>
+                                </div>
+                                <p class="comment-text">{{item.body}}</p>
+                            </div>
+                            <div class="right">
+                                <div class="img-wrap"></div>
+                                <div class="btn-block">
+                                    <span class="number-green">0</span>
+                                    <div class="buttons">
+                                        <a href="#" class="plus">+</a>
+                                        <a href="#" class="minus">-</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+          <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
+        </div>
+        <div class="news-block" id="news">
+          <h2>#Bitinfex новости по тегу</h2>
+          <div class="news-wrap">
+            <div class="news">
+              <div class="img" style="background-image: url(img/list-img1.jpg)">
+                <a href="#" class="news-btn">Bitcoin</a>
+                <div class="info">
+                  <span class="date">26 Окт 2017 в 11:39</span>
+                  <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>1280</span>
+                  <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a>
+                </div>
+              </div>
+              <div class="text">
+                <h3>
+                  <a href="#">Платформа для управления <br> криптовалютными...</a>
+                </h3>
+              </div>
+            </div>
+            <div class="news">
+              <div class="img" style="background-image: url(img/list-img1.jpg)">
+                <a href="#" class="news-btn">Bitcoin</a>
+                <div class="info">
+                  <span class="date">26 Окт 2017 в 11:39</span>
+                  <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>1280</span>
+                  <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a>
+                </div>
+              </div>
+              <div class="text">
+                <h3>
+                  <a href="#">Платформа для управления <br> криптовалютными...</a>
+                </h3>
+              </div>
+            </div>
+            <div class="news">
+              <div class="img" style="background-image: url(img/list-img1.jpg)">
+                <a href="#" class="news-btn">Bitcoin</a>
+                <div class="info">
+                  <span class="date">26 Окт 2017 в 11:39</span>
+                  <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>1280</span>
+                  <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a>
+                </div>
+              </div>
+              <div class="text">
+                <h3>
+                  <a href="#">Платформа для управления <br> криптовалютными...</a>
+                </h3>
+              </div>
+            </div>
+            <div class="news">
+              <div class="img" style="background-image: url(img/list-img1.jpg)">
+                <a href="#" class="news-btn">Bitcoin</a>
+                <div class="info">
+                  <span class="date">26 Окт 2017 в 11:39</span>
+                  <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>1280</span>
+                  <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a>
+                </div>
+              </div>
+              <div class="text">
+                <h3>
+                  <a href="#">Платформа для управления <br> криптовалютными...</a>
+                </h3>
+              </div>
+            </div>
+            <div class="news">
+              <div class="img" style="background-image: url(img/list-img1.jpg)">
+                <a href="#" class="news-btn">Bitcoin</a>
+                <div class="info">
+                  <span class="date">26 Окт 2017 в 11:39</span>
+                  <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>1280</span>
+                  <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a>
+                </div>
+              </div>
+              <div class="text">
+                <h3>
+                  <a href="#">Платформа для управления <br> криптовалютными...</a>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="sidebar">
+      <app-sidebar></app-sidebar>
+      </aside>
+    </div>
+  </section>
