@@ -2890,6 +2890,8 @@ var ExchangeComponent = (function () {
         this.comments = [];
         this.commentcount = 0;
         this.pairs = [];
+        this.Observable = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */];
+        this.stocks = [];
         this.name = route.snapshot.params['name'];
     }
     ExchangeComponent.prototype.ngOnInit = function () {
@@ -2911,25 +2913,20 @@ var ExchangeComponent = (function () {
                 role_id: response.role_id
             };
         });
-        var carNumbers = [1, 2, 3];
-        var observables = this.stockService.getCrypto().map(function (crypto) { return _this.stockService.getStocks(crypto); });
-        // forkJoin the array/collection of observables
-        var source = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].forkJoin(observables);
-        // subscribe and sort combined array/collection prior to additional processing
-        source.subscribe(function (x) { return console.log(x); });
-        // this.stockService.getCrypto().subscribe(crypto => {
-        // 	let keys = Object.keys(crypto);
-        // 	for(let item of keys) {
-        // 		this.stockService.getStocks(item).flatMap(res=> {
-        // 			console.log(res);
-        // 		})
-        //   .subscribe(res=> {
-        // 			if(res.name == this.name) {
-        // 				this.pairs.push(res);
-        // 			}
-        // 		});
-        // 	}
-        // });
+        this.stockService.getCrypto().subscribe(function (crypto) {
+            var keys = Object.keys(crypto);
+            for (var _i = 0, keys_1 = keys; _i < keys_1.length; _i++) {
+                var item = keys_1[_i];
+                _this.stocks.push(_this.stockService.getStocks(item).map(function (res) {
+                    if (res.name == _this.name) {
+                        _this.pairs.push(res);
+                    }
+                }));
+            }
+            __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].from(_this.stocks)
+                .concatAll()
+                .subscribe(function (x) { return console.log(x); });
+        });
     };
     ExchangeComponent.prototype.submitComment = function (form, post_id, type) {
         var _this = this;

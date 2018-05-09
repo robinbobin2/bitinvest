@@ -20,7 +20,8 @@ export class ExchangeComponent implements OnInit {
  commentcount = 0;
  user: any;
  pairs = [];
-
+ Observable = Observable;
+ stocks=[];
  constructor(private http:HttpClient, 
  	private stockService:StocksService, 
  	private router:Router, 
@@ -28,6 +29,7 @@ export class ExchangeComponent implements OnInit {
  	this.name = route.snapshot.params['name'];
  	
  }
+
 
   ngOnInit() {
   	console.log(this.name)
@@ -49,30 +51,26 @@ export class ExchangeComponent implements OnInit {
 
         };
    });
-     let carNumbers = [1, 2, 3];
-		let observables = this.stockService.getCrypto().map(crypto => this.stockService.getStocks(crypto));
 
-		// forkJoin the array/collection of observables
-		let source = Observable.forkJoin(observables);
+     this.stockService.getCrypto().subscribe(crypto => {
+     	let keys = Object.keys(crypto);
+     	for(let item of keys) {
+	     	this.stocks.push( 
+	     		this.stockService.getStocks(item).map(res => {
 
-		// subscribe and sort combined array/collection prior to additional processing
-		source.subscribe(x => console.log(x));
-     // this.stockService.getCrypto().subscribe(crypto => {
-     // 	let keys = Object.keys(crypto);
-     // 	for(let item of keys) {
-     // 		this.stockService.getStocks(item).flatMap(res=> {
-     // 			console.log(res);
-     // 		})
-     //   .subscribe(res=> {
-     // 			if(res.name == this.name) {
-     // 				this.pairs.push(res);
-     // 			}
+	     			if(res.name == this.name) {
+	     				this.pairs.push(res);
+	     			}
 
-     // 		});
-     // 	}
+	     		})
+	     	);
+     	}
+     	Observable.from(this.stocks)
+		  .concatAll()
+		  .subscribe((x)=>console.log(x));
      	
 
-     // });
+     });
   }
 
   submitComment(form: NgForm, post_id, type) {
