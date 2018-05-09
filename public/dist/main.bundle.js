@@ -2861,9 +2861,10 @@ module.exports = ".comment-block {\n  margin-top: 30px; }\n\n.comment-block .com
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExchangeComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2873,6 +2874,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 // import { interval } from 'rxjs/Observable/interval';
 
@@ -2887,6 +2889,7 @@ var ExchangeComponent = (function () {
         this.name = '';
         this.comments = [];
         this.commentcount = 0;
+        this.pairs = [];
         this.name = route.snapshot.params['name'];
     }
     ExchangeComponent.prototype.ngOnInit = function () {
@@ -2910,15 +2913,23 @@ var ExchangeComponent = (function () {
         });
         this.stockService.getCrypto().subscribe(function (crypto) {
             var keys = Object.keys(crypto);
+            var _loop_1 = function (item) {
+                __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(10000).concatMap(function () { return _this.stockService.getStocks(item); })
+                    .subscribe(function (res) {
+                    if (res.name == _this.name) {
+                        _this.pairs.push(res);
+                    }
+                });
+            };
             for (var _i = 0, keys_1 = keys; _i < keys_1.length; _i++) {
                 var item = keys_1[_i];
-                _this.stockService.getStocks(item).subscribe(function (res) { return console.log(res); });
+                _loop_1(item);
             }
         });
     };
     ExchangeComponent.prototype.submitComment = function (form, post_id, type) {
         var _this = this;
-        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
+        var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
         this.http.post('/storecomment', {
             'post_id': post_id,
             'body': form.value.body,
@@ -2944,9 +2955,9 @@ ExchangeComponent = __decorate([
         selector: 'app-exchange',
         template: __webpack_require__("./angular/app/exchange/exchange.component.html"),
         styles: [__webpack_require__("./angular/app/exchange/exchange.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
 ], ExchangeComponent);
 
 var _a, _b, _c, _d;

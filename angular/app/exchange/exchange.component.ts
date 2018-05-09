@@ -19,6 +19,7 @@ export class ExchangeComponent implements OnInit {
  comments = [];
  commentcount = 0;
  user: any;
+ pairs = [];
 
  constructor(private http:HttpClient, 
  	private stockService:StocksService, 
@@ -52,7 +53,13 @@ export class ExchangeComponent implements OnInit {
      this.stockService.getCrypto().subscribe(crypto => {
      	let keys = Object.keys(crypto);
      	for(let item of keys) {
-     		this.stockService.getStocks(item).subscribe(res => console.log(res));
+     		Observable.interval(10000).concatMap(()=>this.stockService.getStocks(item))
+       .subscribe(res=> {
+     			if(res.name == this.name) {
+     				this.pairs.push(res);
+     			}
+
+     		});
      	}
      	
 
