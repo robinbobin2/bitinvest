@@ -49,21 +49,30 @@ export class ExchangeComponent implements OnInit {
 
         };
    });
+     let carNumbers = [1, 2, 3];
+		let observables = this.stockService.getCrypto().map(crypto => this.stockService.getStocks(crypto));
 
-     this.stockService.getCrypto().subscribe(crypto => {
-     	let keys = Object.keys(crypto);
-     	for(let item of keys) {
-     		Observable.interval(10000).concatMap(()=>this.stockService.getStocks(item))
-       .subscribe(res=> {
-     			if(res.name == this.name) {
-     				this.pairs.push(res);
-     			}
+		// forkJoin the array/collection of observables
+		let source = Observable.forkJoin(observables);
 
-     		});
-     	}
+		// subscribe and sort combined array/collection prior to additional processing
+		source.subscribe(x => console.log(x));
+     // this.stockService.getCrypto().subscribe(crypto => {
+     // 	let keys = Object.keys(crypto);
+     // 	for(let item of keys) {
+     // 		this.stockService.getStocks(item).flatMap(res=> {
+     // 			console.log(res);
+     // 		})
+     //   .subscribe(res=> {
+     // 			if(res.name == this.name) {
+     // 				this.pairs.push(res);
+     // 			}
+
+     // 		});
+     // 	}
      	
 
-     });
+     // });
   }
 
   submitComment(form: NgForm, post_id, type) {
