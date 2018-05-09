@@ -2920,10 +2920,8 @@ var ExchangeComponent = (function () {
                 _this.stocks.push(_this.stockService.getStocks(item).map(function (res) {
                     for (var _i = 0, res_1 = res; _i < res_1.length; _i++) {
                         var result = res_1[_i];
-                        if (result.currency == _this.name) {
-                            _this.pairs.push(result);
-                            console.log(_this.pairs);
-                        }
+                        _this.pairs.push(result);
+                        console.log(_this.pairs);
                     }
                 }));
             }

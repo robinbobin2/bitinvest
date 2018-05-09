@@ -58,10 +58,8 @@ export class ExchangeComponent implements OnInit {
 	     	this.stocks.push( 
 	     		this.stockService.getStocks(item).map(res => {
 	     			for(let result of res) {
-	     			if(result.currency == this.name) {
 	     				this.pairs.push(result);
 	     				console.log(this.pairs);
-	     			}
 	     			}
 
 	     		})
