@@ -2981,7 +2981,7 @@ module.exports = "<section class=\"crypto-active exchanges\">\n    <div class=\"
 /***/ "./angular/app/exchanges/exchanges.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".select-wrapper1 {\n  width: 144px;\n  position: relative;\n  margin-right: 14px; }\n  .select-wrapper1 .select {\n    border-radius: 18px;\n    background: #fff;\n    height: 40px;\n    padding: 0 18px 0 13px;\n    cursor: pointer;\n    -webkit-box-shadow: 0px 5px 30px 0px rgba(0, 0, 1, 0.1);\n    box-shadow: 0px 5px 30px 0px rgba(0, 0, 1, 0.1); }\n  .select-wrapper1 .select .text {\n      margin: 0;\n      margin-right: 45px;\n      color: #666;\n      font-size: 14px; }\n  .select-wrapper1 .select.open {\n      border-bottom-left-radius: 0;\n      border-bottom-right-radius: 0; }\n  .select-wrapper1 .select.open > a {\n        -webkit-transform: rotate(-180deg);\n                transform: rotate(-180deg); }\n  .select-wrapper1 .select-items {\n    background: #fff;\n    position: absolute;\n    left: 0;\n    top: 40px;\n    width: 100%;\n    border-bottom-left-radius: 18px;\n    border-bottom-right-radius: 18px;\n    display: none; }\n  .select-wrapper1 .select-items li {\n      color: #666;\n      font-size: 14px;\n      padding: 10px 13px;\n      background: #fff;\n      display: block; }\n  .select-wrapper1 .select-items li:hover {\n        background: #dbdbdb; }\n  .select-wrapper1 .select-items.open {\n      display: block; }\n  .open {\n  display: block; }\n"
 
 /***/ }),
 
