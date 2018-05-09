@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CryptoStat;
 use App\Stock;
 use Illuminate\Http\Request;
 
@@ -72,6 +73,10 @@ class StocksController extends Controller
      */
     public function edit($id)
     {
+        $coins = CryptoStat::all();
+        $stock = Stock::findOrFail($id);
+
+        return view('admin.stocks.edit', compact('coins', 'stock'));
         //
     }
 
@@ -84,7 +89,11 @@ class StocksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $stock = Stock::findOrFail($id);
+        
+        $stock->coins()->sync($request->coins);
+        return redirect('admin/exchanges')
+        ->with('message', 'Операция прошла успешно');
     }
 
     /**

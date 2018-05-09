@@ -2,7 +2,7 @@
     <div class="wrapper">
       <div class="select-block">
       <h1 class="table-title-big">Биржи<span>{{count}}</span><a href="balant-mining-filter.html"><img src="img/mining-icon.png" alt=""></a></h1>
-        <!-- <div class="filters">
+        <div class="filters">
           <div class="select-wrapper">
             <div class="select">
               <span class="text">Пара: Все</span>
@@ -36,7 +36,7 @@
               <li><a href="#">Страна: Любая</a></li>
             </ul>
           </div>
-        </div> -->
+        </div>
       </div>
       <div class="table-wrap">
         <table class="table crypto-table">
@@ -94,10 +94,10 @@
                 </a>
               </td>
               <td>
-                <span class="amount-bold">{{exchange_volumes[item.name].usd}}</span>
+                <span class="amount-bold">{{exchange_volumes[item.name].usd | number:'1.0-3'}}</span>
               </td>
               <td>
-                <span>{{exchange_volumes[item.name].btc}}</span>
+                <span>{{exchange_volumes[item.name].btc | number:'1.0-3'}}</span>
               </td>
               <td>
                 <span> </span>
@@ -127,7 +127,7 @@
                   </div> -->
                   <p class="no-ratings">Оценок еще нет</p>
                   <div class="buttons">
-                    <button class="right">></button>
+                    <button class="right" [routerLink]="['/exchange', item.name]">></button>
                     <button class="plus">+</button>
                   </div>
                 </div>

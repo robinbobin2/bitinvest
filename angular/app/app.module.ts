@@ -58,6 +58,7 @@ import { StriphtmlPipe } from './striphtml.pipe';
 import { ExcerptPipe } from './excerpt.pipe';
 import {SidebarResolverService} from './sidebar-resolver.service';
 import { ExchangesComponent } from './exchanges/exchanges.component';
+import { ExchangeComponent } from './exchange/exchange.component';
 
 
 const appRoutes: Routes = [
@@ -178,6 +179,9 @@ const appRoutes: Routes = [
   {
       path:'exchanges', component:ExchangesComponent
   },
+  {
+      path:'exchange/:name', component:ExchangeComponent
+  },
     
 ];
 @NgModule({
@@ -229,7 +233,8 @@ const appRoutes: Routes = [
     SafeHtmlPipe,
     StriphtmlPipe,
     ExcerptPipe,
-    ExchangesComponent
+    ExchangesComponent,
+    ExchangeComponent
   ],
   imports: [
     // BrowserAnimationsModule,

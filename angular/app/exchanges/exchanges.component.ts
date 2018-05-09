@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ElementRef } from '@angular/core';
-import { Http } from '@angular/http';
 import { OnChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
@@ -22,7 +21,13 @@ export class ExchangesComponent implements OnInit {
   constructor(private http:HttpClient, private stockService:StocksService) { }
 
   ngOnInit() {
-    this.stockService.getExchanges().subscribe(res => {this.exchanges = res; this.count = this.exchanges.length});
+    this.stockService.getExchanges().subscribe(res => {
+
+      this.exchanges = res; 
+      this.count = this.exchanges.length;
+      console.log(this.count);
+
+    });
   	this.stockService.getVolumes().subscribe(res => {
       this.volumes = res
       for(let item of this.volumes) {

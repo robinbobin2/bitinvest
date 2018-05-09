@@ -697,6 +697,7 @@ var _a, _b, _c, _d;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__excerpt_pipe__ = __webpack_require__("./angular/app/excerpt.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__ = __webpack_require__("./angular/app/sidebar-resolver.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__exchanges_exchanges_component__ = __webpack_require__("./angular/app/exchanges/exchanges.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__exchange_exchange_component__ = __webpack_require__("./angular/app/exchange/exchange.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -714,6 +715,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // import { MarketsComponent } from './markets/markets.component';
+
 
 
 
@@ -873,6 +875,9 @@ var appRoutes = [
     {
         path: 'exchanges', component: __WEBPACK_IMPORTED_MODULE_56__exchanges_exchanges_component__["a" /* ExchangesComponent */]
     },
+    {
+        path: 'exchange/:name', component: __WEBPACK_IMPORTED_MODULE_57__exchange_exchange_component__["a" /* ExchangeComponent */]
+    },
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -929,7 +934,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_52__safe_html_pipe__["a" /* SafeHtmlPipe */],
             __WEBPACK_IMPORTED_MODULE_53__striphtml_pipe__["a" /* StriphtmlPipe */],
             __WEBPACK_IMPORTED_MODULE_54__excerpt_pipe__["a" /* ExcerptPipe */],
-            __WEBPACK_IMPORTED_MODULE_56__exchanges_exchanges_component__["a" /* ExchangesComponent */]
+            __WEBPACK_IMPORTED_MODULE_56__exchanges_exchanges_component__["a" /* ExchangesComponent */],
+            __WEBPACK_IMPORTED_MODULE_57__exchange_exchange_component__["a" /* ExchangeComponent */]
         ],
         imports: [
             // BrowserAnimationsModule,
@@ -2835,10 +2841,122 @@ ExcerptPipe = __decorate([
 
 /***/ }),
 
+/***/ "./angular/app/exchange/exchange.component.html":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./angular/app/exchange/exchange.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ".comment-block {\n  margin-top: 30px; }\n\n.comment-block .comment-top {\n  border-bottom: 1px solid #e3e3e3;\n  background: #fff;\n  padding: 20px 19px 19px 20px; }\n\n.comment-block .comment-top h3 {\n  font-size: 18px;\n  font-weight: bold;\n  color: #000;\n  margin-bottom: 10px; }\n\n.comment-block .comment-top p {\n  font-size: 14px;\n  font-weight: bold;\n  color: #fa5252; }\n\n.comment-block .comment-top p a {\n  color: #fa5252;\n  text-decoration: underline; }\n\n.comment-block .comment-items {\n  padding: 0 22px 0 18px; }\n\n.comment-block .comment-items li {\n  padding: 20px 0;\n  border-bottom: 1px solid #a4a4a4;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -ms-flex-pack: justify;\n  justify-content: space-between;\n  width: 100%; }\n\n.comment-block .comment-items li:last-child {\n  border: none; }\n\n.comment-block .comment-items li.hidden {\n  display: none; }\n\n.comment-block .comment-items li .left .info {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  margin-bottom: 8px; }\n\n.comment-block .comment-items li .left .info .img-wrap {\n  width: 35px;\n  height: 35px;\n  margin-right: 12px; }\n\n.comment-block .comment-items li .left .info .img-wrap img {\n  width: 100%;\n  border-radius: 50%; }\n\n.comment-block .comment-items li .left .info .text-wrap p {\n  font-size: 11px;\n  font-weight: bold;\n  color: #000; }\n\n.comment-block .comment-items li .left .info .text-wrap span {\n  display: inline-block;\n  font-weight: bold;\n  font-size: 11px;\n  color: #777; }\n\n.comment-block .comment-items li .left .comment-text {\n  color: #000;\n  font-size: 16px; }\n\n.comment-block .comment-items li .right {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  -webkit-box-pack: justify;\n  -ms-flex-pack: justify;\n  justify-content: space-between;\n  min-width: 78px; }\n\n.comment-block .comment-items li .right .btn-block {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center; }\n\n.comment-block .comment-items li .right .btn-block .number-green {\n  font-size: 24px;\n  color: #8cc863; }\n\n.comment-block .comment-items li .right .btn-block .number-red {\n  font-size: 24px;\n  color: #fa5252; }\n\n.comment-block .comment-items li .right .btn-block .buttons {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  margin-left: 9px; }\n\n.comment-block .comment-items li .right .btn-block .buttons a {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  -webkit-box-pack: center;\n  -ms-flex-pack: center;\n  justify-content: center; }\n\n.comment-block .comment-items li .right .btn-block .buttons .plus {\n  margin-bottom: 4px;\n  color: #fff;\n  font-size: 18px;\n  background: #8cc863; }\n\n.comment-block .comment-items li .right .btn-block .buttons .plus:hover {\n  background: #c0deac; }\n\n.comment-block .comment-items li .right .btn-block .buttons .minus {\n  color: #fff;\n  font-size: 18px;\n  background: #fa5252; }\n\n.comment-block .comment-items li .right .btn-block .buttons .minus:hover {\n  background: #f8a3a3; }\n\n.comment-block .show-comments {\n  width: 100%;\n  height: 42px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  -webkit-box-pack: center;\n  -ms-flex-pack: center;\n  justify-content: center;\n  font-weight: bold;\n  font-size: 14px;\n  margin-top: -1px;\n  color: #383c46;\n  background: #c1c1c1; }\n\n.comment-block .show-comments:hover {\n  background: #383c46;\n  color: #fff; }\n\n.comment-block .total-comments {\n  font-size: 18px;\n  font-weight: bold;\n  color: #000;\n  margin-left: 18px;\n  margin-top: 24px; }\n\n.comment-wrap {\n  margin-top: -15px;\n  margin-bottom: 25px; }\n\n.comment-items li:last-child {\n  border: none; }\n\n.comment-top {\n  padding: 18px 25px 21px 15px; }\n\n.comment-top form textarea {\n  height: 54px;\n  border: 1px solid #e4e4e4;\n  width: 100%;\n  resize: none;\n  font-size: 14px;\n  color: #949494;\n  padding: 10px;\n  margin-bottom: 10px; }\n\n.comment-top form textarea::-webkit-input-placeholder {\n  color: #949494; }\n\n.comment-top form textarea::-moz-placeholder {\n  color: #949494; }\n\n.comment-top form textarea:-ms-input-placeholder {\n  color: #949494; }\n\n.comment-top form textarea:-moz-placeholder {\n  color: #949494; }\n\n.comment-top form textarea:focus {\n  outline: none; }\n\n.comment-top form button {\n  height: 34px;\n  background: #f58c1b;\n  color: #fff;\n  font-size: 14px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  padding: 0px 17px;\n  border: none;\n  font-weight: bold; }\n\n.comment-block .comment-items {\n  padding: 0 22px 0 18px; }\n\n.comment-block .comment-items li {\n  padding: 20px 0;\n  border-bottom: 1px solid #a4a4a4;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n  -ms-flex-pack: justify;\n  justify-content: space-between;\n  width: 100%; }\n\n.comment-block .comment-items li:last-child {\n  border: none; }\n\n.comment-block .comment-items li.hidden {\n  display: none; }\n\n.comment-block .comment-items li .left .info {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  margin-bottom: 8px; }\n\n.comment-block .comment-items li .left .info .img-wrap {\n  width: 35px;\n  height: 35px;\n  margin-right: 12px; }\n\n.comment-block .comment-items li .left .info .img-wrap img {\n  width: 100%;\n  border-radius: 50%; }\n\n.comment-block .comment-items li .left .info .text-wrap p {\n  font-size: 11px;\n  font-weight: bold;\n  color: #000; }\n\n.comment-block .comment-items li .left .info .text-wrap span {\n  display: inline-block;\n  font-weight: bold;\n  font-size: 11px;\n  color: #777; }\n\n.comment-block .comment-items li .left .comment-text {\n  color: #000;\n  font-size: 16px; }\n\n.comment-block .comment-items li .right {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  -webkit-box-pack: justify;\n  -ms-flex-pack: justify;\n  justify-content: space-between;\n  min-width: 78px; }\n\n.comment-block .comment-items li .right .btn-block {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center; }\n\n.comment-block .comment-items li .right .btn-block .number-green {\n  font-size: 24px;\n  color: #8cc863; }\n\n.comment-block .comment-items li .right .btn-block .number-red {\n  font-size: 24px;\n  color: #fa5252; }\n\n.comment-block .comment-items li .right .btn-block .buttons {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  margin-left: 9px; }\n\n.comment-block .comment-items li .right .btn-block .buttons a {\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  -webkit-box-pack: center;\n  -ms-flex-pack: center;\n  justify-content: center; }\n\n.comment-block .comment-items li .right .btn-block .buttons .plus {\n  margin-bottom: 4px;\n  color: #fff;\n  font-size: 18px;\n  background: #8cc863; }\n\n.comment-block .comment-items li .right .btn-block .buttons .plus:hover {\n  background: #c0deac; }\n\n.comment-block .comment-items li .right .btn-block .buttons .minus {\n  color: #fff;\n  font-size: 18px;\n  background: #fa5252; }\n\n.comment-block .comment-items li .right .btn-block .buttons .minus:hover {\n  background: #f8a3a3; }\n\n.comment-block .show-comments {\n  width: 100%;\n  height: 42px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -ms-flex-align: center;\n  align-items: center;\n  -webkit-box-pack: center;\n  -ms-flex-pack: center;\n  justify-content: center;\n  font-weight: bold;\n  font-size: 14px;\n  margin-top: -1px;\n  color: #383c46;\n  background: #c1c1c1; }\n\n.comment-block .show-comments:hover {\n  background: #383c46;\n  color: #fff; }\n\n.comment-block .total-comments {\n  font-size: 18px;\n  font-weight: bold;\n  color: #000;\n  margin-left: 18px;\n  margin-top: 24px; }\n\n.analytics-block .comment-block {\n  margin-top: 0;\n  margin-bottom: 28px;\n  border-top: 9px solid #e5e5e5;\n  border-bottom: 9px solid #e5e5e5; }\n\n.analytics-block .comment-block .comment-top {\n  border: none;\n  padding: 0;\n  padding-top: 28px;\n  background-color: transparent; }\n\n.analytics-block .comment-block .comment-items {\n  padding: 0;\n  padding-bottom: 8px; }\n\n.analytics-block .comment-block .comment-items li {\n  border: none; }\n\n.innertext {\n  margin-bottom: 20px; }\n\n.blockquote-block {\n  border: 3px solid #e5e5e5;\n  padding: 35px;\n  margin-bottom: 25px; }\n\n@media (max-width: 600px) {\n  .blockquote-block {\n    padding: 30px; } }\n\n.blockquote-block p {\n  text-align: center;\n  font-size: 24px;\n  color: #000;\n  line-height: 28px; }\n\n@media (max-width: 600px) {\n  .blockquote-block p {\n    font-size: 16px;\n    line-height: 20px; }\n  .blockquote-block p br {\n    display: none; } }\n\n@media (max-width: 600px) {\n  .blockquote-block p img {\n    position: absolute; }\n  .blockquote-block p img:first-child {\n    left: 25px; } }\n"
+
+/***/ }),
+
+/***/ "./angular/app/exchange/exchange.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExchangeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+// import { interval } from 'rxjs/Observable/interval';
+
+
+
+var ExchangeComponent = (function () {
+    function ExchangeComponent(http, stockService, router, route) {
+        this.http = http;
+        this.stockService = stockService;
+        this.router = router;
+        this.route = route;
+        this.name = '';
+        this.comments = [];
+        this.commentcount = 0;
+        this.name = route.snapshot.params['name'];
+    }
+    ExchangeComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        console.log(this.name);
+        this.stockService.getExchange(this.name).subscribe(function (res) {
+            _this.exchange = res;
+            _this.commentcount = _this.exchange.comments_count;
+            _this.comments = _this.exchange.comments;
+        });
+        var userpath = "/angular/user";
+        var userinfo = this.http.get(userpath);
+        userinfo.subscribe(function (response) {
+            _this.user = {
+                id: response.id,
+                name: response.name,
+                email: response.email,
+                photo_id: response.photo_id,
+                role_id: response.role_id
+            };
+        });
+        this.stockService.getCrypto().subscribe(function (crypto) {
+            for (var _i = 0, crypto_1 = crypto; _i < crypto_1.length; _i++) {
+                var item = crypto_1[_i];
+                console.log(item);
+            }
+        });
+    };
+    ExchangeComponent.prototype.submitComment = function (form, post_id, type) {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
+        this.http.post('/storecomment', {
+            'post_id': post_id,
+            'body': form.value.body,
+            'commentable_id': post_id,
+            'commentable_type': type
+        }, { headers: headers }).subscribe(function (response) {
+            _this.comments.unshift({
+                id: response['id'],
+                email: response['email'],
+                author: response['author'],
+                body: response['body'],
+                commentable_id: response['commentable_id'],
+                photo: response['photo']
+            });
+            _this.commentcount = _this.commentcount + 1;
+        }, function (error) { return console.log(error); });
+        form.reset();
+    };
+    return ExchangeComponent;
+}());
+ExchangeComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-exchange',
+        template: __webpack_require__("./angular/app/exchange/exchange.component.html"),
+        styles: [__webpack_require__("./angular/app/exchange/exchange.component.scss")],
+        providers: [__WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
+], ExchangeComponent);
+
+var _a, _b, _c, _d;
+//# sourceMappingURL=exchange.component.js.map
+
+/***/ }),
+
 /***/ "./angular/app/exchanges/exchanges.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"crypto-active exchanges\">\n    <div class=\"wrapper\">\n      <div class=\"select-block\">\n      <h1 class=\"table-title-big\">Биржи<span>{{count}}</span><a href=\"balant-mining-filter.html\"><img src=\"img/mining-icon.png\" alt=\"\"></a></h1>\n        <!-- <div class=\"filters\">\n          <div class=\"select-wrapper\">\n            <div class=\"select\">\n              <span class=\"text\">Пара: Все</span>\n              <a href=\"#\"><img src=\"img/select-drop-icon.png\" alt=\"\"></a>\n            </div>\n            <ul class=\"select-items\">\n              <li><a href=\"#\">Пара: Все</a></li>\n              <li><a href=\"#\">Пара: Все</a></li>\n              <li><a href=\"#\">Пара: Все</a></li>\n            </ul>\n          </div>\n          <div class=\"select-wrapper\">\n            <div class=\"select\">\n              <span class=\"text\">Язык</span>\n              <a href=\"#\"><img src=\"img/select-drop-icon.png\" alt=\"\"></a>\n            </div>\n            <ul class=\"select-items\">\n              <li><a href=\"#\">Язык</a></li>\n              <li><a href=\"#\">Язык</a></li>\n              <li><a href=\"#\">Язык</a></li>\n            </ul>\n          </div>\n          <div class=\"select-wrapper\">\n            <div class=\"select\">\n              <span class=\"text\">Страна: Любая</span>\n              <a href=\"#\"><img src=\"img/select-drop-icon.png\" alt=\"\"></a>\n            </div>\n            <ul class=\"select-items\">\n              <li><a href=\"#\">Страна: Любая</a></li>\n              <li><a href=\"#\">Страна: Любая</a></li>\n              <li><a href=\"#\">Страна: Любая</a></li>\n            </ul>\n          </div>\n        </div> -->\n      </div>\n      <div class=\"table-wrap\">\n        <table class=\"table crypto-table\">\n          <thead>\n            <tr>\n              <th width=\"4.4%\">\n                <span>#</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"12.9%\">\n                <span>Название</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"10%\" class=\"active\">\n                <span>Объем ( $ за 24 ч.)</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"10.8%\">\n                <span>Объем BTC (за 24ч.)</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"7.1%\">\n                <span>Кол-во пар</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"12.5%\">\n                <span>Поддержка языков</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"4.7%\">\n                <span>Год</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"17%\">\n                <span>Страна</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"20.6%\">\n                <span>Рейтинг</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let item of exchanges; let i = index\">\n              <td>\n                <span>{{i}}</span>\n              </td>\n              <td>\n                <a >\n                  <div class=\"img-wrap\">\n                    <img src=\"/images/{{item.logo}}\" style=\"width: 100%; height: 100%;\" alt=\"\">\n                  </div>\n                  <span>{{item.name}}</span>\n                </a>\n              </td>\n              <td>\n                <span class=\"amount-bold\">{{exchange_volumes[item.name].usd}}</span>\n              </td>\n              <td>\n                <span>{{exchange_volumes[item.name].btc}}</span>\n              </td>\n              <td>\n                <span> </span>\n              </td>\n              <td>\n                <div class=\"img-wrap-small\">\n                  <!-- <img src=\"img/rus-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <span class=\"text\">+5</span> -->\n                  {{item.languages}}\n                </div>\n              </td>\n              <td>\n                <span class=\"year\">{{item.year}}</span>\n              </td>\n              <td>\n                <span class=\"sity\">{{item.country}}</span>\n              </td>\n              <td>\n                <div class=\"difference\">\n                  <!-- <div class=\"stars-wrap\">\n                    <img src=\"img/stars.png\" alt=\"\">\n                    <span>135</span>\n                  </div> -->\n                  <p class=\"no-ratings\">Оценок еще нет</p>\n                  <div class=\"buttons\">\n                    <button class=\"right\">></button>\n                    <button class=\"plus\">+</button>\n                  </div>\n                </div>\n              </td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n     <!--  <div class=\"table-wrap-mobile\">\n        <table class=\"table\">\n          <thead>\n            <th width=\"43%\">\n              <span>Название</span>\n            </th>\n            <th width=\"43%\">\n              <span>Объем</span>\n            </th>\n            <th width=\"14%\">\n              <span>Пар</span>\n            </th>\n          </thead>\n          <tbody>\n            \n          </tbody>\n        </table>\n        <a href=\"#\" class=\"show-exchanges\">Показать еще биржи</a>\n      </div>\n      <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n    </div>\n  </section>"
+module.exports = "<section class=\"crypto-active exchanges\">\n    <div class=\"wrapper\">\n      <div class=\"select-block\">\n      <h1 class=\"table-title-big\">Биржи<span>{{count}}</span><a href=\"balant-mining-filter.html\"><img src=\"img/mining-icon.png\" alt=\"\"></a></h1>\n        <div class=\"filters\">\n          <div class=\"select-wrapper\">\n            <div class=\"select\">\n              <span class=\"text\">Пара: Все</span>\n              <a href=\"#\"><img src=\"img/select-drop-icon.png\" alt=\"\"></a>\n            </div>\n            <ul class=\"select-items\">\n              <li><a href=\"#\">Пара: Все</a></li>\n              <li><a href=\"#\">Пара: Все</a></li>\n              <li><a href=\"#\">Пара: Все</a></li>\n            </ul>\n          </div>\n          <div class=\"select-wrapper\">\n            <div class=\"select\">\n              <span class=\"text\">Язык</span>\n              <a href=\"#\"><img src=\"img/select-drop-icon.png\" alt=\"\"></a>\n            </div>\n            <ul class=\"select-items\">\n              <li><a href=\"#\">Язык</a></li>\n              <li><a href=\"#\">Язык</a></li>\n              <li><a href=\"#\">Язык</a></li>\n            </ul>\n          </div>\n          <div class=\"select-wrapper\">\n            <div class=\"select\">\n              <span class=\"text\">Страна: Любая</span>\n              <a href=\"#\"><img src=\"img/select-drop-icon.png\" alt=\"\"></a>\n            </div>\n            <ul class=\"select-items\">\n              <li><a href=\"#\">Страна: Любая</a></li>\n              <li><a href=\"#\">Страна: Любая</a></li>\n              <li><a href=\"#\">Страна: Любая</a></li>\n            </ul>\n          </div>\n        </div>\n      </div>\n      <div class=\"table-wrap\">\n        <table class=\"table crypto-table\">\n          <thead>\n            <tr>\n              <th width=\"4.4%\">\n                <span>#</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"12.9%\">\n                <span>Название</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"10%\" class=\"active\">\n                <span>Объем ( $ за 24 ч.)</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"10.8%\">\n                <span>Объем BTC (за 24ч.)</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"7.1%\">\n                <span>Кол-во пар</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"12.5%\">\n                <span>Поддержка языков</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"4.7%\">\n                <span>Год</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"17%\">\n                <span>Страна</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"20.6%\">\n                <span>Рейтинг</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let item of exchanges; let i = index\">\n              <td>\n                <span>{{i}}</span>\n              </td>\n              <td>\n                <a >\n                  <div class=\"img-wrap\">\n                    <img src=\"/images/{{item.logo}}\" style=\"width: 100%; height: 100%;\" alt=\"\">\n                  </div>\n                  <span>{{item.name}}</span>\n                </a>\n              </td>\n              <td>\n                <span class=\"amount-bold\">{{exchange_volumes[item.name].usd | number:'1.0-3'}}</span>\n              </td>\n              <td>\n                <span>{{exchange_volumes[item.name].btc | number:'1.0-3'}}</span>\n              </td>\n              <td>\n                <span> </span>\n              </td>\n              <td>\n                <div class=\"img-wrap-small\">\n                  <!-- <img src=\"img/rus-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <span class=\"text\">+5</span> -->\n                  {{item.languages}}\n                </div>\n              </td>\n              <td>\n                <span class=\"year\">{{item.year}}</span>\n              </td>\n              <td>\n                <span class=\"sity\">{{item.country}}</span>\n              </td>\n              <td>\n                <div class=\"difference\">\n                  <!-- <div class=\"stars-wrap\">\n                    <img src=\"img/stars.png\" alt=\"\">\n                    <span>135</span>\n                  </div> -->\n                  <p class=\"no-ratings\">Оценок еще нет</p>\n                  <div class=\"buttons\">\n                    <button class=\"right\" [routerLink]=\"['/exchange', item.name]\">></button>\n                    <button class=\"plus\">+</button>\n                  </div>\n                </div>\n              </td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n     <!--  <div class=\"table-wrap-mobile\">\n        <table class=\"table\">\n          <thead>\n            <th width=\"43%\">\n              <span>Название</span>\n            </th>\n            <th width=\"43%\">\n              <span>Объем</span>\n            </th>\n            <th width=\"14%\">\n              <span>Пар</span>\n            </th>\n          </thead>\n          <tbody>\n            \n          </tbody>\n        </table>\n        <a href=\"#\" class=\"show-exchanges\">Показать еще биржи</a>\n      </div>\n      <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n    </div>\n  </section>"
 
 /***/ }),
 
@@ -2880,7 +2998,11 @@ var ExchangesComponent = (function () {
     }
     ExchangesComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.stockService.getExchanges().subscribe(function (res) { _this.exchanges = res; _this.count = _this.exchanges.length; });
+        this.stockService.getExchanges().subscribe(function (res) {
+            _this.exchanges = res;
+            _this.count = _this.exchanges.length;
+            console.log(_this.count);
+        });
         this.stockService.getVolumes().subscribe(function (res) {
             _this.volumes = res;
             for (var _i = 0, _a = _this.volumes; _i < _a.length; _i++) {
@@ -6356,6 +6478,7 @@ var StocksService = (function () {
         this.http = http;
         this.path = '/bit/info';
         this.bitPath = '/bit';
+        this.exchangePath = '/angular/exchange/';
     }
     StocksService.prototype.getStocks = function (pairs) {
         return this.http.get(this.path + '?pair=' + pairs).publishReplay(1).refCount();
@@ -6368,6 +6491,9 @@ var StocksService = (function () {
     };
     StocksService.prototype.getVolumes = function () {
         return this.http.get('/bit/volumes').publishReplay(1).refCount();
+    };
+    StocksService.prototype.getExchange = function (name) {
+        return this.http.get(this.exchangePath + name).publishReplay(1).refCount();
     };
     return StocksService;
 }());

@@ -1,5 +1,6 @@
 <?php
 
+use App\Stock;
 use App\User;
 use App\UserPortfolioType;
 
@@ -113,6 +114,7 @@ Route::get('/cryptocurrency/exmo', "AngularController@serve");
 Route::get('/cryptocurrency/crypto', "AngularController@serve");
 Route::get('/cryptocurrency/all', "AngularController@serve");
 Route::get('/exchanges', "AngularController@serve");
+Route::get('/exchange/{name}', "AngularController@serve");
 Route::get('/ico/all', "AngularController@serve");
 Route::get('/ico/item/{post}', "AngularController@serve");
 Route::get('/ico/category/{category}', "AngularController@serve");
@@ -127,6 +129,7 @@ Route::get('/angular/userportfolio/{id}', "AngularController@byportfolio");
 Route::get('/angular/userportfolio/deletecat/{id}', "AngularController@deletePortfolioCat");
 Route::get('/angular/funds/{id}', "AngularController@funds");
 Route::get('/angular/exchanges/', "AngularController@exchanges");
+Route::get('/angular/exchange/{name}', "AngularController@exchange");
 
 // Route::get('/crypto', "AngularController@serve");
 
@@ -144,6 +147,12 @@ Route::post('/profile/updatephoto', "ProfileController@updatePhoto");
 Route::get('/profile/edit/{id}', "ProfileController@edit");
 
 // Route::get('/crypto/XRP', "AngularController@serve");
+Route::get('/read', function() {
 
+	$stock = Stock::findOrFail(1);
+	foreach ($stock->coins as $coin) {
+		echo $coin->name;
+	}
+});
 
 // ENDANGULAR

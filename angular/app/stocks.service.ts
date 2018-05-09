@@ -8,6 +8,7 @@ export class StocksService {
   constructor(private http:HttpClient) {  }
   path = '/bit/info';
   bitPath = '/bit';
+  exchangePath = '/angular/exchange/';
   observ: any;
   returnPath: any;
   obs: any;
@@ -26,6 +27,9 @@ export class StocksService {
   }
   public getVolumes() {
     return this.http.get<any>('/bit/volumes').publishReplay(1).refCount();
+  }
+  public getExchange(name) {
+    return this.http.get<any>(this.exchangePath+name).publishReplay(1).refCount();
   }
 
 }

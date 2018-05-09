@@ -25,7 +25,7 @@
                       <tbody>
                         @foreach($news as $n)
                           <tr>
-                              <td>{{$n->name}} <a href="{{route('exchanges.edit',$n->id)}}">Добавить монету</a></td>
+                              <td>{{$n->name}}</td>
                               <td>
                                   <a href="{{route('exchanges.edit', $n->id)}}">Edit</a> | 
                                   <a href="#" onclick="event.preventDefault();
