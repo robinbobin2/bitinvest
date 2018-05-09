@@ -60,6 +60,7 @@ export class ExchangeComponent implements OnInit {
 
 	     			if(res.name == this.name) {
 	     				this.pairs.push(res);
+	     				console.log(this.pairs);
 	     			}
 
 	     		})
@@ -67,7 +68,7 @@ export class ExchangeComponent implements OnInit {
      	}
      	Observable.from(this.stocks)
 		  .concatAll()
-		  .subscribe((x)=>console.log(x));
+		  .subscribe();
      	
 
      });

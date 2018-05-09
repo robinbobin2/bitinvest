@@ -2844,7 +2844,7 @@ ExcerptPipe = __decorate([
 /***/ "./angular/app/exchange/exchange.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n          <table>\n            <thead>\n              <tr>\n                <th width=\"22%\"><span>Пара</span></th>\n                <th width=\"15%\"><span>Курс</span></th>\n                <th width=\"16%\"><span>Рост за 24ч.</span></th>\n                <th width=\"18%\"><span>Объем BTC за 24ч.</span></th>\n                <th width=\"29%\"><span>Рост объема за 24 ч.</span></th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr *ngFor=\"let pair of pairs\">\n                <td>\n                  <span class=\"price\">{{pair.currency}}</span>\n                </td>\n                <td>\n                  <span>0.000409</span>\n                </td>\n                <td>\n                  <span class=\"green\">+5,7%</span>\n                </td>\n                <td>\n                  <span>12.2848</span>\n                </td>\n                <td>\n                  <span class=\"green\">+5,7%</span>\n                </td>\n              </tr>\n              \n            </tbody>\n          </table>\n          "
+module.exports = "\n          <table *ngIf=\"pairs\">\n            <thead>\n              <tr>\n                <th width=\"22%\"><span>Пара</span></th>\n                <th width=\"15%\"><span>Курс</span></th>\n                <th width=\"16%\"><span>Рост за 24ч.</span></th>\n                <th width=\"18%\"><span>Объем BTC за 24ч.</span></th>\n                <th width=\"29%\"><span>Рост объема за 24 ч.</span></th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr *ngFor=\"let pair of pairs\">\n                <td>\n                  <span class=\"price\">{{pair.currency}}</span>\n                </td>\n                <td>\n                  <span>0.000409</span>\n                </td>\n                <td>\n                  <span class=\"green\">+5,7%</span>\n                </td>\n                <td>\n                  <span>12.2848</span>\n                </td>\n                <td>\n                  <span class=\"green\">+5,7%</span>\n                </td>\n              </tr>\n              \n            </tbody>\n          </table>\n          "
 
 /***/ }),
 
@@ -2920,12 +2920,13 @@ var ExchangeComponent = (function () {
                 _this.stocks.push(_this.stockService.getStocks(item).map(function (res) {
                     if (res.name == _this.name) {
                         _this.pairs.push(res);
+                        console.log(_this.pairs);
                     }
                 }));
             }
             __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].from(_this.stocks)
                 .concatAll()
-                .subscribe(function (x) { return console.log(x); });
+                .subscribe();
         });
     };
     ExchangeComponent.prototype.submitComment = function (form, post_id, type) {
