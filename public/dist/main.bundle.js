@@ -2909,7 +2909,11 @@ var ExchangeComponent = (function () {
             };
         });
         this.stockService.getCrypto().subscribe(function (crypto) {
-            console.log(crypto);
+            var keys = Object.keys(crypto);
+            for (var _i = 0, keys_1 = keys; _i < keys_1.length; _i++) {
+                var item = keys_1[_i];
+                _this.stockService.getStocks(item).subscribe(function (res) { return console.log(res); });
+            }
         });
     };
     ExchangeComponent.prototype.submitComment = function (form, post_id, type) {
