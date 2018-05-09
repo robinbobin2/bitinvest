@@ -5067,3 +5067,10 @@ width: 144px !important;
 .select-wrap .select2:focus {
 outline: none !important;
 }
+.price {
+  font-size: 32px;
+  font-weight: bold;
+  color: #76bf40;
+  margin-right: 11px;
+  display: inline-block;
+}
