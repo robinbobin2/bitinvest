@@ -78,6 +78,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 
 		this.stockService.getExchangePairs(this.name).subscribe(res => {
 			this.pairs = res
+			this.count_pairs = this.pairs.length;
 		});
 	}
 
