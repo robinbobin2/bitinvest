@@ -85,7 +85,7 @@
         <div class="history-table exchanges-table" id="exchanges-table">
           <div class="history-title-block exchanges-title-block">
             <h2>Доступные пары ({{count_pairs}})</h2>
-            <form><input type="text" placeholder="Введите монету, например: BTC"></form>
+            <form><input type="text" placeholder="Введите монету, например: BTC" [(ngModel)]="filteredName" name="filteredName"></form>
             <span>Обновлено: 10.11.2017 в 12:45</span>
           </div>
           <table>
