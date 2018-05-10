@@ -39,7 +39,39 @@
 </form>
 </div>
 <div class="row">
+<div class="col-md-12 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Добавить категории</div>
 
+                <div class="panel-body">
+                    <form class="form-horizontal" method="POST" action="{{route('crypto.updateCats', $crypto)}}"  enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        {{ method_field('patch') }}
+                        <div ></div>
+                        
+                    </div>
+                    
+                    <ul>
+                        @foreach($categories as $cat)
+                        <li>
+                            <label>
+                                <input type="checkbox" name="categories[]" value="{{$cat->id}}">
+                                {{$cat->name}}
+                            </label>
+                        </li>
+                        @endforeach
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Добавить
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
 

@@ -302,7 +302,7 @@ $(document).ready(function () {
 		});
 	
 $('.active').click(function() {
-  $(this ).children('img').css('transform', ' rotate(180deg)');
+  $(this ).child('img').css('transform', ' rotate(180deg)');
 });
 
 });

@@ -44,20 +44,8 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
         }
       }
     });
-		this.stockService.getExchange(this.name).subscribe(res => {
-			this.exchange = res;
-			this.commentcount = this.exchange.comments_count;
-			this.comments = this.exchange.comments;
-			for(let item of this.exchange.categories) {
-				let newsUrl = "/postsbycat/"+item.id;
-				let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
-				newsInfo.subscribe(response => {
-					for(let news_item of response['news']) {
-						this.news.push(news_item)
-					}
-					console.log(this.news);
-				});
-			}
+		this.stockService.getExchangePairs(this.name).subscribe(res => {
+			console.log(res);
 		});
 
 		const userpath = "/angular/user";

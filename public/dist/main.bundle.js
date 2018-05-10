@@ -454,7 +454,7 @@ module.exports = ".logo-block {\n\tmargin-left:10px;\n}\ninput.ng-invalid.ng-tou
 /***/ "./angular/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header>\n    <div class=\"top-head\">\n      <div class=\"wrapper\">\n        <div class=\"logo-block\">\n          <a href=\"home.html\" class=\"logo\"><img src=\"img/logo.png\" alt=\"\"><span>ВСЕ О РЫНКЕ КРИПТОВАЛЮТ</span></a>\n        </div>\n        <form class=\"top-search\">\n          <input type=\"text\" placeholder=\"Поиск по названию криптовалюты, биржи, ICO, хайпа и др...\">\n          <input type=\"submit\">\n        </form>\n        <ul class=\"login\"  *ngIf=\"!checkUser()\">\n          <li><a href=\"#login-popup\" class=\"popup-link\" data-effect=\"mfp-zoom-in\"><i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i>Вход</a></li>\n          <li><a href=\"#check-popup\" class=\"popup-link\" data-effect=\"mfp-zoom-in\"><i class=\"fa fa-user-circle-o\" aria-hidden=\"true\"></i>Регистрация</a></li>\n        </ul>\n        <div class=\"setting-top-block\" *ngIf=\"checkUser()\">\n          <a routerLink=\"/profile/edit\"><img src=\"/img/settings-icon.png\" alt=\"\"></a>\n          <div class=\"img-wrap\" style=\"background: none; overflow: hidden\"><img style=\"width: 100%; height: 100%;\" \n            src=\"{{user.photo ? user.photo.file : 'http://aiyd.org/wp-content/uploads/2016/09/no-image-icon-hi.png'}}\" alt=\"\"></div>\n          <div class=\"select-wrap\">\n            <select>\n              <option value=\"all\">{{user.name}}</option>\n              <option value=\"usd\">{{user.email}}</option>\n              <!-- <option value=\"eur\">irinaivanova</option> -->\n            </select>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"top-menu-wrap\">\n      <div class=\"wrapper\">\n        <ul class=\"top-menu\">\n          <li routerLinkActive=\"active\" [ngClass]=\"rla.isActive?'active':''\" #rla=\"routerLinkActive\"><a [routerLink]=\"['/posts/all']\" >Новости</a></li>\n          <li routerLinkActive=\"active\"><a [routerLink]=\"['/review/all']\">Обзоры</a></li>\n          <li routerLinkActive=\"active\"><a [routerLink]=\"['/interview/all']\">Интервью</a></li>\n          <li routerLinkActive=\"active\"><a [routerLink]=\"['/analytics/all']\">Аналитика</a></li>\n          <li><a >Вопрос-ответ</a></li>\n          <li routerLinkActive=\"active\"><a routerLink=\"/cryptocurrency/all\">Криптовалюты</a></li>\n          <li routerLinkActive=\"active\"  [routerLinkActiveOptions]=\"{exact: false}\"><a  routerLink=\"/cloud-mining/all\">Облачный майнинг</a></li>\n          <li routerLinkActive=\"active\"><a  routerLink=\"/ico/all\">ICO</a></li>\n          <li><a>Фонды и хайпы</a></li>\n          <li routerLinkActive=\"active\"  [routerLinkActiveOptions]=\"{exact: false}\"><a routerLink=\"/exchanges\">Биржи</a></li>\n          <li><a >Пулы</a></li>\n        </ul>\n      </div>\n    </div>\n  </header>\n<router-outlet></router-outlet>\n  <footer>\n    <div class=\"footer-wrap\">\n      <p class=\"footer-text\">\n        Это помощник и проводник по рынку крипто-валют, в первую очередь это набор бесплатных инструментов для анализа рынка крипто-валюты: <br> Всегда актуальные новости о крипто-валютах, биржах и новых сервисах в мире криптовалют. Новости собираются автоматически с огромного количества новостных, <br> русскоязычных и англоязычных тематических сайтов с круглосуточным обновлением. <a href=\"#\">Полный текст</a>\n      </p>\n      <form class=\"subscribe\">\n        <input type=\"text\" placeholder=\"Укажите свой e-mail и получайте новости на почту\">\n        <button type=\"button\" class=\"subscribe-btn\">Подписаться</button>\n      </form>\n      <div class=\"social-block\">\n        <h3>Мы в соц. сетях</h3>\n        <ul>\n          <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n        </ul>\n      </div>\n      <p class=\"copyright\">\n        &copy;2017 - Все права защищены. BitInvest.ru - Рынок криптовалют онлайн! <br> О сервисе Контактная информация Реклама Пользовательское соглашение Политика конфиденциальности\n      </p>\n      <a href=\"#\" class=\"anchor\">Вернуться наверх</a>\n    </div>\n  </footer>\n  <div id=\"check-popup\" class=\"popup mfp-with-anim mfp-hide\">\n    <div class=\"popup-body\">\n      <h2>Регистрация</h2>\n      <p>Зарегистрируйтесь и получите <br> полный доступ к функционалу проекта</p>\n      <form (ngSubmit)=\"onSignup(signup)\" #signup=\"ngForm\">\n        <input type=\"text\" name=\"email\" ngModel placeholder=\"Напишите свой email\" email required >\n        <input type=\"password\" name=\"password\" ngModel placeholder=\"Придумайте себе пароль\" required minlength='6'>\n        <input type=\"password\" name=\"password_repeat\" ngModel placeholder=\"Повторите пароль\" required minlength='6' validateEqual=\"password\">\n        <input [disabled]=\"!signup.valid\" type=\"submit\" value=\"Зарегистрироваться\" >\n      </form>\n    </div>\n    <div class=\"popup-footer\">\n      <p>Авторизация через социальные сети</p>\n      <div class=\"social\">\n        <ul>\n          <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n        </ul>\n      </div>\n    </div>\n    <a href=\"#login-popup\" class=\"popup-link\" data-effect=\"mfp-zoom-in\">У меня уже есть аккаунт</a>\n  </div>\n  <div id=\"login-popup\" class=\"popup mfp-with-anim mfp-hide\">\n    <div class=\"popup-body\">\n      <h2>Вход</h2>\n      <form  (ngSubmit)=\"onSingin(f)\" #f=\"ngForm\">\n        <input type=\"text\" ngModel name=\"email\" placeholder=\"Ваш адрес электронной почты\" email required>\n        <input type=\"password\" ngModel name=\"password\" placeholder=\"Ваш пароль\" required \n        minlength='6'>\n        <p *ngIf=\"loginError\">{{loginError}}</p>\n        <input [disabled]=\"!f.valid\" type=\"submit\" value=\"Выполнить вход\">\n      </form>\n      <a href=\"#password-popup\" class=\"forgot-password popup-link\" data-effect=\"mfp-zoom-in\">Я забыл пароль</a>\n    </div>\n    <div class=\"popup-footer\">\n      <p>Авторизация через социальные сети</p>\n      <div class=\"social\">\n        <ul>\n          <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n        </ul>\n      </div>\n    </div>\n    <a href=\"#check-popup\" class=\"popup-link\" data-effect=\"mfp-zoom-in\">Новая регистрация</a>\n  </div>\n  <div id=\"password-popup\" class=\"popup mfp-with-anim mfp-hide\">\n    <div class=\"popup-body\" *ngIf=\"lostPassSuccess == false\">\n      <h2>Я забыл пароль!</h2>\n      <p *ngIf=\"errorLostPass==''\">Для восстановления пароля введите адрес <br> электронной почты, указанный при регистрации</p>\n      <p *ngIf=\"errorLostPass!=''\">{{errorLostPass}}</p>\n      <form  (ngSubmit)=\"onRestore(lostPass)\" #lostPass=\"ngForm\">\n        <input type=\"text\" name=\"email\" ngModel placeholder=\"Ваш адрес электронной почты\" email required>\n        <button [disabled]=\"!lostPass.valid\" type=\"submit\" style=\"width:100%;\">Восстановить пароль</button>\n      </form>\n      <a href=\"#\" class=\"close-text\">Отменить</a>\n    </div>\n    <div class=\"popup-body\"  *ngIf=\"lostPassSuccess == true\">\n      <h2>Готово!</h2>\n      <p>Ваш новый пароль отправлен на указанный <br> адрес электронной почты</p>\n      <a href=\"#login-popup\" class=\"sign-in popup-link\" data-effect=\"mfp-zoom-in\">Выполнить вход</a><br>\n      <a href=\"#\" class=\"close-notification close-text\">Закрыть уведомление</a>\n    </div>\n  </div>\n  <div id=\"done-popup\" class=\"popup mfp-with-anim mfp-hide\">\n    \n  </div>\n<!-- <app-crypto></app-crypto> -->\n<!-- <app-exmo></app-exmo> -->\n<!-- <app-markets></app-markets> -->\n<!-- <app-cmc></app-cmc> -->"
+module.exports = "<header>\n    <div class=\"top-head\">\n      <div class=\"wrapper\">\n        <div class=\"logo-block\">\n          <a href=\"home.html\" class=\"logo\"><img src=\"img/logo.png\" alt=\"\"><span>ВСЕ О РЫНКЕ КРИПТОВАЛЮТ</span></a>\n        </div>\n        <form class=\"top-search\" style=\"position: relative;\">\n          <input type=\"text\" placeholder=\"Поиск по названию криптовалюты, биржи, ICO, хайпа и др...\" [value]=\"searchAll\" (keyup)=\"searchTerm$.next($event.target.value)\">\n          <input type=\"submit\">\n          <div class=\"results\" *ngIf=\"results\" style=\"position: absolute;\n                                                      top: 40px;\n                                                      background: #fff;\n                                                      left: 10px;\n                                                      right: 10px;z-index: 9999\">\n            <ul>\n               <li *ngFor=\"let result of results | slice:0:9\" style=\"display: block; float: left;width: 100%;padding: 10px;\">\n                  <a target=\"_blank\" href=\"#\" style=\"\">\n                   {{ result.name }}\n                  </a>\n                </li>\n            </ul>\n          </div>\n        </form>\n        <ul class=\"login\"  *ngIf=\"!checkUser()\">\n          <li><a href=\"#login-popup\" class=\"popup-link\" data-effect=\"mfp-zoom-in\"><i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i>Вход</a></li>\n          <li><a href=\"#check-popup\" class=\"popup-link\" data-effect=\"mfp-zoom-in\"><i class=\"fa fa-user-circle-o\" aria-hidden=\"true\"></i>Регистрация</a></li>\n        </ul>\n        <div class=\"setting-top-block\" *ngIf=\"checkUser()\">\n          <a routerLink=\"/profile/edit\"><img src=\"/img/settings-icon.png\" alt=\"\"></a>\n          <div class=\"img-wrap\" style=\"background: none; overflow: hidden\"><img style=\"width: 100%; height: 100%;\" \n            src=\"{{user.photo ? user.photo.file : 'http://aiyd.org/wp-content/uploads/2016/09/no-image-icon-hi.png'}}\" alt=\"\"></div>\n          <div class=\"select-wrap\">\n            <select>\n              <option value=\"all\">{{user.name}}</option>\n              <option value=\"usd\">{{user.email}}</option>\n              <!-- <option value=\"eur\">irinaivanova</option> -->\n            </select>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"top-menu-wrap\">\n      <div class=\"wrapper\">\n        <ul class=\"top-menu\">\n          <li routerLinkActive=\"active\" [ngClass]=\"rla.isActive?'active':''\" #rla=\"routerLinkActive\"><a [routerLink]=\"['/posts/all']\" >Новости</a></li>\n          <li routerLinkActive=\"active\"><a [routerLink]=\"['/review/all']\">Обзоры</a></li>\n          <li routerLinkActive=\"active\"><a [routerLink]=\"['/interview/all']\">Интервью</a></li>\n          <li routerLinkActive=\"active\"><a [routerLink]=\"['/analytics/all']\">Аналитика</a></li>\n          <li><a >Вопрос-ответ</a></li>\n          <li routerLinkActive=\"active\"><a routerLink=\"/cryptocurrency/all\">Криптовалюты</a></li>\n          <li routerLinkActive=\"active\"  [routerLinkActiveOptions]=\"{exact: false}\"><a  routerLink=\"/cloud-mining/all\">Облачный майнинг</a></li>\n          <li routerLinkActive=\"active\"><a  routerLink=\"/ico/all\">ICO</a></li>\n          <li><a>Фонды и хайпы</a></li>\n          <li routerLinkActive=\"active\"  [routerLinkActiveOptions]=\"{exact: false}\"><a routerLink=\"/exchanges\">Биржи</a></li>\n          <li><a >Пулы</a></li>\n        </ul>\n      </div>\n    </div>\n  </header>\n<router-outlet></router-outlet>\n  <footer>\n    <div class=\"footer-wrap\">\n      <p class=\"footer-text\">\n        Это помощник и проводник по рынку крипто-валют, в первую очередь это набор бесплатных инструментов для анализа рынка крипто-валюты: <br> Всегда актуальные новости о крипто-валютах, биржах и новых сервисах в мире криптовалют. Новости собираются автоматически с огромного количества новостных, <br> русскоязычных и англоязычных тематических сайтов с круглосуточным обновлением. <a href=\"#\">Полный текст</a>\n      </p>\n      <form class=\"subscribe\">\n        <input type=\"text\" placeholder=\"Укажите свой e-mail и получайте новости на почту\">\n        <button type=\"button\" class=\"subscribe-btn\">Подписаться</button>\n      </form>\n      <div class=\"social-block\">\n        <h3>Мы в соц. сетях</h3>\n        <ul>\n          <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n        </ul>\n      </div>\n      <p class=\"copyright\">\n        &copy;2017 - Все права защищены. BitInvest.ru - Рынок криптовалют онлайн! <br> О сервисе Контактная информация Реклама Пользовательское соглашение Политика конфиденциальности\n      </p>\n      <a href=\"#\" class=\"anchor\">Вернуться наверх</a>\n    </div>\n  </footer>\n  <div id=\"check-popup\" class=\"popup mfp-with-anim mfp-hide\">\n    <div class=\"popup-body\">\n      <h2>Регистрация</h2>\n      <p>Зарегистрируйтесь и получите <br> полный доступ к функционалу проекта</p>\n      <form (ngSubmit)=\"onSignup(signup)\" #signup=\"ngForm\">\n        <input type=\"text\" name=\"email\" ngModel placeholder=\"Напишите свой email\" email required >\n        <input type=\"password\" name=\"password\" ngModel placeholder=\"Придумайте себе пароль\" required minlength='6'>\n        <input type=\"password\" name=\"password_repeat\" ngModel placeholder=\"Повторите пароль\" required minlength='6' validateEqual=\"password\">\n        <input [disabled]=\"!signup.valid\" type=\"submit\" value=\"Зарегистрироваться\" >\n      </form>\n    </div>\n    <div class=\"popup-footer\">\n      <p>Авторизация через социальные сети</p>\n      <div class=\"social\">\n        <ul>\n          <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n        </ul>\n      </div>\n    </div>\n    <a href=\"#login-popup\" class=\"popup-link\" data-effect=\"mfp-zoom-in\">У меня уже есть аккаунт</a>\n  </div>\n  <div id=\"login-popup\" class=\"popup mfp-with-anim mfp-hide\">\n    <div class=\"popup-body\">\n      <h2>Вход</h2>\n      <form  (ngSubmit)=\"onSingin(f)\" #f=\"ngForm\">\n        <input type=\"text\" ngModel name=\"email\" placeholder=\"Ваш адрес электронной почты\" email required>\n        <input type=\"password\" ngModel name=\"password\" placeholder=\"Ваш пароль\" required \n        minlength='6'>\n        <p *ngIf=\"loginError\">{{loginError}}</p>\n        <input [disabled]=\"!f.valid\" type=\"submit\" value=\"Выполнить вход\">\n      </form>\n      <a href=\"#password-popup\" class=\"forgot-password popup-link\" data-effect=\"mfp-zoom-in\">Я забыл пароль</a>\n    </div>\n    <div class=\"popup-footer\">\n      <p>Авторизация через социальные сети</p>\n      <div class=\"social\">\n        <ul>\n          <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n          <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n        </ul>\n      </div>\n    </div>\n    <a href=\"#check-popup\" class=\"popup-link\" data-effect=\"mfp-zoom-in\">Новая регистрация</a>\n  </div>\n  <div id=\"password-popup\" class=\"popup mfp-with-anim mfp-hide\">\n    <div class=\"popup-body\" *ngIf=\"lostPassSuccess == false\">\n      <h2>Я забыл пароль!</h2>\n      <p *ngIf=\"errorLostPass==''\">Для восстановления пароля введите адрес <br> электронной почты, указанный при регистрации</p>\n      <p *ngIf=\"errorLostPass!=''\">{{errorLostPass}}</p>\n      <form  (ngSubmit)=\"onRestore(lostPass)\" #lostPass=\"ngForm\">\n        <input type=\"text\" name=\"email\" ngModel placeholder=\"Ваш адрес электронной почты\" email required>\n        <button [disabled]=\"!lostPass.valid\" type=\"submit\" style=\"width:100%;\">Восстановить пароль</button>\n      </form>\n      <a href=\"#\" class=\"close-text\">Отменить</a>\n    </div>\n    <div class=\"popup-body\"  *ngIf=\"lostPassSuccess == true\">\n      <h2>Готово!</h2>\n      <p>Ваш новый пароль отправлен на указанный <br> адрес электронной почты</p>\n      <a href=\"#login-popup\" class=\"sign-in popup-link\" data-effect=\"mfp-zoom-in\">Выполнить вход</a><br>\n      <a href=\"#\" class=\"close-notification close-text\">Закрыть уведомление</a>\n    </div>\n  </div>\n  <div id=\"done-popup\" class=\"popup mfp-with-anim mfp-hide\">\n    \n  </div>\n<!-- <app-crypto></app-crypto> -->\n<!-- <app-exmo></app-exmo> -->\n<!-- <app-markets></app-markets> -->\n<!-- <app-cmc></app-cmc> -->"
 
 /***/ }),
 
@@ -471,6 +471,8 @@ module.exports = "<header>\n    <div class=\"top-head\">\n      <div class=\"wra
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__search_service__ = __webpack_require__("./angular/app/search.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__ = __webpack_require__("./node_modules/rxjs/_esm5/Subject.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -480,6 +482,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -512,11 +516,13 @@ var User = (function () {
 ;
 var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
 var AppComponent = (function () {
-    function AppComponent(auth, http, router, activatedRoute) {
+    function AppComponent(auth, http, router, activatedRoute, searchService) {
+        var _this = this;
         this.auth = auth;
         this.http = http;
         this.router = router;
         this.activatedRoute = activatedRoute;
+        this.searchService = searchService;
         this.user = {
             id: 0,
             name: '',
@@ -530,6 +536,13 @@ var AppComponent = (function () {
         this.loginError = '';
         this.lostPassSuccess = false;
         this.errorLostPass = '';
+        this.searchTerm$ = new __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__["b" /* Subject */]();
+        this.search = '';
+        this.searchService.mainSearch(this.searchTerm$)
+            .subscribe(function (results) {
+            _this.results = results;
+            console.log(results);
+        });
         console.log(this.user);
         console.log('user');
         // auth.getUser();
@@ -625,12 +638,12 @@ AppComponent = __decorate([
         selector: 'app-root',
         template: __webpack_require__("./angular/app/app.component.html"),
         styles: [__webpack_require__("./angular/app/app.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */]) === "function" && _e || Object])
 ], AppComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -2909,22 +2922,8 @@ var ExchangeComponent = (function () {
                 }
             }
         });
-        this.stockService.getExchange(this.name).subscribe(function (res) {
-            _this.exchange = res;
-            _this.commentcount = _this.exchange.comments_count;
-            _this.comments = _this.exchange.comments;
-            for (var _i = 0, _a = _this.exchange.categories; _i < _a.length; _i++) {
-                var item = _a[_i];
-                var newsUrl = "/postsbycat/" + item.id;
-                var newsInfo = _this.http.get(newsUrl).publishReplay(1).refCount();
-                newsInfo.subscribe(function (response) {
-                    for (var _i = 0, _a = response['news']; _i < _a.length; _i++) {
-                        var news_item = _a[_i];
-                        _this.news.push(news_item);
-                    }
-                    console.log(_this.news);
-                });
-            }
+        this.stockService.getExchangePairs(this.name).subscribe(function (res) {
+            console.log(res);
         });
         var userpath = "/angular/user";
         var userinfo = this.http.get(userpath);
@@ -5448,7 +5447,7 @@ var PortfolioComponent = (function () {
         this.searchTerm$ = new __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__["b" /* Subject */]();
         this.searchLine = '';
         this.result_id = 0;
-        this.searchService.search(this.searchTerm$)
+        this.searchService.mainSearch(this.searchTerm$)
             .subscribe(function (results) {
             _this.results = results;
             console.log(results);
@@ -6088,6 +6087,8 @@ var SearchService = (function () {
         this.http = http;
         this.baseUrl = '/miningraw/search';
         this.queryUrl = '?search=';
+        this.mainUrl = '/angular/search';
+        this.mainQueryUrl = '?q=';
     }
     SearchService.prototype.search = function (terms) {
         var _this = this;
@@ -6095,9 +6096,19 @@ var SearchService = (function () {
             .distinctUntilChanged()
             .switchMap(function (term) { return _this.searchEntries(term); });
     };
+    SearchService.prototype.mainSearch = function (terms) {
+        var _this = this;
+        return terms.debounceTime(400)
+            .distinctUntilChanged()
+            .switchMap(function (term) { return _this.mainSearchEntries(term); });
+    };
     SearchService.prototype.searchEntries = function (term) {
         return this.http
             .get(this.baseUrl + this.queryUrl + term);
+    };
+    SearchService.prototype.mainSearchEntries = function (term) {
+        return this.http
+            .get(this.mainUrl + this.mainQueryUrl + term);
     };
     return SearchService;
 }());
@@ -6545,6 +6556,7 @@ var StocksService = (function () {
         this.path = '/bit/info';
         this.bitPath = '/bit';
         this.exchangePath = '/angular/exchange/';
+        this.exchangePairsPath = '/bit/pair/name?exchange=';
     }
     StocksService.prototype.getStocks = function (pairs) {
         return this.http.get(this.path + '?pair=' + pairs).publishReplay(1).refCount();
@@ -6560,6 +6572,9 @@ var StocksService = (function () {
     };
     StocksService.prototype.getExchange = function (name) {
         return this.http.get(this.exchangePath + name).publishReplay(1).refCount();
+    };
+    StocksService.prototype.getExchangePairs = function (name) {
+        return this.http.get(this.exchangePairsPath + name).publishReplay(1).refCount();
     };
     return StocksService;
 }());

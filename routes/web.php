@@ -72,6 +72,7 @@ Route::group(['middleware'=>'admin'], function() {
 	Route::resource('admin/icoproject', 'IcoProjectController');
 	Route::resource('admin/exchanges', 'StocksController');
 	Route::patch('admin/update/cats/{id}',  ['as' => 'exchanges.updateCats', 'uses' => 'StocksController@updateCats']);
+	Route::patch('admin/update/cryptocats/{id}',  ['as' => 'crypto.updateCats', 'uses' => 'AdminCryptoController@updateCats']);
 
 	Route::post('admin/mining/updatehistory/{id}',  ['as' => 'mining.updatehistory', 'uses' => 'CloudMiningController@updateHistory']);
 	Route::post('admin/icoproject/updateteam/{id}',  ['as' => 'icoproject.updateteam', 'uses' => 'IcoProjectController@updateTeam']);
@@ -132,6 +133,7 @@ Route::get('/angular/userportfolio/deletecat/{id}', "AngularController@deletePor
 Route::get('/angular/funds/{id}', "AngularController@funds");
 Route::get('/angular/exchanges/', "AngularController@exchanges");
 Route::get('/angular/exchange/{name}', "AngularController@exchange");
+Route::get('/angular/search', "AngularController@search");
 
 // Route::get('/crypto', "AngularController@serve");
 

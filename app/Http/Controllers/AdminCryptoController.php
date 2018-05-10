@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\CryptoStat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -65,8 +66,9 @@ class AdminCryptoController extends Controller
     public function edit($id)
     {
         //
+        $categories = Category::all();
         $crypto = CryptoStat::findOrFail($id);
-        return view('admin.crypto.edit', compact('crypto'));
+        return view('admin.crypto.edit', compact('crypto', 'categories'));
     }
 
     /**
@@ -84,6 +86,16 @@ class AdminCryptoController extends Controller
         $input = $request->all();
         $crypto->update($input);
         return redirect()->back();
+    }
+    public function updateCats(Request $request, $id)
+    {
+        //
+        Session::flash('updated_crypto', 'Криптовалюта успешно изменена');
+        $crypto = CryptoStat::findOrFail($id);
+        
+        $crypto->categories()->sync($request->categories);
+        return redirect('admin/crypto')
+        ->with('message', 'Операция прошла успешно');
     }
 
     /**
