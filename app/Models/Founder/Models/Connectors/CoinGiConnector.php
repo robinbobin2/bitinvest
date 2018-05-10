@@ -104,6 +104,9 @@ class CoinGiConnector extends FounderConnector
             throw $e;
         }
         $parts = explode ('do=currencyPairSelector-selectCurrencyPair" class="active">', $response);
+        if(!isset($parts[1])){
+            return [];
+        }
         $currencyParts = explode ('<div class="currency-pair-label">', $parts[1]);
         $result = array ();
         for ($i = 1; $i < count ($currencyParts); $i++) {
