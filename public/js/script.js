@@ -301,7 +301,9 @@ $(document).ready(function () {
 			arrows: false,
 		});
 	
+$('.active').click(function() {
+  $(this ).children('img').css('transform', ' rotate(180deg)');
+});
 
-	
 });
 
