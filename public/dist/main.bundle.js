@@ -2951,7 +2951,7 @@ var ExchangeComponent = (function () {
             };
         });
         this.stockService.getExchangePairs(this.name).subscribe(function (res) {
-            console.log(res);
+            _this.pairs = res;
         });
     };
     ExchangeComponent.prototype.submitComment = function (form, post_id, type) {
@@ -6460,8 +6460,8 @@ var StocksSidebarComponent = (function () {
                 }
             });
         });
-        this.cryptoData = __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["a" /* Observable */].interval(1000).take(50).concatMap(function () { return _this.stocksService.getCrypto(); })
-            .map(function (response) { _this.resp = response; console.log(_this.resp); }).subscribe(function () {
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["a" /* Observable */].interval(3000).take(10).concatMap(function () { return _this.stocksService.getCrypto(); })
+            .map(function (response) { _this.resp = response; }).subscribe(function () {
             _this.data = _this.alldata.subscribe(function (response) {
                 // console.log(response);
                 var admin = response;

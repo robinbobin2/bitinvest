@@ -74,8 +74,8 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
         }
       });
     });
-    this.cryptoData=Observable.interval(1000).take(50).concatMap(()=>this.stocksService.getCrypto())
-    .map((response)=>{this.resp = response; console.log(this.resp)}).subscribe(()=>{
+    this.cryptoData=Observable.interval(3000).take(10).concatMap(()=>this.stocksService.getCrypto())
+    .map((response)=>{this.resp = response}).subscribe(()=>{
 
 
 

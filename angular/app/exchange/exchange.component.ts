@@ -77,7 +77,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 
 
 		this.stockService.getExchangePairs(this.name).subscribe(res => {
-			console.log(res);
+			this.pairs = res
 		});
 	}
 
