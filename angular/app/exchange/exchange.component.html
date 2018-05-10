@@ -99,7 +99,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let pair of pairs; let i = index" [ngClass]="i > 14 ? 'hidden' : 'visible'" >
+              <tr *ngFor="let pair of pairs | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'currency'; let i = index" [ngClass]="i > 14 ? 'hidden' : 'visible'" >
                 <td>
                   <span class="price">{{pair.currency}}</span>
                 </td>

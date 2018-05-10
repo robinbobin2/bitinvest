@@ -30,6 +30,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 	stocks=[];
 	news = [];
 	count_pairs = 0;
+	filteredName = '';
 	private fragment: string;
 	constructor(private http:HttpClient, 
 		private stockService:StocksService, 
