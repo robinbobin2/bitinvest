@@ -154,6 +154,6 @@ class AngularController extends Controller
     }
     public function exchange($name)
     {
-        return Stock::where('name', $name)->with('coins')->withCount('coins')->with('comments')->withCount('comments')->first()->toArray();
+        return Stock::where('name', $name)->with('coins')->withCount('coins')->with('comments')->withCount('comments')->with('categories')->first()->toArray();
     }
 }

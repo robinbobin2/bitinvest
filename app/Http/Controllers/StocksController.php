@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\CryptoStat;
 use App\Stock;
 use Illuminate\Http\Request;
@@ -75,8 +76,9 @@ class StocksController extends Controller
     {
         $coins = CryptoStat::all();
         $stock = Stock::findOrFail($id);
+        $categories = Category::all();
 
-        return view('admin.stocks.edit', compact('coins', 'stock'));
+        return view('admin.stocks.edit', compact('coins', 'stock', 'categories'));
         //
     }
 
@@ -92,6 +94,15 @@ class StocksController extends Controller
         $stock = Stock::findOrFail($id);
         
         $stock->coins()->sync($request->coins);
+        return redirect('admin/exchanges')
+        ->with('message', 'Операция прошла успешно');
+    }
+
+    public function updateCats(Request $request, $id)
+    {
+        $stock = Stock::findOrFail($id);
+        
+        $stock->categories()->sync($request->categories);
         return redirect('admin/exchanges')
         ->with('message', 'Операция прошла успешно');
     }

@@ -3,16 +3,16 @@
       <div class="ico-card-content">
         <a [routerLink]="['/exchanges']" class="return"><span>&#60;</span>Вернуться к списку бирж</a>
         <div class="project-block">
-          <div class="img-wrap">
-            <img src="/images/{{exchange.logo}}" alt="">
+          <div class="img-wrap" style="width: 97px;">
+            <img src="/images/{{exchange.logo}}" alt="" style="max-width: 100%">
           </div>
           <div class="text-wrap">
             <div class="text-info">
               <p class="project-title">Биржа {{exchange.name}}</p>
             </div>
             <div class="project-info-content">
-              <!-- <div class="info">
-                <div class="rating-wrap">
+              <div class="info">
+                <!-- <div class="rating-wrap">
                   <fieldset class="rating">
                     <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
                     <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
@@ -27,8 +27,8 @@
                   </fieldset>
                   <span class="number">135</span>
                 </div>
-                <p class="last-updated">Для того чтобы оставить оценку бирже, Вам необходимо авторзоваться или зарегистрироваться.</p>
-              </div> -->
+                <p class="last-updated">Для того чтобы оставить оценку бирже, Вам необходимо авторзоваться или зарегистрироваться.</p> -->
+              </div>
               <div class="progress-bar">
                 <a href="#follow-popup" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
               </div>
@@ -119,4 +119,81 @@
               
             </tbody>
           </table>
-          <a href="#" class="show-btn">Показать еще пары</a>
+          <!-- <a href="#" class="show-btn">Показать еще пары</a> -->
+          </div>
+        <div class="comment-block" id="comment-block">
+                    <div class="comment-top" *ngIf="user.id != undefined">
+                                <h3>Добавить новый комментарий</h3>
+                                <form (ngSubmit)="submitComment(f, exchange.id, 'App\\Stock')" #f="ngForm">
+                                    <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
+                                    <button type="submit">Добавить</button>
+                                </form>
+                    </div>
+                    <div class="comment-top" *ngIf="user.id == undefined">
+                        <h3>Комментарии ({{news.comments_count}})</h3>
+                        <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
+                    </div>
+                    
+                    <div *ngIf="user.id != undefined" style="background: none !important; border: none !important" class="comment-top">
+                        <h3 >Комментарии ({{commentcount}})</h3>
+                        <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
+
+                    
+                    </div>
+                    <ul class="comment-items">
+                        <!--  -->
+                        <li *ngFor="let item of comments">
+                            <div class="left">
+                                <div class="info">
+                                    <div class="img-wrap">
+                                        <img src="{{item.photo}}" style="max-width: 35px; height: auto;" alt="">
+                                    </div>
+                                    <div class="text-wrap">
+                                        <p>{{item.author}}</p>
+                                        <span>Добавлен {{item.created_at}}</span>
+                                    </div>
+                                </div>
+                                <p class="comment-text">{{item.body}}</p>
+                            </div>
+                            <div class="right">
+                                <div class="img-wrap"></div>
+                                <div class="btn-block">
+                                    <span class="number-green">0</span>
+                                    <div class="buttons">
+                                        <a href="#" class="plus">+</a>
+                                        <a href="#" class="minus">-</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+          <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
+        </div>
+        <div class="news-block" id="news">
+          <h2>#{{exchange.name}} новости по тегу</h2>
+          <div class="news-wrap">
+                  <div class="news" *ngFor="let item of news">
+                    <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
+                      <a href="#" class="news-btn">{{item.category.name}}</a>
+                      <div class="info">
+                        <span class="date">{{item.created_at}}</span>
+                      </div>
+                    </div>
+                    <div class="text">
+                      <h3>
+                        <a routerLink="/posts/post/{{item.id}}">{{item.title}}</a>
+                      </h3>
+                    </div>
+                    <div class="text2">
+                      <p>{{item.desc | striphtml |excerpt:80}}</p>
+                    </div>
+                  </div>
+          </div>
+        </div>
+      </div>
+      <aside class="sidebar">
+      <app-sidebar></app-sidebar>
+      </aside>
+    </div>
+  </section>

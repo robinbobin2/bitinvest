@@ -71,6 +71,8 @@ Route::group(['middleware'=>'admin'], function() {
 	Route::resource('admin/mining', 'CloudMiningController');
 	Route::resource('admin/icoproject', 'IcoProjectController');
 	Route::resource('admin/exchanges', 'StocksController');
+	Route::patch('admin/update/cats/{id}',  ['as' => 'exchanges.updateCats', 'uses' => 'StocksController@updateCats']);
+
 	Route::post('admin/mining/updatehistory/{id}',  ['as' => 'mining.updatehistory', 'uses' => 'CloudMiningController@updateHistory']);
 	Route::post('admin/icoproject/updateteam/{id}',  ['as' => 'icoproject.updateteam', 'uses' => 'IcoProjectController@updateTeam']);
 	Route::post('admin/icoproject/updatepercent/{id}',  ['as' => 'icoproject.updatepercent', 'uses' => 'IcoProjectController@updatePercent']);

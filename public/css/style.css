@@ -5128,4 +5128,284 @@ outline: none !important;
     display: block;
   }
 }
+.mobile-mining-content ul {
+  border-top: 0;
+}
+.mobile-mining-content ul li:last-child {
+  border-bottom: 0;
+}
+.mobile-mining-content ul li > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 600px) {
+  .mobile-mining-content ul li > a:first-child {
+    display: none;
+  }
+}
+
+.history-table {
+  margin: 22px 0 24px;
+}
+.history-table .history-title-block {
+  height: 43px;
+  width: 100%;
+  background: #e5e5e5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+@media (max-width: 600px) {
+  .history-table .history-title-block {
+    display: none;
+  }
+}
+.history-table .history-title-block h2 {
+  margin-left: 20px;
+  font-size: 18px;
+  color: #1d1f24;
+  font-weight: bold;
+}
+.history-table table {
+  width: 100%;
+  border: 1px solid #fff;
+}
+.history-table table thead tr {
+  height: 30px;
+  background: #f7f7f7;
+}
+.history-table table thead tr th {
+  padding: 8px;
+}
+.history-table table thead tr th:first-child {
+  padding-left: 18px;
+}
+.history-table table thead tr th span {
+  font-size: 12px;
+  color: #555;
+}
+.history-table table tbody tr {
+  background: #fff;
+  height: 35px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.history-table table tbody tr.hidden {
+  display: none;
+}
+.history-table table td {
+  padding: 8px;
+}
+.history-table table td:first-child {
+  padding-left: 18px;
+}
+.history-table table td .price {
+  font-size: 14px;
+  font-weight: bold;
+  color: #1d1f24;
+}
+.history-table table td .operation {
+  font-size: 14px;
+}
+.history-table table td .operation.operation-green {
+  color: #529127;
+}
+.history-table table td .operation.operation-red {
+  color: #f00;
+}
+.history-table table td .comment {
+  font-size: 14px;
+  color: #1d1f24;
+}
+.history-table table td .date {
+  font-size: 14px;
+  color: #1d1f24;
+}
+@media (max-width: 600px) {
+  .history-table .show-btn {
+    display: none;
+  }
+}
+
+.mobile-mining-content {
+  display: none;
+}
+@media (max-width: 600px) {
+  .mobile-mining-content {
+    display: block;
+  }
+}
+.mobile-mining-content ul {
+  border-top: 1px solid #cacaca;
+  width: calc(100% + 28px);
+  margin-left: -14px;
+  padding: 0 14px;
+}
+.mobile-mining-content ul li {
+  padding: 11px 14px;
+  border-bottom: 1px solid #cacaca;
+  width: calc(100% + 28px);
+  margin-left: -14px;
+}
+.mobile-mining-content ul li a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1d1f24;
+  margin-bottom: 5px;
+}
+.mobile-mining-content ul li a:hover {
+  color: #f58c1b;
+}
+.mobile-mining-content ul li .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.mobile-mining-content ul li .info > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.mobile-mining-content ul li .info span {
+  font-size: 12px;
+  color: #7b7b7b;
+  display: inline-block;
+  margin-bottom: 3px;
+}
+.mobile-mining-content ul li .info .profitability {
+  margin-right: 17px;
+}
+.mobile-mining-content ul li .info .profitability .year {
+  font-size: 14px;
+  color: #383c46;
+  font-weight: bold;
+}
+.mobile-mining-content ul li .info .deposit {
+  margin-right: 15px;
+}
+.mobile-mining-content ul li .info .deposit .usd {
+  font-size: 14px;
+  color: #1d1f24;
+  font-weight: bold;
+}
+.mobile-mining-content ul li .info .received .persent {
+  font-size: 14px;
+  color: #1d1f24;
+  font-weight: bold;
+}
+.mobile-mining-content ul li .info .status {
+  margin-left: auto;
+  width: 60px;
+}
+.mobile-mining-content ul li .info .status .red {
+  color: #dd0f0f;
+  font-weight: bold;
+}
+.mobile-mining-content ul li .info .status .green {
+  color: #268619;
+  font-weight: bold;
+}
+.mobile-mining-content .rating {
+  font-size: 18px;
+  color: #fff;
+  height: 46px;
+  margin: 1px 0;
+  width: calc(100% + 28px);
+  margin-left: -14px;
+  background: #383c46;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.mining-filter {
+  margin-bottom: 11px;
+}
+.mining-filter .filter-top {
+  border-bottom: 1px solid #cacaca;
+  background: #f9f9f9;
+  height: 65px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.mining-filter .filter-top h2 {
+  margin-left: 14px;
+  font-size: 24px;
+  color: #1d1f24;
+}
+.mining-filter .filter-top .close {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: 30px;
+  color: #595959;
+  font-size: 40px;
+}
+.mining-filter .categories-block {
+  padding: 15px 13px;
+  border-bottom: 1px solid #dddddd;
+}
+.mining-filter .categories-block h2 {
+  font-size: 16px;
+  color: #545454;
+  margin-bottom: 13px;
+}
+.mining-filter .categories-block .tag-list {
+  max-width: 100%;
+  margin: 0;
+}
+.mining-filter .sorting {
+  padding: 20px 13px 25px;
+  background: #f9f9f9;
+}
+.mining-filter .sorting h2 {
+  font-size: 16px;
+  color: #545454;
+  margin-bottom: 13px;
+}
+.mining-filter .sorting form p {
+  margin-bottom: 7px;
+}
+.mining-filter .sorting form label {
+  font-size: 14px;
+  color: #010a3b;
+}
+.mining-filter .sorting form label:after {
+  background: #cfcfcf;
+}
+.mining-filter .sorting form input[type=submit] {
+  width: 180px;
+  height: 57px;
+  background: #f58c1b;
+  margin: 15px auto 18px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: inherit;
+}
+.mining-filter .sorting .claer {
+  font-size: 14px;
+  color: #f00;
+  display: inherit;
+  text-align: center;
+}
 
