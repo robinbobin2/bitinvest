@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Rx';
 // import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import {StocksService} from '../stocks.service';
 @Component({
 	selector: 'app-exchange',
@@ -14,6 +15,11 @@ import {StocksService} from '../stocks.service';
 	providers: [StocksService]
 })
 export class ExchangeComponent implements OnInit, AfterViewInit {
+	order: string = 'bid';
+  reverse: boolean = true;
+  /**
+   * @param {OrderPipe} 
+   */
 	exchange: any;
 	name = '';
 	comments = [];
@@ -28,6 +34,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 	constructor(private http:HttpClient, 
 		private stockService:StocksService, 
 		private router:Router, 
+		private orderPipe: OrderPipe, 
 		private route:ActivatedRoute) { 
 		this.name = route.snapshot.params['name'];
 

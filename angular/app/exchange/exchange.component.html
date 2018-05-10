@@ -99,7 +99,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let pair of pairs; let i = index" [ngClass]="i > 24 ? 'hidden' : 'visible'" >
+              <tr *ngFor="let pair of pairs; let i = index" [ngClass]="i > 14 ? 'hidden' : 'visible'" >
                 <td>
                   <span class="price">{{pair.currency}}</span>
                 </td>
@@ -119,7 +119,7 @@
               
             </tbody>
           </table>
-          <!-- <a href="#" class="show-btn">Показать еще пары</a> -->
+          <a href="#" class="show-btn">Показать еще пары</a>
           </div>
         <div class="comment-block" id="comment-block">
                     <div class="comment-top" *ngIf="user.id != undefined">
