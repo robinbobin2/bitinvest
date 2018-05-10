@@ -2922,8 +2922,22 @@ var ExchangeComponent = (function () {
                 }
             }
         });
-        this.stockService.getExchangePairs(this.name).subscribe(function (res) {
-            console.log(res);
+        this.stockService.getExchange(this.name).subscribe(function (res) {
+            _this.exchange = res;
+            _this.commentcount = _this.exchange.comments_count;
+            _this.comments = _this.exchange.comments;
+            for (var _i = 0, _a = _this.exchange.categories; _i < _a.length; _i++) {
+                var item = _a[_i];
+                var newsUrl = "/postsbycat/" + item.id;
+                var newsInfo = _this.http.get(newsUrl).publishReplay(1).refCount();
+                newsInfo.subscribe(function (response) {
+                    for (var _i = 0, _a = response['news']; _i < _a.length; _i++) {
+                        var news_item = _a[_i];
+                        _this.news.push(news_item);
+                    }
+                    console.log(_this.news);
+                });
+            }
         });
         var userpath = "/angular/user";
         var userinfo = this.http.get(userpath);
@@ -2936,23 +2950,8 @@ var ExchangeComponent = (function () {
                 role_id: response.role_id
             };
         });
-        this.stockService.getCrypto().subscribe(function (crypto) {
-            var keys = Object.keys(crypto);
-            for (var _i = 0, keys_1 = keys; _i < keys_1.length; _i++) {
-                var item = keys_1[_i];
-                _this.stocks.push(_this.stockService.getStocks(item).map(function (result) {
-                    for (var _i = 0, result_1 = result; _i < result_1.length; _i++) {
-                        var res = result_1[_i];
-                        if (res.name == _this.name) {
-                            _this.pairs.push(res);
-                            _this.count_pairs = _this.pairs.length;
-                        }
-                    }
-                }));
-            }
-            __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].from(_this.stocks)
-                .concatAll()
-                .subscribe();
+        this.stockService.getExchangePairs(this.name).subscribe(function (res) {
+            console.log(res);
         });
     };
     ExchangeComponent.prototype.submitComment = function (form, post_id, type) {

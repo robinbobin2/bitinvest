@@ -44,8 +44,20 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
         }
       }
     });
-		this.stockService.getExchangePairs(this.name).subscribe(res => {
-			console.log(res);
+		this.stockService.getExchange(this.name).subscribe(res => {
+			this.exchange = res;
+			this.commentcount = this.exchange.comments_count;
+			this.comments = this.exchange.comments;
+			for(let item of this.exchange.categories) {
+				let newsUrl = "/postsbycat/"+item.id;
+				let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
+				newsInfo.subscribe(response => {
+					for(let news_item of response['news']) {
+						this.news.push(news_item)
+					}
+					console.log(this.news);
+				});
+			}
 		});
 
 		const userpath = "/angular/user";
@@ -64,26 +76,8 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 
 
 
-		this.stockService.getCrypto().subscribe(crypto => {
-			let keys = Object.keys(crypto);
-			for(let item of keys) {
-				this.stocks.push( 
-					this.stockService.getStocks(item).map(result => {
-						for(let res of result) {
-							if(res.name == this.name) {
-								this.pairs.push(res);
-								this.count_pairs = this.pairs.length;
-							}
-						}
-
-					})
-					);
-			}
-			Observable.from(this.stocks)
-			.concatAll()
-			.subscribe();
-
-
+		this.stockService.getExchangePairs(this.name).subscribe(res => {
+			console.log(res);
 		});
 	}
 
