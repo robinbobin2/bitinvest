@@ -99,7 +99,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let pair of pairs" [ngClass]="index > 24 ? 'hidden' : ''" >
+              <tr *ngFor="let pair of pairs; let i = index" [ngClass]="i > 24 ? 'hidden' : 'visible'" >
                 <td>
                   <span class="price">{{pair.currency}}</span>
                 </td>
