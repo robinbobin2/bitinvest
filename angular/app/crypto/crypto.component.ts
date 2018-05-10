@@ -94,6 +94,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     let symbol = this.route.snapshot.params['sym'];
     if(localStorage.getItem(symbol)) {
       this.dataUsd = JSON.parse(localStorage.getItem(symbol));
+      this.diff = this.dataUsd.now - this.dataUsd.last;
       
     }
     if(localStorage.getItem('bid')) {
