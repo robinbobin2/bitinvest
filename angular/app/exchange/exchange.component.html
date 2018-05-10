@@ -36,12 +36,12 @@
           </div>
         </div>
         <ul class="card-menu">
-          <li><a href="#general">Общее</a></li>
-          <li><a href="#coins">Доступные монеты ({{exchange.coins_count}})</a></li>
-          <li><a href="#output">Способы вывода</a></li>
-          <li><a href="#exchanges-table">Доступные пары ({{count_pairs}})</a></li>
-          <li><a href="#comment-block">Комментарии ({{commentcount}})</a></li>
-          <li><a href="#news">Новости</a></li>
+          <li><a [routerLink]="['/exchange', exchange.name]" fragment="general" (click)="onAnchorClick()">Общее</a></li>
+          <li><a [routerLink]="['/exchange', exchange.name]" fragment="coins" (click)="onAnchorClick()">Доступные монеты ({{exchange.coins_count}})</a></li>
+          <li><a [routerLink]="['/exchange', exchange.name]" fragment="output" (click)="onAnchorClick()">Способы вывода</a></li>
+          <li><a [routerLink]="['/exchange', exchange.name]" fragment="exchanges-table" (click)="onAnchorClick()">Доступные пары ({{count_pairs}})</a></li>
+          <li><a [routerLink]="['/exchange', exchange.name]" fragment="comment-block" (click)="onAnchorClick()">Комментарии ({{commentcount}})</a></li>
+          <li><a [routerLink]="['/exchange', exchange.name]" fragment="news" (click)="onAnchorClick()">Новости</a></li>
         </ul>
         <div class="basic-information" id="general">
           <div class="basic-information-wrap">
@@ -72,7 +72,7 @@
         </div>
         <div class="distribution-funds" id="coins">
           <h3 class="ico-title">Доступные монеты ({{exchange.coins_count}})</h3>
-          <ul>
+          <ul *ngIf="exchange.coins" >
             <li *ngFor="let coin of exchange.coins">
               <div class="img-wrap"><img src="img/coins-icon.png" alt=""></div><span>{{coin.name}} ({{coin.symbol}})</span></li>
             

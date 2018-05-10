@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { OnChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -13,7 +13,7 @@ import {StocksService} from '../stocks.service';
 	styleUrls: ['./exchange.component.scss'],
 	providers: [StocksService]
 })
-export class ExchangeComponent implements OnInit {
+export class ExchangeComponent implements OnInit, AfterViewInit {
 	exchange: any;
 	name = '';
 	comments = [];
@@ -24,6 +24,7 @@ export class ExchangeComponent implements OnInit {
 	stocks=[];
 	news = [];
 	count_pairs = 0;
+	private fragment: string;
 	constructor(private http:HttpClient, 
 		private stockService:StocksService, 
 		private router:Router, 
@@ -34,6 +35,15 @@ export class ExchangeComponent implements OnInit {
 
 
 	ngOnInit() {
+		 this.router.events.subscribe(s => {
+      if (s instanceof NavigationEnd) {
+        const tree = this.router.parseUrl(this.router.url);
+        if (tree.fragment) {
+          const element = document.querySelector("#" + tree.fragment);
+          if (element) { element.scrollIntoView(element); }
+        }
+      }
+    });
 		this.stockService.getExchange(this.name).subscribe(res => {
 			this.exchange = res;
 			this.commentcount = this.exchange.comments_count;
@@ -42,7 +52,9 @@ export class ExchangeComponent implements OnInit {
 				let newsUrl = "/postsbycat/"+item.id;
 				let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
 				newsInfo.subscribe(response => {
-					this.news.push(response['news']);
+					for(let news_item of response['news']) {
+						this.news.push(news_item)
+					}
 					console.log(this.news);
 				});
 			}
@@ -110,5 +122,16 @@ export class ExchangeComponent implements OnInit {
 		);
 		form.reset();
 	}
+	onAnchorClick ( ) {
+    this.route.fragment.subscribe ( f => {
+      const element = document.querySelector ( "#" + f )
+      if ( element ) element.scrollIntoView ( element )
+    });
+  }
+	ngAfterViewInit(): void {
+    try {
+      document.querySelector('#' + this.fragment).scrollIntoView();
+    } catch (e) { }
+  }
 
 }

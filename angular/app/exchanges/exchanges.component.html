@@ -43,35 +43,42 @@
         <table class="table crypto-table">
           <thead>
             <tr>
-              <th width="4.4%">
+              <th width="4.4%" [class.active]="order === 'id'"
+        (click)="setOrder('id')">
                 <span>#</span>
                 <img src="img/arr-top-table.png" alt="">
               </th>
-              <th width="12.9%">
+              <th width="12.9%" [class.active]="order === 'name'"
+        (click)="setOrder('name')">
                 <span>Название</span>
                 <img src="img/arr-top-table.png" alt="">
               </th>
-              <th width="10%" class="active">
+              <th width="10%" [class.active]="order === 'usd'"
+        (click)="setOrder('usd')">
                 <span>Объем ( $ за 24 ч.)</span>
                 <img src="img/arr-top-table.png" alt="">
               </th>
-              <th width="10.8%">
+              <th width="10.8%" [class.active]="order === 'btc'"
+        (click)="setOrder('btc')">
                 <span>Объем BTC (за 24ч.)</span>
                 <img src="img/arr-top-table.png" alt="">
               </th>
-              <th width="7.1%">
+              <th width="7.1%" >
                 <span>Кол-во пар</span>
                 <img src="img/arr-top-table.png" alt="">
               </th>
-              <th width="12.5%">
+              <th width="12.5%" [class.active]="order === 'languages'"
+        (click)="setOrder('languages')">
                 <span>Поддержка языков</span>
                 <img src="img/arr-top-table.png" alt="">
               </th>
-              <th width="4.7%">
+              <th width="4.7%" [class.active]="order === 'year'"
+        (click)="setOrder('year')">
                 <span>Год</span>
                 <img src="img/arr-top-table.png" alt="">
               </th>
-              <th width="17%">
+              <th width="17%" [class.active]="order === 'country'"
+        (click)="setOrder('country')">
                 <span>Страна</span>
                 <img src="img/arr-top-table.png" alt="">
               </th>

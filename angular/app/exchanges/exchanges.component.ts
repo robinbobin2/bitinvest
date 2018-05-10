@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Rx';
 // import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import {StocksService} from '../stocks.service';
 @Component({
   selector: 'app-exchanges',
@@ -19,7 +20,9 @@ export class ExchangesComponent implements OnInit {
   volumes = []
   exchange_volumes = [];
   language = '';
-  constructor(private http:HttpClient, private stockService:StocksService) { }
+  reverse: boolean = true;
+  order = 'id';
+  constructor(private http:HttpClient, private stockService:StocksService, private orderPipe: OrderPipe) { }
 
   ngOnInit() {
     this.stockService.getExchanges().subscribe(res => {
@@ -39,5 +42,13 @@ export class ExchangesComponent implements OnInit {
       }
     });
   }
+  setOrder(value: string) {
+     if (this.order === value) {
+       this.reverse = !this.reverse;
+     }
+
+     this.order = value;
+   }
+
 
 }
