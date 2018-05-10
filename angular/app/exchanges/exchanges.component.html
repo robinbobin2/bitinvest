@@ -21,18 +21,7 @@
                <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
              </div>
              <ul class="select-items">
-               <li (click)="language=''"> <a >Алгоритм: Все</a></li>
-               <li *ngFor="let item of exchanges" (click)="language=item?.languages"><a >{{item?.languages}}</a></li>
-               <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
-             </ul>
-              </div>
-          <div class="select-wrapper1" id="select-country">
-              <div class="select">
-               <span class="text"><span style="padding-top: 12px;">{{language !='' ? language : 'Язык: Все'}}</span></span>
-               <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
-             </div>
-             <ul class="select-items">
-               <li (click)="language=''"> <a >Алгоритм: Все</a></li>
+               <li (click)="language=''"> <a >Язык: Все</a></li>
                <li *ngFor="let item of exchanges" (click)="language=item?.languages"><a >{{item?.languages}}</a></li>
                <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
              </ul>
