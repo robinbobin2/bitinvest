@@ -2436,6 +2436,7 @@ var CryptoComponent = (function () {
         if (localStorage.getItem(symbol)) {
             this.dataUsd = JSON.parse(localStorage.getItem(symbol));
             this.diff = this.dataUsd.now - this.dataUsd.last;
+            this.prev = this.dataUsd.last;
         }
         if (localStorage.getItem('bid')) {
             this.bid_ask.bid = JSON.parse(localStorage.getItem('bid'));
