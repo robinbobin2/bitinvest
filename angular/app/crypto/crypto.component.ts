@@ -192,7 +192,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
         }
       }
-      this.time_value = Math.min.apply(null, this.time);
+      this.time_value = Math.max.apply(null, this.time);
       this.load = false;
       localStorage.removeItem(symbol+'USD stocks');
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));

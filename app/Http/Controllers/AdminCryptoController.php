@@ -41,7 +41,18 @@ class AdminCryptoController extends Controller
     public function store(Request $request)
     {
         //
-        CryptoStat::create($request->all());
+        $data = $request->except('logo');
+        if ($file = Request::file('logo')) {
+            
+            $name = time() . $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+            $data['logo'] = $name;
+
+        }
+
+        CryptoStat::create($data);
         $request->session()->flash('crypto_add', 'Криптовалюта успешно добавлена');
         return redirect('admin/crypto');
     }
@@ -83,7 +94,16 @@ class AdminCryptoController extends Controller
         //
         Session::flash('updated_crypto', 'Криптовалюта успешно изменена');
         $crypto = CryptoStat::findOrFail($id);
-        $input = $request->all();
+        $input = $request->except('logo');
+        if ($file = Request::file('logo')) {
+            
+            $name = time() . $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+            $input['logo'] = $name;
+
+        }
         $crypto->update($input);
         return redirect()->back();
     }

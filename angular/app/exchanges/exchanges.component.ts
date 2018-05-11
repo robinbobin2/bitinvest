@@ -22,6 +22,7 @@ export class ExchangesComponent implements OnInit {
   language = '';
   reverse: boolean = true;
   order = 'id';
+  pairs_count = [];
   constructor(private http:HttpClient, private stockService:StocksService, private orderPipe: OrderPipe) { }
 
   ngOnInit() {
@@ -30,6 +31,12 @@ export class ExchangesComponent implements OnInit {
       this.exchanges = res; 
       this.count = this.exchanges.length;
       console.log(this.count);
+      for(let item of this.exchanges) {
+        this.stockService.getExchangePairs(item.name).subscribe(
+          pairs => this.pairs_count.push(pairs.length)
+          );
+
+      }
 
     });
   	this.stockService.getVolumes().subscribe(res => {
