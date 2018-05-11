@@ -26,7 +26,7 @@
             <span [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.1-2'}}</span>
             <span [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">{{countPercent(dataUsd.now, prev) | number:'1.2-3'}}%</span>
           </div>
-          <p>Последнее обновление {{time_value | date:'mediumTime'}}</p>
+          <p>Последнее обновление {{time_value*1000 | date:'mediumTime'}}</p>
         </div>
         <ul>
           <li><span>Объем за 24ч.</span><span class="black">{{volume | number:'1.0-1'}}</span></li>
