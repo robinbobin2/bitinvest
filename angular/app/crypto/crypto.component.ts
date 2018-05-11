@@ -133,11 +133,11 @@ export class CryptoComponent implements OnInit, OnDestroy {
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
       for(let item of this.stocks) {
         if(item.ask > 0) {
-        this.min.push(item.ask);
+          this.min.push(item.ask);
           
         }
         if(item.bid) {
-        this.max.push(item.bid);
+          this.max.push(item.bid);
         }
         if(this.volume === 0) {
         
@@ -192,7 +192,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
         }
       }
-      this.time_value = Math.max.apply(null, this.time);
+      this.time_value = Math.min.apply(null, this.time);
       this.load = false;
       localStorage.removeItem(symbol+'USD stocks');
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
