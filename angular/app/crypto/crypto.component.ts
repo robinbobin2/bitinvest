@@ -155,6 +155,8 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
       }
       this.min_value = Math.min.apply(null, this.min);
+      console.log('min val')
+      console.log(this.min_value)
       this.max_value = Math.max.apply(null, this.max);
 
     });
