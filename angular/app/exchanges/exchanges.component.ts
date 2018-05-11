@@ -33,7 +33,7 @@ export class ExchangesComponent implements OnInit {
       console.log(this.count);
       for(let item of this.exchanges) {
         this.stockService.getExchangePairs(item.name).subscribe(
-          pairs => this.pairs_count.push(pairs.length)
+          pairs => {item.count=pairs.length; console.log(item.count)}
           );
 
       }
