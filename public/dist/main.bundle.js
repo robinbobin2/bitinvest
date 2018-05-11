@@ -2466,8 +2466,12 @@ var CryptoComponent = (function () {
             localStorage.setItem(symbol + 'USD stocks', JSON.stringify(_this.stocks));
             for (var _a = 0, _b = _this.stocks; _a < _b.length; _a++) {
                 var item = _b[_a];
-                _this.min.push(item.ask);
-                _this.max.push(item.bid);
+                if (item.ask > 0) {
+                    _this.min.push(item.ask);
+                }
+                if (item.bid) {
+                    _this.max.push(item.bid);
+                }
                 if (_this.volume === 0) {
                     _this.volume = _this.volume + item.volume;
                 }
