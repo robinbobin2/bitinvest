@@ -83,6 +83,12 @@ export class CryptoComponent implements OnInit, OnDestroy {
   volume = 0;
   animstock = [];
   prev = 0;
+  min = [];
+  min_value = 0;
+  max_value = 0;
+  max = [];
+  time = [];
+  time_value = 0;
   constructor(private http:HttpClient,private stocksService:StocksService,
     private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
@@ -126,17 +132,15 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.load = false;
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
       for(let item of this.stocks) {
+        this.min.push(item.ask);
+        this.max.push(item.bid);
         if(this.volume === 0) {
         
-          for(let item of this.stocks) {
             this.volume = this.volume+item.volume;
-          }
           
         } else {
           this.volume = 0;
-          for(let item of this.stocks) {
-            this.volume = this.volume+item.volume;
-          }
+          this.volume = this.volume+item.volume;
         }
         if(this.bid_ask.ask < item.ask) {
         this.bid_ask.ask = item.ask
@@ -150,12 +154,16 @@ export class CryptoComponent implements OnInit, OnDestroy {
         }
 
       }
+      this.min_value = Math.min.apply(null, this.min);
+      this.max_value = Math.max.apply(null, this.max);
+
     });
     this.stocksData = Observable.interval(2000).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USDT'))
     .map(response => {
 
       for (var _i = 0; _i < this.stocks.length; ++_i) {
+        this.time.push(this.stocks[_i].time);
         this.animstock[_i] = '';
         if(this.stocks[_i].value > response[_i].value) {
           this.animstock[_i] = 'greencolor';
@@ -176,6 +184,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
         }
       }
+      this.time_value = Math.max.apply(null, this.time);
       this.load = false;
       localStorage.removeItem(symbol+'USD stocks');
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
