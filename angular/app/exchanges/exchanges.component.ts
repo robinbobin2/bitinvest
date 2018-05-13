@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import {StocksService} from '../stocks.service';
@@ -10,7 +10,7 @@ import {Observable} from 'rxjs/Rx';
   styleUrls: ['./exchanges.component.scss'],
   providers: [StocksService]
 })
-export class ExchangesComponent implements OnInit {
+export class ExchangesComponent implements OnInit, OnDestroy {
   exchanges = [];
   count = 0;
   volumes = []
@@ -65,5 +65,7 @@ export class ExchangesComponent implements OnInit {
      this.order = value;
    }
 
-
+ ngOnDestroy() {
+   this.volume_data.unsubscribe();
+ }
 }
