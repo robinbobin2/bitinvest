@@ -2988,7 +2988,7 @@ var ExchangeComponent = (function () {
             }
             _this.pairs = res;
             _this.count_pairs = _this.pairs.length;
-        });
+        }).subscribe();
     };
     ExchangeComponent.prototype.submitComment = function (form, post_id, type) {
         var _this = this;

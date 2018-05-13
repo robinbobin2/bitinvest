@@ -110,7 +110,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 			}
 			this.pairs = res;
 			this.count_pairs = this.pairs.length;
-		})
+		}).subscribe();
 	}
 
 	submitComment(form: NgForm, post_id, type) {
