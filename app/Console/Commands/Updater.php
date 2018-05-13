@@ -9,11 +9,11 @@
 namespace App\Console\Commands;
 
 
-use App\Models\Founder\Models\Connectors\CexConnector;
+use App\Models\Founder\Models\Providers\ACXProvider;
+use App\Models\Founder\Models\Providers\AllCoinProvider;
 use App\Models\Founder\Models\Providers\BiBoxProvider;
 use App\Models\Founder\Models\Providers\BinanceProvider;
 use App\Models\Founder\Models\Providers\Bit2CProvider;
-use App\Models\Founder\Models\Providers\BitBankProvider;
 use App\Models\Founder\Models\Providers\BitBayProvider;
 use App\Models\Founder\Models\Providers\BitFinexProvider;
 use App\Models\Founder\Models\Providers\BitMarketProvider;
@@ -31,8 +31,44 @@ use App\Models\Founder\Models\Providers\CoinEggProvider;
 use App\Models\Founder\Models\Providers\CoinexChangeProvider;
 use App\Models\Founder\Models\Providers\CoinexProvider;
 use App\Models\Founder\Models\Providers\CoinGiProvider;
+use App\Models\Founder\Models\Providers\CoinMarketCapProvider;
+use App\Models\Founder\Models\Providers\CoinnestProvider;
+use App\Models\Founder\Models\Providers\CoinTigerProvider;
+use App\Models\Founder\Models\Providers\ExmoProvider;
+use App\Models\Founder\Models\Providers\ExxProvider;
+use App\Models\Founder\Models\Providers\FlowBTCProvider;
+use App\Models\Founder\Models\Providers\GateCoinProvider;
+use App\Models\Founder\Models\Providers\GateIOProvider;
+use App\Models\Founder\Models\Providers\GDaxProvider;
+use App\Models\Founder\Models\Providers\GeminiProvider;
 use App\Models\Founder\Models\Providers\HitBTCProvider;
-use App\Models\Founder\Models\Providers\PoloniexProvider;
+use App\Models\Founder\Models\Providers\HuobiProProvider;
+use App\Models\Founder\Models\Providers\IBankProvider;
+use App\Models\Founder\Models\Providers\Ice3XProvider;
+use App\Models\Founder\Models\Providers\IndependentReserveProvider;
+use App\Models\Founder\Models\Providers\JubiProvider;
+use App\Models\Founder\Models\Providers\KrakenProvider;
+use App\Models\Founder\Models\Providers\KuCoinProvider;
+use App\Models\Founder\Models\Providers\KunaProvider;
+use App\Models\Founder\Models\Providers\LakeBTCProvider;
+use App\Models\Founder\Models\Providers\LiveCoinProvider;
+use App\Models\Founder\Models\Providers\LunoProvider;
+use App\Models\Founder\Models\Providers\LuquiProvider;
+use App\Models\Founder\Models\Providers\LykkeProvider;
+use App\Models\Founder\Models\Providers\NovaProvider;
+use App\Models\Founder\Models\Providers\OkCoinProvider;
+use App\Models\Founder\Models\Providers\OkexProvider;
+use App\Models\Founder\Models\Providers\OneBrokerProvider;
+use App\Models\Founder\Models\Providers\OneBTCXEProvider;
+use App\Models\Founder\Models\Providers\QryptosProvider;
+use App\Models\Founder\Models\Providers\SouthXChangeProvider;
+use App\Models\Founder\Models\Providers\TheRockProvider;
+use App\Models\Founder\Models\Providers\TideBitProvider;
+use App\Models\Founder\Models\Providers\VaultoroProvider;
+use App\Models\Founder\Models\Providers\VirWoxProvider;
+use App\Models\Founder\Models\Providers\XBTCEProvider;
+use App\Models\Founder\Models\Providers\ZaifProvider;
+use App\Models\Founder\Models\Providers\ZbProvider;
 use App\Models\Founder\Models\Rabbit\RabbitTestHandler;
 use App\Models\Founder\Models\Requests\Request;
 
@@ -75,7 +111,46 @@ class Updater extends \Illuminate\Console\Command
         CoinEggProvider::class,
         CoinexProvider::class,
         CoinexChangeProvider::class,
-        CoinGiProvider::class
+        CoinGiProvider::class,
+        ACXProvider::class,
+        AllCoinProvider::class,
+        CoinMarketCapProvider::class,
+        CoinnestProvider::class,
+        CoinTigerProvider::class,
+        ExmoProvider::class,
+        ExxProvider::class,
+        FlowBTCProvider::class,
+        GateCoinProvider::class,
+        GateIOProvider::class,
+        GDaxProvider::class,
+        GeminiProvider::class,
+        HuobiProProvider::class,
+        IBankProvider::class,
+        Ice3XProvider::class,
+        IndependentReserveProvider::class,
+        JubiProvider::class,
+        KrakenProvider::class,
+        KuCoinProvider::class,
+        KunaProvider::class,
+        LakeBTCProvider::class,
+        LiveCoinProvider::class,
+        LunoProvider::class,
+        LuquiProvider::class,
+        LykkeProvider::class,
+        NovaProvider::class,
+        OkCoinProvider::class,
+        OkexProvider::class,
+        OneBrokerProvider::class,
+        OneBTCXEProvider::class,
+        QryptosProvider::class,
+        SouthXChangeProvider::class,
+        TheRockProvider::class,
+        TideBitProvider::class,
+        VaultoroProvider::class,
+        VirWoxProvider::class,
+        XBTCEProvider::class,
+        ZaifProvider::class,
+        ZbProvider::class
     ];
 
     /**

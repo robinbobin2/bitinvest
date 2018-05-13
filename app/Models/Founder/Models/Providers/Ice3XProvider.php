@@ -1,19 +1,19 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Админ
- * Date: 11.04.2018
- * Time: 1:36
+ * User: xeror
+ * Date: 11.05.2018
+ * Time: 17:35
  */
 
 namespace App\Models\Founder\Models\Providers;
 
 
-use App\Models\Founder\Models\Connectors\BiBoxConnector;
+use App\Models\Founder\Models\Connectors\Ice3XConnector;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class BiBoxProvider extends FounderProvider
+class Ice3XProvider extends FounderProvider
 {
     public function search(Request $request)
     {
@@ -23,20 +23,20 @@ class BiBoxProvider extends FounderProvider
 
     public function getExchangeId()
     {
-        return 3;
+        return 38;
     }
 
     protected function getConnectorClass()
     {
-        return new BiBoxConnector();
+        return new Ice3XConnector();
     }
 
     /**
-     * @return BiBoxConnector
+     * @return Ice3XConnector
      */
     protected function getConnector()
     {
-        /** @var BiBoxConnector $connector */
+        /** @var Ice3XConnector $connector */
         $connector = parent::getConnector();
         return $connector;
     }
