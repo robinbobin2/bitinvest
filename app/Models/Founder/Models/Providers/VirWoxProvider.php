@@ -1,42 +1,41 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Админ
- * Date: 11.04.2018
- * Time: 1:36
+ * User: xeror
+ * Date: 11.05.2018
+ * Time: 18:00
  */
 
 namespace App\Models\Founder\Models\Providers;
 
 
-use App\Models\Founder\Models\Connectors\BiBoxConnector;
+use App\Models\Founder\Models\Connectors\VirwoxConnector;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class BiBoxProvider extends FounderProvider
+class VirWoxProvider extends FounderProvider
 {
     public function search(Request $request)
     {
-        $response = $this->getConnector()->fetch_tickers();
-        return $response;
+        return [];
     }
 
     public function getExchangeId()
     {
-        return 3;
+        return 59;
     }
 
     protected function getConnectorClass()
     {
-        return new BiBoxConnector();
+        return new VirwoxConnector();
     }
 
     /**
-     * @return BiBoxConnector
+     * @return VirwoxConnector
      */
     protected function getConnector()
     {
-        /** @var BiBoxConnector $connector */
+        /** @var VirwoxConnector $connector */
         $connector = parent::getConnector();
         return $connector;
     }

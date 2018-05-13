@@ -1,42 +1,41 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Админ
- * Date: 11.04.2018
- * Time: 1:36
+ * User: xeror
+ * Date: 11.05.2018
+ * Time: 17:51
  */
 
 namespace App\Models\Founder\Models\Providers;
 
 
-use App\Models\Founder\Models\Connectors\BiBoxConnector;
+use App\Models\Founder\Models\Connectors\NovaConnector;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class BiBoxProvider extends FounderProvider
+class NovaProvider extends FounderProvider
 {
     public function search(Request $request)
     {
-        $response = $this->getConnector()->fetch_tickers();
-        return $response;
+        return [];
     }
 
     public function getExchangeId()
     {
-        return 3;
+        return 49;
     }
 
     protected function getConnectorClass()
     {
-        return new BiBoxConnector();
+        return new NovaConnector();
     }
 
     /**
-     * @return BiBoxConnector
+     * @return NovaConnector
      */
     protected function getConnector()
     {
-        /** @var BiBoxConnector $connector */
+        /** @var NovaConnector $connector */
         $connector = parent::getConnector();
         return $connector;
     }
