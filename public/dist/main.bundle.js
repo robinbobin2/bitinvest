@@ -6431,7 +6431,7 @@ SidebarComponent = __decorate([
 /***/ "./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"quotes\">\n          <h5 class=\"titles\">Котировки криптовалют</h5>\n          <ul>\n            <img src=\"/img/load.gif\" *ngIf=\"load==true\" style=\"display: block;\n            margin: 10px auto; width: 15px; height: 15px;\">\n            <li *ngFor=\"let item of dataUsd\">\n              <a routerLink=\"/crypto/{{item.sym}}\">\n                <span class=\"crypto\">{{item.sym}}</span>\n                <span class=\"usd\">${{item.now | number:'1.0-1'}}</span>\n                <span class=\"rub\">₽{{item.now*60 | number:'1.0-1'}}</span>\n                <span class=\"change\">{{item.now-item.last | number:'1.0-1'}}</span>\n              </a>\n            </li>\n            \n          </ul>\n          <a routerLink=\"/cryptocurrency/all\" class=\"show-all\">Показать все котировки</a>\n          <p class=\"updated\">Последнее обновление: 26.10.17, 12:42</p>\n        </div>"
+module.exports = "<div class=\"quotes\">\n          <h5 class=\"titles\">Котировки криптовалют</h5>\n          <ul>\n            <img src=\"/img/load.gif\" *ngIf=\"load==true\" style=\"display: block;\n            margin: 10px auto; width: 15px; height: 15px;\">\n            <li *ngFor=\"let item of dataUsd\">\n              <a routerLink=\"/crypto/{{item.sym}}\">\n                <span class=\"crypto\" >{{item.sym}}</span>\n                <span class=\"usd\" [ngStyle]=\"{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">${{item.now | number:'1.0-1'}}</span>\n                <span class=\"rub\" [ngStyle]=\"{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">₽{{item.now*60 | number:'1.0-1'}}</span>\n                <span class=\"change\" [ngStyle]=\"{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">{{item.now-item.last | number:'1.0-1'}}</span>\n              </a>\n            </li>\n            \n          </ul>\n          <a routerLink=\"/cryptocurrency/all\" class=\"show-all\">Показать все котировки</a>\n          <p class=\"updated\">Последнее обновление: 26.10.17, 12:42</p>\n        </div>"
 
 /***/ }),
 
@@ -6477,6 +6477,7 @@ var StocksSidebarComponent = (function () {
         this.stocksService = stocksService;
         this.dataUsd = [];
         this.load = true;
+        this.animtype = [];
         this.alldata = this.http.get('/allcrypto');
     }
     StocksSidebarComponent.prototype.ngAfterViewInit = function () {
@@ -6494,6 +6495,15 @@ var StocksSidebarComponent = (function () {
                         var year = admin[index].year;
                         var algo = admin[index].algo;
                         var desc = 'DESC';
+                        _this.animtype[index] = '';
+                        if (_this.dataUsd[index].now != _this.resp[symbol + '/USDT']['now']) {
+                            if (_this.dataUsd[index].now > _this.resp[symbol + '/USDT']['now']) {
+                                _this.animtype[index] = 'redcolor';
+                            }
+                            else {
+                                _this.animtype[index] = 'greencolor';
+                            }
+                        }
                         if (_this.dataUsd[index]) {
                             _this.dataUsd[index].sym = symbol;
                             _this.dataUsd[index].algo = algo;

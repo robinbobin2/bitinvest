@@ -26,6 +26,7 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
   resp: any;
   cryptoData: any;
   load:boolean = true;
+  animtype = [];
   alldata = this.http.get<Array<Cripto>>('/allcrypto');
 
   ngAfterViewInit() {
@@ -44,6 +45,16 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
           let year = admin[index].year;
           let algo = admin[index].algo;
           let desc = 'DESC';
+          this.animtype[index] = '';
+
+        if(this.dataUsd[index].now != this.resp[symbol+'/USDT']['now']) {
+          if(this.dataUsd[index].now > this.resp[symbol+'/USDT']['now']) {
+            this.animtype[index] = 'redcolor';
+          } else {
+            this.animtype[index] = 'greencolor';
+
+          }
+        }
           if(this.dataUsd[index]) {
             this.dataUsd[index].sym = symbol;
             this.dataUsd[index].algo = algo;
