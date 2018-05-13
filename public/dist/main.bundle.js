@@ -2093,7 +2093,6 @@ var CryptoAllComponent = (function () {
             .subscribe(function (response) {
             _this.resp = response;
             _this.data = alldata.subscribe(function (response) {
-                // console.log(response);
                 var admin = response;
                 for (var _i = 0; _i < admin.length; ++_i) {
                     // console.log(this.admin[i].symbol);
@@ -3050,6 +3049,7 @@ module.exports = ".select-wrapper1 {\n  width: 144px;\n  position: relative;\n  
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3059,6 +3059,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -3093,6 +3094,18 @@ var ExchangesComponent = (function () {
         });
         this.stockService.getVolumes().subscribe(function (res) {
             _this.volumes = res;
+            for (var _i = 0, _a = _this.volumes; _i < _a.length; _i++) {
+                var item = _a[_i];
+                _this.exchange_volumes[item.name] = {
+                    'btc': item.btc,
+                    'usd': item.usd
+                };
+            }
+        });
+        this.volume_data = __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].interval(1000).concatMap(function () { return _this.stockService.getVolumes(); })
+            .map(function (response) {
+            _this.volumes = response;
+        }).subscribe(function () {
             for (var _i = 0, _a = _this.volumes; _i < _a.length; _i++) {
                 var item = _a[_i];
                 _this.exchange_volumes[item.name] = {

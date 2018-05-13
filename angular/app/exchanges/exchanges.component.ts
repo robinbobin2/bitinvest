@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ElementRef } from '@angular/core';
-import { OnChanges } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
-import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import {StocksService} from '../stocks.service';
+import {Observable} from 'rxjs/Rx';
+
 @Component({
   selector: 'app-exchanges',
   templateUrl: './exchanges.component.html',
@@ -23,11 +19,11 @@ export class ExchangesComponent implements OnInit {
   reverse: boolean = true;
   order = 'id';
   pairs_count = [];
+  volume_data: any;
   constructor(private http:HttpClient, private stockService:StocksService, private orderPipe: OrderPipe) { }
 
   ngOnInit() {
-    this.stockService.getExchanges().subscribe(res => {
-
+    this.stockService.getExchanges().subscribe((res: Array<any>) => {
       this.exchanges = res; 
       this.count = this.exchanges.length;
       console.log(this.count);
@@ -48,6 +44,18 @@ export class ExchangesComponent implements OnInit {
         }
       }
     });
+
+  	this.volume_data = Observable.interval(1000).concatMap(()=>this.stockService.getVolumes())
+          .map((response)=>{
+              this.volumes = response;
+          }).subscribe( () => {
+              for(let item of this.volumes) {
+                  this.exchange_volumes[item.name] = {
+                      'btc': item.btc,
+                      'usd': item.usd
+                  }
+              }
+          } );
   }
   setOrder(value: string) {
      if (this.order === value) {
