@@ -6484,9 +6484,9 @@ var StocksSidebarComponent = (function () {
         this.stocksService.getCrypto()
             .subscribe(function (response) {
             _this.resp = response;
-            _this.cryptoData = __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["a" /* Observable */].interval(3000).take(10).concatMap(function () { return _this.stocksService.getCrypto(); })
-                .map(function (response) { _this.resp = response; }).subscribe(function () {
-                _this.data = _this.alldata.subscribe(function (response) {
+            _this.data = _this.alldata.subscribe(function (response) {
+                _this.cryptoData = __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["a" /* Observable */].interval(3000).take(10).concatMap(function () { return _this.stocksService.getCrypto(); })
+                    .map(function (response) { _this.resp = response; }).subscribe(function () {
                     var admin = response;
                     for (var _i = 0; _i < admin.length; ++_i) {
                         var index = _i;
