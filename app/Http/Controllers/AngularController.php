@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CloudMining;
+use App\CryptoStat;
 use App\IcoPercent;
 use App\IcoProject;
 use App\Stock;
@@ -155,5 +156,16 @@ class AngularController extends Controller
     public function exchange($name)
     {
         return Stock::where('name', $name)->with('coins')->withCount('coins')->with('comments')->withCount('comments')->with('categories')->first()->toArray();
+    }
+
+    public function search() {
+        if ($_REQUEST['q'] ) {
+            $cloud_mining = CloudMining::where('name', 'LIKE', '%'.$_REQUEST['q'].'%')->get()->toArray();
+            $coins = CryptoStat::where('name', 'LIKE', '%'.$_REQUEST['q'].'%')->get()->toArray();
+            $ico = IcoProject::where('name', 'LIKE', '%'.$_REQUEST['q'].'%')->get()->toArray();
+            return array_merge($cloud_mining, $ico, $coins);
+        } else {
+            return 'Ничего не найдено';
+        }
     }
 }

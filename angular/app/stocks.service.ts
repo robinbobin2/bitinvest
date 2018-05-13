@@ -9,6 +9,7 @@ export class StocksService {
   path = '/bit/info';
   bitPath = '/bit';
   exchangePath = '/angular/exchange/';
+  exchangePairsPath = '/bit/pair/name?exchange=';
   observ: any;
   returnPath: any;
   obs: any;
@@ -30,6 +31,9 @@ export class StocksService {
   }
   public getExchange(name) {
     return this.http.get<any>(this.exchangePath+name).publishReplay(1).refCount();
+  }
+  public getExchangePairs(name) {
+    return this.http.get<any>(this.exchangePairsPath+name).publishReplay(1).refCount();
   }
 
 }

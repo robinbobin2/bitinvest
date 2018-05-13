@@ -19,4 +19,7 @@ class CryptoStat extends Model
     {
         return $this->belongsTo('App\Category', 'cat_id_analytics');
     }
+    public function categories() {
+        return $this->belongsToMany('App\Category');
+    }
 }

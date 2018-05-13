@@ -26,12 +26,12 @@
             <span [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.1-2'}}</span>
             <span [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">{{countPercent(dataUsd.now, prev) | number:'1.2-3'}}%</span>
           </div>
-          <p>Последнее обновление </p>
+          <p>Последнее обновление {{time_value*1000 | date:'HH:mm:ss'}}</p>
         </div>
         <ul>
           <li><span>Объем за 24ч.</span><span class="black">{{volume | number:'1.0-1'}}</span></li>
           <li><span>Спрос / Предложение</span><span class="black">{{bid_ask.ask | number:'1.0-2'}} / {{bid_ask.bid | number:'1.0-2'}}</span></li>
-          <li><span>Дневной диапазон</span><span><span class="red">{{dataUsd?.min | number:'1.0-1'}}</span> <span class="black">/</span> <span class="green">{{dataUsd?.max | number:'1.0-1'}}</span></span>
+          <li><span>Дневной диапазон</span><span><span class="red">{{min_value | number:'1.0-1'}}</span> <span class="black">/</span> <span class="green">{{max_value | number:'1.0-1'}}</span></span>
           </li>
           <li><span>Капитализация</span><span class="black">$ 95 113 177 098</span></li>
           <li><span>Алгоритм</span><span class="black">{{data?.algo}}</span></li>
@@ -107,7 +107,7 @@
                         <span class="growth-green" [ngStyle]="{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s', 'color': 'black'}">{{stock.percent | number:'1.0-3'}}%</span>
                       </td>
                       <td>
-                        <span class="updated">{{stock.time * 1000 | date:'mediumTime'}}</span>
+                        <span class="updated">{{stock.time * 1000  | date:'HH:mm:ss'}}</span>
                       </td>
                     </tr>
                     

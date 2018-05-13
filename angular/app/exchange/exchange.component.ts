@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Rx';
 // import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import {StocksService} from '../stocks.service';
 @Component({
 	selector: 'app-exchange',
@@ -14,6 +15,11 @@ import {StocksService} from '../stocks.service';
 	providers: [StocksService]
 })
 export class ExchangeComponent implements OnInit, AfterViewInit {
+	order: string = 'bid';
+  reverse: boolean = true;
+  /**
+   * @param {OrderPipe} 
+   */
 	exchange: any;
 	name = '';
 	comments = [];
@@ -24,10 +30,12 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 	stocks=[];
 	news = [];
 	count_pairs = 0;
+	filteredName = '';
 	private fragment: string;
 	constructor(private http:HttpClient, 
 		private stockService:StocksService, 
 		private router:Router, 
+		private orderPipe: OrderPipe, 
 		private route:ActivatedRoute) { 
 		this.name = route.snapshot.params['name'];
 
@@ -76,26 +84,9 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 
 
 
-		this.stockService.getCrypto().subscribe(crypto => {
-			let keys = Object.keys(crypto);
-			for(let item of keys) {
-				this.stocks.push( 
-					this.stockService.getStocks(item).map(result => {
-						for(let res of result) {
-							if(res.name == this.name) {
-								this.pairs.push(res);
-								this.count_pairs = this.pairs.length;
-							}
-						}
-
-					})
-					);
-			}
-			Observable.from(this.stocks)
-			.concatAll()
-			.subscribe();
-
-
+		this.stockService.getExchangePairs(this.name).subscribe(res => {
+			this.pairs = res
+			this.count_pairs = this.pairs.length;
 		});
 	}
 

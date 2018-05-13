@@ -10,6 +10,8 @@ import 'rxjs/add/operator/switchMap';
 export class SearchService {
   baseUrl: string = '/miningraw/search';
   queryUrl: string = '?search=';
+  mainUrl: string = '/angular/search';
+  mainQueryUrl: string = '?q=';
 
   constructor(private http: HttpClient) { }
 
@@ -18,9 +20,18 @@ export class SearchService {
       .distinctUntilChanged()
       .switchMap(term => this.searchEntries(term));
   }
+  mainSearch(terms: Observable<string>) {
+    return terms.debounceTime(400)
+      .distinctUntilChanged()
+      .switchMap(term => this.mainSearchEntries(term));
+  }
 
   searchEntries(term) {
     return this.http
         .get(this.baseUrl + this.queryUrl + term);
+  }
+  mainSearchEntries(term) {
+    return this.http
+        .get(this.mainUrl + this.mainQueryUrl + term);
   }
 }

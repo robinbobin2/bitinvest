@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\CryptoStat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -40,7 +41,18 @@ class AdminCryptoController extends Controller
     public function store(Request $request)
     {
         //
-        CryptoStat::create($request->all());
+        $data = $request->except('logo');
+        if ($file = Request::file('logo')) {
+            
+            $name = time() . $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+            $data['logo'] = $name;
+
+        }
+
+        CryptoStat::create($data);
         $request->session()->flash('crypto_add', 'Криптовалюта успешно добавлена');
         return redirect('admin/crypto');
     }
@@ -65,8 +77,9 @@ class AdminCryptoController extends Controller
     public function edit($id)
     {
         //
+        $categories = Category::all();
         $crypto = CryptoStat::findOrFail($id);
-        return view('admin.crypto.edit', compact('crypto'));
+        return view('admin.crypto.edit', compact('crypto', 'categories'));
     }
 
     /**
@@ -81,9 +94,28 @@ class AdminCryptoController extends Controller
         //
         Session::flash('updated_crypto', 'Криптовалюта успешно изменена');
         $crypto = CryptoStat::findOrFail($id);
-        $input = $request->all();
+        $input = $request->except('logo');
+        if ($file = Request::file('logo')) {
+            
+            $name = time() . $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+            $input['logo'] = $name;
+
+        }
         $crypto->update($input);
         return redirect()->back();
+    }
+    public function updateCats(Request $request, $id)
+    {
+        //
+        Session::flash('updated_crypto', 'Криптовалюта успешно изменена');
+        $crypto = CryptoStat::findOrFail($id);
+        
+        $crypto->categories()->sync($request->categories);
+        return redirect('admin/crypto')
+        ->with('message', 'Операция прошла успешно');
     }
 
     /**
