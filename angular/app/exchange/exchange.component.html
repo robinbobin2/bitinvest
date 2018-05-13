@@ -101,10 +101,10 @@
             <tbody>
               <tr *ngFor="let pair of pairs | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'currency'; let i = index" [ngClass]="i > 14 ? 'hidden' : 'visible'" >
                 <td>
-                  <span class="price" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }" >{{pair.currency}}</span>
+                  <span class="price" >{{pair.currency}}</span>
                 </td>
                 <td>
-                  <span> {{pair.bid | number:'1.1-6'}}</span>
+                  <span [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }"> {{pair.bid | number:'1.1-6'}}</span>
                 </td>
                 <td>
                   <span [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }" >{{pair.percent | number:'1.2-8'}}%</span>

@@ -101,9 +101,11 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 
 
 		            this.animtype[_i] = 'greencolor';
-		          } else {
+		          } else if(this.pairs[_i].value < res[_i]['value']) {
 		            this.animtype[_i] = 'redcolor';
 
+		          } else {
+		          	this.animtype[_i] = '';
 		          }
 
 
