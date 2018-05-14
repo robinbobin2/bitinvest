@@ -20,6 +20,20 @@ class IcoProjectViewController extends Controller
 
     }
 
+    public function top() {
+        $news = IcoProject::all()->take(5)->toArray();
+        $news_count = IcoProject::all();
+        $count = count($news_count);
+        return response()->json(
+           [$news, 'count'=>$count]
+            // 'photos'=>$photos
+        );
+        // dd($news);
+        // return $news->toJson();
+
+
+    }
+
      public function show($id) {
         $news = IcoProject::with('category')->first()->get()->where('id', $id)->toArray();
         $commentnews = IcoProject::findOrFail($id);

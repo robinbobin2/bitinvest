@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExchangeComponent } from './exchange.component';
+import { TopIcoComponent } from './top-ico.component';
 
-describe('ExchangeComponent', () => {
-  let component: ExchangeComponent;
-  let fixture: ComponentFixture<ExchangeComponent>;
+describe('TopIcoComponent', () => {
+  let component: TopIcoComponent;
+  let fixture: ComponentFixture<TopIcoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExchangeComponent ]
+      declarations: [ TopIcoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExchangeComponent);
+    fixture = TestBed.createComponent(TopIcoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -44,6 +44,7 @@ Route::get('/miningraw/top', 'CloudMiningViewController@topfive');
 Route::get('/miningraw/{mining}', 'CloudMiningViewController@show');
 Route::get('/miningbycat/{category}', 'CloudMiningViewController@byCat');
 Route::get('/icoraw/', 'IcoProjectViewController@index');
+Route::get('/icoraw/top', 'IcoProjectViewController@top');
 Route::get('/icoraw/{ico}', 'IcoProjectViewController@show');
 Route::get('/interviewraw/', 'InterviewViewController@index');
 Route::get('/newsraw/{news}', 'NewsViewController@show');
@@ -134,6 +135,7 @@ Route::get('/angular/funds/{id}', "AngularController@funds");
 Route::get('/angular/exchanges/', "AngularController@exchanges");
 Route::get('/angular/exchange/{name}', "AngularController@exchange");
 Route::get('/angular/search', "AngularController@search");
+Route::post('/angular/vote', "AngularController@vote");
 
 // Route::get('/crypto', "AngularController@serve");
 

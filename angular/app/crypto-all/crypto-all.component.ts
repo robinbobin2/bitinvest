@@ -85,8 +85,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      .subscribe(response => {
        this.resp = response;
        this.data = alldata.subscribe(response => {
-
-      // console.log(response);
       let admin = response;
       for (var _i = 0; _i < admin.length; ++_i) {
 

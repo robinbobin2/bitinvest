@@ -3,16 +3,16 @@
           <ul>
             <img src="/img/load.gif" *ngIf="load==true" style="display: block;
             margin: 10px auto; width: 15px; height: 15px;">
-            <li *ngFor="let item of dataUsd">
+            <li *ngFor="let item of dataUsd; let i = index">
               <a routerLink="/crypto/{{item.sym}}">
-                <span class="crypto">{{item.sym}}</span>
-                <span class="usd">${{item.now | number:'1.0-1'}}</span>
-                <span class="rub">₽{{item.now*60 | number:'1.0-1'}}</span>
-                <span class="change">{{item.now-item.last | number:'1.0-1'}}</span>
+                <span class="crypto" >{{item.sym}}</span>
+                <span class="usd" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">${{item.now | number:'1.0-1'}}</span>
+                <span class="rub" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">₽{{item.now*60 | number:'1.0-1'}}</span>
+                <span class="change" style="color: #000;" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">{{item.now-item.last | number:'1.0-1'}}</span>
               </a>
             </li>
             
           </ul>
           <a routerLink="/cryptocurrency/all" class="show-all">Показать все котировки</a>
-          <p class="updated">Последнее обновление: 26.10.17, 12:42</p>
+          <!--<p class="updated">Последнее обновление: 26.10.17, 12:42</p>-->
         </div>

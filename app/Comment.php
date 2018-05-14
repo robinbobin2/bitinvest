@@ -19,4 +19,7 @@ class Comment extends Model
     public function commentable() {
     	return $this->morphTo();
     }
+    public function rating() {
+        return $this->hasMany('App\CommentRating');
+    }
 }

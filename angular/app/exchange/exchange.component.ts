@@ -1,6 +1,4 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { ElementRef } from '@angular/core';
-import { OnChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 // import { interval } from 'rxjs/Observable/interval';
@@ -31,6 +29,8 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 	news = [];
 	count_pairs = 0;
 	filteredName = '';
+ 	animtype = [];
+	stock_data: any;
 	private fragment: string;
 	constructor(private http:HttpClient, 
 		private stockService:StocksService, 
@@ -67,6 +67,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 				});
 			}
 		});
+		
 
 		const userpath = "/angular/user";
 		const userinfo = this.http.get<any>(userpath);
@@ -88,6 +89,30 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 			this.pairs = res
 			this.count_pairs = this.pairs.length;
 		});
+
+		this.stock_data = Observable.interval(1000).concatMap(()=>this.stockService.getExchangePairs(this.name))
+		.map((res) => {
+			
+			for (var _i = 0; _i < this.pairs.length; ++_i) {
+
+				this.animtype[_i] = '';
+
+				if(this.pairs[_i].value > res[_i]['value']) {
+
+
+		            this.animtype[_i] = 'greencolor';
+		          } else if(this.pairs[_i].value < res[_i]['value']) {
+		            this.animtype[_i] = 'redcolor';
+
+		          } else {
+		          	this.animtype[_i] = '';
+		          }
+
+
+			}
+			this.pairs = res;
+			this.count_pairs = this.pairs.length;
+		}).subscribe();
 	}
 
 	submitComment(form: NgForm, post_id, type) {
