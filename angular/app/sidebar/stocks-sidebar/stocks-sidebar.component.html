@@ -8,7 +8,7 @@
                 <span class="crypto" >{{item.sym}}</span>
                 <span class="usd" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">${{item.now | number:'1.0-1'}}</span>
                 <span class="rub" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">₽{{item.now*60 | number:'1.0-1'}}</span>
-                <span class="change" style="background: #000;" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">{{item.now-item.last | number:'1.0-1'}}</span>
+                <span class="change" style="color: #000;" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">{{item.now-item.last | number:'1.0-1'}}</span>
               </a>
             </li>
             
