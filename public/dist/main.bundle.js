@@ -5118,13 +5118,16 @@ var NewsDetailComponent = (function () {
     };
     // @ViewChild('f') Form:NgForm;
     NewsDetailComponent.prototype.onVote = function (comment_id, positive) {
-        this.commentService.addVote(comment_id, positive).subscribe(function (res) { return console.log(res); }, function (error) { return console.log(error); });
-        if (positive == 1) {
-            this.rating_count[comment_id] += 1;
-        }
-        else {
-            this.rating_count[comment_id] -= 1;
-        }
+        var _this = this;
+        this.commentService.addVote(comment_id, positive).subscribe(function (res) {
+            console.log(res);
+            if (positive == 1) {
+                _this.rating_count[comment_id] += 1;
+            }
+            else {
+                _this.rating_count[comment_id] -= 1;
+            }
+        }, function (error) { return console.log(error); });
     };
     NewsDetailComponent.prototype.submitComment = function (form, post_id, type) {
         var _this = this;
@@ -6497,7 +6500,7 @@ SidebarComponent = __decorate([
 /***/ "./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"quotes\">\n          <h5 class=\"titles\">Котировки криптовалют</h5>\n          <ul>\n            <img src=\"/img/load.gif\" *ngIf=\"load==true\" style=\"display: block;\n            margin: 10px auto; width: 15px; height: 15px;\">\n            <li *ngFor=\"let item of dataUsd\">\n              <a routerLink=\"/crypto/{{item.sym}}\">\n                <span class=\"crypto\" >{{item.sym}}</span>\n                <span class=\"usd\" [ngStyle]=\"{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">${{item.now | number:'1.0-1'}}</span>\n                <span class=\"rub\" [ngStyle]=\"{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">₽{{item.now*60 | number:'1.0-1'}}</span>\n                <span class=\"change\" [ngStyle]=\"{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">{{item.now-item.last | number:'1.0-1'}}</span>\n              </a>\n            </li>\n            \n          </ul>\n          <a routerLink=\"/cryptocurrency/all\" class=\"show-all\">Показать все котировки</a>\n          <p class=\"updated\">Последнее обновление: 26.10.17, 12:42</p>\n        </div>"
+module.exports = "<div class=\"quotes\">\n          <h5 class=\"titles\">Котировки криптовалют</h5>\n          <ul>\n            <img src=\"/img/load.gif\" *ngIf=\"load==true\" style=\"display: block;\n            margin: 10px auto; width: 15px; height: 15px;\">\n            <li *ngFor=\"let item of dataUsd; let i = index\">\n              <a routerLink=\"/crypto/{{item.sym}}\">\n                <span class=\"crypto\" >{{item.sym}}</span>\n                <span class=\"usd\" [ngStyle]=\"{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">${{item.now | number:'1.0-1'}}</span>\n                <span class=\"rub\" [ngStyle]=\"{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">₽{{item.now*60 | number:'1.0-1'}}</span>\n                <span [ngStyle]=\"{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">{{item.now-item.last | number:'1.0-1'}}</span>\n              </a>\n            </li>\n            \n          </ul>\n          <a routerLink=\"/cryptocurrency/all\" class=\"show-all\">Показать все котировки</a>\n          <!--<p class=\"updated\">Последнее обновление: 26.10.17, 12:42</p>-->\n        </div>"
 
 /***/ }),
 
