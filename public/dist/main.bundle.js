@@ -711,6 +711,8 @@ var _a, _b, _c, _d, _e;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__ = __webpack_require__("./angular/app/sidebar-resolver.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__exchanges_exchanges_component__ = __webpack_require__("./angular/app/exchanges/exchanges.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__exchange_exchange_component__ = __webpack_require__("./angular/app/exchange/exchange.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__sidebar_top_ico_top_ico_component__ = __webpack_require__("./angular/app/sidebar/top-ico/top-ico.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__comments_service__ = __webpack_require__("./angular/app/comments.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -727,7 +729,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-// import { MarketsComponent } from './markets/markets.component';
+
+
 
 
 
@@ -948,7 +951,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_53__striphtml_pipe__["a" /* StriphtmlPipe */],
             __WEBPACK_IMPORTED_MODULE_54__excerpt_pipe__["a" /* ExcerptPipe */],
             __WEBPACK_IMPORTED_MODULE_56__exchanges_exchanges_component__["a" /* ExchangesComponent */],
-            __WEBPACK_IMPORTED_MODULE_57__exchange_exchange_component__["a" /* ExchangeComponent */]
+            __WEBPACK_IMPORTED_MODULE_57__exchange_exchange_component__["a" /* ExchangeComponent */],
+            __WEBPACK_IMPORTED_MODULE_58__sidebar_top_ico_top_ico_component__["a" /* TopIcoComponent */]
         ],
         imports: [
             // BrowserAnimationsModule,
@@ -966,7 +970,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCheckboxModule */],
             __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */], __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */], __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */], __WEBPACK_IMPORTED_MODULE_59__comments_service__["a" /* CommentsService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -1211,9 +1215,13 @@ var CloudMiningService = (function () {
     function CloudMiningService(http) {
         this.http = http;
         this.path = '/miningraw/top';
+        this.pathIco = '/icoraw/top';
     }
     CloudMiningService.prototype.getTop = function () {
         return this.http.get(this.path);
+    };
+    CloudMiningService.prototype.getIcoTop = function () {
+        return this.http.get(this.pathIco);
     };
     return CloudMiningService;
 }());
@@ -2003,6 +2011,47 @@ CmcComponent = __decorate([
 
 var _a;
 //# sourceMappingURL=cmc.component.js.map
+
+/***/ }),
+
+/***/ "./angular/app/comments.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommentsService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CommentsService = (function () {
+    function CommentsService(http) {
+        this.http = http;
+        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
+    }
+    CommentsService.prototype.addVote = function (comment_id, positive) {
+        return this.http.post('angular/vote', {
+            'comment_id': comment_id,
+            'positive': positive
+        }, { headers: this.headers });
+    };
+    return CommentsService;
+}());
+CommentsService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+], CommentsService);
+
+var _a;
+//# sourceMappingURL=comments.service.js.map
 
 /***/ }),
 
@@ -4942,7 +4991,7 @@ HeaderComponent = __decorate([
 /***/ "./angular/app/news/news-detail/news-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "            <div class=\"analytics-block\">\n                <div class=\"news-big\" [ngStyle]=\"{'background-image':'url('+news.photo+')' }\">\n                    <a href=\"/posts/all\" class=\"return\"><span>&#60;</span>Вернуться к списку новостей</a>\n                    <table style=\"width: 100%\"><tr><td style=\" height: 120px; vertical-align: bottom;\" height=\"120\" valign=\"bottom\"><h2>{{news?.title}}</h2></td></tr></table>\n                    <div class=\"bottom-line\">\n                        <a href=\"#\" class=\"news-btn\">{{news.category}}</a>\n                        <div class=\"info\">\n                            <span class=\"date\">{{news.created_at}}</span>\n                            <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i></span>\n                            <a href=\"#comments-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{commentcount}}</a>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"innertext\"  [innerHTML]='news?.desc | safeHtml'>\n            </div>\n            <div class=\"comment-block\" id=\"comment-block\">\n                    <div class=\"comment-top\" *ngIf=\"user.id != undefined\">\n                                <h3>Добавить новый комментарий</h3>\n                                <form (ngSubmit)=\"submitComment(f, news.id, 'App\\\\News')\" #f=\"ngForm\">\n                                    <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{news?.id}}\">\n                                    <input type=\"hidden\" ngModel name=\"commentable_type\" value=\"App\\News\">\n                                    <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                                    <button type=\"submit\">Добавить</button>\n                                </form>\n                    </div>\n                    <div class=\"comment-top\" *ngIf=\"user.id == undefined\">\n                        <h3>Комментарии ({{news.comments_count}})</h3>\n                        <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n                    </div>\n                    \n                    <div *ngIf=\"user.id != undefined\" style=\"background: none !important; border: none !important\" class=\"comment-top\">\n                        <h3 >Комментарии ({{commentcount}})</h3>\n                        <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p> -->\n\n                    \n                    </div>\n                    <ul class=\"comment-items\">\n                        <!--  -->\n                        <li *ngFor=\"let item of comments\">\n                            <div class=\"left\">\n                                <div class=\"info\">\n                                    <div class=\"img-wrap\">\n                                        <img src=\"{{item.photo}}\" style=\"max-width: 35px; height: auto;\" alt=\"\">\n                                    </div>\n                                    <div class=\"text-wrap\">\n                                        <p>{{item.author}}</p>\n                                        <span>Добавлен {{item.created_at}}</span>\n                                    </div>\n                                </div>\n                                <p class=\"comment-text\">{{item.body}}</p>\n                            </div>\n                            <div class=\"right\">\n                                <div class=\"img-wrap\"></div>\n                                <div class=\"btn-block\">\n                                    <span class=\"number-green\">0</span>\n                                    <div class=\"buttons\">\n                                        <a href=\"#\" class=\"plus\">+</a>\n                                        <a href=\"#\" class=\"minus\">-</a>\n                                    </div>\n                                </div>\n                            </div>\n                        </li>\n\n                    </ul>\n                    <!-- <a href=\"#\" class=\"show-comments\">Показать все комментарии (22)</a> -->\n                </div>"
+module.exports = "            <div class=\"analytics-block\">\n                <div class=\"news-big\" [ngStyle]=\"{'background-image':'url('+news.photo+')' }\">\n                    <a href=\"/posts/all\" class=\"return\"><span>&#60;</span>Вернуться к списку новостей</a>\n                    <table style=\"width: 100%\"><tr><td style=\" height: 120px; vertical-align: bottom;\" height=\"120\" valign=\"bottom\"><h2>{{news?.title}}</h2></td></tr></table>\n                    <div class=\"bottom-line\">\n                        <a href=\"#\" class=\"news-btn\">{{news.category}}</a>\n                        <div class=\"info\">\n                            <span class=\"date\">{{news.created_at}}</span>\n                            <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i></span>\n                            <a href=\"#comments-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{commentcount}}</a>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"innertext\"  [innerHTML]='news?.desc | safeHtml'>\n            </div>\n            <div class=\"comment-block\" id=\"comment-block\">\n                    <div class=\"comment-top\" *ngIf=\"user.id != undefined\">\n                                <h3>Добавить новый комментарий</h3>\n                                <form (ngSubmit)=\"submitComment(f, news.id, 'App\\\\News')\" #f=\"ngForm\">\n                                    <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{news?.id}}\">\n                                    <input type=\"hidden\" ngModel name=\"commentable_type\" value=\"App\\News\">\n                                    <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                                    <button type=\"submit\">Добавить</button>\n                                </form>\n                    </div>\n                    <div class=\"comment-top\" *ngIf=\"user.id == undefined\">\n                        <h3>Комментарии ({{news.comments_count}})</h3>\n                        <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n                    </div>\n                    \n                    <div *ngIf=\"user.id != undefined\" style=\"background: none !important; border: none !important\" class=\"comment-top\">\n                        <h3 >Комментарии ({{commentcount}})</h3>\n                        <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p> -->\n\n                    \n                    </div>\n                    <ul class=\"comment-items\">\n                        <!--  -->\n                        <li *ngFor=\"let item of comments\">\n                            <div class=\"left\">\n                                <div class=\"info\">\n                                    <div class=\"img-wrap\">\n                                        <img src=\"{{item.photo}}\" style=\"max-width: 35px; height: auto;\" alt=\"\">\n                                    </div>\n                                    <div class=\"text-wrap\">\n                                        <p>{{item.author}}</p>\n                                        <span>Добавлен {{item.created_at}}</span>\n                                    </div>\n                                </div>\n                                <p class=\"comment-text\">{{item.body}}</p>\n                            </div>\n                            <div class=\"right\">\n                                <div class=\"img-wrap\"></div>\n                                <div class=\"btn-block\">\n                                    <span class=\"number-green\">{{rating_count[item.id]}}</span>\n                                    <div class=\"buttons\">\n                                        <a (click)=\"onVote(item.id, 1)\" class=\"plus\">+</a>\n                                        <a (click)=\"onVote(item.id, 0)\" class=\"minus\">-</a>\n                                    </div>\n                                </div>\n                            </div>\n                        </li>\n\n                    </ul>\n                    <!-- <a href=\"#\" class=\"show-comments\">Показать все комментарии (22)</a> -->\n                </div>"
 
 /***/ }),
 
@@ -4964,6 +5013,7 @@ module.exports = ".sidebar {\n  padding-top: 22px; }\n\n.analytics-block {\n  wi
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__comments_service__ = __webpack_require__("./angular/app/comments.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4974,7 +5024,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
+
 
 
 var News = (function () {
@@ -4996,14 +5046,16 @@ var User = (function () {
 }());
 
 var NewsDetailComponent = (function () {
-    function NewsDetailComponent(http, router, route) {
+    function NewsDetailComponent(http, router, route, commentService) {
         var _this = this;
         this.http = http;
         this.router = router;
         this.route = route;
+        this.commentService = commentService;
         this.comments = [];
         this.submitted = false;
         this.commentcount = 0;
+        this.rating_count = [];
         this.comment = {
             'post_id': '',
             'body': '',
@@ -5024,20 +5076,24 @@ var NewsDetailComponent = (function () {
                 comments_count: response['comments_count']
             };
             _this.commentcount = response['comments_count'];
-            for (var _i = 0, _a = response['comments']; _i < _a.length; _i++) {
-                var item = _a[_i];
-                _this.comments.push({
-                    id: item['id'],
-                    email: item['email'],
-                    author: item['author'],
-                    body: item['body'],
-                    commentable_id: item['commentable_id'],
-                    photo: item['photo']
-                });
+            (_a = _this.comments).push.apply(_a, response['news'][0]['comments']);
+            for (var _i = 0, _b = response['news'][0]['comments']; _i < _b.length; _i++) {
+                var item = _b[_i];
+                _this.rating_count[item['id']] = 0;
+                for (var _c = 0, _d = item.rating; _c < _d.length; _c++) {
+                    var rating_item = _d[_c];
+                    if (rating_item.positive == 1) {
+                        _this.rating_count[item['id']] += 1;
+                    }
+                    else {
+                        _this.rating_count[item['id']] -= 1;
+                    }
+                }
             }
             console.log(response['news'][0]['id']);
             console.log(_this.news);
             console.log(_this.comments);
+            var _a;
         });
     }
     NewsDetailComponent.prototype.ngOnInit = function () {
@@ -5061,6 +5117,15 @@ var NewsDetailComponent = (function () {
         });
     };
     // @ViewChild('f') Form:NgForm;
+    NewsDetailComponent.prototype.onVote = function (comment_id, positive) {
+        this.commentService.addVote(comment_id, positive).subscribe(function (res) { return console.log(res); }, function (error) { return console.log(error); });
+        if (positive == 1) {
+            this.rating_count[comment_id] += 1;
+        }
+        else {
+            this.rating_count[comment_id] -= 1;
+        }
+    };
     NewsDetailComponent.prototype.submitComment = function (form, post_id, type) {
         var _this = this;
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
@@ -5076,7 +5141,8 @@ var NewsDetailComponent = (function () {
                 author: response['author'],
                 body: response['body'],
                 commentable_id: response['commentable_id'],
-                photo: response['photo']
+                photo: response['photo'],
+                created_at: response['created_at']
             });
             _this.submitted = true;
             _this.commentcount = _this.commentcount + 1;
@@ -5091,10 +5157,10 @@ NewsDetailComponent = __decorate([
         template: __webpack_require__("./angular/app/news/news-detail/news-detail.component.html"),
         styles: [__webpack_require__("./angular/app/news/news-detail/news-detail.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__comments_service__["a" /* CommentsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__comments_service__["a" /* CommentsService */]) === "function" && _d || Object])
 ], NewsDetailComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=news-detail.component.js.map
 
 /***/ }),
@@ -5109,7 +5175,7 @@ module.exports = "   body{\n  background: #f9f9f9;\n    font-family: \"PT Sans\"
 /***/ "./angular/app/news/news.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n        <ul class=\"tag-list\">\n          <li> <a\n           [routerLink]=\"['/posts/all']\" routerLinkActive=\"active\">Все новости</a></li>\n          <li *ngFor=\"let category of categories\">\n            <a\n           [routerLink]=\"['/posts/category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n        <app-sidebar></app-sidebar>\n      </aside>\n    </div>\n  </section>"
+module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n        <ul class=\"tag-list\">\n          <li> <a\n           [routerLink]=\"['/posts/all']\" routerLinkActive=\"active\">Все новости</a></li>\n          <li *ngFor=\"let category of categories\">\n            <a\n           [routerLink]=\"['/posts/category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n        <!--<app-sidebar></app-sidebar>-->\n      </aside>\n    </div>\n  </section>"
 
 /***/ }),
 
@@ -6381,7 +6447,7 @@ var _a;
 /***/ "./angular/app/sidebar/sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "      <app-stocks-sidebar>Загрузка</app-stocks-sidebar>\n        <div class=\"top-crypto\">\n          <h5 class=\"titles\"><span>ТОП 5</span>криптовалют (% роста)</h5>\n          <div class=\"periods\">\n            <ul class=\"period-tabs\">\n              <li class=\"active\"><a href=\"#\">День</a></li>\n              <li><a href=\"#\">Неделя</a></li>\n              <li><a href=\"#\">Месяц</a></li>\n              <li><a href=\"#\">Год</a></li>\n            </ul>\n            <div class=\"period-content\">\n              <div class=\"tab-content active\">\n                <ul>\n                  <li>\n                    <a href=\"\" class=\"name\">Bitcoin</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ethereum</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">BitcoinCash</a>\n                    <span class=\"price\">$90819201</span>\n                    <span class=\"percent\">8%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">EthereumClassic</a>\n                    <span class=\"price\">$8790899</span>\n                    <span class=\"percent\">7,2%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ripple</a>\n                    <span class=\"price\">$2829</span>\n                    <span class=\"percent\">2%</span>\n                  </li>\n                </ul>\n              </div>\n              <div class=\"tab-content\">\n                <ul>\n                  <li>\n                    <a href=\"\" class=\"name\">Bitcoin</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ethereum</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">BitcoinCash</a>\n                    <span class=\"price\">$90819201</span>\n                    <span class=\"percent\">8%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">EthereumClassic</a>\n                    <span class=\"price\">$8790899</span>\n                    <span class=\"percent\">7,2%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ripple</a>\n                    <span class=\"price\">$2829</span>\n                    <span class=\"percent\">2%</span>\n                  </li>\n                </ul>\n              </div>\n              <div class=\"tab-content\">\n                <ul>\n                  <li>\n                    <a href=\"\" class=\"name\">Bitcoin</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ethereum</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">BitcoinCash</a>\n                    <span class=\"price\">$90819201</span>\n                    <span class=\"percent\">8%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">EthereumClassic</a>\n                    <span class=\"price\">$8790899</span>\n                    <span class=\"percent\">7,2%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ripple</a>\n                    <span class=\"price\">$2829</span>\n                    <span class=\"percent\">2%</span>\n                  </li>\n                </ul>\n              </div>\n              <div class=\"tab-content\">\n                <ul>\n                  <li>\n                    <a href=\"\" class=\"name\">Bitcoin</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ethereum</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">BitcoinCash</a>\n                    <span class=\"price\">$90819201</span>\n                    <span class=\"percent\">8%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">EthereumClassic</a>\n                    <span class=\"price\">$8790899</span>\n                    <span class=\"percent\">7,2%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ripple</a>\n                    <span class=\"price\">$2829</span>\n                    <span class=\"percent\">2%</span>\n                  </li>\n                </ul>\n              </div>\n            </div>\n          </div>\n          <a href=\"#\" class=\"details\">Подробный рейтинг</a>\n        </div>\n        <a href=\"#\" class=\"banner-black\"><img src=\"img/banner-black.jpg\" alt=\"\"></a>\n        <app-cloud-mining-top></app-cloud-mining-top>\n        <div class=\"social\">\n          <h5 class=\"titles\">Мы в соц.сетях</h5>\n          <ul>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n          </ul>\n        </div>\n        <div class=\"top-fonds\">\n          <h5 class=\"titles\"><span>ТОП 5</span> фондов</h5>\n          <ul class=\"top-ul\">\n            <li>\n              <div class=\"left\">\n                <a href=\"\">HashFlare SHA-256 2017</a>\n                <span class=\"paying\">ПЛАТИТ!</span>\n              </div>\n              <div class=\"right\">\n                <span class=\"persent\">489%</span>\n                <span class=\"days\">489 дней</span>\n              </div>\n            </li>\n            <li>\n              <div class=\"left\">\n                <a href=\"\">Bitmakler CMS</a>\n                <span class=\"paying\">ПЛАТИТ!</span>\n              </div>\n              <div class=\"right\">\n                <span class=\"persent\">11%</span>\n                <span class=\"days\">489 дней</span>\n              </div>\n            </li>\n            <li>\n              <div class=\"left\">\n                <a href=\"\">Bitmakler CMS</a>\n                <span class=\"payment\">ОЖИДАНИЕ ВЫПЛАТЫ</span>\n              </div>\n              <div class=\"right\">\n                <span class=\"persent\">11%</span>\n                <span class=\"days\">489 дней</span>\n              </div>\n            </li>\n            <li>\n              <div class=\"left\">\n                <a href=\"\">CMSHP</a>\n                <span class=\"paying\">ПЛАТИТ!</span>\n              </div>\n              <div class=\"right\">\n                <span class=\"persent\">11%</span>\n                <span class=\"days\">489 дней</span>\n              </div>\n            </li>\n            <li>\n              <div class=\"left\">\n                <a href=\"\">Bitmakler CMS</a>\n                <span class=\"payment\">ОЖИДАНИЕ ВЫПЛАТЫ</span>\n              </div>\n              <div class=\"right\">\n                <span class=\"persent\">11%</span>\n                <span class=\"days\">489 дней</span>\n              </div>\n            </li>\n          </ul>\n          <a href=\"#\" class=\"all-fonds\">Все фонды (981)</a>\n        </div>"
+module.exports = "      <app-stocks-sidebar>Загрузка</app-stocks-sidebar>\n        <div class=\"top-crypto\">\n          <h5 class=\"titles\"><span>ТОП 5</span>криптовалют (% роста)</h5>\n          <div class=\"periods\">\n            <ul class=\"period-tabs\">\n              <li class=\"active\"><a href=\"#\">День</a></li>\n              <li><a href=\"#\">Неделя</a></li>\n              <li><a href=\"#\">Месяц</a></li>\n              <li><a href=\"#\">Год</a></li>\n            </ul>\n            <div class=\"period-content\">\n              <div class=\"tab-content active\">\n                <ul>\n                  <li>\n                    <a href=\"\" class=\"name\">Bitcoin</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ethereum</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">BitcoinCash</a>\n                    <span class=\"price\">$90819201</span>\n                    <span class=\"percent\">8%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">EthereumClassic</a>\n                    <span class=\"price\">$8790899</span>\n                    <span class=\"percent\">7,2%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ripple</a>\n                    <span class=\"price\">$2829</span>\n                    <span class=\"percent\">2%</span>\n                  </li>\n                </ul>\n              </div>\n              <div class=\"tab-content\">\n                <ul>\n                  <li>\n                    <a href=\"\" class=\"name\">Bitcoin</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ethereum</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">BitcoinCash</a>\n                    <span class=\"price\">$90819201</span>\n                    <span class=\"percent\">8%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">EthereumClassic</a>\n                    <span class=\"price\">$8790899</span>\n                    <span class=\"percent\">7,2%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ripple</a>\n                    <span class=\"price\">$2829</span>\n                    <span class=\"percent\">2%</span>\n                  </li>\n                </ul>\n              </div>\n              <div class=\"tab-content\">\n                <ul>\n                  <li>\n                    <a href=\"\" class=\"name\">Bitcoin</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ethereum</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">BitcoinCash</a>\n                    <span class=\"price\">$90819201</span>\n                    <span class=\"percent\">8%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">EthereumClassic</a>\n                    <span class=\"price\">$8790899</span>\n                    <span class=\"percent\">7,2%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ripple</a>\n                    <span class=\"price\">$2829</span>\n                    <span class=\"percent\">2%</span>\n                  </li>\n                </ul>\n              </div>\n              <div class=\"tab-content\">\n                <ul>\n                  <li>\n                    <a href=\"\" class=\"name\">Bitcoin</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ethereum</a>\n                    <span class=\"price\">$2829101929191</span>\n                    <span class=\"percent\">11%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">BitcoinCash</a>\n                    <span class=\"price\">$90819201</span>\n                    <span class=\"percent\">8%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">EthereumClassic</a>\n                    <span class=\"price\">$8790899</span>\n                    <span class=\"percent\">7,2%</span>\n                  </li>\n                  <li>\n                    <a href=\"\" class=\"name\">Ripple</a>\n                    <span class=\"price\">$2829</span>\n                    <span class=\"percent\">2%</span>\n                  </li>\n                </ul>\n              </div>\n            </div>\n          </div>\n          <a href=\"#\" class=\"details\">Подробный рейтинг</a>\n        </div>\n        <a href=\"#\" class=\"banner-black\"><img src=\"img/banner-black.jpg\" alt=\"\"></a>\n        <app-cloud-mining-top></app-cloud-mining-top>\n        <div class=\"social\">\n          <h5 class=\"titles\">Мы в соц.сетях</h5>\n          <ul>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n          </ul>\n        </div>\n        <app-top-ico></app-top-ico>"
 
 /***/ }),
 
@@ -6562,6 +6628,66 @@ StocksSidebarComponent = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=stocks-sidebar.component.js.map
+
+/***/ }),
+
+/***/ "./angular/app/sidebar/top-ico/top-ico.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"top-fonds\">\n  <h5 class=\"titles\"><span>ТОП 5</span> ICO проектов</h5>\n  <ul class=\"top-ul\">\n    <li *ngFor=\"let ico of ico_top\">\n      <div class=\"left\">\n        <a [routerLink]=\"['ico/item', ico.id]\">{{ico.name}}</a>\n        <!--<span class=\"paying\">ПЛАТИТ!</span>-->\n      </div>\n      <!--<div class=\"right\">-->\n        <!--<span class=\"persent\">489%</span>-->\n        <!--<span class=\"days\">489 дней</span>-->\n      <!--</div>-->\n    </li>\n  </ul>\n  <a href=\"#\" class=\"all-fonds\">Все фонды (ico_top.count)</a>\n</div>"
+
+/***/ }),
+
+/***/ "./angular/app/sidebar/top-ico/top-ico.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./angular/app/sidebar/top-ico/top-ico.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TopIcoComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cloud_mining_service__ = __webpack_require__("./angular/app/cloud-mining.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TopIcoComponent = (function () {
+    function TopIcoComponent(cloudMining) {
+        this.cloudMining = cloudMining;
+        this.ico_top = [];
+    }
+    TopIcoComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.cloudMining.getIcoTop().subscribe(function (res) {
+            _this.ico_top = res;
+        });
+    };
+    return TopIcoComponent;
+}());
+TopIcoComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-top-ico',
+        template: __webpack_require__("./angular/app/sidebar/top-ico/top-ico.component.html"),
+        styles: [__webpack_require__("./angular/app/sidebar/top-ico/top-ico.component.scss")],
+        providers: [__WEBPACK_IMPORTED_MODULE_1__cloud_mining_service__["a" /* CloudMiningService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__cloud_mining_service__["a" /* CloudMiningService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__cloud_mining_service__["a" /* CloudMiningService */]) === "function" && _a || Object])
+], TopIcoComponent);
+
+var _a;
+//# sourceMappingURL=top-ico.component.js.map
 
 /***/ }),
 

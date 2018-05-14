@@ -59,7 +59,7 @@ class NewsViewController extends Controller
     }
 
     public function show($id) {
-        $news = News::first()->get()->where('id', $id)->toArray();
+        $news = News::first()->with('comments.rating')->get()->where('id', $id)->toArray();
         $commentnews = News::findOrFail($id);
         $comments = $commentnews->comments;
         $news = array_values($news);
@@ -84,7 +84,7 @@ class NewsViewController extends Controller
         return response()->json([
             'news'=>$news,
             'user'=>$user,
-            'comments'=>$comments,
+            // 'comments'=>$comments,
             'photos'=>$photos,
             'category'=>$category,
             'comments_count'=>count($comments)

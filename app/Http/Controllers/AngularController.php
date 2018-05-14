@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CloudMining;
+use App\CommentRating;
 use App\CryptoStat;
 use App\IcoPercent;
 use App\IcoProject;
@@ -167,5 +168,37 @@ class AngularController extends Controller
         } else {
             return 'Ничего не найдено';
         }
+    }
+    public function vote(Request $request) {
+        $user = Auth::user();
+        if (!$user) {
+            return abort(401);
+        }
+        $vote = CommentRating::where('user_id', $user->id)->where('comment_id', $request->comment_id)->first();
+        if ($vote) {
+                # code...
+            if ($vote->positive != $request->positive) {
+                $vote->delete();
+                return
+                ['success'=>'vote deleted'];
+            }
+            if(CommentRating::where('user_id', $user->id)
+                ->where('comment_id', $request->comment_id)
+                ->where('positive', $request->positive)
+                ->first()) {
+
+                return ['error'=>'Пользователь уже проголосовал'];
+
+            } else {
+                    
+            }
+        } else {
+            $data = $request->all();
+                    $data['user_id'] = $user->id;
+                    CommentRating::create($data);
+                    return
+                    ['success'=>'voted'];
+        }
+
     }
 }

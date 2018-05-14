@@ -9,7 +9,6 @@ import {Routes, RouterModule} from "@angular/router";
 import { CryptoComponent } from './crypto/crypto.component';
 import { CmcComponent } from './cmc/cmc.component';
 import { ExmoComponent } from './exmo/exmo.component';
-// import { MarketsComponent } from './markets/markets.component';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HeaderComponent } from './news/header/header.component';
@@ -60,6 +59,7 @@ import {SidebarResolverService} from './sidebar-resolver.service';
 import { ExchangesComponent } from './exchanges/exchanges.component';
 import { ExchangeComponent } from './exchange/exchange.component';
 import { TopIcoComponent } from './sidebar/top-ico/top-ico.component';
+import {CommentsService} from "./comments.service";
 
 
 const appRoutes: Routes = [
@@ -256,7 +256,7 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     OrderPipe
   ],
-  providers: [HttpClientModule, OrderPipe, SidebarResolverService],
+  providers: [HttpClientModule, OrderPipe, SidebarResolverService, CommentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
