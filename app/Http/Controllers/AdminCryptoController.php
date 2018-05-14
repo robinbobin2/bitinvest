@@ -42,7 +42,7 @@ class AdminCryptoController extends Controller
     {
         //
         $data = $request->except('logo');
-        if ($file = Request::file('logo')) {
+        if ($file = $request->file('logo')) {
             
             $name = time() . $file->getClientOriginalName();
 
@@ -95,7 +95,7 @@ class AdminCryptoController extends Controller
         Session::flash('updated_crypto', 'Криптовалюта успешно изменена');
         $crypto = CryptoStat::findOrFail($id);
         $input = $request->except('logo');
-        if ($file = Request::file('logo')) {
+        if ($file = $request->file('logo')) {
             
             $name = time() . $file->getClientOriginalName();
 
@@ -105,7 +105,7 @@ class AdminCryptoController extends Controller
 
         }
         $crypto->update($input);
-        return redirect()->back();
+        return $crypto;
     }
     public function updateCats(Request $request, $id)
     {

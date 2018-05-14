@@ -11,18 +11,21 @@
 <p class="bg-success">{{session('updated_crypto')}}</p>
 </div>
 @endif
-<form method="post" class="row" action="{{route('crypto.update', $crypto->id)}}" style="width: 100%;">
+<form enctype="multipart/form-data"  method="post" class="row" action="{{route('crypto.update', $crypto->id)}}" style="width: 100%;">
     {{ csrf_field() }}
     {{ method_field('patch') }}
     <div class="col-lg-10">
-
-    
+    @if($crypto->logo)
+    <img src="{{$crypto->logo}}" style="max-width: 50px;">
+    @endif
     <label for="name">Имя</label>
     <input type="text" class="form-control"  id="name" name="name" value="{{$crypto->name}}"  />
     <label for="symbol">Трёхбуквенное обозначение</label>
     <input type="text" class="form-control" id="symbol" value="{{$crypto->symbol}}" name="symbol" />
     <label for="year">Год</label>
     <input type="text" class="form-control" id="year" name="year" value="{{$crypto->year}}"  />
+    <label for="logo">Лого</label>
+    <input type="file" class="form-control" id="logo" name="logo" />
     <label for="algo">Алгоритм</label>
     <input type="text" class="form-control" id="algo" name="algo" value="{{$crypto->algo}}"  />
     <label for="desc">Описание</label>

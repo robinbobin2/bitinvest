@@ -9,7 +9,7 @@
 @endif
 <h1>Добавить криптовалюту</h1>
 
-<form method="post" class="row" action="{{route('crypto.store')}}" >
+<form method="post" class="row" action="{{route('crypto.store')}}" enctype="multipart/form-data" >
     {{ csrf_field() }}
     {{ method_field('post') }}
     <div class="col-lg-10">
@@ -19,6 +19,8 @@
     <input type="text" class="form-control"  id="name" name="name"   />
     <label for="symbol">Трёхбуквенное обозначение</label>
     <input type="text" class="form-control" id="symbol" name="symbol" />
+    <label for="logo">Лого</label>
+    <input type="file" class="form-control" id="logo" name="logo" />
     <label for="year">Год</label>
     <input type="text" class="form-control" id="year" name="year" />
     <label for="algo">Алгоритм</label>

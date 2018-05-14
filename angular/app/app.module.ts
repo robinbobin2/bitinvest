@@ -59,6 +59,7 @@ import { ExcerptPipe } from './excerpt.pipe';
 import {SidebarResolverService} from './sidebar-resolver.service';
 import { ExchangesComponent } from './exchanges/exchanges.component';
 import { ExchangeComponent } from './exchange/exchange.component';
+import { TopIcoComponent } from './sidebar/top-ico/top-ico.component';
 
 
 const appRoutes: Routes = [
@@ -234,7 +235,8 @@ const appRoutes: Routes = [
     StriphtmlPipe,
     ExcerptPipe,
     ExchangesComponent,
-    ExchangeComponent
+    ExchangeComponent,
+    TopIcoComponent
   ],
   imports: [
     // BrowserAnimationsModule,
