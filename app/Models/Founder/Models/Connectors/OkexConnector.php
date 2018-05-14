@@ -67,6 +67,9 @@ class OkexConnector extends FounderConnector
         // TODO => they have a new fee schedule as of Feb 7
         // the new fees are progressive and depend on 30-day traded volume
         // the following is the worst case
+        if(!$markets){
+            $markets = [];
+        }
         for ($i = 0; $i < count ($markets); $i++) {
             if ($markets[$i]['spot']) {
                 $markets[$i]['maker'] = 0.0015;
@@ -82,7 +85,7 @@ class OkexConnector extends FounderConnector
     public function fetch_tickers ($symbols = null, $params = array ()) {
         $this->load_markets();
         $request = array ();
-        $response = $this->publicGetTickers (array_merge ($request, $params));
+        $response = $this->publicGetTickers(array_merge ($request, $params));
         $tickers = $response['tickers'];
         $timestamp = intval ($response['date']) * 1000;
         $result = array ();

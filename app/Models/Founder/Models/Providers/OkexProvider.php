@@ -17,8 +17,8 @@ class OkexProvider extends FounderProvider
 {
     public function search(Request $request)
     {
-        $response = $this->getConnector()->fetch_tickers();
-        return $response;
+//        $response = $this->getConnector()->fetch_tickers();
+        return [];
     }
 
     public function getExchangeId()

@@ -149,7 +149,7 @@ class IBankConnector extends FounderConnector
 
     public function parse_ticker ($ticker, $market = null) {
         $symbol = $market['symbol'];
-        $timestamp = $ticker['timestamp'];
+        $timestamp = isset($ticker['timestamp']) ? $ticker['timestamp'] : null;
         $info = $ticker;
         $ticker = $info['ticker'];
         $last = $this->safe_float($ticker, 'latest');
