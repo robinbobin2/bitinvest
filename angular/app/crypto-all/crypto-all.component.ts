@@ -20,7 +20,7 @@ export interface CryptoData {
   now: number;
   min:number;
   max: number;
-  value:number;
+  volume:number;
   year: number;
   algo: string;
   week: number;
@@ -102,7 +102,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
           this.dataUsd[index].now = this.resp[symbol+'/USDT']['now'];
           this.dataUsd[index].min = this.resp[symbol+'/USDT']['min'];
           this.dataUsd[index].max = this.resp[symbol+'/USDT']['max'];
-          this.dataUsd[index].value = this.resp[symbol+'/USDT']['value'];
+          this.dataUsd[index].volume = this.resp[symbol+'/USDT']['volume'];
           this.dataUsd[index].day = this.resp[symbol+"/USDT"]['day'];
           this.dataUsd[index].week = this.resp[symbol+"/USDT"]['week'];
 
@@ -114,7 +114,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
             now: 0,
             min:0,
             max: 0,
-            value:0,
+            volume:0,
             year: 0,
             algo: '',
             week: 0,
@@ -161,7 +161,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         this.dataUsd[index].now = this.resp[symbol+'/USDT']['now'];
         this.dataUsd[index].min = this.resp[symbol+'/USDT']['min'];
         this.dataUsd[index].max = this.resp[symbol+'/USDT']['max'];
-        this.dataUsd[index].value = this.resp[symbol+'/USDT']['value'];
+        this.dataUsd[index].volume = this.resp[symbol+'/USDT']['volume'];
         this.dataUsd[index].day = this.resp[symbol+"/USDT"]['day'];
         this.dataUsd[index].week = this.resp[symbol+"/USDT"]['week'];
 

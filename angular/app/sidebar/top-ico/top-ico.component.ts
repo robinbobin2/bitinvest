@@ -11,13 +11,14 @@ import {CloudMiningService} from "../../cloud-mining.service";
 export class TopIcoComponent implements OnInit {
 
   ico_top = [];
+  ico_count = 0
   constructor(private cloudMining: CloudMiningService) { }
 
   ngOnInit() {
     this.cloudMining.getIcoTop().subscribe(
         res => {
-          this.ico_top = res;
-
+          this.ico_top = res[0];
+          this.ico_count = res.count;
         },
 
     )
