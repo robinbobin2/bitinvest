@@ -3145,20 +3145,24 @@ var ExchangesComponent = (function () {
         this.order = 'id';
         this.pairs_count = [];
         this.alive = true;
+        this.stocks = [];
     }
     ExchangesComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.exchange_data =
-            this.stockService.getExchanges().takeWhile(function () { return _this.alive; }).subscribe(function (res) {
-                _this.exchanges = res;
-                _this.count = _this.exchanges.length;
-                for (var _i = 0, _a = _this.exchanges; _i < _a.length; _i++) {
-                    var item = _a[_i];
-                    _this.observables.push(_this.stockService.getExchangePairs(item.name));
-                }
-                _this.volumes_data = __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].forkJoin(_this.observables)
-                    .subscribe(function (pairs) { console.log('result'); console.log(pairs); });
-            });
+        this.stockService.getExchanges().subscribe(function (res) {
+            _this.exchanges = res;
+            _this.count = _this.exchanges.length;
+            var _loop_1 = function (item) {
+                _this.stocks.push(_this.stockService.getExchangePairs(item.name).takeWhile(function () { return _this.alive; }).subscribe(function (pairs) { item.count = pairs.length; console.log(item.count); }));
+            };
+            for (var _i = 0, _a = _this.exchanges; _i < _a.length; _i++) {
+                var item = _a[_i];
+                _loop_1(item);
+            }
+        });
+        __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].from(this.stocks)
+            .concatAll()
+            .subscribe();
         this.stockService.getVolumes().subscribe(function (res) {
             _this.volumes = res;
             for (var _i = 0, _a = _this.volumes; _i < _a.length; _i++) {
