@@ -3147,10 +3147,11 @@ var ExchangesComponent = (function () {
     }
     ExchangesComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.stockService.getExchanges().subscribe(function (res) {
+        this.exchange_data = __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].interval(1000).concatMap(function () {
+            return _this.stockService.getExchanges();
+        }).subscribe(function (res) {
             _this.exchanges = res;
             _this.count = _this.exchanges.length;
-            console.log(_this.count);
             var _loop_1 = function (item) {
                 _this.stockService.getExchangePairs(item.name).subscribe(function (pairs) { item.count = pairs.length; console.log(item.count); });
             };
@@ -3190,6 +3191,7 @@ var ExchangesComponent = (function () {
     };
     ExchangesComponent.prototype.ngOnDestroy = function () {
         this.volume_data.unsubscribe();
+        this.exchange_data.unsubscribe();
     };
     return ExchangesComponent;
 }());
