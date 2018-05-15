@@ -24,8 +24,8 @@ export class ExchangesComponent implements OnInit, OnDestroy {
   constructor(private http:HttpClient, private stockService:StocksService, private orderPipe: OrderPipe) { }
 
   ngOnInit() {
-      this.exchange_data = Observable.interval(1000).concatMap(()=>
-    this.stockService.getExchanges()).subscribe((res: Array<any>) => {
+      this.exchange_data =
+    this.stockService.getExchanges().subscribe((res: Array<any>) => {
       this.exchanges = res; 
       this.count = this.exchanges.length;
       for(let item of this.exchanges) {
