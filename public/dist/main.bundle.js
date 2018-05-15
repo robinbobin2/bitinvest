@@ -3159,10 +3159,10 @@ var ExchangesComponent = (function () {
                 var item = _a[_i];
                 _loop_1(item);
             }
+            _this.observale_pairs = __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].from(_this.stocks)
+                .concatAll()
+                .subscribe();
         });
-        this.observale_pairs = __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].from(this.stocks)
-            .concatAll()
-            .subscribe();
         this.stockService.getVolumes().subscribe(function (res) {
             _this.volumes = res;
             for (var _i = 0, _a = _this.volumes; _i < _a.length; _i++) {
@@ -3173,17 +3173,18 @@ var ExchangesComponent = (function () {
                 };
             }
         });
-        // this.volume_data = Observable.interval(2000).concatMap(()=>this.stockService.getVolumes())
-        //    .map((response)=>{
-        //        this.volumes = response;
-        //    }).subscribe( () => {
-        //        for(let item of this.volumes) {
-        //            this.exchange_volumes[item.name] = {
-        //                'btc': item.btc,
-        //                'usd': item.usd
-        //            }
-        //        }
-        //    } );
+        this.volume_data = __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].interval(2000).concatMap(function () { return _this.stockService.getVolumes(); })
+            .map(function (response) {
+            _this.volumes = response;
+        }).subscribe(function () {
+            for (var _i = 0, _a = _this.volumes; _i < _a.length; _i++) {
+                var item = _a[_i];
+                _this.exchange_volumes[item.name] = {
+                    'btc': item.btc,
+                    'usd': item.usd
+                };
+            }
+        });
     };
     ExchangesComponent.prototype.setOrder = function (value) {
         if (this.order === value) {
@@ -3193,7 +3194,7 @@ var ExchangesComponent = (function () {
     };
     ExchangesComponent.prototype.ngOnDestroy = function () {
         this.alive = false;
-        // this.volume_data.unsubscribe();
+        this.volume_data.unsubscribe();
         this.observale_pairs.unsubscribe();
     };
     return ExchangesComponent;
