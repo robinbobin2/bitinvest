@@ -773,4 +773,10 @@ abstract class FounderConnector
     {
         return $this->exchangeId;
     }
+
+    public static function keysort ($array) {
+        $result = $array;
+        ksort ($result);
+        return $result;
+    }
 }

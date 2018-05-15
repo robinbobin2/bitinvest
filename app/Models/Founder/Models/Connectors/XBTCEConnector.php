@@ -313,10 +313,6 @@ class XBTCEConnector extends FounderConnector
     }
 
     public function sign ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
-        if (!$this->apiKey)
-            throw new AuthenticationError ($this->id . ' requires apiKey for all requests, their public API is always busy');
-        if (!$this->uid)
-            throw new AuthenticationError ($this->id . ' requires uid property for authentication and trading, their public API is always busy');
         $url = $this->urls['api'] . '/' . $this->version;
         if ($api === 'public')
             $url .= '/' . $api;

@@ -93,6 +93,9 @@ class Ice3XConnector extends FounderConnector
         $currencies = $response['response']['entities'];
         $precision = $this->precision['amount'];
         $result = array ();
+        if(!$currencies){
+            $currencies = [];
+        }
         for ($i = 0; $i < count ($currencies); $i++) {
             $currency = $currencies[$i];
             $id = $currency['currency_id'];
@@ -132,6 +135,9 @@ class Ice3XConnector extends FounderConnector
         $response = $this->publicGetPairList ();
         $markets = $response['response']['entities'];
         $result = array ();
+        if(!$markets){
+            $markets = [];
+        }
         for ($i = 0; $i < count ($markets); $i++) {
             $market = $markets[$i];
             $id = $market['pair_id'];
@@ -199,6 +205,9 @@ class Ice3XConnector extends FounderConnector
         $response = $this->publicGetStatsMarketdepthfull ($params);
         $tickers = $response['response']['entities'];
         $result = array ();
+        if(!$tickers){
+            $tickers = [];
+        }
         for ($i = 0; $i < count ($tickers); $i++) {
             $ticker = $tickers[$i];
             $market = $this->marketsById[$ticker['pair_id']];
@@ -424,21 +433,6 @@ class Ice3XConnector extends FounderConnector
 
     public function request ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         $response = $this->fetch2 ($path, $api, $method, $params, $headers, $body);
-        $errors = $this->safe_value($response, 'errors');
-        $data = $this->safe_value($response, 'response');
-        if ($errors || !$data) {
-            $authErrorKeys = array ( 'Key', 'user_id', 'Sign' );
-            for ($i = 0; $i < count ($authErrorKeys); $i++) {
-                $errorKey = $authErrorKeys[$i];
-                $errorMessage = $this->safe_string($errors, $errorKey);
-                if (!$errorMessage)
-                    continue;
-                if ($errorKey === 'user_id' && mb_strpos ($errorMessage, 'authorization') < 0)
-                    continue;
-                throw new AuthenticationError ($errorMessage);
-            }
-            throw new ExchangeError ($this->json ($errors));
-        }
         return $response;
     }
 }
