@@ -23,6 +23,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
   exchange_data: any;
   alive = true;
     volumes_data: any;
+    observables: any;
   constructor(private http:HttpClient, private stockService:StocksService, private orderPipe: OrderPipe) { }
 
   ngOnInit() {
@@ -30,12 +31,13 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     this.stockService.getExchanges().takeWhile(() => this.alive).subscribe((res: Array<any>) => {
       this.exchanges = res; 
       this.count = this.exchanges.length;
-      for(let item of this.exchanges) {
-          this.volumes_data = this.stockService.getExchangePairs(item.name).takeWhile(() => this.alive).subscribe(
-          pairs => {item.count=pairs.length; console.log(item.count)}
-          );
 
-      }
+        for(let item of this.exchanges) {
+            this.observables.push(this.stockService.getExchangePairs(item.name));
+        }
+        this.volumes_data = Observable.forkJoin(this.observables)
+            .subscribe(pairs => {console.log('result'); console.log(pairs)}
+            );
 
     });
   	this.stockService.getVolumes().subscribe(res => {

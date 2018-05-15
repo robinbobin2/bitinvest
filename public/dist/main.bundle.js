@@ -3152,13 +3152,12 @@ var ExchangesComponent = (function () {
             this.stockService.getExchanges().takeWhile(function () { return _this.alive; }).subscribe(function (res) {
                 _this.exchanges = res;
                 _this.count = _this.exchanges.length;
-                var _loop_1 = function (item) {
-                    _this.volumes_data = _this.stockService.getExchangePairs(item.name).takeWhile(function () { return _this.alive; }).subscribe(function (pairs) { item.count = pairs.length; console.log(item.count); });
-                };
                 for (var _i = 0, _a = _this.exchanges; _i < _a.length; _i++) {
                     var item = _a[_i];
-                    _loop_1(item);
+                    _this.observables.push(_this.stockService.getExchangePairs(item.name));
                 }
+                _this.volumes_data = __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].forkJoin(_this.observables)
+                    .subscribe(function (pairs) { console.log('result'); console.log(pairs); });
             });
         this.stockService.getVolumes().subscribe(function (res) {
             _this.volumes = res;
