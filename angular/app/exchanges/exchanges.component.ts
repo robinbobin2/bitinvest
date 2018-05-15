@@ -33,7 +33,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
       this.count = this.exchanges.length;
       for(let item of this.exchanges) {
           this.stocks.push(
-          this.stockService.getExchangePairs(item.name).takeWhile(() => this.alive).subscribe(
+          this.stockService.getExchangePairs(item.name).takeWhile(() => this.alive).map(
           pairs => {item.count=pairs.length; console.log(item.count)}
       )
       );

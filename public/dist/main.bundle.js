@@ -3153,7 +3153,7 @@ var ExchangesComponent = (function () {
             _this.exchanges = res;
             _this.count = _this.exchanges.length;
             var _loop_1 = function (item) {
-                _this.stocks.push(_this.stockService.getExchangePairs(item.name).takeWhile(function () { return _this.alive; }).subscribe(function (pairs) { item.count = pairs.length; console.log(item.count); }));
+                _this.stocks.push(_this.stockService.getExchangePairs(item.name).takeWhile(function () { return _this.alive; }).map(function (pairs) { item.count = pairs.length; console.log(item.count); }));
             };
             for (var _i = 0, _a = _this.exchanges; _i < _a.length; _i++) {
                 var item = _a[_i];
