@@ -48,7 +48,6 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
           let symbol = admin[index].symbol;
           let year = admin[index].year;
           let algo = admin[index].algo;
-          let desc = 'DESC';
           this.animtype[index] = '';
 
         if(this.dataUsd[index].now != this.resp[symbol+'/USDT']['now']) {
@@ -70,6 +69,7 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
             this.dataUsd[index].value = this.resp[symbol+'/USDT']['value'];
             this.dataUsd[index].day = this.resp[symbol+"/USDT"]['day'];
             this.dataUsd[index].week = this.resp[symbol+"/USDT"]['week'];
+            this.dataUsd[index].changePercent = this.resp[symbol+"/USDT"]['changePercent'];
 
 
           } else {
