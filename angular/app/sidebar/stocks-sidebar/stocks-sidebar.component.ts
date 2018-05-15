@@ -20,7 +20,7 @@ export class Cripto {
 })
 
 export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy {
-    order: string = 'changePercent';
+    order: string = 'percentDay';
     reverse: boolean = false;
   dataUsd:any=[];
   constructor(private http:HttpClient,
@@ -70,6 +70,7 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
             this.dataUsd[index].day = this.resp[symbol+"/USDT"]['day'];
             this.dataUsd[index].week = this.resp[symbol+"/USDT"]['week'];
             this.dataUsd[index].changePercent = this.resp[symbol+"/USDT"]['changePercent'];
+              this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
 
 
           } else {
@@ -101,6 +102,9 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
       this.dataUsd = JSON.parse(localStorage.getItem('data'));
     }
   }
+  countPercent(now, last) {
+        return (now-last) / (now+last) * 100;
+    }
   ngOnDestroy() {
 
   // this.data.unsubscribe();
