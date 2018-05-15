@@ -23,6 +23,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
   exchange_data: any;
   alive = true;
   stocks = [];
+    observale_pairs: any;
   constructor(private http:HttpClient, private stockService:StocksService, private orderPipe: OrderPipe) { }
 
   ngOnInit() {
@@ -39,7 +40,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
       }
 
     });
-      Observable.from(this.stocks)
+      this.observale_pairs = Observable.from(this.stocks)
           .concatAll()
           .subscribe();
 
@@ -76,6 +77,6 @@ export class ExchangesComponent implements OnInit, OnDestroy {
  ngOnDestroy() {
       this.alive = false;
    this.volume_data.unsubscribe();
-   this.exchange_data.unsubscribe();
+   this.observale_pairs.unsubscribe();
  }
 }

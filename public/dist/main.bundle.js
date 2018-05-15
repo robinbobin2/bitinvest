@@ -3160,7 +3160,7 @@ var ExchangesComponent = (function () {
                 _loop_1(item);
             }
         });
-        __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].from(this.stocks)
+        this.observale_pairs = __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].from(this.stocks)
             .concatAll()
             .subscribe();
         this.stockService.getVolumes().subscribe(function (res) {
@@ -3195,7 +3195,7 @@ var ExchangesComponent = (function () {
     ExchangesComponent.prototype.ngOnDestroy = function () {
         this.alive = false;
         this.volume_data.unsubscribe();
-        this.exchange_data.unsubscribe();
+        this.observale_pairs.unsubscribe();
     };
     return ExchangesComponent;
 }());
