@@ -91,10 +91,10 @@
                 </a>
               </td>
               <td>
-                <span class="amount-bold" *ngIf="exchange_volumes[item.name].usd">{{exchange_volumes[item.name].usd | number:'1.0-3'}}</span>
+                <span class="amount-bold" *ngIf="exchange_volumes[item.name].usd != undefined">{{exchange_volumes[item.name].usd | number:'1.0-3'}}</span>
               </td>
               <td>
-                <span *ngIf="exchange_volumes[item.name].btc">{{exchange_volumes[item.name].btc | number:'1.0-3'}}</span>
+                <span *ngIf="exchange_volumes[item.name].btc != undefined">{{exchange_volumes[item.name].btc | number:'1.0-3'}}</span>
               </td>
               <td>
                 <span>{{item.count}}</span>
