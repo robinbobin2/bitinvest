@@ -21,7 +21,7 @@ export class Cripto {
 
 export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy {
     order: string = 'percentDay';
-    reverse: boolean = false;
+    reverse: boolean = true;
   dataUsd:any=[];
   constructor(private http:HttpClient,
     private stocksService:StocksService) { }
