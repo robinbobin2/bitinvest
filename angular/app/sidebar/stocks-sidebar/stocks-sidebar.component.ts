@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {StocksService} from '../../stocks.service';
 import { Observable } from 'rxjs/Rx';
+import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
+
 export class Cripto {
   id: number;
   name:string;
@@ -18,6 +20,8 @@ export class Cripto {
 })
 
 export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy {
+    order: string = 'changePercent';
+    reverse: boolean = false;
   dataUsd:any=[];
   constructor(private http:HttpClient,
     private stocksService:StocksService) { }
