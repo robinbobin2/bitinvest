@@ -101,7 +101,7 @@
                 <th width="29%"><span>Рост за 24 ч.</span></th>
               </tr>
             </thead>
-              <tbody style="position:relative; min-height: 60px;">
+              <tbody style="position:relative; min-height: 160px;">
               <img src="/img/load.gif" *ngIf="load == true" style="position: absolute; left: 40%;
             margin: 40px auto; width: 40px; height: 40px; text-align: center">
               <tr *ngFor="let pair of pairs | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'currency'; let i = index" [ngClass]="i > 14 ? 'hidden' : 'visible'" >
