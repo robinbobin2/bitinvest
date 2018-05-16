@@ -81,9 +81,9 @@
                       <th width="14%"><span>Обновлено</span></th>
                     </tr>
                   </thead>
-                  <tbody style="position: relative;">
+                  <tbody style="position: relative; min-height: 65px;">
                     <img src="/img/load.gif" *ngIf="load==true" style="display: block;
-  margin: 20px auto; width: 55px; height: 55px; position: relative; left: 26%">
+  margin: 20px auto; width: 55px; height: 55px; position: absolute; left: 26%">
                     <tr *ngFor="let stock of stocks; let i = index">
                       <td>
                         <a href="#">
