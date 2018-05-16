@@ -16,7 +16,11 @@
               </select> -->
             </div>
           </li>
-          <li class="follow"><a href="#follow-popup" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a></li>
+          <li class="follow"><a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+            <a href="#follow-popup" *ngIf="!checkInPortfolio(data.id) && checkAuth()" (click)="selectedItem = data" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+
+            <a class="follow"  *ngIf="checkInPortfolio(data.id) && checkAuth()"  (click)="removePortfolio(data.id)"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
+          </li>
         </ul>
       </div>
       <div class="price-block">
@@ -518,3 +522,26 @@
         </aside>
       </div>
     </section>
+<div id="follow-popup" class="popup mfp-with-anim mfp-hide">
+  <div class="popup-body">
+    <h2>Следить за {{selectedItem?.name}}</h2>
+    <p>Выберите портфель для сохранения {{selectedItem?.name}}</p>
+    <div class="checkbox-list">
+      <div class="checkbox-wrap" *ngFor="let portfolio of getUserPortfolio; let i = index">
+        <input type="radio" name="id" [(ngModel)]="addPortfolio" value="{{portfolio.id}}" checked="checked" id="{{i}}">
+        <label for="{{i}}">
+          <span></span>{{portfolio.name}}
+        </label>
+      </div>
+    </div>
+    <a href="#" class="add-portfolio">+Добавить портфель</a>
+    <form class="hidden" #f="ngForm">
+      <input type="text" ngModel name="name" required="" placeholder="Введите название...">
+      <button (click)="createPortfolio(f)" type="submit">Добавить</button>
+    </form>
+  </div>
+  <div class="save-block">
+    <a (click)="submitPortfolio(selectedItem?.id, 'App\\CryptoStat')" class="save-settings">Сохранить настройки</a>
+    <a href="#" class="close-text">Отменить и закрыть</a>
+  </div>
+</div>

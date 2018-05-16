@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {StocksService} from '../../stocks.service';
 import { Observable } from 'rxjs/Rx';
+import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
+
 export class Cripto {
   id: number;
   name:string;
@@ -18,6 +20,8 @@ export class Cripto {
 })
 
 export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy {
+    order: string = 'percentDay';
+    reverse: boolean = true;
   dataUsd:any=[];
   constructor(private http:HttpClient,
     private stocksService:StocksService) { }
@@ -44,7 +48,6 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
           let symbol = admin[index].symbol;
           let year = admin[index].year;
           let algo = admin[index].algo;
-          let desc = 'DESC';
           this.animtype[index] = '';
 
         if(this.dataUsd[index].now != this.resp[symbol+'/USDT']['now']) {
@@ -66,6 +69,8 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
             this.dataUsd[index].value = this.resp[symbol+'/USDT']['value'];
             this.dataUsd[index].day = this.resp[symbol+"/USDT"]['day'];
             this.dataUsd[index].week = this.resp[symbol+"/USDT"]['week'];
+            this.dataUsd[index].changePercent = this.resp[symbol+"/USDT"]['changePercent'];
+              this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
 
 
           } else {
@@ -82,6 +87,7 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
               day: 0,
             }
           }
+          console.log(this.dataUsd);
           this.load = false;
           localStorage.removeItem('data');
           localStorage.setItem('data',JSON.stringify(this.dataUsd))
@@ -96,6 +102,9 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
       this.dataUsd = JSON.parse(localStorage.getItem('data'));
     }
   }
+  countPercent(now, last) {
+        return (now-last) / (now+last) * 100;
+    }
   ngOnDestroy() {
 
   // this.data.unsubscribe();
