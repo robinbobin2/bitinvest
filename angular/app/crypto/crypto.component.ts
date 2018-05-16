@@ -114,7 +114,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
               if(response['error']) {
                   // code...
               } else {
-                  this.portfoliosInfo = response['mining'];
+                  this.portfoliosInfo = response['crypto'];
                   console.log(this.portfoliosInfo);
               }
           },
@@ -390,7 +390,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
             (error) => console.log(error)
         );
     }
-    
+
     callCheck(id) {
         if(this.checkInPortfolio(id)) {
             this.checkPortfolio = true;
@@ -418,10 +418,8 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
     checkAuth() {
         if(this.auth.getUserInfo()) {
-            console.log(true);
             return true;
         }
-        console.log(false);
         return(false);
 
     }
@@ -435,8 +433,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
                     if(res['error']) {
                         // code...
                     } else {
-                        this.portfoliosInfo = res['mining'];
-                        console.log(this.portfoliosInfo);
+                        this.portfoliosInfo = res['crypto'];
                     }
                 }),
                     this.checkInPortfolio(id);

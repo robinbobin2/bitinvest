@@ -25,5 +25,9 @@ class UserPortfolio extends Model
     {
         return $this->morphedByMany('App\IcoProject', 'user_portfollable');
     }
+    public function crypto()
+    {
+        return $this->morphedByMany('App\CryptoStat', 'user_portfollable');
+    }
     //
 }

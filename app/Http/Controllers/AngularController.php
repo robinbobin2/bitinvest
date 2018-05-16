@@ -62,6 +62,7 @@ class AngularController extends Controller
         foreach ($portfolios as $portfolio) {
             $userPortfolio['mining'][] = $portfolio->minings;
             $userPortfolio['ico'][] = $portfolio->ico;
+            $userPortfolio['crypto'][] = $portfolio->crypto;
 
         }
         return json_encode($userPortfolio);
