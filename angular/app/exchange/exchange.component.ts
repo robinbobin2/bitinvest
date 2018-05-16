@@ -6,6 +6,7 @@ import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import {StocksService} from '../stocks.service';
+import {AuthService} from "../auth.service";
 @Component({
 	selector: 'app-exchange',
 	templateUrl: './exchange.component.html',
@@ -43,7 +44,8 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 		private stockService:StocksService, 
 		private router:Router, 
 		private orderPipe: OrderPipe, 
-		private route:ActivatedRoute) { 
+		private route:ActivatedRoute,
+				private auth:AuthService) {
 		this.name = route.snapshot.params['name'];
 
 	}
