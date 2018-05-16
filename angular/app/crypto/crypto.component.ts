@@ -411,7 +411,15 @@ export class CryptoComponent implements OnInit, OnDestroy {
         }
         return false;
     }
+    checkAuth() {
+        if(this.auth.getUserInfo()) {
+            console.log(true);
+            return true;
+        }
+        console.log(false);
+        return(false);
 
+    }
     removePortfolio(id) {
         const removeUrl = '/angular/userportfolio/remove/';
         const removePost = this.http.get(removeUrl+id);

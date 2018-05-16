@@ -2757,6 +2757,14 @@ var CryptoComponent = (function () {
         }
         return false;
     };
+    CryptoComponent.prototype.checkAuth = function () {
+        if (this.auth.getUserInfo()) {
+            console.log(true);
+            return true;
+        }
+        console.log(false);
+        return (false);
+    };
     CryptoComponent.prototype.removePortfolio = function (id) {
         var _this = this;
         var removeUrl = '/angular/userportfolio/remove/';
