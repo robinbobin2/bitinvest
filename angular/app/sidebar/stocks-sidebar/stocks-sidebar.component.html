@@ -30,7 +30,7 @@
                 <ul>
                     <li *ngFor="let item of dataUsd | orderBy: order:reverse:'case-insensitive'">
                         <a href="" class="name">{{item.sym}}</a>
-                        <span class="price"> </span>
+                        <span class="price"> ${{item.marketCapUsd}}</span>
                         <span class="percent">{{ item.percentDay | number: '1.2'}}%</span>
                     </li>
 
