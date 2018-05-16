@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="table-wrap">
-        <table class="table crypto-table">
+        <div class="table crypto-table">
           <thead>
             <tr>
               <th width="4.4%" [class.active]="order === 'id'"
@@ -77,8 +77,8 @@
               </th>
             </tr>
           </thead>
-          <div style="width: 100%; text-align: center;" <img src="/img/load.gif" *ngIf="load == true" style="display: block;
-            margin: 40px auto; width: 60px; height: 60px; text-align: center"></table>
+          <div style="width: 100%; text-align: center;" ><img src="/img/load.gif" *ngIf="load == true" style="display: block;
+            margin: 40px auto; width: 60px; height: 60px; text-align: center"></div>
           <tbody *ngIf="load == false">
 
             <tr *ngFor="let item of exchanges; let i = index">
