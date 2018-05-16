@@ -24,6 +24,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
   alive = true;
   stocks = [];
     observale_pairs: any;
+  load: any;
   constructor(private http:HttpClient, private stockService:StocksService, private orderPipe: OrderPipe) { }
 
   ngOnInit() {
@@ -34,7 +35,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
       for(let item of this.exchanges) {
           this.stocks.push(
           this.stockService.getExchangePairs(item.name).takeWhile(() => this.alive).map(
-          pairs => {item.count=pairs.length; console.log(item.count)}
+          pairs => {item.count=pairs.length; this.load[item.name] = true;}
       )
       );
       }
