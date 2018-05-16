@@ -45,7 +45,7 @@
         </form>
       </div>
     </div>
-    <div class="table-wrap">
+    <div class="table-wrap" style="margin-bottom: 20px;">
       <table class="table crypto-table">
        <thead>
         <tr>
@@ -106,7 +106,7 @@ width="18.3%">
 </thead>
 <tbody style="position: relative;">
   <img src="/img/load.gif" *ngIf="load==true" style="display: block;
-  margin: 20px auto; width: 75px; height: 75px; position: absolute; left: 46%">
+  margin: 20px auto; width: 70px; height: 70px; position: absolute; left: 46%">
   <tr *ngFor="let data of dataUsd  | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index">
    <td>
     <span>{{i+1}}</span>
