@@ -3,5 +3,6 @@ echo "Начинаем..."
 while (true) 
 do
  bash ./script.sh
- sleep 10; 
+ sync ; echo 1 > /proc/sys/vm/drop_caches
+ sleep 60;
 done;
