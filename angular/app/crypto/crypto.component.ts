@@ -390,12 +390,14 @@ export class CryptoComponent implements OnInit, OnDestroy {
             (error) => console.log(error)
         );
     }
+    
     callCheck(id) {
         if(this.checkInPortfolio(id)) {
             this.checkPortfolio = true;
         }
         this.checkPortfolio = false;
     }
+
     checkInPortfolio(id) {
         if(this.portfoliosInfo == undefined) {
             return false;
@@ -413,6 +415,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
         }
         return false;
     }
+
     checkAuth() {
         if(this.auth.getUserInfo()) {
             console.log(true);
@@ -422,6 +425,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
         return(false);
 
     }
+
     removePortfolio(id) {
         const removeUrl = '/angular/userportfolio/remove/';
         const removePost = this.http.get(removeUrl+id);
