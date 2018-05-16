@@ -5,6 +5,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import {AuthService} from '../auth.service';
 import {StocksService} from '../stocks.service';
+import {NewsRaw} from "../cloud-mining/all-cloud-mining/all-cloud-mining.component";
 
 export interface CryptoData {
 
@@ -90,6 +91,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
   max = [];
   time = [];
   time_value = 0;
+  selectedItem: PositionData;
     portfolioInfo:any;
 
     portfoliosInfo = [];
