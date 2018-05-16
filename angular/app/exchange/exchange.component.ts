@@ -34,7 +34,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 	stock_data: any;
 	 selectedItem: any;
     portfolioInfo:any;
-
+	load = true;
     portfoliosInfo = [];
     getUserPortfolio = [];
     addPortfolio: any;
@@ -98,7 +98,9 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 
 
 		this.stockService.getExchangePairs(this.name).subscribe(res => {
+
 			this.pairs = res
+			this.load = false;
 			this.count_pairs = this.pairs.length;
 		});
 
