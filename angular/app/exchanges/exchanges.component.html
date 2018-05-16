@@ -77,7 +77,10 @@
               </th>
             </tr>
           </thead>
-          <tbody>
+          <img src="/img/load.gif" *ngIf="load == true" style="display: block;
+            margin: 40px auto; width: 60px; height: 60px;">
+          <tbody *ngIf="load == false">
+
             <tr *ngFor="let item of exchanges; let i = index">
               <td>
                 <span>{{i}}</span>
@@ -97,8 +100,7 @@
                 <span *ngIf="exchange_volumes[item.name] != undefined">{{exchange_volumes[item.name].btc | number:'1.0-3'}}</span>
               </td>
               <td>
-                <img src="/img/load.gif" *ngIf="item.load==false" style="display: block;
-            margin: 10px auto; width: 20px; height: 20px;">
+
                 <span>{{item.count}}</span>
               </td>
               <td>

@@ -24,7 +24,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
   alive = true;
   stocks = [];
     observale_pairs: any;
-  load: any;
+  load=true;
   constructor(private http:HttpClient, private stockService:StocksService, private orderPipe: OrderPipe) { }
 
   ngOnInit() {
@@ -32,21 +32,22 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     this.stockService.getExchanges().subscribe((res: Array<any>) => {
       this.exchanges = res; 
       this.count = this.exchanges.length;
-      for(let item of this.exchanges) {
-          item.load = false;
-          this.stocks.push(
-          this.stockService.getExchangePairs(item.name).takeWhile(() => this.alive).map(
-          pairs => {item.count=pairs.length; item.load = true;}
-      )
-      );
-      }
-        this.observale_pairs = Observable.from(this.stocks)
-            .concatAll()
-            .subscribe();
+      // for(let item of this.exchanges) {
+      //     item.load = false;
+      //     this.stocks.push(
+      //     this.stockService.getExchangePairs(item.name).takeWhile(() => this.alive).map(
+      //     pairs => {item.count=pairs.length; item.load = true;}
+      // )
+      // );
+      // }
+      //   this.observale_pairs = Observable.from(this.stocks)
+      //       .concatAll()
+      //       .subscribe();
     });
 
 
   	this.stockService.getVolumes().subscribe(res => {
+  	    this.load=false;
       this.volumes = res
       for(let item of this.volumes) {
         this.exchange_volumes[item.name] = {
@@ -79,6 +80,6 @@ export class ExchangesComponent implements OnInit, OnDestroy {
  ngOnDestroy() {
       this.alive = false;
    this.volume_data.unsubscribe();
-   this.observale_pairs.unsubscribe();
+   // this.observale_pairs.unsubscribe();
  }
 }
