@@ -106,7 +106,7 @@ width="18.3%">
 </thead>
 <tbody style="position: relative;">
   <img src="/img/load.gif" *ngIf="load==true" style="display: block;
-  margin: 10px auto; width: 25px; height: 25px; position: absolute; left: 46%">
+  margin: 20px auto; width: 75px; height: 75px; position: absolute; left: 46%">
   <tr *ngFor="let data of dataUsd  | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index">
    <td>
     <span>{{i+1}}</span>

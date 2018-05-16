@@ -151,7 +151,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     }
 
       this.stocksService.getStocks(symbol+'/USDT').subscribe(response => {
-
+        this.load = true;
       this.stocks = response;
       this.load = false;
       this.diff = this.dataUsd.now-this.dataUsd.last;
