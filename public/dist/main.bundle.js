@@ -3298,6 +3298,7 @@ var ExchangesComponent = (function () {
             _this.exchanges = res;
             _this.count = _this.exchanges.length;
             var _loop_1 = function (item) {
+                _this.load[item.name] = false;
                 _this.stocks.push(_this.stockService.getExchangePairs(item.name).takeWhile(function () { return _this.alive; }).map(function (pairs) { item.count = pairs.length; _this.load[item.name] = true; }));
             };
             for (var _i = 0, _a = _this.exchanges; _i < _a.length; _i++) {
