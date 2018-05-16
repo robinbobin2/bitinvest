@@ -79,9 +79,11 @@ class AngularController extends Controller
         $items = [];
         $items['ico'] = [];
         $items['mining'] = [];
+        $items['crypto'] = [];
         foreach ($port_items as $item) {
             $items['ico'] = $item->ico;
             $items['mining'] = $item->minings;
+            $items['crypto'] = $item->crypto;
         }
         // foreach ($portfolio_items as $portfolio_item) {
         //     $items['mining'] = CloudMining::where('id', $portfolio_item->user_portfollable_id)->first();
