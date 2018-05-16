@@ -77,8 +77,8 @@
               </th>
             </tr>
           </thead>
-          <div style="width: 100%; text-align: center;" ><img src="/img/load.gif" *ngIf="load == true" style="display: block;
-            margin: 40px auto; width: 60px; height: 60px; text-align: center"></div>
+          <tbody *ngIf="load == true" style="text-align: center;"><img src="/img/load.gif" *ngIf="load == true" style="display: block;
+            margin: 40px auto; width: 60px; height: 60px; text-align: center"></tbody>
           <tbody *ngIf="load == false">
 
             <tr *ngFor="let item of exchanges; let i = index">
