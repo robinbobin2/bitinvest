@@ -3061,6 +3061,7 @@ var ExchangeComponent = (function () {
     }
     ExchangeComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.auth.getUser().subscribe(function (response) { _this.getUserPortfolio = response['portfolio']; console.log(_this.getUserPortfolio); });
         this.router.events.subscribe(function (s) {
             if (s instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* NavigationEnd */]) {
                 var tree = _this.router.parseUrl(_this.router.url);
