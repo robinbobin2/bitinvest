@@ -97,6 +97,7 @@ export class PortfolioComponent implements OnInit {
   this.getPorts('mining');
   this.getPorts('ico');
   this.getPorts('crypto');
+  this.getPorts('stocks');
   }
 
 }

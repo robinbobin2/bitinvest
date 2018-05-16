@@ -129,6 +129,7 @@ Route::get('/angular/userportfolio/', "AngularController@portfolio");
 Route::get('/angular/userportfolio/remove/{id}', "AngularController@removePortfolio");
 Route::get('/angular/userportfolio/ico/remove/{id}', "AngularController@icoRemovePortfolio");
 Route::get('/angular/userportfolio/crypto/remove/{id}', "AngularController@cryptoRemovePortfolio");
+Route::get('/angular/userportfolio/stocks/remove/{id}', "AngularController@stocksRemovePortfolio");
 Route::post('/angular/userportfolio/create', "AngularController@createPortfolio");
 Route::get('/angular/userportfolio/{id}', "AngularController@byportfolio");
 Route::get('/angular/userportfolio/deletecat/{id}', "AngularController@deletePortfolioCat");

@@ -29,5 +29,9 @@ class UserPortfolio extends Model
     {
         return $this->morphedByMany('App\CryptoStat', 'user_portfollable');
     }
+    public function stocks()
+    {
+        return $this->morphedByMany('App\Stock', 'user_portfollable');
+    }
     //
 }

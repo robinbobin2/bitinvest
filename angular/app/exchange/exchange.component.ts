@@ -31,6 +31,13 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 	filteredName = '';
  	animtype = [];
 	stock_data: any;
+	 selectedItem: any;
+    portfolioInfo:any;
+
+    portfoliosInfo = [];
+    getUserPortfolio = [];
+    addPortfolio: any;
+    checkPortfolio = false;
 	private fragment: string;
 	constructor(private http:HttpClient, 
 		private stockService:StocksService, 
@@ -144,6 +151,83 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
       if ( element ) element.scrollIntoView ( element )
     });
   }
+
+      createPortfolio(form: NgForm) {
+        const headers = new HttpHeaders({'Content-type': 'Application/json '});
+
+        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 1},{headers: headers})
+            .subscribe(
+                response => {this.getUserPortfolio.push(response); form.reset()},
+                error => console.log(error)
+            )
+
+    }
+    submitPortfolio( post_id, type) {
+        const headers = new HttpHeaders({'Content-type': 'Application/json '});
+
+        this.http.post('/storeportfolio', {
+                'user_portfollable_id': post_id,
+                'user_portfolio_id':this.addPortfolio,
+                'user_portfollable_type': type
+            },
+            {headers: headers}).subscribe(
+            (response) => this.router.navigate(['/profile/portfolio']),
+            (error) => console.log(error)
+        );
+    }
+
+    callCheck(id) {
+        if(this.checkInPortfolio(id)) {
+            this.checkPortfolio = true;
+        }
+        this.checkPortfolio = false;
+    }
+
+    checkInPortfolio(id) {
+        if(this.portfoliosInfo == undefined) {
+            return false;
+        }
+
+        for(let item of this.portfoliosInfo) {
+            for(let it of item) {
+                if(it.id ) {
+
+                    if(it.id == id) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    checkAuth() {
+        if(this.auth.getUserInfo()) {
+            return true;
+        }
+        return(false);
+
+    }
+
+    removePortfolio(id) {
+        const removeUrl = '/angular/userportfolio/crypto/remove/';
+        const removePost = this.http.get(removeUrl+id);
+        removePost.subscribe(
+            response => {
+                this.portfolioInfo.subscribe(res=>{
+                    if(res['error']) {
+                        // code...
+                    } else {
+                        this.portfoliosInfo = res['crypto'];
+                    }
+                }),
+                    this.checkInPortfolio(id);
+
+            },
+            error => console.log(error)
+        )
+    }
+
 	ngAfterViewInit(): void {
     try {
       document.querySelector('#' + this.fragment).scrollIntoView();
