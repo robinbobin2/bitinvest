@@ -29,7 +29,7 @@
       <file leaf-file-name="exchange.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/exchange/exchange.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
+            <state relative-caret-position="565">
               <caret line="56" column="10" selection-start-line="56" selection-start-column="10" selection-end-line="56" selection-end-column="10" />
               <folding>
                 <element signature="e#0#65#0" expanded="true" />
@@ -281,15 +281,16 @@
       <workItem from="1526212224404" duration="498000" />
       <workItem from="1526284151971" duration="5256000" />
       <workItem from="1526329369492" duration="703000" />
-      <workItem from="1526372392373" duration="11879000" />
+      <workItem from="1526372392373" duration="12703000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23117000" />
+    <option name="totallyTimeSpent" value="23941000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20555556" />
@@ -721,7 +722,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/exchange/exchange.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
+        <state relative-caret-position="565">
           <caret line="56" column="10" selection-start-line="56" selection-start-column="10" selection-end-line="56" selection-end-column="10" />
           <folding>
             <element signature="e#0#65#0" expanded="true" />
