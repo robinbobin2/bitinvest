@@ -65,7 +65,8 @@ export class CryptoComponent implements OnInit, OnDestroy {
     role_id: 0,
     telegram: '',
 
-  }; 
+  };
+
   commentcount = 0;
   stocks=[];
   main_news: any;
@@ -89,14 +90,33 @@ export class CryptoComponent implements OnInit, OnDestroy {
   max = [];
   time = [];
   time_value = 0;
-  constructor(private http:HttpClient,private stocksService:StocksService,
+    portfolioInfo:any;
+
+    portfoliosInfo = [];
+    getUserPortfolio = [];
+    addPortfolio: any;
+    checkPortfolio = false;
+
+    constructor(private http:HttpClient,private stocksService:StocksService,
     private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
+
   }
 
   ngOnInit() {
 
-
+      let portfolioUrl = '/angular/userportfolio';
+      this.portfolioInfo = this.http.get<any>(portfolioUrl);
+      this.portfolioInfo.subscribe(
+          response => {
+              if(response['error']) {
+                  // code...
+              } else {
+                  this.portfoliosInfo = response['mining'];
+                  console.log(this.portfoliosInfo);
+              }
+          },
+      );
     let symbol = this.route.snapshot.params['sym'];
     if(localStorage.getItem(symbol)) {
       this.dataUsd = JSON.parse(localStorage.getItem(symbol));
@@ -344,6 +364,73 @@ export class CryptoComponent implements OnInit, OnDestroy {
      } 
      return true;
    }
+
+    createPortfolio(form: NgForm) {
+        const headers = new HttpHeaders({'Content-type': 'Application/json '});
+
+        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 1},{headers: headers})
+            .subscribe(
+                response => {this.getUserPortfolio.push(response); form.reset()},
+                error => console.log(error)
+            )
+
+    }
+    submitPortfolio( post_id, type) {
+        const headers = new HttpHeaders({'Content-type': 'Application/json '});
+
+        this.http.post('/storeportfolio', {
+                'user_portfollable_id': post_id,
+                'user_portfolio_id':this.addPortfolio,
+                'user_portfollable_type': type
+            },
+            {headers: headers}).subscribe(
+            (response) => this.router.navigate(['/profile/portfolio']),
+            (error) => console.log(error)
+        );
+    }
+    callCheck(id) {
+        if(this.checkInPortfolio(id)) {
+            this.checkPortfolio = true;
+        }
+        this.checkPortfolio = false;
+    }
+    checkInPortfolio(id) {
+        if(this.portfoliosInfo == undefined) {
+            return false;
+        }
+
+        for(let item of this.portfoliosInfo) {
+            for(let it of item) {
+                if(it.id ) {
+
+                    if(it.id == id) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    removePortfolio(id) {
+        const removeUrl = '/angular/userportfolio/remove/';
+        const removePost = this.http.get(removeUrl+id);
+        removePost.subscribe(
+            response => {
+                this.portfolioInfo.subscribe(res=>{
+                    if(res['error']) {
+                        // code...
+                    } else {
+                        this.portfoliosInfo = res['mining'];
+                        console.log(this.portfoliosInfo);
+                    }
+                }),
+                    this.checkInPortfolio(id);
+
+            },
+            error => console.log(error)
+        )
+    }
   ngOnDestroy() {
 
     this.cryptoData.unsubscribe();
