@@ -149,7 +149,7 @@ class AngularController extends Controller
                 'success' => 'Portfolio deleted'
             ];
     }
-    public function cryptoRemovePortfolio($id) 
+    public function stocksRemovePortfolio($id) 
     {
         $user = Auth::user();
         if(!$user){
