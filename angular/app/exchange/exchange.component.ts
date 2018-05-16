@@ -215,7 +215,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
     }
 
     removePortfolio(id) {
-        const removeUrl = '/angular/userportfolio/crypto/remove/';
+        const removeUrl = '/angular/userportfolio/stocks/remove/';
         const removePost = this.http.get(removeUrl+id);
         removePost.subscribe(
             response => {
@@ -223,7 +223,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
                     if(res['error']) {
                         // code...
                     } else {
-                        this.portfoliosInfo = res['crypto'];
+                        this.portfoliosInfo = res['stocks'];
                     }
                 }),
                     this.checkInPortfolio(id);

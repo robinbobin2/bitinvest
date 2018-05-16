@@ -128,11 +128,11 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.prev = this.dataUsd.last;
       
     }
-    if(localStorage.getItem('bid')) {
+    if(localStorage.getItem(symbol+'bid')) {
       this.bid_ask.bid = JSON.parse(localStorage.getItem('bid'));
       
     }
-    if(localStorage.getItem('ask')) {
+    if(localStorage.getItem(symbol+'ask')) {
       this.bid_ask.ask = JSON.parse(localStorage.getItem('ask'));
       
     }
@@ -173,13 +173,13 @@ export class CryptoComponent implements OnInit, OnDestroy {
         }
         if(this.bid_ask.ask < item.ask) {
         this.bid_ask.ask = item.ask
-        localStorage.removeItem('ask')
-        localStorage.setItem('ask', JSON.stringify(this.bid_ask.ask))
+        localStorage.removeItem(symbol+'ask')
+        localStorage.setItem(symbol+'ask', JSON.stringify(this.bid_ask.ask))
         }
         if(this.bid_ask.bid < item.bid) {
         this.bid_ask.bid = item.bid
-        localStorage.removeItem('bid')
-        localStorage.setItem('bid', JSON.stringify(this.bid_ask.bid))
+        localStorage.removeItem(symbol+'bid')
+        localStorage.setItem(symbol+'bid', JSON.stringify(this.bid_ask.bid))
         }
 
       }
