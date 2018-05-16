@@ -132,6 +132,19 @@ class AngularController extends Controller
                 'success' => 'Portfolio deleted'
             ];
     }
+    public function cryptoRemovePortfolio($id) 
+    {
+        $user = Auth::user();
+        if(!$user){
+            return [
+                'error' => 'User not loggined'
+            ];
+        }
+        $portfolio = UserPortfollable::where('user_portfollable_id', $id)->where('user_portfollable_type', 'App\CryptoStat')->delete();
+        return [
+                'success' => 'Portfolio deleted'
+            ];
+    }
 
     public function deletePortfolioCat($id)
     {

@@ -19,7 +19,7 @@
           <li class="follow"><a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
             <a href="#follow-popup" *ngIf="!checkInPortfolio(data?.id) && checkAuth()" (click)="selectedItem = data" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
 
-            <a class="follow"  *ngIf="checkInPortfolio(data?.id) && checkAuth()"  (click)="removePortfolio(data.id)"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
+            <a class="follow"  *ngIf="checkInPortfolio(data?.id) && checkAuth()"  (click)="removePortfolio(data?.id)"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
           </li>
         </ul>
       </div>
