@@ -63,7 +63,6 @@ abstract class FounderProvider
 //            }
 //        }
 
-        DB::beginTransaction();
         foreach ($response as $rate) {
             DB::table("exchangeRates")->insert([
                 'value' => $rate['last'],
@@ -75,7 +74,6 @@ abstract class FounderProvider
                 'createTime' => time(),
             ]);
         }
-        DB::commit();
     }
 
     public function getDefaultRelation()
