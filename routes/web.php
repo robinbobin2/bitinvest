@@ -149,6 +149,7 @@ Route::get('/bit/pair', "BitController@pair");
 Route::get('/bit/volumes', "BitController@exchangesVolume");
 Route::get('/bit/info', "BitController@info");
 Route::get('/bit/pair/name', "BitController@pairByExchange");
+Route::get('/bit/pair/count', "BitController@pairCount");
 Route::post('/profile/register', "ProfileController@register");
 Route::get('/profile/delete/{id}', "ProfileController@delete");
 Route::post('/profile/login', "ProfileController@login");

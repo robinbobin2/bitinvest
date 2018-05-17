@@ -172,7 +172,7 @@ class Updater extends \Illuminate\Console\Command
             }
         }
         catch (\Exception $e){
-            $this->handle();
+            echo $e->getMessage();
         }
 
         return null;

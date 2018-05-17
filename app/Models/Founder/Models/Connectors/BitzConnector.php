@@ -393,23 +393,7 @@ class BitzConnector extends FounderConnector
     }
     public function request ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         $response = $this->fetch2 ($path, $api, $method, $params, $headers, $body);
-        $code = $this->safe_string($response, 'code');
-        if ($code !== '0') {
-            $ErrorClass = $this->safe_value(array (
-                '103' => '\\ccxt\\AuthenticationError',
-                '104' => '\\ccxt\\AuthenticationError',
-                '200' => '\\ccxt\\AuthenticationError',
-                '202' => '\\ccxt\\AuthenticationError',
-                '401' => '\\ccxt\\AuthenticationError',
-                '406' => '\\ccxt\\AuthenticationError',
-                '203' => '\\ccxt\\InvalidNonce',
-                '201' => '\\ccxt\\OrderNotFound',
-                '408' => '\\ccxt\\InsufficientFunds',
-                '106' => '\\ccxt\\DDoSProtection',
-            ), $code, '\\ccxt\\ExchangeError');
-            $message = $this->safe_string($response, 'msg', 'Error');
-            throw new $ErrorClass ($message);
-        }
+
         return $response;
     }
 }
