@@ -177,7 +177,7 @@ class BiBoxConnector extends FounderConnector
     public function parse_tickers ($rawTickers, $symbols = null) {
         $tickers = array ();
         if(!$rawTickers){
-            return $tickers
+            return $tickers;
         }
         foreach ($rawTickers as $rawTicker) {
             $tickers[] = $this->parse_ticker($rawTicker);
