@@ -70,4 +70,10 @@ class BitController extends Controller
         $pairs = DB::select("CALL byExchangesName('".$_GET['exchange']."')");
         return $pairs;
     }
+
+    public function pairCount()
+    {
+        $pairs = DB::select("SELECT * FROM exchangePairCount");
+        return $pairs;
+    }
 }
