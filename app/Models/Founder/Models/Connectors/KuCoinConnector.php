@@ -727,6 +727,9 @@ class KuCoinConnector extends FounderConnector
 
     public function fetch_tickers ($symbols = null, $params = array ()) {
         $response = $this->publicGetMarketOpenSymbols ($params);
+        if(!isset($response['data'])){
+            return [];
+        }
         $tickers = $response['data'];
         $result = array ();
         for ($t = 0; $t < count ($tickers); $t++) {
