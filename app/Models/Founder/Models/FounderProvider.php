@@ -76,7 +76,7 @@ abstract class FounderProvider
                     'createTime' => time(),
                 ]);
             }
-        });
+        }, 5);
     }
 
     public function getDefaultRelation()
