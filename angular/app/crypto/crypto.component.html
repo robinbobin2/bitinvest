@@ -45,8 +45,7 @@
     </div>
   </div>
 
-
-  <section class="crypto-single-wrap">
+<section class="crypto-single-wrap">
     <div class="wrapper">
       <div class="crypto-single-content">
         <ul class="crypto-tab-menu">
@@ -60,6 +59,14 @@
         <div class="tab-content-wrap">
           <div class="tab-content active">
             <div class="overview-content">
+              <ul class="overview-list">
+                 <li><span>Объем за 24ч.</span><span class="black">{{volume | number:'1.0-1'}}</span></li>
+          <li><span>Спрос / Предложение</span><span class="black">{{bid_ask.ask | number:'1.0-2'}} / {{bid_ask.bid | number:'1.0-2'}}</span></li>
+          <li><span>Дневной диапазон</span><span><span class="red">{{min_value | number:'1.0-1'}}</span> <span class="black">/</span> <span class="green">{{max_value | number:'1.0-1'}}</span></span>
+          </li>
+          <li><span>Капитализация</span><span class="black">${{dataUsd.marketCapUsd| number:'1.0-2'}}</span></li>
+          <li><span>Алгоритм</span><span class="black">{{data?.algo}}</span></li>
+              </ul>
               <div class="overview-block">
                 <h3>{{data?.symbol}}/USD График криптовалюты</h3>
                 <app-chart></app-chart>
@@ -122,6 +129,13 @@
                   <img src="/img/load.gif" *ngIf="load == true" style=" width: 50px; height: 50px; text-align: center">
                 </div>
                 <!-- <a href="#" class="show-exchange">Показать все биржи (105)</a> -->
+              </div>
+              <div class="desc-wrap">
+                <div class="description">
+                  <h5>Описание {{data?.symbol}} ({{data?.name}})</h5>
+                  <div [innerHTML]='data?.desc'></div>
+                </div>
+                <a href="#" class="banner-black banner-black-top"><img src="img/banner-black-small.jpg" alt=""></a>
               </div>
             </div>
             <div class="comment-block">

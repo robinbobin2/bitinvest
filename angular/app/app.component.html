@@ -1,29 +1,31 @@
-<header>
+ <header>
     <div class="top-head">
       <div class="wrapper">
         <div class="logo-block">
           <a href="home.html" class="logo"><img src="img/logo.png" alt=""><span>ВСЕ О РЫНКЕ КРИПТОВАЛЮТ</span></a>
         </div>
         <form class="top-search" style="position: relative;">
+          <div class="easy-autocomplete">
           <input type="text" placeholder="Поиск по названию криптовалюты, биржи, ICO, хайпа и др..." [value]="searchAll" (keyup)="searchTerm$.next($event.target.value)">
-          <input type="submit">
-          <div class="results" *ngIf="results" style="position: absolute;
-                                                      top: 40px;
-                                                      background: #fff;
-                                                      left: 10px;
-                                                      right: 10px;z-index: 9999">
+
+          <div class="easy-autocomplete-container" *ngIf="results">
             <ul>
-               <li *ngFor="let result of results | slice:0:9" style="display: block; float: left;width: 100%;padding: 10px;">
-                  <a target="_blank" href="#" style="">
-                   {{ result.name }}
-                  </a>
+              <ng-template ngFor let-result [ngForOf]="results">
+                <li *ngIf="result.symbol" [routerLink]="['/crypto', result.symbol]" style="cursor: pointer">
+                  ({{result.symbol}}) {{ result?.name }}
                 </li>
+                <li *ngIf="result.depo" [routerLink]="['/cloud-mining/item', result.id]" style="cursor: pointer">
+                  {{ result?.name }}
+                </li>
+              </ng-template>
             </ul>
           </div>
+          </div>
+          <input type="submit">
         </form>
         <ul class="login"  *ngIf="!checkUser()">
-          <li><a href="#login-popup" class="popup-link" data-effect="mfp-zoom-in"><i class="fa fa-sign-out" aria-hidden="true"></i>Вход</a></li>
-          <li><a href="#check-popup" class="popup-link" data-effect="mfp-zoom-in"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Регистрация</a></li>
+          <li class="login-link"><a href="#login-popup" class="popup-link log-in" data-effect="mfp-zoom-in"><span>Вход</span></a></li>
+          <li><a href="#check-popup" class="popup-link sign-up" data-effect="mfp-zoom-in"><span>Регистрация</span></a></li>
         </ul>
         <div class="setting-top-block" *ngIf="checkUser()">
           <a routerLink="/profile/edit"><img src="/img/settings-icon.png" alt=""></a>

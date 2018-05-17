@@ -193,11 +193,15 @@ class AngularController extends Controller
     public function search() {
         if ($_REQUEST['q'] ) {
             $cloud_mining = CloudMining::where('name', 'LIKE', '%'.$_REQUEST['q'].'%')->get()->toArray();
-            $coins = CryptoStat::where('name', 'LIKE', '%'.$_REQUEST['q'].'%')->get()->toArray();
+            $coins = CryptoStat::where('name', 'LIKE', '%'.$_REQUEST['q'].'%')
+            ->orWhere('symbol', 'LIKE', '%'.$_REQUEST['q'].'%')
+            ->get()
+            ->toArray();
             $ico = IcoProject::where('name', 'LIKE', '%'.$_REQUEST['q'].'%')->get()->toArray();
+
             return array_merge($cloud_mining, $ico, $coins);
-        } else {
-            return 'Ничего не найдено';
+        } else if($_REQUEST['q'] == ''){
+            return ['error'=>'not found'];
         }
     }
     public function vote(Request $request) {

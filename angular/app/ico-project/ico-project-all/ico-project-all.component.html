@@ -1,25 +1,47 @@
-<div class="ico-content">
-				<div class="ico-head">
-					<h1>ICO<span>{{icoCount}}</span></h1>
-					<ul class="ico-tabs">
-						<li><label for="filter1"><input type="radio" id="filter1" value="1" [(ngModel)]="status" name="status"><a>Активные ({{activeCount}})</a></label></li>
-						<li><label for="filter2"><input type="radio" id="filter2" value="2" [(ngModel)]="status" name="status"><a>Завершенные ({{inactiveCount}})</a></label></li>
-					</ul>
-					<form>
-						<input [(ngModel)]="filteredName" name="filteredName" type="text" placeholder="Поиск по названию">
-						<button type="button"><img src="/img/search-icon.png" alt=""></button>
-					</form>
+<!--<div class="ico-content">-->
+				<!--<div class="ico-head">-->
+					<!--<h1>ICO<span>{{icoCount}}</span></h1>-->
+					<!--<ul class="ico-tabs">-->
+						<!--<li><label for="filter1"><input type="radio" id="filter1" value="1" [(ngModel)]="status" name="status"><a>Активные ({{activeCount}})</a></label></li>-->
+						<!--<li><label for="filter2"><input type="radio" id="filter2" value="2" [(ngModel)]="status" name="status"><a>Завершенные ({{inactiveCount}})</a></label></li>-->
+					<!--</ul>-->
+					<!--<form>-->
+						<!--<input [(ngModel)]="filteredName" name="filteredName" type="text" placeholder="Поиск по названию">-->
+						<!--<button type="button"><img src="/img/search-icon.png" alt=""></button>-->
+					<!--</form>-->
+				<!--</div>-->
+				   <!--<div class="select-wrapper">-->
+				     <!--<div class="select">-->
+				      <!--<span class="text"><span style="padding-top: 12px;">{{order == 'name' ? 'По алфавиту' : 'По сумме собранных средств'}}</span></span>-->
+				      <!--<a href="#"><img src="/img/select-drop-icon.png" alt=""></a>-->
+				     <!--</div>-->
+				     <!--<ul class="select-items">-->
+				      <!--<li (click)="setOrder('name')"><a >Фильтрация: По алфавиту</a></li>-->
+				      <!--<li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li>-->
+				     <!--</ul>-->
+				    <!--</div>-->
+		<div class="ico-content">
+			<div class="ico-head">
+				<h1>ICO<span>872</span><a href="balant-mining-filter.html"><img src="img/mining-icon.png" alt=""></a></h1>
+				<ul class="ico-tabs">
+					<li class="active"><a href="#">Активные (145)</a></li>
+					<li><a href="#">Завершенные (55)</a></li>
+				</ul>
+				<form>
+					<input type="text" placeholder="Поиск по названию">
+				</form>
+			</div>
+			<div class="select-content">
+				<div class="select-head">
+					<p>Доход от большего к меньшему</p>
+					<span class="curret"></span>
 				</div>
-				   <div class="select-wrapper">
-				     <div class="select">
-				      <span class="text"><span style="padding-top: 12px;">{{order == 'name' ? 'По алфавиту' : 'По сумме собранных средств'}}</span></span>
-				      <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
-				     </div>
-				     <ul class="select-items">
-				      <li (click)="setOrder('name')"><a >Фильтрация: По алфавиту</a></li>
-				      <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li>
-				     </ul>
-				    </div>
+				<ul class="select-body">
+					<li><a href="#">Доход на уменьшение</a></li>
+					<li><a href="#">Депозит на уменьшение</a></li>
+					<li><a href="#">Депозит на увеличение</a></li>
+				</ul>
+			</div>
 				<div class="project-wrapper active">
 					<div *ngFor="let item of news | filterNameActive:status:'status' | filterName:filteredName:'name' | orderBy: order:reverse:'case-insensitive'" class="project-block" [ngClass]="item.status==1 ? ' ' : 'no-bg'">
 						<div class="img-wrap">
@@ -77,4 +99,4 @@
       <a (click)="submitPortfolio(selectedItem?.id, 'App\\IcoProject')" class="save-settings">Сохранить настройки</a>
       <a href="#" class="close-text">Отменить и закрыть</a>
     </div>
-  </div>
+</div>
