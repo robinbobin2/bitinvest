@@ -330,8 +330,7 @@ class GateCoinConnector extends FounderConnector
         $response = $this->publicGetPublicLiveTickers ($params);
         $tickers = $response['tickers'];
         $result = array ();
-        for ($t = 0; $t < count ($tickers); $t++) {
-            $ticker = $tickers[$t];
+        foreach ($tickers as $ticker) {
             $id = $ticker['currencyPair'];
             $market = $this->markets_by_id[$id];
             $symbol = $market['symbol'];
