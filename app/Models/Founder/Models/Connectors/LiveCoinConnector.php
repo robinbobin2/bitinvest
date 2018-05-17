@@ -128,8 +128,7 @@ class LiveCoinConnector extends FounderConnector
         }
         $restrictionsById = $this->index_by($restrictions['restrictions'], 'currencyPair');
 
-        for ($p = 0; $p < count($markets); $p++) {
-            $market = $markets[$p];
+        foreach ($markets as $market){
             $id = $market['symbol'];
             $symbol = $id;
             list ($baseId, $quoteId) = explode('/', $symbol);
