@@ -4,7 +4,7 @@
             <img src="/img/load.gif" *ngIf="load==true" style="display: block;
             margin: 10px auto; width: 25px; height: 25px;">
             <li *ngFor="let item of dataUsd; let i = index">
-              <a routerLink="/crypto/{{item.sym}}">
+              <a *ngIf="i < 5" routerLink="/crypto/{{item.sym}}">
                 <span *ngIf="i < 5" class="crypto" >{{item.sym}}</span>
                 <span *ngIf="i < 5" class="usd" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">${{item.now | number:'1.0-1'}}</span>
                 <span *ngIf="i < 5" class="rub" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">₽{{item.now*60 | number:'1.0-1'}}</span>
