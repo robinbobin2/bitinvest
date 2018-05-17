@@ -3,7 +3,7 @@
           <ul>
             <img src="/img/load.gif" *ngIf="load==true" style="display: block;
             margin: 10px auto; width: 25px; height: 25px;">
-              <ng-template [ngForOf]="let item of dataUsd; let i = index">
+              <ng-template ngFor let-item [ngForOf]="dataUsd" let-i="index">
             <li *ngIf="i < 5">
               <a *ngIf="i < 5" routerLink="/crypto/{{item.sym}}">
                 <span *ngIf="i < 5" class="crypto" >{{item.sym}}</span>
