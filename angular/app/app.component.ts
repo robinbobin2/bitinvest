@@ -61,13 +61,19 @@ export class AppComponent implements OnInit {
   results: Object;
   searchTerm$ = new Subject<string>();
   search = '';
+  searchAll = '';
 	constructor(public auth: AuthService, private http:HttpClient, 
     private router:Router, private activatedRoute: ActivatedRoute,
     private searchService: SearchService) {
 
     this.searchService.mainSearch(this.searchTerm$)
       .subscribe(results => {
-        this.results = results;
+          if (results['error']) {
+              this.results = undefined;
+          } else {
+              this.results = results;
+          }
+
         console.log(results);
       });
 	

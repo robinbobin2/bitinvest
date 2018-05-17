@@ -1,50 +1,87 @@
-	<h1>{{dataUsd.sym}}</h1>
-	<section class="crypto-active">
-		<div class="wrapper">
-			<div class="select-block">
-				<a href="#"><h3>Криптовалюты</h3></a>
-				<div class="filters">
-					<form>
-						<div class="select-wrap">
-							<select>
-								<option value="all">Валюта: Любая</option>
-								<option value="usd">Валюта: USD</option>
-								<option value="eur">Валюта: EUR</option>
-							</select>
-						</div>
-						<div class="select-wrapper1" id="select-algo">
-              <div class="select">
-               <span class="text"><span style="padding-top: 12px;">{{algorithm !='' ? algorithm : 'Алгоритм: Все'}}</span></span>
-               <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
-             </div>
-             <ul class="select-items">
-               <li (click)="algorithm=''"> <a >Алгоритм: Все</a></li>
-               <li *ngFor="let data of dataUsd" (click)="algorithm=data?.algo"><a >Алгоритм: {{data?.algo}}</a></li>
-               <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
-             </ul>
-					    </div>
-						<div class="select-wrapper1" id="select-age">
-              <div class="select">
-               <span class="text"><span style="padding-top: 12px;">{{age !='' ? age : 'Возраст: Все'}}</span></span>
-               <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
-             </div>
-             <ul class="select-items">
-               <li (click)="age=''"> <a >Возраст: Все</a></li>
-               <li *ngFor="let data of dataUsd" (click)="age=data?.year"><a >Возраст: {{data?.year}}</a></li>
-               <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
-             </ul>
-           </div>
-           <div class="select-wrap select-big">
-             <select>
-              <option value="all">Рейтинг: Лидер роста</option>
-              <option value="all">Рейтинг: Лидер роста</option>
-              <option value="all">Рейтинг: Лидер роста</option>
-            </select>
-          </div>
-          <input type="text" placeholder="Поиск по названию монеты..." [(ngModel)]="filteredName" name="filteredName" value="">
-        </form>
-      </div>
-    </div>
+	<!--<section class="crypto-active">-->
+		<!--<div class="wrapper">-->
+			<!--<div class="select-block">-->
+				<!--<h1 class="table-title-big">Криптовалюты<span>195</span><a href="balant-mining-filter.html"><img src="img/mining-icon.png" alt=""></a></h1>-->
+				<!--<div class="filters">-->
+					<!--<form>-->
+						<!--<div class="select-wrap">-->
+							<!--<select>-->
+								<!--<option value="all">Валюта: Любая</option>-->
+								<!--<option value="usd">Валюта: USD</option>-->
+								<!--<option value="eur">Валюта: EUR</option>-->
+							<!--</select>-->
+						<!--</div>-->
+						<!--<div class="select-wrapper1" id="select-algo">-->
+              <!--<div class="select">-->
+               <!--<span class="text"><span style="padding-top: 12px;">{{algorithm !='' ? algorithm : 'Алгоритм: Все'}}</span></span>-->
+               <!--<a href="#"><img src="/img/select-drop-icon.png" alt=""></a>-->
+             <!--</div>-->
+             <!--<ul class="select-items">-->
+               <!--<li (click)="algorithm=''"> <a >Алгоритм: Все</a></li>-->
+               <!--<li *ngFor="let data of dataUsd" (click)="algorithm=data?.algo"><a >Алгоритм: {{data?.algo}}</a></li>-->
+               <!--&lt;!&ndash; <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> &ndash;&gt;-->
+             <!--</ul>-->
+					    <!--</div>-->
+						<!--<div class="select-wrapper1" id="select-age">-->
+              <!--<div class="select">-->
+               <!--<span class="text"><span style="padding-top: 12px;">{{age !='' ? age : 'Возраст: Все'}}</span></span>-->
+               <!--<a href="#"><img src="/img/select-drop-icon.png" alt=""></a>-->
+             <!--</div>-->
+             <!--<ul class="select-items">-->
+               <!--<li (click)="age=''"> <a >Возраст: Все</a></li>-->
+               <!--<li *ngFor="let data of dataUsd" (click)="age=data?.year"><a >Возраст: {{data?.year}}</a></li>-->
+               <!--&lt;!&ndash; <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> &ndash;&gt;-->
+             <!--</ul>-->
+           <!--</div>-->
+           <!--<div class="select-wrap select-big">-->
+             <!--<select>-->
+              <!--<option value="all">Рейтинг: Лидер роста</option>-->
+              <!--<option value="all">Рейтинг: Лидер роста</option>-->
+              <!--<option value="all">Рейтинг: Лидер роста</option>-->
+            <!--</select>-->
+          <!--</div>-->
+          <!--<div class="crypto-select-wrap">-->
+          <!--<input type="text" placeholder="Поиск по названию монеты..." [(ngModel)]="filteredName" name="filteredName" value="">-->
+          <!--</div>-->
+        <!--</form>-->
+      <!--</div>-->
+    <!--</div>-->
+    <section class="crypto-active">
+        <div class="wrapper">
+            <div class="select-block">
+                <h1 class="table-title-big">Криптовалюты<span>195</span><a href="balant-mining-filter.html"><img src="img/mining-icon.png" alt=""></a></h1>
+                <div class="crypto-select-wrap">
+                    <div class="select-wrap select-wrap-ico">
+                        <select>
+                            <option value="all">Пара: Все</option>
+                            <option value="usd">Пара: Все</option>
+                            <option value="eur">Пара: Все</option>
+                        </select>
+                    </div>
+                    <div class="select-wrap select-wrap-ico">
+                        <select>
+                            <option value="all">Алгоритм: Все</option>
+                            <option value="usd">Алгоритм: Все</option>
+                            <option value="eur">Алгоритм: Все</option>
+                        </select>
+                    </div>
+                    <div class="select-wrap select-wrap-ico">
+                        <select>
+                            <option value="all">Возраст: Любой</option>
+                            <option value="usd">Возраст: Любой</option>
+                            <option value="eur">Возраст: Любой</option>
+                        </select>
+                    </div>
+                    <div class="select-wrap select-wrap-ico">
+                        <select>
+                            <option value="all">Рейтинг: Лидер роста</option>
+                            <option value="usd">Рейтинг: Лидер роста</option>
+                            <option value="eur">Рейтинг: Лидер роста</option>
+                        </select>
+                    </div>
+                    <input type="text" placeholder="Поиск по названию монеты...">
+                </div>
+            </div>
     <div class="table-wrap" style="margin-bottom: 20px;">
       <table class="table crypto-table">
        <thead>
