@@ -63,17 +63,20 @@ abstract class FounderProvider
 //            }
 //        }
 
-        foreach ($response as $rate) {
-            DB::table("exchangeRates")->insert([
-                'value' => $rate['last'],
-                'volume' => $rate['baseVolume'],
-                'bid' => isset($rate['bid']) ? $rate['bid'] : null,
-                'ask' => isset($rate['ask']) ? $rate['ask'] : null,
-                'currency' => $rate['symbol'],
-                'exchangeId' => $this->getExchangeId(),
-                'createTime' => time(),
-            ]);
-        }
+
+        DB::transaction(function ($response) {
+            foreach ($response as $rate) {
+                DB::table("exchangeRates")->insert([
+                    'value' => $rate['last'],
+                    'volume' => $rate['baseVolume'],
+                    'bid' => isset($rate['bid']) ? $rate['bid'] : null,
+                    'ask' => isset($rate['ask']) ? $rate['ask'] : null,
+                    'currency' => $rate['symbol'],
+                    'exchangeId' => $this->getExchangeId(),
+                    'createTime' => time(),
+                ]);
+            }
+        });
     }
 
     public function getDefaultRelation()
