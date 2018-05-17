@@ -25,6 +25,7 @@ export interface CryptoData {
   algo: string;
   week: number;
   day: number;
+  marketCapUsd: number;
 
 }
 
@@ -105,6 +106,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
           this.dataUsd[index].volume = this.resp[symbol+'/USDT']['volume'];
           this.dataUsd[index].day = this.resp[symbol+"/USDT"]['day'];
           this.dataUsd[index].week = this.resp[symbol+"/USDT"]['week'];
+          this.dataUsd[index].marketCapUsd = this.resp[symbol+"/USDT"]['marketCapUsd']; 
 
           
         } else {
@@ -119,6 +121,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
             algo: '',
             week: 0,
             day: 0,
+            marketCapUsd: 0
           }
         }
         this.load = false;
@@ -164,6 +167,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         this.dataUsd[index].volume = this.resp[symbol+'/USDT']['volume'];
         this.dataUsd[index].day = this.resp[symbol+"/USDT"]['day'];
         this.dataUsd[index].week = this.resp[symbol+"/USDT"]['week'];
+          this.dataUsd[index].marketCapUsd = this.resp[symbol+"/USDT"]['marketCapUsd']; 
+        
 
         localStorage.removeItem('data');
         localStorage.setItem('data',JSON.stringify(this.dataUsd))

@@ -62,6 +62,7 @@ class AngularController extends Controller
         foreach ($portfolios as $portfolio) {
             $userPortfolio['mining'][] = $portfolio->minings;
             $userPortfolio['ico'][] = $portfolio->ico;
+            $userPortfolio['crypto'][] = $portfolio->crypto;
 
         }
         return json_encode($userPortfolio);
@@ -78,9 +79,13 @@ class AngularController extends Controller
         $items = [];
         $items['ico'] = [];
         $items['mining'] = [];
+        $items['crypto'] = [];
+        $items['stocks'] = [];
         foreach ($port_items as $item) {
             $items['ico'] = $item->ico;
             $items['mining'] = $item->minings;
+            $items['crypto'] = $item->crypto;
+            $items['stocks'] = $item->stocks;
         }
         // foreach ($portfolio_items as $portfolio_item) {
         //     $items['mining'] = CloudMining::where('id', $portfolio_item->user_portfollable_id)->first();
@@ -127,6 +132,32 @@ class AngularController extends Controller
             ];
         }
         $portfolio = UserPortfollable::where('user_portfollable_id', $id)->where('user_portfollable_type', 'App\IcoProject')->delete();
+        return [
+                'success' => 'Portfolio deleted'
+            ];
+    }
+    public function cryptoRemovePortfolio($id) 
+    {
+        $user = Auth::user();
+        if(!$user){
+            return [
+                'error' => 'User not loggined'
+            ];
+        }
+        $portfolio = UserPortfollable::where('user_portfollable_id', $id)->where('user_portfollable_type', 'App\CryptoStat')->delete();
+        return [
+                'success' => 'Portfolio deleted'
+            ];
+    }
+    public function stocksRemovePortfolio($id) 
+    {
+        $user = Auth::user();
+        if(!$user){
+            return [
+                'error' => 'User not loggined'
+            ];
+        }
+        $portfolio = UserPortfollable::where('user_portfollable_id', $id)->where('user_portfollable_type', 'App\Stock')->delete();
         return [
                 'success' => 'Portfolio deleted'
             ];

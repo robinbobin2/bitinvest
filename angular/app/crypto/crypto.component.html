@@ -17,9 +17,9 @@
             </div>
           </li>
           <li class="follow"><a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
-            <a href="#follow-popup" *ngIf="!checkInPortfolio(data.id) && checkAuth()" (click)="selectedItem = data" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+            <a href="#follow-popup" *ngIf="!checkInPortfolio(data?.id) && checkAuth()" (click)="selectedItem = data" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
 
-            <a class="follow"  *ngIf="checkInPortfolio(data.id) && checkAuth()"  (click)="removePortfolio(data.id)"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
+            <a class="follow"  *ngIf="checkInPortfolio(data?.id) && checkAuth()"  (click)="removePortfolio(data?.id)"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
           </li>
         </ul>
       </div>
@@ -27,7 +27,7 @@
         <div class="last-update">
           <div class="prices-wrap">
             <span class="price" [ngStyle]="{ 'animation': animtype+' 2s', '-webkit-animation': animtype+' 2s'  }">${{dataUsd?.now | number:'1.0-1'}}</span>
-            <span [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.1-2'}}</span>
+            <span [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.0-5'}}</span>
             <span [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">{{countPercent(dataUsd.now, prev) | number:'1.2-3'}}%</span>
           </div>
           <p>Последнее обновление {{time_value*1000 | date:'HH:mm:ss'}}</p>
@@ -37,7 +37,7 @@
           <li><span>Спрос / Предложение</span><span class="black">{{bid_ask.ask | number:'1.0-2'}} / {{bid_ask.bid | number:'1.0-2'}}</span></li>
           <li><span>Дневной диапазон</span><span><span class="red">{{min_value | number:'1.0-1'}}</span> <span class="black">/</span> <span class="green">{{max_value | number:'1.0-1'}}</span></span>
           </li>
-          <li><span>Капитализация</span><span class="black">$ 95 113 177 098</span></li>
+          <li><span>Капитализация</span><span class="black">${{dataUsd.marketCapUsd| number:'1.0-2'}}</span></li>
           <li><span>Алгоритм</span><span class="black">{{data?.algo}}</span></li>
           <!-- <li><span>Всего монет / Получено</span><span class="black">21 000 000 000 / 89 000 891 (52%)</span></li> -->
         </ul>
@@ -81,7 +81,9 @@
                       <th width="14%"><span>Обновлено</span></th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody style="position: relative; min-height: 65px;">
+                    <img src="/img/load.gif" *ngIf="load==true" style="display: block;
+  margin: 20px auto; width: 55px; height: 55px; position: absolute; left: 26%">
                     <tr *ngFor="let stock of stocks; let i = index">
                       <td>
                         <a href="#">

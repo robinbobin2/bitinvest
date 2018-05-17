@@ -57,7 +57,6 @@ info;
   }
   public getUserInfo() {
  if(this.user.id != undefined) {
-   console.log(this.user.id);
    return true;
  }
   return false;

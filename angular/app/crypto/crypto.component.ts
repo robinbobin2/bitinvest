@@ -106,7 +106,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
+    this.auth.getUser().subscribe(
+     response => {this.getUserPortfolio = response['portfolio']; console.log(this.getUserPortfolio)}
+   );
       let portfolioUrl = '/angular/userportfolio';
       this.portfolioInfo = this.http.get<any>(portfolioUrl);
       this.portfolioInfo.subscribe(
@@ -114,7 +116,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
               if(response['error']) {
                   // code...
               } else {
-                  this.portfoliosInfo = response['mining'];
+                  this.portfoliosInfo = response['crypto'];
                   console.log(this.portfoliosInfo);
               }
           },
@@ -126,11 +128,11 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.prev = this.dataUsd.last;
       
     }
-    if(localStorage.getItem('bid')) {
+    if(localStorage.getItem(symbol+'bid')) {
       this.bid_ask.bid = JSON.parse(localStorage.getItem('bid'));
       
     }
-    if(localStorage.getItem('ask')) {
+    if(localStorage.getItem(symbol+'ask')) {
       this.bid_ask.ask = JSON.parse(localStorage.getItem('ask'));
       
     }
@@ -149,9 +151,10 @@ export class CryptoComponent implements OnInit, OnDestroy {
     }
 
       this.stocksService.getStocks(symbol+'/USDT').subscribe(response => {
-
+        this.load = true;
       this.stocks = response;
       this.load = false;
+      this.diff = this.dataUsd.now-this.dataUsd.last;
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
       for(let item of this.stocks) {
         if(item.ask > 0) {
@@ -171,13 +174,13 @@ export class CryptoComponent implements OnInit, OnDestroy {
         }
         if(this.bid_ask.ask < item.ask) {
         this.bid_ask.ask = item.ask
-        localStorage.removeItem('ask')
-        localStorage.setItem('ask', JSON.stringify(this.bid_ask.ask))
+        localStorage.removeItem(symbol+'ask')
+        localStorage.setItem(symbol+'ask', JSON.stringify(this.bid_ask.ask))
         }
         if(this.bid_ask.bid < item.bid) {
         this.bid_ask.bid = item.bid
-        localStorage.removeItem('bid')
-        localStorage.setItem('bid', JSON.stringify(this.bid_ask.bid))
+        localStorage.removeItem(symbol+'bid')
+        localStorage.setItem(symbol+'bid', JSON.stringify(this.bid_ask.bid))
         }
 
       }
@@ -390,7 +393,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
             (error) => console.log(error)
         );
     }
-    
+
     callCheck(id) {
         if(this.checkInPortfolio(id)) {
             this.checkPortfolio = true;
@@ -418,16 +421,14 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
     checkAuth() {
         if(this.auth.getUserInfo()) {
-            console.log(true);
             return true;
         }
-        console.log(false);
         return(false);
 
     }
 
     removePortfolio(id) {
-        const removeUrl = '/angular/userportfolio/remove/';
+        const removeUrl = '/angular/userportfolio/crypto/remove/';
         const removePost = this.http.get(removeUrl+id);
         removePost.subscribe(
             response => {
@@ -435,8 +436,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
                     if(res['error']) {
                         // code...
                     } else {
-                        this.portfoliosInfo = res['mining'];
-                        console.log(this.portfoliosInfo);
+                        this.portfoliosInfo = res['crypto'];
                     }
                 }),
                     this.checkInPortfolio(id);

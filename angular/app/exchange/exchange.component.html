@@ -30,7 +30,10 @@
                 <p class="last-updated">Для того чтобы оставить оценку бирже, Вам необходимо авторзоваться или зарегистрироваться.</p> -->
               </div>
               <div class="progress-bar">
-                <a href="#follow-popup" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+                <a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+            <a href="#follow-popup" *ngIf="!checkInPortfolio(exchange?.id) && checkAuth()" (click)="selectedItem = exchange" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+
+            <a class="follow"  *ngIf="checkInPortfolio(exchange?.id) && checkAuth()"  (click)="removePortfolio(exchange?.id)"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
               </div>
             </div>
           </div>
@@ -98,7 +101,9 @@
                 <th width="29%"><span>Рост за 24 ч.</span></th>
               </tr>
             </thead>
-            <tbody>
+              <tbody style="position:relative; min-height: 160px;">
+              <img src="/img/load.gif" *ngIf="load == true" style="position: absolute; left: 40%;
+            margin: 40px auto; width: 40px; height: 40px; text-align: center">
               <tr *ngFor="let pair of pairs | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'currency'; let i = index" [ngClass]="i > 14 ? 'hidden' : 'visible'" >
                 <td>
                   <span class="price" >{{pair.currency}}</span>
@@ -119,7 +124,7 @@
               
             </tbody>
           </table>
-          <a href="#" class="show-btn">Показать еще пары</a>
+          <a href="#" class="show-btn" *ngIf="i > 10">Показать еще пары</a>
           </div>
         <div class="comment-block" id="comment-block">
                     <div class="comment-top" *ngIf="user.id != undefined">
@@ -197,3 +202,26 @@
       </aside>
     </div>
   </section>
+  <div id="follow-popup" class="popup mfp-with-anim mfp-hide">
+  <div class="popup-body">
+    <h2>Следить за {{selectedItem?.name}}</h2>
+    <p>Выберите портфель для сохранения {{selectedItem?.name}}</p>
+    <div class="checkbox-list">
+      <div class="checkbox-wrap" *ngFor="let portfolio of getUserPortfolio; let i = index">
+        <input type="radio" name="id" [(ngModel)]="addPortfolio" value="{{portfolio.id}}" checked="checked" id="{{i}}">
+        <label for="{{i}}">
+          <span></span>{{portfolio.name}}
+        </label>
+      </div>
+    </div>
+    <a href="#" class="add-portfolio">+Добавить портфель</a>
+    <form class="hidden" #f="ngForm">
+      <input type="text" ngModel name="name" required="" placeholder="Введите название...">
+      <button (click)="createPortfolio(f)" type="submit">Добавить</button>
+    </form>
+  </div>
+  <div class="save-block">
+    <a (click)="submitPortfolio(selectedItem?.id, 'App\\Stock')" class="save-settings">Сохранить настройки</a>
+    <a href="#" class="close-text">Отменить и закрыть</a>
+  </div>
+</div>
