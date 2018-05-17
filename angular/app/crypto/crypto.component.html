@@ -81,9 +81,8 @@
                       <th width="14%"><span>Обновлено</span></th>
                     </tr>
                   </thead>
-                  <tbody style="position: relative; min-height: 65px;">
-                    <img src="/img/load.gif" *ngIf="load==true" style="display: block;
-  margin: 20px auto; width: 55px; height: 55px; position: absolute; left: 26%">
+                  <tbody *ngIf="load==false" style="position: relative; min-height: 65px;">
+
                     <tr *ngFor="let stock of stocks; let i = index">
                       <td>
                         <a href="#">
@@ -119,6 +118,9 @@
                     
                   </tbody>
                 </table>
+                <div style="width: 50px; height: 50px; margin: 40px auto;" *ngIf="load == true">
+                  <img src="/img/load.gif" *ngIf="load == true" style=" width: 50px; height: 50px; text-align: center">
+                </div>
                 <!-- <a href="#" class="show-exchange">Показать все биржи (105)</a> -->
               </div>
             </div>
