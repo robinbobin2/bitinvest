@@ -26,7 +26,7 @@
       <div class="price-block">
         <div class="last-update">
           <div class="prices-wrap">
-            <span class="price" [ngStyle]="{ 'animation': animtype+' 2s', '-webkit-animation': animtype+' 2s'  }">${{dataUsd?.now | number:'1.0-1'}}</span>
+            <span class="price" style="color: #000;" [ngStyle]="{ 'animation': animtype+' 2s', '-webkit-animation': animtype+' 2s'  }">${{dataUsd?.now | number:'1.0-1'}}</span>
             <span [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.0-5'}}</span>
             <span [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">{{countPercent(dataUsd.now, prev) | number:'1.2-3'}}%</span>
           </div>
