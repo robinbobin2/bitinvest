@@ -207,9 +207,11 @@ class GateCoinConnector extends FounderConnector
     public function fetch_markets () {
         $response = $this->publicGetReferenceCurrencyPairs ();
         $markets = $response['currencyPairs'];
+        if(!$markets){
+            $markets = [];
+        }
         $result = array ();
-        for ($i = 0; $i < count ($markets); $i++) {
-            $market = $markets[$i];
+        foreach ($markets as $market) {
             $id = $market['tradingCode'];
             $baseId = $market['baseCurrency'];
             $quoteId = $market['quoteCurrency'];
