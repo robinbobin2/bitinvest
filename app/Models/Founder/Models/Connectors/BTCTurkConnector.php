@@ -122,8 +122,10 @@ class BTCTurkConnector extends FounderConnector
         $this->load_markets();
         $tickers = $this->publicGetTicker ($params);
         $result = array ();
-        for ($i = 0; $i < count ($tickers); $i++) {
-            $ticker = $tickers[$i];
+        if(!$tickers){
+            $tickers = [];
+        }
+        foreach ($tickers as $ticker) {
             $symbol = $ticker['pair'];
             $market = null;
             if (is_array ($this->markets_by_id) && array_key_exists ($symbol, $this->markets_by_id)) {
