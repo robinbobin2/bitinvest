@@ -6,15 +6,28 @@
         </div>
         <form class="top-search" style="position: relative;">
           <div class="easy-autocomplete">
-          <input type="text" placeholder="Поиск по названию криптовалюты, биржи, ICO, хайпа и др..." [value]="searchAll" (keyup)="searchTerm$.next($event.target.value)">
+          <input type="text"
+                 placeholder="Поиск по названию криптовалюты, биржи, ICO, хайпа и др..."
+                 [value]="searchAll"
+                 (keyup)="searchTerm$.next($event.target.value)"
+                 >
 
-          <div class="easy-autocomplete-container" *ngIf="results">
+          <div class="easy-autocomplete-container" *ngIf="results" (blur)="results=NULL">
             <ul>
               <ng-template ngFor let-result [ngForOf]="results">
-                <li *ngIf="result.symbol" [routerLink]="['/crypto', result.symbol]" style="cursor: pointer">
+                <li (click)="results=NULL" *ngIf="result.symbol" [routerLink]="['/crypto', result.symbol]" style="cursor: pointer">
                   ({{result.symbol}}) {{ result?.name }}
                 </li>
-                <li *ngIf="result.depo" [routerLink]="['/cloud-mining/item', result.id]" style="cursor: pointer">
+                <li (click)="results=NULL" *ngIf="result.depo" [routerLink]="['/cloud-mining/item', result.id]" style="cursor: pointer">
+                  {{ result?.name }}
+                </li>
+                <li (click)="results=NULL" *ngIf="result.country" [routerLink]="['/exchange', result.name]" style="cursor: pointer">
+                  {{ result?.name }}
+                </li>
+                <li (click)="results=NULL" *ngIf="result.workplace" [routerLink]="['/interview/item', result.id]" style="cursor: pointer">
+                  {{ result?.title }}
+                </li>
+                <li (click)="results=NULL" *ngIf="result.money_start" [routerLink]="['/ico/item', result.id]" style="cursor: pointer">
                   {{ result?.name }}
                 </li>
               </ng-template>

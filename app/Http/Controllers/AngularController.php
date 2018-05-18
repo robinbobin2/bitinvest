@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Analytics;
 use App\CloudMining;
 use App\CommentRating;
 use App\CryptoStat;
 use App\IcoPercent;
 use App\IcoProject;
+use App\Interview;
 use App\Stock;
 use App\User;
 use App\UserPortfolio;
@@ -198,8 +200,11 @@ class AngularController extends Controller
             ->get()
             ->toArray();
             $ico = IcoProject::where('name', 'LIKE', '%'.$_REQUEST['q'].'%')->get()->toArray();
+            $stocks = Stock::where('name', 'LIKE', '%'.$_REQUEST['q'].'%')->get()->toArray();
+            $analytics = Analytics::where('title', 'LIKE', '%'.$_REQUEST['q'].'%')->get()->toArray();
+            $interviews = Interview::where('title', 'LIKE', '%'.$_REQUEST['q'].'%')->get()->toArray();
 
-            return array_merge($cloud_mining, $ico, $coins);
+            return array_merge($cloud_mining, $ico, $coins, $stocks, $analytics, $interviews);
         } else if($_REQUEST['q'] == ''){
             return ['error'=>'not found'];
         }
