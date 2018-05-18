@@ -139,11 +139,11 @@
               </div>
             </div>
             <div class="comment-block">
-              <div class="comment-top" style="background: none;"  *ngIf="!user.id">
+              <div class="comment-top"  style="background: none; padding-left: 0;"  *ngIf="!user.id">
                 <h3>Комментарии ({{commentcount}})</h3>
                 <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
               </div>
-              <div class="comment-top"  style="background: none;"  *ngIf="user.id">
+              <div class="comment-top"   style="background: none; padding-left: 0;"  *ngIf="user.id">
                 <h3>Добавить новый комментарий</h3>
                 <form (ngSubmit)="submitComment(f,data.id, 'App\\CryptoStat')" #f="ngForm">
                   <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
@@ -281,11 +281,11 @@
 
           <div class="tab-content comment-wrap">
             <div class="comment-block">
-              <div class="comment-top"  *ngIf="!user.id">
+              <div class="comment-top"  *ngIf="!user.id" style="background: none; padding-left: 0;">
                 <h3>Комментарии ({{commentcount}})</h3>
                 <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
               </div>
-              <div class="comment-top"  *ngIf="user.id">
+              <div class="comment-top"  *ngIf="user.id"  style="background: none; padding-left: 0;">
                 <h3>Добавить новый комментарий</h3>
                 <form (ngSubmit)="submitComment(f,data.id, 'App\\CryptoStat')" #f="ngForm">
                   <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
