@@ -142,6 +142,11 @@ Route::post('/angular/vote', "AngularController@vote");
 // Route::get('/crypto', "AngularController@serve");
 
 Route::get('/crypto/{symbol}', "AngularController@crypto");
+Route::get('/crypto/{symbol}/news', "AngularController@crypto");
+Route::get('/crypto/{symbol}/analytics', "AngularController@crypto");
+Route::get('/crypto/{symbol}/about', "AngularController@crypto");
+Route::get('/crypto/{symbol}/comments', "AngularController@crypto");
+Route::get('/crypto/{symbol}/graph', "AngularController@crypto");
 Route::get('/bit/', "BitController@index");
 Route::get('/bit/exchange/{id}', "BitController@exchange");
 Route::get('/bit/pair', "BitController@pair");

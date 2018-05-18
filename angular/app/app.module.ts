@@ -64,7 +64,24 @@ import {CommentsService} from "./comments.service";
 
 const appRoutes: Routes = [
   {
-    path:'crypto/:sym', component: CryptoComponent
+    path:'crypto/:sym', component: CryptoComponent, children: [
+      
+      {
+      path:'news', component:CryptoComponent
+     },
+     {
+      path:'about', component:CryptoComponent
+     },
+     {
+      path:'graph', component:CryptoComponent
+     },
+     {
+      path:'comments', component:CryptoComponent
+     },
+     {
+      path:'analytics', component:CryptoComponent
+     }
+    ]
   },
   {
       path:'posts', component:NewsComponent, children: [

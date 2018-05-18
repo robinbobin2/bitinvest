@@ -445,6 +445,20 @@ export class CryptoComponent implements OnInit, OnDestroy {
             error => console.log(error)
         )
     }
+    basicRoute() {
+      let symbol = this.route.snapshot.params['sym'];
+      if(this.router.url == '/crypto/'+symbol) {
+        return true
+      }
+      return false
+    }
+    getRoute(url){
+      let symbol = this.route.snapshot.params['sym'];
+     if (this.router.url === '/crypto/'+symbol+'/'+url){
+       return true;
+     }
+     return false;
+   }
   ngOnDestroy() {
 
     this.cryptoData.unsubscribe();

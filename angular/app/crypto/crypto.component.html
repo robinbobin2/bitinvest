@@ -49,15 +49,15 @@
     <div class="wrapper">
       <div class="crypto-single-content">
         <ul class="crypto-tab-menu">
-          <li class="active"><a href="#">Обзор</a></li>
-          <li><a href="javascript:;">График</a></li>
-          <li><a href="javascript:;">Новости</a></li>
-          <li><a href="javascript:;">Комментарии ({{commentcount}})</a></li>
-          <li><a href="javascript:;">Аналитика</a></li>
-          <li class="desc"><a href="javascript:;" >Описание</a></li>
+          <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="./">Обзор</a></li>
+          <li routerLinkActive="active"><a routerLink="graph">График</a></li>
+          <li routerLinkActive="active"><a routerLink="news">Новости</a></li>
+          <li routerLinkActive="active"><a routerLink="comments">Комментарии ({{commentcount}})</a></li>
+          <li routerLinkActive="active"><a routerLink="analytics">Аналитика</a></li>
+          <li routerLinkActive="active" class="desc"><a routerLink="about" >Описание</a></li>
         </ul>
         <div class="tab-content-wrap">
-          <div class="tab-content active">
+          <div class="tab-content"  [ngClass]="basicRoute() ? 'active' : ''">
             <div class="overview-content">
               <ul class="overview-list">
                  <li><span>Объем за 24ч.</span><span class="black">{{volume | number:'1.0-1'}}</span></li>
@@ -227,7 +227,7 @@
             </div>
           </div>
 
-          <div class="tab-content">
+          <div class="tab-content" [ngClass]="getRoute('graph') ? 'active' : ''">
             <div class="overview-block">
               <h3>Потоковый график {{data?.symbol}}/USD</h3>
               <app-chart></app-chart>
@@ -238,7 +238,7 @@
             </div>
           </div>
 
-          <div class="tab-content news-wrapper">
+          <div class="tab-content news-wrapper"  [ngClass]="getRoute('news') ? 'active' : ''">
             <div class="news-body">
               <div class="news-tab-content active">
                 <div class="main-news">
@@ -279,7 +279,7 @@
             </div>
           </div>
 
-          <div class="tab-content comment-wrap">
+          <div class="tab-content comment-wrap"  [ngClass]="getRoute('comments') ? 'active' : ''">
             <div class="comment-block">
               <div class="comment-top"  *ngIf="!user.id" style="background: none; padding-left: 0;">
                 <h3>Комментарии ({{commentcount}})</h3>
@@ -327,7 +327,7 @@
 
           </div>
 
-          <div class="tab-content news-wrapper">
+          <div class="tab-content news-wrapper"  [ngClass]="getRoute('analytics') ? 'active' : ''">
             <div class="news-body">
               <div class="news-tab-content active">
                 <div class="main-news">
@@ -368,7 +368,7 @@
             </div>
           </div>
 
-          <div class="tab-content description-content">
+          <div class="tab-content description-content"  [ngClass]="getRoute('about') ? 'active' : ''">
             <h2>Описание {{data?.symbol}} ({{data?.name}})</h2>
             <div [innerHTML]='data?.desc'></div>
           </div>
