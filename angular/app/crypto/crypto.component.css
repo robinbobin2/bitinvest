@@ -89,14 +89,14 @@
 .comment-block .comment-items li .right .img-wrap {
   width: 13px;
   height: 9px;
-  background: url(../img/link-button.png) no-repeat center center;
+  background: url(/img/link-button.png) no-repeat center center;
   background-size: 13px 9px;
   transition: .3s;
   cursor: pointer;
   margin-right: 13px;
 }
 .comment-block .comment-items li .right .img-wrap:hover {
-  background: url(../img/link-button-hover.png);
+  background: url(/img/link-button-hover.png);
   cursor: pointer;
 }
 .comment-block .comment-items li .right .btn-block {
