@@ -26,7 +26,7 @@
       <div class="price-block">
         <div class="last-update">
           <div class="prices-wrap">
-            <span class="price" [ngStyle]="{ 'animation': animtype+' 2s', '-webkit-animation': animtype+' 2s'  }">${{dataUsd?.now | number:'1.0-1'}}</span>
+            <span class="price" style="color: #000;" [ngStyle]="{ 'animation': animtype+' 2s', '-webkit-animation': animtype+' 2s'  }">${{dataUsd?.now | number:'1.0-1'}}</span>
             <span [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.0-5'}}</span>
             <span [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">{{countPercent(dataUsd.now, prev) | number:'1.2-3'}}%</span>
           </div>
@@ -139,11 +139,11 @@
               </div>
             </div>
             <div class="comment-block">
-              <div class="comment-top"  *ngIf="!user.id">
+              <div class="comment-top" style="background: none;"  *ngIf="!user.id">
                 <h3>Комментарии ({{commentcount}})</h3>
                 <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
               </div>
-              <div class="comment-top"  *ngIf="user.id">
+              <div class="comment-top"  style="background: none;"  *ngIf="user.id">
                 <h3>Добавить новый комментарий</h3>
                 <form (ngSubmit)="submitComment(f,data.id, 'App\\CryptoStat')" #f="ngForm">
                   <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
@@ -153,7 +153,7 @@
                 </form>
               </div>
               <h3 class="total-comments"  *ngIf="user.id">Всего комментариев ({{commentcount}})</h3>
-              <ul class="comment-items">
+              <ul class="comment-items" style="padding-left: 0;">
                 <!--  -->
                 <li *ngFor="let item of comments">
                   <div class="left">
@@ -162,8 +162,8 @@
                         <img src="img/comment-img2.jpg" style="max-width: 35px; height: auto;" alt="">
                       </div>
                       <div class="text-wrap">
-                        <p>{{item.email}}</p>
-                        <span>Добавлен </span>
+                        <p>{{item.name}}</p>
+                        <span>Добавлен {{item.created_at}}</span>
                       </div>
                     </div>
                     <p class="comment-text">{{item.body}}</p>
@@ -182,6 +182,48 @@
 
               </ul>
               <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
+            </div>
+            <div class="news-body">
+              <div class="news-tab-content active">
+                <h3>Новости #{{data.name}}</h3>
+                <div class="main-news">
+                  <div class="news" *ngFor="let item of main_news">
+                    <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')'}">
+                      <a href="#" class="news-btn">{{item.category.name}}</a>
+                      <a href="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
+                      <div class="info">
+                        <span class="date">{{item.created_at}}</span>
+                        <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>0</span>
+                        <a href="/posts/post/{{item.id}}#comment-block" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>0</a>
+                      </div>
+                    </div>
+                    <div class="text">
+                      <p>{{item.desc | striphtml | excerpt:140}}<a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="news-list">
+              <ng-template ngFor let-item [ngForOf]="news" let-i="index">
+                  <div class="news" *ngIf="i<3">
+                    <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
+                      <a href="#" class="news-btn">{{item.category.name}}</a>
+                      <div class="info">
+                        <span class="date">{{item.created_at}}</span>
+                      </div>
+                    </div>
+                    <div class="text">
+                      <h3>
+                        <a routerLink="/posts/post/{{item.id}}">{{item.title}}</a>
+                      </h3>
+                    </div>
+                    <div class="text2">
+                      <p>{{item.desc | striphtml |excerpt:80}}</p>
+                    </div>
+                  </div>
+                </ng-template>
+                <a routerLink="/posts/all" class="show-news">Показать больше новостей</a>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -263,7 +305,7 @@
                       </div>
                       <div class="text-wrap">
                         <p>{{item.email}}</p>
-                        <span>Добавлен </span>
+                        <span>Добавлен {{item.created_at}}</span>
                       </div>
                     </div>
                     <p class="comment-text">{{item.body}}</p>
@@ -282,6 +324,7 @@
 
               </ul>
             </div>
+
           </div>
 
           <div class="tab-content news-wrapper">

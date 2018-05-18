@@ -144,7 +144,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
         
         for(let item of this.stocks) {
           this.volume = this.volume+item.volume;
-        }
+        this.time.push(item.time);
+      }
+      this.time_value = Math.max.apply(null, this.time);
 
       }
 
@@ -182,12 +184,10 @@ export class CryptoComponent implements OnInit, OnDestroy {
         localStorage.removeItem(symbol+'bid')
         localStorage.setItem(symbol+'bid', JSON.stringify(this.bid_ask.bid))
         }
-
+        this.time.push(item.time);
       }
-      console.log(this.min);
+      this.time_value = Math.max.apply(null, this.time);
       this.min_value = Math.min.apply(null, this.min);
-      console.log('min val')
-      console.log(this.min_value)
       this.max_value = Math.max.apply(null, this.max);
 
     });
