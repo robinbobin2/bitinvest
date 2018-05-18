@@ -52,6 +52,9 @@ return [
             'prefix' => '',
             'strict' => false,
             'engine' => null,
+            'options' => [
+                \PDO::ATTR_PERSISTENT => true
+            ]
         ],
 
         'pgsql' => [
