@@ -10,7 +10,7 @@
                  placeholder="Поиск по названию криптовалюты, биржи, ICO, хайпа и др..."
                  [value]="searchAll"
                  (keyup)="searchTerm$.next($event.target.value)"
-                 (blur)="$event.target.value=''">
+                 (blur)="results=NULL">
 
           <div class="easy-autocomplete-container" *ngIf="results">
             <ul>
