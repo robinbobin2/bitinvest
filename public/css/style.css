@@ -8959,3 +8959,21 @@ outline: none !important;
 .single-top-block .price-block .last-update {
   width: 380px;
 }
+.show-news {
+  height: 46px;
+  background: #333945;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: calc(100% + 28px);
+  margin-left: -14px;
+  font-size: 18px;
+  text-decoration: none;
+}

@@ -204,7 +204,7 @@
                 </div>
                 <div class="news-list">
               <ng-template ngFor let-item [ngForOf]="news" let-i="index">
-                  <div class="news" **ngIf="i<3">
+                  <div class="news" *ngIf="i<3">
                     <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
                       <a href="#" class="news-btn">{{item.category.name}}</a>
                       <div class="info">
@@ -221,7 +221,7 @@
                     </div>
                   </div>
                 </ng-template>
-                <a routerLink="/news/all" class="show-news">Показать больше новостей</a>
+                <a routerLink="/posts/all" class="show-news">Показать больше новостей</a>
                 </div>
               </div>
             </div>
