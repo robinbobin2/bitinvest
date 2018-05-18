@@ -330,8 +330,7 @@ class GateCoinConnector extends FounderConnector
         $response = $this->publicGetPublicLiveTickers ($params);
         $tickers = $response['tickers'];
         $result = array ();
-        for ($t = 0; $t < count ($tickers); $t++) {
-            $ticker = $tickers[$t];
+        foreach ($tickers as $ticker) {
             $id = $ticker['currencyPair'];
             $market = $this->markets_by_id[$id];
             $symbol = $market['symbol'];
@@ -598,12 +597,7 @@ class GateCoinConnector extends FounderConnector
     }
 
     public function request ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
-        $response = $this->fetch2 ($path, $api, $method, $params, $headers, $body);
-        if (is_array ($response) && array_key_exists ('responseStatus', $response))
-            if (is_array ($response['responseStatus']) && array_key_exists ('message', $response['responseStatus']))
-                if ($response['responseStatus']['message'] === 'OK')
-                    return $response;
-        throw new ExchangeError ($this->id . ' ' . $this->json ($response));
+        return $this->fetch2 ($path, $api, $method, $params, $headers, $body);
     }
 
     public function withdraw ($code, $amount, $address, $tag = null, $params = array ()) {
