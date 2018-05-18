@@ -10,6 +10,7 @@ namespace App\Models\Founder\Models\Rabbit;
 
 
 use App\Models\Founder\Models\Requests\Request;
+use Illuminate\Support\Facades\DB;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
