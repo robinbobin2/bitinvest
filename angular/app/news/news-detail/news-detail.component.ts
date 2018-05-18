@@ -110,12 +110,16 @@ user: User;
           res =>
           {
               console.log(res) ;
+              if(res['error']) {
+                // code...
+              } else {
               if (positive == 1) {
                   this.rating_count[comment_id] += 1;
               } else {
                   this.rating_count[comment_id] -= 1;
 
               }
+            }
           },
           error => console.log(error)
       );
