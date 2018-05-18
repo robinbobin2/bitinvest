@@ -182,8 +182,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
         localStorage.removeItem(symbol+'bid')
         localStorage.setItem(symbol+'bid', JSON.stringify(this.bid_ask.bid))
         }
-
+        this.time.push(item.time);
       }
+      this.time_value = Math.max.apply(null, this.time);
       console.log(this.min);
       this.min_value = Math.min.apply(null, this.min);
       console.log('min val')
