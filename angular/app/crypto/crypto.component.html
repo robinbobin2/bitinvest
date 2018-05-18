@@ -139,11 +139,11 @@
               </div>
             </div>
             <div class="comment-block">
-              <div class="comment-top"  *ngIf="!user.id">
+              <div class="comment-top" style="background: none;"  *ngIf="!user.id">
                 <h3>Комментарии ({{commentcount}})</h3>
                 <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
               </div>
-              <div class="comment-top"  *ngIf="user.id">
+              <div class="comment-top"  style="background: none;"  *ngIf="user.id">
                 <h3>Добавить новый комментарий</h3>
                 <form (ngSubmit)="submitComment(f,data.id, 'App\\CryptoStat')" #f="ngForm">
                   <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
@@ -153,7 +153,7 @@
                 </form>
               </div>
               <h3 class="total-comments"  *ngIf="user.id">Всего комментариев ({{commentcount}})</h3>
-              <ul class="comment-items">
+              <ul class="comment-items" style="padding-left: 0;">
                 <!--  -->
                 <li *ngFor="let item of comments">
                   <div class="left">
@@ -203,7 +203,8 @@
                   </div>
                 </div>
                 <div class="news-list">
-                  <div class="news" *ngFor="let item of news">
+              <ng-template ngFor let-item [ngForOf]="news" let-i="index">
+                  <div class="news" **ngIf="i<3">
                     <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
                       <a href="#" class="news-btn">{{item.category.name}}</a>
                       <div class="info">
@@ -219,6 +220,8 @@
                       <p>{{item.desc | striphtml |excerpt:80}}</p>
                     </div>
                   </div>
+                </ng-template>
+                <a routerLink="/news/all" class="show-news">Показать больше новостей</a>
                 </div>
               </div>
             </div>
