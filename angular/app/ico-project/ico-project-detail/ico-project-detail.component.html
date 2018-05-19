@@ -1,12 +1,14 @@
+<section class="ico-wrap">
+    <div class="wrapper">
 <div class="ico-card-content">
-				<a href="/ico/all" class="return"><span>&#60;</span>Вернуться к списку проектов</a>
+				<a routerLink="/ico/all" class="return"><span>&#60;</span>Вернуться к списку проектов</a>
 				<div class="project-block">
 					<div class="img-wrap">
 						<img src="{{news.logo}}" style="width: 97px; height: 97px;" alt="">
 					</div>
 					<div class="text-wrap">
 						<div class="text-info">
-							<p class="project-title">{{news.name}}<a href="#comment-block" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{commentcount}}</a></p>
+							<p class="project-title">{{news.name}}</p>
 						</div>
 						<div class="project-info-content">
 							<div class="info">
@@ -14,10 +16,21 @@
 								<p class="year">от {{news.money_start}} до {{news.money_end}}</p>
 								<p class="last-updated">Последнее обновление: {{news.updated_at}}</p>
 							</div>
-							<div class="progress-bar">
-								<a href="#test-popup" class="follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+							<div class="progres-bar">
+								<a href="#follow-popup" class="follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
 							</div>
 						</div>
+            <div class="right">
+              <div class="progres">
+                <span style="width: 15%"></span>
+                <p>Собрано: $45 000 (10%)</p>
+              </div>
+              <ul>
+                <li><span>Собрано {{news.current_money/(news.money / 100)  | number:'1.0-0'}}%</span></li>
+                <li><span>Участвуют {{news.number_people}} чел.</span></li>
+                <li><span>Осталось 25 дней</span></li>
+              </ul>
+            </div>
 					</div>
 				</div>
 				<ul class="card-menu">
@@ -29,10 +42,10 @@
 					<li><a [routerLink]="['/ico/item', news.id]" fragment="comment-block">Комментарии ({{commentcount}})</a></li>
 					<!-- <li><a [routerLink]="['/ico/item', news.id]" fragment="related-projects">Похожие проекты (0)</a></li> -->
 				</ul>
+              <h3 class="ico-title">Основная информация</h3>
 				<div class="basic-information" id="basic-information">
 					<div class="basic-information-wrap">
 						<div class="left">
-							<h3 class="ico-title">Основная информация</h3>
 							<ul>
 								<li><span class="gray">Сайт:</span> <span class="black"><a href="{{news.website}}">{{news.website}}</a></span></li>
 								<li><span class="gray">Тип ICO</span><span class="black">{{news.type==1 ? 'ICO' : 'Pre-ICO'}}</span> </li>
@@ -47,8 +60,7 @@
 							</ul>
 						</div>
 						<div class="right">
-							<h3 class="ico-title">Статистика</h3>
-							<div class="progress">
+							<div class="progres">
 										<span [ngStyle]="{'width': news.current_money/(news.money / 100)+'%' }"></span>
 										<p>${{news.current_money}} из {{news.money}}</p>
 									</div>
@@ -63,8 +75,8 @@
 						
 					</div>
 				</div>
+          <h3 class="ico-title">Распределение средств</h3>
 				<div class="distribution-funds" id="distribution-funds">
-					<h3 class="ico-title">Распределение средств</h3>
 					<ul class="persent">
 						<li *ngFor="let percent of percents" style="width: 40%" [ngStyle]="{'width':percent.percent+'%'}"  [ngClass]="percentClass(percent.percent, 'first')">{{percent.percent}}%</li>
 					</ul>
@@ -84,17 +96,10 @@
 						</li>
 					</ul>
 				</div>
+          <h3 class="ico-title">История</h3>
+
 				<div class="history-project" id="history-project">
-					<h3 class="ico-title">История развития проекта</h3>
 					<ul>
-						<!-- <li class="gray">
-							<span>Январь, 2017</span>
-							<p>Start of development</p>
-						</li>
-						<li class="green">
-							<span>Январь, 2018</span>
-							<p>Начало приватной продажи токенов</p>
-						</li> -->
 						<li [ngClass]="onState(map.state)" *ngFor="let map of roadMap">
 							<span>{{map.date}}</span>
 							<p [innerHTML]="map.desc"></p>
@@ -212,3 +217,5 @@
 					</div>
 				</div> -->
 			</div>
+    </div>
+  </section>

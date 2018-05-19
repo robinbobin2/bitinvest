@@ -37,7 +37,7 @@
             <li><a href="#">Не платит ({{inactive}})</a></li>
           </ul>
           <form>
-            <input type="text" placeholder="Поиск по названию">
+            <input type="text" placeholder="Поиск по названию" [(ngModel)]="filteredName" name="filteredName">
           </form>
         </div>
         <div class="select-content">
