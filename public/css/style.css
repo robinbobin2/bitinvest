@@ -8985,4 +8985,6 @@ outline: none !important;
 app-ico-project-detail, app-news-detail {
   width: 100%;
 }
-
+.select-content {
+  min-width: 190px;
+}

@@ -81,8 +81,6 @@ $(document).ready(function () {
 
 		var index = $(this).closest("li").index();
 
-		$(".news-body .news-tab-content").removeClass("active");
-		$(".news-body .news-tab-content").eq(index).addClass("active");
 
 		if (!$(".news-body .news-tab-content").eq(index).find('.news-slider').hasClass("slick-initialized")) {
 			$(".news-body .news-tab-content").eq(index).find('.news-slider').slick({
