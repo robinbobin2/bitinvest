@@ -49,10 +49,7 @@ $(document).ready(function () {
 		$(".period-tabs li").removeClass("active");
 		$(this).closest("li").addClass("active");
 
-		var index = $(this).closest("li").index();
-
-		$(".period-content .tab-content").removeClass("active");
-		$(".period-content .tab-content").eq(index).addClass("active");
+		
 	});
 
 	$(".ico-tabs li a").on("click", function (e) {
@@ -60,10 +57,7 @@ $(document).ready(function () {
 		$(".ico-tabs li").removeClass("active");
 		$(this).closest("li").addClass("active");
 
-		var index = $(this).closest("li").index();
-
-		$(".project-wrapper").removeClass("active");
-		$(".project-wrapper").eq(index).addClass("active");
+		
 	});
 
 	$(".mining-tabs li a").on("click", function (e) {
@@ -71,10 +65,7 @@ $(document).ready(function () {
 		$(".mining-tabs li").removeClass("active");
 		$(this).closest("li").addClass("active");
 
-		var index = $(this).closest("li").index();
-
-		$(".project-wrapper").removeClass("active");
-		$(".project-wrapper").eq(index).addClass("active");
+		
 	});
 
 	$(".mining-content .show-comments").on("click", function (e) {

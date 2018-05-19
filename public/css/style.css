@@ -8982,6 +8982,7 @@ outline: none !important;
   width: 100%;
 }
 
-app-ico-project-detail {
+app-ico-project-detail, app-news-detail {
   width: 100%;
 }
+
