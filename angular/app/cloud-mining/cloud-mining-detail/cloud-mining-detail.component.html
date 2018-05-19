@@ -18,7 +18,7 @@
 								<li><span>Активность депозита:</span><span class="bold">{{news.depo_date}} дней</span></li>
 								<li class="progres-item">
                   <div class="progres">
-                    <span [ngStyle]="{'width':news.percentage+'%'}">></span>
+                    <span [ngStyle]="{'width':news.percentage+'%'}"></span>
                     <p>Депозит: {{news.depo}}$ ({{news.percentage | number:'1.0-0'}}%)</p>
                   </div>
                 </li>
@@ -59,10 +59,8 @@
 						<p>{{news.desc}}</p>
 					</div>
 				</div>
+        <h2>История операций с тестовым депозитом</h2>
 				<div class="history-table" id="history-table">
-					<div class="history-title-block">
-						<h2>История операций с тестовым депозитом</h2>
-					</div>
 					<table>
 						<thead>
 							<tr>
