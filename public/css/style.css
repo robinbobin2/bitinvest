@@ -8981,3 +8981,7 @@ outline: none !important;
 .more-project-wrap {
   width: 100%;
 }
+
+app-ico-project-detail {
+  width: 100%;
+}
