@@ -31,7 +31,7 @@
     </div> -->
     <div class="mining-content">
         <div class="mining-head">
-          <h1>Облачный майнинг<span>{{allCount}}</span><a href="balant-mining-filter.html"><img src="img/mining-icon.png" alt=""></a></h1>
+          <h1>Облачный майнинг<span>{{allCount}}</span><a href="balant-mining-filter.html"><img src="/img/mining-icon.png" alt=""></a></h1>
           <ul class="mining-tabs">
             <li class="active"><a href="#">Платит/Ожидание ({{active}})</a></li>
             <li><a href="#">Не платит ({{inactive}})</a></li>
@@ -46,9 +46,9 @@
             <span class="curret"></span>
           </div>
           <ul class="select-body">
-            <li><a href="#">Доход на уменьшение</a></li>
-            <li><a href="#">Депозит на уменьшение</a></li>
-            <li><a href="#">Депозит на увеличение</a></li>
+            <li><a href="#" (click)="setOrder('proc')" >Доход на уменьшение</a></li>
+            <li><a href="#" (click)="setOrder('depo')">Депозит на уменьшение</a></li>
+            <li><a href="#" (click)="setOrder('depo')">Депозит на увеличение</a></li>
           </ul>
         </div>
         <div class="project-wrapper active">

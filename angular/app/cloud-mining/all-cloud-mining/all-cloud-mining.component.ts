@@ -50,7 +50,7 @@ export class Portfolio {
 })
 
 export class AllCloudMiningComponent implements OnInit {
-order: string = '';
+order: string = 'proc';
   reverse: boolean = false;
   /**
    * @param {OrderPipe} 

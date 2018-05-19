@@ -8977,3 +8977,7 @@ outline: none !important;
   font-size: 18px;
   text-decoration: none;
 }
+
+.more-project-wrap {
+  width: 100%;
+}
