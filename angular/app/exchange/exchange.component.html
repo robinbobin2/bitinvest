@@ -81,14 +81,16 @@
               <div class="img-wrap"><img src="img/coins-icon.png" alt=""></div><span>{{coin.name}} ({{coin.symbol}})</span></li>
             
           </ul>
+        </div>
+        <h3 class="ico-title">Способы вывода средств</h3>
           <div class="footer-text" id="output">
-            <h3 class="ico-title">Способы вывода средств</h3>
+            
             <p>{{exchange.exchange}}</p>
           </div>
-        </div>
         <div class="history-table exchanges-table" id="exchanges-table">
           <div class="history-title-block exchanges-title-block">
-            <h2>Доступные пары ({{count_pairs}})</h2>
+        <h3 class="ico-title">Доступные пары ({{count_pairs}})</h3>
+            
             <form><input type="text" placeholder="Введите монету, например: BTC" [(ngModel)]="filteredName" name="filteredName"></form>
             <span>Обновлено: 10.11.2017 в 12:45</span>
           </div>
