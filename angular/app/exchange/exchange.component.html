@@ -46,10 +46,11 @@
           <li><a [routerLink]="['/exchange', exchange.name]" fragment="comment-block" (click)="onAnchorClick()">Комментарии ({{commentcount}})</a></li>
           <li><a [routerLink]="['/exchange', exchange.name]" fragment="news" (click)="onAnchorClick()">Новости</a></li>
         </ul>
+        <h3 class="ico-title">Информация о бирже</h3>
         <div class="basic-information" id="general">
           <div class="basic-information-wrap">
             <div class="left">
-              <h3 class="ico-title">Информация о бирже</h3>
+              
               <ul>
                 <li><span class="gray">Официальный сайт:</span> <span class="black"><a href="{{exchange.logo}}">{{exchange.website}}</a></span></li>
                 <li><span class="gray">Рефферальная система:</span><span class="black">{{exchange.ref}}</span> </li>
@@ -179,7 +180,8 @@
                     </ul>
           <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
         </div>
-        <div class="news-block" id="news">
+        <div class="news-body">
+          <div class="news-tab-content active">
           <h3>Новости #{{exchange.name}}</h3>
           <div class="main-news">
                   <div class="news" *ngFor="let item of main_news">
@@ -219,7 +221,7 @@
                 <a routerLink="/posts/all" class="show-news">Показать больше новостей</a>
                 </div>
         </div>
-      </div>
+      </div></div>
       <aside class="sidebar">
       <app-sidebar></app-sidebar>
       </aside>
