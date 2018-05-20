@@ -88,8 +88,8 @@
             <p>{{exchange.exchange}}</p>
           </div>
         <div class="history-table exchanges-table" id="exchanges-table">
-          <div class="history-title-block exchanges-title-block">
-        <h3 class="ico-title">Доступные пары ({{count_pairs}})</h3>
+          <div class="history-title-block exchanges-title-block" style="background: none;">
+        <h3 style="padding-right: 15px" class="ico-title">Доступные пары ({{count_pairs}})</h3>
             
             <form><input type="text" placeholder="Введите монету, например: BTC" [(ngModel)]="filteredName" name="filteredName"></form>
             <span>Обновлено: 10.11.2017 в 12:45</span>
@@ -180,9 +180,26 @@
           <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
         </div>
         <div class="news-block" id="news">
-          <h2>#{{exchange.name}} новости по тегу</h2>
-          <div class="news-wrap">
-                  <div class="news" *ngFor="let item of news">
+          <h3>Новости #{{exchange.name}}</h3>
+          <div class="main-news">
+                  <div class="news" *ngFor="let item of main_news">
+                    <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')'}">
+                      <a href="#" class="news-btn">{{item.category.name}}</a>
+                      <a href="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
+                      <div class="info">
+                        <span class="date">{{item.created_at}}</span>
+                        <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>0</span>
+                        <a href="/posts/post/{{item.id}}#comment-block" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>0</a>
+                      </div>
+                    </div>
+                    <div class="text">
+                      <p>{{item.desc | striphtml | excerpt:140}}<a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="news-list">
+              <ng-template ngFor let-item [ngForOf]="news" let-i="index">
+                  <div class="news" *ngIf="i<3">
                     <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
                       <a href="#" class="news-btn">{{item.category.name}}</a>
                       <div class="info">
@@ -198,7 +215,9 @@
                       <p>{{item.desc | striphtml |excerpt:80}}</p>
                     </div>
                   </div>
-          </div>
+                </ng-template>
+                <a routerLink="/posts/all" class="show-news">Показать больше новостей</a>
+                </div>
         </div>
       </div>
       <aside class="sidebar">

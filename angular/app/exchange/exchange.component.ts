@@ -28,6 +28,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 	Observable = Observable;
 	stocks=[];
 	news = [];
+	main_news = [];
 	count_pairs = 0;
 	filteredName = '';
  	animtype = [];
@@ -75,6 +76,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 					for(let news_item of response['news']) {
 						this.news.push(news_item)
 					}
+					this.main_news.push(...response['main_news'])
 					console.log(this.news);
 				});
 			}
