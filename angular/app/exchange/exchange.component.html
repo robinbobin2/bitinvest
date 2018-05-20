@@ -29,7 +29,7 @@
                 </div>
                 <p class="last-updated">Для того чтобы оставить оценку бирже, Вам необходимо авторзоваться или зарегистрироваться.</p> -->
               </div>
-              <div class="progress-bar">
+              <div class="progres-bar">
                 <a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
             <a href="#follow-popup" *ngIf="!checkInPortfolio(exchange?.id) && checkAuth()" (click)="selectedItem = exchange" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
 
@@ -73,8 +73,9 @@
             <p>{{exchange.desc}}</p>
           </div>
         </div>
+        <h3 class="ico-title">Доступные монеты ({{exchange.coins_count}})</h3>
         <div class="distribution-funds" id="coins">
-          <h3 class="ico-title">Доступные монеты ({{exchange.coins_count}})</h3>
+          
           <ul *ngIf="exchange.coins" >
             <li *ngFor="let coin of exchange.coins">
               <div class="img-wrap"><img src="img/coins-icon.png" alt=""></div><span>{{coin.name}} ({{coin.symbol}})</span></li>
