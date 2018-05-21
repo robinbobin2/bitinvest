@@ -115,6 +115,8 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
   ngOnDestroy() {
 
   // this.data.unsubscribe();
+  if(this.cryptoData) {
   this.cryptoData.unsubscribe();
+  }
 }
 }
