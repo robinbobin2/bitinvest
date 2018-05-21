@@ -7,7 +7,7 @@
       <!--</div>-->
     <!--</div>-->
     <section class="crypto-active">
-        <div class="wrapper">
+        <div class="wrapper" style="width: 80.3%;">
             <div class="select-block">
                 <h1 class="table-title-big">Криптовалюты<span>195</span><a href="balant-mining-filter.html"><img src="img/mining-icon.png" alt=""></a></h1>
                 <div class="crypto-select-wrap">
@@ -35,7 +35,7 @@
                                 <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
                             </div>
                             <ul class="select-items">
-                                <li (click)="age=''"> <a >Возраст: Все</a></li>
+                                <li (click)="age=''"> <a >Год: Все</a></li>
                                 <li *ngFor="let data of dataUsd" (click)="age=data?.year"><a >Возраст: {{data?.year}}</a></li>
                                 <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
                             </ul>

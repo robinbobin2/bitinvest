@@ -158,6 +158,9 @@ checkAuth() {
     return true;
   }
   }
+  close(results) {
+    results = undefined;
+  }
   ngOnInit() {
   	this.auth
       .getUser()

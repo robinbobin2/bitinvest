@@ -60,6 +60,7 @@ import { ExchangesComponent } from './exchanges/exchanges.component';
 import { ExchangeComponent } from './exchange/exchange.component';
 import { TopIcoComponent } from './sidebar/top-ico/top-ico.component';
 import {CommentsService} from "./comments.service";
+import { ClickOutsideDirective } from './click-outside.directive';
 
 
 const appRoutes: Routes = [
@@ -253,7 +254,8 @@ const appRoutes: Routes = [
     ExcerptPipe,
     ExchangesComponent,
     ExchangeComponent,
-    TopIcoComponent
+    TopIcoComponent,
+    ClickOutsideDirective
   ],
   imports: [
     // BrowserAnimationsModule,
