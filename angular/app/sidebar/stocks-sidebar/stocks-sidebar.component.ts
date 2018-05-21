@@ -71,9 +71,11 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
             this.dataUsd[index].day = this.resp[symbol+"/USDT"]['day'];
             this.dataUsd[index].week = this.resp[symbol+"/USDT"]['week'];
             this.dataUsd[index].changePercent = this.resp[symbol+"/USDT"]['changePercent'];
-          this.dataUsd[index].marketCapUsd = this.resp[symbol+"/USDT"]['marketCapUsd']; 
-            
+          this.dataUsd[index].marketCapUsd = this.resp[symbol+"/USDT"]['marketCapUsd'];
+
               this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
+              this.dataUsd[index].percentWeek = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
+              this.dataUsd[index].percentMonth = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].month)
 
 
           } else {
