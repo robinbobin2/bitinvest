@@ -18,5 +18,6 @@ isLaunched=$(<./envFile)
 if ! [ "$isLaunched" == "true" ]
 then
     screen -d -m -S rabbit_session php /var/www/bit/artisan rabbit:start
+    screen -d -m -S updater_session php /var/www/bit/artisan updater:start
 fi
 

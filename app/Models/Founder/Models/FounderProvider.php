@@ -48,6 +48,26 @@ abstract class FounderProvider
             if (empty($rate['last']) || empty($rate['symbol'])) {
                 continue;
             }
+            if ($this->isCrypto()) {
+                $pos = strpos($rate['symbol'], "USDT");
+                if ($pos !== false) {
+                    $newRate = $rate;
+                    $newRate['symbol'] = str_replace("USDT", "USD", $newRate['symbol']);
+                    $exchange = new ExchangeRate();
+                    $exchange->value = $newRate['last'];
+                    $exchange->volume = $newRate['baseVolume'];
+                    $exchange->bid = isset($newRate['bid']) ? $newRate['bid'] : null;
+                    $exchange->ask = isset($newRate['ask']) ? $newRate['ask'] : null;
+                    $exchange->currency = $newRate['symbol'];
+                    $exchange->exchangeId = $this->getExchangeId();
+                    $exchange->createTime = time();
+                    try {
+                        $exchange->save();
+                    } catch (\Exception $e) {
+
+                    }
+                }
+            }
             $exchange = new ExchangeRate();
             $exchange->value = $rate['last'];
             $exchange->volume = $rate['baseVolume'];
@@ -71,4 +91,9 @@ abstract class FounderProvider
     }
 
     abstract public function getExchangeId();
+
+    public function isCrypto()
+    {
+        return false;
+    }
 }

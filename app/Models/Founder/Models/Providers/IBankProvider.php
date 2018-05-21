@@ -40,4 +40,9 @@ class IBankProvider extends FounderProvider
         $connector = parent::getConnector();
         return $connector;
     }
+
+    public function isCrypto()
+    {
+        return true;
+    }
 }
