@@ -6854,6 +6854,7 @@ var StocksSidebarComponent = (function () {
                             _this.dataUsd[index].value = _this.resp[symbol + '/USDT']['value'];
                             _this.dataUsd[index].day = _this.resp[symbol + "/USDT"]['day'];
                             _this.dataUsd[index].week = _this.resp[symbol + "/USDT"]['week'];
+                            _this.dataUsd[index].month = _this.resp[symbol + "/USDT"]['month'];
                             _this.dataUsd[index].changePercent = _this.resp[symbol + "/USDT"]['changePercent'];
                             _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USDT"]['marketCapUsd'];
                             _this.dataUsd[index].percentDay = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day);
@@ -6872,6 +6873,7 @@ var StocksSidebarComponent = (function () {
                                 algo: '',
                                 week: 0,
                                 day: 0,
+                                month: 0
                             };
                         }
                         console.log(_this.dataUsd);
