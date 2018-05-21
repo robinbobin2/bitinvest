@@ -13,7 +13,7 @@
                  >
 
           <div class="easy-autocomplete-container" *ngIf="results" (blur)="results=NULL">
-            <ul (appClickOutside)="close(results)">
+            <ul (appClickOutside)="console.log('asdasd')">
               <ng-template ngFor let-result [ngForOf]="results">
                 <li (click)="results=NULL" *ngIf="result.symbol" [routerLink]="['/crypto', result.symbol]" style="cursor: pointer">
                   ({{result.symbol}}) {{ result?.name }}
