@@ -6896,7 +6896,9 @@ var StocksSidebarComponent = (function () {
     };
     StocksSidebarComponent.prototype.ngOnDestroy = function () {
         // this.data.unsubscribe();
-        this.cryptoData.unsubscribe();
+        if (this.cryptoData) {
+            this.cryptoData.unsubscribe();
+        }
     };
     return StocksSidebarComponent;
 }());
