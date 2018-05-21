@@ -2647,6 +2647,7 @@ var CryptoComponent = (function () {
             .map(function (response) {
             _this.dataUsd = response[symbol + '/USDT'];
             _this.diff = _this.dataUsd.now - _this.dataUsd.last;
+            _this.prev = _this.dataUsd.last;
             localStorage.removeItem(symbol);
             localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
         }).subscribe();
