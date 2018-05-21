@@ -142,10 +142,8 @@ this.authService.getUser().subscribe(
   }
   checkAuth() {
     if(this.authService.getUserInfo()) {
-      console.log(true);
       return true;
     }
-    console.log(false);
     return(false);
     
   }
