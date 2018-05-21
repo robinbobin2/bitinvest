@@ -620,6 +620,9 @@ var AppComponent = (function () {
             return true;
         }
     };
+    AppComponent.prototype.close = function (results) {
+        results = undefined;
+    };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.auth
@@ -1242,7 +1245,6 @@ var ClickOutsideDirective = (function () {
         var clickedInside = this._elementRef.nativeElement.contains(targetElement);
         if (!clickedInside) {
             this.clickOutside.emit(null);
-            console.log('cliced outside');
         }
     };
     return ClickOutsideDirective;
