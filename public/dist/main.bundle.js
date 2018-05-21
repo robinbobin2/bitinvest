@@ -1248,6 +1248,10 @@ var ClickOutsideDirective = (function () {
     return ClickOutsideDirective;
 }());
 __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", String)
+], ClickOutsideDirective.prototype, "appClickOutside", void 0);
+__decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
     __metadata("design:type", Object)
 ], ClickOutsideDirective.prototype, "clickOutside", void 0);
