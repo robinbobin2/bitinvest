@@ -42,4 +42,9 @@ class Bit2CProvider extends FounderProvider
     {
         return new Bit2CConnector();
     }
+
+    public function isCrypto()
+    {
+        return true;
+    }
 }

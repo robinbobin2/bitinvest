@@ -42,4 +42,9 @@ class BinanceProvider extends FounderProvider
     {
         return new BinanceConnector();
     }
+
+    public function isCrypto()
+    {
+        return true;
+    }
 }

@@ -34,4 +34,9 @@ class CoinexChangeProvider extends FounderProvider
         $connector = parent::getConnector();
         return $connector;
     }
+
+    public function isCrypto()
+    {
+        return true;
+    }
 }
