@@ -12,7 +12,7 @@
                  (keyup)="searchTerm$.next($event.target.value)"
                  >
 
-          <div class="easy-autocomplete-container" *ngIf="results.length > 0">
+          <div class="easy-autocomplete-container" *ngIf="results">
             <ul (appClickOutside)="results=NULL">
               <ng-template ngFor let-result [ngForOf]="results">
                 <li (click)="results=NULL" *ngIf="result.symbol" [routerLink]="['/crypto', result.symbol]" style="cursor: pointer">
