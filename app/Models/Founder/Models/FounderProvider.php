@@ -52,7 +52,7 @@ abstract class FounderProvider
                 $pos = strpos($rate['symbol'], "USDT");
                 if ($pos !== false) {
                     $newRate = $rate;
-                    str_replace("USDT", "USD", $newRate['symbol']);
+                    $newRate['symbol'] = str_replace("USDT", "USD", $newRate['symbol']);
                     $exchange = new ExchangeRate();
                     $exchange->value = $newRate['last'];
                     $exchange->volume = $newRate['baseVolume'];
