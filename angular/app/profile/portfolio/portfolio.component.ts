@@ -36,29 +36,29 @@ export class PortfolioComponent implements OnInit {
   	
   	
    }
-   getPorts(type) {
+   getPorts(type, type_id) {
      this.portfolioService.getPortfolioNames().subscribe(
       res => {
         this.portfolioNames = res['portfolio'];
         console.log(this.portfolioNames)
         for(let item of this.portfolioNames) {
+            if (item.user_portfolio_type_id == type_id) {
 
-            console.log('get ports by id:');
 
-            this.portfolioService.getPortfolioById(item.id)
-                .subscribe(
-                    res => {
+                this.portfolioService.getPortfolioById(item.id)
+                    .subscribe(
+                        res => {
 
-                        if (res[type].length > 0) {
-                            this.portfolios[item.id] = res[type]
-                            this.portfolios[item.id].type = type
+                            if (res[type].length > 0) {
+                                this.portfolios[item.id] = res[type]
+                                this.portfolios[item.id].type = type
+                            }
+
                         }
+                    )
 
-                        console.log(res)
-                        console.log(this.portfolios)
 
-                   }
-                )
+            }
         }
       }
     );
@@ -103,10 +103,10 @@ export class PortfolioComponent implements OnInit {
    }
   ngOnInit() {
   	
-  this.getPorts('mining');
-  this.getPorts('ico');
-  this.getPorts('crypto');
-  this.getPorts('stocks');
+  this.getPorts('mining', 1);
+  this.getPorts('ico', 2);
+  this.getPorts('crypto', 3);
+  this.getPorts('stocks', 4);
   }
 
 }

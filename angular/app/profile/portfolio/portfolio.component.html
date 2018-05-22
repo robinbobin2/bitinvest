@@ -14,7 +14,7 @@
           </div>
         </div>
         <table class="table crypto-table">
-          <thead>
+          <thead *ngIf="item.user_portfolio_type_id == 1">
             <tr>
               <th width="27%" [class.active]="order === 'name'"
                             (click)="setOrder('name')">
@@ -46,10 +46,7 @@
               </th>
             </tr>
           </thead>
-          <tbody>
-          <tr>
-            <td>{{portfolios[item.id].type}}</td>
-          </tr>
+          <tbody *ngIf="portfolios[item.id]">
             <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
               <td>
                 <a href="crypto-single.html">
