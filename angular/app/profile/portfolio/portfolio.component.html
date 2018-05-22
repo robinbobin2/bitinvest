@@ -14,6 +14,38 @@
           </div>
         </div>
         <table class="table crypto-table">
+          <thead *ngIf="item.user_portfolio_type_id == 3">
+          <tr>
+            <th width="17%">
+              <span>Название</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="10%" class="active">
+              <span>Стоимость</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%">
+              <span>Капитализация</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%">
+              <span>Всего / Получено</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%">
+              <span>Изм. за 24ч</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%">
+              <span>Изм. за 7д</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="21%">
+              <span>Изм. за 1 мес.</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+          </tr>
+          </thead>
           <thead *ngIf="item.user_portfolio_type_id == 1">
             <tr>
               <th width="27%" [class.active]="order === 'name'"

@@ -165,10 +165,7 @@ Route::get('/profile/edit/{id}', "ProfileController@edit");
 // Route::get('/crypto/XRP', "AngularController@serve");
 Route::get('/read', function() {
 
-	$stock = Stock::findOrFail(1);
-	foreach ($stock->coins as $coin) {
-		echo $coin->name;
-	}
+	 return UserPortfolioType::create(['name'=>'Криптовалюты']);
 });
 
 // ENDANGULAR

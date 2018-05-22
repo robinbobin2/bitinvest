@@ -110,7 +110,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
      response => {
          for(let item of response['portfolio']) {
              console.log('loop')
-             if (item.user_portfolio_type_id == 1) {
+             if (item.user_portfolio_type_id == 3) {
                  this.getUserPortfolio.push(item)
              }
              console.log(item)
@@ -385,7 +385,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     createPortfolio(form: NgForm) {
         const headers = new HttpHeaders({'Content-type': 'Application/json '});
 
-        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 1},{headers: headers})
+        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 3},{headers: headers})
             .subscribe(
                 response => {this.getUserPortfolio.push(response); form.reset()},
                 error => console.log(error)
