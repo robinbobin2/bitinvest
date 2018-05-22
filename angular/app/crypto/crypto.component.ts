@@ -110,7 +110,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
      response => {
          for(let item of response['portfolio']) {
              console.log('loop')
-             if (item.user_portfolio_id == 1) {
+             if (item.user_portfolio_type_id == 1) {
                  this.getUserPortfolio.push(item)
              }
              console.log(item)

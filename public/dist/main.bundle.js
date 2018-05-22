@@ -2586,7 +2586,7 @@ var CryptoComponent = (function () {
             for (var _a = 0, _b = response['portfolio']; _a < _b.length; _a++) {
                 var item = _b[_a];
                 console.log('loop');
-                if (item.user_portfolio_id == 1) {
+                if (item.user_portfolio_type_id == 1) {
                     _this.getUserPortfolio.push(item);
                 }
                 console.log(item);
