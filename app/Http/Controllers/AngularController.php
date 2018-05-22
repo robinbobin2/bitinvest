@@ -189,8 +189,8 @@ class AngularController extends Controller
         foreach ($stocks as $stock) {
             $languages = explode(",", $stock['languages']);
             $stock['lang'] = $languages;
+            print_r($stock);
         }
-        return $stocks;
     }
     public function exchange($name)
     {
