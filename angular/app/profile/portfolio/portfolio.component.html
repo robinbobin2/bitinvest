@@ -80,7 +80,9 @@
             </tr>
           </thead>
           <tbody *ngIf="portfolios[item.id]">
-          <tr *ngIf="item.user_portfolio_type_id == 1" *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
+
+          <ng-template [ngIf]="item.user_portfolio_type_id == 1">
+          <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
             <td>
               <a href="crypto-single.html">
                 <div class="img-wrap">
@@ -111,8 +113,9 @@
               </div>
             </td>
           </tr>
-
-          <tr *ngIf="item.user_portfolio_type_id == 3" *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
+          </ng-template>
+          <ng-template [ngIf]="item.user_portfolio_type_id == 3">
+          <tr  *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
             <td>
               <!--<a href="crypto-single.html">-->
                 <!--<div class="img-wrap">-->
@@ -175,6 +178,7 @@
               </div>
             </td>
           </tr>
+          </ng-template>
             <tr class="no-bg">
               <td colspan="3" class="no-border">
                 <a class="add" *ngIf="item.user_portfolio_type_id == 1">+Добавить облачный майнинг в портфель</a>
