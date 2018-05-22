@@ -5904,6 +5904,8 @@ var PortfolioComponent = (function () {
                                     portfolioItem.week = crypto[portfolioItem['symbol'] + "/USD"]['week'];
                                     portfolioItem.marketCapUsd = crypto[portfolioItem['symbol'] + "/USD"]['marketCapUsd'];
                                 }
+                                console.log(crypto);
+                                console.log(_this.portfolios[item.id]);
                             });
                         }
                     });

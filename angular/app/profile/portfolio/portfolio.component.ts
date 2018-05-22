@@ -73,8 +73,11 @@ export class PortfolioComponent implements OnInit {
                                            portfolioItem.day = crypto[portfolioItem['symbol']+"/USD"]['day'];
                                            portfolioItem.week = crypto[portfolioItem['symbol']+"/USD"]['week'];
                                            portfolioItem.marketCapUsd = crypto[portfolioItem['symbol']+"/USD"]['marketCapUsd'];
-                                       } 
-                                       
+                                       }
+
+                                       console.log(crypto)
+                                       console.log(this.portfolios[item.id])
+
                                    })
                                
                                 
