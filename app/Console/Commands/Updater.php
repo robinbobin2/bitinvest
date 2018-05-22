@@ -16,6 +16,7 @@ use App\Models\Founder\Models\Providers\BinanceProvider;
 use App\Models\Founder\Models\Providers\Bit2CProvider;
 use App\Models\Founder\Models\Providers\BitBayProvider;
 use App\Models\Founder\Models\Providers\BitFinexProvider;
+use App\Models\Founder\Models\Providers\BitHumbProvider;
 use App\Models\Founder\Models\Providers\BitMarketProvider;
 use App\Models\Founder\Models\Providers\BitMexProvider;
 use App\Models\Founder\Models\Providers\BitTrexProvider;
@@ -150,7 +151,8 @@ class Updater extends \Illuminate\Console\Command
         VirWoxProvider::class,
         XBTCEProvider::class,
         ZaifProvider::class,
-        ZbProvider::class
+        ZbProvider::class,
+        BitHumbProvider::class
     ];
 
     /**
