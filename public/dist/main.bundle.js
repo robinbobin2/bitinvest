@@ -2416,7 +2416,7 @@ var _a, _b, _c;
 /***/ "./angular/app/crypto/chart/chart.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- TradingView Widget BEGIN -->\n\t\t\t\t\t\t\t\t\t<div class=\"tradingview-widget-container\">\n\t\t\t\t\t\t\t\t\t  <div id=\"tradingview_4e1cc\"></div>\n\t\t\t\t\t\t\t\t\t  <div class=\"tradingview-widget-copyright\"><a href=\"https://ru.tradingview.com/symbols/BITSTAMP-BTCUSD/\" rel=\"noopener\" target=\"_blank\"><span class=\"blue-text\">График</span> <span class=\"blue-text\">BTCUSD</span> предоставлен TradingView</a></div>\n\t\t\t\t\t\t\t\t\t  \n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t<!-- TradingView Widget END -->"
+module.exports = "\n<!-- TradingView Widget BEGIN -->\n<div class=\"tradingview-widget-container\">\n\t<div id=\"tv-medium-widget\"></div>\n\t<div class=\"tradingview-widget-copyright\"><a href=\"https://ru.tradingview.com/symbols/COINBASE-BTCUSD/\" rel=\"noopener\" target=\"_blank\"><span class=\"blue-text\">Котировки BTC (Bitcoin)</span></a> предоставлены TradingView</div>\n\n</div>\n<!-- TradingView Widget END -->"
 
 /***/ }),
 
@@ -2453,19 +2453,23 @@ var ChartComponent = (function () {
     ChartComponent.prototype.ngOnInit = function () {
         var symbol = this.route.snapshot.params['sym'];
         setTimeout(function () {
-            new TradingView.widget({
-                "width": 881,
-                "height": 393,
-                "symbol": "BITSTAMP:" + symbol + "USD",
-                "interval": "D",
-                "timezone": "Etc/UTC",
-                "theme": "Light",
-                "style": "1",
+            new TradingView.MediumWidget({
+                "container_id": "tv-medium-widget",
+                "symbols": [
+                    [
+                        "BTC (Bitcoin)",
+                        "COINBASE:BTCUSD|1d"
+                    ]
+                ],
+                "greyText": "Котировки предоставлены",
+                "gridLineColor": "#e9e9ea",
+                "fontColor": "#83888D",
+                "underLineColor": "rgba(242, 242, 242, 0.19)",
+                "trendLineColor": "rgba(255, 152, 0, 1)",
+                "width": "881px",
+                "height": "361px",
                 "locale": "ru",
-                "toolbar_bg": "#f1f3f6",
-                "enable_publishing": false,
-                "allow_symbol_change": true,
-                "container_id": "tradingview_4e1cc"
+                "chartOnly": true
             });
         }, 200);
     };
