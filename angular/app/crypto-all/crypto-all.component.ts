@@ -211,7 +211,10 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
    ngOnDestroy() {
 
   // this.data.unsubscribe();
-  this.cryptoData.unsubscribe();
+       if (this.cryptoData) {
+           this.cryptoData.unsubscribe();
+       }
+
 }
 
 }

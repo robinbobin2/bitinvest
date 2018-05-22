@@ -8985,6 +8985,13 @@ outline: none !important;
 app-ico-project-detail, app-news-detail {
   width: 100%;
 }
+app-news-detail {
+  margin-top: -20px;
+}
 .select-content {
   min-width: 190px;
+}
+
+.sidebar .top-crypto .periods .period-content .tab-content ul li .price {
+  margin-right: 15px;
 }
