@@ -106,14 +106,14 @@
                 <span>{{item.count}}</span>
               </td>
               <td>
-                <div class="img-wrap-small">
+                <div class="img-wrap-small" *ngFor="let lang of item.languages">
                   <!-- <img src="img/rus-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
                   <span class="text">+5</span> -->
-                  {{item.languages}}
+                  {{lang == 'EN' ? '<img src="img/usa-icon.png" alt="">' : lang}}
                 </div>
               </td>
               <td>
