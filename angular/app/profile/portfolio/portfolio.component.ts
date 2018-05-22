@@ -22,6 +22,8 @@ export class PortfolioComponent implements OnInit {
   result_id = 0;
   dataUsd = [];
   diff =[];
+  volumes = [];
+  exchange_volumes = [];
   /**
    * Example: Use Order pipe in the component
    *
@@ -57,7 +59,20 @@ export class PortfolioComponent implements OnInit {
                                 this.portfolios[item.id] = res[type]
                                 this.portfolios[item.id].type = type
                             }
-                            
+
+                            if(type_id == 4) {
+                                this.stockService.getVolumes().subscribe(res => {
+                                    this.portfolios[item.id].push(res)
+                                    for(let item of this.volumes) {
+                                        this.exchange_volumes[item.name] = {
+                                            'btc': item.btc,
+                                            'usd': item.usd
+                                        }
+                                    }
+                                    console.log('pushed')
+                                    console.log(this.portfolios[item.id])
+                                });
+                            }
                             
                             if(type_id == 3) {
                                    

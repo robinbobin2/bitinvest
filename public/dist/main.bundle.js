@@ -5872,6 +5872,8 @@ var PortfolioComponent = (function () {
         this.result_id = 0;
         this.dataUsd = [];
         this.diff = [];
+        this.volumes = [];
+        this.exchange_volumes = [];
         this.searchService.mainSearch(this.searchTerm$)
             .subscribe(function (results) {
             _this.results = results;
@@ -5890,6 +5892,20 @@ var PortfolioComponent = (function () {
                         if (res[type].length > 0) {
                             _this.portfolios[item.id] = res[type];
                             _this.portfolios[item.id].type = type;
+                        }
+                        if (type_id == 4) {
+                            _this.stockService.getVolumes().subscribe(function (res) {
+                                _this.portfolios[item.id].push(res);
+                                for (var _i = 0, _a = _this.volumes; _i < _a.length; _i++) {
+                                    var item_1 = _a[_i];
+                                    _this.exchange_volumes[item_1.name] = {
+                                        'btc': item_1.btc,
+                                        'usd': item_1.usd
+                                    };
+                                }
+                                console.log('pushed');
+                                console.log(_this.portfolios[item.id]);
+                            });
                         }
                         if (type_id == 3) {
                             _this.stockService.getCrypto().subscribe(function (crypto) {
