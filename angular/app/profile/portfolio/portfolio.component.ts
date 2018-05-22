@@ -3,6 +3,7 @@ import { PortfolioService } from '../../portfolio.service';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 import { SearchService } from '../../search.service';
 import { Subject } from 'rxjs/Subject';
+import {StocksService} from "../../stocks.service";
 
 @Component({
   selector: 'app-portfolio',
@@ -19,6 +20,7 @@ export class PortfolioComponent implements OnInit {
   searchTerm$ = new Subject<string>();
   searchLine = '';
   result_id = 0;
+  dataUsd = [];
   /**
    * Example: Use Order pipe in the component
    *
@@ -26,7 +28,8 @@ export class PortfolioComponent implements OnInit {
    */
   constructor(private orderPipe: OrderPipe, 
     private portfolioService: PortfolioService, 
-    private searchService: SearchService) 
+    private searchService: SearchService,
+    private stockService: StocksService) 
   {
     this.searchService.mainSearch(this.searchTerm$)
       .subscribe(results => {
@@ -53,8 +56,36 @@ export class PortfolioComponent implements OnInit {
                                 this.portfolios[item.id] = res[type]
                                 this.portfolios[item.id].type = type
                             }
-
+                            
+                            
+                            if(type == 3) {
+                                   
+                                   this.stockService.getCrypto().subscribe(crypto=>{
+                                       
+                                       this.dataUsd = crypto
+                                       
+                                       for (let portfolioItem of this.portfolios[item.id]) {
+                                           portfolioItem.last = crypto[portfolioItem['symbol']+'/USD']['last'];
+                                           portfolioItem.now = crypto[portfolioItem['symbol']+'/USD']['now'];
+                                           portfolioItem.min = crypto[portfolioItem['symbol']+'/USD']['min'];
+                                           portfolioItem.max = crypto[portfolioItem['symbol']+'/USD']['max'];
+                                           portfolioItem.volume = crypto[portfolioItem['symbol']+'/USD']['volume'];
+                                           portfolioItem.day = crypto[portfolioItem['symbol']+"/USD"]['day'];
+                                           portfolioItem.week = crypto[portfolioItem['symbol']+"/USD"]['week'];
+                                           portfolioItem.marketCapUsd = crypto[portfolioItem['symbol']+"/USD"]['marketCapUsd'];
+                                       } 
+                                       
+                                   })
+                               
+                                
+                            }
+                            
+                            
                         }
+                        
+                        
+                        
+                        
                     )
 
 
