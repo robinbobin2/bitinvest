@@ -58,7 +58,7 @@ export class PortfolioComponent implements OnInit {
                             }
                             
                             
-                            if(type == 3) {
+                            if(type_id == 3) {
                                    
                                    this.stockService.getCrypto().subscribe(crypto=>{
                                        

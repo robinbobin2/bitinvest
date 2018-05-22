@@ -5890,7 +5890,7 @@ var PortfolioComponent = (function () {
                             _this.portfolios[item.id] = res[type];
                             _this.portfolios[item.id].type = type;
                         }
-                        if (type == 3) {
+                        if (type_id == 3) {
                             _this.stockService.getCrypto().subscribe(function (crypto) {
                                 _this.dataUsd = crypto;
                                 for (var _i = 0, _a = _this.portfolios[item.id]; _i < _a.length; _i++) {
