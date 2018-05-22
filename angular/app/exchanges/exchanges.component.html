@@ -114,8 +114,7 @@
                   <img src="img/usa-icon.png" alt="">
                   <span class="text">+5</span> -->
                   <ng-template *ngFor="let lang of item.languages">
-                    <ng-template *ngIf="lang =='EN'; else plain"><img src="img/usa-icon.png" alt=""></ng-template>
-                    <ng-template #plain>{{lang}}</ng-template>
+                    {{lang}}
                   </ng-template>
                 </div>
               </td>
