@@ -21,6 +21,7 @@ export class PortfolioComponent implements OnInit {
   searchLine = '';
   result_id = 0;
   dataUsd = [];
+  diff =[];
   /**
    * Example: Use Order pipe in the component
    *
@@ -73,6 +74,8 @@ export class PortfolioComponent implements OnInit {
                                            portfolioItem.day = crypto[portfolioItem['symbol']+"/USD"]['day'];
                                            portfolioItem.week = crypto[portfolioItem['symbol']+"/USD"]['week'];
                                            portfolioItem.marketCapUsd = crypto[portfolioItem['symbol']+"/USD"]['marketCapUsd'];
+
+                                           this.diff[item.id] = portfolioItem.now - portfolioItem.last;
                                        }
 
                                        console.log(crypto)
@@ -135,6 +138,33 @@ export class PortfolioComponent implements OnInit {
 
    	)
    }
+    isNegative(now) {
+        if(now >= 0) {
+            return false;
+        }
+        return true;
+    }
+    isNegativeMath(now, last) {
+        if((parseInt(now)-parseInt(last)) >= 0) {
+            return false;
+        }
+        return true;
+    }
+    comparePrice(now, last) {
+        if(parseInt(now)>parseInt(last)) {
+            return true;
+        }
+        return false;
+    }
+    countPercent(now, last) {
+        return (now-last) / (now+last) * 100;
+    }
+    isNegativePercent(now, last) {
+        if(((parseInt(now)-parseInt(last)) /  ((parseInt(now)+parseInt(last)) / 2)  * 100) >= 0) {
+            return false;
+        }
+        return true;
+    }
   ngOnInit() {
   	
   this.getPorts('mining', 1);
