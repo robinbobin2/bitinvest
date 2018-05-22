@@ -16,30 +16,43 @@
         <table class="table crypto-table">
           <thead *ngIf="item.user_portfolio_type_id == 3">
           <tr>
-            <th width="17%">
+            <th [class.active]="order === 'sym'"
+                (click)="setOrder('sym')"
+                width="12.9%">
               <span>Название</span>
               <img src="img/arr-top-table.png" alt="">
             </th>
-            <th width="10%" class="active">
+            <th [class.active]="order === 'now'"
+                (click)="setOrder('now')"
+                width="15%">
               <span>Стоимость</span>
+
               <img src="img/arr-top-table.png" alt="">
             </th>
-            <th width="13%">
+            <th
+
+                    width="15%">
               <span>Капитализация</span>
               <img src="img/arr-top-table.png" alt="">
             </th>
-            <th width="13%">
-              <span>Всего / Получено</span>
+            <th [class.active]="order === 'value'"
+                (click)="setOrder('value')"
+
+                width="12.4%">
+              <span>Объем BTC (за 24 ч.)</span>
               <img src="img/arr-top-table.png" alt="">
             </th>
-            <th width="13%">
+            <th
+                    width="11%">
               <span>Изм. за 24ч</span>
               <img src="img/arr-top-table.png" alt="">
             </th>
-            <th width="13%">
+            <th
+                    width="18.3%">
               <span>Изм. за 7д</span>
               <img src="img/arr-top-table.png" alt="">
             </th>
+          </tr>
             <th width="21%">
               <span>Изм. за 1 мес.</span>
               <img src="img/arr-top-table.png" alt="">
@@ -161,12 +174,6 @@
             </td>
             <td>
               <span class="bargaining">{{data.volume | number: '1.3'}}</span>
-            </td>
-            <td>
-              <span class="algorithm">{{data?.algo}}</span>
-            </td>
-            <td>
-              <span class="year">{{data?.year}}</span>
             </td>
             <td>
               <span [ngClass]="isNegativePercent(data.now, data.day)==true ? 'change-red' : 'change-green'">{{ countPercent(data.now, data.day) | number: '1.2'}}%</span>
