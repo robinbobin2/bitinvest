@@ -116,7 +116,7 @@
           </ng-template>
           <ng-template [ngIf]="item.user_portfolio_type_id == 3">
           <tr  *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
-            <td>
+            <!--<td>-->
               <!--<a href="crypto-single.html">-->
                 <!--<div class="img-wrap">-->
                   <!--<img src="{{portfolioItem.logo}}" alt="">-->
@@ -150,7 +150,7 @@
                 <div class="img-wrap">
                   <img src="img/bitcoin-icon.png" alt="">
                 </div>
-                <span>Bitcoin (BTC)</span>
+                <span>{{portfolioItem.name}} ({{portfolioItem.symbol}})</span>
               </a>
             </td>
             <td>
