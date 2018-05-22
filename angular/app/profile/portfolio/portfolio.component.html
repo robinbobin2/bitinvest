@@ -47,6 +47,9 @@
             </tr>
           </thead>
           <tbody>
+          <tr>
+            <td>{{portfolios[item.id].type}}</td>
+          </tr>
             <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
               <td>
                 <a href="crypto-single.html">
