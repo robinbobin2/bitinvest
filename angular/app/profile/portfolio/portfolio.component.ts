@@ -9,7 +9,7 @@ import {StocksService} from "../../stocks.service";
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss'],
-  providers: [PortfolioService, SearchService]
+  providers: [PortfolioService, SearchService, StocksService]
 })
 export class PortfolioComponent implements OnInit {
   order = 'proc';
