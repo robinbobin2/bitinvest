@@ -2232,14 +2232,14 @@ var CryptoAllComponent = (function () {
                         _this.dataUsd[index].sym = symbol;
                         _this.dataUsd[index].algo = algo;
                         _this.dataUsd[index].year = year;
-                        _this.dataUsd[index].last = _this.resp[symbol + '/USDT']['last'];
-                        _this.dataUsd[index].now = _this.resp[symbol + '/USDT']['now'];
-                        _this.dataUsd[index].min = _this.resp[symbol + '/USDT']['min'];
-                        _this.dataUsd[index].max = _this.resp[symbol + '/USDT']['max'];
-                        _this.dataUsd[index].volume = _this.resp[symbol + '/USDT']['volume'];
-                        _this.dataUsd[index].day = _this.resp[symbol + "/USDT"]['day'];
-                        _this.dataUsd[index].week = _this.resp[symbol + "/USDT"]['week'];
-                        _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USDT"]['marketCapUsd'];
+                        _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
+                        _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
+                        _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
+                        _this.dataUsd[index].max = _this.resp[symbol + '/USD']['max'];
+                        _this.dataUsd[index].volume = _this.resp[symbol + '/USD']['volume'];
+                        _this.dataUsd[index].day = _this.resp[symbol + "/USD"]['day'];
+                        _this.dataUsd[index].week = _this.resp[symbol + "/USD"]['week'];
+                        _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
                     }
                     else {
                         _this.dataUsd[index] = {
@@ -2275,10 +2275,10 @@ var CryptoAllComponent = (function () {
                     var desc = 'DESC';
                     _this.animtype[index] = '';
                     _this.diff[index] = 0;
-                    if (_this.dataUsd[index].now != _this.resp[symbol + '/USDT']['now']) {
+                    if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
                         _this.first_time = false;
-                        _this.diff[index] = _this.resp[symbol + '/USDT']['now'] - _this.dataUsd[index].now;
-                        if (_this.dataUsd[index].now > _this.resp[symbol + '/USDT']['now']) {
+                        _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
+                        if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
                             _this.animtype[index] = 'redbg';
                         }
                         else {
@@ -2288,14 +2288,14 @@ var CryptoAllComponent = (function () {
                     _this.dataUsd[index].sym = symbol;
                     _this.dataUsd[index].algo = algo;
                     _this.dataUsd[index].year = year;
-                    _this.dataUsd[index].last = _this.resp[symbol + '/USDT']['last'];
-                    _this.dataUsd[index].now = _this.resp[symbol + '/USDT']['now'];
-                    _this.dataUsd[index].min = _this.resp[symbol + '/USDT']['min'];
-                    _this.dataUsd[index].max = _this.resp[symbol + '/USDT']['max'];
-                    _this.dataUsd[index].volume = _this.resp[symbol + '/USDT']['volume'];
-                    _this.dataUsd[index].day = _this.resp[symbol + "/USDT"]['day'];
-                    _this.dataUsd[index].week = _this.resp[symbol + "/USDT"]['week'];
-                    _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USDT"]['marketCapUsd'];
+                    _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
+                    _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
+                    _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
+                    _this.dataUsd[index].max = _this.resp[symbol + '/USD']['max'];
+                    _this.dataUsd[index].volume = _this.resp[symbol + '/USD']['volume'];
+                    _this.dataUsd[index].day = _this.resp[symbol + "/USD"]['day'];
+                    _this.dataUsd[index].week = _this.resp[symbol + "/USD"]['week'];
+                    _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
                     localStorage.removeItem('data');
                     localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                 }
@@ -2614,7 +2614,7 @@ var CryptoComponent = (function () {
                 this.time_value = Math.max.apply(null, this.time);
             }
         }
-        this.stocksService.getStocks(symbol + '/USDT').subscribe(function (response) {
+        this.stocksService.getStocks(symbol + '/USD').subscribe(function (response) {
             _this.load = true;
             _this.stocks = response;
             _this.load = false;
@@ -2652,7 +2652,7 @@ var CryptoComponent = (function () {
             _this.max_value = Math.max.apply(null, _this.max);
         });
         this.stocksData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(2000).concatMap(function () {
-            return _this.stocksService.getStocks(symbol + '/USDT');
+            return _this.stocksService.getStocks(symbol + '/USD');
         })
             .map(function (response) {
             for (var _i = 0; _i < _this.stocks.length; ++_i) {
@@ -2710,7 +2710,7 @@ var CryptoComponent = (function () {
         }).subscribe();
         this.cryptoFirst = this.stocksService.getCrypto()
             .map(function (response) {
-            _this.dataUsd = response[symbol + '/USDT'];
+            _this.dataUsd = response[symbol + '/USD'];
             _this.diff = _this.dataUsd.now - _this.dataUsd.last;
             _this.prev = _this.dataUsd.last;
             localStorage.removeItem(symbol);
@@ -2744,17 +2744,17 @@ var CryptoComponent = (function () {
         this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1200).concatMap(function () { return _this.stocksService.getCrypto(); })
             .map(function (response) {
             _this.animtype = '';
-            if (_this.dataUsd.now != response[symbol + '/USDT'].now) {
-                _this.diff = response[symbol + '/USDT'].now - _this.dataUsd.now;
+            if (_this.dataUsd.now != response[symbol + '/USD'].now) {
+                _this.diff = response[symbol + '/USD'].now - _this.dataUsd.now;
                 _this.prev = _this.dataUsd.now;
-                if (_this.dataUsd.now > response[symbol + '/USDT'].now) {
+                if (_this.dataUsd.now > response[symbol + '/USD'].now) {
                     _this.animtype = 'redcolor';
                 }
                 else {
                     _this.animtype = 'greencolor';
                 }
             }
-            _this.dataUsd = response[symbol + '/USDT'];
+            _this.dataUsd = response[symbol + '/USD'];
             localStorage.removeItem(symbol);
             localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
         }).subscribe();
@@ -3570,23 +3570,23 @@ var ExmoComponent = (function () {
         // const binance = http.get('/cryptocompar', {headers: headers});
         var bittrexurl = http.get('/bittrex/btcusd.php', { headers: headers });
         var wexurl = http.get('/wex/btcusd.php', { headers: headers });
-        var poloniexurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=poloniex&syms=BTC/USDT', { headers: headers });
-        var okexurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=okex&syms=BTC/USDT', { headers: headers });
+        var poloniexurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=poloniex&syms=BTC/USD', { headers: headers });
+        var okexurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=okex&syms=BTC/USD', { headers: headers });
         var bitfinexurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=bitfinex&syms=BTC/USD', { headers: headers });
-        var hitbtcurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=hitbtc&syms=BTC/USDT', { headers: headers });
+        var hitbtcurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=hitbtc&syms=BTC/USD', { headers: headers });
         var krakenurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=kraken&syms=BTC/USD', { headers: headers });
         var gdaxurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=gdax&syms=BTC/USD', { headers: headers });
         var bitflyerurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=bitflyer&syms=BTC/USD', { headers: headers });
         var bitstampurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=bitstamp&syms=BTC/USD', { headers: headers });
-        var lbankurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=lbank&syms=BTC/USDT', { headers: headers });
-        var gateiourl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=gateio&syms=BTC/USDT', { headers: headers });
+        var lbankurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=lbank&syms=BTC/USD', { headers: headers });
+        var gateiourl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=gateio&syms=BTC/USD', { headers: headers });
         var geminiurl = http.get('/ccxt/vendor/ccxt/ccxt/mas.php?market=gemini&syms=BTC/USD', { headers: headers });
         // const livecoinurl = http.get<MarketRaw>('/ccxt/vendor/ccxt/ccxt/mas.php?market=livecoin&syms=BTC/USD', {headers: headers});
         // const yobiturl = http.get<MarketRaw>('/ccxt/vendor/ccxt/ccxt/mas.php?market=yobit&syms=BTC/USD', {headers: headers});
-        // const zburl = http.get<MarketRaw>('/ccxt/vendor/ccxt/ccxt/mas.php?market=zb&syms=BTC/USDT', {headers: headers});
-        // const exxurl = http.get<MarketRaw>('/ccxt/vendor/ccxt/ccxt/mas.php?market=exx&syms=BTC/USDT', {headers: headers});
-        // const liquiurl = http.get<MarketRaw>('/ccxt/vendor/ccxt/ccxt/mas.php?market=liqui&syms=BTC/USDT', {headers: headers});
-        // const kucoinurl = http.get<MarketRaw>('/ccxt/vendor/ccxt/ccxt/mas.php?market=liqui&syms=BTC/USDT', {headers: headers});
+        // const zburl = http.get<MarketRaw>('/ccxt/vendor/ccxt/ccxt/mas.php?market=zb&syms=BTC/USD', {headers: headers});
+        // const exxurl = http.get<MarketRaw>('/ccxt/vendor/ccxt/ccxt/mas.php?market=exx&syms=BTC/USD', {headers: headers});
+        // const liquiurl = http.get<MarketRaw>('/ccxt/vendor/ccxt/ccxt/mas.php?market=liqui&syms=BTC/USD', {headers: headers});
+        // const kucoinurl = http.get<MarketRaw>('/ccxt/vendor/ccxt/ccxt/mas.php?market=liqui&syms=BTC/USD', {headers: headers});
         bitstampurl.subscribe(function (response) {
             _this.bitstamp = response;
         });
@@ -6606,7 +6606,7 @@ var SidebarResolverService = (function () {
                 var year = admin[index].year;
                 var algo = admin[index].algo;
                 var desc = 'DESC';
-                var path = "/bit/pair?pair=" + symbol + "/USDT";
+                var path = "/bit/pair?pair=" + symbol + "/USD";
                 var info = _this.http.get(path);
                 info.subscribe(function (response) {
                     console.log(response);
@@ -6637,8 +6637,8 @@ var SidebarResolverService = (function () {
                 bitinfo.subscribe(function (response) {
                     // console.log(response);
                     //  var usd_data = response;
-                    _this.dataUsd[index].day = response[symbol + "/USDT"]['day'];
-                    _this.dataUsd[index].week = response[symbol + "/USDT"]['week'];
+                    _this.dataUsd[index].day = response[symbol + "/USD"]['day'];
+                    _this.dataUsd[index].week = response[symbol + "/USD"]['week'];
                 });
             };
             for (var _i = 0; _i < admin.length; ++_i) {
@@ -6836,8 +6836,8 @@ var StocksSidebarComponent = (function () {
                         var algo = admin[index].algo;
                         _this.animtype[index] = '';
                         if (_this.dataUsd[index]) {
-                            if (_this.dataUsd[index].now != _this.resp[symbol + '/USDT']['now']) {
-                                if (_this.dataUsd[index].now > _this.resp[symbol + '/USDT']['now']) {
+                            if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
+                                if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
                                     _this.animtype[index] = 'redcolor';
                                 }
                                 else {
@@ -6849,16 +6849,16 @@ var StocksSidebarComponent = (function () {
                             _this.dataUsd[index].sym = symbol;
                             _this.dataUsd[index].algo = algo;
                             _this.dataUsd[index].year = year;
-                            _this.dataUsd[index].last = _this.resp[symbol + '/USDT']['last'];
-                            _this.dataUsd[index].now = _this.resp[symbol + '/USDT']['now'];
-                            _this.dataUsd[index].min = _this.resp[symbol + '/USDT']['min'];
-                            _this.dataUsd[index].max = _this.resp[symbol + '/USDT']['max'];
-                            _this.dataUsd[index].value = _this.resp[symbol + '/USDT']['value'];
-                            _this.dataUsd[index].day = _this.resp[symbol + "/USDT"]['day'];
-                            _this.dataUsd[index].week = _this.resp[symbol + "/USDT"]['week'];
-                            _this.dataUsd[index].month = _this.resp[symbol + "/USDT"]['month'];
-                            _this.dataUsd[index].changePercent = _this.resp[symbol + "/USDT"]['changePercent'];
-                            _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USDT"]['marketCapUsd'];
+                            _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
+                            _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
+                            _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
+                            _this.dataUsd[index].max = _this.resp[symbol + '/USD']['max'];
+                            _this.dataUsd[index].value = _this.resp[symbol + '/USD']['value'];
+                            _this.dataUsd[index].day = _this.resp[symbol + "/USD"]['day'];
+                            _this.dataUsd[index].week = _this.resp[symbol + "/USD"]['week'];
+                            _this.dataUsd[index].month = _this.resp[symbol + "/USD"]['month'];
+                            _this.dataUsd[index].changePercent = _this.resp[symbol + "/USD"]['changePercent'];
+                            _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
                             _this.dataUsd[index].percentDay = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day);
                             _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
                             _this.dataUsd[index].percentMonth = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].month);

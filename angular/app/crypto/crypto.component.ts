@@ -152,7 +152,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
     }
 
-      this.stocksService.getStocks(symbol+'/USDT').subscribe(response => {
+      this.stocksService.getStocks(symbol+'/USD').subscribe(response => {
         this.load = true;
       this.stocks = response;
       this.load = false;
@@ -192,7 +192,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
     });
     this.stocksData = Observable.interval(2000).concatMap(()=>
-      this.stocksService.getStocks(symbol+'/USDT'))
+      this.stocksService.getStocks(symbol+'/USD'))
     .map(response => {
 
       for (var _i = 0; _i < this.stocks.length; ++_i) {
@@ -253,7 +253,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
     this.cryptoFirst = this.stocksService.getCrypto()
     .map((response)=>{
-      this.dataUsd = response[symbol+'/USDT'];
+      this.dataUsd = response[symbol+'/USD'];
       this.diff = this.dataUsd.now-this.dataUsd.last;
       this.prev = this.dataUsd.last;
       localStorage.removeItem(symbol);
@@ -290,18 +290,18 @@ export class CryptoComponent implements OnInit, OnDestroy {
     .map((response)=>{
       this.animtype = '';
 
-      if(this.dataUsd.now != response[symbol+'/USDT'].now) {
+      if(this.dataUsd.now != response[symbol+'/USD'].now) {
 
-        this.diff = response[symbol+'/USDT'].now-this.dataUsd.now;
+        this.diff = response[symbol+'/USD'].now-this.dataUsd.now;
         this.prev = this.dataUsd.now;
-        if(this.dataUsd.now > response[symbol+'/USDT'].now) {
+        if(this.dataUsd.now > response[symbol+'/USD'].now) {
 
             this.animtype = 'redcolor';
           } else {
             this.animtype = 'greencolor';
           }
       }
-      this.dataUsd = response[symbol+'/USDT'];
+      this.dataUsd = response[symbol+'/USD'];
 
       localStorage.removeItem(symbol);
 

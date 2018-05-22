@@ -54,7 +54,7 @@ dataUsd: Array<CryptoData> = [];
         let year = admin[index].year;
         let algo = admin[index].algo;
         let desc = 'DESC';
-        const path = "/bit/pair?pair="+symbol+"/USDT";
+        const path = "/bit/pair?pair="+symbol+"/USD";
         const info = this.http.get(path);
         info.subscribe(response => {
           console.log(response);
@@ -86,8 +86,8 @@ dataUsd: Array<CryptoData> = [];
           // console.log(response);
          //  var usd_data = response;
             
-              this.dataUsd[index].day = response[symbol+"/USDT"]['day'];
-              this.dataUsd[index].week = response[symbol+"/USDT"]['week'];
+              this.dataUsd[index].day = response[symbol+"/USD"]['day'];
+              this.dataUsd[index].week = response[symbol+"/USD"]['week'];
       });
       }
     });

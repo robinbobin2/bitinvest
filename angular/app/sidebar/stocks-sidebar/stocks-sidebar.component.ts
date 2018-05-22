@@ -50,8 +50,8 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
           let algo = admin[index].algo;
           this.animtype[index] = '';
           if (this.dataUsd[index]) {
-              if (this.dataUsd[index].now != this.resp[symbol + '/USDT']['now']) {
-                  if (this.dataUsd[index].now > this.resp[symbol + '/USDT']['now']) {
+              if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
+                  if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
                       this.animtype[index] = 'redcolor';
                   } else {
                       this.animtype[index] = 'greencolor';
@@ -63,16 +63,16 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
             this.dataUsd[index].sym = symbol;
             this.dataUsd[index].algo = algo;
             this.dataUsd[index].year = year;
-            this.dataUsd[index].last = this.resp[symbol+'/USDT']['last'];
-            this.dataUsd[index].now = this.resp[symbol+'/USDT']['now'];
-            this.dataUsd[index].min = this.resp[symbol+'/USDT']['min'];
-            this.dataUsd[index].max = this.resp[symbol+'/USDT']['max'];
-            this.dataUsd[index].value = this.resp[symbol+'/USDT']['value'];
-            this.dataUsd[index].day = this.resp[symbol+"/USDT"]['day'];
-              this.dataUsd[index].week = this.resp[symbol+"/USDT"]['week'];
-              this.dataUsd[index].month = this.resp[symbol+"/USDT"]['month'];
-            this.dataUsd[index].changePercent = this.resp[symbol+"/USDT"]['changePercent'];
-          this.dataUsd[index].marketCapUsd = this.resp[symbol+"/USDT"]['marketCapUsd'];
+            this.dataUsd[index].last = this.resp[symbol+'/USD']['last'];
+            this.dataUsd[index].now = this.resp[symbol+'/USD']['now'];
+            this.dataUsd[index].min = this.resp[symbol+'/USD']['min'];
+            this.dataUsd[index].max = this.resp[symbol+'/USD']['max'];
+            this.dataUsd[index].value = this.resp[symbol+'/USD']['value'];
+            this.dataUsd[index].day = this.resp[symbol+"/USD"]['day'];
+              this.dataUsd[index].week = this.resp[symbol+"/USD"]['week'];
+              this.dataUsd[index].month = this.resp[symbol+"/USD"]['month'];
+            this.dataUsd[index].changePercent = this.resp[symbol+"/USD"]['changePercent'];
+          this.dataUsd[index].marketCapUsd = this.resp[symbol+"/USD"]['marketCapUsd'];
 
               this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
               this.dataUsd[index].percentWeek = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
