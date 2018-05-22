@@ -34,6 +34,7 @@ use App\Models\Founder\Models\Providers\CoinexProvider;
 use App\Models\Founder\Models\Providers\CoinGiProvider;
 use App\Models\Founder\Models\Providers\CoinMarketCapProvider;
 use App\Models\Founder\Models\Providers\CoinnestProvider;
+use App\Models\Founder\Models\Providers\CoinoneProvider;
 use App\Models\Founder\Models\Providers\CoinTigerProvider;
 use App\Models\Founder\Models\Providers\ExmoProvider;
 use App\Models\Founder\Models\Providers\ExxProvider;
@@ -61,6 +62,7 @@ use App\Models\Founder\Models\Providers\OkCoinProvider;
 use App\Models\Founder\Models\Providers\OkexProvider;
 use App\Models\Founder\Models\Providers\OneBrokerProvider;
 use App\Models\Founder\Models\Providers\OneBTCXEProvider;
+use App\Models\Founder\Models\Providers\PoloniexProvider;
 use App\Models\Founder\Models\Providers\QryptosProvider;
 use App\Models\Founder\Models\Providers\SouthXChangeProvider;
 use App\Models\Founder\Models\Providers\TheRockProvider;
@@ -91,7 +93,7 @@ class Updater extends \Illuminate\Console\Command
 
 
     private $suppliers = [
-//        PoloniexProvider::class,
+        PoloniexProvider::class,
         HitBTCProvider::class,
         BiBoxProvider::class,
         BinanceProvider::class,
@@ -152,7 +154,8 @@ class Updater extends \Illuminate\Console\Command
         XBTCEProvider::class,
         ZaifProvider::class,
         ZbProvider::class,
-        BitHumbProvider::class
+        BitHumbProvider::class,
+        CoinoneProvider::class
     ];
 
     /**
