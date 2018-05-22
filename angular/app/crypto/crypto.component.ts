@@ -107,7 +107,14 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.auth.getUser().subscribe(
-     response => {this.getUserPortfolio = response['portfolio']; console.log(this.getUserPortfolio)}
+     response => {
+         for(let item of response['portfolio']) {
+             if (item.user_portfolio_id == 1) {
+                 this.getUserPortfolio.push(item)
+             }
+         }
+
+     }
    );
       let portfolioUrl = '/angular/userportfolio';
       this.portfolioInfo = this.http.get<any>(portfolioUrl);

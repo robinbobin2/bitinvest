@@ -2582,7 +2582,14 @@ var CryptoComponent = (function () {
     }
     CryptoComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.auth.getUser().subscribe(function (response) { _this.getUserPortfolio = response['portfolio']; console.log(_this.getUserPortfolio); });
+        this.auth.getUser().subscribe(function (response) {
+            for (var _a = 0, _b = response['portfolio']; _a < _b.length; _a++) {
+                var item = _b[_a];
+                if (item.user_portfolio_id == 1) {
+                    _this.getUserPortfolio.push(item);
+                }
+            }
+        });
         var portfolioUrl = '/angular/userportfolio';
         this.portfolioInfo = this.http.get(portfolioUrl);
         this.portfolioInfo.subscribe(function (response) {
