@@ -58,7 +58,34 @@
             </th>
           </tr>
           </thead>
-
+          <thead *ngIf="item.user_portfolio_type_id == 4">
+          <tr>
+            <th width="27%">
+              <span>Название</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%" class="active">
+              <span>Объем ( $ за 24 ч.)</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%">
+              <span>Объем BTC (за 24ч.)</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%">
+              <span>Объем ( $ за 7 д.)</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%">
+              <span>Объем BTC (за 7д .)</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="21%">
+              <span>Рейтинг</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+          </tr>
+          </thead>
           <thead *ngIf="item.user_portfolio_type_id == 1">
             <tr>
               <th width="27%" [class.active]="order === 'name'"
@@ -94,38 +121,76 @@
           <tbody *ngIf="portfolios[item.id]">
 
           <ng-template [ngIf]="item.user_portfolio_type_id == 1">
-          <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
-            <td>
-              <a href="crypto-single.html">
-                <div class="img-wrap">
-                  <img src="{{portfolioItem.logo}}" alt="">
+            <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
+              <td>
+                <a href="crypto-single.html">
+                  <div class="img-wrap">
+                    <img src="{{portfolioItem.logo}}" alt="">
+                  </div>
+                  <span>{{portfolioItem.name}}</span>
+                </a>
+              </td>
+              <td>
+                <!-- <p><span class="bold">{{portfolioItem.proc}}% / год</span></p> -->
+              </td>
+              <td>
+                <span>189 дней</span>
+              </td>
+              <td>
+                <!-- <span class="bold">${{portfolioItem.depo}}</span> -->
+              </td>
+              <td>
+                <span>$ 90 (15%)</span>
+              </td>
+              <td>
+                <div class="difference">
+                  <!--   <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span> -->
+                  <div class="buttons">
+                    <a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>
+                    <a (click)="onRemove(item.id, portfolioItem.id, in)" class="minus"><img src="/img/minus.png" alt=""></a>
+                  </div>
                 </div>
-                <span>{{portfolioItem.name}}</span>
-              </a>
-            </td>
-            <td>
-              <!-- <p><span class="bold">{{portfolioItem.proc}}% / год</span></p> -->
-            </td>
-            <td>
-              <span>189 дней</span>
-            </td>
-            <td>
-              <!-- <span class="bold">${{portfolioItem.depo}}</span> -->
-            </td>
-            <td>
-              <span>$ 90 (15%)</span>
-            </td>
-            <td>
-              <div class="difference">
-                <!--   <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span> -->
-                <div class="buttons">
-                  <a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>
-                  <a (click)="onRemove(item.id, portfolioItem.id, in)" class="minus"><img src="/img/minus.png" alt=""></a>
-                </div>
-              </div>
-            </td>
-          </tr>
+              </td>
+            </tr>
           </ng-template>
+
+          <ng-template [ngIf]="item.user_portfolio_type_id == 4">
+            <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
+              <td>
+                <a href="crypto-single.html">
+                  <div class="img-wrap">
+                    <img src="img/bitcoin-icon.png" alt="">
+                  </div>
+                  <span>Bitcoin (BTC)</span>
+                </a>
+              </td>
+              <td>
+                <span class="amount-bold">$125 917,1031</span>
+              </td>
+              <td>
+                <span>95,113,177</span>
+              </td>
+              <td>
+                <span class="amount-bold">$125 917,1031</span>
+              </td>
+              <td>
+                <span>95,113,177</span>
+              </td>
+              <td>
+                <div class="difference">
+                  <div class="stars-wrap">
+                    <img src="img/stars.png" alt="">
+                    <span>135</span>
+                  </div>
+                  <div class="buttons">
+                    <a href="#" class="settings"><img src="img/settings.svg" alt=""></a>
+                    <a href="#" class="minus"><img src="img/minus.png" alt=""></a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+
           <ng-template [ngIf]="item.user_portfolio_type_id == 3">
           <tr  *ngFor="let data of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let i = index">
             <!--<td>-->
