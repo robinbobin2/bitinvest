@@ -14,7 +14,68 @@
           </div>
         </div>
         <table class="table crypto-table">
-          <thead>
+          <thead *ngIf="item.user_portfolio_type_id == 3">
+          <tr>
+            <th [class.active]="order === 'sym'"
+                (click)="setOrder('sym')"
+                width="12.9%">
+              <span>Название</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th [class.active]="order === 'now'"
+                (click)="setOrder('now')"
+                width="15%">
+              <span>Стоимость</span>
+
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th
+
+                    width="15%">
+              <span>Капитализация</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th [class.active]="order === 'value'"
+                (click)="setOrder('value')"
+
+                width="12.4%">
+              <span>Объем BTC (за 24 ч.)</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th
+                    width="11%">
+              <span>Изм. за 24ч</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th
+                    width="18.3%">
+              <span>Изм. за 7д</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="21%">
+              <span>Изм. за 1 мес.</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+          </tr>
+          </thead>
+          <thead *ngIf="item.user_portfolio_type_id == 4">
+          <tr>
+            <th width="30%">
+              <span>Название</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="30%" class="active">
+              <span>Объем ( $ за 24 ч.)</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="40%">
+              <span>Объем BTC (за 24ч.)</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+
+          </tr>
+          </thead>
+          <thead *ngIf="item.user_portfolio_type_id == 1">
             <tr>
               <th width="27%" [class.active]="order === 'name'"
                             (click)="setOrder('name')">
@@ -46,7 +107,9 @@
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody *ngIf="portfolios[item.id]">
+
+          <ng-template [ngIf]="item.user_portfolio_type_id == 1">
             <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
               <td>
                 <a href="crypto-single.html">
@@ -67,10 +130,10 @@
               </td>
               <td>
                 <span>$ 90 (15%)</span>
-              </td>           
+              </td>
               <td>
                 <div class="difference">
-                <!--   <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span> -->
+                  <!--   <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span> -->
                   <div class="buttons">
                     <a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>
                     <a (click)="onRemove(item.id, portfolioItem.id, in)" class="minus"><img src="/img/minus.png" alt=""></a>
@@ -78,9 +141,104 @@
                 </div>
               </td>
             </tr>
+          </ng-template>
+
+          <ng-template [ngIf]="item.user_portfolio_type_id == 4">
+            <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
+              <td>
+                <a href="crypto-single.html">
+                  <div class="img-wrap">
+                    <img src="img/bitcoin-icon.png" alt="">
+                  </div>
+                  <span>{{portfolioItem.name}}</span>
+                </a>
+              </td>
+              <td>
+                <span class="amount-bold">{{volumes[portfolioItem.name].usd}}</span>
+              </td>
+              <td>
+                <div class="difference">
+                  <div class="stars-wrap">
+                <span>{{volumes[portfolioItem.name].btc}}</span>
+                  </div>
+                  <div class="buttons">
+                    <a href="#" class="settings"><img src="img/settings.svg" alt=""></a>
+                    <a href="#" class="minus"><img src="img/minus.png" alt=""></a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+
+          <ng-template [ngIf]="item.user_portfolio_type_id == 3">
+          <tr  *ngFor="let data of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let i = index">
+            <!--<td>-->
+              <!--<a href="crypto-single.html">-->
+                <!--<div class="img-wrap">-->
+                  <!--<img src="{{portfolioItem.logo}}" alt="">-->
+                <!--</div>-->
+                <!--<span>{{portfolioItem.name}}</span>-->
+              <!--</a>-->
+            <!--</td>-->
+            <!--<td>-->
+              <!--&lt;!&ndash; <p><span class="bold">{{portfolioItem.proc}}% / год</span></p> &ndash;&gt;-->
+            <!--</td>-->
+            <!--<td>-->
+              <!--<span>189 дней</span>-->
+            <!--</td>-->
+            <!--<td>-->
+              <!--&lt;!&ndash; <span class="bold">${{portfolioItem.depo}}</span> &ndash;&gt;-->
+            <!--</td>-->
+            <!--<td>-->
+              <!--<span>$ 90 (15%)</span>-->
+            <!--</td>-->
+            <!--<td>-->
+              <!--<div class="difference">-->
+                <!--&lt;!&ndash;   <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span> &ndash;&gt;-->
+                <!--<div class="buttons">-->
+                  <!--<a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>-->
+                  <!--<a (click)="onRemove(item.id, portfolioItem.id, in)" class="minus"><img src="/img/minus.png" alt=""></a>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</td>-->
+            <td>
+              <div class="img-wrap" [routerLink]="['/crypto', data.sym]">
+     <!-- <img src="img/bitcoin-icon.png" alt=""> -->
+   </div>
+              <span [routerLink]="['/crypto', data.symbol]">{{data.name}} ({{data.symbol}})</span>
+            </td>
+            <td>
+            <!--<td [ngStyle]="{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">-->
+              <span class="price">${{data.now | number: '1.2'}}</span>
+              <span *ngIf="diff[item.id] >0 || diff[item.id] < 0" [ngClass]="isNegative(diff[item.id])==true ? 'change-red' : 'change'">(${{diff[item.id] | number: '1.2'}})</span>
+            </td>
+            <td>
+              <span class="capitalization">${{data.marketCapUsd| number: '1.0-3'}}</span>
+            </td>
+            <td>
+              <span class="bargaining">{{data.volume | number: '1.3'}}</span>
+            </td>
+            <td>
+              <span [ngClass]="isNegativePercent(data.now, data.day)==true ? 'change-red' : 'change-green'">{{ countPercent(data.now, data.day) | number: '1.2'}}%</span>
+
+            </td>
+            <td>
+              <div class="difference">
+                <span class="red">-20,3% (-251,11)</span>
+                <div class="buttons">
+                  <a href="#" class="settings"><img src="img/settings.svg" alt=""></a>
+                  <a href="#" class="minus"><img src="img/minus.png" alt=""></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          </ng-template>
             <tr class="no-bg">
               <td colspan="3" class="no-border">
-                <a class="add">+Добавить облачный майнинг в портфель</a>
+                <a class="add" *ngIf="item.user_portfolio_type_id == 1">+Добавить облачный майнинг в портфель</a>
+                <a class="add" *ngIf="item.user_portfolio_type_id == 2">+Добавить ICO проект в портфель</a>
+                <a class="add" *ngIf="item.user_portfolio_type_id == 3">+Добавить криптовалюту в портфель</a>
+                <a class="add" *ngIf="item.user_portfolio_type_id == 4">+Добавить биржу в портфель</a>
                 <form>
                   <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value)" >
                   <button type="submit" (click)="onAdd(item.id, result_id)">Добавить</button>

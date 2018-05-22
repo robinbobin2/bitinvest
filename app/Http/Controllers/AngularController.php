@@ -185,7 +185,12 @@ class AngularController extends Controller
     }
     public function exchanges()
     {
-        return Stock::all()->toArray();
+        $stocks = Stock::all()->toArray();
+        foreach ($stocks as $key => $stock) {
+            $languages = explode(",", $stock['languages']);
+            $stocks[$key]['languages'] = $languages;
+        }
+        return $stocks;
     }
     public function exchange($name)
     {

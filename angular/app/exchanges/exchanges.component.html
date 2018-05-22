@@ -26,6 +26,9 @@
                <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
              </ul>
               </div>
+              <div class="crypto-select-wrap">
+                            <input type="text" placeholder="Поиск по названию монеты..." [(ngModel)]="filteredName" name="filteredName" value="">
+                        </div>
         </div>
       </div>
       <div class="table-wrap">
@@ -80,7 +83,7 @@
 
           <tbody *ngIf="load == false">
 
-            <tr *ngFor="let item of exchanges; let i = index">
+            <tr *ngFor="let item of exchanges   | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'name' | filterNameActive:age:'language'; let i = index">
               <td>
                 <span>{{i}}</span>
               </td>
@@ -110,7 +113,10 @@
                   <img src="img/usa-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
                   <span class="text">+5</span> -->
-                  {{item.languages}}
+                  <ng-template  ngFor let-lang [ngForOf]="item.languages">
+                    <span *ngIf="lang =='EN'; else plain"><img src="img/usa-icon.png" alt=""></span>
+                    <ng-template #plain>{{lang}}</ng-template>
+                  </ng-template>
                 </div>
               </td>
               <td>

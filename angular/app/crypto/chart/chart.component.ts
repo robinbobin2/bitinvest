@@ -15,22 +15,26 @@ loadAPI: Promise<any>;
     let symbol = this.route.snapshot.params['sym'];
     
   	setTimeout(()=>{
-  	    new TradingView.widget(
-                    {
-                    "width": 881,
-                    "height": 393,
-                    "symbol": "BITSTAMP:"+symbol+"USD",
-                    "interval": "D",
-                    "timezone": "Etc/UTC",
-                    "theme": "Light",
-                    "style": "1",
-                    "locale": "ru",
-                    "toolbar_bg": "#f1f3f6",
-                    "enable_publishing": false,
-                    "allow_symbol_change": true,
-                    "container_id": "tradingview_4e1cc"
-                  }
-                    );
+        new TradingView.MediumWidget(
+            {
+                "container_id": "tv-medium-widget",
+                "symbols": [
+                    [
+                        "BTC (Bitcoin)",
+                        "COINBASE:BTCUSD|1d"
+                    ]
+                ],
+                "greyText": "Котировки предоставлены",
+                "gridLineColor": "#e9e9ea",
+                "fontColor": "#83888D",
+                "underLineColor": "rgba(242, 242, 242, 0.19)",
+                "trendLineColor": "rgba(255, 152, 0, 1)",
+                "width": "881px",
+                "height": "361px",
+                "locale": "ru",
+                "chartOnly": true
+            }
+        );
 },200);
   }
 

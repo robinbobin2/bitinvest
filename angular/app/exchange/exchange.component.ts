@@ -164,7 +164,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
       createPortfolio(form: NgForm) {
         const headers = new HttpHeaders({'Content-type': 'Application/json '});
 
-        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 1},{headers: headers})
+        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 4},{headers: headers})
             .subscribe(
                 response => {this.getUserPortfolio.push(response); form.reset()},
                 error => console.log(error)

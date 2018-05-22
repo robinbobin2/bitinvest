@@ -107,7 +107,17 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.auth.getUser().subscribe(
-     response => {this.getUserPortfolio = response['portfolio']; console.log(this.getUserPortfolio)}
+     response => {
+         for(let item of response['portfolio']) {
+             console.log('loop')
+             if (item.user_portfolio_type_id == 3) {
+                 this.getUserPortfolio.push(item)
+             }
+             console.log(item)
+             console.log(this.getUserPortfolio)
+         }
+
+     }
    );
       let portfolioUrl = '/angular/userportfolio';
       this.portfolioInfo = this.http.get<any>(portfolioUrl);
@@ -152,7 +162,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
     }
 
-      this.stocksService.getStocks(symbol+'/USDT').subscribe(response => {
+      this.stocksService.getStocks(symbol+'/USD').subscribe(response => {
         this.load = true;
       this.stocks = response;
       this.load = false;
@@ -192,7 +202,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
     });
     this.stocksData = Observable.interval(2000).concatMap(()=>
-      this.stocksService.getStocks(symbol+'/USDT'))
+      this.stocksService.getStocks(symbol+'/USD'))
     .map(response => {
 
       for (var _i = 0; _i < this.stocks.length; ++_i) {
@@ -253,7 +263,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
     this.cryptoFirst = this.stocksService.getCrypto()
     .map((response)=>{
-      this.dataUsd = response[symbol+'/USDT'];
+      this.dataUsd = response[symbol+'/USD'];
       this.diff = this.dataUsd.now-this.dataUsd.last;
       this.prev = this.dataUsd.last;
       localStorage.removeItem(symbol);
@@ -290,18 +300,18 @@ export class CryptoComponent implements OnInit, OnDestroy {
     .map((response)=>{
       this.animtype = '';
 
-      if(this.dataUsd.now != response[symbol+'/USDT'].now) {
+      if(this.dataUsd.now != response[symbol+'/USD'].now) {
 
-        this.diff = response[symbol+'/USDT'].now-this.dataUsd.now;
+        this.diff = response[symbol+'/USD'].now-this.dataUsd.now;
         this.prev = this.dataUsd.now;
-        if(this.dataUsd.now > response[symbol+'/USDT'].now) {
+        if(this.dataUsd.now > response[symbol+'/USD'].now) {
 
             this.animtype = 'redcolor';
           } else {
             this.animtype = 'greencolor';
           }
       }
-      this.dataUsd = response[symbol+'/USDT'];
+      this.dataUsd = response[symbol+'/USD'];
 
       localStorage.removeItem(symbol);
 
@@ -375,7 +385,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     createPortfolio(form: NgForm) {
         const headers = new HttpHeaders({'Content-type': 'Application/json '});
 
-        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 1},{headers: headers})
+        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 3},{headers: headers})
             .subscribe(
                 response => {this.getUserPortfolio.push(response); form.reset()},
                 error => console.log(error)
