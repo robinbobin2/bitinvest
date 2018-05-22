@@ -113,8 +113,9 @@
                   <img src="img/usa-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
                   <span class="text">+5</span> -->
-                  <ng-template *ngFor="let lang of item.languages">
-                    {{lang}}
+                  <ng-template  ngFor let-lang [ngForOf]="item.languages">
+                    <span *ngIf="lang =='EN'; else plain"><img src="img/usa-icon.png" alt=""></span>
+                    <ng-template #plain>{{lang}}</ng-template>
                   </ng-template>
                 </div>
               </td>
