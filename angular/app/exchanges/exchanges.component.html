@@ -106,14 +106,17 @@
                 <span>{{item.count}}</span>
               </td>
               <td>
-                <div class="img-wrap-small" *ngFor="let lang of item.languages">
+                <div class="img-wrap-small">
                   <!-- <img src="img/rus-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
                   <span class="text">+5</span> -->
-                  {{lang == 'EN' ? "<img src='img/usa-icon.png' />" : lang}}
+                  <ng-template *ngFor="let lang of item.languages">
+                    <ng-template *ngIf="lang =='EN'; else plain"><img src="img/usa-icon.png" alt=""></ng-template>
+                    <ng-template #plain>{{lang}}</ng-template>
+                  </ng-template>
                 </div>
               </td>
               <td>
