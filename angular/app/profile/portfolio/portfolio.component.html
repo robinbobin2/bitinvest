@@ -72,18 +72,7 @@
               <span>Объем BTC (за 24ч.)</span>
               <img src="img/arr-top-table.png" alt="">
             </th>
-            <th width="13%">
-              <span>Объем ( $ за 7 д.)</span>
-              <img src="img/arr-top-table.png" alt="">
-            </th>
-            <th width="13%">
-              <span>Объем BTC (за 7д .)</span>
-              <img src="img/arr-top-table.png" alt="">
-            </th>
-            <th width="21%">
-              <span>Рейтинг</span>
-              <img src="img/arr-top-table.png" alt="">
-            </th>
+
           </tr>
           </thead>
           <thead *ngIf="item.user_portfolio_type_id == 1">
@@ -161,22 +150,22 @@
                   <div class="img-wrap">
                     <img src="img/bitcoin-icon.png" alt="">
                   </div>
-                  <span>Bitcoin (BTC)</span>
+                  <span>{{portfolioItem.name}}</span>
                 </a>
               </td>
               <td>
-                <span class="amount-bold">$125 917,1031</span>
+                <span class="amount-bold">{{volumes[portfolioItem.name].usd}}</span>
               </td>
               <td>
-                <span>95,113,177</span>
-              </td>
-              <td>
-                <span class="amount-bold">$125 917,1031</span>
-              </td>
-              <td>
-                <span>95,113,177</span>
-              </td>
-              <td>
+                <div class="difference">
+                  <div class="stars-wrap">
+                <span>{{volumes[portfolioItem.name].btc}}</span>
+                  </div>
+                  <div class="buttons">
+                    <a href="#" class="settings"><img src="img/settings.svg" alt=""></a>
+                    <a href="#" class="minus"><img src="img/minus.png" alt=""></a>
+                  </div>
+                </div>
                 <div class="difference">
                   <div class="stars-wrap">
                     <img src="img/stars.png" alt="">

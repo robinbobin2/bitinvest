@@ -63,11 +63,14 @@ export class PortfolioComponent implements OnInit {
                             if(type_id == 4) {
                                 this.stockService.getVolumes().subscribe(res => {
                                     this.portfolios[item.id].push(res)
-                                    for(let item of this.volumes) {
-                                        this.exchange_volumes[item.name] = {
-                                            'btc': item.btc,
-                                            'usd': item.usd
+                                    for(let resItem of res) {
+                                        this.volumes[resItem.name] = {
+                                            'btc': resItem.btc,
+                                            'usd': resItem.usd
                                         }
+                                    }
+                                    for(let resItem of res) {
+
                                     }
                                     console.log('pushed')
                                     console.log(this.portfolios[item.id])
