@@ -190,7 +190,7 @@ class AngularController extends Controller
             $languages = explode(",", $stock['languages']);
             $stock['languages'] = $languages;
         }
-        return $languages;
+        return $stocks;
     }
     public function exchange($name)
     {
