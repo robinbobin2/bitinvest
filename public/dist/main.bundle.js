@@ -4073,7 +4073,14 @@ var IcoProjectAllComponent = (function () {
                 console.log(_this.portfoliosInfo);
             }
         });
-        this.authService.getUser().subscribe(function (response) { return _this.getUserPortfolio = response['portfolio']; });
+        this.authService.getUser().subscribe(function (response) {
+            for (var _i = 0, _a = response['portfolio']; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (item.user_portfolio_type_id == 2) {
+                    _this.getUserPortfolio.push(item);
+                }
+            }
+        });
     };
     IcoProjectAllComponent.prototype.checkAuth = function () {
         if (this.authService.getUserInfo()) {

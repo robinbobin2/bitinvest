@@ -137,7 +137,13 @@ export class IcoProjectAllComponent implements OnInit {
        },
        );
 this.authService.getUser().subscribe(
-     response => this.getUserPortfolio = response['portfolio']
+     response => {
+         for(let item of response['portfolio']) {
+             if (item.user_portfolio_type_id == 2) {
+                 this.getUserPortfolio.push(item)
+             }
+         }
+     }
    );
   }
   checkAuth() {
