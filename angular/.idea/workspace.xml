@@ -57,8 +57,8 @@
       <file leaf-file-name="portfolio.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="53" column="17" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
+            <state relative-caret-position="393">
+              <caret line="163" column="91" selection-start-line="163" selection-start-column="91" selection-end-line="163" selection-end-column="91" />
             </state>
           </provider>
         </entry>
@@ -337,12 +337,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="22449000" />
+      <workItem from="1526711663196" duration="22615000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68783000" />
+    <option name="totallyTimeSpent" value="68949000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -795,8 +795,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="53" column="17" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
+        <state relative-caret-position="393">
+          <caret line="163" column="91" selection-start-line="163" selection-start-column="91" selection-end-line="163" selection-end-column="91" />
         </state>
       </provider>
     </entry>
