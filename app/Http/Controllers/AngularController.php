@@ -188,7 +188,7 @@ class AngularController extends Controller
         $stocks = Stock::all()->toArray();
         foreach ($stocks as $stock) {
             $languages = explode(",", $stock['languages']);
-            $stock['languages'] = $languages;
+            $stock['lang'] = $languages;
         }
         return $stocks;
     }
