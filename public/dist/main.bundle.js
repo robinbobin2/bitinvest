@@ -6661,6 +6661,7 @@ var SearchService = (function () {
             .switchMap(function (term) { return _this.mainSearchEntries(term); });
     };
     SearchService.prototype.searchEntries = function (term, type) {
+        console.log(type);
         if (type == 1) {
             return this.http
                 .get(this.miningBaseUrl + this.queryUrl + term);

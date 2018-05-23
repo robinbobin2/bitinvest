@@ -30,6 +30,7 @@ export class SearchService {
   }
 
   searchEntries(term,type) {
+    console.log(type)
       if (type == 1) {
           return this.http
               .get(this.miningBaseUrl + this.queryUrl + term);
