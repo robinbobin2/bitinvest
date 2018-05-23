@@ -46,9 +46,9 @@ export class PortfolioComponent implements OnInit {
   	
   	
    }
-    onSearch(type, terms)
+    onSearch(type)
     {
-        this.searchService.search(terms, type)
+        this.searchService.search(this.searchTerm$, type)
             .subscribe(results => {
                 this.results = results;
                 console.log(results);
