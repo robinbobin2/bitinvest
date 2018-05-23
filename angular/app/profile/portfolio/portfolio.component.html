@@ -76,36 +76,68 @@
           </tr>
           </thead>
           <thead *ngIf="item.user_portfolio_type_id == 1">
-            <tr>
-              <th width="27%" [class.active]="order === 'name'"
-                            (click)="setOrder('name')">
-                <span>Название</span>
-                <img src="img/arr-top-table.png" alt="">
-              </th>
-              <th width="13%" class="active" [class.active]="order === 'proc'"
-                            (click)="setOrder('proc')">
-                <span>Доходность</span>
-                <img src="img/arr-top-table.png" alt="">
-              </th>
-              <th width="13%" >
-                <span>Существует</span>
-                <img src="img/arr-top-table.png" alt="">
-              </th>
-              <th width="13%" [class.active]="order === 'depo'"
-                            (click)="setOrder('depo')">
-                <span>Депозит</span>
-                <img src="img/arr-top-table.png" alt="">
-              </th>
-              <th width="13%">
-                <span>Получено</span>
-                <img src="img/arr-top-table.png" alt="">
-              </th>
-              <th width="21%" [class.active]="order === 'status'"
-                            (click)="setOrder('status')">
-                <span>Статус</span>
-                <img src="img/arr-top-table.png" alt="">
-              </th>
-            </tr>
+          <tr>
+            <th width="27%" [class.active]="order === 'name'"
+                (click)="setOrder('name')">
+              <span>Название</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%" class="active" [class.active]="order === 'proc'"
+                (click)="setOrder('proc')">
+              <span>Доходность</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%" >
+              <span>Существует</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%" [class.active]="order === 'depo'"
+                (click)="setOrder('depo')">
+              <span>Депозит</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%">
+              <span>Получено</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="21%" [class.active]="order === 'status'"
+                (click)="setOrder('status')">
+              <span>Статус</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+          </tr>
+          </thead>
+          <thead *ngIf="item.user_portfolio_type_id == 2">
+          <tr>
+            <th width="27%" [class.active]="order === 'name'"
+                (click)="setOrder('name')">
+              <span>Название</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%" class="active" [class.active]="order === 'proc'"
+                (click)="setOrder('proc')">
+              <span>Доходность</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%" >
+              <span>Существует</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%" [class.active]="order === 'depo'"
+                (click)="setOrder('depo')">
+              <span>Депозит</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="13%">
+              <span>Получено</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+            <th width="21%" [class.active]="order === 'status'"
+                (click)="setOrder('status')">
+              <span>Статус</span>
+              <img src="img/arr-top-table.png" alt="">
+            </th>
+          </tr>
           </thead>
           <tbody *ngIf="portfolios[item.id]">
 
@@ -120,20 +152,53 @@
                 </a>
               </td>
               <td>
-                 <p><span class="bold">{{portfolioItem.proc}}% / год</span></p>
+                <p><span class="bold">{{portfolioItem.proc}}% / год</span></p>
               </td>
               <td>
                 <span>{{portfolioItem.depo_date}}</span>
               </td>
               <td>
-                 <span class="bold">${{portfolioItem.depo}}</span>
+                <span class="bold">${{portfolioItem.depo}}</span>
               </td>
               <td>
                 <span>{{portfolioItem.percentage}}%</span>
               </td>
               <td>
                 <div class="difference">
-                     <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span>
+                  <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span>
+                  <div class="buttons">
+                    <a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>
+                    <a (click)="onRemove(item.id, portfolioItem.id, in)" class="minus"><img src="/img/minus.png" alt=""></a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template [ngIf]="item.user_portfolio_type_id == 2">
+            <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
+              <td>
+                <a href="crypto-single.html">
+                  <div class="img-wrap">
+                    <img src="{{portfolioItem.logo}}" alt="">
+                  </div>
+                  <span>{{portfolioItem.name}}</span>
+                </a>
+              </td>
+              <td>
+                <p><span class="bold">{{portfolioItem?.proc}}% / год</span></p>
+              </td>
+              <td>
+                <span>{{portfolioItem?.depo_date}}</span>
+              </td>
+              <td>
+                <span class="bold">${{portfolioItem?.depo}}</span>
+              </td>
+              <td>
+                <span>{{portfolioItem?.percentage}}%</span>
+              </td>
+              <td>
+                <div class="difference">
+                  <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Активен' : 'Закрыт'}}</span>
                   <div class="buttons">
                     <a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>
                     <a (click)="onRemove(item.id, portfolioItem.id, in)" class="minus"><img src="/img/minus.png" alt=""></a>
@@ -226,12 +291,12 @@
                 </li>
               </ul>
               </td>
-              <td class="no-border">
-                <span class="bold">$178</span>
-              </td>           
-              <td class="no-border">
-                <span class="red">$1370</span>
-              </td>
+              <!--<td class="no-border">-->
+                <!--<span class="bold">$178</span>-->
+              <!--</td>           -->
+              <!--<td class="no-border">-->
+                <!--<span class="red">$1370</span>-->
+              <!--</td>-->
             </tr>
           </tbody>
         </table>
