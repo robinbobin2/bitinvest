@@ -67,7 +67,7 @@ class AngularController extends Controller
             $userPortfolio['crypto'][] = $portfolio->crypto;
 
         }
-        return json_encode($userPortfolio);
+        return $portfolios;
     }
 
     public function byportfolio($id)
@@ -112,7 +112,7 @@ class AngularController extends Controller
 
     }
 
-    public function removePortfolio($id)
+    public function removePortfolio(Request $request, $id)
     {
         $user = Auth::user();
         if (!$user) {
@@ -120,10 +120,12 @@ class AngularController extends Controller
                 'error' => 'User not loggined'
             ];
         }
-        UserPortfollable::where('user_portfollable_id', $id)->where('user_portfollable_type', 'App\CloudMining')->delete();
-        return [
+        if(UserPortfollable::where('user_portfollable_id', $request->user_portfollable_id)->where('user_portfollable_type', $request->user_portfollable_type)->where('user_portfolio_id', $request->user_portfolio_id)->delete()) {
+            return [
             'success' => 'Portfolio deleted'
         ];
+        }
+        
     }
     public function icoRemovePortfolio($id) 
     {

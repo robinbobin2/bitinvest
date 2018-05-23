@@ -1298,6 +1298,12 @@ var CloudMiningService = (function () {
     CloudMiningService.prototype.getTop = function () {
         return this.http.get(this.path);
     };
+    CloudMiningService.prototype.getMiningId = function (id) {
+        return this.http.get('/miningraw/' + id);
+    };
+    CloudMiningService.prototype.getIcoId = function (id) {
+        return this.http.get('/icoraw/' + id);
+    };
     CloudMiningService.prototype.getIcoTop = function () {
         return this.http.get(this.pathIco);
     };
@@ -1404,7 +1410,6 @@ var AllCloudMiningComponent = (function () {
             }
             else {
                 _this.portfoliosInfo = response['mining'];
-                console.log(_this.portfoliosInfo);
             }
         });
         var info = http.get(path);
@@ -1455,31 +1460,32 @@ var AllCloudMiningComponent = (function () {
     }
     AllCloudMiningComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.authService.getUser().subscribe(function (response) { return _this.getUserPortfolio = response['portfolio']; });
+        this.authService.getUser().subscribe(function (response) {
+            for (var _i = 0, _a = response['portfolio']; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (item.user_portfolio_type_id == 1) {
+                    _this.getUserPortfolio.push(item);
+                }
+            }
+        });
     };
     AllCloudMiningComponent.prototype.checkAuth = function () {
         if (this.authService.getUserInfo()) {
-            console.log(true);
             return true;
         }
-        console.log(false);
         return (false);
     };
     AllCloudMiningComponent.prototype.loadMore = function (id) {
         this.router.navigate(['/cloud-mining/item', id]);
     };
-    AllCloudMiningComponent.prototype.callCheck = function (id) {
-        if (this.checkInPortfolio(id)) {
-            this.checkPortfolio = true;
-        }
-        this.checkPortfolio = false;
-    };
     AllCloudMiningComponent.prototype.checkInPortfolio = function (id) {
+        console.log(this.portfoliosInfo);
         if (this.portfoliosInfo == undefined) {
             return false;
         }
         for (var _i = 0, _a = this.portfoliosInfo; _i < _a.length; _i++) {
             var item = _a[_i];
+            console.log(item);
             for (var _b = 0, item_1 = item; _b < item_1.length; _b++) {
                 var it = item_1[_b];
                 if (it.id) {
@@ -2585,12 +2591,9 @@ var CryptoComponent = (function () {
         this.auth.getUser().subscribe(function (response) {
             for (var _a = 0, _b = response['portfolio']; _a < _b.length; _a++) {
                 var item = _b[_a];
-                console.log('loop');
                 if (item.user_portfolio_type_id == 3) {
                     _this.getUserPortfolio.push(item);
                 }
-                console.log(item);
-                console.log(_this.getUserPortfolio);
             }
         });
         var portfolioUrl = '/angular/userportfolio';
@@ -2601,7 +2604,6 @@ var CryptoComponent = (function () {
             }
             else {
                 _this.portfoliosInfo = response['crypto'];
-                console.log(_this.portfoliosInfo);
             }
         });
         var symbol = this.route.snapshot.params['sym'];
@@ -3186,7 +3188,14 @@ var ExchangeComponent = (function () {
     }
     ExchangeComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.auth.getUser().subscribe(function (response) { _this.getUserPortfolio = response['portfolio']; console.log(_this.getUserPortfolio); });
+        this.auth.getUser().subscribe(function (response) {
+            for (var _a = 0, _b = response['portfolio']; _a < _b.length; _a++) {
+                var item = _b[_a];
+                if (item.user_portfolio_type_id == 4) {
+                    _this.getUserPortfolio.push(item);
+                }
+            }
+        });
         this.router.events.subscribe(function (s) {
             if (s instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* NavigationEnd */]) {
                 var tree = _this.router.parseUrl(_this.router.url);
@@ -5789,8 +5798,12 @@ var PortfolioService = (function () {
         return this.http
             .post('/angular/userportfolio/create', { 'name': name, 'user_portfolio_type_id': type }, { headers: headers });
     };
-    PortfolioService.prototype.removePortfolio = function (id) {
-        return this.http.get('/angular/userportfolio/remove/' + id);
+    PortfolioService.prototype.removePortfolio = function (id, type, port_id) {
+        return this.http.post('/angular/userportfolio/remove/' + id, {
+            'user_portfollable_id': id,
+            'user_portfolio_id': port_id,
+            'user_portfollable_type': type
+        });
     };
     PortfolioService.prototype.submitPortfolio = function (post_id, id, type) {
         return this.http.post('/storeportfolio', {
@@ -5814,7 +5827,7 @@ var _a;
 /***/ "./angular/app/profile/portfolio/portfolio.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"my-portfolio\">\n    <div class=\"wrapper\">\n      <div class=\"portfolio-head\">\n        <h2>Мой портфель<a href=\"#\">+</a></h2>\n        <p>Отслеживайте все важные изменения по монетам, биржам, майнингу, ico проектам и др. Вся информация в одном месте! <br>\nНастраивайте индивидуальные уведомления...</p>\n      </div>\n      <div class=\"table-wrap img-table\" *ngFor=\"let item of portfolioNames; let i = index\">\n        <div class=\"table-title\">\n          <h3>{{item.name}}</h3>\n          <div class=\"buttons\">\n            <a href=\"#\"><img src=\"/img/setting-icon-table.png\" alt=\"\"></a>\n            <a (click)=\"onDelete(item.id, i)\" class=\"basket\"><img src=\"/img/basket-white.png\" alt=\"\"></a>\n          </div>\n        </div>\n        <table class=\"table crypto-table\">\n          <thead *ngIf=\"item.user_portfolio_type_id == 3\">\n          <tr>\n            <th [class.active]=\"order === 'sym'\"\n                (click)=\"setOrder('sym')\"\n                width=\"12.9%\">\n              <span>Название</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th [class.active]=\"order === 'now'\"\n                (click)=\"setOrder('now')\"\n                width=\"15%\">\n              <span>Стоимость</span>\n\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th\n\n                    width=\"15%\">\n              <span>Капитализация</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th [class.active]=\"order === 'value'\"\n                (click)=\"setOrder('value')\"\n\n                width=\"12.4%\">\n              <span>Объем BTC (за 24 ч.)</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th\n                    width=\"11%\">\n              <span>Изм. за 24ч</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th\n                    width=\"18.3%\">\n              <span>Изм. за 7д</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"21%\">\n              <span>Изм. за 1 мес.</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n          </tr>\n          </thead>\n          <thead *ngIf=\"item.user_portfolio_type_id == 4\">\n          <tr>\n            <th width=\"30%\">\n              <span>Название</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"30%\" class=\"active\">\n              <span>Объем ( $ за 24 ч.)</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"40%\">\n              <span>Объем BTC (за 24ч.)</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n\n          </tr>\n          </thead>\n          <thead *ngIf=\"item.user_portfolio_type_id == 1\">\n            <tr>\n              <th width=\"27%\" [class.active]=\"order === 'name'\"\n                            (click)=\"setOrder('name')\">\n                <span>Название</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"13%\" class=\"active\" [class.active]=\"order === 'proc'\"\n                            (click)=\"setOrder('proc')\">\n                <span>Доходность</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"13%\" >\n                <span>Существует</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"13%\" [class.active]=\"order === 'depo'\"\n                            (click)=\"setOrder('depo')\">\n                <span>Депозит</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"13%\">\n                <span>Получено</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"21%\" [class.active]=\"order === 'status'\"\n                            (click)=\"setOrder('status')\">\n                <span>Статус</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n            </tr>\n          </thead>\n          <tbody *ngIf=\"portfolios[item.id]\">\n\n          <ng-template [ngIf]=\"item.user_portfolio_type_id == 1\">\n            <tr *ngFor=\"let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index\">\n              <td>\n                <a href=\"crypto-single.html\">\n                  <div class=\"img-wrap\">\n                    <img src=\"{{portfolioItem.logo}}\" alt=\"\">\n                  </div>\n                  <span>{{portfolioItem.name}}</span>\n                </a>\n              </td>\n              <td>\n                <!-- <p><span class=\"bold\">{{portfolioItem.proc}}% / год</span></p> -->\n              </td>\n              <td>\n                <span>189 дней</span>\n              </td>\n              <td>\n                <!-- <span class=\"bold\">${{portfolioItem.depo}}</span> -->\n              </td>\n              <td>\n                <span>$ 90 (15%)</span>\n              </td>\n              <td>\n                <div class=\"difference\">\n                  <!--   <span [ngClass]=\"portfolioItem.status == 1 ? 'green' : 'red'\">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span> -->\n                  <div class=\"buttons\">\n                    <a href=\"#\" class=\"setting\"><img src=\"/img/setting-icon-table.png\" alt=\"\"></a>\n                    <a (click)=\"onRemove(item.id, portfolioItem.id, in)\" class=\"minus\"><img src=\"/img/minus.png\" alt=\"\"></a>\n                  </div>\n                </div>\n              </td>\n            </tr>\n          </ng-template>\n\n          <ng-template [ngIf]=\"item.user_portfolio_type_id == 4\">\n            <tr *ngFor=\"let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index\">\n              <td>\n                <a href=\"crypto-single.html\">\n                  <div class=\"img-wrap\">\n                    <img src=\"img/bitcoin-icon.png\" alt=\"\">\n                  </div>\n                  <span>{{portfolioItem.name}}</span>\n                </a>\n              </td>\n              <td>\n                <span class=\"amount-bold\">{{volumes[portfolioItem.name].usd}}</span>\n              </td>\n              <td>\n                <div class=\"difference\">\n                  <div class=\"stars-wrap\">\n                <span>{{volumes[portfolioItem.name].btc}}</span>\n                  </div>\n                  <div class=\"buttons\">\n                    <a href=\"#\" class=\"settings\"><img src=\"img/settings.svg\" alt=\"\"></a>\n                    <a href=\"#\" class=\"minus\"><img src=\"img/minus.png\" alt=\"\"></a>\n                  </div>\n                </div>\n              </td>\n            </tr>\n          </ng-template>\n\n          <ng-template [ngIf]=\"item.user_portfolio_type_id == 3\">\n          <tr  *ngFor=\"let data of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let i = index\">\n            <!--<td>-->\n              <!--<a href=\"crypto-single.html\">-->\n                <!--<div class=\"img-wrap\">-->\n                  <!--<img src=\"{{portfolioItem.logo}}\" alt=\"\">-->\n                <!--</div>-->\n                <!--<span>{{portfolioItem.name}}</span>-->\n              <!--</a>-->\n            <!--</td>-->\n            <!--<td>-->\n              <!--&lt;!&ndash; <p><span class=\"bold\">{{portfolioItem.proc}}% / год</span></p> &ndash;&gt;-->\n            <!--</td>-->\n            <!--<td>-->\n              <!--<span>189 дней</span>-->\n            <!--</td>-->\n            <!--<td>-->\n              <!--&lt;!&ndash; <span class=\"bold\">${{portfolioItem.depo}}</span> &ndash;&gt;-->\n            <!--</td>-->\n            <!--<td>-->\n              <!--<span>$ 90 (15%)</span>-->\n            <!--</td>-->\n            <!--<td>-->\n              <!--<div class=\"difference\">-->\n                <!--&lt;!&ndash;   <span [ngClass]=\"portfolioItem.status == 1 ? 'green' : 'red'\">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span> &ndash;&gt;-->\n                <!--<div class=\"buttons\">-->\n                  <!--<a href=\"#\" class=\"setting\"><img src=\"/img/setting-icon-table.png\" alt=\"\"></a>-->\n                  <!--<a (click)=\"onRemove(item.id, portfolioItem.id, in)\" class=\"minus\"><img src=\"/img/minus.png\" alt=\"\"></a>-->\n                <!--</div>-->\n              <!--</div>-->\n            <!--</td>-->\n            <td>\n              <div class=\"img-wrap\" [routerLink]=\"['/crypto', data.sym]\">\n     <!-- <img src=\"img/bitcoin-icon.png\" alt=\"\"> -->\n   </div>\n              <span [routerLink]=\"['/crypto', data.symbol]\">{{data.name}} ({{data.symbol}})</span>\n            </td>\n            <td>\n            <!--<td [ngStyle]=\"{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">-->\n              <span class=\"price\">${{data.now | number: '1.2'}}</span>\n              <span *ngIf=\"diff[item.id] >0 || diff[item.id] < 0\" [ngClass]=\"isNegative(diff[item.id])==true ? 'change-red' : 'change'\">(${{diff[item.id] | number: '1.2'}})</span>\n            </td>\n            <td>\n              <span class=\"capitalization\">${{data.marketCapUsd| number: '1.0-3'}}</span>\n            </td>\n            <td>\n              <span class=\"bargaining\">{{data.volume | number: '1.3'}}</span>\n            </td>\n            <td>\n              <span [ngClass]=\"isNegativePercent(data.now, data.day)==true ? 'change-red' : 'change-green'\">{{ countPercent(data.now, data.day) | number: '1.2'}}%</span>\n\n            </td>\n            <td>\n              <div class=\"difference\">\n                <span class=\"red\">-20,3% (-251,11)</span>\n                <div class=\"buttons\">\n                  <a href=\"#\" class=\"settings\"><img src=\"img/settings.svg\" alt=\"\"></a>\n                  <a href=\"#\" class=\"minus\"><img src=\"img/minus.png\" alt=\"\"></a>\n                </div>\n              </div>\n            </td>\n          </tr>\n          </ng-template>\n            <tr class=\"no-bg\">\n              <td colspan=\"3\" class=\"no-border\">\n                <a class=\"add\" *ngIf=\"item.user_portfolio_type_id == 1\">+Добавить облачный майнинг в портфель</a>\n                <a class=\"add\" *ngIf=\"item.user_portfolio_type_id == 2\">+Добавить ICO проект в портфель</a>\n                <a class=\"add\" *ngIf=\"item.user_portfolio_type_id == 3\">+Добавить криптовалюту в портфель</a>\n                <a class=\"add\" *ngIf=\"item.user_portfolio_type_id == 4\">+Добавить биржу в портфель</a>\n                <form>\n                  <input type=\"text\" placeholder=\"Введите название...\" [value]=\"searchLine\" (keyup)=\"searchTerm$.next($event.target.value)\" >\n                  <button type=\"submit\" (click)=\"onAdd(item.id, result_id)\">Добавить</button>\n                </form>\n                <ul *ngIf=\"results\">\n                <li *ngFor=\"let result of results | slice:0:9\">\n                  <a (click)=\"searchLine = result.name; result_id=result.id\" target=\"_blank\">\n                   {{ result.name }}\n                  </a>\n                </li>\n              </ul>\n              </td>\n              <td class=\"no-border\">\n                <span class=\"bold\">$178</span>\n              </td>           \n              <td class=\"no-border\">\n                <span class=\"red\">$1370</span>\n              </td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n    </div>\n  </section>"
+module.exports = "<section class=\"my-portfolio\">\n    <div class=\"wrapper\">\n      <div class=\"portfolio-head\">\n        <h2>Мой портфель<a href=\"#\">+</a></h2>\n        <p>Отслеживайте все важные изменения по монетам, биржам, майнингу, ico проектам и др. Вся информация в одном месте! <br>\nНастраивайте индивидуальные уведомления...</p>\n      </div>\n      <div class=\"table-wrap img-table\" *ngFor=\"let item of portfolioNames; let i = index\">\n        <div class=\"table-title\">\n          <h3>{{item.name}}</h3>\n          <div class=\"buttons\">\n            <a href=\"#\"><img src=\"/img/setting-icon-table.png\" alt=\"\"></a>\n            <a (click)=\"onDelete(item.id, i)\" class=\"basket\"><img src=\"/img/basket-white.png\" alt=\"\"></a>\n          </div>\n        </div>\n        <table class=\"table crypto-table\">\n          <thead *ngIf=\"item.user_portfolio_type_id == 3\">\n          <tr>\n            <th [class.active]=\"order === 'sym'\"\n                (click)=\"setOrder('sym')\"\n                width=\"12.9%\">\n              <span>Название</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th [class.active]=\"order === 'now'\"\n                (click)=\"setOrder('now')\"\n                width=\"15%\">\n              <span>Стоимость</span>\n\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th\n\n                    width=\"15%\">\n              <span>Капитализация</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th [class.active]=\"order === 'value'\"\n                (click)=\"setOrder('value')\"\n\n                width=\"12.4%\">\n              <span>Объем BTC (за 24 ч.)</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th\n                    width=\"11%\">\n              <span>Изм. за 24ч</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th\n                    width=\"18.3%\">\n              <span>Изм. за 7д</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"21%\">\n              <span>Изм. за 1 мес.</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n          </tr>\n          </thead>\n          <thead *ngIf=\"item.user_portfolio_type_id == 4\">\n          <tr>\n            <th width=\"30%\">\n              <span>Название</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"30%\" class=\"active\">\n              <span>Объем ( $ за 24 ч.)</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"40%\">\n              <span>Объем BTC (за 24ч.)</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n\n          </tr>\n          </thead>\n          <thead *ngIf=\"item.user_portfolio_type_id == 1\">\n          <tr>\n            <th width=\"27%\" [class.active]=\"order === 'name'\"\n                (click)=\"setOrder('name')\">\n              <span>Название</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"13%\" class=\"active\" [class.active]=\"order === 'proc'\"\n                (click)=\"setOrder('proc')\">\n              <span>Доходность</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"13%\" >\n              <span>Существует</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"13%\" [class.active]=\"order === 'depo'\"\n                (click)=\"setOrder('depo')\">\n              <span>Депозит</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"13%\">\n              <span>Получено</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"21%\" [class.active]=\"order === 'status'\"\n                (click)=\"setOrder('status')\">\n              <span>Статус</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n          </tr>\n          </thead>\n          <thead *ngIf=\"item.user_portfolio_type_id == 2\">\n          <tr>\n            <th width=\"27%\" [class.active]=\"order === 'name'\"\n                (click)=\"setOrder('name')\">\n              <span>Название</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"13%\" class=\"active\" [class.active]=\"order === 'proc'\"\n                (click)=\"setOrder('proc')\">\n              <span>Доходность</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"13%\" >\n              <span>Существует</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"13%\" [class.active]=\"order === 'depo'\"\n                (click)=\"setOrder('depo')\">\n              <span>Депозит</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"13%\">\n              <span>Получено</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n            <th width=\"21%\" [class.active]=\"order === 'status'\"\n                (click)=\"setOrder('status')\">\n              <span>Статус</span>\n              <img src=\"img/arr-top-table.png\" alt=\"\">\n            </th>\n          </tr>\n          </thead>\n          <tbody>\n\n          <ng-template [ngIf]=\"item.user_portfolio_type_id == 1\">\n            <tr *ngFor=\"let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index\">\n              <td>\n                <a href=\"crypto-single.html\">\n                  <div class=\"img-wrap\">\n                    <img src=\"{{portfolioItem.logo}}\" alt=\"\">\n                  </div>\n                  <span>{{portfolioItem.name}}</span>\n                </a>\n              </td>\n              <td>\n                <p><span class=\"bold\">{{portfolioItem.proc}}% / год</span></p>\n              </td>\n              <td>\n                <span>{{portfolioItem.depo_date}}</span>\n              </td>\n              <td>\n                <span class=\"bold\">${{portfolioItem.depo}}</span>\n              </td>\n              <td>\n                <span>{{portfolioItem.percentage}}%</span>\n              </td>\n              <td>\n                <div class=\"difference\">\n                  <span [ngClass]=\"portfolioItem.status == 1 ? 'green' : 'red'\">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span>\n                  <div class=\"buttons\">\n                    <a href=\"#\" class=\"setting\"><img src=\"/img/setting-icon-table.png\" alt=\"\"></a>\n                    <a (click)=\"onRemove(item.id, portfolioItem.id, in, 'App\\\\CloudMining')\" class=\"minus\"><img src=\"/img/minus.png\" alt=\"\"></a>\n                  </div>\n                </div>\n              </td>\n            </tr>\n          </ng-template>\n          <ng-template [ngIf]=\"item.user_portfolio_type_id == 2\">\n            <tr *ngFor=\"let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index\">\n              <td>\n                <a href=\"crypto-single.html\">\n                  <div class=\"img-wrap\">\n                    <img src=\"{{portfolioItem.logo}}\" alt=\"\">\n                  </div>\n                  <span>{{portfolioItem.name}}</span>\n                </a>\n              </td>\n              <td>\n                <p><span class=\"bold\">{{portfolioItem?.proc}}% / год</span></p>\n              </td>\n              <td>\n                <span>{{portfolioItem?.depo_date}}</span>\n              </td>\n              <td>\n                <span class=\"bold\">${{portfolioItem?.depo}}</span>\n              </td>\n              <td>\n                <span>{{portfolioItem?.percentage}}%</span>\n              </td>\n              <td>\n                <div class=\"difference\">\n                  <span [ngClass]=\"portfolioItem.status == 1 ? 'green' : 'red'\">{{portfolioItem.status == 1 ? 'Активен' : 'Закрыт'}}</span>\n                  <div class=\"buttons\">\n                    <a href=\"#\" class=\"setting\"><img src=\"/img/setting-icon-table.png\" alt=\"\"></a>\n                    <a (click)=\"onRemove(item.id, portfolioItem.id, in, 'App\\\\IcoProject')\" class=\"minus\"><img src=\"/img/minus.png\" alt=\"\"></a>\n                  </div>\n                </div>\n              </td>\n            </tr>\n          </ng-template>\n\n          <ng-template [ngIf]=\"item.user_portfolio_type_id == 4\">\n            <tr *ngFor=\"let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index\">\n              <td>\n                <a href=\"crypto-single.html\">\n                  <div class=\"img-wrap\">\n\n                  </div>\n                  <span>{{portfolioItem?.name}}</span>\n                </a>\n              </td>\n              <td>\n                <span class=\"amount-bold\">${{volumes[portfolioItem.name]?.usd | number:'1.0-5'}}</span>\n              </td>\n              <td>\n                <div class=\"difference\">\n                  <div class=\"stars-wrap\">\n                <span>{{volumes[portfolioItem.name]?.btc | number:'1.0-5'}}</span>\n                  </div>\n                  <div class=\"buttons\">\n                    <a href=\"#\" class=\"settings\"><img src=\"img/settings.svg\" alt=\"\"></a>\n                    <a (click)=\"onRemove(item.id, portfolioItem.id, in, 'App\\\\Stock')\" class=\"minus\"><img src=\"/img/minus.png\" alt=\"\"></a>\n                  </div>\n                </div>\n              </td>\n            </tr>\n          </ng-template>\n\n          <ng-template [ngIf]=\"item.user_portfolio_type_id == 3\">\n          <tr  *ngFor=\"let data of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index\">\n            <td>\n              <div class=\"img-wrap\" [routerLink]=\"['/crypto', data.sym]\">\n     <!-- <img src=\"img/bitcoin-icon.png\" alt=\"\"> -->\n   </div>\n              <span [routerLink]=\"['/crypto', data.symbol]\">{{data.name}} ({{data.symbol}})</span>\n            </td>\n            <td>\n            <!--<td [ngStyle]=\"{ 'background': 'white', 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">-->\n              <span class=\"price\">${{data.now | number: '1.2'}}</span>\n              <span *ngIf=\"diff[item.id] >0 || diff[item.id] < 0\" [ngClass]=\"isNegative(diff[item.id])==true ? 'change-red' : 'change'\">(${{diff[item.id] | number: '1.2'}})</span>\n            </td>\n            <td>\n              <span class=\"capitalization\">${{data.marketCapUsd| number: '1.0-3'}}</span>\n            </td>\n            <td>\n              <span class=\"bargaining\">{{data.volume | number: '1.3'}}</span>\n            </td>\n            <td>\n              <span [ngClass]=\"isNegativePercent(data.now, data.day)==true ? 'change-red' : 'change-green'\">{{ countPercent(data.now, data.day) | number: '1.2'}}%</span>\n\n            </td>\n            <td>\n              <span class=\"red\">{{ countPercent(data.now, data.week) | number: '1.2'}}%</span>\n            </td>\n            <td>\n              <div class=\"difference\">\n                <span class=\"red\">{{ countPercent(data.now, data.month) | number: '1.2'}}%</span>\n\n                <div class=\"buttons\">\n                  <a href=\"#\" class=\"settings\"><img src=\"img/settings.svg\" alt=\"\"></a>\n                  <a (click)=\"onRemove(item.id, portfolioItem.id, in, 'App\\\\CryptoStat')\" class=\"minus\"><img src=\"/img/minus.png\" alt=\"\"></a>\n                </div>\n              </div>\n            </td>\n          </tr>\n          </ng-template>\n            <tr class=\"no-bg\">\n              <td colspan=\"3\" class=\"no-border\">\n                <a class=\"add\" *ngIf=\"item.user_portfolio_type_id == 1\" (click)=\"openForm(1)\">+Добавить облачный майнинг в портфель</a>\n                <a class=\"add\" *ngIf=\"item.user_portfolio_type_id == 2\" (click)=\"openForm(2)\">+Добавить ICO проект в портфель</a>\n                <a class=\"add\" *ngIf=\"item.user_portfolio_type_id == 3\" (click)=\"openForm(3)\">+Добавить криптовалюту в портфель</a>\n                <a class=\"add\" *ngIf=\"item.user_portfolio_type_id == 4\" (click)=\"openForm(4)\">+Добавить биржу в портфель</a>\n\n                <form *ngIf=\"item.user_portfolio_type_id == 1 && mining_form == true\">\n                  <input type=\"text\" placeholder=\"Введите название...\" [value]=\"searchLine\" (keyup)=\"searchTerm$.next($event.target.value); onSearch(1)\" >\n                  <button type=\"submit\" (click)=\"onAdd(item.id, result_id, 'App\\\\CloudMining')\">Добавить</button>\n                </form>\n\n                <form *ngIf=\"item.user_portfolio_type_id == 2 && ico_form == true\">\n                  <input type=\"text\" placeholder=\"Введите название...\" [value]=\"searchLine\" (keyup)=\"searchTerm$.next($event.target.value); onSearch(2)\" >\n                  <button type=\"submit\" (click)=\"onAdd(item.id, result_id, 'App\\\\IcoProject')\">Добавить</button>\n                </form>\n\n                <form *ngIf=\"item.user_portfolio_type_id == 3 && crypto_form == true\">\n                  <input type=\"text\" placeholder=\"Введите название...\" [value]=\"searchLine\" (keyup)=\"searchTerm$.next($event.target.value); onSearch(3)\" >\n                  <button type=\"submit\" (click)=\"onAdd(item.id, result_id, 'App\\\\CryptoStat')\">Добавить</button>\n                </form>\n                <form *ngIf=\"item.user_portfolio_type_id == 4 && stock_form == true\">\n                  <input type=\"text\" placeholder=\"Введите название...\" [value]=\"searchLine\" (keyup)=\"searchTerm$.next($event.target.value); onSearch(4)\" >\n                  <button type=\"submit\" (click)=\"onAdd(item.id, result_id, 'App\\\\Stock')\">Добавить</button>\n                </form>\n                <ul *ngIf=\"results?.length > 0 && item.user_portfolio_type_id == 1 && mining_form == true\">\n                  <li *ngFor=\"let result of results\">\n                    <a (click)=\"searchLine = result.name; result_id=result.id\" target=\"_blank\">\n                      {{ result.name }}\n                    </a>\n                  </li>\n                </ul>\n                <ul *ngIf=\"results?.length > 0 && item.user_portfolio_type_id == 2 && ico_form == true\">\n                  <li *ngFor=\"let result of results\">\n                    <a (click)=\"searchLine = result.name; result_id=result.id\" target=\"_blank\">\n                      {{ result.name }}\n                    </a>\n                  </li>\n                </ul>\n                <ul *ngIf=\"results?.length > 0 && item.user_portfolio_type_id == 3 && crypto_form == true\">\n                  <li *ngFor=\"let result of results\">\n                    <a (click)=\"searchLine = result.name; result_id=result.id\" target=\"_blank\">\n                      {{ result.name }}\n                    </a>\n                  </li>\n                </ul>\n                <ul *ngIf=\"results?.length > 0 && item.user_portfolio_type_id == 4 && stock_form == true\">\n                  <li *ngFor=\"let result of results\">\n                    <a (click)=\"searchLine = result.name; result_id=result.id\" target=\"_blank\">\n                      {{ result.name }}\n                    </a>\n                  </li>\n                </ul>\n              </td>\n              <!--<td class=\"no-border\">-->\n                <!--<span class=\"bold\">$178</span>-->\n              <!--</td>           -->\n              <!--<td class=\"no-border\">-->\n                <!--<span class=\"red\">$1370</span>-->\n              <!--</td>-->\n            </tr>\n          </tbody>\n        </table>\n      </div>\n    </div>\n  </section>"
 
 /***/ }),
 
@@ -5836,6 +5849,7 @@ module.exports = ""
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__search_service__ = __webpack_require__("./angular/app/search.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__ = __webpack_require__("./node_modules/rxjs/_esm5/Subject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__cloud_mining_service__ = __webpack_require__("./angular/app/cloud-mining.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5851,18 +5865,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PortfolioComponent = (function () {
     /**
-     * Example: Use Order pipe in the component
-     *
-     * @param {OrderPipe} orderPipe
-     */
-    function PortfolioComponent(orderPipe, portfolioService, searchService, stockService) {
-        var _this = this;
+   * Example: Use Order pipe in the component
+   *
+   * @param {OrderPipe} orderPipe
+   */
+    function PortfolioComponent(orderPipe, portfolioService, searchService, stockService, miningService) {
         this.orderPipe = orderPipe;
         this.portfolioService = portfolioService;
         this.searchService = searchService;
         this.stockService = stockService;
+        this.miningService = miningService;
         this.order = 'proc';
         this.portfolioNames = [];
         this.portfolios = [];
@@ -5874,12 +5889,34 @@ var PortfolioComponent = (function () {
         this.diff = [];
         this.volumes = [];
         this.exchange_volumes = [];
-        this.searchService.mainSearch(this.searchTerm$)
+        this.mining_form = false;
+        this.ico_form = false;
+        this.crypto_form = false;
+        this.stock_form = false;
+        this.type = 1;
+    }
+    PortfolioComponent.prototype.onSearch = function (type) {
+        var _this = this;
+        this.searchService.search(this.searchTerm$, type)
             .subscribe(function (results) {
             _this.results = results;
             console.log(results);
         });
-    }
+    };
+    PortfolioComponent.prototype.openForm = function (type) {
+        if (type == 1) {
+            this.mining_form = !this.mining_form;
+        }
+        if (type == 2) {
+            this.ico_form = !this.ico_form;
+        }
+        if (type == 3) {
+            this.crypto_form = !this.crypto_form;
+        }
+        if (type == 4) {
+            this.stock_form = !this.stock_form;
+        }
+    };
     PortfolioComponent.prototype.getPorts = function (type, type_id) {
         var _this = this;
         this.portfolioService.getPortfolioNames().subscribe(function (res) {
@@ -5895,16 +5932,12 @@ var PortfolioComponent = (function () {
                         }
                         if (type_id == 4) {
                             _this.stockService.getVolumes().subscribe(function (res) {
-                                _this.portfolios[item.id].push(res);
                                 for (var _i = 0, res_1 = res; _i < res_1.length; _i++) {
                                     var resItem = res_1[_i];
                                     _this.volumes[resItem.name] = {
                                         'btc': resItem.btc,
                                         'usd': resItem.usd
                                     };
-                                }
-                                for (var _a = 0, res_2 = res; _a < res_2.length; _a++) {
-                                    var resItem = res_2[_a];
                                 }
                                 console.log('pushed');
                                 console.log(_this.portfolios[item.id]);
@@ -5922,12 +5955,35 @@ var PortfolioComponent = (function () {
                                     portfolioItem.volume = crypto[portfolioItem['symbol'] + '/USD']['volume'];
                                     portfolioItem.day = crypto[portfolioItem['symbol'] + "/USD"]['day'];
                                     portfolioItem.week = crypto[portfolioItem['symbol'] + "/USD"]['week'];
+                                    portfolioItem.month = crypto[portfolioItem['symbol'] + "/USD"]['month'];
                                     portfolioItem.marketCapUsd = crypto[portfolioItem['symbol'] + "/USD"]['marketCapUsd'];
                                     _this.diff[item.id] = portfolioItem.now - portfolioItem.last;
                                 }
                                 console.log(crypto);
                                 console.log(_this.portfolios[item.id]);
                             });
+                        }
+                        if (type_id == 1) {
+                            var _loop_2 = function (portfolioItem) {
+                                _this.miningService.getMiningId(portfolioItem.id).subscribe(function (res) {
+                                    portfolioItem = res;
+                                });
+                            };
+                            for (var _i = 0, _a = _this.portfolios[item.id]; _i < _a.length; _i++) {
+                                var portfolioItem = _a[_i];
+                                _loop_2(portfolioItem);
+                            }
+                        }
+                        if (type_id == 2) {
+                            var _loop_3 = function (portfolioItem) {
+                                _this.miningService.getIcoId(portfolioItem.id).subscribe(function (res) {
+                                    portfolioItem = res;
+                                });
+                            };
+                            for (var _b = 0, _c = _this.portfolios[item.id]; _b < _c.length; _b++) {
+                                var portfolioItem = _c[_b];
+                                _loop_3(portfolioItem);
+                            }
                         }
                     });
                 }
@@ -5952,21 +6008,20 @@ var PortfolioComponent = (function () {
             }
         });
     };
-    PortfolioComponent.prototype.onAdd = function (port_id, id) {
+    PortfolioComponent.prototype.onAdd = function (port_id, id, type) {
         var _this = this;
-        this.portfolioService.submitPortfolio(port_id, id, 'App\\CloudMining').subscribe(function (result) {
+        this.portfolioService.submitPortfolio(port_id, id, type).subscribe(function (result) {
             _this.portfolioService.getPortfolioById(port_id)
                 .subscribe(function (res) { if (res.length > 0) {
                 _this.portfolios[port_id] = res;
-                console.log(res);
             } });
-            console.log(result);
         });
     };
-    PortfolioComponent.prototype.onRemove = function (itemid, id, index) {
+    PortfolioComponent.prototype.onRemove = function (itemid, id, index, type) {
         var _this = this;
-        this.portfolioService.removePortfolio(id).subscribe(function (res) {
+        this.portfolioService.removePortfolio(id, type, itemid).subscribe(function (res) {
             if (index > -1) {
+                console.log(res);
                 _this.portfolios[itemid].splice(index, 1);
             }
         });
@@ -6011,12 +6066,12 @@ PortfolioComponent = __decorate([
         selector: 'app-portfolio',
         template: __webpack_require__("./angular/app/profile/portfolio/portfolio.component.html"),
         styles: [__webpack_require__("./angular/app/profile/portfolio/portfolio.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_1__portfolio_service__["a" /* PortfolioService */], __WEBPACK_IMPORTED_MODULE_3__search_service__["a" /* SearchService */], __WEBPACK_IMPORTED_MODULE_5__stocks_service__["a" /* StocksService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_1__portfolio_service__["a" /* PortfolioService */], __WEBPACK_IMPORTED_MODULE_3__search_service__["a" /* SearchService */], __WEBPACK_IMPORTED_MODULE_5__stocks_service__["a" /* StocksService */], __WEBPACK_IMPORTED_MODULE_6__cloud_mining_service__["a" /* CloudMiningService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__portfolio_service__["a" /* PortfolioService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__search_service__["a" /* SearchService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__stocks_service__["a" /* StocksService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__portfolio_service__["a" /* PortfolioService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__search_service__["a" /* SearchService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__stocks_service__["a" /* StocksService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__cloud_mining_service__["a" /* CloudMiningService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__cloud_mining_service__["a" /* CloudMiningService */]) === "function" && _e || Object])
 ], PortfolioComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=portfolio.component.js.map
 
 /***/ }),
@@ -6577,16 +6632,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var SearchService = (function () {
     function SearchService(http) {
         this.http = http;
-        this.baseUrl = '/miningraw/search';
+        this.miningBaseUrl = '/miningraw/search';
+        this.icoBaseUrl = '/icoraw/search';
+        this.cryptoBaseUrl = '/cryptoraw/search';
+        this.stockBaseUrl = '/stockraw/search';
         this.queryUrl = '?search=';
         this.mainUrl = '/angular/search';
         this.mainQueryUrl = '?q=';
     }
-    SearchService.prototype.search = function (terms) {
+    SearchService.prototype.search = function (terms, type) {
         var _this = this;
         return terms.debounceTime(400)
             .distinctUntilChanged()
-            .switchMap(function (term) { return _this.searchEntries(term); });
+            .switchMap(function (term) { return _this.searchEntries(term, type); });
     };
     SearchService.prototype.mainSearch = function (terms) {
         var _this = this;
@@ -6594,9 +6652,24 @@ var SearchService = (function () {
             .distinctUntilChanged()
             .switchMap(function (term) { return _this.mainSearchEntries(term); });
     };
-    SearchService.prototype.searchEntries = function (term) {
-        return this.http
-            .get(this.baseUrl + this.queryUrl + term);
+    SearchService.prototype.searchEntries = function (term, type) {
+        console.log(type);
+        if (type == 1) {
+            return this.http
+                .get(this.miningBaseUrl + this.queryUrl + term);
+        }
+        if (type == 2) {
+            return this.http
+                .get(this.icoBaseUrl + this.queryUrl + term);
+        }
+        if (type == 3) {
+            return this.http
+                .get(this.cryptoBaseUrl + this.queryUrl + term);
+        }
+        if (type == 4) {
+            return this.http
+                .get(this.stockBaseUrl + this.queryUrl + term);
+        }
     };
     SearchService.prototype.mainSearchEntries = function (term) {
         return this.http

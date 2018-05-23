@@ -6544,7 +6544,7 @@ tr.no-bg:hover {
 tr.no-bg form {
   width: 364px;
   margin-top: 12px;
-  display: none;
+  /*display: none;*/
   margin-left: -15px;
 }
 tr.no-bg form.hidden {

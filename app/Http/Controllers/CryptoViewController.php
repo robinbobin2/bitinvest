@@ -19,4 +19,14 @@ class CryptoViewController extends Controller
             $crypto
         );
 	}
+
+	public function search() {
+
+        if($_REQUEST['search']) {
+            return CryptoStat::where('name','like', '%'. $_REQUEST['search'].'%')->get();
+            
+        } else if($_REQUEST['search'] == ''){
+            return ['error'=>'not found'];
+        }
+    }
 }

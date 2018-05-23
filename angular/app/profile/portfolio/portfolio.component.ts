@@ -4,12 +4,13 @@ import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 import { SearchService } from '../../search.service';
 import { Subject } from 'rxjs/Subject';
 import {StocksService} from "../../stocks.service";
+import {CloudMiningService} from "../../cloud-mining.service";
 
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss'],
-  providers: [PortfolioService, SearchService, StocksService]
+  providers: [PortfolioService, SearchService, StocksService, CloudMiningService]
 })
 export class PortfolioComponent implements OnInit {
   order = 'proc';
@@ -24,7 +25,13 @@ export class PortfolioComponent implements OnInit {
   diff =[];
   volumes = [];
   exchange_volumes = [];
-  /**
+    mining_form = false;
+    ico_form = false;
+    crypto_form = false;
+    stock_form = false;
+    type = 1;
+
+    /**
    * Example: Use Order pipe in the component
    *
    * @param {OrderPipe} orderPipe
@@ -32,16 +39,36 @@ export class PortfolioComponent implements OnInit {
   constructor(private orderPipe: OrderPipe, 
     private portfolioService: PortfolioService, 
     private searchService: SearchService,
-    private stockService: StocksService) 
+    private stockService: StocksService,
+    private miningService: CloudMiningService)
   {
-    this.searchService.mainSearch(this.searchTerm$)
-      .subscribe(results => {
-        this.results = results;
-        console.log(results);
-      });
+
   	
   	
    }
+    onSearch(type)
+    {
+        this.searchService.search(this.searchTerm$, type)
+            .subscribe(results => {
+                this.results = results;
+                console.log(results);
+            });
+    }
+   openForm(type) {
+       if (type == 1) {
+           this.mining_form = !this.mining_form
+       }
+       if (type == 2) {
+           this.ico_form = !this.ico_form
+       }
+       if (type == 3) {
+           this.crypto_form = !this.crypto_form
+       }
+       if (type == 4) {
+           this.stock_form = !this.stock_form
+       }
+   }
+
    getPorts(type, type_id) {
      this.portfolioService.getPortfolioNames().subscribe(
       res => {
@@ -62,15 +89,11 @@ export class PortfolioComponent implements OnInit {
 
                             if(type_id == 4) {
                                 this.stockService.getVolumes().subscribe(res => {
-                                    this.portfolios[item.id].push(res)
                                     for(let resItem of res) {
                                         this.volumes[resItem.name] = {
                                             'btc': resItem.btc,
                                             'usd': resItem.usd
                                         }
-                                    }
-                                    for(let resItem of res) {
-
                                     }
                                     console.log('pushed')
                                     console.log(this.portfolios[item.id])
@@ -91,6 +114,7 @@ export class PortfolioComponent implements OnInit {
                                            portfolioItem.volume = crypto[portfolioItem['symbol']+'/USD']['volume'];
                                            portfolioItem.day = crypto[portfolioItem['symbol']+"/USD"]['day'];
                                            portfolioItem.week = crypto[portfolioItem['symbol']+"/USD"]['week'];
+                                           portfolioItem.month = crypto[portfolioItem['symbol']+"/USD"]['month'];
                                            portfolioItem.marketCapUsd = crypto[portfolioItem['symbol']+"/USD"]['marketCapUsd'];
 
                                            this.diff[item.id] = portfolioItem.now - portfolioItem.last;
@@ -102,6 +126,31 @@ export class PortfolioComponent implements OnInit {
                                    })
                                
                                 
+                            }
+
+                            if (type_id == 1) {
+                                for (let portfolioItem of this.portfolios[item.id]) {
+                                    this.miningService.getMiningId(portfolioItem.id).subscribe(
+                                        res => {
+
+                                            portfolioItem = res;
+
+                                        }
+
+                                    )
+                                }
+                            }
+                            if (type_id == 2) {
+                                for (let portfolioItem of this.portfolios[item.id]) {
+                                    this.miningService.getIcoId(portfolioItem.id).subscribe(
+                                        res => {
+
+                                            portfolioItem = res;
+
+                                        }
+
+                                    )
+                                }
                             }
                             
                             
@@ -134,22 +183,22 @@ export class PortfolioComponent implements OnInit {
 					}
    	)
    }
-   onAdd(port_id, id) {
-     this.portfolioService.submitPortfolio(port_id,id,'App\\CloudMining').subscribe(
+   onAdd(port_id, id, type) {
+     this.portfolioService.submitPortfolio(port_id,id,type).subscribe(
        result => {
          this.portfolioService.getPortfolioById(port_id)
         .subscribe(
-          res => {if (res.length > 0) {this.portfolios[port_id] = res; console.log(res) } }
+          res => {if (res.length > 0) {this.portfolios[port_id] = res; } }
         );
-        console.log(result);
        }
      )
    }
-   onRemove(itemid, id, index) {
-   	this.portfolioService.removePortfolio(id).subscribe(
+   onRemove(itemid, id, index, type) {
+   	this.portfolioService.removePortfolio(id, type, itemid).subscribe(
 
    		res => {
    			if (index > -1) {
+   			    console.log(res);
 				this.portfolios[itemid].splice(index, 1);
 			}
    		}

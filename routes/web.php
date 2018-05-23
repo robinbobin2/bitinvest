@@ -40,6 +40,9 @@ Route::get('/analyticsraw/', 'AnalyticsViewController@index');
 Route::get('/reviewraw/', 'ReviewViewController@index');
 Route::get('/miningraw/', 'CloudMiningViewController@index');
 Route::get('/miningraw/search', 'CloudMiningViewController@search');
+Route::get('/icoraw/search', 'IcoProjectViewController@search');
+Route::get('/cryptoraw/search', 'CryptoViewController@search');
+Route::get('/stockraw/search', 'StocksController@search');
 Route::get('/miningraw/top', 'CloudMiningViewController@topfive');
 Route::get('/miningraw/{mining}', 'CloudMiningViewController@show');
 Route::get('/miningbycat/{category}', 'CloudMiningViewController@byCat');
@@ -126,7 +129,7 @@ Route::get('/profile/edit', ['as' => 'profile.edit', 'uses' => "AngularControlle
 Route::get('/profile/portfolio', ['as' => 'profile.portfolio', 'uses' => "AngularController@serve"]);
 Route::get('/angular/user/', "AngularController@user");
 Route::get('/angular/userportfolio/', "AngularController@portfolio");
-Route::get('/angular/userportfolio/remove/{id}', "AngularController@removePortfolio");
+Route::post('/angular/userportfolio/remove/{id}', "AngularController@removePortfolio");
 Route::get('/angular/userportfolio/ico/remove/{id}', "AngularController@icoRemovePortfolio");
 Route::get('/angular/userportfolio/crypto/remove/{id}', "AngularController@cryptoRemovePortfolio");
 Route::get('/angular/userportfolio/stocks/remove/{id}', "AngularController@stocksRemovePortfolio");

@@ -109,12 +109,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
     this.auth.getUser().subscribe(
      response => {
          for(let item of response['portfolio']) {
-             console.log('loop')
              if (item.user_portfolio_type_id == 3) {
                  this.getUserPortfolio.push(item)
              }
-             console.log(item)
-             console.log(this.getUserPortfolio)
          }
 
      }
@@ -127,7 +124,6 @@ export class CryptoComponent implements OnInit, OnDestroy {
                   // code...
               } else {
                   this.portfoliosInfo = response['crypto'];
-                  console.log(this.portfoliosInfo);
               }
           },
       );
