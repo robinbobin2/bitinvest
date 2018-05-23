@@ -141,6 +141,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
    }
 
    ngOnInit() {
+       let portfolioUrl = '/angular/userportfolio';
+       this.portfolioInfo = this.http.get<any>(portfolioUrl);
        this.authService.getUser().subscribe(
            response => {
                for(let item of response['portfolio']) {

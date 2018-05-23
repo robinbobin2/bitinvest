@@ -2278,6 +2278,8 @@ var CryptoAllComponent = (function () {
     };
     CryptoAllComponent.prototype.ngOnInit = function () {
         var _this = this;
+        var portfolioUrl = '/angular/userportfolio';
+        this.portfolioInfo = this.http.get(portfolioUrl);
         this.authService.getUser().subscribe(function (response) {
             for (var _a = 0, _b = response['portfolio']; _a < _b.length; _a++) {
                 var item = _b[_a];
