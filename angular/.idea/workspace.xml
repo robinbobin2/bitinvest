@@ -14,62 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="cloud-mining-detail.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.html">
+      <file leaf-file-name="portfolio.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="31" column="116" selection-start-line="31" selection-start-column="116" selection-end-line="31" selection-end-column="116" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#3;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#3;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#3;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="all-cloud-mining.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="79" column="16" selection-start-line="75" selection-start-column="18" selection-end-line="79" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cloud-mining-detail.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="154" column="56" selection-start-line="154" selection-start-column="56" selection-end-line="154" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="crypto.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="128" column="8" lean-forward="true" selection-start-line="118" selection-start-column="6" selection-end-line="128" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#61#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="all-cloud-mining.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="232" lean-forward="true" selection-start-line="211" selection-start-column="1" selection-end-line="232" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="141" column="16" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -78,7 +27,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>== 4</find>
       <find>onAdd</find>
       <find>checkAuth</find>
       <find>getPorts</find>
@@ -108,6 +56,7 @@
       <find>remove</find>
       <find>removePortfolio</find>
       <find>onini</find>
+      <find>follow</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -360,12 +309,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="40489000" />
+      <workItem from="1526711663196" duration="41182000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86823000" />
+    <option name="totallyTimeSpent" value="87516000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -637,13 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="141" column="16" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/safe-html.pipe.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -783,7 +725,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
+        <state relative-caret-position="3432">
           <caret line="232" lean-forward="true" selection-start-line="211" selection-start-column="1" selection-end-line="232" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
@@ -828,6 +770,13 @@
             <element signature="n#style#0;n#div#2;n#div#3;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#3;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="141" column="16" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
         </state>
       </provider>
     </entry>
