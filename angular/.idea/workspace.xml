@@ -14,20 +14,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="portfolio.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="portfolio.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="282" column="139" selection-start-line="282" selection-start-column="139" selection-end-line="282" selection-end-column="139" />
+            <state relative-caret-position="385">
+              <caret line="294" column="155" selection-start-line="294" selection-start-column="155" selection-end-line="294" selection-end-column="155" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="portfolio.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="portfolio.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+            <state relative-caret-position="176">
+              <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -102,9 +102,9 @@
       <find>onRemove</find>
       <find>== 4</find>
       <find>submitPortfolio</find>
-      <find>onAdd</find>
       <find>removePortfolio</find>
       <find>form</find>
+      <find>onAdd</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -147,8 +147,8 @@
         <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts" />
         <option value="$PROJECT_DIR$/app/portfolio.service.ts" />
         <option value="$PROJECT_DIR$/app/search.service.ts" />
-        <option value="$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html" />
         <option value="$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts" />
+        <option value="$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html" />
       </list>
     </option>
   </component>
@@ -347,12 +347,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="31014000" />
+      <workItem from="1526711663196" duration="31402000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77348000" />
+    <option name="totallyTimeSpent" value="77736000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -797,20 +797,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="282" column="139" selection-start-line="282" selection-start-column="139" selection-end-line="282" selection-end-column="139" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+        <state relative-caret-position="176">
+          <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="294" column="155" selection-start-line="294" selection-start-column="155" selection-end-line="294" selection-end-column="155" />
         </state>
       </provider>
     </entry>
