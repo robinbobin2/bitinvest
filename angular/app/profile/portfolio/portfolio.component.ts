@@ -191,7 +191,7 @@ export class PortfolioComponent implements OnInit {
        result => {
          this.portfolioService.getPortfolioById(port_id)
         .subscribe(
-          res => {if (res.length > 0) {this.portfolios[port_id] = res; console.log(res) } }
+          res => {if (res.length > 0) {this.portfolios[port_id] = res; } }
         );
        }
      )

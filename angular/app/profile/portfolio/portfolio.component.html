@@ -139,7 +139,7 @@
             </th>
           </tr>
           </thead>
-          <tbody *ngIf="portfolios[item.id]">
+          <tbody>
 
           <ng-template [ngIf]="item.user_portfolio_type_id == 1">
             <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
