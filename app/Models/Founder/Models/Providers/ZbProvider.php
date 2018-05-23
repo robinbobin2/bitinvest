@@ -98,4 +98,9 @@ class ZbProvider extends FounderProvider
             }
         }
     }
+
+    public function isCrypto()
+    {
+        return true;
+    }
 }
