@@ -95,9 +95,6 @@ export class PortfolioComponent implements OnInit {
                                             'usd': resItem.usd
                                         }
                                     }
-                                    for(let resItem of res) {
-
-                                    }
                                     console.log('pushed')
                                     console.log(this.portfolios[item.id])
                                 });

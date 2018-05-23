@@ -67,7 +67,7 @@ class AngularController extends Controller
             $userPortfolio['crypto'][] = $portfolio->crypto;
 
         }
-        return json_encode($userPortfolio);
+        return $portfolios;
     }
 
     public function byportfolio($id)

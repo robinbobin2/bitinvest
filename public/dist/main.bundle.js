@@ -5939,9 +5939,6 @@ var PortfolioComponent = (function () {
                                         'usd': resItem.usd
                                     };
                                 }
-                                for (var _a = 0, res_2 = res; _a < res_2.length; _a++) {
-                                    var resItem = res_2[_a];
-                                }
                                 console.log('pushed');
                                 console.log(_this.portfolios[item.id]);
                             });
