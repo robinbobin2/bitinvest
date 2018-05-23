@@ -30,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exchanges.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="exchanges.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="137" column="122" selection-start-line="137" selection-start-column="122" selection-end-line="137" selection-end-column="122" />
+            <state relative-caret-position="448">
+              <caret line="193" column="59" lean-forward="true" selection-start-line="193" selection-start-column="59" selection-end-line="193" selection-end-column="59" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -58,8 +58,8 @@
       <file leaf-file-name="crypto-all.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="34" selection-start-line="34" selection-end-line="35" />
+            <state relative-caret-position="203">
+              <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -67,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exchanges.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="exchanges.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="98">
+              <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="48" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -82,11 +82,8 @@
       <file leaf-file-name="ico-project-all.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-all/ico-project-all.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="128" column="5" selection-start-line="128" selection-start-column="5" selection-end-line="137" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#65#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="75">
+              <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -138,9 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>anim</find>
-      <find>img/st</find>
-      <find>getUserPortfolio</find>
       <find>onRemove</find>
       <find>== 4</find>
       <find>onAdd</find>
@@ -161,13 +155,16 @@
       <find>addPortfolio</find>
       <find>user_portfollable_id</find>
       <find>portfoliosInfo</find>
-      <find>typetype</find>
       <find>portfolioInfo</find>
       <find>this.portfolioInfo</find>
       <find>follow-</find>
-      <find>submitPortfolio</find>
       <find>checkin</find>
       <find>checkInPortfolio</find>
+      <find>typetype</find>
+      <find>submi</find>
+      <find>submitPortfolio</find>
+      <find>create</find>
+      <find>this.portfoliosInfo</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -410,12 +407,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="39168000" />
+      <workItem from="1526711663196" duration="39502000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85502000" />
+    <option name="totallyTimeSpent" value="85836000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -805,50 +802,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="80" column="54" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-all/ico-project-all.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="128" column="5" selection-start-line="128" selection-start-column="5" selection-end-line="137" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="75" column="86" selection-start-line="75" selection-start-column="69" selection-end-line="75" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="34" selection-start-line="34" selection-end-line="35" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -866,13 +823,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="80" column="54" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="137" column="122" selection-start-line="137" selection-start-column="122" selection-end-line="137" selection-end-column="122" />
+        <state relative-caret-position="448">
+          <caret line="193" column="59" lean-forward="true" selection-start-line="193" selection-start-column="59" selection-end-line="193" selection-end-column="59" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-all/ico-project-all.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
           </folding>
         </state>
       </provider>

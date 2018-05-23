@@ -113,12 +113,12 @@ export class ExchangesComponent implements OnInit, OnDestroy {
    }
 
     removePortfolio(id) {
-        this.portfolioService.removePortfolio(id, 'App\\CryptoStat', 0).subscribe( () => {
+        this.portfolioService.removePortfolio(id, 'App\\Stock', 0).subscribe( () => {
             this.portfolioInfo.subscribe(res=>{
                 if(res['error']) {
                     // code...
                 } else {
-                    this.portfoliosInfo = res['crypto'];
+                    this.portfoliosInfo = res['stocks'];
                     console.log(this.portfoliosInfo);
                 }
             });
@@ -128,7 +128,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
 
     createPortfolio(form: NgForm) {
 
-        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 2},{headers: headers})
+        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 4},{headers: headers})
             .subscribe(
                 response => {this.getUserPortfolio.push(response); form.reset()},
                 error => console.log(error)
