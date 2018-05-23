@@ -26,7 +26,11 @@ class BraziliexProvider extends FounderProvider
         $response = [];
         $result = $this->getConnector()->search();
 
-        foreach ($result as $currency => $supplierTicker){
+        if (!$result) {
+            return $response;
+        }
+
+        foreach ($result as $currency => $supplierTicker) {
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->lowestAsk);
             $ticker->setBid($supplierTicker->highestBid);
@@ -65,6 +69,7 @@ class BraziliexProvider extends FounderProvider
      */
     public function save($response)
     {
+        sleep(5);
         foreach ($response as $ticker) {
             $exchange = new ExchangeRate();
             $exchange->value = $ticker->getValue();
