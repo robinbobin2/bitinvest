@@ -18,6 +18,8 @@ export class Cripto {
 }
 
 export interface CryptoData {
+    name: string;
+    id: number;
   sym: string;
   last: number;
   now: number;
@@ -165,11 +167,15 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         let symbol = admin[index].symbol;
         let year = admin[index].year;
         let algo = admin[index].algo;
+          let id = admin[index].id;
+          let name = admin[index].name;
         if(this.dataUsd[index]) {
-          this.dataUsd[index].sym = symbol;
+            this.dataUsd[index].sym = symbol;
+            this.dataUsd[index].id = id;
+            this.dataUsd[index].name = name;
           this.dataUsd[index].algo = algo;
           this.dataUsd[index].year = year;
-          this.dataUsd[index].last = this.resp[symbol+'/USD']['last'];
+            this.dataUsd[index].last = this.resp[symbol+'/USD']['last'];
           this.dataUsd[index].now = this.resp[symbol+'/USD']['now'];
           this.dataUsd[index].min = this.resp[symbol+'/USD']['min'];
           this.dataUsd[index].max = this.resp[symbol+'/USD']['max'];
@@ -181,6 +187,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
           
         } else {
           this.dataUsd[index] = {
+              id: 0,
+              name: '',
             sym: '',
             last: 0,
             now: 0,

@@ -18,7 +18,7 @@
         <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="427">
-              <caret line="145" column="98" selection-start-line="145" selection-start-column="98" selection-end-line="145" selection-end-column="98" />
+              <caret line="145" column="90" selection-start-line="145" selection-start-column="90" selection-end-line="145" selection-end-column="109" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -45,8 +45,8 @@
       <file leaf-file-name="crypto-all.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="93" column="25" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
+            <state relative-caret-position="186">
+              <caret line="174" column="43" selection-start-line="174" selection-start-column="43" selection-end-line="174" selection-end-column="43" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -409,12 +409,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="37677000" />
+      <workItem from="1526711663196" duration="37861000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84011000" />
+    <option name="totallyTimeSpent" value="84195000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -855,7 +855,7 @@
     <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
-          <caret line="145" column="98" selection-start-line="145" selection-start-column="98" selection-end-line="145" selection-end-column="98" />
+          <caret line="145" column="90" selection-start-line="145" selection-start-column="90" selection-end-line="145" selection-end-column="109" />
           <folding>
             <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -868,8 +868,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="93" column="25" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
+        <state relative-caret-position="186">
+          <caret line="174" column="43" selection-start-line="174" selection-start-column="43" selection-end-line="174" selection-end-column="43" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>
