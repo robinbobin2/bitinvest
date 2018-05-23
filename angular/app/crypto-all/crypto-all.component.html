@@ -143,7 +143,7 @@ width="18.3%">
    <div class="buttons">
     <button class="right" [routerLink]="['/crypto', data.sym]">></button>
        <a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow plus" data-effect="mfp-zoom-in" data-effect="mfp-zoom-in">+</a>
-       <a href="#follow-popup" *ngIf="!checkInPortfolio(data.id) && checkAuth()" (click)="console.log(data)" class="plus popup-link follow" data-effect="mfp-zoom-in">+</a>
+       <a href="#follow-popup" *ngIf="!checkInPortfolio(data.id) && checkAuth()" (click)="log(data)" class="plus popup-link follow" data-effect="mfp-zoom-in">+</a>
 
        <button  *ngIf="checkInPortfolio(data.id) && checkAuth()"  (click)="removePortfolio(data.id)" class="minus" data-effect="mfp-zoom-in"><img src="img/minus.png" alt=""></button>
 

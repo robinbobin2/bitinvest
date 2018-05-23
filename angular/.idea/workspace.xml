@@ -14,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="crypto-all.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="crypto-all.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="427">
-              <caret line="145" column="106" selection-start-line="145" selection-start-column="106" selection-end-line="145" selection-end-column="106" />
+              <caret line="145" column="98" selection-start-line="145" selection-start-column="98" selection-end-line="145" selection-end-column="98" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -42,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crypto-all.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="crypto-all.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="92" column="19" selection-start-line="92" selection-start-column="4" selection-end-line="92" selection-end-column="19" />
+            <state relative-caret-position="411">
+              <caret line="93" column="25" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -152,7 +152,6 @@
       <find>getPorts</find>
       <find>form</find>
       <find>typetype</find>
-      <find>submitPortfolio</find>
       <find>getPortfolioById</find>
       <find>remove</find>
       <find>removePortfolio</find>
@@ -167,6 +166,7 @@
       <find>addPortfolio</find>
       <find>follow-</find>
       <find>user_portfollable_id</find>
+      <find>submitPortfolio</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -209,8 +209,8 @@
         <option value="$PROJECT_DIR$/app/portfolio.service.ts" />
         <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts" />
         <option value="$PROJECT_DIR$/app/ico-project/ico-project-all/ico-project-all.component.ts" />
-        <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts" />
         <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.html" />
+        <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts" />
       </list>
     </option>
   </component>
@@ -409,12 +409,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="37551000" />
+      <workItem from="1526711663196" duration="37677000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83885000" />
+    <option name="totallyTimeSpent" value="84011000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -852,26 +852,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="92" column="19" selection-start-line="92" selection-start-column="4" selection-end-line="92" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
-          <caret line="145" column="106" selection-start-line="145" selection-start-column="106" selection-end-line="145" selection-end-column="106" />
+          <caret line="145" column="98" selection-start-line="145" selection-start-column="98" selection-end-line="145" selection-end-column="98" />
           <folding>
             <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="93" column="25" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
           </folding>
         </state>
       </provider>

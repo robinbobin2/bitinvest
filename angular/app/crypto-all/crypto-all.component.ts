@@ -90,6 +90,10 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
             this.checkInPortfolio(id);
         })
     }
+    log(data) {
+       console.log(data);
+    }
+
     submitPortfolio( post_id, type) {
 
         this.http.post('/storeportfolio', {
