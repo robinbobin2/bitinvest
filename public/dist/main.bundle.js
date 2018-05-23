@@ -5908,16 +5908,16 @@ var PortfolioComponent = (function () {
     }
     PortfolioComponent.prototype.openForm = function (type) {
         if (type == 1) {
-            this.mining_form = true;
+            this.mining_form = !this.mining_form;
         }
         if (type == 2) {
-            this.ico_form = true;
+            this.ico_form = !this.ico_form;
         }
         if (type == 3) {
-            this.crypto_form = true;
+            this.crypto_form = !this.crypto_form;
         }
         if (type == 4) {
-            this.stock_form = true;
+            this.stock_form = !this.stock_form;
         }
     };
     PortfolioComponent.prototype.getPorts = function (type, type_id) {
