@@ -6,7 +6,6 @@ import {StocksService} from '../stocks.service';
 import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import {PortfolioService} from "../portfolio.service";
 import {AuthService} from "../auth.service";
-import {NewsRaw, Portfolio} from "../cloud-mining/all-cloud-mining/all-cloud-mining.component";
 
 export class Cripto {
   id: number;
@@ -91,9 +90,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
             });
             this.checkInPortfolio(id);
         })
-    }
-    log(data) {
-       console.log(data);
     }
 
     submitPortfolio( post_id, type) {

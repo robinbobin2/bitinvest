@@ -65,6 +65,7 @@ class AngularController extends Controller
             $userPortfolio['mining'][] = $portfolio->minings;
             $userPortfolio['ico'][] = $portfolio->ico;
             $userPortfolio['crypto'][] = $portfolio->crypto;
+            $userPortfolio['stocks'][] = $portfolio->stocks;
 
         }
         return json_encode($userPortfolio);

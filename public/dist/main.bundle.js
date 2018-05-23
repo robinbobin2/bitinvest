@@ -2236,9 +2236,6 @@ var CryptoAllComponent = (function () {
             _this.checkInPortfolio(id);
         });
     };
-    CryptoAllComponent.prototype.log = function (data) {
-        console.log(data);
-    };
     CryptoAllComponent.prototype.submitPortfolio = function (post_id, type) {
         var _this = this;
         this.http.post('/storeportfolio', {
@@ -3459,7 +3456,7 @@ var _a, _b, _c, _d, _e, _f;
 /***/ "./angular/app/exchanges/exchanges.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"crypto-active exchanges\">\n    <div class=\"wrapper\">\n      <div class=\"select-block\">\n      <h1 class=\"table-title-big\">Биржи<span>{{count}}</span><a href=\"balant-mining-filter.html\"><img src=\"img/mining-icon.png\" alt=\"\"></a></h1>\n\n        <div class=\"filters\">\n          <!-- <div class=\"select-wrap\">\n            <div class=\"select\">\n              <span class=\"text\">Пара: Все</span>\n              <a href=\"#\"><img src=\"img/select-drop-icon.png\" alt=\"\"></a>\n            </div>\n            <ul class=\"select-items\">\n              <li><a href=\"#\">Пара: Все</a></li>\n              <li><a href=\"#\">Пара: Все</a></li>\n              <li><a href=\"#\">Пара: Все</a></li>\n            </ul>\n          </div> -->\n          <div class=\"select-wrapper1\" id=\"select-algo\">\n              <div class=\"select\">\n               <span class=\"text\"><span style=\"padding-top: 12px;\">{{language !='' ? language : 'Язык: Все'}}</span></span>\n               <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n             </div>\n             <ul class=\"select-items\">\n               <li (click)=\"language=''\"> <a >Язык: Все</a></li>\n               <li *ngFor=\"let item of exchanges\" (click)=\"language=item?.languages\"><a >{{item?.languages}}</a></li>\n               <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n             </ul>\n              </div>\n              <div class=\"crypto-select-wrap\">\n                            <input type=\"text\" placeholder=\"Поиск по названию монеты...\" [(ngModel)]=\"filteredName\" name=\"filteredName\" value=\"\">\n                        </div>\n        </div>\n      </div>\n      <div class=\"table-wrap\">\n        <table class=\"table crypto-table\">\n          <thead>\n            <tr>\n              <th width=\"4.4%\" [class.active]=\"order === 'id'\"\n        (click)=\"setOrder('id')\">\n                <span>#</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"12.9%\" [class.active]=\"order === 'name'\"\n        (click)=\"setOrder('name')\">\n                <span>Название</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"10%\" [class.active]=\"order === 'usd'\"\n        (click)=\"setOrder('usd')\">\n                <span>Объем ( $ за 24 ч.)</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"10.8%\" [class.active]=\"order === 'btc'\"\n        (click)=\"setOrder('btc')\">\n                <span>Объем BTC (за 24ч.)</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"7.1%\" >\n                <span>Кол-во пар</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"12.5%\" [class.active]=\"order === 'languages'\"\n        (click)=\"setOrder('languages')\">\n                <span>Поддержка языков</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"4.7%\" [class.active]=\"order === 'year'\"\n        (click)=\"setOrder('year')\">\n                <span>Год</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"17%\" [class.active]=\"order === 'country'\"\n        (click)=\"setOrder('country')\">\n                <span>Страна</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"20.6%\">\n                <span>Рейтинг</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n            </tr>\n          </thead>\n\n          <tbody *ngIf=\"load == false\">\n\n            <tr *ngFor=\"let item of exchanges   | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'name' | filterNameActive:age:'language'; let i = index\">\n              <td>\n                <span>{{i}}</span>\n              </td>\n              <td>\n                <a >\n                  <div class=\"img-wrap\">\n                    <img src=\"/images/{{item.logo}}\" style=\"width: 100%; height: 100%;\" alt=\"\">\n                  </div>\n                  <span>{{item.name}}</span>\n                </a>\n              </td>\n              <td>\n                <span class=\"amount-bold\" *ngIf=\"exchange_volumes[item.name] != undefined\">{{exchange_volumes[item.name].usd | number:'1.0-3'}}</span>\n              </td>\n              <td>\n                <span *ngIf=\"exchange_volumes[item.name] != undefined\">{{exchange_volumes[item.name].btc | number:'1.0-3'}}</span>\n              </td>\n              <td>\n\n                <span>{{item.count}}</span>\n              </td>\n              <td>\n                <div class=\"img-wrap-small\">\n                  <!-- <img src=\"img/rus-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <span class=\"text\">+5</span> -->\n                  <ng-template  ngFor let-lang [ngForOf]=\"item.languages\">\n                    <span *ngIf=\"lang =='EN'; else plain\"><img src=\"img/usa-icon.png\" alt=\"\"></span>\n                    <ng-template #plain>{{lang}}</ng-template>\n                  </ng-template>\n                </div>\n              </td>\n              <td>\n                <span class=\"year\">{{item.year}}</span>\n              </td>\n              <td>\n                <span class=\"sity\">{{item.country}}</span>\n              </td>\n              <td>\n                <div class=\"difference\">\n                  <!-- <div class=\"stars-wrap\">\n                    <img src=\"img/stars.png\" alt=\"\">\n                    <span>135</span>\n                  </div> -->\n                  <p class=\"no-ratings\">Оценок еще нет</p>\n                  <div class=\"buttons\">\n                    <button class=\"right\" [routerLink]=\"['/exchange', item.name]\">></button>\n                    <button class=\"plus\">+</button>\n                  </div>\n                </div>\n              </td>\n            </tr>\n          </tbody>\n        </table>\n        <div style=\"width: 50px; height: 50px; margin: 40px auto;\">\n          <img src=\"/img/load.gif\" *ngIf=\"load == true\" style=\" width: 50px; height: 50px; text-align: center\">\n        </div>\n      </div>\n     <!--  <div class=\"table-wrap-mobile\">\n        <table class=\"table\">\n          <thead>\n            <th width=\"43%\">\n              <span>Название</span>\n            </th>\n            <th width=\"43%\">\n              <span>Объем</span>\n            </th>\n            <th width=\"14%\">\n              <span>Пар</span>\n            </th>\n          </thead>\n          <tbody>\n            \n          </tbody>\n        </table>\n        <a href=\"#\" class=\"show-exchanges\">Показать еще биржи</a>\n      </div>\n      <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n    </div>\n  </section>"
+module.exports = "<section class=\"crypto-active exchanges\">\n    <div class=\"wrapper\">\n      <div class=\"select-block\">\n      <h1 class=\"table-title-big\">Биржи<span>{{count}}</span><a href=\"balant-mining-filter.html\"><img src=\"img/mining-icon.png\" alt=\"\"></a></h1>\n\n        <div class=\"filters\">\n          <!-- <div class=\"select-wrap\">\n            <div class=\"select\">\n              <span class=\"text\">Пара: Все</span>\n              <a href=\"#\"><img src=\"img/select-drop-icon.png\" alt=\"\"></a>\n            </div>\n            <ul class=\"select-items\">\n              <li><a href=\"#\">Пара: Все</a></li>\n              <li><a href=\"#\">Пара: Все</a></li>\n              <li><a href=\"#\">Пара: Все</a></li>\n            </ul>\n          </div> -->\n          <div class=\"select-wrapper1\" id=\"select-algo\">\n              <div class=\"select\">\n               <span class=\"text\"><span style=\"padding-top: 12px;\">{{language !='' ? language : 'Язык: Все'}}</span></span>\n               <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n             </div>\n             <ul class=\"select-items\">\n               <li (click)=\"language=''\"> <a >Язык: Все</a></li>\n               <li *ngFor=\"let item of exchanges\" (click)=\"language=item?.languages\"><a >{{item?.languages}}</a></li>\n               <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n             </ul>\n              </div>\n              <div class=\"crypto-select-wrap\">\n                            <input type=\"text\" placeholder=\"Поиск по названию монеты...\" [(ngModel)]=\"filteredName\" name=\"filteredName\" value=\"\">\n                        </div>\n        </div>\n      </div>\n      <div class=\"table-wrap\">\n        <table class=\"table crypto-table\">\n          <thead>\n            <tr>\n              <th width=\"4.4%\" [class.active]=\"order === 'id'\"\n        (click)=\"setOrder('id')\">\n                <span>#</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"12.9%\" [class.active]=\"order === 'name'\"\n        (click)=\"setOrder('name')\">\n                <span>Название</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"10%\" [class.active]=\"order === 'usd'\"\n        (click)=\"setOrder('usd')\">\n                <span>Объем ( $ за 24 ч.)</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"10.8%\" [class.active]=\"order === 'btc'\"\n        (click)=\"setOrder('btc')\">\n                <span>Объем BTC (за 24ч.)</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"7.1%\" >\n                <span>Кол-во пар</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"12.5%\" [class.active]=\"order === 'languages'\"\n        (click)=\"setOrder('languages')\">\n                <span>Поддержка языков</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"4.7%\" [class.active]=\"order === 'year'\"\n        (click)=\"setOrder('year')\">\n                <span>Год</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"17%\" [class.active]=\"order === 'country'\"\n        (click)=\"setOrder('country')\">\n                <span>Страна</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n              <th width=\"20.6%\">\n                <span>Рейтинг</span>\n                <img src=\"img/arr-top-table.png\" alt=\"\">\n              </th>\n            </tr>\n          </thead>\n\n          <tbody *ngIf=\"load == false\">\n\n            <tr *ngFor=\"let item of exchanges   | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'name' | filterNameActive:age:'language'; let i = index\">\n              <td>\n                <span>{{i}}</span>\n              </td>\n              <td>\n                <a >\n                  <div class=\"img-wrap\">\n                    <img src=\"/images/{{item.logo}}\" style=\"width: 100%; height: 100%;\" alt=\"\">\n                  </div>\n                  <span>{{item.name}}</span>\n                </a>\n              </td>\n              <td>\n                <span class=\"amount-bold\" *ngIf=\"exchange_volumes[item.name] != undefined\">{{exchange_volumes[item.name].usd | number:'1.0-3'}}</span>\n              </td>\n              <td>\n                <span *ngIf=\"exchange_volumes[item.name] != undefined\">{{exchange_volumes[item.name].btc | number:'1.0-3'}}</span>\n              </td>\n              <td>\n\n                <span>{{item.count}}</span>\n              </td>\n              <td>\n                <div class=\"img-wrap-small\">\n                  <!-- <img src=\"img/rus-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <img src=\"img/usa-icon.png\" alt=\"\">\n                  <span class=\"text\">+5</span> -->\n                  <ng-template  ngFor let-lang [ngForOf]=\"item.languages\">\n                    <span *ngIf=\"lang =='EN'; else plain\"><img src=\"img/usa-icon.png\" alt=\"\"></span>\n                    <ng-template #plain>{{lang}}</ng-template>\n                  </ng-template>\n                </div>\n              </td>\n              <td>\n                <span class=\"year\">{{item.year}}</span>\n              </td>\n              <td>\n                <span class=\"sity\">{{item.country}}</span>\n              </td>\n              <td>\n                <div class=\"difference\">\n                  <!-- <div class=\"stars-wrap\">\n                    <img src=\"img/stars.png\" alt=\"\">\n                    <span>135</span>\n                  </div> -->\n                  <p class=\"no-ratings\">Оценок еще нет</p>\n                  <div class=\"buttons\">\n                    <button class=\"right\" [routerLink]=\"['/exchange', item.name]\">></button>\n                    <a href=\"#login-popup\" *ngIf=\"!checkAuth()\" class=\"popup-link follow plus\" data-effect=\"mfp-zoom-in\" data-effect=\"mfp-zoom-in\">+</a>\n                    <a href=\"#follow-popup\" *ngIf=\"!checkInPortfolio(data.id) && checkAuth()\" (click)=\"selectedItem = data\" class=\"plus popup-link follow\" data-effect=\"mfp-zoom-in\">+</a>\n\n                    <button  *ngIf=\"checkInPortfolio(data.id) && checkAuth()\"  (click)=\"removePortfolio(data.id)\" class=\"minus\" data-effect=\"mfp-zoom-in\"><img src=\"img/minus.png\" alt=\"\"></button>\n\n                  </div>\n                </div>\n              </td>\n            </tr>\n          </tbody>\n        </table>\n        <div style=\"width: 50px; height: 50px; margin: 40px auto;\">\n          <img src=\"/img/load.gif\" *ngIf=\"load == true\" style=\" width: 50px; height: 50px; text-align: center\">\n        </div>\n      </div>\n     <!--  <div class=\"table-wrap-mobile\">\n        <table class=\"table\">\n          <thead>\n            <th width=\"43%\">\n              <span>Название</span>\n            </th>\n            <th width=\"43%\">\n              <span>Объем</span>\n            </th>\n            <th width=\"14%\">\n              <span>Пар</span>\n            </th>\n          </thead>\n          <tbody>\n            \n          </tbody>\n        </table>\n        <a href=\"#\" class=\"show-exchanges\">Показать еще биржи</a>\n      </div>\n      <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n    </div>\n  </section>\n\n<div id=\"follow-popup\" class=\"popup mfp-with-anim mfp-hide\">\n  <div class=\"popup-body\">\n    <h2>Следить за {{selectedItem?.name}}</h2>\n    <p>Выберите портфель для сохранения {{selectedItem?.name}}</p>\n    <div class=\"checkbox-list\">\n      <div class=\"checkbox-wrap\" *ngFor=\"let portfolio of getUserPortfolio; let i = index\">\n        <input type=\"radio\" name=\"id\" [(ngModel)]=\"addPortfolio\" value=\"{{portfolio.id}}\" checked=\"checked\" id=\"{{i}}\">\n        <label for=\"{{i}}\">\n          <span></span>{{portfolio.name}}\n        </label>\n      </div>\n    </div>\n    <a href=\"#\" class=\"add-portfolio\">+Добавить портфель</a>\n    <form class=\"hidden\" #f=\"ngForm\">\n      <input type=\"text\" ngModel name=\"name\" required=\"\" placeholder=\"Введите название...\">\n      <button (click)=\"createPortfolio(f)\" type=\"submit\">Добавить</button>\n    </form>\n  </div>\n  <div class=\"save-block\">\n    <a (click)=\"submitPortfolio(selectedItem?.id, 'App\\\\CryptoStat')\" class=\"save-settings\">Сохранить настройки</a>\n    <a href=\"#\" class=\"close-text\">Отменить и закрыть</a>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -3476,10 +3473,13 @@ module.exports = ".select-wrapper1 {\n  width: 144px;\n  position: relative;\n  
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExchangesComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__portfolio_service__ = __webpack_require__("./angular/app/portfolio.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3494,11 +3494,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
 var ExchangesComponent = (function () {
-    function ExchangesComponent(http, stockService, orderPipe) {
+    function ExchangesComponent(http, router, route, stockService, orderPipe, portfolioService, authService) {
         this.http = http;
+        this.router = router;
+        this.route = route;
         this.stockService = stockService;
         this.orderPipe = orderPipe;
+        this.portfolioService = portfolioService;
+        this.authService = authService;
         this.exchanges = [];
         this.count = 0;
         this.volumes = [];
@@ -3510,9 +3518,31 @@ var ExchangesComponent = (function () {
         this.alive = true;
         this.stocks = [];
         this.load = true;
+        this.portfoliosInfo = [];
+        this.show = false;
+        this.getUserPortfolio = [];
     }
     ExchangesComponent.prototype.ngOnInit = function () {
         var _this = this;
+        var portfolioUrl = '/angular/userportfolio';
+        this.portfolioInfo = this.http.get(portfolioUrl);
+        this.portfolioInfo.subscribe(function (response) {
+            if (response['error']) {
+                // code...
+            }
+            else {
+                _this.portfoliosInfo = response['stocks'];
+                console.log(_this.portfoliosInfo);
+            }
+        });
+        this.authService.getUser().subscribe(function (response) {
+            for (var _i = 0, _a = response['portfolio']; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (item.user_portfolio_type_id == 4) {
+                    _this.getUserPortfolio.push(item);
+                }
+            }
+        });
         this.stockService.getExchanges().subscribe(function (res) {
             _this.exchanges = res;
             _this.count = _this.exchanges.length;
@@ -3539,7 +3569,7 @@ var ExchangesComponent = (function () {
                 };
             }
         });
-        this.volume_data = __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].interval(2000).concatMap(function () { return _this.stockService.getVolumes(); })
+        this.volume_data = __WEBPACK_IMPORTED_MODULE_5_rxjs_Rx__["a" /* Observable */].interval(2000).concatMap(function () { return _this.stockService.getVolumes(); })
             .map(function (response) {
             _this.volumes = response;
         }).subscribe(function () {
@@ -3558,6 +3588,52 @@ var ExchangesComponent = (function () {
         }
         this.order = value;
     };
+    ExchangesComponent.prototype.removePortfolio = function (id) {
+        var _this = this;
+        this.portfolioService.removePortfolio(id, 'App\\CryptoStat', 0).subscribe(function () {
+            _this.portfolioInfo.subscribe(function (res) {
+                if (res['error']) {
+                    // code...
+                }
+                else {
+                    _this.portfoliosInfo = res['crypto'];
+                    console.log(_this.portfoliosInfo);
+                }
+            });
+            _this.checkInPortfolio(id);
+        });
+    };
+    ExchangesComponent.prototype.submitPortfolio = function (post_id, type) {
+        var _this = this;
+        this.http.post('/storeportfolio', {
+            'user_portfollable_id': post_id,
+            'user_portfolio_id': this.addPortfolio,
+            'user_portfollable_type': type
+        }, { headers: headers }).subscribe(function () { return _this.router.navigate(['/profile/portfolio']); }, function (error) { return console.log(error); });
+    };
+    ExchangesComponent.prototype.checkInPortfolio = function (id) {
+        if (this.portfoliosInfo == undefined) {
+            return false;
+        }
+        for (var _i = 0, _a = this.portfoliosInfo; _i < _a.length; _i++) {
+            var item = _a[_i];
+            for (var _b = 0, item_1 = item; _b < item_1.length; _b++) {
+                var it = item_1[_b];
+                if (it.id) {
+                    if (it.id == id) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    };
+    ExchangesComponent.prototype.checkAuth = function () {
+        if (this.authService.getUserInfo()) {
+            return true;
+        }
+        return (false);
+    };
     ExchangesComponent.prototype.ngOnDestroy = function () {
         this.alive = false;
         this.volume_data.unsubscribe();
@@ -3570,12 +3646,12 @@ ExchangesComponent = __decorate([
         selector: 'app-exchanges',
         template: __webpack_require__("./angular/app/exchanges/exchanges.component.html"),
         styles: [__webpack_require__("./angular/app/exchanges/exchanges.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */], __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__auth_service__["a" /* AuthService */]) === "function" && _g || Object])
 ], ExchangesComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=exchanges.component.js.map
 
 /***/ }),
