@@ -172,8 +172,8 @@ export class PortfolioComponent implements OnInit {
        }
      )
    }
-   onRemove(itemid, id, index) {
-   	this.portfolioService.removePortfolio(id).subscribe(
+   onRemove(itemid, id, index, type) {
+   	this.portfolioService.removePortfolio(id, type).subscribe(
 
    		res => {
    			if (index > -1) {

@@ -88,7 +88,6 @@ order: string = 'proc';
            // code...
          } else {
          this.portfoliosInfo = response['mining'];
-         console.log(this.portfoliosInfo);
          }
        },
        );
@@ -142,7 +141,13 @@ order: string = 'proc';
 
   ngOnInit() {
    this.authService.getUser().subscribe(
-     response => this.getUserPortfolio = response['portfolio']
+     response => {
+         for(let item of response['portfolio']) {
+             if (item.user_portfolio_type_id == 1) {
+                 this.getUserPortfolio.push(item)
+             }
+         }
+     }
    );
 
     

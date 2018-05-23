@@ -112,7 +112,7 @@ class AngularController extends Controller
 
     }
 
-    public function removePortfolio($id)
+    public function removePortfolio($id, $type)
     {
         $user = Auth::user();
         if (!$user) {
@@ -120,7 +120,7 @@ class AngularController extends Controller
                 'error' => 'User not loggined'
             ];
         }
-        UserPortfollable::where('user_portfollable_id', $id)->where('user_portfollable_type', 'App\CloudMining')->delete();
+        UserPortfollable::where('user_portfollable_id', $id)->where('user_portfollable_type', $type)->delete();
         return [
             'success' => 'Portfolio deleted'
         ];

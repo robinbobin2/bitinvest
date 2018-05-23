@@ -126,7 +126,7 @@ Route::get('/profile/edit', ['as' => 'profile.edit', 'uses' => "AngularControlle
 Route::get('/profile/portfolio', ['as' => 'profile.portfolio', 'uses' => "AngularController@serve"]);
 Route::get('/angular/user/', "AngularController@user");
 Route::get('/angular/userportfolio/', "AngularController@portfolio");
-Route::get('/angular/userportfolio/remove/{id}', "AngularController@removePortfolio");
+Route::get('/angular/userportfolio/remove/{id}/{type}', "AngularController@removePortfolio");
 Route::get('/angular/userportfolio/ico/remove/{id}', "AngularController@icoRemovePortfolio");
 Route::get('/angular/userportfolio/crypto/remove/{id}', "AngularController@cryptoRemovePortfolio");
 Route::get('/angular/userportfolio/stocks/remove/{id}', "AngularController@stocksRemovePortfolio");

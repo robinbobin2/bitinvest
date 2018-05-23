@@ -33,8 +33,8 @@ export class PortfolioService {
     return this.http
     .post('/angular/userportfolio/create', {'name': name, 'user_portfolio_type_id': type},{headers: headers})
   }
-  public removePortfolio(id) {
-    return this.http.get('/angular/userportfolio/remove/'+id);
+  public removePortfolio(id, type) {
+    return this.http.get('/angular/userportfolio/remove/'+id+'/'+type);
   }
   public submitPortfolio( post_id, id, type) {
     
