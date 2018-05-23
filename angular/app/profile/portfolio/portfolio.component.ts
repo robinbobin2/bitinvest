@@ -25,7 +25,12 @@ export class PortfolioComponent implements OnInit {
   diff =[];
   volumes = [];
   exchange_volumes = [];
-  /**
+    mining_form = false;
+    ico_form = false;
+    crypto_form = false;
+    stock_form = false;
+
+    /**
    * Example: Use Order pipe in the component
    *
    * @param {OrderPipe} orderPipe
@@ -44,6 +49,21 @@ export class PortfolioComponent implements OnInit {
   	
   	
    }
+   openForm(type) {
+       if (type == 1) {
+           this.mining_form = true
+       }
+       if (type == 2) {
+           this.ico_form = true
+       }
+       if (type == 3) {
+           this.crypto_form = true
+       }
+       if (type == 4) {
+           this.stock_form = true
+       }
+   }
+
    getPorts(type, type_id) {
      this.portfolioService.getPortfolioNames().subscribe(
       res => {
@@ -161,14 +181,13 @@ export class PortfolioComponent implements OnInit {
 					}
    	)
    }
-   onAdd(port_id, id) {
-     this.portfolioService.submitPortfolio(port_id,id,'App\\CloudMining').subscribe(
+   onAdd(port_id, id, type) {
+     this.portfolioService.submitPortfolio(port_id,id,type).subscribe(
        result => {
          this.portfolioService.getPortfolioById(port_id)
         .subscribe(
           res => {if (res.length > 0) {this.portfolios[port_id] = res; console.log(res) } }
         );
-        console.log(result);
        }
      )
    }
