@@ -194,15 +194,6 @@ $(document).ready(function () {
 
 	$("#follow-popup form button").on("click", function (e) {
 		e.preventDefault();
-		var title = $("#follow-popup form input").val();
-		console.log(title);
-
-		var listItem = '<div class="checkbox-wrap">' +
-			'<input type="checkbox" id="c">' +
-			'<label for="c">' +
-			'<span></span>' + title + '</label>' +
-			'</div>';
-		$("#follow-popup .checkbox-list").append(listItem);
 	});
 
 	// $(".add").on("click", function (e) {
