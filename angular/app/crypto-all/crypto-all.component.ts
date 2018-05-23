@@ -1,9 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import {Router, ActivatedRoute} from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {StocksService} from '../stocks.service';
 import { OrderPipe } from '../order-pipe/ngx-order.pipe';
+import {PortfolioService} from "../portfolio.service";
+import {AuthService} from "../auth.service";
+import {NewsRaw, Portfolio} from "../cloud-mining/all-cloud-mining/all-cloud-mining.component";
 
 export class Cripto {
   id: number;
@@ -28,12 +31,12 @@ export interface CryptoData {
   marketCapUsd: number;
 
 }
-
+const headers = new HttpHeaders({'Content-type': 'Application/json '});
 @Component({
   selector: 'app-crypto-all',
   templateUrl: './crypto-all.component.html',
   styleUrls: ['./crypto-all.component.scss'],
-  providers: [StocksService],
+  providers: [StocksService, PortfolioService],
 })
 
 export class CryptoAllComponent implements OnInit, OnDestroy {
@@ -43,8 +46,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
   // admin= new Array;
   dataUsd: Array<CryptoData> = [];
   order = 'now';
-  algorithm = '';
-  age = '';
   data: any;
   resp: any;
   cryptoData: any;
@@ -52,6 +53,14 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
   reverse: boolean = true;
   animtype = [];
   diff:Array<number> = [];
+    selectedItem: NewsRaw;
+    active = 0;
+    inactive = 0;
+    portfoliosInfo = [];
+    addPortfolio: any;
+    show = false;
+    portfolioInfo:any;
+    getUserPortfolio = [];
   /**
    * Example: Use Order pipe in the component
    *
@@ -61,12 +70,64 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      private http:HttpClient, 
      private router:Router, 
      private route:ActivatedRoute,
-     private StockService:StocksService
+     private StockService:StocksService,
+               private portfolioService: PortfolioService,
+               private authService: AuthService
      ) { 
 
 
    }
+    removePortfolio(id) {
+        this.portfolioService.removePortfolio(id, 'App\\CryptoStat', 0).subscribe( () => {
+            this.portfolioInfo.subscribe(res=>{
+                if(res['error']) {
+                    // code...
+                } else {
+                    this.portfoliosInfo = res['crypto'];
+                    console.log(this.portfoliosInfo);
+                }
+            });
+            this.checkInPortfolio(id);
+        })
+    }
+    submitPortfolio( post_id, type) {
 
+        this.http.post('/storeportfolio', {
+                'user_portfollable_id': post_id,
+                'user_portfolio_id':this.addPortfolio,
+                'user_portfollable_type': type
+            },
+            {headers: headers}).subscribe(
+            (response) => this.router.navigate(['/profile/portfolio']),
+            (error) => console.log(error)
+        );
+    }
+    checkInPortfolio(id) {
+        console.log(this.portfoliosInfo);
+        if(this.portfoliosInfo == undefined) {
+            return false;
+        }
+
+        for(let item of this.portfoliosInfo) {
+            console.log(item)
+            for(let it of item) {
+                if(it.id ) {
+
+                    if(it.id == id) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    checkAuth() {
+        if(this.authService.getUserInfo()) {
+            return true;
+        }
+        return(false);
+
+    }
    setOrder(value: string) {
      if (this.order === value) {
        this.reverse = !this.reverse;
@@ -76,7 +137,15 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
    }
 
    ngOnInit() {
-
+       this.authService.getUser().subscribe(
+           response => {
+               for(let item of response['portfolio']) {
+                   if (item.user_portfolio_type_id == 3) {
+                       this.getUserPortfolio.push(item)
+                   }
+               }
+           }
+       );
      const alldata = this.http.get<Array<Cripto>>('/allcrypto');
      if(localStorage.getItem('data')) {
        this.dataUsd = JSON.parse(localStorage.getItem('data'));
@@ -94,7 +163,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         let symbol = admin[index].symbol;
         let year = admin[index].year;
         let algo = admin[index].algo;
-        let desc = 'DESC';
         if(this.dataUsd[index]) {
           this.dataUsd[index].sym = symbol;
           this.dataUsd[index].algo = algo;
