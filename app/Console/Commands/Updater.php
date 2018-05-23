@@ -165,6 +165,7 @@ class Updater extends \Illuminate\Console\Command
      */
     public function handle()
     {
+        shuffle($this->suppliers);
         foreach ($this->suppliers as $supplier) {
             $supplier = new $supplier;
             $newRequest = new Request();
