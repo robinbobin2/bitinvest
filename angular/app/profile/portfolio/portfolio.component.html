@@ -280,19 +280,19 @@
                 <a class="add" *ngIf="item.user_portfolio_type_id == 3" (click)="openForm(3)">+Добавить криптовалюту в портфель</a>
                 <a class="add" *ngIf="item.user_portfolio_type_id == 4" (click)="openForm(4)">+Добавить биржу в портфель</a>
                 <form *ngIf="item.user_portfolio_type_id == 1 && mining_form == true">
-                  <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value)" >
+                  <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value, 1)" >
                   <button type="submit" (click)="onAdd(item.id, result_id, 'App\\CloudMining')">Добавить</button>
                 </form>
                 <form *ngIf="item.user_portfolio_type_id == 2 && ico_form == true">
-                  <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value)" >
+                  <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value, 2)" >
                   <button type="submit" (click)="onAdd(item.id, result_id, 'App\\IcoProject')">Добавить</button>
                 </form>
                 <form *ngIf="item.user_portfolio_type_id == 3 && crypto_form == true">
-                  <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value)" >
+                  <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value, 3)" >
                   <button type="submit" (click)="onAdd(item.id, result_id, 'App\\CryptoStat')">Добавить</button>
                 </form>
                 <form *ngIf="item.user_portfolio_type_id == 4 && stock_form == true">
-                  <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value)" >
+                  <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value, 4)" >
                   <button type="submit" (click)="onAdd(item.id, result_id, 'App\\Stock')">Добавить</button>
                 </form>
                 <ul *ngIf="results">

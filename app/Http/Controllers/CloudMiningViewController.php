@@ -135,8 +135,8 @@ public function topfive() {
         if($_REQUEST['search']) {
             return CloudMining::where('name','like', '%'. $_REQUEST['search'].'%')->get();
             
-        } else {
-            return CloudMining::all()->take(3);
+        } else if($_REQUEST['search'] == ''){
+            return ['error'=>'not found'];
         }
     }
 }

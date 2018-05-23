@@ -41,7 +41,7 @@ export class PortfolioComponent implements OnInit {
     private stockService: StocksService,
     private miningService: CloudMiningService)
   {
-    this.searchService.mainSearch(this.searchTerm$)
+    this.searchService.search(this.searchTerm$, type)
       .subscribe(results => {
         this.results = results;
         console.log(results);
