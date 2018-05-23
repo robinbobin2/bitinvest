@@ -75,8 +75,19 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      private StockService:StocksService,
                private portfolioService: PortfolioService,
                private authService: AuthService
-     ) { 
-
+     ) {
+      let portfolioUrl = '/angular/userportfolio';
+      this.portfolioInfo = this.http.get<any>(portfolioUrl);
+      this.portfolioInfo.subscribe(
+          response => {
+              if(response['error']) {
+                  // code...
+              } else {
+                  this.portfoliosInfo = response['crypto'];
+                  console.log(this.portfoliosInfo);
+              }
+          },
+      );
 
    }
     removePortfolio(id) {
@@ -141,8 +152,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
    }
 
    ngOnInit() {
-       let portfolioUrl = '/angular/userportfolio';
-       this.portfolioInfo = this.http.get<any>(portfolioUrl);
+
        this.authService.getUser().subscribe(
            response => {
                for(let item of response['portfolio']) {

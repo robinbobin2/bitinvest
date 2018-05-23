@@ -2199,6 +2199,7 @@ var CryptoAllComponent = (function () {
      * @param {OrderPipe} orderPipe
      */
     function CryptoAllComponent(orderPipe, http, router, route, StockService, portfolioService, authService) {
+        var _this = this;
         this.orderPipe = orderPipe;
         this.http = http;
         this.router = router;
@@ -2220,6 +2221,17 @@ var CryptoAllComponent = (function () {
         this.portfoliosInfo = [];
         this.show = false;
         this.getUserPortfolio = [];
+        var portfolioUrl = '/angular/userportfolio';
+        this.portfolioInfo = this.http.get(portfolioUrl);
+        this.portfolioInfo.subscribe(function (response) {
+            if (response['error']) {
+                // code...
+            }
+            else {
+                _this.portfoliosInfo = response['crypto'];
+                console.log(_this.portfoliosInfo);
+            }
+        });
     }
     CryptoAllComponent.prototype.removePortfolio = function (id) {
         var _this = this;
@@ -2278,8 +2290,6 @@ var CryptoAllComponent = (function () {
     };
     CryptoAllComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var portfolioUrl = '/angular/userportfolio';
-        this.portfolioInfo = this.http.get(portfolioUrl);
         this.authService.getUser().subscribe(function (response) {
             for (var _a = 0, _b = response['portfolio']; _a < _b.length; _a++) {
                 var item = _b[_a];
