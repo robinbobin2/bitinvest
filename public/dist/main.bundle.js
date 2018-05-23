@@ -2245,13 +2245,11 @@ var CryptoAllComponent = (function () {
         }, { headers: headers }).subscribe(function () { return _this.router.navigate(['/profile/portfolio']); }, function (error) { return console.log(error); });
     };
     CryptoAllComponent.prototype.checkInPortfolio = function (id) {
-        console.log(this.portfoliosInfo);
         if (this.portfoliosInfo == undefined) {
             return false;
         }
         for (var _a = 0, _b = this.portfoliosInfo; _a < _b.length; _a++) {
             var item = _b[_a];
-            console.log(item);
             for (var _c = 0, item_1 = item; _c < item_1.length; _c++) {
                 var it = item_1[_c];
                 if (it.id) {
