@@ -3,6 +3,7 @@
 use App\Stock;
 use App\User;
 use App\UserPortfolioType;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
