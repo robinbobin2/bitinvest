@@ -150,16 +150,16 @@
                   <div class="img-wrap">
                     <img src="img/bitcoin-icon.png" alt="">
                   </div>
-                  <span>{{portfolioItem.name}}</span>
+                  <span>{{portfolioItem?.name}}</span>
                 </a>
               </td>
               <td>
-                <span class="amount-bold">{{volumes[portfolioItem.name].usd}}</span>
+                <span class="amount-bold">{{volumes[portfolioItem.name]?.usd}}</span>
               </td>
               <td>
                 <div class="difference">
                   <div class="stars-wrap">
-                <span>{{volumes[portfolioItem.name].btc}}</span>
+                <span>{{volumes[portfolioItem.name]?.btc}}</span>
                   </div>
                   <div class="buttons">
                     <a href="#" class="settings"><img src="img/settings.svg" alt=""></a>
