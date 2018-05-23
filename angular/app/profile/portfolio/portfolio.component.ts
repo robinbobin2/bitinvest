@@ -4,12 +4,13 @@ import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 import { SearchService } from '../../search.service';
 import { Subject } from 'rxjs/Subject';
 import {StocksService} from "../../stocks.service";
+import {CloudMiningService} from "../../cloud-mining.service";
 
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss'],
-  providers: [PortfolioService, SearchService, StocksService]
+  providers: [PortfolioService, SearchService, StocksService, CloudMiningService]
 })
 export class PortfolioComponent implements OnInit {
   order = 'proc';
@@ -32,7 +33,8 @@ export class PortfolioComponent implements OnInit {
   constructor(private orderPipe: OrderPipe, 
     private portfolioService: PortfolioService, 
     private searchService: SearchService,
-    private stockService: StocksService) 
+    private stockService: StocksService,
+    private miningService: CloudMiningService)
   {
     this.searchService.mainSearch(this.searchTerm$)
       .subscribe(results => {
@@ -102,6 +104,31 @@ export class PortfolioComponent implements OnInit {
                                    })
                                
                                 
+                            }
+
+                            if (type_id == 1) {
+                                for (let portfolioItem of this.portfolios[item.id]) {
+                                    this.miningService.getMiningId(portfolioItem.id).subscribe(
+                                        res => {
+
+                                            portfolioItem = res;
+
+                                        }
+
+                                    )
+                                }
+                            }
+                            if (type_id == 2) {
+                                for (let portfolioItem of this.portfolios[item.id]) {
+                                    this.miningService.getIcoId(portfolioItem.id).subscribe(
+                                        res => {
+
+                                            portfolioItem = res;
+
+                                        }
+
+                                    )
+                                }
                             }
                             
                             

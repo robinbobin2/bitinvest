@@ -75,7 +75,7 @@
 
           </tr>
           </thead>
-          <thead *ngIf="item.user_portfolio_type_id == 1">
+          <thead *ngIf="item.user_portfolio_type_id == 2">
             <tr>
               <th width="27%" [class.active]="order === 'name'"
                             (click)="setOrder('name')">
@@ -120,20 +120,20 @@
                 </a>
               </td>
               <td>
-                <!-- <p><span class="bold">{{portfolioItem.proc}}% / год</span></p> -->
+                 <p><span class="bold">{{portfolioItem.proc}}% / год</span></p>
               </td>
               <td>
-                <span>189 дней</span>
+                <span>{{portfolioItem.depo_date}}</span>
               </td>
               <td>
-                <!-- <span class="bold">${{portfolioItem.depo}}</span> -->
+                 <span class="bold">${{portfolioItem.depo}}</span>
               </td>
               <td>
-                <span>$ 90 (15%)</span>
+                <span>{{portfolioItem.percentage}}%</span>
               </td>
               <td>
                 <div class="difference">
-                  <!--   <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span> -->
+                     <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span>
                   <div class="buttons">
                     <a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>
                     <a (click)="onRemove(item.id, portfolioItem.id, in)" class="minus"><img src="/img/minus.png" alt=""></a>
@@ -172,35 +172,6 @@
 
           <ng-template [ngIf]="item.user_portfolio_type_id == 3">
           <tr  *ngFor="let data of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let i = index">
-            <!--<td>-->
-              <!--<a href="crypto-single.html">-->
-                <!--<div class="img-wrap">-->
-                  <!--<img src="{{portfolioItem.logo}}" alt="">-->
-                <!--</div>-->
-                <!--<span>{{portfolioItem.name}}</span>-->
-              <!--</a>-->
-            <!--</td>-->
-            <!--<td>-->
-              <!--&lt;!&ndash; <p><span class="bold">{{portfolioItem.proc}}% / год</span></p> &ndash;&gt;-->
-            <!--</td>-->
-            <!--<td>-->
-              <!--<span>189 дней</span>-->
-            <!--</td>-->
-            <!--<td>-->
-              <!--&lt;!&ndash; <span class="bold">${{portfolioItem.depo}}</span> &ndash;&gt;-->
-            <!--</td>-->
-            <!--<td>-->
-              <!--<span>$ 90 (15%)</span>-->
-            <!--</td>-->
-            <!--<td>-->
-              <!--<div class="difference">-->
-                <!--&lt;!&ndash;   <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span> &ndash;&gt;-->
-                <!--<div class="buttons">-->
-                  <!--<a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>-->
-                  <!--<a (click)="onRemove(item.id, portfolioItem.id, in)" class="minus"><img src="/img/minus.png" alt=""></a>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</td>-->
             <td>
               <div class="img-wrap" [routerLink]="['/crypto', data.sym]">
      <!-- <img src="img/bitcoin-icon.png" alt=""> -->
