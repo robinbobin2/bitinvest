@@ -29,7 +29,7 @@ export class PortfolioComponent implements OnInit {
     ico_form = false;
     crypto_form = false;
     stock_form = false;
-    type = 0;
+    type = 1;
 
     /**
    * Example: Use Order pipe in the component
