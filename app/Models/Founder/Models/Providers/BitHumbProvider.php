@@ -64,10 +64,10 @@ class BitHumbProvider extends FounderProvider
                 continue;
             }
             $ticker = new TickerEntity();
-            $ticker->setAsk($value->sell_price);
-            $ticker->setBid($value->buy_price);
-            $ticker->setVolume($value->volume_1day);
-            $ticker->setValue($value->average_price);
+            $ticker->setAsk($value->sell_price / 1000);
+            $ticker->setBid($value->buy_price / 1000);
+            $ticker->setVolume($value->volume_1day / 1000);
+            $ticker->setValue($value->average_price / 1000);
             $ticker->setExchangeId($this->getExchangeId());
             $ticker->setCurrency($pair . "/USD");
             $result[] = $ticker;
