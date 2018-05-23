@@ -9014,8 +9014,10 @@ table tbody tr td .difference .buttons a {
 }
 .table tbody tr td .difference .buttons a.plus {
   background: #f58c1b;
-  font-size: 24px;
-  transition: .3s;
+    font-size: 24px;
+    transition: .3s;
+    padding-left: 5px;
+    padding-top: 3px;
 }
 .table tbody tr td .difference .buttons a.plus:hover {
   background: #da7305;
