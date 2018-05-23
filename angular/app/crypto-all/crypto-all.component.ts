@@ -98,7 +98,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                 'user_portfollable_type': type
             },
             {headers: headers}).subscribe(
-            (response) => this.router.navigate(['/profile/portfolio']),
+            () => this.router.navigate(['/profile/portfolio']),
             (error) => console.log(error)
         );
     }
