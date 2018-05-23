@@ -25,10 +25,10 @@ class ZbProvider extends FounderProvider
         foreach ($result as $currency => $supplierTicker) {
             $supplierTicker = $supplierTicker->ticker;
             $ticker = new TickerEntity();
-            $ticker->setAsk($supplierTicker->sell / 1000);
-            $ticker->setBid($supplierTicker->buy / 1000);
-            $ticker->setVolume($supplierTicker->vol / 1000);
-            $ticker->setValue($supplierTicker->last / 1000);
+            $ticker->setAsk($supplierTicker->sell);
+            $ticker->setBid($supplierTicker->buy);
+            $ticker->setVolume($supplierTicker->vol);
+            $ticker->setValue($supplierTicker->last);
             $ticker->setExchangeId($this->getExchangeId());
             $ticker->setCurrency(strtoupper(str_replace("_", "/", $currency)));
             $response[] = $ticker;
