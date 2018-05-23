@@ -280,7 +280,7 @@
                 <a class="add" *ngIf="item.user_portfolio_type_id == 3" (click)="openForm(3)">+Добавить криптовалюту в портфель</a>
                 <a class="add" *ngIf="item.user_portfolio_type_id == 4" (click)="openForm(4)">+Добавить биржу в портфель</a>
                 <form *ngIf="item.user_portfolio_type_id == 2 && ico_form == true">
-                  <input type="text" placeholder="Введите название..." [value]="searchLine" (click)="type=2" (keyup)="searchTerm$.next($event.target.value)" >
+                  <input type="text" placeholder="Введите название..." [value]="searchLine" (click)="type=2" (keyup)="{searchTerm$.next($event.target.value); type = 2}" >
                   <button type="submit" (click)="onAdd(item.id, result_id, 'App\\IcoProject')">Добавить</button>
                 </form>
 
