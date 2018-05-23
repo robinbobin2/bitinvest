@@ -295,7 +295,7 @@
                   <input type="text" placeholder="Введите название..." [value]="searchLine" (click)="type=4" (keyup)="searchTerm$.next($event.target.value)" >
                   <button type="submit" (click)="onAdd(item.id, result_id, 'App\\Stock')">Добавить</button>
                 </form>
-                <ul *ngIf="results">
+                <ul *ngIf="results?.length > 0">
                 <li *ngFor="let result of results">
                   <a (click)="searchLine = result.name; result_id=result.id" target="_blank">
                    {{ result.name }}

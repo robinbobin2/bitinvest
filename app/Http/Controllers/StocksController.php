@@ -120,7 +120,7 @@ class StocksController extends Controller
     public function search() {
 
         if($_REQUEST['search']) {
-            return CloudMining::where('name','like', '%'. $_REQUEST['search'].'%')->get();
+            return Stock::where('name','like', '%'. $_REQUEST['search'].'%')->get();
             
         } else if($_REQUEST['search'] == ''){
             return ['error'=>'not found'];
