@@ -63,10 +63,10 @@ class CoinoneProvider extends FounderProvider
                 continue;
             }
             $ticker = new TickerEntity();
-            $ticker->setAsk($value->low);
-            $ticker->setBid($value->high);
-            $ticker->setVolume($value->volume);
-            $ticker->setValue($value->last);
+            $ticker->setAsk((float)$value->low / 1000);
+            $ticker->setBid((float)$value->high / 1000);
+            $ticker->setVolume((float)$value->volume * 10000000);
+            $ticker->setValue((float)$value->last / 1000);
             $ticker->setExchangeId($this->getExchangeId());
             $ticker->setCurrency(strtoupper($pair) . "/USD");
             $result[] = $ticker;

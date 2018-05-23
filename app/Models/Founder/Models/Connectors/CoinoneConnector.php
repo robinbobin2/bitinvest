@@ -25,7 +25,7 @@ class CoinoneConnector extends FounderConnector
         curl_setopt($curl, CURLOPT_URL, "https://api.coinone.co.kr/ticker/?currency=");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($curl);
-        SupplierLog::log("search", json_encode($result), 66);
+        SupplierLog::log("search", $result, 66);
         return json_decode($result);
     }
 }
