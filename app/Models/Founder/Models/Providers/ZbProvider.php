@@ -39,7 +39,7 @@ class ZbProvider extends FounderProvider
 
     public function getExchangeId()
     {
-        return 3;
+        return 62;
     }
 
     protected function getConnectorClass()
