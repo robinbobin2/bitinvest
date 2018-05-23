@@ -63,6 +63,26 @@ class ZbProvider extends FounderProvider
     public function save($response)
     {
         foreach ($response as $ticker) {
+            if ($this->isCrypto()) {
+                $pos = strpos($ticker->getCurrency(), "USDT");
+                if ($pos !== false) {
+                    $newRate = $ticker;
+                    $newRate->setCurrency(str_replace("USDT", "USD", $newRate->getCurrency()));
+                    $exchange = new ExchangeRate();
+                    $exchange->value = $ticker->getValue();
+                    $exchange->volume = $ticker->getVolume();
+                    $exchange->bid = $ticker->getBid();
+                    $exchange->ask = $ticker->getAsk();
+                    $exchange->currency = $newRate->getCurrency();
+                    $exchange->exchangeId = $this->getExchangeId();
+                    $exchange->createTime = time();
+                    try {
+                        $exchange->save();
+                    } catch (\Exception $e) {
+
+                    }
+                }
+            }
             $exchange = new ExchangeRate();
             $exchange->value = $ticker->getValue();
             $exchange->volume = $ticker->getVolume();
