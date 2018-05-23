@@ -43,7 +43,7 @@ abstract class FounderProvider
 
     public function save($response)
     {
-        sleep(1);
+        sleep($this->getCooldownTime());
         foreach ($response as $rate) {
             if (empty($rate['last']) || empty($rate['symbol'])) {
                 continue;
@@ -95,5 +95,13 @@ abstract class FounderProvider
     public function isCrypto()
     {
         return false;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCooldownTime()
+    {
+        return 1;
     }
 }

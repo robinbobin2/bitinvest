@@ -1,0 +1,87 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: xeror
+ * Date: 22.05.2018
+ * Time: 23:57
+ */
+
+namespace App\Models\Founder\Models\Providers;
+
+
+use App\Models\Entity\ExchangeRate;
+use App\Models\Founder\Models\Connectors\CoinoneConnector;
+use App\Models\Founder\Models\Entity\TickerEntity;
+use App\Models\Founder\Models\FounderProvider;
+use App\Models\Founder\Models\Requests\Request;
+
+class CoinoneProvider extends FounderProvider
+{
+    protected function getConnectorClass()
+    {
+        return new CoinoneConnector();
+    }
+
+    public function getExchangeId()
+    {
+        return 66;
+    }
+
+    /**
+     * @param TickerEntity[] $response
+     */
+    public function save($response)
+    {
+        sleep(5);
+        foreach ($response as $ticker) {
+            $exchange = new ExchangeRate();
+            $exchange->value = $ticker->getValue();
+            $exchange->volume = $ticker->getVolume();
+            $exchange->bid = $ticker->getBid();
+            $exchange->ask = $ticker->getAsk();
+            $exchange->currency = $ticker->getCurrency();
+            $exchange->exchangeId = $this->getExchangeId();
+            $exchange->createTime = time();
+            try {
+                $exchange->save();
+            } catch (\Exception $e) {
+
+            }
+        }
+    }
+
+    public function search(Request $request)
+    {
+        $response = $this->getConnector()->search();
+        $result = [];
+        if (!$response) {
+            return $result;
+        }
+
+        foreach ($response as $pair => $value) {
+            if(!isset($value->volume)){
+                continue;
+            }
+            $ticker = new TickerEntity();
+            $ticker->setAsk($value->low);
+            $ticker->setBid($value->high);
+            $ticker->setVolume($value->volume);
+            $ticker->setValue($value->last);
+            $ticker->setExchangeId($this->getExchangeId());
+            $ticker->setCurrency(strtoupper($pair) . "/USD");
+            $result[] = $ticker;
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return CoinoneConnector
+     */
+    protected function getConnector()
+    {
+        /** @var CoinoneConnector $connector */
+        $connector = parent::getConnector();
+        return $connector;
+    }
+}

@@ -16,6 +16,7 @@ use App\Models\Founder\Models\Providers\BinanceProvider;
 use App\Models\Founder\Models\Providers\Bit2CProvider;
 use App\Models\Founder\Models\Providers\BitBayProvider;
 use App\Models\Founder\Models\Providers\BitFinexProvider;
+use App\Models\Founder\Models\Providers\BitHumbProvider;
 use App\Models\Founder\Models\Providers\BitMarketProvider;
 use App\Models\Founder\Models\Providers\BitMexProvider;
 use App\Models\Founder\Models\Providers\BitTrexProvider;
@@ -33,6 +34,7 @@ use App\Models\Founder\Models\Providers\CoinexProvider;
 use App\Models\Founder\Models\Providers\CoinGiProvider;
 use App\Models\Founder\Models\Providers\CoinMarketCapProvider;
 use App\Models\Founder\Models\Providers\CoinnestProvider;
+use App\Models\Founder\Models\Providers\CoinoneProvider;
 use App\Models\Founder\Models\Providers\CoinTigerProvider;
 use App\Models\Founder\Models\Providers\ExmoProvider;
 use App\Models\Founder\Models\Providers\ExxProvider;
@@ -60,6 +62,7 @@ use App\Models\Founder\Models\Providers\OkCoinProvider;
 use App\Models\Founder\Models\Providers\OkexProvider;
 use App\Models\Founder\Models\Providers\OneBrokerProvider;
 use App\Models\Founder\Models\Providers\OneBTCXEProvider;
+use App\Models\Founder\Models\Providers\PoloniexProvider;
 use App\Models\Founder\Models\Providers\QryptosProvider;
 use App\Models\Founder\Models\Providers\SouthXChangeProvider;
 use App\Models\Founder\Models\Providers\TheRockProvider;
@@ -90,7 +93,7 @@ class Updater extends \Illuminate\Console\Command
 
 
     private $suppliers = [
-//        PoloniexProvider::class,
+        PoloniexProvider::class,
         HitBTCProvider::class,
         BiBoxProvider::class,
         BinanceProvider::class,
@@ -150,7 +153,9 @@ class Updater extends \Illuminate\Console\Command
         VirWoxProvider::class,
         XBTCEProvider::class,
         ZaifProvider::class,
-        ZbProvider::class
+        ZbProvider::class,
+        BitHumbProvider::class,
+        CoinoneProvider::class
     ];
 
     /**
