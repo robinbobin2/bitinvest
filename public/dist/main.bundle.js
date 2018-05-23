@@ -2591,12 +2591,9 @@ var CryptoComponent = (function () {
         this.auth.getUser().subscribe(function (response) {
             for (var _a = 0, _b = response['portfolio']; _a < _b.length; _a++) {
                 var item = _b[_a];
-                console.log('loop');
                 if (item.user_portfolio_type_id == 3) {
                     _this.getUserPortfolio.push(item);
                 }
-                console.log(item);
-                console.log(_this.getUserPortfolio);
             }
         });
         var portfolioUrl = '/angular/userportfolio';
@@ -2607,7 +2604,6 @@ var CryptoComponent = (function () {
             }
             else {
                 _this.portfoliosInfo = response['crypto'];
-                console.log(_this.portfoliosInfo);
             }
         });
         var symbol = this.route.snapshot.params['sym'];
@@ -3192,7 +3188,14 @@ var ExchangeComponent = (function () {
     }
     ExchangeComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.auth.getUser().subscribe(function (response) { _this.getUserPortfolio = response['portfolio']; console.log(_this.getUserPortfolio); });
+        this.auth.getUser().subscribe(function (response) {
+            for (var _a = 0, _b = response['portfolio']; _a < _b.length; _a++) {
+                var item = _b[_a];
+                if (item.user_portfolio_type_id == 4) {
+                    _this.getUserPortfolio.push(item);
+                }
+            }
+        });
         this.router.events.subscribe(function (s) {
             if (s instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* NavigationEnd */]) {
                 var tree = _this.router.parseUrl(_this.router.url);

@@ -54,7 +54,13 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 
 	ngOnInit() {
         this.auth.getUser().subscribe(
-            response => {this.getUserPortfolio = response['portfolio']; console.log(this.getUserPortfolio)}
+            response => {
+                for(let item of response['portfolio']) {
+                    if (item.user_portfolio_type_id == 4) {
+                        this.getUserPortfolio.push(item)
+                    }
+                }
+            }
         );
 		 this.router.events.subscribe(s => {
       if (s instanceof NavigationEnd) {
