@@ -66,7 +66,7 @@ class ZbProvider extends FounderProvider
             if ($this->isCrypto()) {
                 $pos = strpos($ticker->getCurrency(), "USDT");
                 if ($pos !== false) {
-                    $newRate = $ticker;
+                    $newRate = clone($ticker);
                     $newCurrency = str_replace("USDT", "USD", $newRate->getCurrency());
                     $newRate->setCurrency($newCurrency);
                     $exchange = new ExchangeRate();
