@@ -191,9 +191,9 @@ width="18.3%">
    <div class="buttons">
     <button class="right">></button>
        <button href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow" data-effect="mfp-zoom-in" class="plus" data-effect="mfp-zoom-in">+</button>
-       <button href="#follow-popup" *ngIf="!checkInPortfolio(item.id) && checkAuth()" (click)="selectedItem = data" class="plus" data-effect="mfp-zoom-in">+</button>
+       <button href="#follow-popup" *ngIf="!checkInPortfolio(data.id) && checkAuth()" (click)="selectedItem = data" class="plus" data-effect="mfp-zoom-in">+</button>
 
-       <button  *ngIf="checkInPortfolio(item.id) && checkAuth()"  (click)="removePortfolio(item.id)" class="minus" data-effect="mfp-zoom-in"><img src="img/minus.png" alt=""></button>
+       <button  *ngIf="checkInPortfolio(item.id) && checkAuth()"  (click)="removePortfolio(data.id)" class="minus" data-effect="mfp-zoom-in"><img src="img/minus.png" alt=""></button>
 
   </div>
 </div>
