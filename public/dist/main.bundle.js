@@ -5805,7 +5805,7 @@ var PortfolioService = (function () {
             .post('/angular/userportfolio/create', { 'name': name, 'user_portfolio_type_id': type }, { headers: headers });
     };
     PortfolioService.prototype.removePortfolio = function (id, type, port_id) {
-        return this.http.post('/angular/userportfolio/remove/', {
+        return this.http.post('/angular/userportfolio/remove/' + id, {
             'user_portfollable_id': id,
             'user_portfolio_id': port_id,
             'user_portfollable_type': type
