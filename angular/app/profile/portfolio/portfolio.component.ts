@@ -29,6 +29,7 @@ export class PortfolioComponent implements OnInit {
     ico_form = false;
     crypto_form = false;
     stock_form = false;
+    type = 0;
 
     /**
    * Example: Use Order pipe in the component
@@ -41,7 +42,7 @@ export class PortfolioComponent implements OnInit {
     private stockService: StocksService,
     private miningService: CloudMiningService)
   {
-    this.searchService.search(this.searchTerm$, type)
+    this.searchService.search(this.searchTerm$, this.type)
       .subscribe(results => {
         this.results = results;
         console.log(results);
