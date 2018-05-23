@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ElementRef } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {PortfolioService} from "../../portfolio.service";
+import {AuthService} from "../../auth.service";
+import {OrderPipe} from "../../order-pipe/ngx-order.pipe";
 
+const headers = new HttpHeaders({'Content-type': 'Application/json '});
 export class NewsRaw {
   id: number;
   name: string;
@@ -63,7 +62,8 @@ export class Percent {
 @Component({
   selector: 'app-ico-project-detail',
   templateUrl: './ico-project-detail.component.html',
-  styleUrls: ['./ico-project-detail.component.scss']
+  styleUrls: ['./ico-project-detail.component.scss'],
+    providers:[PortfolioService]
 })
 export class IcoProjectDetailComponent implements OnInit {
 private fragment: string;
@@ -75,10 +75,44 @@ submitted = false;
 commentcount = 0;
 user: User;
 percents: Array<Percent> = [];
-  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+    portfoliosInfo = [];
+    portfolioAdded = false;
+    getUserPortfolio = [];
+    addPortfolio: any;
+    checkPortfolio = false;
+    removed = false;
+    show = false;
+    portfolioInfo:any;
+  constructor(private authService: AuthService,
+              private portfolioService: PortfolioService,
+              private orderPipe: OrderPipe,
+              private http:HttpClient,
+              private router:Router,
+              private route:ActivatedRoute) {
 }
 
   ngOnInit() {
+      let portfolioUrl = '/angular/userportfolio';
+      this.portfolioInfo = this.http.get<any>(portfolioUrl);
+      this.portfolioInfo.subscribe(
+          response => {
+              if(response['error']) {
+                  // code...
+              } else {
+                  this.portfoliosInfo = response['ico'];
+                  console.log(this.portfoliosInfo);
+              }
+          },
+      );
+      this.authService.getUser().subscribe(
+          response => {
+              for(let item of response['portfolio']) {
+                  if (item.user_portfolio_type_id == 2) {
+                      this.getUserPortfolio.push(item)
+                  }
+              }
+          }
+      );
         let id = this.route.snapshot.params['id'];
     let path = "/icoraw/"+id;
     const info = this.http.get<NewsRaw>(path);
@@ -213,4 +247,73 @@ percents: Array<Percent> = [];
  		return 'ok';
  	}
  }
+    checkAuth() {
+        if(this.authService.getUserInfo()) {
+            return true;
+        }
+        return(false);
+
+    }
+    removePortfolio(id, type) {
+        let removeUrl: string;
+        if(type == 'App\\IcoProject') {
+            removeUrl = '/angular/userportfolio/ico/remove/';
+        } else{
+            removeUrl = '/angular/userportfolio/remove/';
+        }
+        const removePost = this.http.get(removeUrl+id);
+        removePost.subscribe(
+            response => {
+                this.portfolioInfo.subscribe(res=>{
+                    if(res['error']) {
+                        // code...
+                    } else {
+                        this.portfoliosInfo = res['ico'];
+                        console.log(this.portfoliosInfo);
+                    }
+                }),
+                    this.checkInPortfolio(id);
+
+            },
+            error => console.log(error)
+        )
+    }
+
+    checkInPortfolio(id) {
+
+        if(this.portfoliosInfo == undefined) {
+            return false;
+        }
+
+        for(let item of this.portfoliosInfo) {
+            for(let it of item) {
+                if(it.id ) {
+
+                    if(it.id == id) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+
+    createPortfolio(form: NgForm) {
+
+        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 2},{headers: headers})
+            .subscribe(
+                response => {this.getUserPortfolio.push(response); form.reset()},
+                error => console.log(error)
+            )
+
+    }
+
+    submitPortfolio( post_id, type) {
+
+        this.portfolioService.submitPortfolio(this.addPortfolio,post_id, type).subscribe(
+            (response) => this.router.navigate(['/profile/portfolio']),
+            (error) => console.log(error)
+        );
+    }
 }

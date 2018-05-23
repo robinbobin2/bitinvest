@@ -142,8 +142,12 @@ width="18.3%">
    <span [ngClass]="isNegativePercent(data.now, data.week)==true ? 'change-red' : 'change-green'">{{ countPercent(data.now, data.week) | number: '1.2'}}%</span>
    <div class="buttons">
     <button class="right" [routerLink]="['/crypto', data.sym]">></button>
-    <button class="plus">+</button>
-  </div>
+       <a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow plus" data-effect="mfp-zoom-in" data-effect="mfp-zoom-in">+</a>
+       <a href="#follow-popup" *ngIf="!checkInPortfolio(data.id) && checkAuth()" (click)="selectedItem = data" class="plus popup-link follow" data-effect="mfp-zoom-in">+</a>
+
+       <button  *ngIf="checkInPortfolio(data.id) && checkAuth()"  (click)="removePortfolio(data.id)" class="minus" data-effect="mfp-zoom-in"><img src="img/minus.png" alt=""></button>
+
+   </div>
 </div>
 </td>
 </tr>
@@ -185,8 +189,7 @@ width="18.3%">
   <div class="difference">
    <span class="change-red">-2,3% (-201,11)</span>
    <div class="buttons">
-    <button class="right">></button>
-    <button class="plus">+</button>
+
   </div>
 </div>
 </td>
@@ -200,3 +203,27 @@ width="18.3%">
 <!-- <a href="#" class="show-more">Показать еще</a> -->
 </div>
 </section>
+
+    <div id="follow-popup" class="popup mfp-with-anim mfp-hide">
+        <div class="popup-body">
+            <h2>Следить за {{selectedItem?.name}}</h2>
+            <p>Выберите портфель для сохранения {{selectedItem?.name}}</p>
+            <div class="checkbox-list">
+                <div class="checkbox-wrap" *ngFor="let portfolio of getUserPortfolio; let i = index">
+                    <input type="radio" name="id" [(ngModel)]="addPortfolio" value="{{portfolio.id}}" checked="checked" id="{{i}}">
+                    <label for="{{i}}">
+                        <span></span>{{portfolio.name}}
+                    </label>
+                </div>
+            </div>
+            <a href="#" class="add-portfolio">+Добавить портфель</a>
+            <form class="hidden" #f="ngForm">
+                <input type="text" ngModel name="name" required="" placeholder="Введите название...">
+                <button (click)="createPortfolio(f)" type="submit">Добавить</button>
+            </form>
+        </div>
+        <div class="save-block">
+            <a (click)="submitPortfolio(selectedItem?.id, 'App\\CryptoStat')" class="save-settings">Сохранить настройки</a>
+            <a href="#" class="close-text">Отменить и закрыть</a>
+        </div>
+    </div>

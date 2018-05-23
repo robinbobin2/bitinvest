@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ElementRef } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
-
+import {PortfolioService} from "../../portfolio.service";
+import {AuthService} from "../../auth.service";
+const headers = new HttpHeaders({'Content-type': 'Application/json '});
 export class NewsRaw {
 	id: number;
     name:string;
@@ -54,7 +51,8 @@ export class CommentRaw {
 @Component({
   selector: 'app-cloud-mining-detail',
   templateUrl: './cloud-mining-detail.component.html',
-  styleUrls: ['./cloud-mining-detail.component.scss']
+  styleUrls: ['./cloud-mining-detail.component.scss'],
+    providers: [ PortfolioService]
 })
 export class CloudMiningDetailComponent implements OnInit {
 private fragment: string;
@@ -65,7 +63,20 @@ commentcount = 0;
 submitted = false;
 user: User;
 
- constructor(private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+    portfoliosInfo = [];
+    portfolioAdded = false;
+    getUserPortfolio = [];
+    addPortfolio: any;
+    checkPortfolio = false;
+    removed = false;
+    show = false;
+    portfolioInfo:any;
+ constructor(private authService: AuthService,
+             private orderPipe: OrderPipe,
+             private http:HttpClient,
+             private router:Router,
+             private route:ActivatedRoute,
+             private portfolioService: PortfolioService) {
     let id = route.snapshot.params['id'];
     let path = "/miningraw/"+id;
 
@@ -125,6 +136,26 @@ user: User;
   }
 
   ngOnInit() {
+      this.authService.getUser().subscribe(
+          response => {
+              for(let item of response['portfolio']) {
+                  if (item.user_portfolio_type_id == 1) {
+                      this.getUserPortfolio.push(item)
+                  }
+              }
+          }
+      );
+      let portfolioUrl = '/angular/userportfolio';
+      this.portfolioInfo = this.http.get<any>(portfolioUrl);
+      this.portfolioInfo.subscribe(
+          response => {
+              if(response['error']) {
+                  // code...
+              } else {
+                  this.portfoliosInfo = response['mining'];
+              }
+          },
+      );
   	this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
   	try {
       document.querySelector('#' + this.fragment).scrollIntoView();
@@ -148,7 +179,70 @@ user: User;
         };
    });
   }
-  submitComment(form: NgForm, post_id, type) {
+    checkAuth() {
+        if(this.authService.getUserInfo()) {
+            return true;
+        }
+        return(false);
+
+    }
+    checkInPortfolio(id) {
+        console.log(this.portfoliosInfo);
+        if(this.portfoliosInfo == undefined) {
+            return false;
+        }
+
+        for(let item of this.portfoliosInfo) {
+            console.log(item)
+            for(let it of item) {
+                if(it.id ) {
+
+                    if(it.id == id) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    removePortfolio(id) {
+        this.portfolioService.removePortfolio(id, 'App\\CloudMining', 0).subscribe( () => {
+            this.portfolioInfo.subscribe(res=>{
+                if(res['error']) {
+                    // code...
+                } else {
+                    this.portfoliosInfo = res['mining'];
+                    console.log(this.portfoliosInfo);
+                }
+            });
+            this.checkInPortfolio(id);
+        })
+
+    }
+    createPortfolio(form: NgForm) {
+
+        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 1},{headers: headers})
+            .subscribe(
+                response => {this.getUserPortfolio.push(response); form.reset()},
+                error => console.log(error)
+            )
+
+    }
+    submitPortfolio( post_id, type) {
+
+        this.http.post('/storeportfolio', {
+                'user_portfollable_id': post_id,
+                'user_portfolio_id':this.addPortfolio,
+                'user_portfollable_type': type
+            },
+            {headers: headers}).subscribe(
+            (response) => this.router.navigate(['/profile/portfolio']),
+            (error) => console.log(error)
+        );
+    }
+
+    submitComment(form: NgForm, post_id, type) {
     const headers = new HttpHeaders({'Content-type': 'Application/json '});
     this.http.post('/storecomment', {
             'post_id': post_id,

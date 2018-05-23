@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ElementRef } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 import { AuthService } from '../../auth.service';
+import {PortfolioService} from "../../portfolio.service";
 interface Category {
   id: number;
   name: string;
@@ -46,7 +42,7 @@ export class Portfolio {
   selector: 'app-all-cloud-mining',
   templateUrl: './all-cloud-mining.component.html',
   styleUrls: ['./all-cloud-mining.component.scss'],
-  providers: [AuthService]
+  providers: [AuthService, PortfolioService]
 })
 
 export class AllCloudMiningComponent implements OnInit {
@@ -75,7 +71,8 @@ order: string = 'proc';
      private orderPipe: OrderPipe, 
      private http:HttpClient, 
      private router:Router, 
-     private route:ActivatedRoute) 
+     private route:ActivatedRoute,
+               private portfolioService: PortfolioService)
 
    {
 
@@ -184,23 +181,18 @@ order: string = 'proc';
   }
 
   removePortfolio(id) {
-    const removeUrl = '/angular/userportfolio/remove/';
-    const removePost = this.http.get(removeUrl+id);
-    removePost.subscribe(
-      response => {
-        this.portfolioInfo.subscribe(res=>{
-          if(res['error']) {
-           // code...
-         } else {
-         this.portfoliosInfo = res['mining'];
-         console.log(this.portfoliosInfo);
-         }
-       }),
-        this.checkInPortfolio(id);
+       this.portfolioService.removePortfolio(id, 'App\\CloudMining', 0).subscribe( () => {
+           this.portfolioInfo.subscribe(res=>{
+               if(res['error']) {
+                   // code...
+               } else {
+                   this.portfoliosInfo = res['mining'];
+                   console.log(this.portfoliosInfo);
+               }
+           });
+               this.checkInPortfolio(id);
+       })
 
-      },
-      error => console.log(error)
-    )
   }
 
 setOrder(value: string) {

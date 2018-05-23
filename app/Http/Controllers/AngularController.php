@@ -58,16 +58,17 @@ class AngularController extends Controller
         $newUser = User::with("Portfolio")->where('id', '=', $user->id)->first();
         $portfolio_types = UserPortfolioType::all();
         $userPortfolio = [];
-        foreach ($portfolio_types as $portfolio_type) {
-            $portfolios = $portfolio_type->portfolios->where('user_id', $user->id);
-        }
-        foreach ($portfolios as $portfolio) {
+        // foreach ($portfolio_types as $portfolio_type) {
+        //     $portfolios = $portfolio_type->portfolios->where('user_id', $newUser->id);
+        // }
+        foreach ($newUser->portfolio as $portfolio) {
             $userPortfolio['mining'][] = $portfolio->minings;
             $userPortfolio['ico'][] = $portfolio->ico;
             $userPortfolio['crypto'][] = $portfolio->crypto;
+            $userPortfolio['stocks'][] = $portfolio->stocks;
 
         }
-        return $portfolios;
+        return json_encode($userPortfolio);
     }
 
     public function byportfolio($id)
@@ -120,10 +121,18 @@ class AngularController extends Controller
                 'error' => 'User not loggined'
             ];
         }
-        if(UserPortfollable::where('user_portfollable_id', $request->user_portfollable_id)->where('user_portfollable_type', $request->user_portfollable_type)->where('user_portfolio_id', $request->user_portfolio_id)->delete()) {
+        if ($request->user_portfolio_id == 0) {
+            if(UserPortfollable::where('user_portfollable_id', $request->user_portfollable_id)->where('user_portfollable_type', $request->user_portfollable_type)->delete()) {
             return [
             'success' => 'Portfolio deleted'
-        ];
+            ];
+            }
+        } else {
+            if(UserPortfollable::where('user_portfollable_id', $request->user_portfollable_id)->where('user_portfollable_type', $request->user_portfollable_type)->where('user_portfolio_id', $request->user_portfolio_id)->delete()) {
+                return [
+                'success' => 'Portfolio deleted'
+            ];
+            }
         }
         
     }

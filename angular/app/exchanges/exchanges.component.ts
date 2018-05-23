@@ -1,14 +1,20 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Router, ActivatedRoute} from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import {StocksService} from '../stocks.service';
 import {Observable} from 'rxjs/Rx';
+import {PortfolioService} from "../portfolio.service";
+import {AuthService} from "../auth.service";
+import { NgForm } from '@angular/forms';
+
+const headers = new HttpHeaders({'Content-type': 'Application/json '});
 
 @Component({
   selector: 'app-exchanges',
   templateUrl: './exchanges.component.html',
   styleUrls: ['./exchanges.component.scss'],
-  providers: [StocksService]
+  providers: [StocksService, PortfolioService]
 })
 export class ExchangesComponent implements OnInit, OnDestroy {
   exchanges = [];
@@ -25,10 +31,39 @@ export class ExchangesComponent implements OnInit, OnDestroy {
   stocks = [];
     observale_pairs: any;
   load=true;
-  constructor(private http:HttpClient, private stockService:StocksService, private orderPipe: OrderPipe) { }
+    portfoliosInfo = [];
+    addPortfolio: any;
+    show = false;
+    portfolioInfo:any;
+    getUserPortfolio = [];
+  constructor(private http:HttpClient,
+              private router:Router,
+              private route:ActivatedRoute,private stockService:StocksService, private orderPipe: OrderPipe,
+              private portfolioService: PortfolioService,
+              private authService: AuthService) { }
 
   ngOnInit() {
-
+      let portfolioUrl = '/angular/userportfolio';
+      this.portfolioInfo = this.http.get<any>(portfolioUrl);
+      this.portfolioInfo.subscribe(
+          response => {
+              if(response['error']) {
+                  // code...
+              } else {
+                  this.portfoliosInfo = response['stocks'];
+                  console.log(this.portfoliosInfo);
+              }
+          },
+      );
+      this.authService.getUser().subscribe(
+          response => {
+              for(let item of response['portfolio']) {
+                  if (item.user_portfolio_type_id == 4) {
+                      this.getUserPortfolio.push(item)
+                  }
+              }
+          }
+      );
     this.stockService.getExchanges().subscribe((res: Array<any>) => {
       this.exchanges = res; 
       this.count = this.exchanges.length;
@@ -76,6 +111,63 @@ export class ExchangesComponent implements OnInit, OnDestroy {
 
      this.order = value;
    }
+
+    removePortfolio(id) {
+        this.portfolioService.removePortfolio(id, 'App\\Stock', 0).subscribe( () => {
+            this.portfolioInfo.subscribe(res=>{
+                if(res['error']) {
+                    // code...
+                } else {
+                    this.portfoliosInfo = res['stocks'];
+                    console.log(this.portfoliosInfo);
+                }
+            });
+            this.checkInPortfolio(id);
+        })
+    }
+
+    createPortfolio(form: NgForm) {
+
+        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 4},{headers: headers})
+            .subscribe(
+                response => {this.getUserPortfolio.push(response); form.reset()},
+                error => console.log(error)
+            )
+
+    }
+
+    submitPortfolio( post_id, type) {
+
+        this.portfolioService.submitPortfolio(this.addPortfolio,post_id, type).subscribe(
+            (response) => this.router.navigate(['/profile/portfolio']),
+            (error) => console.log(error)
+        );
+    }
+    checkInPortfolio(id) {
+        if(this.portfoliosInfo == undefined) {
+            return false;
+        }
+
+        for(let item of this.portfoliosInfo) {
+            for(let it of item) {
+                if(it.id ) {
+
+                    if(it.id == id) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    checkAuth() {
+        if(this.authService.getUserInfo()) {
+            return true;
+        }
+        return(false);
+
+    }
+
 
  ngOnDestroy() {
       this.alive = false;
