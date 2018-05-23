@@ -283,19 +283,7 @@
                   <input type="text" placeholder="Введите название..." [value]="searchLine" (click)="type=2" (keyup)="searchTerm$.next($event.target.value)" >
                   <button type="submit" (click)="onAdd(item.id, result_id, 'App\\IcoProject')">Добавить</button>
                 </form>
-                <form *ngIf="item.user_portfolio_type_id == 1 && mining_form == true">
-                  <input type="text" placeholder="Введите название..." [value]="searchLine" (click)="type=1" (keyup)="searchTerm$.next($event.target.value);" >
-                  <button type="submit" (click)="onAdd(item.id, result_id, 'App\\CloudMining')">Добавить</button>
-                </form>
 
-                <form *ngIf="item.user_portfolio_type_id == 3 && crypto_form == true">
-                  <input type="text" placeholder="Введите название..." [value]="searchLine" (click)="type=3" (keyup)="searchTerm$.next($event.target.value)" >
-                  <button type="submit" (click)="onAdd(item.id, result_id, 'App\\CryptoStat')">Добавить</button>
-                </form>
-                <form *ngIf="item.user_portfolio_type_id == 4 && stock_form == true">
-                  <input type="text" placeholder="Введите название..." [value]="searchLine" (click)="type=4" (keyup)="searchTerm$.next($event.target.value)" >
-                  <button type="submit" (click)="onAdd(item.id, result_id, 'App\\Stock')">Добавить</button>
-                </form>
                 <ul *ngIf="results?.length > 0">
                 <li *ngFor="let result of results">
                   <a (click)="searchLine = result.name; result_id=result.id" target="_blank">
