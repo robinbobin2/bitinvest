@@ -18,9 +18,9 @@
 							</div>
 							<div class="progres-bar">
 								<a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
-								<a href="#follow-popup" *ngIf="!checkInPortfolio(item.id) && checkAuth()" (click)="selectedItem = item" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+								<a href="#follow-popup" *ngIf="!checkInPortfolio(news.id) && checkAuth()" (click)="selectedItem = news" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
 
-								<a class="follow"  *ngIf="checkInPortfolio(item.id) && checkAuth()"  (click)="removePortfolio(item.id, 'App\\IcoProject')"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
+								<a class="follow"  *ngIf="checkInPortfolio(news.id) && checkAuth()"  (click)="removePortfolio(news.id, 'App\\IcoProject')"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
 								<</div>
 						</div>
             <div class="right">
@@ -222,3 +222,27 @@
 			</div>
     </div>
   </section>
+
+<div id="follow-popup" class="popup mfp-with-anim mfp-hide">
+	<div class="popup-body">
+		<h2>Следить за {{selectedItem?.name}}</h2>
+		<p>Выберите портфель для сохранения {{selectedItem?.name}}</p>
+		<div class="checkbox-list">
+			<div class="checkbox-wrap" *ngFor="let portfolio of getUserPortfolio; let i = index">
+				<input type="radio" name="id" [(ngModel)]="addPortfolio" value="{{portfolio.id}}" checked="checked" id="{{i}}">
+				<label for="{{i}}">
+					<span></span>{{portfolio.name}}
+				</label>
+			</div>
+		</div>
+		<a href="#" class="add-portfolio">+Добавить портфель</a>
+		<form class="hidden" #f="ngForm">
+			<input type="text" ngModel name="name" required="" placeholder="Введите название...">
+			<button (click)="createPortfolio(f)" type="submit">Добавить</button>
+		</form>
+	</div>
+	<div class="save-block">
+		<a (click)="submitPortfolio(selectedItem?.id, 'App\\IcoProject')" class="save-settings">Сохранить настройки</a>
+		<a href="#" class="close-text">Отменить и закрыть</a>
+	</div>
+</div>
