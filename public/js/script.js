@@ -205,15 +205,15 @@ $(document).ready(function () {
 		$("#follow-popup .checkbox-list").append(listItem);
 	});
 
-	$(".add").on("click", function (e) {
-		e.preventDefault();
-		$(this).closest("td").find("form").show();
-	});
+	// $(".add").on("click", function (e) {
+	// 	e.preventDefault();
+	// 	$(this).closest("td").find("form").show();
+	// });
 
-	$(".add").dblclick(function (e) {
-		e.preventDefault();
-		$(this).closest("td").find("form").hide();
-	});
+	// $(".add").dblclick(function (e) {
+	// 	e.preventDefault();
+	// 	$(this).closest("td").find("form").hide();
+	// });
 
 	$(".top-head .menu-btn").on("click", function (e) {
 		e.preventDefault();
