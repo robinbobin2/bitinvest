@@ -120,10 +120,18 @@ class AngularController extends Controller
                 'error' => 'User not loggined'
             ];
         }
-        if(UserPortfollable::where('user_portfollable_id', $request->user_portfollable_id)->where('user_portfollable_type', $request->user_portfollable_type)->where('user_portfolio_id', $request->user_portfolio_id)->delete()) {
+        if ($request->user_portfolio_id == 0) {
+            if(UserPortfollable::where('user_portfollable_id', $request->user_portfollable_id)->where('user_portfollable_type', $request->user_portfollable_type)->delete()) {
             return [
             'success' => 'Portfolio deleted'
-        ];
+            ];
+            }
+        } else {
+            if(UserPortfollable::where('user_portfollable_id', $request->user_portfollable_id)->where('user_portfollable_type', $request->user_portfollable_type)->where('user_portfolio_id', $request->user_portfolio_id)->delete()) {
+                return [
+                'success' => 'Portfolio deleted'
+            ];
+            }
         }
         
     }

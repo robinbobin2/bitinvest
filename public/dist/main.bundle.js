@@ -1345,6 +1345,7 @@ module.exports = ".select-wrapper {\n  margin-bottom: 20px;\n  width: 205px;\n  
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__portfolio_service__ = __webpack_require__("./angular/app/portfolio.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1356,6 +1357,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 // import { interval } from 'rxjs/Observable/interval';
+
 
 
 
@@ -1374,13 +1376,14 @@ var Portfolio = (function () {
 }());
 
 var AllCloudMiningComponent = (function () {
-    function AllCloudMiningComponent(authService, orderPipe, http, router, route) {
+    function AllCloudMiningComponent(authService, orderPipe, http, router, route, portfolioService) {
         var _this = this;
         this.authService = authService;
         this.orderPipe = orderPipe;
         this.http = http;
         this.router = router;
         this.route = route;
+        this.portfolioService = portfolioService;
         this.order = 'proc';
         this.reverse = false;
         this.news = [];
@@ -1499,9 +1502,7 @@ var AllCloudMiningComponent = (function () {
     };
     AllCloudMiningComponent.prototype.removePortfolio = function (id) {
         var _this = this;
-        var removeUrl = '/angular/userportfolio/remove/';
-        var removePost = this.http.get(removeUrl + id);
-        removePost.subscribe(function (response) {
+        this.portfolioService.removePortfolio(id, 'App\\CloudMining', 0).subscribe(function () {
             _this.portfolioInfo.subscribe(function (res) {
                 if (res['error']) {
                     // code...
@@ -1510,9 +1511,9 @@ var AllCloudMiningComponent = (function () {
                     _this.portfoliosInfo = res['mining'];
                     console.log(_this.portfoliosInfo);
                 }
-            }),
-                _this.checkInPortfolio(id);
-        }, function (error) { return console.log(error); });
+            });
+            _this.checkInPortfolio(id);
+        });
     };
     AllCloudMiningComponent.prototype.setOrder = function (value) {
         if (this.order === value) {
@@ -1541,12 +1542,12 @@ AllCloudMiningComponent = __decorate([
         selector: 'app-all-cloud-mining',
         template: __webpack_require__("./angular/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html"),
         styles: [__webpack_require__("./angular/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AuthService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_5__portfolio_service__["a" /* PortfolioService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__portfolio_service__["a" /* PortfolioService */]) === "function" && _f || Object])
 ], AllCloudMiningComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=all-cloud-mining.component.js.map
 
 /***/ }),
