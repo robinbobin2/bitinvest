@@ -154,10 +154,8 @@ order: string = 'proc';
   }
   checkAuth() {
     if(this.authService.getUserInfo()) {
-      console.log(true);
       return true;
     }
-    console.log(false);
     return(false);
     
   }
@@ -165,18 +163,14 @@ order: string = 'proc';
   loadMore(id) {
     this.router.navigate(['/cloud-mining/item', id]);
   }
-  callCheck(id) {
-    if(this.checkInPortfolio(id)) {
-      this.checkPortfolio = true;
-    }
-    this.checkPortfolio = false;
-  }
   checkInPortfolio(id) {
+      console.log(this.portfoliosInfo);
       if(this.portfoliosInfo == undefined) {
         return false;
       }
-        
+
         for(let item of this.portfoliosInfo) {
+          console.log(item)
           for(let it of item) {
             if(it.id ) {
                      

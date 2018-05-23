@@ -1471,27 +1471,21 @@ var AllCloudMiningComponent = (function () {
     };
     AllCloudMiningComponent.prototype.checkAuth = function () {
         if (this.authService.getUserInfo()) {
-            console.log(true);
             return true;
         }
-        console.log(false);
         return (false);
     };
     AllCloudMiningComponent.prototype.loadMore = function (id) {
         this.router.navigate(['/cloud-mining/item', id]);
     };
-    AllCloudMiningComponent.prototype.callCheck = function (id) {
-        if (this.checkInPortfolio(id)) {
-            this.checkPortfolio = true;
-        }
-        this.checkPortfolio = false;
-    };
     AllCloudMiningComponent.prototype.checkInPortfolio = function (id) {
+        console.log(this.portfoliosInfo);
         if (this.portfoliosInfo == undefined) {
             return false;
         }
         for (var _i = 0, _a = this.portfoliosInfo; _i < _a.length; _i++) {
             var item = _a[_i];
+            console.log(item);
             for (var _b = 0, item_1 = item; _b < item_1.length; _b++) {
                 var it = item_1[_b];
                 if (it.id) {
