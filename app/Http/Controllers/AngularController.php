@@ -59,15 +59,13 @@ class AngularController extends Controller
         $portfolio_types = UserPortfolioType::all();
         $userPortfolio = [];
         foreach ($portfolio_types as $portfolio_type) {
-            $portfolios = $portfolio_type->portfolios->with('minings')->where('user_id', $user->id);
+            $portfolios = $portfolio_type->portfolios->where('user_id', $user->id);
         }
         foreach ($portfolios as $portfolio) {
             $userPortfolio['mining'][] = $portfolio->minings;
-            $userPortfolio['ico'][] = $portfolio->ico;
-            $userPortfolio['crypto'][] = $portfolio->crypto;
 
         }
-        return $portfolios;
+        return $userPortfolio;
     }
 
     public function byportfolio($id)
