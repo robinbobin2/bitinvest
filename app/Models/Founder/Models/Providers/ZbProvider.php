@@ -67,12 +67,13 @@ class ZbProvider extends FounderProvider
                 $pos = strpos($ticker->getCurrency(), "USDT");
                 if ($pos !== false) {
                     $newRate = $ticker;
-                    $newRate->setCurrency(str_replace("USDT", "USD", $newRate->getCurrency()));
+                    $newCurrency = str_replace("USDT", "USD", $newRate->getCurrency());
+                    $newRate->setCurrency($newCurrency);
                     $exchange = new ExchangeRate();
-                    $exchange->value = $ticker->getValue();
-                    $exchange->volume = $ticker->getVolume();
-                    $exchange->bid = $ticker->getBid();
-                    $exchange->ask = $ticker->getAsk();
+                    $exchange->value = $newRate->getValue();
+                    $exchange->volume = $newRate->getVolume();
+                    $exchange->bid = $newRate->getBid();
+                    $exchange->ask = $newRate->getAsk();
                     $exchange->currency = $newRate->getCurrency();
                     $exchange->exchangeId = $this->getExchangeId();
                     $exchange->createTime = time();
