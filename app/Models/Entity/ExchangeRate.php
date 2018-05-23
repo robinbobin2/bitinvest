@@ -11,6 +11,17 @@ namespace App\Models\Entity;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class ExchangeRate
+ * @package App\Models\Entity
+ * @property float $value
+ * @property float $volume
+ * @property float $bid
+ * @property float $ask
+ * @property string $currency
+ * @property int $exchangeId
+ * @property int $createTime
+ */
 class ExchangeRate extends Model
 {
     /**
