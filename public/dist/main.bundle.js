@@ -5804,8 +5804,12 @@ var PortfolioService = (function () {
         return this.http
             .post('/angular/userportfolio/create', { 'name': name, 'user_portfolio_type_id': type }, { headers: headers });
     };
-    PortfolioService.prototype.removePortfolio = function (id, type) {
-        return this.http.get('/angular/userportfolio/remove/' + id + '/' + type);
+    PortfolioService.prototype.removePortfolio = function (id, type, port_id) {
+        return this.http.post('/angular/userportfolio/remove/', {
+            'user_portfollable_id': id,
+            'user_portfolio_id': port_id,
+            'user_portfollable_type': type
+        });
     };
     PortfolioService.prototype.submitPortfolio = function (post_id, id, type) {
         return this.http.post('/storeportfolio', {
@@ -6005,7 +6009,7 @@ var PortfolioComponent = (function () {
     };
     PortfolioComponent.prototype.onRemove = function (itemid, id, index, type) {
         var _this = this;
-        this.portfolioService.removePortfolio(id, type).subscribe(function (res) {
+        this.portfolioService.removePortfolio(id, type, itemid).subscribe(function (res) {
             if (index > -1) {
                 _this.portfolios[itemid].splice(index, 1);
             }
