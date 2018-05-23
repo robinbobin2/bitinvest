@@ -53,7 +53,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
   reverse: boolean = true;
   animtype = [];
   diff:Array<number> = [];
-    selectedItem: NewsRaw;
+    selectedItem = [];
     active = 0;
     inactive = 0;
     portfoliosInfo = [];
@@ -103,13 +103,11 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         );
     }
     checkInPortfolio(id) {
-        console.log(this.portfoliosInfo);
         if(this.portfoliosInfo == undefined) {
             return false;
         }
 
         for(let item of this.portfoliosInfo) {
-            console.log(item)
             for(let it of item) {
                 if(it.id ) {
 

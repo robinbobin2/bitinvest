@@ -2214,6 +2214,7 @@ var CryptoAllComponent = (function () {
         this.reverse = true;
         this.animtype = [];
         this.diff = [];
+        this.selectedItem = [];
         this.active = 0;
         this.inactive = 0;
         this.portfoliosInfo = [];
