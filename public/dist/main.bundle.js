@@ -6011,6 +6011,7 @@ var PortfolioComponent = (function () {
         var _this = this;
         this.portfolioService.removePortfolio(id, type, itemid).subscribe(function (res) {
             if (index > -1) {
+                console.log(res);
                 _this.portfolios[itemid].splice(index, 1);
             }
         });

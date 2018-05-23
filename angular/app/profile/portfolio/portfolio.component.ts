@@ -177,6 +177,7 @@ export class PortfolioComponent implements OnInit {
 
    		res => {
    			if (index > -1) {
+   			    console.log(res);
 				this.portfolios[itemid].splice(index, 1);
 			}
    		}
