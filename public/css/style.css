@@ -8995,3 +8995,38 @@ app-news-detail {
 .sidebar .top-crypto .periods .period-content .tab-content ul li .price {
   margin-right: 15px;
 }
+
+table tbody tr td .difference .buttons a {
+  width: 22px;
+  border: none;
+  background: none;
+  font-family: "PT Sans";
+  font-weight: normal;
+  color: #fff;
+}
+.table tbody tr td .difference .buttons a.right {
+  background: #989a9f;
+  font-size: 20px;
+  transition: .3s;
+}
+.table tbody tr td .difference .buttons a.right:hover {
+  background: #383c46;
+}
+.table tbody tr td .difference .buttons a.plus {
+  background: #f58c1b;
+  font-size: 24px;
+  transition: .3s;
+}
+.table tbody tr td .difference .buttons a.plus:hover {
+  background: #da7305;
+}
+.table tbody tr td .difference .buttons a.minus {
+  background: #fa5252;
+  transition: .3s;
+}
+.table tbody tr td .difference .buttons a.minus:hover {
+  background: #dc3131;
+}
+.table tbody tr td .difference .buttons a.minus img {
+  margin-bottom: 3px;
+}
