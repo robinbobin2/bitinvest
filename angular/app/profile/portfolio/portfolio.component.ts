@@ -62,7 +62,6 @@ export class PortfolioComponent implements OnInit {
 
                             if(type_id == 4) {
                                 this.stockService.getVolumes().subscribe(res => {
-                                    this.portfolios[item.id].push(res)
                                     for(let resItem of res) {
                                         this.volumes[resItem.name] = {
                                             'btc': resItem.btc,
@@ -91,6 +90,7 @@ export class PortfolioComponent implements OnInit {
                                            portfolioItem.volume = crypto[portfolioItem['symbol']+'/USD']['volume'];
                                            portfolioItem.day = crypto[portfolioItem['symbol']+"/USD"]['day'];
                                            portfolioItem.week = crypto[portfolioItem['symbol']+"/USD"]['week'];
+                                           portfolioItem.month = crypto[portfolioItem['symbol']+"/USD"]['month'];
                                            portfolioItem.marketCapUsd = crypto[portfolioItem['symbol']+"/USD"]['marketCapUsd'];
 
                                            this.diff[item.id] = portfolioItem.now - portfolioItem.last;

@@ -41,8 +41,8 @@
       <file leaf-file-name="portfolio.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="152" column="40" selection-start-line="152" selection-start-column="40" selection-end-line="152" selection-end-column="40" />
+            <state relative-caret-position="282">
+              <caret line="225" column="94" selection-start-line="225" selection-start-column="94" selection-end-line="225" selection-end-column="94" />
             </state>
           </provider>
         </entry>
@@ -74,8 +74,8 @@
       <file leaf-file-name="portfolio.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="59" />
+            <state relative-caret-position="500">
+              <caret line="92" column="110" selection-start-line="92" selection-start-column="110" selection-end-line="92" selection-end-column="110" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -87,7 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>authSe</find>
       <find>item.id</find>
       <find>checkA</find>
       <find>PositionData</find>
@@ -113,10 +112,11 @@
       <find>symbol</find>
       <find>diff</find>
       <find>след</find>
-      <find>submitPortfolio</find>
       <find>createPortfolio</find>
       <find>anim</find>
       <find>img/st</find>
+      <find>== 4</find>
+      <find>submitPortfolio</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -351,12 +351,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="24839000" />
+      <workItem from="1526711663196" duration="25268000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71173000" />
+    <option name="totallyTimeSpent" value="71602000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -730,16 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/exchange/exchange.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="225" column="33" lean-forward="true" selection-start-line="225" selection-start-column="33" selection-end-line="225" selection-end-column="33" />
-          <folding>
-            <element signature="n#style#0;n#h3#0;n#div#0;n#div#4;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/exchange/exchange.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
@@ -797,18 +787,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="59" />
+        <state relative-caret-position="500">
+          <caret line="92" column="110" selection-start-line="92" selection-start-column="110" selection-end-line="92" selection-end-column="110" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/exchange/exchange.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="225" column="33" lean-forward="true" selection-start-line="225" selection-start-column="33" selection-end-line="225" selection-end-column="33" />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#0;n#div#4;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="152" column="40" selection-start-line="152" selection-start-column="40" selection-end-line="152" selection-end-column="40" />
+        <state relative-caret-position="282">
+          <caret line="225" column="94" selection-start-line="225" selection-start-column="94" selection-end-line="225" selection-end-column="94" />
         </state>
       </provider>
     </entry>

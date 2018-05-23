@@ -148,18 +148,18 @@
               <td>
                 <a href="crypto-single.html">
                   <div class="img-wrap">
-                    <img src="img/bitcoin-icon.png" alt="">
+
                   </div>
                   <span>{{portfolioItem?.name}}</span>
                 </a>
               </td>
               <td>
-                <span class="amount-bold">{{volumes[portfolioItem.name]?.usd}}</span>
+                <span class="amount-bold">${{volumes[portfolioItem.name]?.usd | number:'1.0-5'}}</span>
               </td>
               <td>
                 <div class="difference">
                   <div class="stars-wrap">
-                <span>{{volumes[portfolioItem.name]?.btc}}</span>
+                <span>{{volumes[portfolioItem.name]?.btc | number:'1.0-5'}}</span>
                   </div>
                   <div class="buttons">
                     <a href="#" class="settings"><img src="img/settings.svg" alt=""></a>
@@ -223,8 +223,12 @@
 
             </td>
             <td>
+              <span class="red">{{ countPercent(data.now, data.week) | number: '1.2'}}%</span>
+            </td>
+            <td>
               <div class="difference">
-                <span class="red">-20,3% (-251,11)</span>
+                <span class="red">{{ countPercent(data.now, data.month) | number: '1.2'}}%</span>
+
                 <div class="buttons">
                   <a href="#" class="settings"><img src="img/settings.svg" alt=""></a>
                   <a href="#" class="minus"><img src="img/minus.png" alt=""></a>
