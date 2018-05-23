@@ -17,7 +17,6 @@ use App\Models\Founder\Models\Requests\Request;
 
 class BraziliexProvider extends FounderProvider
 {
-
     /**
      * @param Request $request
      * @return TickerEntity[]
