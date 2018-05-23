@@ -65,7 +65,7 @@ class AngularController extends Controller
             // print_r($portfolio);
 
         }
-        return $portfolios;
+        return $newUser;
     }
 
     public function byportfolio($id)
