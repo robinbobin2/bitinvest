@@ -1,7 +1,4 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -9,10 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 import { PortfolioService } from '../../portfolio.service';
 import { AuthService } from '../../auth.service';
- interface Category {
-  id: number;
-  name: string;
-}
+
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
 
 export class NewsRaw {

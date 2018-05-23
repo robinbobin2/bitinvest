@@ -17,8 +17,11 @@
 								<p class="last-updated">Последнее обновление: {{news.updated_at}}</p>
 							</div>
 							<div class="progres-bar">
-								<a href="#follow-popup" class="follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
-							</div>
+								<a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+								<a href="#follow-popup" *ngIf="!checkInPortfolio(item.id) && checkAuth()" (click)="selectedItem = item" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+
+								<a class="follow"  *ngIf="checkInPortfolio(item.id) && checkAuth()"  (click)="removePortfolio(item.id, 'App\\IcoProject')"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
+								<</div>
 						</div>
             <div class="right">
               <div class="progres">
