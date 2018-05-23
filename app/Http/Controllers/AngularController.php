@@ -62,10 +62,9 @@ class AngularController extends Controller
             $portfolios = $portfolio_type->portfolios->where('user_id', $user->id);
         }
         foreach ($portfolios as $portfolio) {
-            $userPortfolio['mining'][] = $portfolio->minings;
+            print_r($portfolio);
 
         }
-        return $userPortfolio;
     }
 
     public function byportfolio($id)
