@@ -6,7 +6,7 @@ import {StocksService} from '../stocks.service';
 import {Observable} from 'rxjs/Rx';
 import {PortfolioService} from "../portfolio.service";
 import {AuthService} from "../auth.service";
-
+import { NgForm } from '@angular/forms';
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
 
@@ -126,15 +126,20 @@ export class ExchangesComponent implements OnInit, OnDestroy {
         })
     }
 
+    createPortfolio(form: NgForm) {
+
+        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 2},{headers: headers})
+            .subscribe(
+                response => {this.getUserPortfolio.push(response); form.reset()},
+                error => console.log(error)
+            )
+
+    }
+
     submitPortfolio( post_id, type) {
 
-        this.http.post('/storeportfolio', {
-                'user_portfollable_id': post_id,
-                'user_portfolio_id':this.addPortfolio,
-                'user_portfollable_type': type
-            },
-            {headers: headers}).subscribe(
-            () => this.router.navigate(['/profile/portfolio']),
+        this.portfolioService.submitPortfolio(this.addPortfolio,post_id, type).subscribe(
+            (response) => this.router.navigate(['/profile/portfolio']),
             (error) => console.log(error)
         );
     }

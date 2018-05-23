@@ -3603,13 +3603,14 @@ var ExchangesComponent = (function () {
             _this.checkInPortfolio(id);
         });
     };
+    ExchangesComponent.prototype.createPortfolio = function (form) {
+        var _this = this;
+        this.http.post('/angular/userportfolio/create', { 'name': form.value.name, 'user_portfolio_type_id': 2 }, { headers: headers })
+            .subscribe(function (response) { _this.getUserPortfolio.push(response); form.reset(); }, function (error) { return console.log(error); });
+    };
     ExchangesComponent.prototype.submitPortfolio = function (post_id, type) {
         var _this = this;
-        this.http.post('/storeportfolio', {
-            'user_portfollable_id': post_id,
-            'user_portfolio_id': this.addPortfolio,
-            'user_portfollable_type': type
-        }, { headers: headers }).subscribe(function () { return _this.router.navigate(['/profile/portfolio']); }, function (error) { return console.log(error); });
+        this.portfolioService.submitPortfolio(this.addPortfolio, post_id, type).subscribe(function (response) { return _this.router.navigate(['/profile/portfolio']); }, function (error) { return console.log(error); });
     };
     ExchangesComponent.prototype.checkInPortfolio = function (id) {
         if (this.portfoliosInfo == undefined) {
