@@ -602,8 +602,10 @@ class CoinexChangeConnector extends FounderConnector
         $response = $this->publicGetGetmarkets ();
         $markets = $response['result'];
         $result = array ();
-        for ($i = 0; $i < count ($markets); $i++) {
-            $market = $markets[$i];
+        if(!$markets){
+            $markets = [];
+        }
+        foreach ($markets as $market) {
             $id = $market['MarketID'];
             $base = $this->common_currency_code($market['MarketAssetCode']);
             $quote = $this->common_currency_code($market['BaseCurrencyCode']);
@@ -671,6 +673,9 @@ class CoinexChangeConnector extends FounderConnector
         $response = $this->publicGetGetmarketsummaries ($params);
         $tickers = $response['result'];
         $result = array ();
+        if(!$tickers){
+            $tickers = [];
+        }
         for ($i = 0; $i < count ($tickers); $i++) {
             $ticker = $this->parse_ticker($tickers[$i]);
             $symbol = $ticker['symbol'];
