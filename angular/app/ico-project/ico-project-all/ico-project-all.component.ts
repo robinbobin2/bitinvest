@@ -57,7 +57,7 @@ export class IcoProjectAllComponent implements OnInit {
   addPortfolio: any;
   checkPortfolio = false;
   removed = false;
-  show = false;
+  show = true;
   portfolioInfo:any;
   /**
    * @param {OrderPipe} 
@@ -217,8 +217,12 @@ createPortfolio(form: NgForm) {
 submitPortfolio( post_id, type) {
     
     this.portfolioService.submitPortfolio(this.addPortfolio,post_id, type).subscribe(
-        (response) => this.router.navigate(['/profile/portfolio']),
-        (error) => console.log(error)
+        (response) => {
+            this.show = false
+            this.router.navigate(['/profile/portfolio'])
+        },
+
+                (error) => console.log(error)
       );
 }
 
