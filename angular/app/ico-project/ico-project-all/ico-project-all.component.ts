@@ -6,8 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 import { PortfolioService } from '../../portfolio.service';
 import { AuthService } from '../../auth.service';
-import * as $ from 'jquery';
-var el:$;
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
 export class NewsRaw {
@@ -219,7 +217,6 @@ submitPortfolio( post_id, type) {
     
     this.portfolioService.submitPortfolio(this.addPortfolio,post_id, type).subscribe(
         (response) => {
-            $.magnificPopup.close();
             this.router.navigate(['/profile/portfolio'])
         },
 

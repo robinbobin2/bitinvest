@@ -4223,8 +4223,6 @@ module.exports = "div.ico-content {\n  width: 860px !important;\n  margin-left: 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__portfolio_service__ = __webpack_require__("./angular/app/portfolio.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery__ = __webpack_require__("./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jquery__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4240,8 +4238,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-var el;
 var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
 var NewsRaw = (function () {
     function NewsRaw() {
@@ -4404,7 +4400,6 @@ var IcoProjectAllComponent = (function () {
     IcoProjectAllComponent.prototype.submitPortfolio = function (post_id, type) {
         var _this = this;
         this.portfolioService.submitPortfolio(this.addPortfolio, post_id, type).subscribe(function (response) {
-            __WEBPACK_IMPORTED_MODULE_6_jquery__["magnificPopup"].close();
             _this.router.navigate(['/profile/portfolio']);
         }, function (error) { return console.log(error); });
     };
