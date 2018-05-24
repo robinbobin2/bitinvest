@@ -6348,10 +6348,15 @@ var PortfolioComponent = (function () {
     PortfolioComponent.prototype.onAdd = function (port_id, id, type) {
         var _this = this;
         this.portfolioService.submitPortfolio(port_id, id, type).subscribe(function (result) {
+            console.log(result);
             _this.portfolioService.getPortfolioById(port_id)
-                .subscribe(function (res) { if (res.length > 0) {
-                _this.portfolios[port_id] = res;
-            } });
+                .subscribe(function (res) {
+                console.log(res);
+                if (res.length > 0) {
+                    _this.portfolios[port_id] = res;
+                    console.log(_this.portfolios[port_id]);
+                }
+            });
         });
     };
     PortfolioComponent.prototype.onRemove = function (itemid, id, index, type) {
