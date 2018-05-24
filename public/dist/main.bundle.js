@@ -638,7 +638,7 @@ var AppComponent = (function () {
             .subscribe(function (event) {
             setTimeout(function () {
                 $.getScript('/js/script.js');
-            }, 100);
+            }, 1);
         });
         // this.user = this.auth.getUser();
     };
