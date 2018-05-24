@@ -5,7 +5,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {PortfolioService} from "../../portfolio.service";
 import {AuthService} from "../../auth.service";
 import {OrderPipe} from "../../order-pipe/ngx-order.pipe";
-import {CommentsService} from "../../comments.service";
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
 export class NewsRaw {
@@ -43,7 +42,6 @@ export class CommentRaw {
   email: string;
   commentable_id:number;
   photo:string;
-  created_at: string;
 }
 export class Team {
   id:number;
@@ -65,7 +63,7 @@ export class Percent {
   selector: 'app-ico-project-detail',
   templateUrl: './ico-project-detail.component.html',
   styleUrls: ['./ico-project-detail.component.scss'],
-    providers:[PortfolioService, CommentsService]
+    providers:[PortfolioService]
 })
 export class IcoProjectDetailComponent implements OnInit {
 private fragment: string;
@@ -92,7 +90,7 @@ percents: Array<Percent> = [];
               private http:HttpClient,
               private router:Router,
               private route:ActivatedRoute,
-              private commentService: CommentsService) {
+              private commentService: Comments) {
 }
 
   ngOnInit() {
@@ -104,6 +102,7 @@ percents: Array<Percent> = [];
                   // code...
               } else {
                   this.portfoliosInfo = response['ico'];
+                  console.log(this.portfoliosInfo);
               }
           },
       );
@@ -118,34 +117,31 @@ percents: Array<Percent> = [];
       );
         let id = this.route.snapshot.params['id'];
     let path = "/icoraw/"+id;
-    const info = this.http.get<any>(path);
+    const info = this.http.get<NewsRaw>(path);
 
       info.subscribe(response => {
         console.log(response['news']);
         console.log(response);
         this.news = response['news'][0];
-        // this.news.category = response['category'].name;
+        this.news.category = response.category.name;
         console.log(this.news);
-        
-        for(let item of response['news'][0]['comments']) {
+
+        for(let item of response['comments']) {
           this.comments.push({
             id: item['id'],
             email:item['email'],
           author: item['author'],
           body: item['body'],
           commentable_id:item['commentable_id'],
-          photo: item['photo'],
-              created_at: item['created_at']
+          photo: item['photo']
         });
           this.commentcount=this.commentcount+1;
             this.rating_count[item['id']] = 0;
-            if (item.rating.length > 0) {
-                for (let rating_item of item.rating) {
-                    if (rating_item.positive == 1) {
-                        this.rating_count[item['id']] += 1;
-                    } else {
-                        this.rating_count[item['id']] -= 1;
-                    }
+            for (let rating_item of item.rating) {
+                if (rating_item.positive == 1) {
+                    this.rating_count[item['id']] +=1;
+                } else {
+                    this.rating_count[item['id']] -=1;
                 }
             }
         }
@@ -198,15 +194,14 @@ percents: Array<Percent> = [];
             'commentable_id': post_id,
             'commentable_type': type
       }, {headers: headers}).subscribe(
-        (response) => 
+        (response) =>
         this.comments.unshift({
             id: response['id'],
             email:response['email'],
           author: response['author'],
           body: response['body'],
           commentable_id:response['commentable_id'],
-          photo: response['photo'],
-            created_at: response['created_at']
+          photo: response['photo']
         }),
         (error) => console.log(error)
       );

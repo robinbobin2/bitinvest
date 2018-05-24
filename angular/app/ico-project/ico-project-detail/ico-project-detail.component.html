@@ -75,7 +75,7 @@
 						</div>
 					</div>
 					<div class="text-wrap" [innerHTML]="news.about">
-						
+
 					</div>
 				</div>
           <h3 class="ico-title">Распределение средств</h3>
@@ -107,7 +107,7 @@
 							<span>{{map.date}}</span>
 							<p [innerHTML]="map.desc"></p>
 						</li>
-						
+
 					</ul>
 				</div>
 				<div class="comment-block" id="comment-block">
@@ -125,12 +125,12 @@
 						<h3>Комментарии ({{commentcount}})</h3>
 						<p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
 					</div>
-					
+
 					<div *ngIf="user.id != undefined" style="background: none !important; border: none !important" class="comment-top">
 						<h3 >Комментарии ({{commentcount}})</h3>
 						<!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
 
-					
+
 					</div>
 					<ul class="comment-items">
 						<!--  -->
@@ -150,10 +150,10 @@
 							<div class="right">
 								<div class="img-wrap"></div>
 								<div class="btn-block">
-									<span class="number-green">0</span>
+									<span class="number-green" [ngClass]="rating_count[item.id] > -1 ? 'number-green' : 'number-red'">{{rating_count[item.id]}}</span>
 									<div class="buttons">
-										<a href="#" class="plus">+</a>
-										<a href="#" class="minus">-</a>
+										<a (click)="onVote(item.id, 1)" class="plus">+</a>
+										<a (click)="onVote(item.id, 0)" class="minus">-</a>
 									</div>
 								</div>
 							</div>
