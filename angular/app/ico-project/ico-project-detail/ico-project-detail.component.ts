@@ -138,11 +138,13 @@ percents: Array<Percent> = [];
         });
           this.commentcount=this.commentcount+1;
             this.rating_count[item['id']] = 0;
-            for (let rating_item of item.rating) {
-                if (rating_item.positive == 1) {
-                    this.rating_count[item['id']] +=1;
-                } else {
-                    this.rating_count[item['id']] -=1;
+            if (item.rating.length > 0) {
+                for (let rating_item of item.rating) {
+                    if (rating_item.positive == 1) {
+                        this.rating_count[item['id']] += 1;
+                    } else {
+                        this.rating_count[item['id']] -= 1;
+                    }
                 }
             }
         }

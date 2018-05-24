@@ -4696,13 +4696,15 @@ var IcoProjectDetailComponent = (function () {
                 });
                 _this.commentcount = _this.commentcount + 1;
                 _this.rating_count[item['id']] = 0;
-                for (var _b = 0, _c = item.rating; _b < _c.length; _b++) {
-                    var rating_item = _c[_b];
-                    if (rating_item.positive == 1) {
-                        _this.rating_count[item['id']] += 1;
-                    }
-                    else {
-                        _this.rating_count[item['id']] -= 1;
+                if (item.rating.length > 0) {
+                    for (var _b = 0, _c = item.rating; _b < _c.length; _b++) {
+                        var rating_item = _c[_b];
+                        if (rating_item.positive == 1) {
+                            _this.rating_count[item['id']] += 1;
+                        }
+                        else {
+                            _this.rating_count[item['id']] -= 1;
+                        }
                     }
                 }
             }
