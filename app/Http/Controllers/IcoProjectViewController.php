@@ -35,7 +35,7 @@ class IcoProjectViewController extends Controller
     }
 
      public function show($id) {
-        $news = IcoProject::where('id', $id)->with('comments.rating')->with('category')->toArray();
+        $news = IcoProject::where('id', $id)->with('comments.rating')->with('category')->get()->toArray();
         $commentnews = IcoProject::findOrFail($id);
         $team = $commentnews->team_members;
         $roadmap = $commentnews->road_map;
