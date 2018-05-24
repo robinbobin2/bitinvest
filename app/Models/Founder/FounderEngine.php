@@ -16,7 +16,8 @@ class FounderEngine
 {
     public function sendRequest($request)
     {
-        $exchanges = DB::select("select * from showExchanges");
+        $additional = isset($_GET['pair']) ? " WHERE currency = '" . $_GET['pair'] . "'" : "";
+        $exchanges = DB::select("select * from showExchanges" . $additional);
         $response = [];
         foreach ($exchanges as $exchange){
             $currency = $exchange->currency;
