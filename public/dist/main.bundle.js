@@ -2925,8 +2925,6 @@ var CryptoComponent = (function () {
                         _this.rating_count[item['id']] -= 1;
                     }
                 }
-                console.log('rating');
-                console.log(_this.rating[item.id]);
             }
             _this.commentcount = response['comments_count'];
             var newsUrl = "/postsbycat/" + _this.data.cat_id_news;

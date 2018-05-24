@@ -290,8 +290,6 @@ export class CryptoComponent implements OnInit, OnDestroy {
                   this.rating_count[item['id']] -=1;
               }
           }
-          console.log('rating')
-          console.log(this.rating[item.id])
       }
       this.commentcount = response['comments_count'];
 
