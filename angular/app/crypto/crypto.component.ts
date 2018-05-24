@@ -6,6 +6,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import {AuthService} from '../auth.service';
 import {StocksService} from '../stocks.service';
 import {NewsRaw} from "../cloud-mining/all-cloud-mining/all-cloud-mining.component";
+import {CommentsService} from "../comments.service";
 
 export interface CryptoData {
 
@@ -98,10 +99,12 @@ export class CryptoComponent implements OnInit, OnDestroy {
     getUserPortfolio = [];
     addPortfolio: any;
     checkPortfolio = false;
-
+    rating:any;
+    rating_count = [];
     constructor(private http:HttpClient,private stocksService:StocksService,
     private router:Router, private route:ActivatedRoute, 
-    public auth: AuthService) {
+    public auth: AuthService,
+                private commentService: CommentsService) {
 
   }
 
@@ -279,9 +282,17 @@ export class CryptoComponent implements OnInit, OnDestroy {
           photo:item.photo
 
         });
-
+          this.rating_count[item['id']] = 0;
+          for (let rating_item of item.rating) {
+              if (rating_item.positive == 1) {
+                  this.rating_count[item['id']] +=1;
+              } else {
+                  this.rating_count[item['id']] -=1;
+              }
+          }
       }
       this.commentcount = response['comments_count'];
+
       let newsUrl = "/postsbycat/"+this.data.cat_id_news;
       let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
       newsInfo.subscribe(response => {
@@ -467,6 +478,26 @@ export class CryptoComponent implements OnInit, OnDestroy {
      }
      return false;
    }
+
+    onVote(comment_id, positive) {
+        this.commentService.addVote(comment_id,positive).subscribe(
+            res =>
+            {
+                console.log(res) ;
+                if(res['error']) {
+                    // code...
+                } else {
+                    if (positive == 1) {
+                        this.rating_count[comment_id] += 1;
+                    } else {
+                        this.rating_count[comment_id] -= 1;
+
+                    }
+                }
+            },
+            error => console.log(error)
+        );
+    }
   ngOnDestroy() {
 
     this.cryptoData.unsubscribe();

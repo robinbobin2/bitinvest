@@ -17,8 +17,8 @@
         <div class="news-big news-big2">
           <a routerLink="/posts/all" class="return"><span>&#60;</span>Вернуться к списку новостей</a>
           <h2>{{news?.title}}</h2>
-          <div class="bottom-line">
-            <div class="bitcoin-block">
+          <div class="info info-top">
+          <div class="left-block">
               <a [routerLink]="['/news/category', news.cat_id]" class="news-btn">{{news.category}}</a>
               <span class="date">{{news.created_at}}</span>
             </div>
@@ -79,7 +79,7 @@
                         </li>
 
                     </ul>
-                    <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
+                     <a href="#" class="show-comments">Показать все комментарии (22)</a>
                 </div>
               </div>
             </div>

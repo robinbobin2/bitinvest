@@ -191,6 +191,11 @@ $(document).ready(function () {
 		e.preventDefault();
 		$.magnificPopup.close();
 	});
+	$(".save-settings").on("click", function (e) {
+		e.preventDefault();
+		$.magnificPopup.close();
+	});
+	
 
 	$("#follow-popup form button").on("click", function (e) {
 		e.preventDefault();
