@@ -673,6 +673,9 @@ class CoinexChangeConnector extends FounderConnector
         $response = $this->publicGetGetmarketsummaries ($params);
         $tickers = $response['result'];
         $result = array ();
+        if(!$tickers){
+            $tickers = [];
+        }
         for ($i = 0; $i < count ($tickers); $i++) {
             $ticker = $this->parse_ticker($tickers[$i]);
             $symbol = $ticker['symbol'];
