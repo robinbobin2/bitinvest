@@ -4188,18 +4188,12 @@ var FilterNameActivePipe = (function () {
         var resultArray = [];
         for (var _i = 0, value_1 = value; _i < value_1.length; _i++) {
             var item = value_1[_i];
-            if (filterString instanceof Array) {
-                for (var _a = 0, filterString_1 = filterString; _a < filterString_1.length; _a++) {
-                    var filItem = filterString_1[_a];
-                    if (item[propName] == filItem) {
-                        resultArray.push(item);
-                    }
-                }
-            }
-            else {
-                if (item[propName] == filterString) {
-                    resultArray.push(item);
-                }
+            console.log('item');
+            console.log(item);
+            console.log(filterString);
+            console.log(propName);
+            if (item[propName] == filterString) {
+                resultArray.push(item);
             }
         }
         return resultArray;
