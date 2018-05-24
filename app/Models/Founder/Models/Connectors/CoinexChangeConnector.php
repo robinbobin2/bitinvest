@@ -696,10 +696,5 @@ class CoinexChangeConnector extends FounderConnector
     }
     public function request ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         $response = $this->fetch2 ($path, $api, $method, $params, $headers, $body);
-        $success = $this->safe_integer($response, 'success');
-        if ($success !== 1) {
-            $message = $this->safe_string($response, 'message', 'Error');
-            throw new ExchangeError ($message);
-        }
         return $response;
     }}
