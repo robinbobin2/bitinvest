@@ -124,7 +124,7 @@ percents: Array<Percent> = [];
         console.log(response['news']);
         console.log(response);
         this.news = response['news'][0];
-        // this.news.category = response['category'].name;
+        this.news.category = response['category'].name;
         console.log(this.news);
         
         for(let item of response['news'][0]['comments']) {

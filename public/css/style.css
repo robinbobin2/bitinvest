@@ -8982,11 +8982,12 @@ outline: none !important;
   width: 100%;
 }
 
-app-ico-project-detail, app-news-detail {
-  width: 100%;
-}
 app-news-detail {
+  width: 100%;
   margin-top: -20px;
+}
+app-ico-project-detail {
+  width: 75%;
 }
 .select-content {
   min-width: 190px;
@@ -9031,4 +9032,8 @@ table tbody tr td .difference .buttons a {
 }
 .table tbody tr td .difference .buttons a.minus img {
   margin-bottom: 3px;
+}
+
+.team-genesis .img-wrap img {
+  border-radius: 200px;
 }
