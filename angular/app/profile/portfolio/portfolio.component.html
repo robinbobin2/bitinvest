@@ -282,21 +282,21 @@
 
                 <form *ngIf="item.user_portfolio_type_id == 1 && mining_form == true">
                   <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value); onSearch(1)" >
-                  <button type="submit" (click)="onAdd(item.id, result_id, 'App\\CloudMining')">Добавить</button>
+                  <button type="submit" (click)="onAdd(item.id, result_id, 'App\\CloudMining', 'mining')">Добавить</button>
                 </form>
 
                 <form *ngIf="item.user_portfolio_type_id == 2 && ico_form == true">
                   <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value); onSearch(2)" >
-                  <button type="submit" (click)="onAdd(item.id, result_id, 'App\\IcoProject')">Добавить</button>
+                  <button type="submit" (click)="onAdd(item.id, result_id, 'App\\IcoProject', 'ico')">Добавить</button>
                 </form>
 
                 <form *ngIf="item.user_portfolio_type_id == 3 && crypto_form == true">
                   <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value); onSearch(3)" >
-                  <button type="submit" (click)="onAdd(item.id, result_id, 'App\\CryptoStat')">Добавить</button>
+                  <button type="submit" (click)="onAdd(item.id, result_id, 'App\\CryptoStat', 'crypto')">Добавить</button>
                 </form>
                 <form *ngIf="item.user_portfolio_type_id == 4 && stock_form == true">
                   <input type="text" placeholder="Введите название..." [value]="searchLine" (keyup)="searchTerm$.next($event.target.value); onSearch(4)" >
-                  <button type="submit" (click)="onAdd(item.id, result_id, 'App\\Stock')">Добавить</button>
+                  <button type="submit" (click)="onAdd(item.id, result_id, 'App\\Stock', , 'stocks')">Добавить</button>
                 </form>
                 <ul *ngIf="results?.length > 0 && item.user_portfolio_type_id == 1 && mining_form == true">
                   <li *ngFor="let result of results">

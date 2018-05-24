@@ -183,17 +183,15 @@ export class PortfolioComponent implements OnInit {
 					}
    	)
    }
-   onAdd(port_id, id, type) {
+   onAdd(port_id, id, type, type_view) {
      this.portfolioService.submitPortfolio(port_id,id,type).subscribe(
        result => {
            console.log(result)
          this.portfolioService.getPortfolioById(port_id)
         .subscribe(
           res => {
-              console.log(res)
-              if (res['ico'].length > 0) {
-                  this.portfolios[port_id] = res['ico'];
-                  console.log(this.portfolios[port_id])
+              if (res[type_view].length > 0) {
+                  this.portfolios[port_id] = res[type_view];
               }
 
           }

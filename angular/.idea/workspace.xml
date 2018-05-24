@@ -17,8 +17,8 @@
       <file leaf-file-name="portfolio.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="284" column="54" selection-start-line="284" selection-start-column="49" selection-end-line="284" selection-end-column="54" />
+            <state relative-caret-position="505">
+              <caret line="298" column="98" selection-start-line="298" selection-start-column="98" selection-end-line="298" selection-end-column="98" />
             </state>
           </provider>
         </entry>
@@ -26,8 +26,8 @@
       <file leaf-file-name="portfolio.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="194" column="55" selection-start-line="194" selection-start-column="55" selection-end-line="194" selection-end-column="55" />
+            <state relative-caret-position="299">
+              <caret line="191" column="18" selection-start-line="191" selection-start-column="18" selection-end-line="191" selection-end-column="18" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -112,9 +112,9 @@
         <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts" />
         <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.ts" />
         <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.html" />
-        <option value="$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html" />
         <option value="$PROJECT_DIR$/app/ico-project/ico-project-all/ico-project-all.component.html" />
         <option value="$PROJECT_DIR$/app/ico-project/ico-project-all/ico-project-all.component.ts" />
+        <option value="$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html" />
         <option value="$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts" />
       </list>
     </option>
@@ -321,12 +321,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="43439000" />
+      <workItem from="1526711663196" duration="43566000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89773000" />
+    <option name="totallyTimeSpent" value="89900000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -777,15 +777,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="284" column="54" selection-start-line="284" selection-start-column="49" selection-end-line="284" selection-end-column="54" />
+        <state relative-caret-position="505">
+          <caret line="298" column="98" selection-start-line="298" selection-start-column="98" selection-end-line="298" selection-end-column="98" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="194" column="55" selection-start-line="194" selection-start-column="55" selection-end-line="194" selection-end-column="55" />
+        <state relative-caret-position="299">
+          <caret line="191" column="18" selection-start-line="191" selection-start-column="18" selection-end-line="191" selection-end-column="18" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
