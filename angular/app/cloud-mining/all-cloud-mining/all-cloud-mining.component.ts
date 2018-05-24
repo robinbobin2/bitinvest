@@ -161,13 +161,11 @@ order: string = 'proc';
     this.router.navigate(['/cloud-mining/item', id]);
   }
   checkInPortfolio(id) {
-      console.log(this.portfoliosInfo);
       if(this.portfoliosInfo == undefined) {
         return false;
       }
 
         for(let item of this.portfoliosInfo) {
-          console.log(item)
           for(let it of item) {
             if(it.id ) {
                      
