@@ -43,6 +43,7 @@ export class CommentRaw {
   email: string;
   commentable_id:number;
   photo:string;
+  created_at: string;
 }
 export class Team {
   id:number;
@@ -133,7 +134,8 @@ percents: Array<Percent> = [];
           author: item['author'],
           body: item['body'],
           commentable_id:item['commentable_id'],
-          photo: item['photo']
+          photo: item['photo'],
+              created_at: item['created_at']
         });
           this.commentcount=this.commentcount+1;
             this.rating_count[item['id']] = 0;
@@ -203,7 +205,8 @@ percents: Array<Percent> = [];
           author: response['author'],
           body: response['body'],
           commentable_id:response['commentable_id'],
-          photo: response['photo']
+          photo: response['photo'],
+            created_at: response['created_at']
         }),
         (error) => console.log(error)
       );

@@ -53,7 +53,8 @@
                     </div>
                     <ul class="comment-items">
                         <!--  -->
-                        <li *ngFor="let item of comments">
+                        <ng-template ngFor let-item [ngForOf]="comments" let-i="index">
+                        <li [ngClass]="i > 10 ? 'hidden' : ''">
                             <div class="left">
                                 <div class="info">
                                     <div class="img-wrap">
@@ -69,7 +70,7 @@
                             <div class="right">
                                 <div class="img-wrap"></div>
                                 <div class="btn-block">
-                                    <span class="number-green" [ngClass]="rating_count[item.id] > 0 ? 'number-green' : 'number-red'">{{rating_count[item.id]}}</span>
+                                    <span class="number-green" [ngClass]="rating_count[item.id] > -1 ? 'number-green' : 'number-red'">{{rating_count[item.id]}}</span>
                                     <div class="buttons">
                                         <a (click)="onVote(item.id, 1)" class="plus">+</a>
                                         <a (click)="onVote(item.id, 0)" class="minus">-</a>
@@ -77,9 +78,9 @@
                                 </div>
                             </div>
                         </li>
-
+                        </ng-template>
                     </ul>
-                     <a href="#" class="show-comments">Показать все комментарии (22)</a>
+                     <a href="#" *ngIf="i > 10" class="show-comments">Показать все комментарии ({{news.comments_count}})</a>
                 </div>
               </div>
             </div>
