@@ -15,7 +15,7 @@ export class NewsRaw {
     name:string;
     depo: number;
     proc: number;
-    status: number;
+    status: any;
     recieved: string;
     logo: string;
     desc: string;
