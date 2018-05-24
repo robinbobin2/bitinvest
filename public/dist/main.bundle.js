@@ -4579,6 +4579,7 @@ module.exports = ".comment-block {\n  margin-top: 30px; }\n\n.comment-block .com
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__portfolio_service__ = __webpack_require__("./angular/app/portfolio.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__comments_service__ = __webpack_require__("./angular/app/comments.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4588,6 +4589,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -4632,13 +4634,14 @@ var Percent = (function () {
 }());
 
 var IcoProjectDetailComponent = (function () {
-    function IcoProjectDetailComponent(authService, portfolioService, orderPipe, http, router, route) {
+    function IcoProjectDetailComponent(authService, portfolioService, orderPipe, http, router, route, commentService) {
         this.authService = authService;
         this.portfolioService = portfolioService;
         this.orderPipe = orderPipe;
         this.http = http;
         this.router = router;
         this.route = route;
+        this.commentService = commentService;
         this.comments = [];
         this.submitted = false;
         this.commentcount = 0;
@@ -4649,6 +4652,7 @@ var IcoProjectDetailComponent = (function () {
         this.checkPortfolio = false;
         this.removed = false;
         this.show = false;
+        this.rating_count = [];
     }
     IcoProjectDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -4678,7 +4682,7 @@ var IcoProjectDetailComponent = (function () {
             console.log(response['news']);
             console.log(response);
             _this.news = response['news'][0];
-            _this.news.category = response.category.name;
+            _this.news.category = response['category'].name;
             console.log(_this.news);
             for (var _i = 0, _a = response['comments']; _i < _a.length; _i++) {
                 var item = _a[_i];
@@ -4691,6 +4695,16 @@ var IcoProjectDetailComponent = (function () {
                     photo: item['photo']
                 });
                 _this.commentcount = _this.commentcount + 1;
+                _this.rating_count[item['id']] = 0;
+                for (var _b = 0, _c = item.rating; _b < _c.length; _b++) {
+                    var rating_item = _c[_b];
+                    if (rating_item.positive == 1) {
+                        _this.rating_count[item['id']] += 1;
+                    }
+                    else {
+                        _this.rating_count[item['id']] -= 1;
+                    }
+                }
             }
             _this.team = response['team'];
             _this.roadMap = response['roadmap'];
@@ -4867,6 +4881,23 @@ var IcoProjectDetailComponent = (function () {
         var _this = this;
         this.portfolioService.submitPortfolio(this.addPortfolio, post_id, type).subscribe(function (response) { return _this.router.navigate(['/profile/portfolio']); }, function (error) { return console.log(error); });
     };
+    IcoProjectDetailComponent.prototype.onVote = function (comment_id, positive) {
+        var _this = this;
+        this.commentService.addVote(comment_id, positive).subscribe(function (res) {
+            console.log(res);
+            if (res['error']) {
+                // code...
+            }
+            else {
+                if (positive == 1) {
+                    _this.rating_count[comment_id] += 1;
+                }
+                else {
+                    _this.rating_count[comment_id] -= 1;
+                }
+            }
+        }, function (error) { return console.log(error); });
+    };
     return IcoProjectDetailComponent;
 }());
 IcoProjectDetailComponent = __decorate([
@@ -4874,12 +4905,12 @@ IcoProjectDetailComponent = __decorate([
         selector: 'app-ico-project-detail',
         template: __webpack_require__("./angular/app/ico-project/ico-project-detail/ico-project-detail.component.html"),
         styles: [__webpack_require__("./angular/app/ico-project/ico-project-detail/ico-project-detail.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_3__portfolio_service__["a" /* PortfolioService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_3__portfolio_service__["a" /* PortfolioService */], __WEBPACK_IMPORTED_MODULE_6__comments_service__["a" /* CommentsService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__portfolio_service__["a" /* PortfolioService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _f || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__portfolio_service__["a" /* PortfolioService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__comments_service__["a" /* CommentsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__comments_service__["a" /* CommentsService */]) === "function" && _g || Object])
 ], IcoProjectDetailComponent);
 
-var _a, _b, _c, _d, _e, _f;
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=ico-project-detail.component.js.map
 
 /***/ }),

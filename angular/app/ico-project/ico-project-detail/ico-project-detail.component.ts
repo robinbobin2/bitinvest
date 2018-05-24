@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {PortfolioService} from "../../portfolio.service";
 import {AuthService} from "../../auth.service";
 import {OrderPipe} from "../../order-pipe/ngx-order.pipe";
+import {CommentsService} from "../../comments.service";
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
 export class NewsRaw {
@@ -63,7 +64,7 @@ export class Percent {
   selector: 'app-ico-project-detail',
   templateUrl: './ico-project-detail.component.html',
   styleUrls: ['./ico-project-detail.component.scss'],
-    providers:[PortfolioService]
+    providers:[PortfolioService, CommentsService]
 })
 export class IcoProjectDetailComponent implements OnInit {
 private fragment: string;
@@ -83,12 +84,14 @@ percents: Array<Percent> = [];
     removed = false;
     show = false;
     portfolioInfo:any;
+    rating_count = [];
   constructor(private authService: AuthService,
               private portfolioService: PortfolioService,
               private orderPipe: OrderPipe,
               private http:HttpClient,
               private router:Router,
-              private route:ActivatedRoute) {
+              private route:ActivatedRoute,
+              private commentService: CommentsService) {
 }
 
   ngOnInit() {
@@ -121,7 +124,7 @@ percents: Array<Percent> = [];
         console.log(response['news']);
         console.log(response);
         this.news = response['news'][0];
-        this.news.category = response.category.name;
+        this.news.category = response['category'].name;
         console.log(this.news);
         
         for(let item of response['comments']) {
@@ -134,6 +137,14 @@ percents: Array<Percent> = [];
           photo: item['photo']
         });
           this.commentcount=this.commentcount+1;
+            this.rating_count[item['id']] = 0;
+            for (let rating_item of item.rating) {
+                if (rating_item.positive == 1) {
+                    this.rating_count[item['id']] +=1;
+                } else {
+                    this.rating_count[item['id']] -=1;
+                }
+            }
         }
         this.team = response['team'];
         this.roadMap = response['roadmap']
@@ -314,6 +325,26 @@ percents: Array<Percent> = [];
         this.portfolioService.submitPortfolio(this.addPortfolio,post_id, type).subscribe(
             (response) => this.router.navigate(['/profile/portfolio']),
             (error) => console.log(error)
+        );
+    }
+
+    onVote(comment_id, positive) {
+        this.commentService.addVote(comment_id,positive).subscribe(
+            res =>
+            {
+                console.log(res) ;
+                if(res['error']) {
+                    // code...
+                } else {
+                    if (positive == 1) {
+                        this.rating_count[comment_id] += 1;
+                    } else {
+                        this.rating_count[comment_id] -= 1;
+
+                    }
+                }
+            },
+            error => console.log(error)
         );
     }
 }
