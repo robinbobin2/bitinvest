@@ -54,7 +54,7 @@
                     <ul class="comment-items">
                         <!--  -->
                         <ng-template ngFor let-item [ngForOf]="comments" let-i="index">
-                        <li [ngClass]="i > 10 ? 'hidden' : ''">
+                        <li [ngClass]="i > 10 ? 'hidden' : ''" >
                             <div class="left">
                                 <div class="info">
                                     <div class="img-wrap">
@@ -80,7 +80,7 @@
                         </li>
                         </ng-template>
                     </ul>
-                     <a href="#" *ngIf="i > 10" class="show-comments">Показать все комментарии ({{news.comments_count}})</a>
+                     <a href="#" *ngIf="news.comments_count > 10" class="show-comments">Показать все комментарии ({{news.comments_count}})</a>
                 </div>
               </div>
             </div>
