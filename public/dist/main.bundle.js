@@ -4400,7 +4400,7 @@ var IcoProjectAllComponent = (function () {
     IcoProjectAllComponent.prototype.submitPortfolio = function (post_id, type) {
         var _this = this;
         this.portfolioService.submitPortfolio(this.addPortfolio, post_id, type).subscribe(function (response) {
-            _this.hide = !_this.hide;
+            _this.$.magnificPopup.close();
             _this.router.navigate(['/profile/portfolio']);
         }, function (error) { return console.log(error); });
     };

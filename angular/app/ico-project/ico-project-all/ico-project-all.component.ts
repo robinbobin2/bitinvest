@@ -59,6 +59,7 @@ export class IcoProjectAllComponent implements OnInit {
   removed = false;
   hide = false;
   portfolioInfo:any;
+  $: any;
   /**
    * @param {OrderPipe} 
    */
@@ -218,7 +219,7 @@ submitPortfolio( post_id, type) {
     
     this.portfolioService.submitPortfolio(this.addPortfolio,post_id, type).subscribe(
         (response) => {
-            this.hide = !this.hide;
+            this.$.magnificPopup.close();
             this.router.navigate(['/profile/portfolio'])
         },
 
