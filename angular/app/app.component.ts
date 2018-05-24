@@ -178,7 +178,7 @@ checkAuth() {
         .subscribe((event) => {
           setTimeout(()=> {
             $.getScript('/js/script.js');
-          }, 1)
+          }, 300)
            
         });
   	// this.user = this.auth.getUser();

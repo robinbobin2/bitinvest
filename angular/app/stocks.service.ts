@@ -35,5 +35,8 @@ export class StocksService {
   public getExchangePairs(name) {
     return this.http.get<any>(this.exchangePairsPath+name).publishReplay(1).refCount();
   }
+  public getPairsCount() {
+    return this.http.get<any>('/bit/pair/count').publishReplay(1).refCount();
+  }
 
 }

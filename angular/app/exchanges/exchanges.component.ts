@@ -82,7 +82,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
 
 
   	this.stockService.getVolumes().subscribe(res => {
-  	    this.load=false;
+
       this.volumes = res
       for(let item of this.volumes) {
         this.exchange_volumes[item.name] = {
@@ -90,6 +90,12 @@ export class ExchangesComponent implements OnInit, OnDestroy {
           'usd': item.usd
         }
       }
+    });
+  	this.stockService.getPairsCount().subscribe(res => {
+        this.load=false;
+        for(let item of res) {
+            this.pairs_count[item.name] = item['count(xt.id)'];
+        }
     });
 
   	this.volume_data = Observable.interval(2000).concatMap(()=>this.stockService.getVolumes())
