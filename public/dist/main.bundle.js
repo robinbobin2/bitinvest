@@ -4186,10 +4186,16 @@ var FilterNameActivePipe = (function () {
         var resultArray = [];
         for (var _i = 0, value_1 = value; _i < value_1.length; _i++) {
             var item = value_1[_i];
-            console.log('item');
-            console.log(item);
-            console.log(filterString);
-            console.log(propName);
+            if (filterString instanceof Array) {
+                console.log('array!');
+                for (var _a = 0, filterString_1 = filterString; _a < filterString_1.length; _a++) {
+                    var str = filterString_1[_a];
+                    console.log('gopush!');
+                    if (item[propName] == str) {
+                        resultArray.push(item);
+                    }
+                }
+            }
             if (item[propName] == filterString) {
                 resultArray.push(item);
             }
