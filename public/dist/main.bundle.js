@@ -1453,11 +1453,11 @@ var AllCloudMiningComponent = (function () {
             _this.allCount = _this.news.length;
             for (var _b = 0, _c = _this.news; _b < _c.length; _b++) {
                 var item = _c[_b];
-                if (item.status == 1) {
-                    _this.active++;
+                if (item.status == 2) {
+                    _this.inactive++;
                 }
                 else {
-                    _this.inactive++;
+                    _this.active++;
                 }
             }
         });
@@ -4188,8 +4188,18 @@ var FilterNameActivePipe = (function () {
         var resultArray = [];
         for (var _i = 0, value_1 = value; _i < value_1.length; _i++) {
             var item = value_1[_i];
-            if (item[propName] == filterString) {
-                resultArray.push(item);
+            if (propName instanceof Array) {
+                for (var _a = 0, propName_1 = propName; _a < propName_1.length; _a++) {
+                    var propItem = propName_1[_a];
+                    if (item[propItem] == filterString) {
+                        resultArray.push(item);
+                    }
+                }
+            }
+            else {
+                if (item[propName] == filterString) {
+                    resultArray.push(item);
+                }
             }
         }
         return resultArray;

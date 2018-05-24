@@ -7,14 +7,22 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterNameActivePipe implements PipeTransform {
 
 
-  transform(value: any, filterString: string, propName:string): any {
+  transform(value: any, filterString: string, propName:any): any {
     if(filterString === undefined || value.length === 0 || filterString === '') {
         return value;
     }
     const resultArray = [];
     for (const item of value) {
-        if(item[propName] == filterString) {
-            resultArray.push(item)
+        if (propName instanceof Array)  {
+            for (let propItem of propName)  {
+                if(item[propItem] == filterString) {
+                    resultArray.push(item)
+                }
+            }
+        } else {
+            if (item[propName] == filterString) {
+                resultArray.push(item)
+            }
         }
     }
     return resultArray;

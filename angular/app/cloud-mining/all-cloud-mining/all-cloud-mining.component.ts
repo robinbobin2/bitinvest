@@ -124,10 +124,10 @@ order: string = 'proc';
          // console.log(this.news);
          this.allCount = this.news.length;
          for(let item of this.news) {
-           if(item.status == 1) {
-             this.active ++;
+           if(item.status == 2) {
+               this.inactive++;
            } else {
-             this.inactive++;
+               this.active ++;
            }
          }
    	});
