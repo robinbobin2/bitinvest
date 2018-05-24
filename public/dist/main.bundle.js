@@ -2827,10 +2827,18 @@ var CryptoComponent = (function () {
             if (this.volume === 0) {
                 for (var _a = 0, _b = this.stocks; _a < _b.length; _a++) {
                     var item = _b[_a];
+                    if (item.ask > 0) {
+                        this.min.push(item.ask);
+                    }
+                    if (item.bid) {
+                        this.max.push(item.bid);
+                    }
                     this.volume = this.volume + item.volume;
                     this.time.push(item.time);
                 }
                 this.time_value = Math.max.apply(null, this.time);
+                this.min_value = Math.min.apply(null, this.min);
+                this.max_value = Math.max.apply(null, this.max);
             }
         }
         this.stocksService.getStocks(symbol + '/USD').subscribe(function (response) {
@@ -2870,7 +2878,7 @@ var CryptoComponent = (function () {
             _this.min_value = Math.min.apply(null, _this.min);
             _this.max_value = Math.max.apply(null, _this.max);
         });
-        this.stocksData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(2000).concatMap(function () {
+        this.stocksData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).concatMap(function () {
             return _this.stocksService.getStocks(symbol + '/USD');
         })
             .map(function (response) {
@@ -2902,18 +2910,18 @@ var CryptoComponent = (function () {
             localStorage.setItem(symbol + 'USD stocks', JSON.stringify(_this.stocks));
             for (var _a = 0, _b = _this.stocks; _a < _b.length; _a++) {
                 var item = _b[_a];
+                if (item.ask > 0) {
+                    _this.min.push(item.ask);
+                }
+                if (item.bid) {
+                    _this.max.push(item.bid);
+                }
                 if (_this.volume === 0) {
-                    for (var _c = 0, _d = _this.stocks; _c < _d.length; _c++) {
-                        var item_1 = _d[_c];
-                        _this.volume = _this.volume + item_1.volume;
-                    }
+                    _this.volume = _this.volume + item.volume;
                 }
                 else {
                     _this.volume = 0;
-                    for (var _e = 0, _f = _this.stocks; _e < _f.length; _e++) {
-                        var item_2 = _f[_e];
-                        _this.volume = _this.volume + item_2.volume;
-                    }
+                    _this.volume = _this.volume + item.volume;
                 }
                 if (_this.bid_ask.ask < item.ask) {
                     _this.bid_ask.ask = item.ask;
@@ -2926,6 +2934,8 @@ var CryptoComponent = (function () {
                     localStorage.setItem('bid', JSON.stringify(_this.bid_ask.bid));
                 }
             }
+            _this.min_value = Math.min.apply(null, _this.min);
+            _this.max_value = Math.max.apply(null, _this.max);
         }).subscribe();
         this.cryptoFirst = this.stocksService.getCrypto()
             .map(function (response) {
@@ -3070,8 +3080,8 @@ var CryptoComponent = (function () {
         }
         for (var _a = 0, _b = this.portfoliosInfo; _a < _b.length; _a++) {
             var item = _b[_a];
-            for (var _c = 0, item_3 = item; _c < item_3.length; _c++) {
-                var it = item_3[_c];
+            for (var _c = 0, item_1 = item; _c < item_1.length; _c++) {
+                var it = item_1[_c];
                 if (it.id) {
                     if (it.id == id) {
                         return true;

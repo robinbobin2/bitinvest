@@ -152,11 +152,20 @@ export class CryptoComponent implements OnInit, OnDestroy {
       if(this.volume === 0) {
         
         for(let item of this.stocks) {
+            if(item.ask > 0) {
+                this.min.push(item.ask);
+
+            }
+            if(item.bid) {
+                this.max.push(item.bid);
+            }
           this.volume = this.volume+item.volume;
         this.time.push(item.time);
       }
       this.time_value = Math.max.apply(null, this.time);
 
+          this.min_value = Math.min.apply(null, this.min);
+          this.max_value = Math.max.apply(null, this.max);
       }
 
     }
@@ -200,7 +209,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.max_value = Math.max.apply(null, this.max);
 
     });
-    this.stocksData = Observable.interval(2000).concatMap(()=>
+    this.stocksData = Observable.interval(1000).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USD'))
     .map(response => {
 
@@ -231,17 +240,20 @@ export class CryptoComponent implements OnInit, OnDestroy {
       localStorage.removeItem(symbol+'USD stocks');
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
       for(let item of this.stocks) {
-        if(this.volume === 0) {
-        
-          for(let item of this.stocks) {
-            this.volume = this.volume+item.volume;
+          if(item.ask > 0) {
+              this.min.push(item.ask);
+
           }
+          if(item.bid) {
+              this.max.push(item.bid);
+          }
+        if(this.volume === 0) {
+
+            this.volume = this.volume+item.volume;
           
         } else {
           this.volume = 0;
-          for(let item of this.stocks) {
             this.volume = this.volume+item.volume;
-          }
         }
         if(this.bid_ask.ask < item.ask) {
         this.bid_ask.ask = item.ask
@@ -255,6 +267,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
         }
 
       }
+
+        this.min_value = Math.min.apply(null, this.min);
+        this.max_value = Math.max.apply(null, this.max);
     }).subscribe();
 
 
