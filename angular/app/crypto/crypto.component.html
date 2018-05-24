@@ -171,11 +171,11 @@
                   <div class="right">
                     <div class="img-wrap"></div>
                     <div class="btn-block">
-                      <span class="number-green">0</span>
+                      <span class="number-green">{{rating_count[item.id}}</span>
                       <div class="buttons">
-                        <a href="#" class="plus">+</a>
-                        <a href="#" class="minus">-</a>
-                      </div>
+                        <a (click)="onVote(item.id, 1)" class="plus">+</a>
+                        <a (click)="onVote(item.id, 0)" class="minus">-</a>
+                        </div>
                     </div>
                   </div>
                 </li>
@@ -319,6 +319,7 @@
                         <a (click)="onVote(item.id, 0)" class="minus">-</a>
                     </div>
                   </div>
+                    </div>
                 </li>
 
               </ul>
