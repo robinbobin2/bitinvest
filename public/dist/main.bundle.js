@@ -2750,6 +2750,7 @@ var CryptoComponent = (function () {
         this.portfoliosInfo = [];
         this.getUserPortfolio = [];
         this.checkPortfolio = false;
+        this.rating = [];
     }
     CryptoComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -2911,6 +2912,9 @@ var CryptoComponent = (function () {
                     commentable_id: item.commentable_id,
                     photo: item.photo
                 });
+                _this.rating[item.id] = item.rating;
+                console.log('rating');
+                console.log(_this.rating[item.id]);
             }
             _this.commentcount = response['comments_count'];
             var newsUrl = "/postsbycat/" + _this.data.cat_id_news;

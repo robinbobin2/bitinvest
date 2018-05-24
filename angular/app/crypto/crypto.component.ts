@@ -98,7 +98,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     getUserPortfolio = [];
     addPortfolio: any;
     checkPortfolio = false;
-
+    rating = [];
     constructor(private http:HttpClient,private stocksService:StocksService,
     private router:Router, private route:ActivatedRoute, 
     public auth: AuthService) {
@@ -279,9 +279,12 @@ export class CryptoComponent implements OnInit, OnDestroy {
           photo:item.photo
 
         });
-
+          this.rating[item.id] = item.rating;
+          console.log('rating')
+          console.log(this.rating[item.id])
       }
       this.commentcount = response['comments_count'];
+
       let newsUrl = "/postsbycat/"+this.data.cat_id_news;
       let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
       newsInfo.subscribe(response => {
