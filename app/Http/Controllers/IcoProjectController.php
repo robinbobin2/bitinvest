@@ -140,7 +140,7 @@ class IcoProjectController extends Controller
     {
         //
         $ico = IcoProject::findOrFail($id)->delete();
-        return redirect('/admin/ico')
+        return redirect('/admin/icoproject')
             ->with('message', 'ICO Deleted Successfully!');
     }
 }
