@@ -16,6 +16,7 @@ export class FilterNamePipe implements PipeTransform {
     		resultArray.push(item)
     	}
     }
+    resultArray['count'] = resultArray.length;
     return resultArray;
   }
 
