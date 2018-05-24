@@ -54,16 +54,17 @@ public function show($id) {
             $got = 0;
             foreach ($history as $h_item) {
 
-            if ($h_item->type == 2) {
+                if ($h_item->type == 2) {
 
-                $got = $got+$h_item->price;
+                    $got = $got+$h_item->price;
 
-            } else {
+                } else {
 
-                $got = $got-$h_item->price;
+                    $got = $got-$h_item->price;
 
+                }
             }
-            }
+            
             $latest_history = $item->history->where('type', 2)->last();
             if($latest_history) {
                 $latest_date = round((strtotime("now") - strtotime($latest_history->datetime))  / (60 * 60 * 24), 0);
