@@ -1,0 +1,248 @@
+<section class="ico-wrap" style="background: none;">
+    <div class="wrapper">
+<div class="ico-card-content">
+				<a routerLink="/ico/all" class="return"><span>&#60;</span>Вернуться к списку проектов</a>
+				<div class="project-block">
+					<div class="img-wrap">
+						<img src="{{news.logo}}" style="width: 97px; height: 97px;" alt="">
+					</div>
+					<div class="text-wrap">
+						<div class="text-info">
+							<p class="project-title">{{news.name}}</p>
+						</div>
+						<div class="project-info-content">
+							<div class="info">
+								<p class="status" [ngClass]="news.status==1 ? 'active-status' : 'inactive-status'">Статус: <span>{{news.status == 1? 'Активен': 'Завершен'}}</span></p>
+								<p class="year">от {{news.money_start}} до {{news.money_end}}</p>
+								<p class="last-updated">Последнее обновление: {{news.updated_at}}</p>
+							</div>
+							<div class="progres-bar">
+								<a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+								<a href="#follow-popup" *ngIf="!checkInPortfolio(news.id) && checkAuth()" (click)="selectedItem = news" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
+
+								<a class="follow"  *ngIf="checkInPortfolio(news.id) && checkAuth()"  (click)="removePortfolio(news.id, 'App\\IcoProject')"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
+								</div>
+						</div>
+            <div class="right">
+              <div class="progres">
+                <span style="width: 15%"></span>
+                <p>Собрано: $45 000 (10%)</p>
+              </div>
+              <ul>
+                <li><span>Собрано {{news.current_money/(news.money / 100)  | number:'1.0-0'}}%</span></li>
+                <li><span>Участвуют {{news.number_people}} чел.</span></li>
+                <li><span>Осталось 25 дней</span></li>
+              </ul>
+            </div>
+					</div>
+				</div>
+				<ul class="card-menu">
+					<li><a [routerLink]="['/ico/item', news.id]" fragment="basic-information" >Основа</a></li>
+					<li><a [routerLink]="['/ico/item', news.id]" fragment="distribution-funds">Распределение средств</a></li>
+					<li><a [routerLink]="['/ico/item', news.id]" fragment="team-genesis">Команда</a></li>
+					<li><a [routerLink]="['/ico/item', news.id]" fragment="history-project">История</a></li>
+					<li><a href="{{news.white_paper}}" target="_blank">White paper <img src="img/pdf-icon.png" alt=""></a></li>
+					<li><a [routerLink]="['/ico/item', news.id]" fragment="comment-block">Комментарии ({{commentcount}})</a></li>
+					<!-- <li><a [routerLink]="['/ico/item', news.id]" fragment="related-projects">Похожие проекты (0)</a></li> -->
+				</ul>
+              <h3 class="ico-title">Основная информация</h3>
+				<div class="basic-information" id="basic-information">
+					<div class="basic-information-wrap">
+						<div class="left">
+							<ul>
+								<li><span class="gray">Сайт:</span> <span class="black"><a href="{{news.website}}">{{news.website}}</a></span></li>
+								<li><span class="gray">Тип ICO</span><span class="black">{{news.type==1 ? 'ICO' : 'Pre-ICO'}}</span> </li>
+								<li><span class="gray">Категория:</span><span class="black">{{news.category}}</span></li>
+								<li><span class="gray">Цель сборов:</span><span class="black">${{news.money}}</span></li>
+								<li><span class="gray">Наличие Эскроу:</span><span class="black">{{news.escrow ==1? 'Да':'Нет'}}</span></li>
+								<li><span class="gray">Наличие рабочего прототипа:</span> <span class="black">Нет</span></li>
+								<li><span class="gray">White paper:</span><span class="black">{{news.white_paper ==2 ? 'Есть': 'Нет'}}</span> </li>
+								<li><span class="gray">Валюты:</span><span class="black">{{news.currencies}}</span> </li>
+								<li><span class="gray">Платформа:</span><span class="black">{{news.platform}}</span> </li>
+								<li><span class="gray">Местоположение:</span><span class="black">{{news.place}}</span> </li>
+							</ul>
+						</div>
+						<div class="right">
+							<div class="progres">
+										<span [ngStyle]="{'width': news.current_money/(news.money / 100)+'%' }"></span>
+										<p>${{news.current_money}} из {{news.money}}</p>
+									</div>
+							<ul>
+								<li><span>Собрано {{news.current_money/(news.money / 100)  | number:'1.0-0'}}%</span></li>
+								<li><span>Участвуют {{news.number_people}} чел.</span></li>
+								<li><span>Осталось 25 дней</span></li>
+							</ul>
+						</div>
+					</div>
+					<div class="text-wrap" [innerHTML]="news.about">
+
+					</div>
+				</div>
+          <h3 class="ico-title">Распределение средств</h3>
+				<div class="distribution-funds" id="distribution-funds">
+					<ul class="persent">
+						<li *ngFor="let percent of percents" style="width: 40%" [ngStyle]="{'width':percent.percent+'%'}"  [ngClass]="percentClass(percent.percent, 'first')">{{percent.percent}}%</li>
+					</ul>
+					<ul class="persent-text">
+						<li *ngFor="let percent of percents"><span class="bg" [ngClass]="percentClass(percent.percent, 'second')"></span><span class="text" [ngClass]="percentClass(percent.percent, 'third')">{{percent.percent}}% {{percent.name}}</span></li>
+					</ul>
+				</div>
+				<div class="team-genesis" id="team-genesis">
+					<h3 class="ico-title">Команда {{news.name}}</h3>
+					<ul>
+						<li *ngFor="let member of team">
+							<div class="img-wrap">
+								<img src="{{member.photo}}" alt="">
+							</div>
+							<span class="bold">{{member.name}}</span>
+							<span>{{member.workplace}}</span>
+						</li>
+					</ul>
+				</div>
+          <h3 class="ico-title">История</h3>
+
+				<div class="history-project" id="history-project">
+					<ul>
+						<li [ngClass]="onState(map.state)" *ngFor="let map of roadMap">
+							<span>{{map.date}}</span>
+							<p [innerHTML]="map.desc"></p>
+						</li>
+
+					</ul>
+				</div>
+				<div class="comment-block" id="comment-block">
+					<div class="comment-top" *ngIf="user.id != undefined">
+								<h3>Добавить новый комментарий</h3>
+								<form (ngSubmit)="submitComment(f, news.id, 'App\\IcoProject')" #f="ngForm">
+									<input type="hidden" ngModel name="post_id" value="{{news?.id}}">
+									<input type="hidden" ngModel name="commentable_type" value="App\News">
+									<textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
+									<button type="submit">Добавить</button>
+								</form>
+								<p *ngIf="submitted">Комментарий успешно добавлен</p>
+					</div>
+					<div class="comment-top" *ngIf="user.id == undefined" style="background: none !important; border: none !important">
+						<h3>Комментарии ({{commentcount}})</h3>
+						<p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
+					</div>
+
+					<div *ngIf="user.id != undefined" style="background: none !important; border: none !important" class="comment-top">
+						<h3 >Комментарии ({{commentcount}})</h3>
+						<!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
+
+
+					</div>
+					<ul class="comment-items">
+						<!--  -->
+						<li *ngFor="let item of comments">
+							<div class="left">
+								<div class="info">
+									<div class="img-wrap">
+										<img src="{{item.photo}}" style="max-width: 35px; height: auto;" alt="">
+									</div>
+									<div class="text-wrap">
+										<p>{{item.author}}</p>
+										<span>Добавлен {{item.created_at}}</span>
+									</div>
+								</div>
+								<p class="comment-text">{{item.body}}</p>
+							</div>
+							<div class="right">
+								<div class="img-wrap"></div>
+								<div class="btn-block">
+									<span class="number-green">0</span>
+									<div class="buttons">
+										<a href="#" class="plus">+</a>
+										<a href="#" class="minus">-</a>
+									</div>
+								</div>
+							</div>
+						</li>
+
+					</ul>
+					<!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
+				</div>
+				<!-- <div class="related-projects" id="related-projects">
+					<h3 class="ico-title">Похожие проекты (2)</h3>
+					<div class="project-block">
+						<div class="img-wrap">
+							<a href="#"><img src="img/project-img1.jpg" alt=""></a>
+						</div>
+						<div class="text-wrap">
+							<div class="text-info">
+								<p><a href="#" class="project-title">Genesis (Дженезис) Mining</a><a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a></p>
+							</div>
+							<div class="project-info-content">
+								<div class="info">
+									<p class="status active-status">Статус: <span>Активен</span></p>
+									<p class="year">от 21.10.2017 до 11.04.2018</p>
+									<p class="last-updated">Последнее обновление: 11.11.2017</p>
+								</div>
+								<div class="progress-bar">
+									<a href="#" class="product-gray-btn">Недвижимость</a>
+									<div class="progress">
+										<span style="width: 15%"></span>
+										<p>$45 000 из 12 110 000</p>
+									</div>
+									<a href="#" class="follow"><span class="plus">+</span><span class="text">Следить</span></a>
+								</div>
+							</div>
+						</div>
+						<p class="more-project">Криптовалюты для облачного майнинга, предоставляемые сервисом Genesis Mining: По алгоритму SHA-256: Bitcoin (BTC)
+							<a href="#">Подробнее о проекте</a></p>
+					</div>
+					<div class="project-block">
+						<div class="img-wrap">
+							<a href="#"><img src="img/project-img1.jpg" alt=""></a>
+						</div>
+						<div class="text-wrap">
+							<div class="text-info">
+								<p><a href="#" class="project-title">Genesis (Дженезис)</a><a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a></p>
+							</div>
+							<div class="project-info-content">
+								<div class="info">
+									<p class="status inactive-status">Статус: <span>Не активен</span></p>
+									<p class="year">от 21.10.2017 до 11.04.2018</p>
+									<p class="last-updated">Последнее обновление: Вчера в 13:45</p>
+								</div>
+								<div class="progress-bar">
+									<a href="#" class="product-gray-btn">Технологии</a>
+									<div class="progress">
+										<span style="width: 15%"></span>
+										<p>$45 000 из 12 110 000</p>
+									</div>
+									<a href="#" class="follow"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
+								</div>
+							</div>
+						</div>
+						<p class="more-project">Криптовалюты для облачного майнинга, предоставляемые сервисом Genesis Mining: По алгоритму SHA-256: Bitcoin (BTC)
+							<a href="#">Подробнее о проекте</a></p>
+					</div>
+				</div> -->
+			</div>
+    </div>
+  </section>
+
+<div id="follow-popup" class="popup mfp-with-anim mfp-hide">
+	<div class="popup-body">
+		<h2>Следить за {{selectedItem?.name}}</h2>
+		<p>Выберите портфель для сохранения {{selectedItem?.name}}</p>
+		<div class="checkbox-list">
+			<div class="checkbox-wrap" *ngFor="let portfolio of getUserPortfolio; let i = index">
+				<input type="radio" name="id" [(ngModel)]="addPortfolio" value="{{portfolio.id}}" checked="checked" id="{{i}}">
+				<label for="{{i}}">
+					<span></span>{{portfolio.name}}
+				</label>
+			</div>
+		</div>
+		<a href="#" class="add-portfolio">+Добавить портфель</a>
+		<form class="hidden" #f="ngForm">
+			<input type="text" ngModel name="name" required="" placeholder="Введите название...">
+			<button (click)="createPortfolio(f)" type="submit">Добавить</button>
+		</form>
+	</div>
+	<div class="save-block">
+		<a (click)="submitPortfolio(selectedItem?.id, 'App\\IcoProject')" class="save-settings">Сохранить настройки</a>
+		<a href="#" class="close-text">Отменить и закрыть</a>
+	</div>
+</div>

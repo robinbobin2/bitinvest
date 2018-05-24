@@ -94,7 +94,7 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
                 month: 0
             }
           }
-          console.log(this.dataUsd);
+          // console.log(this.dataUsd);
           this.load = false;
           localStorage.removeItem('data');
           localStorage.setItem('data',JSON.stringify(this.dataUsd))

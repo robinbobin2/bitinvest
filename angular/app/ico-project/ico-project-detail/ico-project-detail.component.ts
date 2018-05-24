@@ -103,7 +103,6 @@ percents: Array<Percent> = [];
                   // code...
               } else {
                   this.portfoliosInfo = response['ico'];
-                  console.log(this.portfoliosInfo);
               }
           },
       );
