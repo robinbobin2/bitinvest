@@ -13,18 +13,18 @@ export class FilterNameActivePipe implements PipeTransform {
     }
     const resultArray = [];
     for (const item of value) {
-        if (filterString instanceof Array) {
-            console.log('array!')
-            for (let str of filterString)  {
-                console.log('gopush!')
-
-                if(item[propName] == str) {
+        if (filterString == 'both') {
+            if(item[propName] == 1) {
+                resultArray.push(item)
+            } else {
+                if(item[propName] == 3) {
                     resultArray.push(item)
                 }
             }
-        }
-        if(item[propName] == filterString) {
-            resultArray.push(item)
+        } else {
+            if (item[propName] == filterString) {
+                resultArray.push(item)
+            }
         }
     }
     return resultArray;
