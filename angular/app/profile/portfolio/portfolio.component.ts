@@ -190,8 +190,8 @@ export class PortfolioComponent implements OnInit {
          this.portfolioService.getPortfolioById(port_id)
         .subscribe(
           res => {
-              if (res['crypto'].length > 0) {
-                  this.portfolios[port_id] = res['crypto'];
+              if (res[type_view].length > 0) {
+                  this.portfolios[port_id] = res[type_view];
               }
 
           }
