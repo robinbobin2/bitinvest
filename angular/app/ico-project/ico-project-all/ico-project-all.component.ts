@@ -6,9 +6,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 import { PortfolioService } from '../../portfolio.service';
 import { AuthService } from '../../auth.service';
+import * as $ from 'jquery';
+var el:$;
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
-
 export class NewsRaw {
   id: number;
   name: string;
@@ -59,7 +60,6 @@ export class IcoProjectAllComponent implements OnInit {
   removed = false;
   hide = false;
   portfolioInfo:any;
-  $: any;
   /**
    * @param {OrderPipe} 
    */
@@ -219,7 +219,7 @@ submitPortfolio( post_id, type) {
     
     this.portfolioService.submitPortfolio(this.addPortfolio,post_id, type).subscribe(
         (response) => {
-            this.$.magnificPopup.close();
+            $.magnificPopup.close();
             this.router.navigate(['/profile/portfolio'])
         },
 
