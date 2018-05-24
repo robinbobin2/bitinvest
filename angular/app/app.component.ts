@@ -176,7 +176,10 @@ checkAuth() {
         .filter(event => event instanceof NavigationEnd)
         .map(() => this.activatedRoute)
         .subscribe((event) => {
-           $.getScript('/js/script.js');
+          setTimeout(()=> {
+            $.getScript('/js/script.js');
+          }, 100)
+           
         });
   	// this.user = this.auth.getUser();
   }

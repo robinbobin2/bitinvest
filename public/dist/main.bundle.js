@@ -636,7 +636,9 @@ var AppComponent = (function () {
             .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* NavigationEnd */]; })
             .map(function () { return _this.activatedRoute; })
             .subscribe(function (event) {
-            $.getScript('/js/script.js');
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 100);
         });
         // this.user = this.auth.getUser();
     };
