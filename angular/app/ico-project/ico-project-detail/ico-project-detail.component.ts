@@ -118,13 +118,13 @@ percents: Array<Percent> = [];
       );
         let id = this.route.snapshot.params['id'];
     let path = "/icoraw/"+id;
-    const info = this.http.get<NewsRaw>(path);
+    const info = this.http.get<any>(path);
 
       info.subscribe(response => {
         console.log(response['news']);
         console.log(response);
         this.news = response['news'][0];
-        this.news.category = response['category'].name;
+        // this.news.category = response['category'].name;
         console.log(this.news);
         
         for(let item of response['comments']) {
