@@ -71,9 +71,6 @@ user: User;
           }
         }
 
-  			console.log(response['news'][0]['id']);
-  			console.log(this.news);
-        console.log(this.comments);
 
   		});
 }

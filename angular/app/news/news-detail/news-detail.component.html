@@ -69,7 +69,7 @@
                             <div class="right">
                                 <div class="img-wrap"></div>
                                 <div class="btn-block">
-                                    <span class="number-green">{{rating_count[item.id]}}</span>
+                                    <span class="number-green" [ngClass]="rating_count[item.id] > 0 ? 'number-green' : 'number-red'">{{rating_count[item.id]}}</span>
                                     <div class="buttons">
                                         <a (click)="onVote(item.id, 1)" class="plus">+</a>
                                         <a (click)="onVote(item.id, 0)" class="minus">-</a>
