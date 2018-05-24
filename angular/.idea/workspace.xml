@@ -17,8 +17,8 @@
       <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="173" column="23" selection-start-line="173" selection-start-column="23" selection-end-line="173" selection-end-column="23" />
+            <state relative-caret-position="203">
+              <caret line="315" column="71" selection-start-line="315" selection-start-column="51" selection-end-line="315" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -72,7 +72,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>user_portfollable_id</find>
       <find>portfoliosInfo</find>
       <find>portfolioInfo</find>
       <find>this.portfolioInfo</find>
@@ -102,6 +101,7 @@
       <find>rating</find>
       <find>this.rating</find>
       <find>plus</find>
+      <find>rating_count[item.id</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -354,12 +354,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="46742000" />
+      <workItem from="1526711663196" duration="46800000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93076000" />
+    <option name="totallyTimeSpent" value="93134000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -823,8 +823,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="173" column="23" selection-start-line="173" selection-start-column="23" selection-end-line="173" selection-end-column="23" />
+        <state relative-caret-position="203">
+          <caret line="315" column="71" selection-start-line="315" selection-start-column="51" selection-end-line="315" selection-end-column="71" />
         </state>
       </provider>
     </entry>
