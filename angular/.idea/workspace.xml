@@ -26,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ico-project-detail.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ico-project-detail.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-detail/ico-project-detail.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="124" column="39" lean-forward="true" selection-end-line="351" />
+            <state relative-caret-position="183">
+              <caret line="128" column="42" selection-start-line="128" selection-start-column="42" selection-end-line="128" selection-end-column="42" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -68,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ico-project-detail.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ico-project-detail.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-detail/ico-project-detail.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="606">
-              <caret line="157" column="38" selection-end-line="247" selection-end-column="6" />
+            <state relative-caret-position="441">
+              <caret line="146" column="38" lean-forward="true" selection-start-line="146" selection-start-column="38" selection-end-line="146" selection-end-column="38" />
               <folding>
                 <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -187,8 +187,8 @@
         <option value="$PROJECT_DIR$/app/news/news-detail/news-detail.component.html" />
         <option value="$PROJECT_DIR$/app/ico-project/ico-project-detail/1" />
         <option value="$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts" />
-        <option value="$PROJECT_DIR$/app/ico-project/ico-project-detail/ico-project-detail.component.ts" />
         <option value="$PROJECT_DIR$/app/ico-project/ico-project-detail/ico-project-detail.component.html" />
+        <option value="$PROJECT_DIR$/app/ico-project/ico-project-detail/ico-project-detail.component.ts" />
       </list>
     </option>
   </component>
@@ -394,12 +394,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="48162000" />
+      <workItem from="1526711663196" duration="48403000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94496000" />
+    <option name="totallyTimeSpent" value="94737000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -828,16 +828,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-detail/ico-project-detail.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="124" column="39" lean-forward="true" selection-end-line="351" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -857,8 +847,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-detail/ico-project-detail.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="157" column="38" selection-end-line="247" selection-end-column="6" />
+        <state relative-caret-position="441">
+          <caret line="146" column="38" lean-forward="true" selection-start-line="146" selection-start-column="38" selection-end-line="146" selection-end-column="38" />
           <folding>
             <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -867,6 +857,16 @@
             <element signature="n#style#0;n#div#1;n#div#5;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#5;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#5;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-detail/ico-project-detail.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="128" column="42" selection-start-line="128" selection-start-column="42" selection-end-line="128" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>

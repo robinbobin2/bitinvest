@@ -4683,7 +4683,7 @@ var IcoProjectDetailComponent = (function () {
             _this.news = response['news'][0];
             // this.news.category = response['category'].name;
             console.log(_this.news);
-            for (var _i = 0, _a = response['comments']; _i < _a.length; _i++) {
+            for (var _i = 0, _a = response['news'][0]['comments']; _i < _a.length; _i++) {
                 var item = _a[_i];
                 _this.comments.push({
                     id: item['id'],
