@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 import {PortfolioService} from "../../portfolio.service";
 import {AuthService} from "../../auth.service";
+import {CommentsService} from "../../comments.service";
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
 export class NewsRaw {
 	id: number;
@@ -61,7 +62,10 @@ comments: CommentRaw[] = [];
 histories: Array<History>=[];
 commentcount = 0;
 submitted = false;
-user: User;
+
+    rating_count = [];
+    user: User;
+    hide = false;
 
     portfoliosInfo = [];
     portfolioAdded = false;
@@ -76,7 +80,8 @@ user: User;
              private http:HttpClient,
              private router:Router,
              private route:ActivatedRoute,
-             private portfolioService: PortfolioService) {
+             private portfolioService: PortfolioService,
+             private commentService: CommentsService) {
     let id = route.snapshot.params['id'];
     let path = "/miningraw/"+id;
 
@@ -127,6 +132,15 @@ user: User;
 		            created_at: item['created_at']
 		        });
 		          this.commentcount=this.commentcount+1;
+                        this.rating_count[item['id']] = 0;
+                        for (let rating_item of item.rating) {
+                            if (rating_item.positive == 1) {
+                                this.rating_count[item['id']] +=1;
+                            } else {
+                                this.rating_count[item['id']] -=1;
+                            }
+                        }
+
 		        }
   				// this.commentcount = response['comments'].length;
   			} 
@@ -179,6 +193,25 @@ user: User;
         };
    });
   }
+    onVote(comment_id, positive) {
+        this.commentService.addVote(comment_id,positive).subscribe(
+            res =>
+            {
+                console.log(res) ;
+                if(res['error']) {
+                    // code...
+                } else {
+                    if (positive == 1) {
+                        this.rating_count[comment_id] += 1;
+                    } else {
+                        this.rating_count[comment_id] -= 1;
+
+                    }
+                }
+            },
+            error => console.log(error)
+        );
+    }
     checkAuth() {
         if(this.authService.getUserInfo()) {
             return true;

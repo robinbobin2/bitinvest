@@ -115,34 +115,36 @@
 
 					
 					</div>
-          <ul class="comment-items">
-            <!--  -->
-            <li *ngFor="let item of comments">
-             <div class="left">
-              <div class="info">
-               <div class="img-wrap">
-                <img src="{{item.photo}}" style="max-width: 35px; height: auto;" alt="">
-              </div>
-              <div class="text-wrap">
-                <p>{{item.author}}</p>
-                <span>Добавлен {{item.created_at}}</span>
-              </div>
-            </div>
-            <p class="comment-text">{{item.body}}</p>
-          </div>
-          <div class="right">
-            <div class="img-wrap"></div>
-            <div class="btn-block">
-             <span class="number-green">0</span>
-             <div class="buttons">
-              <a href="#" class="plus">+</a>
-              <a href="#" class="minus">-</a>
-            </div>
-          </div>
-        </div>
-      </li>
-
-    </ul>
+					<ul class="comment-items">
+						<!--  -->
+						<ng-template ngFor let-item [ngForOf]="comments" let-i="index">
+							<li [ngClass]="i > 10 ? 'hidden' : ''" >
+								<div class="left">
+									<div class="info">
+										<div class="img-wrap">
+											<img src="{{item.photo}}" style="max-width: 35px; height: auto;" alt="">
+										</div>
+										<div class="text-wrap">
+											<p>{{item.author}}</p>
+											<span>Добавлен {{item.created_at}}</span>
+										</div>
+									</div>
+									<p class="comment-text">{{item.body}}</p>
+								</div>
+								<div class="right">
+									<div class="img-wrap"></div>
+									<div class="btn-block">
+										<span class="number-green" [ngClass]="rating_count[item.id] > -1 ? 'number-green' : 'number-red'">{{rating_count[item.id]}}</span>
+										<div class="buttons">
+											<a (click)="onVote(item.id, 1)" class="plus">+</a>
+											<a (click)="onVote(item.id, 0)" class="minus">-</a>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ng-template>
+					</ul>
+					<a *ngIf="commentcount > 10 && !hide"  class="show-comments">Показать все комментарии ({{commentcount}})</a>
 				</div></div></div></section>
 
   <div id="follow-popup" class="popup mfp-with-anim mfp-hide">

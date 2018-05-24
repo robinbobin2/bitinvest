@@ -43,6 +43,7 @@ submitted = false;
 commentcount = 0;
 rating_count = [];
 user: User;
+hide = false;
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute, private commentService: CommentsService) {
     let id = route.snapshot.params['id'];
     let path = "/newsraw/"+id;
