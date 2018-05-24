@@ -80,7 +80,7 @@
                         </li>
                         </ng-template>
                     </ul>
-                     <a href="#" *ngIf="news.comments_count > 10" class="show-comments">Показать все комментарии ({{news.comments_count}})</a>
+                     <a *ngIf="news.comments_count > 10 && !hide" (click)="hide = !hide"  class="show-comments">Показать все комментарии ({{news.comments_count}})</a>
                 </div>
               </div>
             </div>

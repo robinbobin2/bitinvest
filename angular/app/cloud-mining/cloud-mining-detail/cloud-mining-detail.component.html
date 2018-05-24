@@ -132,13 +132,13 @@
           </div>
           <div class="right">
             <div class="img-wrap"></div>
-            <div class="btn-block">
-             <span class="number-green">0</span>
-             <div class="buttons">
-              <a href="#" class="plus">+</a>
-              <a href="#" class="minus">-</a>
-            </div>
-          </div>
+			  <div class="btn-block">
+				  <span class="number-green" [ngClass]="rating_count[item.id] > -1 ? 'number-green' : 'number-red'">{{rating_count[item.id]}}</span>
+				  <div class="buttons">
+					  <a (click)="onVote(item.id, 1)" class="plus">+</a>
+					  <a (click)="onVote(item.id, 0)" class="minus">-</a>
+				  </div>
+			  </div>
         </div>
       </li>
 
