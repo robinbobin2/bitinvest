@@ -45,7 +45,7 @@ Route::get('/icoraw/search', 'IcoProjectViewController@search');
 Route::get('/cryptoraw/search', 'CryptoViewController@search');
 Route::get('/stockraw/search', 'StocksController@search');
 Route::get('/miningraw/top', 'CloudMiningViewController@topfive');
-Route::get('/miningraw/{mining}', 'CloudMiningViewController@show');
+Route::get('/miningraw/{id}', 'CloudMiningViewController@show');
 Route::get('/miningbycat/{category}', 'CloudMiningViewController@byCat');
 Route::get('/icoraw/', 'IcoProjectViewController@index');
 Route::get('/icoraw/top', 'IcoProjectViewController@top');
