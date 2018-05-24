@@ -191,8 +191,8 @@ export class PortfolioComponent implements OnInit {
         .subscribe(
           res => {
               console.log(res)
-              if (res.length > 0) {
-                  this.portfolios[port_id] = res;
+              if (res['ico'].length > 0) {
+                  this.portfolios[port_id] = res['ico'];
                   console.log(this.portfolios[port_id])
               }
 

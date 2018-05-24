@@ -6352,8 +6352,8 @@ var PortfolioComponent = (function () {
             _this.portfolioService.getPortfolioById(port_id)
                 .subscribe(function (res) {
                 console.log(res);
-                if (res.length > 0) {
-                    _this.portfolios[port_id] = res;
+                if (res['ico'].length > 0) {
+                    _this.portfolios[port_id] = res['ico'];
                     console.log(_this.portfolios[port_id]);
                 }
             });
