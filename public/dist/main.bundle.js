@@ -2446,19 +2446,19 @@ var CryptoAllComponent = (function () {
                     }
                     else {
                         _this.dataUsd[index] = {
-                            id: 0,
-                            name: '',
-                            sym: '',
-                            last: 0,
-                            now: 0,
-                            min: 0,
-                            max: 0,
-                            volume: 0,
-                            year: 0,
-                            algo: '',
-                            week: 0,
-                            day: 0,
-                            marketCapUsd: 0
+                            id: id,
+                            name: name,
+                            sym: symbol,
+                            last: _this.resp[symbol + '/USD']['last'],
+                            now: _this.resp[symbol + '/USD']['now'],
+                            min: _this.resp[symbol + '/USD']['min'],
+                            max: _this.resp[symbol + '/USD']['max'],
+                            volume: _this.resp[symbol + '/USD']['volume'],
+                            year: year,
+                            algo: algo,
+                            week: _this.resp[symbol + "/USD"]['week'],
+                            day: _this.resp[symbol + "/USD"]['day'],
+                            marketCapUsd: _this.resp[symbol + "/USD"]['marketCapUsd']
                         };
                     }
                     _this.load = false;
