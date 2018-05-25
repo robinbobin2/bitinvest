@@ -43,7 +43,7 @@ export class Portfolio {
 })
 
 export class AllCloudMiningComponent implements OnInit {
-order: string = 'proc';
+order: string = 'name';
   reverse: boolean = false;
   /**
    * @param {OrderPipe} 
@@ -179,9 +179,12 @@ order: string = 'proc';
 
   }
 
-setOrder(value: string) {
-     if (this.order === value) {
-       this.reverse = !this.reverse;
+setOrder(value: string, reverse) {
+    //  if (this.order === value) {
+    //    this.reverse = !this.reverse;
+    // }
+    if (reverse != 'none') {
+        this.reverse = reverse;
     }
     this.order = value;
     console.log(this.order);

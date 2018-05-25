@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {AuthService} from "../../auth.service";
 import {PortfolioService} from "../../portfolio.service";
 import { NgForm } from '@angular/forms';
+import {OrderPipe} from "../../order-pipe/ngx-order.pipe";
 
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
@@ -37,7 +38,12 @@ export class NewsRaw {
     providers: [PortfolioService]
 })
 export class IcoProjectCategoriesComponent implements OnInit {
- 
+
+    order: string = '';
+    reverse: boolean = false;
+    /**
+     * @param {OrderPipe}
+     */
 	id;
 	path;
 	info;
@@ -57,6 +63,8 @@ export class IcoProjectCategoriesComponent implements OnInit {
    constructor(private http:HttpClient,
                private router:Router,
                private route:ActivatedRoute,
+               private orderPipe: OrderPipe,
+
                private authService:AuthService,
                private portfolioService: PortfolioService) {
    }
@@ -110,7 +118,13 @@ export class IcoProjectCategoriesComponent implements OnInit {
       );
 }
 
-
+    setOrder(value: string) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+        console.log(this.order);
+    }
     checkAuth() {
         if(this.authService.getUserInfo()) {
             return true;

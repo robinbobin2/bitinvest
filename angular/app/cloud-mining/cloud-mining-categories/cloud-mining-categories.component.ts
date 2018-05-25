@@ -3,6 +3,8 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {AuthService} from "../../auth.service";
 import {PortfolioService} from "../../portfolio.service";
+import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
+
 import { NgForm } from '@angular/forms';
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
@@ -35,7 +37,11 @@ export class NewsRaw {
     providers: [PortfolioService]
 })
 export class CloudMiningCategoriesComponent implements OnInit {
-
+    order: string = 'proc';
+    reverse: boolean = false;
+    /**
+     * @param {OrderPipe}
+     */
 	id;
 	path;
 	info;
@@ -52,7 +58,7 @@ export class CloudMiningCategoriesComponent implements OnInit {
     show = false;
     portfolioInfo:any;
 	news: Array<NewsRaw> = [];
-   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute, private authService: AuthService, private portfolioService: PortfolioService) {
+   constructor(private http:HttpClient,private orderPipe: OrderPipe,  private router:Router, private route:ActivatedRoute, private authService: AuthService, private portfolioService: PortfolioService) {
 
 
 
@@ -170,6 +176,16 @@ export class CloudMiningCategoriesComponent implements OnInit {
                 error => console.log(error)
             )
 
+    }
+    setOrder(value: string, reverse) {
+        //  if (this.order === value) {
+        //    this.reverse = !this.reverse;
+        // }
+        if (reverse != 'none') {
+            this.reverse = reverse;
+        }
+        this.order = value;
+        console.log(this.order);
     }
     submitPortfolio( post_id, type) {
 
