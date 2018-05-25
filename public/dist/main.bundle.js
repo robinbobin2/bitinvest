@@ -2492,17 +2492,19 @@ var CryptoAllComponent = (function () {
                             }
                         }
                     }
-                    _this.dataUsd[index].sym = symbol;
-                    _this.dataUsd[index].algo = algo;
-                    _this.dataUsd[index].year = year;
-                    _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
-                    _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
-                    _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
-                    _this.dataUsd[index].max = _this.resp[symbol + '/USD']['max'];
-                    _this.dataUsd[index].volume = _this.resp[symbol + '/USD']['volume'];
-                    _this.dataUsd[index].day = _this.resp[symbol + "/USD"]['day'];
-                    _this.dataUsd[index].week = _this.resp[symbol + "/USD"]['week'];
-                    _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
+                    if (_this.dataUsd[index]) {
+                        _this.dataUsd[index].sym = symbol;
+                        _this.dataUsd[index].algo = algo;
+                        _this.dataUsd[index].year = year;
+                        _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
+                        _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
+                        _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
+                        _this.dataUsd[index].max = _this.resp[symbol + '/USD']['max'];
+                        _this.dataUsd[index].volume = _this.resp[symbol + '/USD']['volume'];
+                        _this.dataUsd[index].day = _this.resp[symbol + "/USD"]['day'];
+                        _this.dataUsd[index].week = _this.resp[symbol + "/USD"]['week'];
+                        _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
+                    }
                     localStorage.removeItem('data');
                     localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                 }

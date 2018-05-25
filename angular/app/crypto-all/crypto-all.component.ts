@@ -231,18 +231,19 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        this.dataUsd[index].sym = symbol;
-        this.dataUsd[index].algo = algo;
-        this.dataUsd[index].year = year;
-        this.dataUsd[index].last = this.resp[symbol+'/USD']['last'];
-        this.dataUsd[index].now = this.resp[symbol+'/USD']['now'];
-        this.dataUsd[index].min = this.resp[symbol+'/USD']['min'];
-        this.dataUsd[index].max = this.resp[symbol+'/USD']['max'];
-        this.dataUsd[index].volume = this.resp[symbol+'/USD']['volume'];
-        this.dataUsd[index].day = this.resp[symbol+"/USD"]['day'];
-        this.dataUsd[index].week = this.resp[symbol+"/USD"]['week'];
-          this.dataUsd[index].marketCapUsd = this.resp[symbol+"/USD"]['marketCapUsd']; 
-        
+             if (this.dataUsd[index]) {
+                 this.dataUsd[index].sym = symbol;
+                 this.dataUsd[index].algo = algo;
+                 this.dataUsd[index].year = year;
+                 this.dataUsd[index].last = this.resp[symbol + '/USD']['last'];
+                 this.dataUsd[index].now = this.resp[symbol + '/USD']['now'];
+                 this.dataUsd[index].min = this.resp[symbol + '/USD']['min'];
+                 this.dataUsd[index].max = this.resp[symbol + '/USD']['max'];
+                 this.dataUsd[index].volume = this.resp[symbol + '/USD']['volume'];
+                 this.dataUsd[index].day = this.resp[symbol + "/USD"]['day'];
+                 this.dataUsd[index].week = this.resp[symbol + "/USD"]['week'];
+                 this.dataUsd[index].marketCapUsd = this.resp[symbol + "/USD"]['marketCapUsd'];
+             }
 
         localStorage.removeItem('data');
         localStorage.setItem('data',JSON.stringify(this.dataUsd))
