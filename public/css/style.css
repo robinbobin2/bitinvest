@@ -9037,3 +9037,8 @@ table tbody tr td .difference .buttons a {
 .team-genesis .img-wrap img {
   border-radius: 200px;
 }
+
+.top-menu {
+  width: 1191px; 
+  margin-left: -11px;
+}
