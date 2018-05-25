@@ -2419,7 +2419,7 @@ var CryptoAllComponent = (function () {
         this.StockService.getCrypto()
             .subscribe(function (response) {
             _this.resp = response;
-            _this.data = alldata.subscribe(function (response) {
+            alldata.subscribe(function (response) {
                 var admin = response;
                 for (var _i = 0; _i < admin.length; ++_i) {
                     // console.log(this.admin[i].symbol);
@@ -2467,7 +2467,7 @@ var CryptoAllComponent = (function () {
                 }
             });
         });
-        this.data = alldata.subscribe(function (response) {
+        alldata.subscribe(function (response) {
             _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).concatMap(function () { return _this.StockService.getCrypto(); })
                 .map(function (response) { _this.resp = response; }).subscribe(function () {
                 var admin = response;

@@ -153,7 +153,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      this.StockService.getCrypto()
      .subscribe(response => {
        this.resp = response;
-       this.data = alldata.subscribe(response => {
+       alldata.subscribe(response => {
       let admin = response;
       for (var _i = 0; _i < admin.length; ++_i) {
 
@@ -203,7 +203,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
       }
     });
      });
-     this.data = alldata.subscribe(response => {
+     alldata.subscribe(response => {
        this.cryptoData=Observable.interval(1000).concatMap(()=>this.StockService.getCrypto())
        .map((response)=>{this.resp = response;}).subscribe(()=>{
 
