@@ -31,7 +31,8 @@ export class NewsRaw {
 @Component({
   selector: 'app-cloud-mining-categories',
   templateUrl: './cloud-mining-categories.component.html',
-  styleUrls: ['./cloud-mining-categories.component.scss']
+  styleUrls: ['./cloud-mining-categories.component.scss'],
+    providers: [PortfolioService]
 })
 export class CloudMiningCategoriesComponent implements OnInit {
 
