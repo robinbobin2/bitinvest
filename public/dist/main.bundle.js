@@ -1418,14 +1418,6 @@ var AllCloudMiningComponent = (function () {
         });
         var info = http.get(path);
         info.subscribe(function (response) {
-            // for (let portfolio of response['portfolios']) {
-            //   this.portfolios.push({
-            //        id: portfolio['id'],
-            //        name:portfolio['name'],
-            //        user_portfolio_type_id: portfolio['user_portfolio_type_id'],
-            //        user_id: portfolio['user_id']
-            //   })
-            // }
             for (var _i = 0, _a = response['news']; _i < _a.length; _i++) {
                 var item = _a[_i];
                 _this.news.push({
@@ -1478,9 +1470,6 @@ var AllCloudMiningComponent = (function () {
             return true;
         }
         return (false);
-    };
-    AllCloudMiningComponent.prototype.loadMore = function (id) {
-        this.router.navigate(['/cloud-mining/item', id]);
     };
     AllCloudMiningComponent.prototype.checkInPortfolio = function (id) {
         if (this.portfoliosInfo == undefined) {
@@ -1570,11 +1559,12 @@ module.exports = "div.mining-content {\n  margin-left: -10px; }\n"
 
 "use strict";
 /* unused harmony export NewsRaw */
-/* unused harmony export Portfolio */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CloudMiningCategoriesComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__portfolio_service__ = __webpack_require__("./angular/app/portfolio.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1585,39 +1575,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
 
 
+
+
+var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
 var NewsRaw = (function () {
     function NewsRaw() {
     }
     return NewsRaw;
 }());
 
-var Portfolio = (function () {
-    function Portfolio() {
-    }
-    return Portfolio;
-}());
-
 var CloudMiningCategoriesComponent = (function () {
-    function CloudMiningCategoriesComponent(http, router, route) {
+    function CloudMiningCategoriesComponent(http, router, route, authService, portfolioService) {
         this.http = http;
         this.router = router;
         this.route = route;
+        this.authService = authService;
+        this.portfolioService = portfolioService;
         this.active = 0;
         this.inactive = 0;
         this.allCount = 0;
+        this.portfoliosInfo = [];
+        this.portfolioAdded = false;
+        this.getUserPortfolio = [];
+        this.checkPortfolio = false;
+        this.removed = false;
+        this.show = false;
         this.news = [];
-        this.portfolio = {
-            'id': '',
-            'name': '',
-            'user_portfolio_type_id': '',
-            'user_id': 4,
-        };
     }
     CloudMiningCategoriesComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.authService.getUser().subscribe(function (response) {
+            for (var _i = 0, _a = response['portfolio']; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (item.user_portfolio_type_id == 1) {
+                    _this.getUserPortfolio.push(item);
+                }
+            }
+        });
         this.route.params.subscribe(function (params) {
             _this.active = 0;
             _this.inactive = 0;
@@ -1667,6 +1663,57 @@ var CloudMiningCategoriesComponent = (function () {
     CloudMiningCategoriesComponent.prototype.loadMore = function (id) {
         this.router.navigate(['/cloud-mining/item', id]);
     };
+    CloudMiningCategoriesComponent.prototype.checkAuth = function () {
+        if (this.authService.getUserInfo()) {
+            return true;
+        }
+        return (false);
+    };
+    CloudMiningCategoriesComponent.prototype.checkInPortfolio = function (id) {
+        if (this.portfoliosInfo == undefined) {
+            return false;
+        }
+        for (var _i = 0, _a = this.portfoliosInfo; _i < _a.length; _i++) {
+            var item = _a[_i];
+            for (var _b = 0, item_1 = item; _b < item_1.length; _b++) {
+                var it = item_1[_b];
+                if (it.id) {
+                    if (it.id == id) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    };
+    CloudMiningCategoriesComponent.prototype.removePortfolio = function (id) {
+        var _this = this;
+        this.portfolioService.removePortfolio(id, 'App\\CloudMining', 0).subscribe(function () {
+            _this.portfolioInfo.subscribe(function (res) {
+                if (res['error']) {
+                    // code...
+                }
+                else {
+                    _this.portfoliosInfo = res['mining'];
+                    console.log(_this.portfoliosInfo);
+                }
+            });
+            _this.checkInPortfolio(id);
+        });
+    };
+    CloudMiningCategoriesComponent.prototype.createPortfolio = function (form) {
+        var _this = this;
+        this.http.post('/angular/userportfolio/create', { 'name': form.value.name, 'user_portfolio_type_id': 1 }, { headers: headers })
+            .subscribe(function (response) { _this.getUserPortfolio.push(response); form.reset(); }, function (error) { return console.log(error); });
+    };
+    CloudMiningCategoriesComponent.prototype.submitPortfolio = function (post_id, type) {
+        var _this = this;
+        this.http.post('/storeportfolio', {
+            'user_portfollable_id': post_id,
+            'user_portfolio_id': this.addPortfolio,
+            'user_portfollable_type': type
+        }, { headers: headers }).subscribe(function (response) { return _this.router.navigate(['/profile/portfolio']); }, function (error) { return console.log(error); });
+    };
     return CloudMiningCategoriesComponent;
 }());
 CloudMiningCategoriesComponent = __decorate([
@@ -1675,10 +1722,10 @@ CloudMiningCategoriesComponent = __decorate([
         template: __webpack_require__("./angular/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.html"),
         styles: [__webpack_require__("./angular/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AuthService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__portfolio_service__["a" /* PortfolioService */]) === "function" && _e || Object])
 ], CloudMiningCategoriesComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=cloud-mining-categories.component.js.map
 
 /***/ }),

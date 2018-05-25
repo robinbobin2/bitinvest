@@ -1,15 +1,11 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
-import {Router, ActivatedRoute, NavigationEnd, Params} from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {AuthService} from "../../auth.service";
+import {PortfolioService} from "../../portfolio.service";
+import { NgForm } from '@angular/forms';
 
-interface Category {
-  id: number;
-  name: string;
-}
+const headers = new HttpHeaders({'Content-type': 'Application/json '});
 
 export class NewsRaw {
   id: number;
@@ -32,12 +28,6 @@ export class NewsRaw {
     start_days: number;
 
 }
-export class Portfolio {
-  id: number;
-  name:string;
-  user_portfolio_type_id: number;
-  user_id: number
-}
 @Component({
   selector: 'app-cloud-mining-categories',
   templateUrl: './cloud-mining-categories.component.html',
@@ -52,14 +42,31 @@ export class CloudMiningCategoriesComponent implements OnInit {
   inactive = 0;
   allCount = 0;
   news_raw: any[];
+    portfoliosInfo = [];
+    portfolioAdded = false;
+    getUserPortfolio = [];
+    addPortfolio: any;
+    checkPortfolio = false;
+    removed = false;
+    show = false;
+    portfolioInfo:any;
 	news: Array<NewsRaw> = [];
-   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute, private authService: AuthService, private portfolioService: PortfolioService) {
 
 
 
    }
 
   ngOnInit() {
+      this.authService.getUser().subscribe(
+          response => {
+              for(let item of response['portfolio']) {
+                  if (item.user_portfolio_type_id == 1) {
+                      this.getUserPortfolio.push(item)
+                  }
+              }
+          }
+      );
         this.route.params.subscribe(
    		(params: Params) => {
         this.active = 0;
@@ -114,13 +121,66 @@ export class CloudMiningCategoriesComponent implements OnInit {
   loadMore(id) {
     this.router.navigate(['/cloud-mining/item', id]);
   }
-  
-  portfolio = { 
-      'id': '',
-  'name':'',
-  'user_portfolio_type_id': '',
-  'user_id': 4,
-  }
-  // @ViewChild('f') Form:NgForm;
+    checkAuth() {
+        if(this.authService.getUserInfo()) {
+            return true;
+        }
+        return(false);
+
+    }
+
+    checkInPortfolio(id) {
+        if(this.portfoliosInfo == undefined) {
+            return false;
+        }
+
+        for(let item of this.portfoliosInfo) {
+            for(let it of item) {
+                if(it.id ) {
+
+                    if(it.id == id) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    removePortfolio(id) {
+        this.portfolioService.removePortfolio(id, 'App\\CloudMining', 0).subscribe( () => {
+            this.portfolioInfo.subscribe(res=>{
+                if(res['error']) {
+                    // code...
+                } else {
+                    this.portfoliosInfo = res['mining'];
+                    console.log(this.portfoliosInfo);
+                }
+            });
+            this.checkInPortfolio(id);
+        })
+
+    }
+    createPortfolio(form: NgForm) {
+
+        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 1},{headers: headers})
+            .subscribe(
+                response => {this.getUserPortfolio.push(response); form.reset()},
+                error => console.log(error)
+            )
+
+    }
+    submitPortfolio( post_id, type) {
+
+        this.http.post('/storeportfolio', {
+                'user_portfollable_id': post_id,
+                'user_portfolio_id':this.addPortfolio,
+                'user_portfollable_type': type
+            },
+            {headers: headers}).subscribe(
+            (response) => this.router.navigate(['/profile/portfolio']),
+            (error) => console.log(error)
+        );
+    }
 
 }

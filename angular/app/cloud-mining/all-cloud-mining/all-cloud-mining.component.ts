@@ -5,10 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 import { AuthService } from '../../auth.service';
 import {PortfolioService} from "../../portfolio.service";
-interface Category {
-  id: number;
-  name: string;
-}
+
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
 export class NewsRaw {
   id: number;
@@ -90,14 +87,6 @@ order: string = 'proc';
        );
    	const info = http.get(path);
    	info.subscribe(response => {
-       // for (let portfolio of response['portfolios']) {
-       //   this.portfolios.push({
-       //        id: portfolio['id'],
-       //        name:portfolio['name'],
-       //        user_portfolio_type_id: portfolio['user_portfolio_type_id'],
-       //        user_id: portfolio['user_id']
-       //   })
-       // }
        for (let item of response['news']) {
            this.news.push( {
 		  	id: item.id,
@@ -157,9 +146,6 @@ order: string = 'proc';
     
   }
 
-  loadMore(id) {
-    this.router.navigate(['/cloud-mining/item', id]);
-  }
   checkInPortfolio(id) {
       if(this.portfoliosInfo == undefined) {
         return false;
