@@ -14,10 +14,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ico-project-categories.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ico-project-categories.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-categories/ico-project-categories.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-292" />
+            <state relative-caret-position="203">
+              <caret line="38" column="112" selection-start-line="38" selection-start-column="112" selection-end-line="38" selection-end-column="112" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -30,7 +32,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="all-news.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="all-news.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -102,7 +104,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/news/news.component.html" />
         <option value="$PROJECT_DIR$/app/sidebar/top-ico/top-ico.component.ts" />
         <option value="$PROJECT_DIR$/app/sidebar/top-ico/top-ico.component.html" />
         <option value="$PROJECT_DIR$/app/sidebar/sidebar.component.html" />
@@ -153,6 +154,7 @@
         <option value="$PROJECT_DIR$/app/ico-project/ico-project-categories/ico-project-categories.component.ts" />
         <option value="$PROJECT_DIR$/app/categories/categories.component.ts" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.ts" />
+        <option value="$PROJECT_DIR$/app/ico-project/ico-project-categories/ico-project-categories.component.html" />
       </list>
     </option>
   </component>
@@ -384,12 +386,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="58765000" />
+      <workItem from="1526711663196" duration="58841000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105099000" />
+    <option name="totallyTimeSpent" value="105175000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -807,11 +809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-categories/ico-project-categories.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-292" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-all/ico-project-all.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -840,6 +837,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="26" selection-start-column="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-categories/ico-project-categories.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="38" column="112" selection-start-line="38" selection-start-column="112" selection-end-line="38" selection-end-column="112" />
         </state>
       </provider>
     </entry>

@@ -36,7 +36,7 @@
                   <p class="last-updated">Последнее обновление: {{item.updated_at}}</p>
                 </div>
                 <div class="progres-bar">
-                  <a [routerLink]="['/ico/category', item.cat_id]" class="product-gray-btn">{{item.category}}</a>
+                  <a [routerLink]="['/ico/category', item.cat_id]" class="product-gray-btn">{{item.category.name}}</a>
                   <div class="progres">
                     <span [ngStyle]="{'width': item.current_money/(item.money / 100)+'%' }"></span>
                     <p>${{item.current_money}} из {{item.money}}</p>
