@@ -2480,7 +2480,7 @@ var CryptoAllComponent = (function () {
                     var desc = 'DESC';
                     _this.animtype[index] = '';
                     _this.diff[index] = 0;
-                    if (_this.dataUsd[index].now) {
+                    if (_this.dataUsd[index]) {
                         if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
                             _this.first_time = false;
                             _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
