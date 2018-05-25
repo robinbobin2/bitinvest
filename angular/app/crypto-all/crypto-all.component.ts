@@ -164,6 +164,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         let algo = admin[index].algo;
           let id = admin[index].id;
           let name = admin[index].name;
+        if(this.dataUsd[index]) {
             this.dataUsd[index].sym = symbol;
             this.dataUsd[index].id = id;
             this.dataUsd[index].name = name;
@@ -177,11 +178,29 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
           this.dataUsd[index].day = this.resp[symbol+"/USD"]['day'];
           this.dataUsd[index].week = this.resp[symbol+"/USD"]['week'];
           this.dataUsd[index].marketCapUsd = this.resp[symbol+"/USD"]['marketCapUsd'];
+
+
+        } else {
+          this.dataUsd[index] = {
+              id: 0,
+              name: '',
+            sym: '',
+            last: 0,
+            now: 0,
+            min:0,
+            max: 0,
+            volume:0,
+            year: 0,
+            algo: '',
+            week: 0,
+            day: 0,
+            marketCapUsd: 0
+          }
         }
         this.load = false;
         localStorage.removeItem('data');
         localStorage.setItem('data',JSON.stringify(this.dataUsd))
-
+      }
     });
      });
      this.data = alldata.subscribe(response => {
