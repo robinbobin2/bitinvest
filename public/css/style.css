@@ -8500,9 +8500,7 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
   cursor: pointer;
   min-height: 280px !important;
 }
-.news-content {
-  margin-left: -32px !important;
-}
+
 
 
  @keyframes redbg
@@ -8985,6 +8983,9 @@ outline: none !important;
 app-news-detail {
   width: 100%;
   margin-top: -20px;
+}
+app-all-news, app-all-cloud-mining, app-ico-project-all {
+  width: 100%;
 }
 app-ico-project-detail {
   width: 100%;
