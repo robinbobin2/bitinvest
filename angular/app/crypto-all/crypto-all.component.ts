@@ -16,22 +16,7 @@ export class Cripto {
   algo: string;
 }
 
-export interface CryptoData {
-    name: string;
-    id: number;
-  sym: string;
-  last: number;
-  now: number;
-  min:number;
-  max: number;
-  volume:number;
-  year: number;
-  algo: string;
-  week: number;
-  day: number;
-  marketCapUsd: number;
 
-}
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
 @Component({
   selector: 'app-crypto-all',
@@ -45,7 +30,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
   load:boolean = true;
 
   // admin= new Array;
-  dataUsd: Array<CryptoData> = [];
+  dataUsd = [];
   order = 'now';
   data: any;
   resp: any;
@@ -179,7 +164,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         let algo = admin[index].algo;
           let id = admin[index].id;
           let name = admin[index].name;
-        if(this.dataUsd[index]) {
             this.dataUsd[index].sym = symbol;
             this.dataUsd[index].id = id;
             this.dataUsd[index].name = name;
@@ -192,30 +176,12 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
           this.dataUsd[index].volume = this.resp[symbol+'/USD']['volume'];
           this.dataUsd[index].day = this.resp[symbol+"/USD"]['day'];
           this.dataUsd[index].week = this.resp[symbol+"/USD"]['week'];
-          this.dataUsd[index].marketCapUsd = this.resp[symbol+"/USD"]['marketCapUsd']; 
-
-          
-        } else {
-          this.dataUsd[index] = {
-              id: 0,
-              name: '',
-            sym: '',
-            last: 0,
-            now: 0,
-            min:0,
-            max: 0,
-            volume:0,
-            year: 0,
-            algo: '',
-            week: 0,
-            day: 0,
-            marketCapUsd: 0
-          }
+          this.dataUsd[index].marketCapUsd = this.resp[symbol+"/USD"]['marketCapUsd'];
         }
         this.load = false;
         localStorage.removeItem('data');
         localStorage.setItem('data',JSON.stringify(this.dataUsd))
-      }
+
     });
      });
      this.data = alldata.subscribe(response => {
