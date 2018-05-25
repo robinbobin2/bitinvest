@@ -106,7 +106,7 @@
               </tr>
             </thead>
               <tbody style="position:relative; min-height: 160px;" *ngIf="load == false">
-              <tr *ngFor="let pair of pairs | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'currency'; let i = index" [ngClass]="i > 10 ? 'hidden' : '' " >
+              <tr *ngFor="let pair of pairs | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'currency'|slice:0:show" >
                 <td>
                   <span class="price" >{{pair.currency}}</span>
                 </td>
@@ -129,7 +129,7 @@
             <div style="width: 50px; height: 50px; margin: 40px auto;" *ngIf="load == true">
                 <img src="/img/load.gif" *ngIf="load == true" style=" width: 50px; height: 50px; text-align: center">
             </div>
-          <a class="show-btn">Показать еще пары</a>
+          <a class="show-btn" *ngIf="show <= pairs.length" (click)="show += 10">Показать еще пары</a>
           </div>
         <div class="comment-block" id="comment-block">
                     <div class="comment-top" *ngIf="user.id != undefined">
