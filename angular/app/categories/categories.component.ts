@@ -1,21 +1,9 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
-import {Router, ActivatedRoute, NavigationEnd, Params} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import { HttpClient } from '@angular/common/http';
-interface Category {
-  id: number;
-  name: string;
-}
-interface Categories {
-  id: number;
-  name: string;
-  count: number;
 
-}
+
 export class NewsRaw {
   id: number;
   title: string;

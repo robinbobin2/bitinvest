@@ -1131,7 +1131,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
 
 
 
@@ -1331,7 +1330,7 @@ module.exports = "<!-- <div class=\"mining-content\">\n        <div class=\"mini
 /***/ "./angular/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".select-wrapper {\n  margin-bottom: 20px;\n  width: 205px;\n  position: relative; }\n  .select-wrapper .select {\n    border-radius: 18px;\n    background: #fff;\n    height: 40px;\n    padding: 0 18px 0 13px;\n    cursor: pointer;\n    -webkit-box-shadow: 0px 5px 30px 0px rgba(0, 0, 1, 0.1);\n    box-shadow: 0px 5px 30px 0px rgba(0, 0, 1, 0.1); }\n  .select-wrapper .select .text {\n      margin: 0;\n      margin-right: 45px;\n      color: #666;\n      font-size: 14px; }\n  .select-wrapper .select.open {\n      border-bottom-left-radius: 0;\n      border-bottom-right-radius: 0; }\n  .select-wrapper .select.open > a {\n        -webkit-transform: rotate(-180deg);\n                transform: rotate(-180deg); }\n  .select-wrapper .select-items {\n    background: #fff;\n    position: absolute;\n    left: 0;\n    top: 40px;\n    width: 100%;\n    border-bottom-left-radius: 18px;\n    border-bottom-right-radius: 18px;\n    display: none; }\n  .select-wrapper .select-items li {\n      color: #666;\n      font-size: 14px;\n      padding: 10px 13px;\n      background: #fff;\n      display: block; }\n  .select-wrapper .select-items li:hover {\n        background: #dbdbdb; }\n  .select-wrapper .select-items.open {\n      display: block; }\n  .open {\n  display: block; }\n  .mining-head form {\n  margin-top: 12px; }\n"
+module.exports = ".select-wrapper {\n  margin-bottom: 20px;\n  width: 205px;\n  position: relative; }\n  .select-wrapper .select {\n    border-radius: 18px;\n    background: #fff;\n    height: 40px;\n    padding: 0 18px 0 13px;\n    cursor: pointer;\n    -webkit-box-shadow: 0px 5px 30px 0px rgba(0, 0, 1, 0.1);\n    box-shadow: 0px 5px 30px 0px rgba(0, 0, 1, 0.1); }\n  .select-wrapper .select .text {\n      margin: 0;\n      margin-right: 45px;\n      color: #666;\n      font-size: 14px; }\n  .select-wrapper .select.open {\n      border-bottom-left-radius: 0;\n      border-bottom-right-radius: 0; }\n  .select-wrapper .select.open > a {\n        -webkit-transform: rotate(-180deg);\n                transform: rotate(-180deg); }\n  .select-wrapper .select-items {\n    background: #fff;\n    position: absolute;\n    left: 0;\n    top: 40px;\n    width: 100%;\n    border-bottom-left-radius: 18px;\n    border-bottom-right-radius: 18px;\n    display: none; }\n  .select-wrapper .select-items li {\n      color: #666;\n      font-size: 14px;\n      padding: 10px 13px;\n      background: #fff;\n      display: block; }\n  .select-wrapper .select-items li:hover {\n        background: #dbdbdb; }\n  .select-wrapper .select-items.open {\n      display: block; }\n  .open {\n  display: block; }\n"
 
 /***/ }),
 
@@ -2054,7 +2053,7 @@ module.exports = "  <section class=\"mining-wrapper\">\n    <div class=\"wrapper
 /***/ "./angular/app/cloud-mining/cloud-mining.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "aside {\n  margin-right: -10px !important; }\n"
+module.exports = ""
 
 /***/ }),
 
@@ -4590,6 +4589,8 @@ module.exports = "div.ico-content {\n  width: 860px !important;\n  margin-left: 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__portfolio_service__ = __webpack_require__("./angular/app/portfolio.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4600,9 +4601,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
 
 
+
+
+var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
 var NewsRaw = (function () {
     function NewsRaw() {
     }
@@ -4611,14 +4614,19 @@ var NewsRaw = (function () {
 
 var IcoProjectCategoriesComponent = (function () {
     // main_news: NewsRaw[] = [];
-    function IcoProjectCategoriesComponent(http, router, route) {
+    function IcoProjectCategoriesComponent(http, router, route, authService, portfolioService) {
         this.http = http;
         this.router = router;
         this.route = route;
+        this.authService = authService;
+        this.portfolioService = portfolioService;
         this.activeCount = 0;
         this.inactiveCount = 0;
         this.icoCount = 0;
         this.news = [];
+        this.portfoliosInfo = [];
+        this.getUserPortfolio = [];
+        this.hide = false;
     }
     IcoProjectCategoriesComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -4644,9 +4652,82 @@ var IcoProjectCategoriesComponent = (function () {
                 }
             });
         });
+        var portfolioUrl = '/angular/userportfolio';
+        this.portfolioInfo = this.http.get(portfolioUrl);
+        this.portfolioInfo.subscribe(function (response) {
+            if (response['error']) {
+                // code...
+            }
+            else {
+                _this.portfoliosInfo = response['ico'];
+                console.log(_this.portfoliosInfo);
+            }
+        });
+        this.authService.getUser().subscribe(function (response) {
+            for (var _i = 0, _a = response['portfolio']; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (item.user_portfolio_type_id == 2) {
+                    _this.getUserPortfolio.push(item);
+                }
+            }
+        });
     };
-    IcoProjectCategoriesComponent.prototype.loadMore = function (id) {
-        this.router.navigate(['/ico/item', id]);
+    IcoProjectCategoriesComponent.prototype.checkAuth = function () {
+        if (this.authService.getUserInfo()) {
+            return true;
+        }
+        return (false);
+    };
+    IcoProjectCategoriesComponent.prototype.removePortfolio = function (id, type) {
+        var _this = this;
+        var removeUrl;
+        if (type == 'App\\IcoProject') {
+            removeUrl = '/angular/userportfolio/ico/remove/';
+        }
+        else {
+            removeUrl = '/angular/userportfolio/remove/';
+        }
+        var removePost = this.http.get(removeUrl + id);
+        removePost.subscribe(function (response) {
+            _this.portfolioInfo.subscribe(function (res) {
+                if (res['error']) {
+                    // code...
+                }
+                else {
+                    _this.portfoliosInfo = res['ico'];
+                    console.log(_this.portfoliosInfo);
+                }
+            }),
+                _this.checkInPortfolio(id);
+        }, function (error) { return console.log(error); });
+    };
+    IcoProjectCategoriesComponent.prototype.checkInPortfolio = function (id) {
+        if (this.portfoliosInfo == undefined) {
+            return false;
+        }
+        for (var _i = 0, _a = this.portfoliosInfo; _i < _a.length; _i++) {
+            var item = _a[_i];
+            for (var _b = 0, item_1 = item; _b < item_1.length; _b++) {
+                var it = item_1[_b];
+                if (it.id) {
+                    if (it.id == id) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    };
+    IcoProjectCategoriesComponent.prototype.createPortfolio = function (form) {
+        var _this = this;
+        this.http.post('/angular/userportfolio/create', { 'name': form.value.name, 'user_portfolio_type_id': 2 }, { headers: headers })
+            .subscribe(function (response) { _this.getUserPortfolio.push(response); form.reset(); }, function (error) { return console.log(error); });
+    };
+    IcoProjectCategoriesComponent.prototype.submitPortfolio = function (post_id, type) {
+        var _this = this;
+        this.portfolioService.submitPortfolio(this.addPortfolio, post_id, type).subscribe(function (response) {
+            _this.router.navigate(['/profile/portfolio']);
+        }, function (error) { return console.log(error); });
     };
     return IcoProjectCategoriesComponent;
 }());
@@ -4654,12 +4735,13 @@ IcoProjectCategoriesComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-ico-project-categories',
         template: __webpack_require__("./angular/app/ico-project/ico-project-categories/ico-project-categories.component.html"),
-        styles: [__webpack_require__("./angular/app/ico-project/ico-project-categories/ico-project-categories.component.scss")]
+        styles: [__webpack_require__("./angular/app/ico-project/ico-project-categories/ico-project-categories.component.scss")],
+        providers: [__WEBPACK_IMPORTED_MODULE_4__portfolio_service__["a" /* PortfolioService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__auth_service__["a" /* AuthService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__portfolio_service__["a" /* PortfolioService */]) === "function" && _e || Object])
 ], IcoProjectCategoriesComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=ico-project-categories.component.js.map
 
 /***/ }),
@@ -5688,7 +5770,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
 
 
 
