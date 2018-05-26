@@ -71,10 +71,10 @@ class BTCBoxProvider extends FounderProvider
 
         foreach ($result as $currency => $supplierTicker){
             $ticker = new TickerEntity();
-            $ticker->setAsk($supplierTicker->sell/10);
-            $ticker->setBid($supplierTicker->buy/10);
+            $ticker->setAsk($supplierTicker->sell/100);
+            $ticker->setBid($supplierTicker->buy/100);
             $ticker->setVolume($supplierTicker->vol);
-            $ticker->setValue($supplierTicker->last);
+            $ticker->setValue($supplierTicker->last/100);
             $ticker->setExchangeId($this->getExchangeId());
             $ticker->setCurrency(strtoupper($currency) . "/USD");
             $response[] = $ticker;
