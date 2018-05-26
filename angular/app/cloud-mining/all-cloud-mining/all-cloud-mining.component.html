@@ -33,7 +33,7 @@
         <div class="mining-head">
           <h1>Облачный майнинг<span>{{allCount}}</span><a href="balant-mining-filter.html"><img src="/img/mining-icon.png" alt=""></a></h1>
           <ul class="mining-tabs">
-            <li class="active"><a href="#" (click)="status=1">Платит/Ожидание ({{active}})</a></li>
+            <li class="active"><a href="#" (click)="status='both'">Платит/Ожидание ({{active}})</a></li>
             <li><a href="#" (click)="status=2">Не платит ({{inactive}})</a></li>
           </ul>
           <form>
@@ -42,13 +42,15 @@
         </div>
         <div class="select-content">
           <div class="select-head">
-            <p>Доход от большего к меньшему</p>
+            <p>По алфавиту</p>
             <span class="curret"></span>
           </div>
           <ul class="select-body">
-            <li><a href="#" (click)="setOrder('proc')" >Доход на уменьшение</a></li>
-            <li><a href="#" (click)="setOrder('depo')">Депозит на уменьшение</a></li>
-            <li><a href="#" (click)="setOrder('depo')">Депозит на увеличение</a></li>
+            <li><a href="#" (click)="setOrder('name', false)" >По алфавиту</a></li>
+            <li><a href="#" (click)="setOrder('proc', true)" >Доход на уменьшение</a></li>
+            <li><a href="#" (click)="setOrder('proc', false)">Доход на увеличение</a></li>
+            <li><a href="#" (click)="setOrder('depo', true)">Депозит на уменьшение</a></li>
+            <li><a href="#" (click)="setOrder('depo', false)">Депозит на увеличение</a></li>
           </ul>
         </div>
         <div class="project-wrapper active">
@@ -62,7 +64,11 @@
               </div>
               <div class="project-info-content">
                 <ul class="info-list">
-                  <li><span>Статус:</span><span class="bold active">{{item.status == 1 ? 'Платит' : 'Не платит'}}</span></li>
+                  <li><span>Статус:</span>
+                    <span *ngIf="item.status == 1" class="bold active">Платит</span>
+                    <span *ngIf="item.status == 2" class="bold " style="color: #f00;">Не платит</span>
+                    <span *ngIf="item.status == 3" class="bold " style="color: #ff9b00;">Ожидание выплаты</span>
+                  </li>
                   <li><span>Доход в год:</span><span class="bold">{{item.proc}}%</span></li>
                   <li><span>Существует:</span><span class="bold">{{item.start_days}} дней</span></li>
                   <li><span>Активность депозита:</span><span class="bold">{{item.depo_date}}</span></li>
@@ -81,7 +87,7 @@
               </div>
             </div>
             <div class="more-project-wrap">
-              <p class="more-project">{{item.desc}}
+              <p class="more-project">{{item.desc | striphtml | excerpt:140}}
               <a routerLink="/cloud-mining/item/{{item.id}}">Подробнее о проекте</a></p>
               
               <a href="/cloud-mining/item/{{item.id}}#comment-block" class="comment-wrapper">

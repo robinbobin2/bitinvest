@@ -12,7 +12,9 @@
 						</div>
 						<div class="project-info-content">
 							<ul class="info-list">
-								<li><span>Статус:</span><span class="bold active">{{news.status == 1 ? 'Платит' : 'Не платит'}}</span></li>
+								<li><span>Статус:</span><span *ngIf="news.status == 1" class="bold active">Платит</span>
+									<span *ngIf="news.status == 2" class="bold " style="color: #f00;">Не платит</span>
+									<span *ngIf="news.status == 3" class="bold " style="color: #ff9b00;">Ожидание выплаты</span></li>
 								<li><span>Доход в год:</span><span class="bold">{{news.proc}}%</span></li>
 								<li><span>Существует:</span><span class="bold">{{news.start_days}} дней</span></li>
 								<li><span>Активность депозита:</span><span class="bold">{{news.depo_date}} дней</span></li>

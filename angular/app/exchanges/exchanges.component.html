@@ -85,7 +85,7 @@
 
             <tr *ngFor="let item of exchanges   | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'name' | filterNameActive:age:'language'; let i = index">
               <td>
-                <span>{{i}}</span>
+                <span>{{i+1}}</span>
               </td>
               <td>
                 <a >
@@ -103,7 +103,7 @@
               </td>
               <td>
 
-                <span>{{item.count}}</span>
+                <span>{{pairs_count[item.name]}}</span>
               </td>
               <td>
                 <div class="img-wrap-small">

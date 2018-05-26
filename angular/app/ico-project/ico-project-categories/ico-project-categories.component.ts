@@ -1,21 +1,14 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
-import {Router, ActivatedRoute, NavigationEnd, Params} from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {AuthService} from "../../auth.service";
+import {PortfolioService} from "../../portfolio.service";
+import { NgForm } from '@angular/forms';
+import {OrderPipe} from "../../order-pipe/ngx-order.pipe";
 
-interface Category {
-  id: number;
-  name: string;
-}
-interface Categories {
-  id: number;
-  name: string;
-  count: number;
 
-}
+const headers = new HttpHeaders({'Content-type': 'Application/json '});
+
 export class NewsRaw {
   id: number;
   name: string;
@@ -26,7 +19,6 @@ export class NewsRaw {
   type: number;
   white_paper: string;
   currencies: string;
-  platform: string;
   place: string;
   about:string;
   money: number;
@@ -42,10 +34,16 @@ export class NewsRaw {
 @Component({
   selector: 'app-ico-project-categories',
   templateUrl: './ico-project-categories.component.html',
-  styleUrls: ['./ico-project-categories.component.scss']
+  styleUrls: ['./ico-project-categories.component.scss'],
+    providers: [PortfolioService]
 })
 export class IcoProjectCategoriesComponent implements OnInit {
- 
+
+    order: string = '';
+    reverse: boolean = false;
+    /**
+     * @param {OrderPipe}
+     */
 	id;
 	path;
 	info;
@@ -54,9 +52,21 @@ export class IcoProjectCategoriesComponent implements OnInit {
   icoCount = 0;
   news_raw: any[];
 	news: Array<NewsRaw> = [];
+
+    portfoliosInfo = [];
+    getUserPortfolio = [];
+    addPortfolio: any;
+    hide = false;
+    portfolioInfo:any;
   // main_news: NewsRaw[] = [];
 
-   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+   constructor(private http:HttpClient,
+               private router:Router,
+               private route:ActivatedRoute,
+               private orderPipe: OrderPipe,
+
+               private authService:AuthService,
+               private portfolioService: PortfolioService) {
    }
 
   ngOnInit() {
@@ -85,10 +95,108 @@ export class IcoProjectCategoriesComponent implements OnInit {
      
   }
 );
+      let portfolioUrl = '/angular/userportfolio';
+      this.portfolioInfo = this.http.get<any>(portfolioUrl);
+      this.portfolioInfo.subscribe(
+          response => {
+              if(response['error']) {
+                  // code...
+              } else {
+                  this.portfoliosInfo = response['ico'];
+                  console.log(this.portfoliosInfo);
+              }
+          },
+      );
+      this.authService.getUser().subscribe(
+          response => {
+              for(let item of response['portfolio']) {
+                  if (item.user_portfolio_type_id == 2) {
+                      this.getUserPortfolio.push(item)
+                  }
+              }
+          }
+      );
 }
-  loadMore(id) {
-    this.router.navigate(['/ico/item', id]);
-  }
+
+    setOrder(value: string) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+        console.log(this.order);
+    }
+    checkAuth() {
+        if(this.authService.getUserInfo()) {
+            return true;
+        }
+        return(false);
+
+    }
+    removePortfolio(id, type) {
+        let removeUrl: string;
+        if(type == 'App\\IcoProject') {
+            removeUrl = '/angular/userportfolio/ico/remove/';
+        } else{
+            removeUrl = '/angular/userportfolio/remove/';
+        }
+        const removePost = this.http.get(removeUrl+id);
+        removePost.subscribe(
+            response => {
+                this.portfolioInfo.subscribe(res=>{
+                    if(res['error']) {
+                        // code...
+                    } else {
+                        this.portfoliosInfo = res['ico'];
+                        console.log(this.portfoliosInfo);
+                    }
+                }),
+                    this.checkInPortfolio(id);
+
+            },
+            error => console.log(error)
+        )
+    }
+
+    checkInPortfolio(id) {
+
+        if(this.portfoliosInfo == undefined) {
+            return false;
+        }
+
+        for(let item of this.portfoliosInfo) {
+            for(let it of item) {
+                if(it.id ) {
+
+                    if(it.id == id) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+
+    createPortfolio(form: NgForm) {
+
+        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 2},{headers: headers})
+            .subscribe(
+                response => {this.getUserPortfolio.push(response); form.reset()},
+                error => console.log(error)
+            )
+
+    }
+
+    submitPortfolio( post_id, type) {
+
+        this.portfolioService.submitPortfolio(this.addPortfolio,post_id, type).subscribe(
+            (response) => {
+                this.router.navigate(['/profile/portfolio'])
+            },
+
+            (error) => console.log(error)
+        );
+    }
   
 
 }

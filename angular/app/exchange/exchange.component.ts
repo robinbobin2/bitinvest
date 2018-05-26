@@ -41,6 +41,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
     addPortfolio: any;
     checkPortfolio = false;
 	private fragment: string;
+    show = 10;
 	constructor(private http:HttpClient, 
 		private stockService:StocksService, 
 		private router:Router, 

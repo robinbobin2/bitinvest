@@ -11,13 +11,16 @@
         </div>
         <div class="select-content">
           <div class="select-head">
-            <p>Доход от большего к меньшему</p>
+            <p>По алфавиту</p>
             <span class="curret"></span>
           </div>
           <ul class="select-body">
-            <li><a href="#">Доход на уменьшение</a></li>
-            <li><a href="#">Депозит на уменьшение</a></li>
-            <li><a href="#">Депозит на увеличение</a></li>
+            <li><a href="#" (click)="setOrder('name', false)" >По алфавиту</a></li>
+
+            <li><a href="#" (click)="setOrder('proc', true)" >Доход на уменьшение</a></li>
+            <li><a href="#" (click)="setOrder('proc', false)">Доход на увеличение</a></li>
+            <li><a href="#" (click)="setOrder('depo', true)">Депозит на уменьшение</a></li>
+            <li><a href="#" (click)="setOrder('depo', false)">Депозит на увеличение</a></li>
           </ul>
         </div>
         <div class="project-wrapper active">

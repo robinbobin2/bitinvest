@@ -1,16 +1,7 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
-import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
-interface Category {
-  id: number;
-  name: string;
-}
-
 
 @Component({
   selector: 'app-all-news',

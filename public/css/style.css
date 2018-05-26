@@ -8500,9 +8500,7 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
   cursor: pointer;
   min-height: 280px !important;
 }
-.news-content {
-  margin-left: -32px !important;
-}
+
 
 
  @keyframes redbg
@@ -8982,11 +8980,15 @@ outline: none !important;
   width: 100%;
 }
 
-app-ico-project-detail, app-news-detail {
+app-news-detail {
+  width: 100%;
+  margin-top: -20px;
+}
+app-all-news, app-all-cloud-mining, app-ico-project-all {
   width: 100%;
 }
-app-news-detail {
-  margin-top: -20px;
+app-ico-project-detail {
+  width: 100%;
 }
 .select-content {
   min-width: 190px;
@@ -9017,7 +9019,7 @@ table tbody tr td .difference .buttons a {
     font-size: 24px;
     transition: .3s;
     padding-left: 5px;
-    padding-top: 3px;
+    padding-top: 6px;
 }
 .table tbody tr td .difference .buttons a.plus:hover {
   background: #da7305;
@@ -9031,4 +9033,13 @@ table tbody tr td .difference .buttons a {
 }
 .table tbody tr td .difference .buttons a.minus img {
   margin-bottom: 3px;
+}
+
+.team-genesis .img-wrap img {
+  border-radius: 200px;
+}
+
+.top-menu {
+  width: 1191px; 
+  margin-left: -11px;
 }

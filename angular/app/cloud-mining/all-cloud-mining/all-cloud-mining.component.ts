@@ -5,17 +5,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 import { AuthService } from '../../auth.service';
 import {PortfolioService} from "../../portfolio.service";
-interface Category {
-  id: number;
-  name: string;
-}
+
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
 export class NewsRaw {
   id: number;
     name:string;
     depo: number;
     proc: number;
-    status: number;
+    status: any;
     recieved: string;
     logo: string;
     desc: string;
@@ -46,7 +43,7 @@ export class Portfolio {
 })
 
 export class AllCloudMiningComponent implements OnInit {
-order: string = 'proc';
+order: string = 'name';
   reverse: boolean = false;
   /**
    * @param {OrderPipe} 
@@ -90,14 +87,6 @@ order: string = 'proc';
        );
    	const info = http.get(path);
    	info.subscribe(response => {
-       // for (let portfolio of response['portfolios']) {
-       //   this.portfolios.push({
-       //        id: portfolio['id'],
-       //        name:portfolio['name'],
-       //        user_portfolio_type_id: portfolio['user_portfolio_type_id'],
-       //        user_id: portfolio['user_id']
-       //   })
-       // }
        for (let item of response['news']) {
            this.news.push( {
 		  	id: item.id,
@@ -124,10 +113,10 @@ order: string = 'proc';
          // console.log(this.news);
          this.allCount = this.news.length;
          for(let item of this.news) {
-           if(item.status == 1) {
-             this.active ++;
+           if(item.status == 2) {
+               this.inactive++;
            } else {
-             this.inactive++;
+               this.active ++;
            }
          }
    	});
@@ -157,17 +146,12 @@ order: string = 'proc';
     
   }
 
-  loadMore(id) {
-    this.router.navigate(['/cloud-mining/item', id]);
-  }
   checkInPortfolio(id) {
-      console.log(this.portfoliosInfo);
       if(this.portfoliosInfo == undefined) {
         return false;
       }
 
         for(let item of this.portfoliosInfo) {
-          console.log(item)
           for(let it of item) {
             if(it.id ) {
                      
@@ -195,9 +179,12 @@ order: string = 'proc';
 
   }
 
-setOrder(value: string) {
-     if (this.order === value) {
-       this.reverse = !this.reverse;
+setOrder(value: string, reverse) {
+    //  if (this.order === value) {
+    //    this.reverse = !this.reverse;
+    // }
+    if (reverse != 'none') {
+        this.reverse = reverse;
     }
     this.order = value;
     console.log(this.order);

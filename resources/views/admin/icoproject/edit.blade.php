@@ -243,7 +243,11 @@
 <div class="row">
 {{-- @include('includes.formerror') --}}
 </div>
-
+<form style="margin-top: 20px;" method="post" class="row" action="{{route('icoproject.destroy', $icoproject)}}"  enctype="multipart/form-data">
+    {{ csrf_field() }}
+    {{ method_field('delete') }}
+    <input type="submit" name="" value="Удалить ICO проект" class="btn btn-danger pull-right col-sm-6">
+</form>
 	
 </div>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
