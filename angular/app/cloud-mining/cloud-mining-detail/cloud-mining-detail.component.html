@@ -66,9 +66,9 @@
 				</div>
         <h3 class="ico-title">История операций с тестовым депозитом</h3>
 				<div class="history-table" id="history-table">
-					<p *ngIf="!histories" style="font-size: 14px;
+					<p *ngIf="histories.length <= 0" style="font-size: 14px;
     				font-weight: bold; color: #c0c0c0;">К сожалению, у данного проекта еще не истории операций</p>
-					<table *ngIf="histories">
+					<table *ngIf="histories.length > 0">
 						<thead>
 							<tr>
 								<th width="14%"><span>Сумма</span></th>
