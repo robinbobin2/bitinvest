@@ -20,8 +20,8 @@ loadAPI: Promise<any>;
                 "container_id": "tv-medium-widget",
                 "symbols": [
                     [
-                        "BTC (Bitcoin)",
-                        "COINBASE:BTCUSD|1d"
+                        symbol,
+                        "COINBASE:"+symbol+"USD|1d"
                     ]
                 ],
                 "greyText": "Котировки предоставлены",

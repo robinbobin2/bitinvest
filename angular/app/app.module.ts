@@ -61,6 +61,8 @@ import { ExchangeComponent } from './exchange/exchange.component';
 import { TopIcoComponent } from './sidebar/top-ico/top-ico.component';
 import {CommentsService} from "./comments.service";
 import { ClickOutsideDirective } from './click-outside.directive';
+import { Chart2Component } from './crypto/chart2/chart2.component';
+import { Chart3Component } from './crypto/chart3/chart3.component';
 
 
 const appRoutes: Routes = [
@@ -255,7 +257,9 @@ const appRoutes: Routes = [
     ExchangesComponent,
     ExchangeComponent,
     TopIcoComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    Chart2Component,
+    Chart3Component
   ],
   imports: [
     // BrowserAnimationsModule,

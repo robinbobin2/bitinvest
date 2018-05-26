@@ -6,6 +6,8 @@ import {StocksService} from '../stocks.service';
 import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import {PortfolioService} from "../portfolio.service";
 import {AuthService} from "../auth.service";
+import { NgForm } from '@angular/forms';
+
 
 export class Cripto {
   id: number;
@@ -283,6 +285,16 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      }
      return this.object;
    }
+    createPortfolio(form: NgForm) {
+        const headers = new HttpHeaders({'Content-type': 'Application/json '});
+
+        this.http.post('/angular/userportfolio/create', {'name': form.value.name, 'user_portfolio_type_id': 3},{headers: headers})
+            .subscribe(
+                response => {this.getUserPortfolio.push(response); form.reset()},
+                error => console.log(error)
+            )
+
+    }
    ngOnDestroy() {
 
   // this.data.unsubscribe();
