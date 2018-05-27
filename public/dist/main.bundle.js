@@ -5989,6 +5989,7 @@ var AllNewsComponent = (function () {
             _this.resolved_data = data['news_resolver'];
             _this.news = _this.resolved_data['news'];
             _this.main_news = _this.resolved_data['main_news'];
+            console.log(_this.resolved_data);
         });
     };
     AllNewsComponent.prototype.setOrder = function (value) {
