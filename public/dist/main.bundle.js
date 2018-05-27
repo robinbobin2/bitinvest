@@ -6279,13 +6279,7 @@ var NewsResolverService = (function () {
         this.info = http.get(path);
     }
     NewsResolverService.prototype.resolve = function (route, state) {
-        var _this = this;
-        this.info.subscribe(function (response) {
-            _this.news = response['news'];
-            _this.main_news = response['main_news'];
-            _this.countAll = _this.news.length + _this.main_news.length;
-        });
-        return this.news;
+        return 'gay';
     };
     return NewsResolverService;
 }());
