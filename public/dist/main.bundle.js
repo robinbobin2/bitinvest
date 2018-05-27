@@ -822,13 +822,13 @@ var appRoutes = [
     {
         path: 'posts', component: __WEBPACK_IMPORTED_MODULE_12__news_news_component__["a" /* NewsComponent */], children: [
             {
-                path: 'post/:id', component: __WEBPACK_IMPORTED_MODULE_13__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */], resolve: { news_resolver: __WEBPACK_IMPORTED_MODULE_63__news_news_resolver_service__["a" /* NewsResolverService */] }
+                path: 'post/:id', component: __WEBPACK_IMPORTED_MODULE_13__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */]
             },
             {
                 path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_15__categories_categories_component__["a" /* CategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_14__news_all_news_all_news_component__["a" /* AllNewsComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_14__news_all_news_all_news_component__["a" /* AllNewsComponent */], resolve: { news_resolver: __WEBPACK_IMPORTED_MODULE_63__news_news_resolver_service__["a" /* NewsResolverService */] }
             }
         ]
     },
@@ -6279,7 +6279,12 @@ var NewsResolverService = (function () {
         this.info = http.get(path);
     }
     NewsResolverService.prototype.resolve = function (route, state) {
-        return 'gay';
+        var _this = this;
+        return this.info.subscribe(function (response) {
+            _this.news = response['news'];
+            _this.main_news = response['main_news'];
+            _this.countAll = _this.news.length + _this.main_news.length;
+        });
     };
     return NewsResolverService;
 }());

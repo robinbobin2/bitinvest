@@ -91,13 +91,13 @@ const appRoutes: Routes = [
       path:'posts', component:NewsComponent, children: [
       
       {
-      path:'post/:id', component:NewsDetailComponent, resolve: { news_resolver: NewsResolverService}
+      path:'post/:id', component:NewsDetailComponent
      },
      {
       path:'category/:id', component:CategoriesComponent
      },
      {
-      path:'all', component:AllNewsComponent
+      path:'all', component:AllNewsComponent, resolve: { news_resolver: NewsResolverService}
      }
     ]
   },
