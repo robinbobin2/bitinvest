@@ -6280,10 +6280,11 @@ var NewsResolverService = (function () {
     }
     NewsResolverService.prototype.resolve = function (route, state) {
         var _this = this;
-        return this.info.subscribe(function (response) {
+        this.info.subscribe(function (response) {
             _this.news = response['news'];
             _this.main_news = response['main_news'];
             _this.countAll = _this.news.length + _this.main_news.length;
+            return _this.news;
         });
     };
     return NewsResolverService;
