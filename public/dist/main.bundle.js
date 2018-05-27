@@ -5988,7 +5988,7 @@ var AllNewsComponent = (function () {
         this.route.data.subscribe(function (data) {
             _this.resolved_data = data['news_resolver'];
             console.log('resolved');
-            console.log(_this.resolved_data);
+            console.log(data);
         });
     };
     AllNewsComponent.prototype.setOrder = function (value) {
@@ -6282,8 +6282,6 @@ var NewsResolverService = (function () {
         this.info.subscribe(function (response) {
             _this.news = response['news'];
             _this.main_news = response['main_news'];
-            console.log(_this.news);
-            console.log(_this.main_news);
             _this.countAll = _this.news.length + _this.main_news.length;
         });
     };
