@@ -19,18 +19,20 @@ export class NewsResolverService implements Resolve<any> {
 
     }
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-        this.info.subscribe(response => {
+        this.info.map(response => {
             this.news = response['news'];
 
             this.main_news = response['main_news'];
             this.countAll = this.news.length+this.main_news.length;
 
-             this.return_any = {
+            this.return_any = {
                 'main_news': this.main_news,
                 'news': this.news,
                 'countAll': this.countAll
             };
+        }).subscribe(() =>{
+            return this.return_any
         });
-        return 'gay'
+
     }
 }
