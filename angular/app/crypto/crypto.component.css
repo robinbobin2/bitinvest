@@ -22,9 +22,7 @@
   color: #fa5252;
   text-decoration: underline;
 }
-.comment-block .comment-items {
-  padding: 0 22px 0 18px;
-}
+
 .comment-block .comment-items li {
   padding: 20px 0;
   border-bottom: 1px solid #a4a4a4 !important;

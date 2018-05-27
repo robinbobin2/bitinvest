@@ -10,15 +10,15 @@
 					<form (ngSubmit)="onUpdate(update)" #update="ngForm">
 						<div class="input-wrap">
 							<label>Электронная почта для уведомлений</label>
-							<input type="text" [(ngModel)]="user.email" name="email" placeholder="irinaivanova@mail.ru" required email>
+							<input type="text" [(ngModel)]="user.email" name="email"  required email>
 						</div>
 						<div class="input-wrap">
 							<label>Аккаунт telegram (для уведомлений)</label>
-							<input type="text" [(ngModel)]="user.telegram"  name="telegram" placeholder="irinaivanova">
+							<input type="text" [(ngModel)]="user.telegram"  name="telegram" >
 						</div>
 						<div class="input-wrap">
 							<label>Никнейм </label>
-							<input type="text" [(ngModel)]="user.name"  name="name" placeholder="irinaivanova">
+							<input type="text" [(ngModel)]="user.name"  name="name" ">
 						</div>
 						<button type="submit">Сохранить</button>
             <p *ngIf="submitted">Изменения успешно сохранены</p>
