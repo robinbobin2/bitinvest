@@ -19,7 +19,7 @@ export class NewsResolverService implements Resolve<any> {
 
     }
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-        return this.info.subscribe(response => {
+        this.info.subscribe(response => {
             this.news = response['news'];
 
             this.main_news = response['main_news'];
@@ -30,6 +30,7 @@ export class NewsResolverService implements Resolve<any> {
                 'news': this.news,
                 'countAll': this.countAll
             };
+             return this.return_any
         });
     }
 }
