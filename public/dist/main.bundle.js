@@ -6288,7 +6288,7 @@ var NewsResolverService = (function () {
                 'news': _this.news,
                 'countAll': _this.countAll
             };
-        });
+        }).subscribe();
     };
     return NewsResolverService;
 }());
