@@ -36,6 +36,7 @@ getBack(image) {
             this.resolved_data = data['news_resolver']
             console.log('resolved')
             console.log(data)
+            console.log(this.resolved_data)
         }
     );
     

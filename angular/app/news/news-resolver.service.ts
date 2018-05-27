@@ -18,7 +18,7 @@ export class NewsResolverService implements Resolve<any> {
 
     }
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-        this.info.subscribe(response => {
+        return this.info.subscribe(response => {
             this.news = response['news'];
 
             this.main_news = response['main_news'];
