@@ -5987,9 +5987,9 @@ var AllNewsComponent = (function () {
         var _this = this;
         this.route.data.subscribe(function (data) {
             _this.resolved_data = data['news_resolver'];
-            _this.news = _this.resolved_data['news'];
-            _this.main_news = _this.resolved_data['main_news'];
-            console.log(_this.resolved_data);
+            _this.resolved_data.subscribe(function (res) {
+                console.log(res);
+            });
         });
     };
     AllNewsComponent.prototype.setOrder = function (value) {
@@ -6280,7 +6280,7 @@ var NewsResolverService = (function () {
     }
     NewsResolverService.prototype.resolve = function (route, state) {
         var _this = this;
-        return this.info.subscribe(function (response) {
+        return this.info.map(function (response) {
             _this.news = response['news'];
             _this.main_news = response['main_news'];
             _this.countAll = _this.news.length + _this.main_news.length;
