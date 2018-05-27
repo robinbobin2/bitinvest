@@ -30,7 +30,7 @@ export class NewsResolverService implements Resolve<any> {
                 'news': this.news,
                 'countAll': this.countAll
             };
-             return this.return_any
         });
+        return 'gay'
     }
 }

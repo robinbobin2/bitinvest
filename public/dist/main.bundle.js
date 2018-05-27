@@ -6288,8 +6288,8 @@ var NewsResolverService = (function () {
                 'news': _this.news,
                 'countAll': _this.countAll
             };
-            return _this.return_any;
         });
+        return 'gay';
     };
     return NewsResolverService;
 }());
