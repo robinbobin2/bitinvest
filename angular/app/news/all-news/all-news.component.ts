@@ -34,9 +34,8 @@ getBack(image) {
     this.route.data.subscribe(
         (data: Data) => {
             this.resolved_data = data['news_resolver']
-            this.resolved_data.subscribe((res)=> {
-                console.log(res)
-            })
+            console.log(this.resolved_data)
+            console.log(this.resolved_data['news'])
         }
     );
     
