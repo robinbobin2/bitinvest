@@ -6279,7 +6279,7 @@ var NewsResolverService = (function () {
     }
     NewsResolverService.prototype.resolve = function (route, state) {
         var _this = this;
-        this.info.map(function (response) {
+        return this.info.map(function (response) {
             _this.news = response['news'];
             _this.main_news = response['main_news'];
             _this.countAll = _this.news.length + _this.main_news.length;
@@ -6288,8 +6288,6 @@ var NewsResolverService = (function () {
                 'news': _this.news,
                 'countAll': _this.countAll
             };
-        }).subscribe(function () {
-            return _this.return_any;
         });
     };
     return NewsResolverService;
