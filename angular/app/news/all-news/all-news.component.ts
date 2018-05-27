@@ -33,7 +33,7 @@ getBack(image) {
   ngOnInit() {
     this.route.data.subscribe(
         (data: Data) => {
-            this.resolved_data = data['news_resolver']
+            this.resolved_data =
             console.log(this.resolved_data)
             console.log(this.resolved_data['news'])
         }
