@@ -25,7 +25,7 @@ export class NewsResolverService implements Resolve<any> {
             this.main_news = response['main_news'];
             this.countAll = this.news.length+this.main_news.length;
 
-            this.return_any = {
+            return this.return_any = {
                 'main_news': this.main_news,
                 'news': this.news,
                 'countAll': this.countAll
