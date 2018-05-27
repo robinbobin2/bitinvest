@@ -727,6 +727,7 @@ var _a, _b, _c, _d, _e;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__click_outside_directive__ = __webpack_require__("./angular/app/click-outside.directive.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__crypto_chart2_chart2_component__ = __webpack_require__("./angular/app/crypto/chart2/chart2.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__crypto_chart3_chart3_component__ = __webpack_require__("./angular/app/crypto/chart3/chart3.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__news_news_resolver_service__ = __webpack_require__("./angular/app/news/news-resolver.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -734,6 +735,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -820,7 +822,7 @@ var appRoutes = [
     {
         path: 'posts', component: __WEBPACK_IMPORTED_MODULE_12__news_news_component__["a" /* NewsComponent */], children: [
             {
-                path: 'post/:id', component: __WEBPACK_IMPORTED_MODULE_13__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */]
+                path: 'post/:id', component: __WEBPACK_IMPORTED_MODULE_13__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */], resolve: { news_resolver: __WEBPACK_IMPORTED_MODULE_63__news_news_resolver_service__["a" /* NewsResolverService */] }
             },
             {
                 path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_15__categories_categories_component__["a" /* CategoriesComponent */]
@@ -1006,7 +1008,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCheckboxModule */],
             __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */], __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */], __WEBPACK_IMPORTED_MODULE_59__comments_service__["a" /* CommentsService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */], __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */], __WEBPACK_IMPORTED_MODULE_59__comments_service__["a" /* CommentsService */], __WEBPACK_IMPORTED_MODULE_63__news_news_resolver_service__["a" /* NewsResolverService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -5968,7 +5970,6 @@ var AllNewsComponent = (function () {
      * @param {OrderPipe}
      */
     function AllNewsComponent(orderPipe, http, router, route) {
-        var _this = this;
         this.orderPipe = orderPipe;
         this.http = http;
         this.router = router;
@@ -5978,20 +5979,17 @@ var AllNewsComponent = (function () {
         this.countAll = 0;
         this.order = 'position';
         this.reverse = false;
-        var path = "/newsraw";
-        var info = http.get(path);
-        info.subscribe(function (response) {
-            _this.news = response['news'];
-            _this.main_news = response['main_news'];
-            console.log(_this.news);
-            console.log(_this.main_news);
-            _this.countAll = _this.news.length + _this.main_news.length;
-        });
     }
     AllNewsComponent.prototype.getBack = function (image) {
         return 'url(' + image + ')';
     };
     AllNewsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.data.subscribe(function (data) {
+            _this.resolved_data = data['news_resolver'];
+            console.log('resolved');
+            console.log(_this.resolved_data);
+        });
     };
     AllNewsComponent.prototype.setOrder = function (value) {
         if (this.order === value) {
@@ -6249,6 +6247,55 @@ NewsDetailComponent = __decorate([
 
 var _a, _b, _c, _d;
 //# sourceMappingURL=news-detail.component.js.map
+
+/***/ }),
+
+/***/ "./angular/app/news/news-resolver.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewsResolverService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var NewsResolverService = (function () {
+    function NewsResolverService(http) {
+        this.http = http;
+        this.news = [];
+        this.main_news = [];
+        this.countAll = 0;
+        var path = "/newsraw";
+        this.info = http.get(path);
+    }
+    NewsResolverService.prototype.resolve = function (route, state) {
+        var _this = this;
+        this.info.subscribe(function (response) {
+            _this.news = response['news'];
+            _this.main_news = response['main_news'];
+            console.log(_this.news);
+            console.log(_this.main_news);
+            _this.countAll = _this.news.length + _this.main_news.length;
+        });
+    };
+    return NewsResolverService;
+}());
+NewsResolverService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+], NewsResolverService);
+
+var _a;
+//# sourceMappingURL=news-resolver.service.js.map
 
 /***/ }),
 

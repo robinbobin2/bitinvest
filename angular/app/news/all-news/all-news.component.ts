@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute, Data} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 
@@ -16,20 +16,13 @@ export class AllNewsComponent implements OnInit {
   countAll = 0;
   order: string = 'position';
   reverse: boolean = false;
+
+  resolved_data: any;
   /**
    * @param {OrderPipe} 
    */
    constructor(private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
-   	let path = "/newsraw";
-   	const info = http.get(path);
-   	info.subscribe(response => {
-       this.news = response['news'];
-         
-         this.main_news = response['main_news'];
-       console.log(this.news);
-       console.log(this.main_news);
-       this.countAll = this.news.length+this.main_news.length;
-   	});
+
 
 
 
@@ -38,7 +31,13 @@ getBack(image) {
   return 'url('+image+')';
 }
   ngOnInit() {
-    
+    this.route.data.subscribe(
+        (data: Data) => {
+            this.resolved_data = data['news_resolver']
+            console.log('resolved')
+            console.log(this.resolved_data)
+        }
+    );
     
   }
 setOrder(value: string) {

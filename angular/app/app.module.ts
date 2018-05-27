@@ -63,6 +63,7 @@ import {CommentsService} from "./comments.service";
 import { ClickOutsideDirective } from './click-outside.directive';
 import { Chart2Component } from './crypto/chart2/chart2.component';
 import { Chart3Component } from './crypto/chart3/chart3.component';
+import {NewsResolverService} from "./news/news-resolver.service";
 
 
 const appRoutes: Routes = [
@@ -90,7 +91,7 @@ const appRoutes: Routes = [
       path:'posts', component:NewsComponent, children: [
       
       {
-      path:'post/:id', component:NewsDetailComponent
+      path:'post/:id', component:NewsDetailComponent, resolve: { news_resolver: NewsResolverService}
      },
      {
       path:'category/:id', component:CategoriesComponent
@@ -279,7 +280,7 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     OrderPipe
   ],
-  providers: [HttpClientModule, OrderPipe, SidebarResolverService, CommentsService],
+  providers: [HttpClientModule, OrderPipe, SidebarResolverService, CommentsService, NewsResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
