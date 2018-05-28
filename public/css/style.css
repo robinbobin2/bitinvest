@@ -9020,7 +9020,7 @@ table tbody tr td .difference .buttons a {
     font-size: 24px;
     transition: .3s;
     padding-left: 5px;
-    padding-top: 3px;
+    padding-top: 6px;
 }
 .table tbody tr td .difference .buttons a.plus:hover {
   background: #da7305;
