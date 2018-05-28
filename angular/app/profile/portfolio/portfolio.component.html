@@ -185,10 +185,10 @@
                 </a>
               </td>
               <td>
-                <p><span class="bold">{{portfolioItem?.current_money}}% / год</span></p>
+                <p><span class="bold">${{portfolioItem?.current_money | number}}</span></p>
               </td>
               <td>
-                <span>{{portfolioItem?.money}}</span>
+                <span>${{portfolioItem?.money | number}}</span>
               </td>
               <td>
                 <span class="bold">${{portfolioItem?.money_start}}</span>

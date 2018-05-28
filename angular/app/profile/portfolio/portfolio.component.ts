@@ -200,16 +200,16 @@ export class PortfolioComponent implements OnInit {
      )
    }
    onRemove(itemid, id, index, type) {
-   	this.portfolioService.removePortfolio(id, type, itemid).subscribe(
-
-   		res => {
-   			if (index > -1) {
-   			    console.log(res);
-				this.portfolios[itemid].splice(index, 1);
-			}
-   		}
-
-   	)
+       if(confirm('Подтвердите удаление')) {
+           this.portfolioService.removePortfolio(id, type, itemid).subscribe(
+               res => {
+                   if (index > -1) {
+                       console.log(res);
+                       this.portfolios[itemid].splice(index, 1);
+                   }
+               }
+           )
+       }
    }
     isNegative(now) {
         if(now >= 0) {
