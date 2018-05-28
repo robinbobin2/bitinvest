@@ -7603,7 +7603,8 @@ td.no-border .bold {
 
 .info-top {
   width: 100%;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
+  margin-top: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8984,7 +8985,7 @@ app-news-detail {
   width: 100%;
   margin-top: -20px;
 }
-app-all-news, app-all-cloud-mining, app-ico-project-all {
+app-all-news, app-all-cloud-mining, app-ico-project-all, app-interview-details {
   width: 100%;
 }
 app-ico-project-detail {
@@ -9042,4 +9043,8 @@ table tbody tr td .difference .buttons a {
 .top-menu {
   width: 1191px; 
   margin-left: -11px;
+}
+
+.setting-top-block .img-wrap:after {
+  background: none;
 }

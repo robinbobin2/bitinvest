@@ -1,71 +1,29 @@
-<!-- <div class="row">
 
-<div class="col-lg-4">
-<img *ngFor="let photo of photos" src="{{photo.file}}" style="max-width: 100%; border-radius: 1200px;" />
-</div>
-    <div class="col-lg-8">
-        <h2>{{news?.title}}</h2>
-    <strong>{{news.name_credits}}</strong>
-    <p>{{news.workplace}}</p>
-    <p>{{news.created_at}}</p>
-    <p>0 комментариев </p>
-    </div>
-<div class="col-lg-12" [innerHTML]="news?.desc">
-
-</div>
-<div class="col-lg-12">
-	<h3>Оставить комментарий</h3>
-<form (ngSubmit)="submitComment(f, news.id, 'App\\Interview')" #f="ngForm">
-	<div class="form-group">
-	<input type="hidden" ngModel name="post_id" value="{{news?.id}}">
-	<input type="hidden" ngModel name="commentable_type" value="App\News">
-
-	<input type="hidden" >
-	<textarea ngModel name="body" class="form-control"></textarea>
-	<button type="submit" class="btn btn-success">Опубликовать</button>
-</div>
-</form>
-
-<h3>Комментарии</h3>
-       <div class="container">
-        <div class="row">
-
-                <div *ngFor="let item of comments" class="col-lg-12" style="margin-top:20px;">
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" height="64" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h6 class="media-heading">{{item.author}} -->
-                            <!-- <small>{{$comment->created_at->diffForHumans()}}</small> 
-                       </h6>
-                        <p>{{item.body}}</p>
-                        </div>
-                    </div>
-                </div>
-</div>
-</div>
-</div>
-</div> -->
-<div class="interview-card-content">
+              <div class="interview-card-content">
                 <a routerLink='/interview/all' class="return"><span>&lt;</span>Вернуться к списку интервью</a>
                 <div class="top-block">
                     <h2>{{news?.title}}</h2>
-                    <div class="info">
-                        <span class="date">{{news?.created_at}}</span>
-                        <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>0</span>
-                        <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{news.comments_count}}</a>
-                    </div>
+
                 </div>
                 <div class="comment comment-card">
-                    <div class="img-wrap">
-                        <a *ngFor="let photo of photos" href="#"><img style="width: 100px; height: 100px;" src="{{photo.file}}" alt=""></a>
-                    </div>
-                    <div class="text-wrap">
-                        <a href="#" class="name">{{news?.name_credits}}</a>
-                        <span>{{news?.workplace}}</span>
-                        <p></p>
-                    </div>
+                  <div class="img-wrap">
+                    <a href="#"><img style="width: 100px; height: 100px;" src="{{photo?.file}}" alt=""></a>
+                  </div>
+                  <div class="text-wrap">
+                    <a href="#" class="name">{{news?.name_credits}}</a>
+                    <span>{{news?.workplace}}</span>
+                    <p> </p>
+                  </div>
+                </div>
+                <div class="info info-top">
+                  <div class="left-block">
+                    <a href="#" class="news-btn"> </a>
+                    <span class="date">{{news?.created_at}}</span>
+                  </div>
+                  <div class="right-block">
+                    <a href="#" class="comments"><img src="img/comment.svg" alt="">{{news?.comments_count}}</a>
+                    <span class="views"><img src="img/eye.svg" alt="">0</span>
+                  </div>
                 </div>
                 <div class="text-wrap" [innerHTML]="news.desc">
                     
@@ -74,7 +32,7 @@
                    <!--  -->
                     <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
                     <div class="comment-block" id="comment-block">
-                    <div class="comment-top" *ngIf="user.id != undefined">
+                    <div class="comment-top" *ngIf="user?.id != undefined">
                                 <h3>Добавить новый комментарий</h3>
                                 <form (ngSubmit)="submitComment(f, news.id, 'App\\Interview')" #f="ngForm">
                                     <input type="hidden" ngModel name="post_id" value="{{news?.id}}">
@@ -84,13 +42,13 @@
                                 </form>
                                 <p *ngIf="submitted">Комментарий успешно добавлен</p>
                     </div>
-                    <div class="comment-top" *ngIf="user.id == undefined">
-                        <h3>Комментарии ({{news.comments_count}})</h3>
+                    <div class="comment-top" *ngIf="user?.id == undefined">
+                        <h3>Комментарии ({{news?.comments_count}})</h3>
                         <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
                     </div>
                     
-                    <div *ngIf="user.id != undefined" style="background: none !important; border: none !important" class="comment-top">
-                        <h3 >Комментарии ({{news.comments_count}})</h3>
+                    <div *ngIf="user?.id != undefined" style="background: none !important; border: none !important" class="comment-top">
+                        <h3 >Комментарии ({{news?.comments_count}})</h3>
                         <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
 
                     
@@ -125,4 +83,5 @@
                     </ul>
                     <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
                 </div>
-                </div>
+              </div>
+                
