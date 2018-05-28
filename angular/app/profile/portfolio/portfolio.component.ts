@@ -132,9 +132,10 @@ export class PortfolioComponent implements OnInit {
                                 for (let portfolioItem of this.portfolios[item.id]) {
                                     this.miningService.getMiningId(portfolioItem.id).subscribe(
                                         res => {
-
+                                            console.log('res')
                                             portfolioItem = res;
-
+                                            console.log(portfolioItem);
+                                            console.log(res)
                                         }
 
                                     )
