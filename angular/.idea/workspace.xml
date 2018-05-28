@@ -37,20 +37,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="44" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
+            <state relative-caret-position="344">
+              <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crypto.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="crypto.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="322" column="12" selection-start-line="321" selection-start-column="12" selection-end-line="322" selection-end-column="12" />
+            <state relative-caret-position="254">
+              <caret line="170" column="85" selection-start-line="170" selection-start-column="85" selection-end-line="170" selection-end-column="85" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -123,7 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>for(let item of this.stocks) {</find>
       <find>categ</find>
       <find>desc</find>
       <find>active</find>
@@ -153,6 +155,7 @@
       <find>подробнее</find>
       <find>gets</find>
       <find>getcr</find>
+      <find>time_value</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -210,8 +213,8 @@
         <option value="$PROJECT_DIR$/app/news/news-resolver.service.ts" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.ts" />
         <option value="$PROJECT_DIR$/app/app.component.html" />
-        <option value="$PROJECT_DIR$/app/crypto/crypto.component.ts" />
         <option value="$PROJECT_DIR$/app/crypto/crypto.component.html" />
+        <option value="$PROJECT_DIR$/app/crypto/crypto.component.ts" />
       </list>
     </option>
   </component>
@@ -457,12 +460,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="69386000" />
+      <workItem from="1526711663196" duration="69661000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115720000" />
+    <option name="totallyTimeSpent" value="115995000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -936,20 +939,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
+    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="322" column="12" selection-start-line="321" selection-start-column="12" selection-end-line="322" selection-end-column="12" />
+        <state relative-caret-position="344">
+          <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
           <folding>
-            <element signature="e#0#61#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
+    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="44" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
+        <state relative-caret-position="254">
+          <caret line="170" column="85" selection-start-line="170" selection-start-column="85" selection-end-line="170" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
