@@ -15,7 +15,7 @@ import {CloudMiningService} from "../../cloud-mining.service";
 export class PortfolioComponent implements OnInit {
   order = 'proc';
   portfolioNames = [];
-  portfolios: Array<any> = [];
+  portfolios  = [];
   reverse: boolean = false;
   results: Object;
   searchTerm$ = new Subject<string>();
@@ -25,6 +25,7 @@ export class PortfolioComponent implements OnInit {
   diff =[];
   volumes = [];
   exchange_volumes = [];
+
     mining_form = false;
     ico_form = false;
     crypto_form = false;
@@ -134,12 +135,11 @@ export class PortfolioComponent implements OnInit {
                                         res => {
                                             console.log('res')
                                             portfolioItem = res;
-                                            console.log(portfolioItem);
-                                            console.log(res)
                                         }
 
                                     )
                                 }
+                                console.log(this.portfolios[item.id]);
                             }
                             if (type_id == 2) {
                                 for (let portfolioItem of this.portfolios[item.id]) {

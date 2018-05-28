@@ -6816,14 +6816,13 @@ var PortfolioComponent = (function () {
                                 _this.miningService.getMiningId(portfolioItem.id).subscribe(function (res) {
                                     console.log('res');
                                     portfolioItem = res;
-                                    console.log(portfolioItem);
-                                    console.log(res);
                                 });
                             };
                             for (var _i = 0, _a = _this.portfolios[item.id]; _i < _a.length; _i++) {
                                 var portfolioItem = _a[_i];
                                 _loop_2(portfolioItem);
                             }
+                            console.log(_this.portfolios[item.id]);
                         }
                         if (type_id == 2) {
                             var _loop_3 = function (portfolioItem) {
