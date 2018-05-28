@@ -3072,44 +3072,7 @@ var CryptoComponent = (function () {
                 this.max_value = Math.max.apply(null, this.max);
             }
         }
-        this.stocksService.getStocks(symbol + '/USD').subscribe(function (response) {
-            _this.load = true;
-            _this.stocks = response;
-            _this.load = false;
-            _this.diff = _this.dataUsd.now - _this.dataUsd.last;
-            localStorage.setItem(symbol + 'USD stocks', JSON.stringify(_this.stocks));
-            for (var _a = 0, _b = _this.stocks; _a < _b.length; _a++) {
-                var item = _b[_a];
-                if (item.ask > 0) {
-                    _this.min.push(item.ask);
-                }
-                if (item.bid) {
-                    _this.max.push(item.bid);
-                }
-                if (_this.volume === 0) {
-                    _this.volume = _this.volume + item.volume;
-                }
-                else {
-                    _this.volume = 0;
-                    _this.volume = _this.volume + item.volume;
-                }
-                if (_this.bid_ask.ask < item.ask) {
-                    _this.bid_ask.ask = item.ask;
-                    localStorage.removeItem(symbol + 'ask');
-                    localStorage.setItem(symbol + 'ask', JSON.stringify(_this.bid_ask.ask));
-                }
-                if (_this.bid_ask.bid < item.bid) {
-                    _this.bid_ask.bid = item.bid;
-                    localStorage.removeItem(symbol + 'bid');
-                    localStorage.setItem(symbol + 'bid', JSON.stringify(_this.bid_ask.bid));
-                }
-                _this.time.push(item.time);
-            }
-            _this.time_value = Math.max.apply(null, _this.time);
-            _this.min_value = Math.min.apply(null, _this.min);
-            _this.max_value = Math.max.apply(null, _this.max);
-        });
-        this.stocksData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(2000).concatMap(function () {
+        this.stocksData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).concatMap(function () {
             return _this.stocksService.getStocks(symbol + '/USD');
         })
             .map(function (response) {
@@ -3168,50 +3131,9 @@ var CryptoComponent = (function () {
             _this.min_value = Math.min.apply(null, _this.min);
             _this.max_value = Math.max.apply(null, _this.max);
         }).subscribe();
-        this.cryptoFirst = this.stocksService.getCrypto()
-            .map(function (response) {
-            _this.dataUsd = response[symbol + '/USD'];
-            _this.diff = _this.dataUsd.now - _this.dataUsd.last;
-            _this.prev = _this.dataUsd.last;
-            localStorage.removeItem(symbol);
-            localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
-        }).subscribe();
-        var infoCryptoPath = "/allcrypto/" + symbol;
-        this.infoCrypto = this.http.get(infoCryptoPath).publishReplay(1).refCount();
-        this.infoCrypto.subscribe(function (response) {
-            _this.data = response;
-            for (var _a = 0, _b = response['comments']; _a < _b.length; _a++) {
-                var item = _b[_a];
-                _this.comments.push({
-                    id: item.id,
-                    author: item.author,
-                    body: item.body,
-                    email: item.email,
-                    commentable_id: item.commentable_id,
-                    photo: item.photo
-                });
-                _this.rating_count[item['id']] = 0;
-                for (var _c = 0, _d = item.rating; _c < _d.length; _c++) {
-                    var rating_item = _d[_c];
-                    if (rating_item.positive == 1) {
-                        _this.rating_count[item['id']] += 1;
-                    }
-                    else {
-                        _this.rating_count[item['id']] -= 1;
-                    }
-                }
-            }
-            _this.commentcount = response['comments_count'];
-            var newsUrl = "/postsbycat/" + _this.data.cat_id_news;
-            var newsInfo = _this.http.get(newsUrl).publishReplay(1).refCount();
-            newsInfo.subscribe(function (response) {
-                _this.main_news = response['main_news'];
-                _this.news = response['news'];
-                console.log(_this.news);
-                console.log(_this.main_news);
-            });
-        });
-        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(2000).concatMap(function () { return _this.stocksService.getCrypto(); })
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(2000).concatMap(function () {
+            return _this.stocksService.getCrypto();
+        })
             .map(function (response) {
             _this.animtype = '';
             if (_this.dataUsd.now != response[symbol + '/USD'].now) {
@@ -3378,7 +3300,6 @@ var CryptoComponent = (function () {
     CryptoComponent.prototype.ngOnDestroy = function () {
         this.cryptoData.unsubscribe();
         this.stocksData.unsubscribe();
-        this.cryptoFirst.unsubscribe();
     };
     return CryptoComponent;
 }());

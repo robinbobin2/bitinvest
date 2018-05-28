@@ -169,47 +169,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       }
 
     }
-
-      this.stocksService.getStocks(symbol+'/USD').subscribe(response => {
-        this.load = true;
-      this.stocks = response;
-      this.load = false;
-      this.diff = this.dataUsd.now-this.dataUsd.last;
-      localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
-      for(let item of this.stocks) {
-        if(item.ask > 0) {
-          this.min.push(item.ask);
-          
-        }
-        if(item.bid) {
-          this.max.push(item.bid);
-        }
-        if(this.volume === 0) {
-        
-            this.volume = this.volume+item.volume;
-          
-        } else {
-          this.volume = 0;
-          this.volume = this.volume+item.volume;
-        }
-        if(this.bid_ask.ask < item.ask) {
-        this.bid_ask.ask = item.ask
-        localStorage.removeItem(symbol+'ask')
-        localStorage.setItem(symbol+'ask', JSON.stringify(this.bid_ask.ask))
-        }
-        if(this.bid_ask.bid < item.bid) {
-        this.bid_ask.bid = item.bid
-        localStorage.removeItem(symbol+'bid')
-        localStorage.setItem(symbol+'bid', JSON.stringify(this.bid_ask.bid))
-        }
-        this.time.push(item.time);
-      }
-      this.time_value = Math.max.apply(null, this.time);
-      this.min_value = Math.min.apply(null, this.min);
-      this.max_value = Math.max.apply(null, this.max);
-
-    });
-    this.stocksData = Observable.interval(2000).concatMap(()=>
+    this.stocksData = Observable.interval(1000).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USD'))
     .map(response => {
 
@@ -274,51 +234,10 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
 
 
-
-    this.cryptoFirst = this.stocksService.getCrypto()
-    .map((response)=>{
-      this.dataUsd = response[symbol+'/USD'];
-      this.diff = this.dataUsd.now-this.dataUsd.last;
-      this.prev = this.dataUsd.last;
-      localStorage.removeItem(symbol);
-      localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
-    }).subscribe();
-    let infoCryptoPath = "/allcrypto/"+symbol;
-    this.infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
-    this.infoCrypto.subscribe(response => {
-      this.data = response;
-      for(let item of response['comments']) {
-        this.comments.push({ 
-          id: item.id,
-          author: item.author,
-          body: item.body,
-          email: item.email,
-          commentable_id:item.commentable_id,
-          photo:item.photo
-
-        });
-          this.rating_count[item['id']] = 0;
-          for (let rating_item of item.rating) {
-              if (rating_item.positive == 1) {
-                  this.rating_count[item['id']] +=1;
-              } else {
-                  this.rating_count[item['id']] -=1;
-              }
-          }
-      }
-      this.commentcount = response['comments_count'];
-
-      let newsUrl = "/postsbycat/"+this.data.cat_id_news;
-      let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
-      newsInfo.subscribe(response => {
-        this.main_news = response['main_news'];
-        this.news = response['news'];
-        console.log(this.news);
-        console.log(this.main_news);
-      });
-    });
-
-    this.cryptoData=Observable.interval(2000).concatMap(()=>this.stocksService.getCrypto())
+    this.cryptoData=Observable.interval(2000).concatMap(
+        ()=>
+            this.stocksService.getCrypto()
+    )
     .map((response)=>{
       this.animtype = '';
 
@@ -517,6 +436,5 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
     this.cryptoData.unsubscribe();
     this.stocksData.unsubscribe();
-    this.cryptoFirst.unsubscribe();
   }
 }
