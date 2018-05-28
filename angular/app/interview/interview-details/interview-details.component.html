@@ -7,7 +7,7 @@
                 </div>
                 <div class="comment comment-card">
                   <div class="img-wrap">
-                    <a href="#"><img style="width: 100px; height: 100px;" src="{{photo.file}}" alt=""></a>
+                    <a href="#"><img style="width: 100px; height: 100px;" src="{{photo?.file}}" alt=""></a>
                   </div>
                   <div class="text-wrap">
                     <a href="#" class="name">{{news?.name_credits}}</a>
@@ -32,7 +32,7 @@
                    <!--  -->
                     <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
                     <div class="comment-block" id="comment-block">
-                    <div class="comment-top" *ngIf="user.id != undefined">
+                    <div class="comment-top" *ngIf="user?.id != undefined">
                                 <h3>Добавить новый комментарий</h3>
                                 <form (ngSubmit)="submitComment(f, news.id, 'App\\Interview')" #f="ngForm">
                                     <input type="hidden" ngModel name="post_id" value="{{news?.id}}">
@@ -42,12 +42,12 @@
                                 </form>
                                 <p *ngIf="submitted">Комментарий успешно добавлен</p>
                     </div>
-                    <div class="comment-top" *ngIf="user.id == undefined">
+                    <div class="comment-top" *ngIf="user?.id == undefined">
                         <h3>Комментарии ({{news?.comments_count}})</h3>
                         <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
                     </div>
                     
-                    <div *ngIf="user.id != undefined" style="background: none !important; border: none !important" class="comment-top">
+                    <div *ngIf="user?.id != undefined" style="background: none !important; border: none !important" class="comment-top">
                         <h3 >Комментарии ({{news?.comments_count}})</h3>
                         <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
 

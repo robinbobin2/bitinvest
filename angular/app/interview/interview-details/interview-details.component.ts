@@ -52,11 +52,36 @@ photos: Photos[] = [];
 commentcount = 0;
 user: User;
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
-    let id = route.snapshot.params['id'];
+    
+}
+
+  ngOnInit() {
+    const userpath = "/angular/user";
+     const userinfo = this.http.get<User>(userpath);
+     userinfo.subscribe(response => {
+        this.user = {
+            id:response.id,
+            name: response.name,
+            email:response.email,
+            photo_id: response.photo_id,
+            role_id: response.role_id
+
+        };
+   });
+    this.router.events.subscribe((evt) => {
+            if (!(evt instanceof NavigationEnd)) {
+                return;
+            }
+            window.scrollTo(0, 0)
+        });
+
+
+
+    let id = this.route.snapshot.params['id'];
     let path = "/interviewraw/"+id;
-    const info = http.get(path);
-  		info.subscribe(response => {
-  			this.news = {
+    const info = this.http.get(path);
+      info.subscribe(response => {
+        this.news = {
             id: response['news'][0]['id'],
           title: response['news'][0]['title'],
           desc: response['news'][0]['desc'],
@@ -83,33 +108,8 @@ user: User;
             file: item['file']
         })
         }
-        
-  			console.log(response['news'][0]['id']);
-  			console.log(this.news);
-        console.log(this.comments);
 
-  		});
-}
-
-  ngOnInit() {
-    const userpath = "/angular/user";
-     const userinfo = this.http.get<User>(userpath);
-     userinfo.subscribe(response => {
-        this.user = {
-            id:response.id,
-            name: response.name,
-            email:response.email,
-            photo_id: response.photo_id,
-            role_id: response.role_id
-
-        };
-   });
-    this.router.events.subscribe((evt) => {
-            if (!(evt instanceof NavigationEnd)) {
-                return;
-            }
-            window.scrollTo(0, 0)
-        });
+      });
   }
   comment = { 
     'post_id': '',
@@ -134,7 +134,7 @@ user: User;
           commentable_id:response['commentable_id'],
           photo: response['photo']
         }),
-        (error) => console.log(error)
+        
       );
     this.news.comments_count++;
   }
