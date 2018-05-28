@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {StocksService} from '../../stocks.service';
 import { Observable } from 'rxjs/Rx';
+import {Router, ActivatedRoute} from '@angular/router';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 
 export class Cripto {
@@ -24,7 +25,13 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
     reverse: boolean = true;
   dataUsd:any=[];
   constructor(private http:HttpClient,
-    private stocksService:StocksService) { }
+    private stocksService:StocksService,  private router:Router, private route:ActivatedRoute, ) {
+
+    if (this.route.snapshot.params['sym']) {
+       this.symbol = this.route.snapshot.params['sym'];
+    }
+
+  }
   
   data: any;
   resp: any;
@@ -32,7 +39,7 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
   load:boolean = true;
   animtype = [];
   alldata = this.http.get<Array<Cripto>>('/allcrypto');
-
+  symbol = "";
   ngAfterViewInit() {
 
     this.stocksService.getCrypto()
