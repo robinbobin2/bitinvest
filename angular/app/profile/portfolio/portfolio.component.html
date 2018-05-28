@@ -161,7 +161,7 @@
                 <span class="bold">${{portfolioItem.depo}}</span>
               </td>
               <td>
-                <span>{{portfolioItem.percentage}}%</span>
+                <span>{{portfolioItem?.percentage ? portfolioItem?.percentage : 0}}%</span>
               </td>
               <td>
                 <div class="difference">
