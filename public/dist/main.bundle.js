@@ -6814,9 +6814,7 @@ var PortfolioComponent = (function () {
                         if (type_id == 1) {
                             var _loop_2 = function (portfolioItem) {
                                 _this.miningService.getMiningId(portfolioItem.id).subscribe(function (res) {
-                                    console.log('res');
-                                    console.log(res);
-                                    portfolioItem['percentage'] = 1;
+                                    portfolioItem['percentage'] = res['news']['percentage'];
                                 });
                             };
                             for (var _i = 0, _a = _this.portfolios[item.id]; _i < _a.length; _i++) {
