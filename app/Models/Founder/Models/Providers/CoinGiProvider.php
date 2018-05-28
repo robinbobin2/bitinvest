@@ -47,9 +47,6 @@ class CoinGiProvider extends FounderProvider
         }
 
         foreach ($response as $value) {
-            if(!isset($value->volume)){
-                continue;
-            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->lowestAsk);
             $ticker->setBid($value->highestBid);
