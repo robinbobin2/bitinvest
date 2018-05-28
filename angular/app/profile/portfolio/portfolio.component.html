@@ -116,20 +116,20 @@
             </th>
             <th width="13%" class="active" [class.active]="order === 'proc'"
                 (click)="setOrder('proc')">
-              <span>Доходность</span>
+              <span>Собрано</span>
               <img src="img/arr-top-table.png" alt="">
             </th>
             <th width="13%" >
-              <span>Существует</span>
+              <span>Необходимо</span>
               <img src="img/arr-top-table.png" alt="">
             </th>
             <th width="13%" [class.active]="order === 'depo'"
                 (click)="setOrder('depo')">
-              <span>Депозит</span>
+              <span>Дата начала ICO</span>
               <img src="img/arr-top-table.png" alt="">
             </th>
             <th width="13%">
-              <span>Получено</span>
+              <span>Дата окончания ICO</span>
               <img src="img/arr-top-table.png" alt="">
             </th>
             <th width="21%" [class.active]="order === 'status'"
@@ -185,20 +185,20 @@
                 </a>
               </td>
               <td>
-                <p><span class="bold">{{portfolioItem?.proc}}% / год</span></p>
+                <p><span class="bold">{{portfolioItem?.current_money}}% / год</span></p>
               </td>
               <td>
-                <span>{{portfolioItem?.depo_date}}</span>
+                <span>{{portfolioItem?.money}}</span>
               </td>
               <td>
-                <span class="bold">${{portfolioItem?.depo}}</span>
+                <span class="bold">${{portfolioItem?.money_start}}</span>
               </td>
               <td>
-                <span>{{portfolioItem?.percentage}}%</span>
+                <span>{{portfolioItem?.money_end}}%</span>
               </td>
               <td>
                 <div class="difference">
-                  <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Активен' : 'Закрыт'}}</span>
+                  <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Активен' : 'Закончен'}}</span>
                   <div class="buttons">
                     <a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>
                     <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\IcoProject')" class="minus"><img src="/img/minus.png" alt=""></a>

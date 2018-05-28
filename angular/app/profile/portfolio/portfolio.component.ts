@@ -145,7 +145,7 @@ export class PortfolioComponent implements OnInit {
                                     this.miningService.getIcoId(portfolioItem.id).subscribe(
                                         res => {
 
-                                            portfolioItem = res;
+                                            portfolioItem = res['news'];
 
                                         }
 
