@@ -134,7 +134,8 @@ export class PortfolioComponent implements OnInit {
                                     this.miningService.getMiningId(portfolioItem.id).subscribe(
                                         res => {
                                             console.log('res')
-                                            portfolioItem['percentage'] = res['percentage'];
+                                            console.log(res)
+                                            portfolioItem['percentage'] = 1;
                                         }
 
                                     )
