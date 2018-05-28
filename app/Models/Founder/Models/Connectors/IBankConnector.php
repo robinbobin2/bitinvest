@@ -106,6 +106,9 @@ class IBankConnector extends FounderConnector
     public function fetch_markets () {
         $markets = $this->publicGetCurrencyPairs ();
         $result = array ();
+        if(!$markets){
+            $markets = [];
+        }
         for ($i = 0; $i < count ($markets); $i++) {
             $id = $markets[$i];
             list ($baseId, $quoteId) = explode ('_', $id);
@@ -192,8 +195,7 @@ class IBankConnector extends FounderConnector
             'symbol' => 'all',
         ), $params));
         $result = array ();
-        for ($i = 0; $i < count ($tickers); $i++) {
-            $ticker = $tickers[$i];
+        foreach ($tickers as $ticker) {
             $id = $ticker['symbol'];
             $market = $this->marketsById[$id];
             $symbol = $market['symbol'];

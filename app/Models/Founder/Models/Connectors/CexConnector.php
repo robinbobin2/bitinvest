@@ -479,19 +479,6 @@ class CexConnector extends FounderConnector
     }
     public function request ($path, $api = 'public', $method = 'GET', $params = array (), $headers = null, $body = null) {
         $response = $this->fetch2 ($path, $api, $method, $params, $headers, $body);
-        if (!$response) {
-            throw new ExchangeError ($this->id . ' returned ' . $this->json ($response));
-        } else if ($response === true) {
-            return $response;
-        } else if (is_array ($response) && array_key_exists ('e', $response)) {
-            if (is_array ($response) && array_key_exists ('ok', $response))
-                if ($response['ok'] === 'ok')
-                    return $response;
-            throw new ExchangeError ($this->id . ' ' . $this->json ($response));
-        } else if (is_array ($response) && array_key_exists ('error', $response)) {
-            if ($response['error'])
-                throw new ExchangeError ($this->id . ' ' . $this->json ($response));
-        }
         return $response;
     }
     public function fetch_deposit_address ($code, $params = array ()) {
