@@ -209,7 +209,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.max_value = Math.max.apply(null, this.max);
 
     });
-    this.stocksData = Observable.interval(1000).concatMap(()=>
+    this.stocksData = Observable.interval(2000).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USD'))
     .map(response => {
 
@@ -318,7 +318,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.cryptoData=Observable.interval(1200).concatMap(()=>this.stocksService.getCrypto())
+    this.cryptoData=Observable.interval(2000).concatMap(()=>this.stocksService.getCrypto())
     .map((response)=>{
       this.animtype = '';
 

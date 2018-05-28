@@ -61,6 +61,9 @@ import { ExchangeComponent } from './exchange/exchange.component';
 import { TopIcoComponent } from './sidebar/top-ico/top-ico.component';
 import {CommentsService} from "./comments.service";
 import { ClickOutsideDirective } from './click-outside.directive';
+import { Chart2Component } from './crypto/chart2/chart2.component';
+import { Chart3Component } from './crypto/chart3/chart3.component';
+import {NewsResolverService} from "./news/news-resolver.service";
 
 
 const appRoutes: Routes = [
@@ -94,7 +97,7 @@ const appRoutes: Routes = [
       path:'category/:id', component:CategoriesComponent
      },
      {
-      path:'all', component:AllNewsComponent
+      path:'all', component:AllNewsComponent, resolve: { news_resolver: NewsResolverService}
      }
     ]
   },
@@ -255,7 +258,9 @@ const appRoutes: Routes = [
     ExchangesComponent,
     ExchangeComponent,
     TopIcoComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    Chart2Component,
+    Chart3Component
   ],
   imports: [
     // BrowserAnimationsModule,
@@ -275,7 +280,7 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     OrderPipe
   ],
-  providers: [HttpClientModule, OrderPipe, SidebarResolverService, CommentsService],
+  providers: [HttpClientModule, OrderPipe, SidebarResolverService, CommentsService, NewsResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

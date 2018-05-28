@@ -1,4 +1,4 @@
-  <section class="ico-wrap mining-card-wrap">
+  <section class="ico-wrap mining-card-wrap" style="padding-top: 0;">
     <div class="wrapper">
       <div class="ico-card-content mining-card-content">
       	<a href="/cloud-mining/all" class="return"><span>&#60;</span>Вернуться к списку проектов</a>
@@ -66,7 +66,9 @@
 				</div>
         <h3 class="ico-title">История операций с тестовым депозитом</h3>
 				<div class="history-table" id="history-table">
-					<table>
+					<p *ngIf="histories.length <= 0" style="font-size: 14px;
+    				font-weight: bold; color: #c0c0c0;">К сожалению, у данного проекта еще не истории операций</p>
+					<table *ngIf="histories.length > 0">
 						<thead>
 							<tr>
 								<th width="14%"><span>Сумма</span></th>
