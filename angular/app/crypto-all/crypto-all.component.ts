@@ -265,7 +265,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      return (now-last) / (now+last) * 100;
    }
    isNegativePercent(now, last) {
-     if(((now-last) /  ((now-last) / 2)  * 100) >= 0) {
+     if(((now-last) /  ((now+last) / 2)  * 100) >= 0) {
        return false;
      } 
      return true;

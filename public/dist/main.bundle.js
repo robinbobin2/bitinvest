@@ -2594,7 +2594,7 @@ var CryptoAllComponent = (function () {
         return (now - last) / (now + last) * 100;
     };
     CryptoAllComponent.prototype.isNegativePercent = function (now, last) {
-        if (((now - last) / ((now - last) / 2) * 100) >= 0) {
+        if (((now - last) / ((now + last) / 2) * 100) >= 0) {
             return false;
         }
         return true;
