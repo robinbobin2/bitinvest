@@ -74,6 +74,8 @@ class ReviewViewController extends Controller
         $comments = $commentnews->comments;
         $news = array_values($news);
         $user = Auth::user();
+        $photos = $commentnews->photos;
+        $category = $commentnews->category;
         return response()->json([
             'news' => $news,
             'user' => $user,
