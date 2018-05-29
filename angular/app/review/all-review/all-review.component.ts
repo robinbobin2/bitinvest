@@ -25,7 +25,7 @@ export class AllReviewComponent implements OnInit {
 
       this.info.map(response => {
           this.news = response['news'];
-
+console.log(this.news)
           this.main_news = response['main_news'];
           this.countAll = this.news.length+this.main_news.length;
       }).subscribe()

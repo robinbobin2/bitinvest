@@ -7012,6 +7012,7 @@ var AllReviewComponent = (function () {
         var _this = this;
         this.info.map(function (response) {
             _this.news = response['news'];
+            console.log(_this.news);
             _this.main_news = response['main_news'];
             _this.countAll = _this.news.length + _this.main_news.length;
         }).subscribe();
