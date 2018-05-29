@@ -22,7 +22,7 @@
                     <h3>Добавить новый комментарий</h3>
                     <form (ngSubmit)="submitComment(f, news.id, 'App\\Review')" #f="ngForm">
                         <input type="hidden" ngModel name="post_id" value="{{news?.id}}">
-                        <input type="hidden" ngModel name="commentable_type" value="App\News">
+                        <input type="hidden" ngModel name="commentable_type" value="App\Review">
                         <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
                         <button type="submit">Добавить</button>
                     </form>
@@ -32,10 +32,8 @@
                     <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
                 </div>
 
-                <div *ngIf="user.id != undefined" style="background: none !important; border: none !important" class="comment-top">
+                <div *ngIf="user.id != undefined || commentcount > 0" style="background: none !important; border: none !important" class="comment-top">
                     <h3 >Комментарии ({{commentcount}})</h3>
-                    <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
-
 
                 </div>
                 <ul class="comment-items">
