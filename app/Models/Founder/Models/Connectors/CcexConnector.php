@@ -181,6 +181,7 @@ class CcexConnector extends FounderConnector
         if ($market !== null)
             $symbol = $market['symbol'];
         $last = floatval ($ticker['lastprice']);
+
         return array (
             'symbol' => $symbol,
             'timestamp' => $timestamp,
@@ -199,7 +200,7 @@ class CcexConnector extends FounderConnector
             'change' => null,
             'percentage' => null,
             'average' => floatval ($ticker['avg']),
-            'baseVolume' => $this->safe_float($ticker, 'buysupport') / $last,
+            'baseVolume' => !$last ? $this->safe_float($ticker, 'buysupport') / $last : null,
             'quoteVolume' => $this->safe_float($ticker, 'buysupport'),
             'info' => $ticker,
         );
