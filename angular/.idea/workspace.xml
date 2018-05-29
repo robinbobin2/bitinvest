@@ -56,8 +56,20 @@
       <file leaf-file-name="all-news.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="30" column="30" lean-forward="true" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+            <state relative-caret-position="345">
+              <caret line="23" column="43" selection-start-line="16" selection-start-column="2" selection-end-line="23" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="all-review.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/review/all-review/all-review.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -70,18 +82,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="318">
               <caret line="33" column="112" selection-start-line="33" selection-start-column="107" selection-end-line="33" selection-end-column="112" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="all-review.component.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/review/all-review/all-review.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -299,12 +299,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="77112000" />
+      <workItem from="1526711663196" duration="77296000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123446000" />
+    <option name="totallyTimeSpent" value="123630000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -792,8 +792,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="30" column="30" lean-forward="true" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+        <state relative-caret-position="345">
+          <caret line="23" column="43" selection-start-line="16" selection-start-column="2" selection-end-line="23" selection-end-column="43" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
@@ -802,8 +802,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/review/all-review/all-review.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+        <state relative-caret-position="240">
+          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
