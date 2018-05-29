@@ -105,24 +105,6 @@ class CcexConnector extends FounderConnector
                 'info' => $id,
             );
         }
-        // an alternative documented parser
-        //     $markets = $this->publicGetMarkets ();
-        //     for ($p = 0; $p < count ($markets['result']); $p++) {
-        //         $market = $markets['result'][$p];
-        //         $id = $market['MarketName'];
-        //         $base = $market['MarketCurrency'];
-        //         $quote = $market['BaseCurrency'];
-        //         $base = $this->common_currency_code($base);
-        //         $quote = $this->common_currency_code($quote);
-        //         $symbol = $base . '/' . $quote;
-        //         $result[] = array (
-        //             'id' => $id,
-        //             'symbol' => $symbol,
-        //             'base' => $base,
-        //             'quote' => $quote,
-        //             'info' => $market,
-        //         );
-        //     }
         return $result;
     }
     public function fetch_balance ($params = array ()) {
@@ -217,7 +199,7 @@ class CcexConnector extends FounderConnector
             'change' => null,
             'percentage' => null,
             'average' => floatval ($ticker['avg']),
-            'baseVolume' => null,
+            'baseVolume' => $this->safe_float($ticker, 'buysupport') / $last,
             'quoteVolume' => $this->safe_float($ticker, 'buysupport'),
             'info' => $ticker,
         );

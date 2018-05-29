@@ -9,6 +9,7 @@
 namespace App\Models\Founder\Models\Connectors;
 
 
+use App\Models\Founder\Models\Custom\SupplierLog;
 use App\Models\Founder\Models\FounderConnector;
 
 class SimexConnector extends FounderConnector

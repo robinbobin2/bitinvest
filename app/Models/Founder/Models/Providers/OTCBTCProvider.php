@@ -75,7 +75,7 @@ class OTCBTCProvider extends FounderProvider
             $ticker->setVolume($supplierTicker->vol);
             $ticker->setValue($supplierTicker->last);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(strtoupper(str_replace("_", "/", $supplierTicker)));
+            $ticker->setCurrency(strtoupper(str_replace("_", "/", $currency)));
             $result[] = $ticker;
         }
 
