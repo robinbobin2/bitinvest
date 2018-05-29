@@ -22,7 +22,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
   volumes = []
   exchange_volumes = [];
     language = '';
-    year = '';
+    year: number = undefined;
   reverse: boolean = true;
   order = 'id';
   pairs_count = [];
