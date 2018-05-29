@@ -30,7 +30,7 @@
             <span [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.0-5'}}</span>
             <span [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">{{countPercent(dataUsd.now, prev) | number:'1.2-3'}}%</span>
           </div>
-          <p>Последнее обновление {{time_value*1000 | date:'HH:mm:ss'}}</p>
+          <p *ngIf="time_value">Последнее обновление {{time_value*1000 | date:'HH:mm:ss'}}</p>
         </div>
         <ul>
           <li><span>Объем за 24ч.</span><span class="black">{{volume | number:'1.0-1'}}</span></li>
@@ -360,7 +360,7 @@
                       </h3>
                     </div>
                     <div class="text2">
-                      <p>{{item.desc | striphtml |excerpt:80}}</p>
+                      <p>{{item.desc | striphtml | excerpt:80}}</p>
                     </div>
                   </div>
                 </div>
@@ -381,205 +381,7 @@
           <div [innerHTML]='data?.desc'></div>
           <br> <p><a class="more-sidebar"  routerLink="about">Подробнее</a><p>
           </div>
-          <div class="top-crypto">
-            <h5 class="titles"><span>ТОП 5</span>криптовалют (% роста)</h5>
-            <div class="periods">
-              <ul class="period-tabs">
-                <li class="active"><a href="#">День</a></li>
-                <li><a href="#">Неделя</a></li>
-                <li><a href="#">Месяц</a></li>
-                <li><a href="#">Год</a></li>
-              </ul>
-              <div class="period-content">
-                <div class="tab-content active">
-                  <ul>
-                    <li>
-                      <a href="" class="name">Bitcoin</a>
-                      <span class="price">$2829101929191</span>
-                      <span class="percent">11%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">Ethereum</a>
-                      <span class="price">$2829101929191</span>
-                      <span class="percent">11%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">BitcoinCash</a>
-                      <span class="price">$90819201</span>
-                      <span class="percent">8%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">EthereumClassic</a>
-                      <span class="price">$8790899</span>
-                      <span class="percent">7,2%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">Ripple</a>
-                      <span class="price">$2829</span>
-                      <span class="percent">2%</span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="tab-content">
-                  <ul>
-                    <li>
-                      <a href="" class="name">Bitcoin</a>
-                      <span class="price">$2829101929191</span>
-                      <span class="percent">11%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">Ethereum</a>
-                      <span class="price">$2829101929191</span>
-                      <span class="percent">11%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">BitcoinCash</a>
-                      <span class="price">$90819201</span>
-                      <span class="percent">8%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">EthereumClassic</a>
-                      <span class="price">$8790899</span>
-                      <span class="percent">7,2%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">Ripple</a>
-                      <span class="price">$2829</span>
-                      <span class="percent">2%</span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="tab-content">
-                  <ul>
-                    <li>
-                      <a href="" class="name">Bitcoin</a>
-                      <span class="price">$2829101929191</span>
-                      <span class="percent">11%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">Ethereum</a>
-                      <span class="price">$2829101929191</span>
-                      <span class="percent">11%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">BitcoinCash</a>
-                      <span class="price">$90819201</span>
-                      <span class="percent">8%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">EthereumClassic</a>
-                      <span class="price">$8790899</span>
-                      <span class="percent">7,2%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">Ripple</a>
-                      <span class="price">$2829</span>
-                      <span class="percent">2%</span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="tab-content">
-                  <ul>
-                    <li>
-                      <a href="" class="name">Bitcoin</a>
-                      <span class="price">$2829101929191</span>
-                      <span class="percent">11%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">Ethereum</a>
-                      <span class="price">$2829101929191</span>
-                      <span class="percent">11%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">BitcoinCash</a>
-                      <span class="price">$90819201</span>
-                      <span class="percent">8%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">EthereumClassic</a>
-                      <span class="price">$8790899</span>
-                      <span class="percent">7,2%</span>
-                    </li>
-                    <li>
-                      <a href="" class="name">Ripple</a>
-                      <span class="price">$2829</span>
-                      <span class="percent">2%</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <a href="#" class="details">Подробный рейтинг</a>
-          </div>
-          <a href="#" class="banner-black"><img src="img/banner-black.jpg" alt=""></a>
-          <app-cloud-mining-top></app-cloud-mining-top>
-          <div class="social">
-            <h5 class="titles">Мы в соц.сетях</h5>
-            <ul>
-              <li><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-            </ul>
-          </div>
-          <div class="top-fonds">
-            <h5 class="titles"><span>ТОП 5</span> фондов</h5>
-            <ul class="top-ul">
-              <li>
-                <div class="left">
-                  <a href="">HashFlare SHA-256 2017</a>
-                  <span class="paying">ПЛАТИТ!</span>
-                </div>
-                <div class="right">
-                  <span class="persent">489%</span>
-                  <span class="days">489 дней</span>
-                </div>
-              </li>
-              <li>
-                <div class="left">
-                  <a href="">Bitmakler CMS</a>
-                  <span class="paying">ПЛАТИТ!</span>
-                </div>
-                <div class="right">
-                  <span class="persent">11%</span>
-                  <span class="days">489 дней</span>
-                </div>
-              </li>
-              <li>
-                <div class="left">
-                  <a href="">Bitmakler CMS</a>
-                  <span class="payment">ОЖИДАНИЕ ВЫПЛАТЫ</span>
-                </div>
-                <div class="right">
-                  <span class="persent">11%</span>
-                  <span class="days">489 дней</span>
-                </div>
-              </li>
-              <li>
-                <div class="left">
-                  <a href="">CMSHP</a>
-                  <span class="paying">ПЛАТИТ!</span>
-                </div>
-                <div class="right">
-                  <span class="persent">11%</span>
-                  <span class="days">489 дней</span>
-                </div>
-              </li>
-              <li>
-                <div class="left">
-                  <a href="">Bitmakler CMS</a>
-                  <span class="payment">ОЖИДАНИЕ ВЫПЛАТЫ</span>
-                </div>
-                <div class="right">
-                  <span class="persent">11%</span>
-                  <span class="days">489 дней</span>
-                </div>
-              </li>
-            </ul>
-            <a href="#" class="all-fonds">Все фонды (981)</a>
-          </div>
+          <app-sidebar></app-sidebar>
         </aside>
       </div>
     </section>

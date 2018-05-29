@@ -162,7 +162,14 @@ export class CryptoComponent implements OnInit, OnDestroy {
           this.volume = this.volume+item.volume;
         this.time.push(item.time);
       }
-      this.time_value = Math.max.apply(null, this.time);
+      if (localStorage.getItem(symbol+'time_value')) {
+          this.time_value = JSON.parse(localStorage.getItem(symbol+'time_value'));;
+
+      } else {
+          this.time_value = Math.max.apply(null, this.time);
+          localStorage.removeItem(symbol+'time_value');
+          localStorage.setItem(symbol+'time_value', JSON.stringify(this.time_value));
+      }
 
           this.min_value = Math.min.apply(null, this.min);
           this.max_value = Math.max.apply(null, this.max);
@@ -179,15 +186,15 @@ export class CryptoComponent implements OnInit, OnDestroy {
       for(let item of this.stocks) {
         if(item.ask > 0) {
           this.min.push(item.ask);
-          
+
         }
         if(item.bid) {
           this.max.push(item.bid);
         }
         if(this.volume === 0) {
-        
+
             this.volume = this.volume+item.volume;
-          
+
         } else {
           this.volume = 0;
           this.volume = this.volume+item.volume;
@@ -205,11 +212,13 @@ export class CryptoComponent implements OnInit, OnDestroy {
         this.time.push(item.time);
       }
       this.time_value = Math.max.apply(null, this.time);
+          localStorage.removeItem(symbol+'time_value');
+          localStorage.setItem(symbol+'time_value', JSON.stringify(this.time_value));
       this.min_value = Math.min.apply(null, this.min);
       this.max_value = Math.max.apply(null, this.max);
 
     });
-    this.stocksData = Observable.interval(2000).concatMap(()=>
+    this.stocksData = Observable.interval(3000).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USD'))
     .map(response => {
 
@@ -235,7 +244,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
         }
       }
-      this.time_value = Math.max.apply(null, this.time);
+        this.time_value = Math.max.apply(null, this.time);
+        localStorage.removeItem(symbol+'time_value');
+        localStorage.setItem(symbol+'time_value', JSON.stringify(this.time_value));
       this.load = false;
       localStorage.removeItem(symbol+'USD stocks');
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
@@ -288,7 +299,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     this.infoCrypto.subscribe(response => {
       this.data = response;
       for(let item of response['comments']) {
-        this.comments.push({ 
+        this.comments.push({
           id: item.id,
           author: item.author,
           body: item.body,
@@ -318,7 +329,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.cryptoData=Observable.interval(2000).concatMap(()=>this.stocksService.getCrypto())
+    this.cryptoData=Observable.interval(2000).concatMap(
+        ()=>
+            this.stocksService.getCrypto())
     .map((response)=>{
       this.animtype = '';
 

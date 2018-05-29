@@ -340,6 +340,17 @@ $('.select-wrap select').select2({
 	   $("#select-age .select").removeClass("open")
 	  }
 	 });
+	 $("#select-country").on("click", function(e){
+	  e.preventDefault();
+	  if(!$("#select-country .select-items").hasClass("open")){
+	     $("#select-country .select-items").addClass("open");
+	   $("#select-country .select").addClass("open");
+	  }
+	  else{
+	   $("#select-country .select-items").removeClass("open");
+	   $("#select-country .select").removeClass("open")
+	  }
+	 });
 	 $("#select-algo").on("click", function(e){
 	 	console.log('123123123123123');
 	  e.preventDefault();

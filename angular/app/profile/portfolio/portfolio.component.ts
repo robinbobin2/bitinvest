@@ -15,7 +15,7 @@ import {CloudMiningService} from "../../cloud-mining.service";
 export class PortfolioComponent implements OnInit {
   order = 'proc';
   portfolioNames = [];
-  portfolios: Array<any> = [];
+  portfolios  = [];
   reverse: boolean = false;
   results: Object;
   searchTerm$ = new Subject<string>();
@@ -25,6 +25,7 @@ export class PortfolioComponent implements OnInit {
   diff =[];
   volumes = [];
   exchange_volumes = [];
+
     mining_form = false;
     ico_form = false;
     crypto_form = false;
@@ -132,20 +133,19 @@ export class PortfolioComponent implements OnInit {
                                 for (let portfolioItem of this.portfolios[item.id]) {
                                     this.miningService.getMiningId(portfolioItem.id).subscribe(
                                         res => {
-
-                                            portfolioItem = res;
-
+                                            portfolioItem['percentage'] = res['news']['percentage'];
                                         }
 
                                     )
                                 }
+                                console.log(this.portfolios[item.id]);
                             }
                             if (type_id == 2) {
                                 for (let portfolioItem of this.portfolios[item.id]) {
                                     this.miningService.getIcoId(portfolioItem.id).subscribe(
                                         res => {
 
-                                            portfolioItem = res;
+                                            portfolioItem = res['news'];
 
                                         }
 
@@ -200,16 +200,16 @@ export class PortfolioComponent implements OnInit {
      )
    }
    onRemove(itemid, id, index, type) {
-   	this.portfolioService.removePortfolio(id, type, itemid).subscribe(
-
-   		res => {
-   			if (index > -1) {
-   			    console.log(res);
-				this.portfolios[itemid].splice(index, 1);
-			}
-   		}
-
-   	)
+       if(confirm('Подтвердите удаление')) {
+           this.portfolioService.removePortfolio(id, type, itemid).subscribe(
+               res => {
+                   if (index > -1) {
+                       console.log(res);
+                       this.portfolios[itemid].splice(index, 1);
+                   }
+               }
+           )
+       }
    }
     isNegative(now) {
         if(now >= 0) {
