@@ -6986,11 +6986,9 @@ module.exports = "body {\n  background: #f9f9f9;\n  font-family: \"PT Sans\"; }\
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export NewsRaw */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllReviewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7001,21 +6999,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
-
-
-var scr = 'http://ppql.ru/masonry.js';
-var NewsRaw = (function () {
-    function NewsRaw() {
-    }
-    return NewsRaw;
-}());
 
 var AllReviewComponent = (function () {
-    function AllReviewComponent(http, router, route) {
+    function AllReviewComponent(http) {
         this.http = http;
-        this.router = router;
-        this.route = route;
         this.news = [];
         this.main_news = [];
         var path = "/reviewraw";
@@ -7027,7 +7014,7 @@ var AllReviewComponent = (function () {
             _this.news = response['news'];
             _this.main_news = response['main_news'];
             _this.countAll = _this.news.length + _this.main_news.length;
-        });
+        }).subscribe();
     };
     return AllReviewComponent;
 }());
@@ -7037,10 +7024,10 @@ AllReviewComponent = __decorate([
         template: __webpack_require__("./angular/app/review/all-review/all-review.component.html"),
         styles: [__webpack_require__("./angular/app/review/all-review/all-review.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
 ], AllReviewComponent);
 
-var _a, _b, _c;
+var _a;
 //# sourceMappingURL=all-review.component.js.map
 
 /***/ }),
