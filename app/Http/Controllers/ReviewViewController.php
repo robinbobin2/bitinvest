@@ -69,33 +69,19 @@ class ReviewViewController extends Controller
     }
 
     public function show($id) {
-        $news = Review::with('category')->first()->get()->where('id', $id)->toArray();
+        $news = Review::first()->with('comments.rating')->get()->where('id', $id)->toArray();
         $commentnews = Review::findOrFail($id);
         $comments = $commentnews->comments;
         $news = array_values($news);
         $user = Auth::user();
-        
-        // $main_news = News::with('photos')->with('category')->get()->where('main', 1)->take(2)->toArray();
-        // $main_news = array_values($main_news);
-        // $news = $news->toJson();
-        // $news = array_values($news);
-        // $comments = $news->comments();
-        // $photos = $news->photos();
-        // for ($i=0; $i < count($news); $i++) { 
-        //     if($news[$i]->photos){
-        //                 foreach ($news[$i]->photos as $photo) {
-                         
-        //                 // $news[$i]['photos']['file'] = array($photo->file);   # code...
-        //                 // echo $photo->file;
-        //             }
-        //     }
-        // }
+        $photos = $commentnews->photos;
+        $category = $commentnews->category;
         return response()->json([
-            'news'=>$news,
-            'user'=>$user,
-            'comments'=>$comments
-            // 'main_news' => $main_news,
-            // 'photos'=>$photos
+            'news' => $news,
+            'user' => $user,
+            'photos' => $photos,
+            'category' => $category,
+            'comments_count' => count($comments)
         ]);
         // dd($news);
         // return $news->toJson();

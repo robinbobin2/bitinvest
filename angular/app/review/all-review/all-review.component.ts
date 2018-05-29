@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 
 @Component({
   selector: 'app-all-review',
@@ -13,7 +14,12 @@ export class AllReviewComponent implements OnInit {
   main_news = [];
   info: any;
   countAll: any;
-   constructor(private http:HttpClient) {
+    order: string = 'id';
+    reverse: boolean = false;
+    /**
+     * @param {OrderPipe}
+     */
+    constructor(private orderPipe: OrderPipe, private http:HttpClient) {
    	let path = "/reviewraw";
    	this.info = http.get(path);
 
@@ -25,7 +31,6 @@ export class AllReviewComponent implements OnInit {
 
       this.info.map(response => {
           this.news = response['news'];
-console.log(this.news)
           this.main_news = response['main_news'];
           this.countAll = this.news.length+this.main_news.length;
       }).subscribe()

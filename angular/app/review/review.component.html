@@ -4,10 +4,10 @@
         <aside class="sidebar">
             <ul class="tag-list">
                 <li> <a
-                        [routerLink]="['/posts/all']" routerLinkActive="active">Все обзоры</a></li>
+                        [routerLink]="['/review/all']" routerLinkActive="active">Все обзоры</a></li>
                 <li *ngFor="let category of categories">
                     <a
-                            [routerLink]="['/posts/category', category.id]" routerLinkActive="active">{{category.name}}({{category.count}})</a>
+                            [routerLink]="['/review/category', category.id]" routerLinkActive="active">{{category.name}}({{category.count}})</a>
                 </li>
             </ul>
             <app-sidebar></app-sidebar>
