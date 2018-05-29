@@ -79,7 +79,6 @@ class OTCBTCProvider extends FounderProvider
             $result[] = $ticker;
         }
 
-
         return $result;
     }
 }
