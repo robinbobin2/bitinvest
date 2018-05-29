@@ -8985,7 +8985,9 @@ app-news-detail {
   width: 100%;
   margin-top: -20px;
 }
-app-all-news, app-all-cloud-mining, app-ico-project-all, app-interview-details, app-all-review, app-review-detail {
+app-all-news, app-all-cloud-mining, app-ico-project-all, 
+app-interview-details, app-all-review, app-review-detail, 
+app-all-analytics, app-analytics-detail {
   width: 100%;
 }
 app-ico-project-detail {

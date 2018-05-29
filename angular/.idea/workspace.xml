@@ -47,7 +47,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="all-analytics.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="all-analytics.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/analytics/all-analytics/all-analytics.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -55,6 +55,24 @@
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="review-detail.component.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/review/review-detail/review-detail.component.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="744">
+              <caret line="283" lean-forward="true" selection-end-line="283" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="analytics-detail.component.scss" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/analytics/analytics-detail/analytics-detail.component.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="744">
+              <caret line="283" lean-forward="true" selection-start-line="283" selection-end-line="283" />
             </state>
           </provider>
         </entry>
@@ -122,7 +140,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/ico-project/ico-project-categories/ico-project-categories.component.html" />
         <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.ts" />
         <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html" />
         <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts" />
@@ -173,6 +190,7 @@
         <option value="$PROJECT_DIR$/app/analytics/analytics-detail/analytics-detail.component.ts" />
         <option value="$PROJECT_DIR$/app/analytics/analytics.component.ts" />
         <option value="$PROJECT_DIR$/app/analytics/all-analytics/all-analytics.component.ts" />
+        <option value="$PROJECT_DIR$/app/analytics/analytics-detail/analytics-detail.component.scss" />
       </list>
     </option>
   </component>
@@ -301,12 +319,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="81334000" />
+      <workItem from="1526711663196" duration="81400000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127668000" />
+    <option name="totallyTimeSpent" value="127734000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -339,15 +357,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
@@ -531,13 +540,6 @@
           <folding>
             <element signature="e#0#84#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/review/review-detail/review-detail.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="744">
-          <caret line="283" lean-forward="true" selection-start-line="283" selection-end-line="283" />
         </state>
       </provider>
     </entry>
@@ -771,6 +773,20 @@
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/review/review-detail/review-detail.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="744">
+          <caret line="283" lean-forward="true" selection-end-line="283" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/analytics/analytics-detail/analytics-detail.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="744">
+          <caret line="283" lean-forward="true" selection-start-line="283" selection-end-line="283" />
         </state>
       </provider>
     </entry>
