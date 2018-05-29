@@ -69,7 +69,7 @@ class ReviewViewController extends Controller
     }
 
     public function show($id) {
-        $news = Review::with('category')->first()->get()->where('id', $id)->toArray();
+        $news = Review::first()->with('comments.rating')->get()->where('id', $id)->toArray();
         $commentnews = Review::findOrFail($id);
         $comments = $commentnews->comments;
         $news = array_values($news);
