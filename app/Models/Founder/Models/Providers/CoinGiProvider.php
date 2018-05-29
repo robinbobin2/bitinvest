@@ -69,7 +69,7 @@ class CoinGiProvider extends FounderProvider
         foreach ($response as $ticker) {
             $exchange = new ExchangeRate();
             $exchange->value = $ticker->getValue();
-            $exchange->volume = $ticker->getVolume()/10000000;
+            $exchange->volume = $ticker->getVolume();
             $exchange->bid = $ticker->getBid();
             $exchange->ask = $ticker->getAsk();
             $exchange->currency = $ticker->getCurrency();

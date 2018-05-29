@@ -16,6 +16,7 @@ use App\UserPortfolioType;
 use App\UserPortfollable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class AngularController extends Controller
@@ -193,11 +194,10 @@ class AngularController extends Controller
 
     public function exchanges()
     {
-        $stocks = Stock::all()->toArray();
-        foreach ($stocks as $key => $stock) {
-            $languages = explode(",", $stock['languages']);
-            $stocks[$key]['languages'] = $languages;
-        }
+        $stocks = DB::select("select ex.id, ex.name, s.languages, s.year, s.country  from stocks s
+JOIN exchanges ex on ex.id = s.id
+JOIN exchangeRatesInfo exi on exi.exchangeId = ex.id and exi.currency = 'BTC/USD' WHERE exi.volume != 0 ");
+
         return $stocks;
     }
 

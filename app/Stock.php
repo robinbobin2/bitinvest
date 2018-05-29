@@ -19,5 +19,4 @@ class Stock extends Model
     public function categories() {
         return $this->belongsToMany('App\Category');
     }
-    //
 }
