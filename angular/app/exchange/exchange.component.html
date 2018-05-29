@@ -74,12 +74,12 @@
             <p>{{exchange.desc}}</p>
           </div>
         </div>
-        <h3 class="ico-title">Доступные монеты ({{exchange.coins_count}})</h3>
-        <div class="distribution-funds" id="coins">
+        <h3 class="ico-title" *ngIf="exchange.coins_count > 0">Доступные монеты ({{exchange.coins_count}})</h3>
+        <div class="distribution-funds" id="coins" *ngIf="exchange.coins_count > 0">
           
           <ul *ngIf="exchange.coins" >
             <li *ngFor="let coin of exchange.coins">
-              <div class="img-wrap"><img src="img/coins-icon.png" alt=""></div><span>{{coin.name}} ({{coin.symbol}})</span></li>
+              <div class="img-wrap"><img *ngIf="coin.logo" src="'images/'+coin.logo" alt=""></div><span>{{coin.name}} ({{coin.symbol}})</span></li>
             
           </ul>
         </div>
