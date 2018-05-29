@@ -68,7 +68,7 @@ class LunoProvider extends FounderProvider
             return $result;
         }
         foreach ($response as $supplierTicker){
-            $supplierTicker = $supplierTicker->ticker;
+            $supplierTicker = $supplierTicker->tickers;
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->ask);
             $ticker->setBid($supplierTicker->bid);
