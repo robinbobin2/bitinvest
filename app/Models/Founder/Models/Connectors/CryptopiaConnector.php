@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: xeror
- * Date: 11.05.2018
- * Time: 16:54
+ * Date: 28.05.2018
+ * Time: 18:03
  */
 
 namespace App\Models\Founder\Models\Connectors;
@@ -12,7 +12,7 @@ namespace App\Models\Founder\Models\Connectors;
 use App\Models\Founder\Models\Custom\SupplierLog;
 use App\Models\Founder\Models\FounderConnector;
 
-class XBTCEConnector extends FounderConnector
+class CryptopiaConnector extends FounderConnector
 {
     public function search()
     {
@@ -22,10 +22,10 @@ class XBTCEConnector extends FounderConnector
     public function sendRequest()
     {
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "https://cryptottlivewebapi.xbtce.net:8443/api/v1/public/ticker");
+        curl_setopt($curl, CURLOPT_URL, "https://www.cryptopia.co.nz/api/GetMarkets");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($curl);
-        SupplierLog::log("search", $result, 60);
+        SupplierLog::log("search", $result, 67);
         return json_decode($result);
     }
 }

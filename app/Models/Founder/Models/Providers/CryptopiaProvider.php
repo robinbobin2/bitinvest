@@ -2,37 +2,37 @@
 /**
  * Created by PhpStorm.
  * User: xeror
- * Date: 11.05.2018
- * Time: 18:01
+ * Date: 28.05.2018
+ * Time: 18:03
  */
 
 namespace App\Models\Founder\Models\Providers;
 
 
 use App\Models\Entity\ExchangeRate;
-use App\Models\Founder\Models\Connectors\XBTCEConnector;
+use App\Models\Founder\Models\Connectors\CryptopiaConnector;
 use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class XBTCEProvider extends FounderProvider
+class CryptopiaProvider extends FounderProvider
 {
     public function getExchangeId()
     {
-        return 60;
+        return 67;
     }
 
     protected function getConnectorClass()
     {
-        return new XBTCEConnector();
+        return new CryptopiaConnector();
     }
 
     /**
-     * @return XBTCEConnector
+     * @return CryptopiaConnector
      */
     protected function getConnector()
     {
-        /** @var XBTCEConnector $connector */
+        /** @var CryptopiaConnector $connector */
         $connector = parent::getConnector();
         return $connector;
     }
@@ -47,12 +47,12 @@ class XBTCEProvider extends FounderProvider
 
         foreach ($response->Data as $value) {
             $ticker = new TickerEntity();
-            $ticker->setAsk($value->BestAsk);
-            $ticker->setBid($value->BestBid);
-            $ticker->setVolume($value->DailyTradedTotalVolume);
-            $ticker->setValue(($value->DailyBestSellPrice + $value->DailyBestBuyPrice) / 2);
+            $ticker->setAsk($value->AskPrice);
+            $ticker->setBid($value->BidPrice);
+            $ticker->setVolume($value->Volume);
+            $ticker->setValue($value->LastPrice);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(substr($value->Symbol, 0,3) . "/" . substr($value->Symbol, 3));
+            $ticker->setCurrency($value->Label);
             $result[] = $ticker;
         }
 
