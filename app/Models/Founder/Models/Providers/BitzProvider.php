@@ -28,7 +28,7 @@ class BitzProvider extends FounderProvider
         foreach ($response->data as $currency => $value) {
             $ticker = new TickerEntity();
             $ticker->setAsk($value->buy);
-            $ticker->setBid($value->sel);
+            $ticker->setBid($value->sell);
             $ticker->setVolume($value->vol);
             $ticker->setValue($value->last);
             $ticker->setExchangeId($this->getExchangeId());
