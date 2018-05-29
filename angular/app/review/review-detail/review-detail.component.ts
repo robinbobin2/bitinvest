@@ -45,9 +45,13 @@ export class ReviewDetailComponent implements OnInit {
     user: User;
     hide = false;
     constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute, private commentService: CommentsService) {
-        let id = route.snapshot.params['id'];
+
+    }
+
+    ngOnInit() {
+        let id = this.route.snapshot.params['id'];
         let path = "/reviewraw/"+id;
-        const info = http.get(path);
+        const info = this.http.get(path);
         info.subscribe(response => {
             this.news = {
                 id: response['news'][0]['id'],
@@ -74,9 +78,6 @@ export class ReviewDetailComponent implements OnInit {
 
 
         });
-    }
-
-    ngOnInit() {
         this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
                 return;
