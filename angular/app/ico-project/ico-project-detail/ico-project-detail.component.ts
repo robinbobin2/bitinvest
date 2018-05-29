@@ -76,6 +76,8 @@ roadMap: Array<RoadMap>;
 submitted = false;
 commentcount = 0;
 user: User;
+    hide = false;
+
 percents: Array<Percent> = [];
     portfoliosInfo = [];
     portfolioAdded = false;

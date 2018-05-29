@@ -47,41 +47,42 @@
                         <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
                     </div>
                     
-                    <div *ngIf="user?.id != undefined" style="background: none !important; border: none !important; padding-top: 0 !important" class="comment-top">
+                    <div *ngIf="user?.id != undefined && news?.comments_count > 0" style="background: none !important; border: none !important; padding-top: 0 !important" class="comment-top">
                         <h3 >Комментарии ({{news?.comments_count}})</h3>
                         <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
 
                     
                     </div>
-                    <ul class="comment-items">
-                        <!--  -->
-                        <li *ngFor="let item of comments">
-                            <div class="left">
-                                <div class="info">
-                                    <div class="img-wrap">
-                                        <img src="img/comment-img2.jpg" style="max-width: 35px; height: auto;" alt="">
+                        <ul class="comment-items">
+                            <!--  -->
+                            <ng-template ngFor let-item [ngForOf]="comments" let-i="index">
+                                <li [ngClass]="i > 10 ? 'hidden' : ''" >
+                                    <div class="left">
+                                        <div class="info">
+                                            <div class="img-wrap">
+                                                <img src="{{item.photo}}" style="max-width: 35px; height: auto;" alt="">
+                                            </div>
+                                            <div class="text-wrap">
+                                                <p>{{item.author}}</p>
+                                                <span>Добавлен {{item.created_at}}</span>
+                                            </div>
+                                        </div>
+                                        <p class="comment-text">{{item.body}}</p>
                                     </div>
-                                    <div class="text-wrap">
-                                        <p>{{item.email}}</p>
-                                        <span>Добавлен </span>
+                                    <div class="right">
+                                        <div class="img-wrap"></div>
+                                        <div class="btn-block">
+                                            <span class="number-green" [ngClass]="rating_count[item.id] > -1 ? 'number-green' : 'number-red'">{{rating_count[item.id]}}</span>
+                                            <div class="buttons">
+                                                <a (click)="onVote(item.id, 1)" class="plus">+</a>
+                                                <a (click)="onVote(item.id, 0)" class="minus">-</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <p class="comment-text">{{item.body}}</p>
-                            </div>
-                            <div class="right">
-                                <div class="img-wrap"></div>
-                                <div class="btn-block">
-                                    <span class="number-green">0</span>
-                                    <div class="buttons">
-                                        <a href="#" class="plus">+</a>
-                                        <a href="#" class="minus">-</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                    </ul>
-                    <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
+                                </li>
+                            </ng-template>
+                        </ul>
+                        <a *ngIf="news.comments_count > 10 && !hide" class="show-comments">Показать все комментарии ({{news.comments_count}})</a>
                 </div>
               </div>
                 

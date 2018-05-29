@@ -45,6 +45,7 @@
             <ul class="select-items">
               <li (click)="country=''"> <a >Страна: Все</a></li>
               <li *ngFor="let item of exchanges" (click)="country=item?.country"><a >{{item?.country}}</a></li>
+              <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
             </ul>
           </div>
               <div class="crypto-select-wrap">

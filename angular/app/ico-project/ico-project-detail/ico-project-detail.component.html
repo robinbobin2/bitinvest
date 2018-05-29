@@ -135,91 +135,36 @@ width: 94%">
 					</div>
 					<ul class="comment-items">
 						<!--  -->
-						<li *ngFor="let item of comments">
-							<div class="left">
-								<div class="info">
-									<div class="img-wrap">
-										<img src="{{item.photo}}" style="max-width: 35px; height: auto;" alt="">
+						<ng-template ngFor let-item [ngForOf]="comments" let-i="index">
+							<li [ngClass]="i > 10 ? 'hidden' : ''" >
+								<div class="left">
+									<div class="info">
+										<div class="img-wrap">
+											<img src="{{item.photo}}" style="max-width: 35px; height: auto;" alt="">
+										</div>
+										<div class="text-wrap">
+											<p>{{item.author}}</p>
+											<span>Добавлен {{item.created_at}}</span>
+										</div>
 									</div>
-									<div class="text-wrap">
-										<p>{{item.author}}</p>
-										<span>Добавлен {{item.created_at}}</span>
+									<p class="comment-text">{{item.body}}</p>
+								</div>
+								<div class="right">
+									<div class="img-wrap"></div>
+									<div class="btn-block">
+										<span class="number-green" [ngClass]="rating_count[item.id] > -1 ? 'number-green' : 'number-red'">{{rating_count[item.id]}}</span>
+										<div class="buttons">
+											<a (click)="onVote(item.id, 1)" class="plus">+</a>
+											<a (click)="onVote(item.id, 0)" class="minus">-</a>
+										</div>
 									</div>
 								</div>
-								<p class="comment-text">{{item.body}}</p>
-							</div>
-							<div class="right">
-								<div class="img-wrap"></div>
-								<div class="btn-block">
-									<span class="number-green" [ngClass]="rating_count[item.id] > -1 ? 'number-green' : 'number-red'">{{rating_count[item.id]}}</span>
-									<div class="buttons">
-										<a (click)="onVote(item.id, 1)" class="plus">+</a>
-										<a (click)="onVote(item.id, 0)" class="minus">-</a>
-									</div>
-								</div>
-							</div>
-						</li>
-
+							</li>
+						</ng-template>
 					</ul>
-					<!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
+					<a *ngIf="commentcount > 10 && !hide" class="show-comments">Показать все комментарии ({{news.comments_count}})</a>
 				</div>
-				<!-- <div class="related-projects" id="related-projects">
-					<h3 class="ico-title">Похожие проекты (2)</h3>
-					<div class="project-block">
-						<div class="img-wrap">
-							<a href="#"><img src="img/project-img1.jpg" alt=""></a>
-						</div>
-						<div class="text-wrap">
-							<div class="text-info">
-								<p><a href="#" class="project-title">Genesis (Дженезис) Mining</a><a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a></p>
-							</div>
-							<div class="project-info-content">
-								<div class="info">
-									<p class="status active-status">Статус: <span>Активен</span></p>
-									<p class="year">от 21.10.2017 до 11.04.2018</p>
-									<p class="last-updated">Последнее обновление: 11.11.2017</p>
-								</div>
-								<div class="progress-bar">
-									<a href="#" class="product-gray-btn">Недвижимость</a>
-									<div class="progress">
-										<span style="width: 15%"></span>
-										<p>$45 000 из 12 110 000</p>
-									</div>
-									<a href="#" class="follow"><span class="plus">+</span><span class="text">Следить</span></a>
-								</div>
-							</div>
-						</div>
-						<p class="more-project">Криптовалюты для облачного майнинга, предоставляемые сервисом Genesis Mining: По алгоритму SHA-256: Bitcoin (BTC)
-							<a href="#">Подробнее о проекте</a></p>
-					</div>
-					<div class="project-block">
-						<div class="img-wrap">
-							<a href="#"><img src="img/project-img1.jpg" alt=""></a>
-						</div>
-						<div class="text-wrap">
-							<div class="text-info">
-								<p><a href="#" class="project-title">Genesis (Дженезис)</a><a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a></p>
-							</div>
-							<div class="project-info-content">
-								<div class="info">
-									<p class="status inactive-status">Статус: <span>Не активен</span></p>
-									<p class="year">от 21.10.2017 до 11.04.2018</p>
-									<p class="last-updated">Последнее обновление: Вчера в 13:45</p>
-								</div>
-								<div class="progress-bar">
-									<a href="#" class="product-gray-btn">Технологии</a>
-									<div class="progress">
-										<span style="width: 15%"></span>
-										<p>$45 000 из 12 110 000</p>
-									</div>
-									<a href="#" class="follow"><span class="minus"><img src="img/minus.png" alt=""></span><span class="text text-red">Следить</span></a>
-								</div>
-							</div>
-						</div>
-						<p class="more-project">Криптовалюты для облачного майнинга, предоставляемые сервисом Genesis Mining: По алгоритму SHA-256: Bitcoin (BTC)
-							<a href="#">Подробнее о проекте</a></p>
-					</div>
-				</div> -->
+
 			</div>
     </div>
   </section>

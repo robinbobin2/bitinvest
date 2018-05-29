@@ -152,7 +152,7 @@
                   <button type="submit">Добавить</button>
                 </form>
               </div>
-              <h3 class="total-comments"  *ngIf="user.id">Всего комментариев ({{commentcount}})</h3>
+              <h3 class="total-comments"  *ngIf="user.id && commentcount > 0">Всего комментариев ({{commentcount}})</h3>
               <ul class="comment-items" style="padding-left: 0;">
                 <!--  -->
                 <li *ngFor="let item of comments">
