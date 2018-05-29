@@ -200,7 +200,7 @@ class CcexConnector extends FounderConnector
             'change' => null,
             'percentage' => null,
             'average' => floatval ($ticker['avg']),
-            'baseVolume' => !$last ? $this->safe_float($ticker, 'buysupport') / $last : null,
+            'baseVolume' => $last ? $this->safe_float($ticker, 'buysupport') / $last : null,
             'quoteVolume' => $this->safe_float($ticker, 'buysupport'),
             'info' => $ticker,
         );
