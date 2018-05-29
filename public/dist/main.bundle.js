@@ -5993,9 +5993,6 @@ var AllNewsComponent = (function () {
         this.order = 'position';
         this.reverse = false;
     }
-    AllNewsComponent.prototype.getBack = function (image) {
-        return 'url(' + image + ')';
-    };
     AllNewsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.data.subscribe(function (data) {
@@ -6336,8 +6333,7 @@ module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n<r
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6348,15 +6344,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
-
 
 var NewsComponent = (function () {
-    function NewsComponent(http, router, route) {
+    function NewsComponent(http) {
         var _this = this;
         this.http = http;
-        this.router = router;
-        this.route = route;
         this.categories = [];
         var path = "/categoriesraw/1";
         var info = http.get(path);
@@ -6376,13 +6368,6 @@ var NewsComponent = (function () {
     }
     NewsComponent.prototype.ngOnInit = function () {
     };
-    NewsComponent.prototype.loadCat = function (id) {
-        this.router.navigate(['/posts/category', id]);
-        //  console.log('snap');
-        //  this.route.url.subscribe(() => {
-        //  console.log(this.route.snapshot.firstChild.data);
-        // });
-    };
     return NewsComponent;
 }());
 NewsComponent = __decorate([
@@ -6391,10 +6376,10 @@ NewsComponent = __decorate([
         template: __webpack_require__("./angular/app/news/news.component.html"),
         styles: [__webpack_require__("./angular/app/news/news.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
 ], NewsComponent);
 
-var _a, _b, _c;
+var _a;
 //# sourceMappingURL=news.component.js.map
 
 /***/ }),
@@ -6986,7 +6971,7 @@ ProfileComponent = __decorate([
 /***/ "./angular/app/review/all-review/all-review.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n        <div class=\"col-md-4\" style=\"padding-left:20px;\">\n        <h3 style=\"float:left; margin-top: 3px;\">Обзоры</h3>\n\t<h6 style=\"color:#9b9b9b;margin-top:10px;float:left;width:10%;text-align:center\">228</h6>\n      </div>\n\t  \n\n\t  \n      <div class=\"col-md-8\">\n        <ul class=\"tags\">\n          <li><a routerLinkActive=\"active\"  routerLink=\"/review/all\">Новое за сегодня</a></li>\n          <li><a routerLinkActive=\"active\" href=\"#\">Самое популярное</a></li>\n          <li><a routerLinkActive=\"active\" href=\"#\">Самое обсуждаемое</a></li>\n        </ul>\n      </div>\n </div>\n\n <div class=\"main-block\" style=\"width: 48%;float:left;margin:1%;\" *ngFor=\"let main_item of main_news\">\n        <div class=\"block\" style=\"background-size: cover; width: 100%; height: 240px; box-sizing: border-box;\">\n          <div style=\"position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;\"></div>\n          <img style=\"z-index: 1; position: absolute; top: 0; left: 0; right: 0;\n          bottom: 0;\" src=\"{{main_item.photo}}\">\n          <div class=\"block-content\">\n            <span class=\"tag\"><a href=\"#\">{{main_item.category}}</a></span>\n            <table style=\"height: 140px;\"><tr><td valign=\"bottom\">\n            \n            <h2 style=\"position: relative; z-index: 999\"><a (click)=\"loadMore(main_item.id)\">{{main_item.title}}</a></h2>\n          </td></tr></table>\n\n            <div class=\"meta\" style=\"z-index: 99\">\n              <span class=\"date\">{{main_item.created_at}}</span>\n              <span class=\"spy\">0</span>\n              <span class=\"chat\">0</span>\n            </div>\n          </div>\n        </div>\n        <p>{{main_item.desc}} <a (click)=\"loadMore(main_item.id)\">Подробнее</a></p>\n      </div>\n\n<masonry [options]=\"myOptions\" class=\"masonry\" style=\"float:left; transition: none !important;\">\n        \n\t\n\t  \n\t  \t  \t\t<masonry-brick style=\"transition: none !important;\" class=\"masonry-item\" *ngFor=\"let item of news\">\n        <div class=\"grid-item-bg\" style=\" position: relative; background-size: cover; box-sizing: border-box;\">\n          <div style=\"position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;\"></div>\n          <img style=\"z-index: 1; position: absolute; top: 0; left: 0; right: 0;\n          bottom: 0;\" src=\"{{item.photo}}\">\n          <div class=\"block-content\" style=\"z-index: 99\">\n            <span class=\"tag\"><a href=\"#\">{{item.category}}</a></span>\n            \n            <div class=\"meta\" style=\"z-index: 99\">\n              <span class=\"date\">{{item.created_at}}</span>\n            </div>\n          </div>\n        </div>\n        <h3><a  (click)=\"loadMore(item.id)\" >{{item.title}}</a></h3>\n      </masonry-brick>\n      \n\t  \n      </masonry>"
+module.exports = "<div class=\"news-content\">\n    <div class=\"news-head\">\n        <h1>Новости<span>{{countAll}}</span></h1>\n        <ul class=\"news-tabs\">\n            <li class=\"active\"><a (click)=\"setOrder('id')\">Новое за сегодня</a></li>\n            <li><a (click)=\"setOrder('views_count')\">Самое популярное</a></li>\n            <li><a  (click)=\"setOrder('comments_count')\">Самое обсуждаемое</a></li>\n        </ul>\n    </div>\n    <div class=\"news-body\">\n        <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n                <div  *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.workplace ? 'news trust' : 'news'\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                        <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                        <a href=\"/review/item/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                        <div class=\"info\">\n                            <span class=\"date\">{{item.created_at}}</span>\n                            <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                            <a  href=\"/review/item/{{item.id}}#comment-block\"  class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                        </div>\n                    </div>\n                    <div class=\"text\">\n                        <p>{{item.desc | striphtml | excerpt:140}} <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                    </div>\n                </div>\n            </div>\n            <div class=\"news-list\">\n                <div *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.name_credits ? 'trust' : 'news'\" [routerLink]=\"item.name_credits ? ['/interview/item', item.id] : null\">\n                    <div *ngIf=\"item.name_credits\" class=\"img-wrap\"><img src=\"img/trust.png\" alt=\"\"></div>\n                    <h4 *ngIf=\"item.name_credits\">{{item.title}}</h4>\n                    <p *ngIf=\"item.name_credits\" class=\"name\">{{item.name_credits}}</p>\n                    <span *ngIf=\"item.name_credits\">{{item.workplace}}</span>\n                    <div *ngIf=\"!item.name_credits\" class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                        <a [routerLink]=\"['/review/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                        <div class=\"info\">\n                            <span class=\"date\">{{item.created_at}}</span>\n                        </div>\n                    </div>\n                    <div *ngIf=\"!item.name_credits\" class=\"text\">\n                        <h3>\n                            <a [routerLink]=\"['/review/item', item.id]\">{{item.title}}</a>\n                        </h3>\n                    </div>\n\n                    <div *ngIf=\"!item.name_credits\" class=\"text2\">\n                        <p>{{item.desc | striphtml |excerpt:80}}</p>\n                    </div>\n                </div>\n\n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n        </div>\n\n    </div>\n    <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n</div>\n\n"
 
 /***/ }),
 
@@ -7028,58 +7013,21 @@ var NewsRaw = (function () {
 
 var AllReviewComponent = (function () {
     function AllReviewComponent(http, router, route) {
-        var _this = this;
         this.http = http;
         this.router = router;
         this.route = route;
-        this.myOptions = {
-            transitionDuration: '0'
-        };
         this.news = [];
         this.main_news = [];
         var path = "/reviewraw";
-        var info = http.get(path);
-        info.subscribe(function (response) {
-            // console.log(response['news']);
-            // this.news = response['news'];
-            for (var _i = 0, _a = response['news']; _i < _a.length; _i++) {
-                var item = _a[_i];
-                console.log(item.photos[0].file);
-                _this.news.push({
-                    id: item.id,
-                    title: item.title,
-                    desc: item.desc,
-                    main: item.main,
-                    created_at: item.created_at,
-                    category: item.category.name,
-                    photo: item.photos[0].file
-                });
-            }
-            for (var _b = 0, _c = response['main_news']; _b < _c.length; _b++) {
-                var item = _c[_b];
-                console.log(item);
-                _this.main_news.push({
-                    id: item.id,
-                    title: item.title,
-                    desc: item.desc,
-                    main: item.main,
-                    category: item.category.name,
-                    created_at: item.created_at,
-                    photo: item.photos[0].file
-                });
-            }
-            // this.news.push(response['news']);
-            //   this.main_news.push(response['main_news']);
-            // console.log(response['news']);
-            // console.log(this.news);
-            // console.log(this.news[0].photo);
-            // console.log(this.main_news);
-        });
+        this.info = http.get(path);
     }
     AllReviewComponent.prototype.ngOnInit = function () {
-    };
-    AllReviewComponent.prototype.loadMore = function (id) {
-        this.router.navigate(['/review/item', id]);
+        var _this = this;
+        this.info.map(function (response) {
+            _this.news = response['news'];
+            _this.main_news = response['main_news'];
+            _this.countAll = _this.news.length + _this.main_news.length;
+        });
     };
     return AllReviewComponent;
 }());
@@ -7348,14 +7296,14 @@ var _a, _b, _c;
 /***/ "./angular/app/review/review.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"top\" class=\"container\">\n      <div class=\"row\">\n\t          <div class=\"col-md-9\">\n<router-outlet></router-outlet>\n</div>\n\n  <div class=\"col-md-3 rightbar\">\n    <div class=\"categories\">\n\n<a *ngFor=\"let category of categories\"  style=\"display: inline-block\"\n [routerLink]=\"['category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n    </div>\n  \n  \n  \n  \n    <div class=\"quotations\" style=\"margin-top:20px; border:1px solid #dee2e6;\">\n  \n  <h5 style=\"margin-bottom:0px;padding:10px;padding-right:0;text-align:left;width:100%;padding-right:2px;float:left; background-color: rgba(0,0,0,.05);\">Котировки криптовалют</h5>\n  \n  <table class=\"table table-striped table-sm\" style=\"margin-bottom:0px;float:left; padding-left: 10px;\">\n\n  <tbody>\n    <tr>\n      <th scope=\"row\" ><b style=\"background:#4a4a4a;color:white;padding:2px\">BCC</b></th>\n      <td style=\"color:red\">$100</td>\n      <td class=\"price\">P 32 001</td>\n      <td style=\"color:green\">+15%</td>\n    </tr>\n    <tr>\n      <th scope=\"row\"><b style=\"background:#4a4a4a;color:white;padding:2px\">BCC</b></th>\n      <td style=\"color:red\">$100</td>\n      <td class=\"price\">P 32 001</td>\n      <td style=\"color:green\">+15%</td>\n    </tr>\n    <tr>\n      <th scope=\"row\"><b style=\"background:#4a4a4a;color:white;padding:2px\">BCC</b></th>\n      <td style=\"color:red\">$100</td>\n      <td class=\"price\">P 32 001</td>\n      <td style=\"color:red\">-15%</td>\n    </tr>\n      <tr>\n      <th scope=\"row\"><b style=\"background:#4a4a4a;color:white;padding:2px\">BCC</b></th>\n      <td style=\"color:red\">$100</td>\n      <td class=\"price\">P 32 001</td>\n      <td style=\"color:green\">+15%</td>\n    </tr>\n  \n      <tr>\n      <th scope=\"row\"><b style=\"background:#4a4a4a;color:white;padding:2px\">BCC</b></th>\n      <td style=\"color:green\">$100</td>\n      <td class=\"price\">P 32 001</td>\n      <td style=\"color:green\">+15%</td>\n    </tr>\n  </tbody>\n</table>\n\n<a href=\"\" style=\"background-color: rgba(0,0,0,.05);\" class=\"all-cot\">Показать все котировки</a>\n<p style=\"width:100%;color:#5b5b5b;padding:10px;background-color: rgba(0,0,0,.05);margin-bottom:0px;font-size:12px;float:left; padding-top: 0; ma\">Последнее обновление</p>\n\n\n</div>\n  \n  \n  \n  \n  \n      <div class=\"quotations top5\" style=\"margin-top:20px; padding: 5px;\">\n  \n  <h5 style=\"margin-bottom:0px;padding:10px;padding-right:0;text-align:center;width:100%; padding-right:2px;float:left;\">ТОП 5 Криптовалют (% роста)</h5>\n  \n  <table class=\"table table-sm\" style=\"margin-bottom:0px;float:left\">\n\n  <tbody>\n    <tr>\n      <th style=\"border-top:none;\" scope=\"row\">Bitcoin</th>\n      <td style=\"border-top:none;\">$1231231232</td>\n      <td style=\"border-top:none;\">15%</td>\n\n    </tr>\n    <tr>\n      <th style=\"border-top:none;\" scope=\"row\">Ethereum</th>\n      <td style=\"border-top:none;\">$1231231232</td>\n      <td style=\"border-top:none;\">15%</td>\n\n    </tr>\n    <tr>\n      <th style=\"border-top:none;\" scope=\"row\">BitcoinCash</th>\n      <td style=\"border-top:none;\">$1231231232</td>\n      <td style=\"border-top:none;\">15%</td>\n\n    </tr>\n      <tr>\n      <th style=\"border-top:none;\" scope=\"row\">Ripple</th>\n      <td style=\"border-top:none;\">$1231231232</td>\n      <td style=\"border-top:none;\">15%</td>\n\n    </tr>\n  \n      <tr>\n      <th style=\"border-top:none;\" scope=\"row\">KickCoin</th>\n      <td style=\"border-top:none;\">$1231231232</td>\n      <td style=\"border-top:none;\">15%</td>\n\n    </tr>\n  </tbody>\n</table>\n\n<a href=\"\" style=\"float:left;width:100%;color:#4a4a4a;padding:10px;margin-top:5px;height:50px;\" class=\"all-cot\">Подробный рейтинг</a>\n\n\n\n</div>\n  \n  \n  <div class=\"quotations\" style=\"margin-top:40px;height:360px;background:#4a4a4a;text-align:center; margin-bottom: 40px;\">\n  \n  \n  <h4 style=\"color:#f58c1b;margin-top:100px;padding:20px\">Желаете инвестировать в Bitcoin?</h4>\n  \n  <a class=\"btn btn-outline\" style=\"background: #f58c1b;\n    color: #fff;\n    text-decoration: none;width:140px;border-radius:0\">Нажми на меня</a>\n    \n  </div>\n  \n  \n  \n  \n  \n        <div class=\"quotations\" style=\"margin-top:20px;padding:10px;\">\n  \n  <h5 style=\"margin-bottom:0px;padding:10px;padding-right:0;text-align:center;width:100%; padding-right:2px;float:left;\">ТОП 5 сервисов облачного майнинга</h5>\n  \n  <table class=\"table table-sm\" style=\"margin-bottom:0px;float:left\">\n\n  <tbody>\n    <tr>\n      <th style=\"border-top:none;\" scope=\"row\">HashFlare <p style=\"color:green;margin-bottom:0;font-size:12px;\">ПЛАТИТ</p></th>\n      <td style=\"border-top:none;text-align:right\">489% <p style=\"color:#ddd;margin-bottom:0;font-size:12px;\">111 дней</p></td>\n    </tr>\n <tr>\n      <th style=\"border-top:none;\" scope=\"row\">HashFlare <p style=\"color:green;margin-bottom:0;font-size:12px;\">ПЛАТИТ</p></th>\n      <td style=\"border-top:none;text-align:right\">489% <p style=\"color:#ddd;margin-bottom:0;font-size:12px;\">111 дней</p></td>\n    </tr>\n <tr>\n      <th style=\"border-top:none;\" scope=\"row\">HashFlare <p style=\"color:green;margin-bottom:0;font-size:12px;\">ПЛАТИТ</p></th>\n      <td style=\"border-top:none;text-align:right\">489% <p style=\"color:#ddd;margin-bottom:0;font-size:12px;\">111 дней</p></td>\n    </tr>\n <tr>\n      <th style=\"border-top:none;\" scope=\"row\">HashFlare <p style=\"color:green;margin-bottom:0;font-size:12px;\">ПЛАТИТ</p></th>\n      <td style=\"border-top:none;text-align:right\">489% <p style=\"color:#ddd;margin-bottom:0;font-size:12px;\">111 дней</p></td>\n    </tr>\n  \n <tr>\n      <th style=\"border-top:none;\" scope=\"row\">HashFlare <p style=\"color:green;margin-bottom:0;font-size:12px;\">ПЛАТИТ</p></th>\n      <td style=\"border-top:none;text-align:right\">489% <p style=\"color:#ddd;margin-bottom:0;font-size:12px;\">111 дней</p></td>\n    </tr>\n  </tbody>\n</table>\n\n<a href=\"\" style=\"float:left;width:100%;color:#4a4a4a;padding:10px;margin-top:5px;height:50px;\"  class=\"all-cot\">Все проекты (987)</a>\n\n\n\n</div>\n  \n  \n  \n  \n  \n  \n  \n  \n  \n   <div class=\"quotations\" style=\"margin-top:20px;border:none;text-align:center;padding-bottom: 20px;\">\n  <h4 style=\"margin-top:20px;margin-bottom:20px;\">Мы в соц. сетях</h4>\n  \n  \n  <i class=\"fa fa-vk\"></i>\n  <i class=\"fa fa-instagram\"></i>\n  <i class=\"fa fa-twitter\"></i>\n  <i class=\"fa fa-facebook\"></i>\n  </div>\n  \n  \n  \n  \n  \n  \n            <div class=\"quotations\" style=\"margin-top:20px;padding:10px;margin-bottom:20px;\">\n  \n  <h5 style=\"margin-bottom:0px;padding:10px;padding-right:0;text-align:center;width:100%; padding-right:2px;float:left;\">ТОП 5 фондов</h5>\n  \n  <table class=\"table table-sm\" style=\"margin-bottom:0px;float:left\">\n\n  <tbody>\n    <tr>\n      <th style=\"border-top:none;\" scope=\"row\">HashFlare <p style=\"color:#f58c1b;margin-bottom:0;font-size:12px;\">ОЖИДАНИЕ ВЫПЛАТЫ!</p></th>\n      <td style=\"border-top:none;text-align:right\">489% <p style=\"color:#ddd;margin-bottom:0;font-size:12px;\">489 дней</p></td>\n    </tr>\n <tr>\n      <th style=\"border-top:none;\" scope=\"row\">HashFlare <p style=\"color:green;margin-bottom:0;font-size:12px;\">ПЛАТИТ</p></th>\n      <td style=\"border-top:none;text-align:right\">489% <p style=\"color:#ddd;margin-bottom:0;font-size:12px;\">111 дней</p></td>\n    </tr>\n <tr>\n      <th style=\"border-top:none;\" scope=\"row\">HashFlare <p style=\"color:green;margin-bottom:0;font-size:12px;\">ПЛАТИТ</p></th>\n      <td style=\"border-top:none;text-align:right\">489% <p style=\"color:#ddd;margin-bottom:0;font-size:12px;\">111 дней</p></td>\n    </tr>\n <tr>\n      <th style=\"border-top:none;\" scope=\"row\">HashFlare <p style=\"color:green;margin-bottom:0;font-size:12px;\">ПЛАТИТ</p></th>\n      <td style=\"border-top:none;text-align:right\">489% <p style=\"color:#ddd;margin-bottom:0;font-size:12px;\">111 дней</p></td>\n    </tr>\n  \n <tr>\n      <th style=\"border-top:none;\" scope=\"row\">HashFlare <p style=\"color:green;margin-bottom:0;font-size:12px;\">ПЛАТИТ</p></th>\n      <td style=\"border-top:none;text-align:right\">489% <p style=\"color:#ddd;margin-bottom:0;font-size:12px;\">111 дней</p></td>\n    </tr>\n  </tbody>\n</table>\n\n<a href=\"\" style=\"float:left;width:100%;color:#4a4a4a;padding:10px;margin-top:5px;height:50px;\"  class=\"all-cot\">Все фонды (981)</a>\n\n\n\n</div>\n</div>\n</div>\n</div>\n\n<div class=\"footer\">\n  <div class=\"container\">\n  \n  \n  <p style=\"font-size: 13px; font-weight: bold\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \n  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \n  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n  \n  \n  <div style=\"width:500px;height:70px;padding:15px;background:white;border-radius:50px;margin:0 auto\">\n  \n  <input type=\"text\" style=\"background:white;border:none;width:300px;float:left;height:40px;\"/>\n  \n<a class=\"btn btn-outline\" style=\"background: #f58c1b;\n    color: #fff;\n    text-decoration: none;border-radius:50px;width:120px;float:right;\">Подписаться</a>\n</div>\n  \n  <h4 style=\"margin-top:40px;margin-bottom:30px; font-size: 16px; font-weight: bold\">Мы в соц. сетях</h4>\n  \n  \n  <i class=\"fa fa-vk\"></i>\n  <i class=\"fa fa-instagram\"></i>\n  <i class=\"fa fa-twitter\"></i>\n  <i class=\"fa fa-facebook\"></i>\n  \n  \n  \n   <h6 style=\"margin-top:20px; margin-bottom: 20px;  font-size: 16px; font-weight: bold\">2017- Все права защищены</h6>\n   <a href=\"/posts/all#top\" style=\" font-size: 15px; font-weight: bold; color: #000; margin-top: 20px; text-decoration: underline;\">Вернуться наверх</a>\n   \n   \n   \n   \n  \n  </div>\n  </div>"
+module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n        <router-outlet></router-outlet>\n        <aside class=\"sidebar\">\n            <ul class=\"tag-list\">\n                <li> <a\n                        [routerLink]=\"['/posts/all']\" routerLinkActive=\"active\">Все обзоры</a></li>\n                <li *ngFor=\"let category of categories\">\n                    <a\n                            [routerLink]=\"['/posts/category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n                </li>\n            </ul>\n            <app-sidebar></app-sidebar>\n        </aside>\n    </div>\n</section>"
 
 /***/ }),
 
 /***/ "./angular/app/review/review.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = "body {\n  background: #f9f9f9;\n  font-family: \"PT Sans\"; }\n\n.container {\n  max-width: 1180px !important; }\n\n.navbar {\n  background: #1d1f24;\n  padding: 15px 0; }\n\n#searchform, #searchform input {\n  width: 100%;\n  border-radius: 20px;\n  border: none;\n  height: 40px; }\n\n.menubar {\n  background: #383c46; }\n\n.navbar-nav-ul a {\n  font-family: \"PT Sans\";\n  font-weight: bold;\n  color: #fff;\n  text-transform: uppercase;\n  display: block;\n  padding: 7px 14px;\n  font-size: 14px;\n  border-top: 2px solid #383c46;\n  border-right: 1px solid #1d1f24; }\n\n.navbar-nav-ul li:last-of-type a {\n  margin-right: 0;\n  border-right: none; }\n\n.navbar-nav-ul a:hover, .navbar-nav-ul a.active {\n  background: #fff;\n  color: #f58c1b;\n  border-top: 2px solid #f58c1b;\n  text-decoration: none; }\n\n.navbar-nav-ul, .tags {\n  overflow: hidden;\n  list-style: none;\n  padding-left: 0; }\n\n.navbar-nav-ul li, .tags li {\n  float: left; }\n\n.tag {\n  z-index: 99;\n  position: relative; }\n\n.tags li {\n  margin-right: 15px; }\n\n.tags a {\n  display: block;\n  float: left;\n  padding: 9px 17px;\n  border-radius: 120px;\n  background: #e5e5e5;\n  color: #3e4468;\n  font-size: 13px;\n  font-family: \"PT Sans\"; }\n\n.tags a:hover, .tags a.active {\n  background: #f58c1b;\n  color: #fff;\n  text-decoration: none; }\n\n.block {\n  height: 230px !important;\n  margin-bottom: 13px !important; }\n\n.block-content {\n  padding: 24px 0 0 24px; }\n\n.block-content span a {\n  background: #fff;\n  color: #1d1f24;\n  padding: 7px;\n  text-decoration: none;\n  font-size: 12px;\n  /*display: block;*/\n  margin-right: 10px; }\n\n.block-content h2 {\n  font-size: 25px;\n  color: #fff;\n  line-height: 32px;\n  margin-top: 30px; }\n\n.meta {\n  position: absolute;\n  bottom: 20px;\n  left: 24px;\n  color: #fff;\n  font-family: \"Myriad Pro\", sans-serif;\n  font-weight: 100;\n  font-size: 10px; }\n\n.main-block p {\n  color: #002026;\n  font-size: 13px;\n  margin-top: 20px;\n  width: 85%;\n  line-height: 17px; }\n\n.main-block p a {\n  color: #002026;\n  text-decoration: underline; }\n\n.masonry-item {\n  width: 33.33%;\n  /*margin: 10px;*/\n  min-height: 170px;\n  padding: 10px; }\n\n.masonry-item img {\n  width: 100%; }\n\n.masonry {\n  width: 100%;\n  /*margin-left: -10px;*/\n  margin-top: 20px; }\n\n.left-block {\n  width: 880px; }\n\n.masonry-item h3 {\n  line-height: 23px; }\n\n.masonry-item h3 a {\n  color: #000000;\n  font-size: 18px;\n  font-weight: bold;\n  font-family: \"PT Sans\";\n  text-decoration: none;\n  line-height: 23px; }\n\n.masonry-item h3 a:hover {\n  color: #f58c1b; }\n\n.grid-item-bg {\n  min-height: 170px;\n  position: relative;\n  overflow: hidden; }\n\n.left-block {\n  padding-left: 0;\n  float: left; }\n\n.left-block .row {\n  margin-left: 0 !important; }\n\n.right-block {\n  max-width: 270px;\n  float: right;\n  width: 250px; }\n\n.categories a {\n  background: #cfcfcf;\n  border-radius: 20px;\n  font-size: 12px;\n  color: #000;\n  text-decoration: none;\n  padding: 7px 10px;\n  margin-right: 10px;\n  margin-bottom: 10px; }\n\n.categories a:hover, .categories .active {\n  background: #383c46;\n  color: #fff; }\n\n.row b {\n  padding: 4px 5px !important;\n  font-size: 12px; }\n\n.quotations {\n  width: 100%;\n  float: left;\n  min-height: 5px;\n  background: #fff; }\n\n.footer {\n  width: 100%;\n  background: #eee;\n  text-align: center;\n  float: left;\n  min-height: 5px;\n  padding: 50px; }\n\n.top {\n  width: 100%;\n  height: 100px;\n  background: black; }\n\n.block {\n  float: left;\n  margin-bottom: 25px;\n  width: calc(33.33% - 17px);\n  position: relative !important; }\n\n.block img {\n  width: 100%;\n  height: auto; }\n\n.quotations h5 {\n  color: #383c46;\n  text-align: left !important;\n  font-size: 16px;\n  font-weight: bold;\n  padding-left: 10px; }\n\n.quotations th {\n  padding-left: 10px; }\n\n.top5 {\n  font-weight: 100;\n  font-size: 13px;\n  text-align: right;\n  padding: 15px !important; }\n\n.top5 .all-cot {\n  text-align: left; }\n\n.top5 th {\n  font-weight: bold;\n  text-align: left; }\n\n.all-cot {\n  width: 100%;\n  color: #4a4a4a;\n  padding: 10px;\n  float: left;\n  text-decoration: underline;\n  font-weight: bold;\n  font-size: 13px;\n  padding-bottom: 0px; }\n\ni.fa {\n  padding: 0 !important; }\n\ni {\n  padding: 5px;\n  border: 1px solid #9b9b9b;\n  color: #9b9b9b;\n  border-radius: 50%;\n  width: 30px;\n  height: 30px;\n  line-height: 30px;\n  text-align: center; }\n\ni:hover {\n  color: #f58c1b;\n  border: 1px solid #f58c1b;\n  cursor: pointer; }\n\n.row .col-md-9 .row .col-md-3 {\n  padding-left: 22px !important;\n  padding-top: 5px; }\n\n.col-md-3 > h3 {\n  font-size: 35px; }\n\nh3 + h6 {\n  color: #9b9b9b;\n  margin-top: 13px !important;\n  float: left;\n  width: 50%;\n  text-align: center;\n  padding-left: 20px; }\n\n.tags li {\n  margin-top: 7px; }\n\n.rightbar {\n  padding-left: 0;\n  padding-right: 36px; }\n\n.categories {\n  margin-top: 15px; }\n\n.price {\n  font-weight: bold !important;\n  font-size: 13px;\n  color: #919191;\n  padding-top: 7px !important;\n  margin-bottom: -10px; }\n\n.login a {\n  font-size: 13px; }\n\n.spy {\n  background: url(/dist/assets/spy.png) top left no-repeat;\n  color: #fff;\n  padding-left: 25px;\n  margin-left: 20px; }\n\n.chat {\n  background: url(/dist/assets/chat.png) top left no-repeat;\n  color: #fff;\n  padding-left: 20px;\n  margin-left: 20px; }\n\n.main-block h2 a {\n  color: #fff;\n  text-decoration: none; }\n\n.main-block h2 a:hover {\n  text-decoration: underline; }\n"
+module.exports = ""
 
 /***/ }),
 
@@ -7365,8 +7313,7 @@ module.exports = "body {\n  background: #f9f9f9;\n  font-family: \"PT Sans\"; }\
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReviewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7377,35 +7324,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
-
 
 var ReviewComponent = (function () {
-    function ReviewComponent(http, router, route) {
+    function ReviewComponent(http) {
         var _this = this;
         this.http = http;
-        this.router = router;
-        this.route = route;
         this.categories = [];
         var path = "/categoriesraw/4";
         var info = http.get(path);
         info.subscribe(function (response) {
             for (var _i = 0, _a = response['cats']; _i < _a.length; _i++) {
                 var item = _a[_i];
-                _this.categories.push({
-                    id: item['id'],
-                    name: item['name'],
-                    count: item['count']
-                });
+                if (item['count'] > 0) {
+                    _this.categories.push({
+                        id: item['id'],
+                        name: item['name'],
+                        count: item['count']
+                    });
+                }
             }
             console.log(_this.categories);
         });
     }
     ReviewComponent.prototype.ngOnInit = function () {
-    };
-    ReviewComponent.prototype.loadCat = function (id) {
-        this.router.navigate(['/review/category', id]);
-        // console.log('snap');
     };
     return ReviewComponent;
 }());
@@ -7415,10 +7356,10 @@ ReviewComponent = __decorate([
         template: __webpack_require__("./angular/app/review/review.component.html"),
         styles: [__webpack_require__("./angular/app/review/review.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
 ], ReviewComponent);
 
-var _a, _b, _c;
+var _a;
 //# sourceMappingURL=review.component.js.map
 
 /***/ }),

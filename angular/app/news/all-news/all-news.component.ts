@@ -27,9 +27,6 @@ export class AllNewsComponent implements OnInit {
 
 
    }
-getBack(image) {
-  return 'url('+image+')';
-}
   ngOnInit() {
     this.route.data.subscribe(
         (data: Data) => {

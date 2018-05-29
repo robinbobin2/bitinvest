@@ -1,9 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
-import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 interface Categories {
@@ -21,7 +16,7 @@ interface Categories {
 export class NewsComponent implements OnInit {
 
    categories: Categories[] = [];
-  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+  constructor(private http:HttpClient) {
     let path = "/categoriesraw/1";
     const info = http.get(path);
   		info.subscribe(response => {
@@ -43,13 +38,6 @@ export class NewsComponent implements OnInit {
 
   ngOnInit() {
 
-  }
-  loadCat(id) {
-  	this.router.navigate(['/posts/category', id]);
-   //  console.log('snap');
-   //  this.route.url.subscribe(() => {
-   //  console.log(this.route.snapshot.firstChild.data);
-   // });
   }
 
 
