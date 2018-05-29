@@ -49,7 +49,7 @@ class CloudMiningViewController extends Controller
     }
 
 public function show($id) {
-        $item = CloudMining::where('id', $id)->with('comments.rating')->with('history')->first();
+        $item = CloudMining::where('id', $id)->with('comments.rating')->with('history')->with('category')->first();
             $history = $item->history;
             $got = 0;
             foreach ($history as $h_item) {

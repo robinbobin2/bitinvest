@@ -24,10 +24,10 @@
                     <p>Депозит: {{news.depo}}$ ({{news.percentage | number:'1.0-0'}}%)</p>
                   </div>
                 </li>
-                <li><span class="last-updated">Последняя выплата: 21.02.2017 в 21:01</span></li>
+                <li><span class="last-updated">Последняя выплата: </span></li>
 							</ul>
               <div class="progres-bar">
-                <a href="#" class="news-btn ico-btn"></a>
+                <a [routerLink]=["'/cloud-mining/item', news.cat_id"] class="news-btn ico-btn">{{news.category.name}}</a>
 				  <a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
 				  <a href="#follow-popup" *ngIf="!checkInPortfolio(news.id) && checkAuth()" (click)="selectedItem = news" class="popup-link follow" data-effect="mfp-zoom-in"><span class="plus">+</span><span class="text">Следить</span></a>
 

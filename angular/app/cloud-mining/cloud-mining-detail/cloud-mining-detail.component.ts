@@ -25,6 +25,8 @@ export class NewsRaw {
     latest_date: number;
     percentage: string;
     start_days: number;
+    category: any;
+    cat_id: any;
 }
 export class User {
   id:number;
@@ -107,7 +109,9 @@ submitted = false;
 					    ref_about: response['news'].ref_about,
 					    latest_date: response['news'].latest_date,
 					    percentage: response['news'].percentage,
-					    start_days: response['news'].start_days,
+                start_days: response['news'].start_days,
+                category: response['news'].category,
+                cat_id: response['news'].cat_id,
 					};
 
   			console.log(response['news']['history']);
