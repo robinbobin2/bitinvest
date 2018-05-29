@@ -18,7 +18,7 @@
 						</div>
 						<div class="input-wrap">
 							<label>Никнейм </label>
-							<input type="text" [(ngModel)]="user.name"  name="name" ">
+							<input type="text" [(ngModel)]="user.name"  name="name">
 						</div>
 						<button type="submit">Сохранить</button>
             <p *ngIf="submitted">Изменения успешно сохранены</p>
@@ -50,7 +50,7 @@
           <form class="upload">
             <div class="input-wrap">
               <input type="file" id="file" #fileInput name="file" class="input-file ng-pristine ng-valid ng-touched" files-model="" ng-model="project.fileList" (change)="handleFileInput($event.target.files)">
-              <label for="files">
+              <label for="file">
                 <span class="add-image">
                 Выбрать и загрузить фото
                 </span>

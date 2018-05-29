@@ -144,9 +144,8 @@
                         <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
                     </div>
                     
-                    <div *ngIf="user.id != undefined" style="background: none !important; border: none !important" class="comment-top">
+                    <div *ngIf="user.id != undefined" style="background: none !important; border: none !important" class="comment-top" *ngIf="news.comments_count > 0">
                         <h3 >Комментарии ({{commentcount}})</h3>
-                        <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
 
                     
                     </div>
@@ -181,7 +180,7 @@
           <!-- <a href="#" class="show-comments">Показать все комментарии (22)</a> -->
         </div>
         <div class="news-body">
-          <div class="news-tab-content active">
+          <div class="news-tab-content active" *ngIf="news > 0 || main_mews > 0">
           <h3>Новости #{{exchange.name}}</h3>
           <div class="main-news">
                   <div class="news" *ngFor="let item of main_news">
@@ -218,7 +217,7 @@
                     </div>
                   </div>
                 </ng-template>
-                <a routerLink="/posts/all" class="show-news">Показать больше новостей</a>
+                <a *ngIf="news > 0 || main_mews > 0" routerLink="/posts/all" class="show-news">Показать больше новостей</a>
                 </div>
         </div>
       </div></div>

@@ -42,15 +42,8 @@
         </ul>
         <div class="setting-top-block" *ngIf="checkUser()">
           <a routerLink="/profile/edit"><img src="/img/settings-icon.png" alt=""></a>
-          <div class="img-wrap" style="overflow: hidden"><img style="width: 100%; height: 100%;"
-            src="{{user.photo ? user.photo.file : 'http://aiyd.org/wp-content/uploads/2016/09/no-image-icon-hi.png'}}" alt=""></div>
-          <div class="select-wrap">
-            <select>
-              <option value="all">{{user.name}}</option>
-              <option value="usd">{{user.email}}</option>
-              <!-- <option value="eur">irinaivanova</option> -->
-            </select>
-          </div>
+          <a routerLink="/profile/portfolio"></a><div class="img-wrap" style="overflow: hidden"><img style="width: 100%; height: 100%;"
+            src="{{user.photo ? user.photo.file : 'http://aiyd.org/wp-content/uploads/2016/09/no-image-icon-hi.png'}}" alt=""></div></a>
         </div>
       </div>
     </div>

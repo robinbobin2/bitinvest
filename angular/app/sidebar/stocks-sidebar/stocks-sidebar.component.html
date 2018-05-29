@@ -9,7 +9,7 @@
                 <span *ngIf="i < 5" class="crypto" >{{item.sym}}</span>
                 <span *ngIf="i < 5" class="usd" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">${{item.now | number:'1.0-1'}}</span>
                 <span *ngIf="i < 5" class="rub" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">₽{{item.now*60 | number:'1.0-1'}}</span>
-                <span *ngIf="i < 5" class="change" style="color: #000;" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">{{item.now-item.last | number:'1.0-1'}}</span>
+                <span *ngIf="i < 5" class="change" [ngClass]="item.now-item.last > 0 ? 'change-green' : 'change-red'" style="">{{item.now-item.last | number:'1.1-3'}}</span>
               </a>
             </li>
               </ng-template>
