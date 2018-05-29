@@ -25,6 +25,7 @@ use App\Models\Founder\Models\Providers\BraziliexProvider;
 use App\Models\Founder\Models\Providers\BTCBoxProvider;
 use App\Models\Founder\Models\Providers\BTCTurkProvider;
 use App\Models\Founder\Models\Providers\BxinthProvider;
+use App\Models\Founder\Models\Providers\C2CXProvider;
 use App\Models\Founder\Models\Providers\CcexProvider;
 use App\Models\Founder\Models\Providers\CexProvider;
 use App\Models\Founder\Models\Providers\CobinhoodProvider;
@@ -36,6 +37,7 @@ use App\Models\Founder\Models\Providers\CoinMarketCapProvider;
 use App\Models\Founder\Models\Providers\CoinnestProvider;
 use App\Models\Founder\Models\Providers\CoinoneProvider;
 use App\Models\Founder\Models\Providers\CoinTigerProvider;
+use App\Models\Founder\Models\Providers\CryptopiaProvider;
 use App\Models\Founder\Models\Providers\ExmoProvider;
 use App\Models\Founder\Models\Providers\ExxProvider;
 use App\Models\Founder\Models\Providers\FlowBTCProvider;
@@ -62,8 +64,10 @@ use App\Models\Founder\Models\Providers\OkCoinProvider;
 use App\Models\Founder\Models\Providers\OkexProvider;
 use App\Models\Founder\Models\Providers\OneBrokerProvider;
 use App\Models\Founder\Models\Providers\OneBTCXEProvider;
+use App\Models\Founder\Models\Providers\OTCBTCProvider;
 use App\Models\Founder\Models\Providers\PoloniexProvider;
 use App\Models\Founder\Models\Providers\QryptosProvider;
+use App\Models\Founder\Models\Providers\SimexProvider;
 use App\Models\Founder\Models\Providers\SouthXChangeProvider;
 use App\Models\Founder\Models\Providers\TheRockProvider;
 use App\Models\Founder\Models\Providers\TideBitProvider;
@@ -155,7 +159,11 @@ class Updater extends \Illuminate\Console\Command
         ZaifProvider::class,
         ZbProvider::class,
         BitHumbProvider::class,
-        CoinoneProvider::class
+        CoinoneProvider::class,
+        CryptopiaProvider::class,
+        OTCBTCProvider::class,
+        C2CXProvider::class,
+        SimexProvider::class
     ];
 
     /**

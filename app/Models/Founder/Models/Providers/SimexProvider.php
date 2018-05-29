@@ -2,37 +2,37 @@
 /**
  * Created by PhpStorm.
  * User: xeror
- * Date: 11.05.2018
- * Time: 18:01
+ * Date: 28.05.2018
+ * Time: 18:30
  */
 
 namespace App\Models\Founder\Models\Providers;
 
 
 use App\Models\Entity\ExchangeRate;
-use App\Models\Founder\Models\Connectors\XBTCEConnector;
+use App\Models\Founder\Models\Connectors\SimexConnector;
 use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class XBTCEProvider extends FounderProvider
+class SimexProvider extends FounderProvider
 {
     public function getExchangeId()
     {
-        return 60;
+        return 68;
     }
 
     protected function getConnectorClass()
     {
-        return new XBTCEConnector();
+        return new SimexConnector();
     }
 
     /**
-     * @return XBTCEConnector
+     * @return SimexConnector
      */
     protected function getConnector()
     {
-        /** @var XBTCEConnector $connector */
+        /** @var SimexConnector $connector */
         $connector = parent::getConnector();
         return $connector;
     }
@@ -45,14 +45,14 @@ class XBTCEProvider extends FounderProvider
             return $result;
         }
 
-        foreach ($response->Data as $value) {
+        foreach ($response->data as $value) {
             $ticker = new TickerEntity();
-            $ticker->setAsk($value->BestAsk);
-            $ticker->setBid($value->BestBid);
-            $ticker->setVolume($value->DailyTradedTotalVolume);
-            $ticker->setValue(($value->DailyBestSellPrice + $value->DailyBestBuyPrice) / 2);
+            $ticker->setAsk($value->buy_price);
+            $ticker->setBid($value->sell_price);
+            $ticker->setVolume($value->base_volume);
+            $ticker->setValue($value->last_price);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(substr($value->Symbol, 0,3) . "/" . substr($value->Symbol, 3));
+            $ticker->setCurrency($value->base->name . "/" . $value->quote->name);
             $result[] = $ticker;
         }
 
