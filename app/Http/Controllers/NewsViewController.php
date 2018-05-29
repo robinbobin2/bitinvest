@@ -6,10 +6,11 @@ use App\Interview;
 use App\News;
 use Auth;
 use Illuminate\Http\Request;
+
 class NewsViewController extends Controller
 {
-    //
-    public function index() {
+    public function index()
+    {
         $news = News::with('photos')->with('category')->latest()->withCount('comments')->get()->where('main', 0)->toArray();
         $news = array_values($news);
         $interviews = Interview::with('photos')->latest()->with('category')->withCount('comments')->get()->where('to_news', 1)->toArray();
@@ -18,30 +19,25 @@ class NewsViewController extends Controller
         $main_news = array_values($main_news);
         $n = 7;
 
-        for ($i=0; $i < count($interviews); $i++) {
-        if (array_key_exists($n,$news)) {
-                   array_splice( $news, $n, 0, [$interviews[$i]] );
-                   $n += 9;
-               }
-               }
-               
-            
+        for ($i = 0; $i < count($interviews); $i++) {
+            if (array_key_exists($n, $news)) {
+                array_splice($news, $n, 0, [$interviews[$i]]);
+                $n += 9;
+            }
+        }
+
+
         foreach ($news as $key => $value) {
             $news[$key]['position'] = $key;
         }
         return response()->json([
             'news' => $news,
             'main_news' => $main_news,
-            // 'interviews' => $interviews,
-            // 'photos'=>$photos
         ]);
-        // dd($news);
-        // return $news->toJson();
-
-
     }
 
-    public function byCat($id) {
+    public function byCat($id)
+    {
         $news = News::with('photos')->withCount('comments')->with('category')->where('cat_id', $id)->latest()->get()->where('main', 0)->toArray();
         $news = array_values($news);
 
@@ -50,15 +46,11 @@ class NewsViewController extends Controller
         return response()->json([
             'news' => $news,
             'main_news' => $main_news,
-            // 'photos'=>$photos
         ]);
-        // dd($news);
-        // return $news->toJson();
-
-
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $news = News::first()->with('comments.rating')->get()->where('id', $id)->toArray();
         $commentnews = News::findOrFail($id);
         $comments = $commentnews->comments;
@@ -66,34 +58,12 @@ class NewsViewController extends Controller
         $user = Auth::user();
         $photos = $commentnews->photos;
         $category = $commentnews->category;
-        // $main_news = News::with('photos')->with('category')->get()->where('main', 1)->take(2)->toArray();
-        // $main_news = array_values($main_news);
-        // $news = $news->toJson();
-        // $news = array_values($news);
-        // $comments = $news->comments();
-        // $photos = $news->photos();
-        // for ($i=0; $i < count($news); $i++) { 
-        //     if($news[$i]->photos){
-        //                 foreach ($news[$i]->photos as $photo) {
-                         
-        //                 // $news[$i]['photos']['file'] = array($photo->file);   # code...
-        //                 // echo $photo->file;
-        //             }
-        //     }
-        // }
         return response()->json([
-            'news'=>$news,
-            'user'=>$user,
-            // 'comments'=>$comments,
-            'photos'=>$photos,
-            'category'=>$category,
-            'comments_count'=>count($comments)
-            // 'main_news' => $main_news,
-            // 'photos'=>$photos
+            'news' => $news,
+            'user' => $user,
+            'photos' => $photos,
+            'category' => $category,
+            'comments_count' => count($comments)
         ]);
-        // dd($news);
-        // return $news->toJson();
-
-
     }
 }
