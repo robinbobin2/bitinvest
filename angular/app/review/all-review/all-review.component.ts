@@ -1,29 +1,7 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
-import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MasonryOptions } from 'angular2-masonry';
 
 
-const scr = 'http://ppql.ru/masonry.js';
-interface Category {
-  id: number;
-  name: string;
-}
-
-export class NewsRaw {
-  id: number;
-  title: string;
-  desc: string;
-  main: number;
-  category:string;
-  photo: string;
-  created_at:string;
-
-}
 @Component({
   selector: 'app-all-review',
   templateUrl: './all-review.component.html',
@@ -31,11 +9,11 @@ export class NewsRaw {
 })
 export class AllReviewComponent implements OnInit {
   news_raw: any[];
-	news: NewsRaw[] = [];
-  main_news: NewsRaw[] = [];
+	news= [];
+  main_news = [];
   info: any;
   countAll: any;
-   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) {
+   constructor(private http:HttpClient) {
    	let path = "/reviewraw";
    	this.info = http.get(path);
 
@@ -47,10 +25,10 @@ export class AllReviewComponent implements OnInit {
 
       this.info.map(response => {
           this.news = response['news'];
-
+console.log(this.news)
           this.main_news = response['main_news'];
           this.countAll = this.news.length+this.main_news.length;
-      })
+      }).subscribe()
   }
 
 
