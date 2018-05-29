@@ -368,15 +368,15 @@
             </div>
           </div>
 
-          <div class="tab-content description-content"  [ngClass]="getRoute('about') ? 'active' : ''">
-            <h2>Описание {{data?.symbol}} ({{data?.name}})</h2>
+          <div class="tab-content description-content overview-block"  [ngClass]="getRoute('about') ? 'active' : ''">
+            <h3>Описание {{data?.symbol}} ({{data?.name}})</h3>
             <div [innerHTML]='data?.desc'></div>
           </div>
 
         </div>
       </div>
       <aside class="sidebar">
-        <div class="description">
+        <div class="description" *ngIf="!getRoute('about')">
           <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
           <div [innerHTML]='data?.desc'></div>
           <br> <p><a class="more-sidebar"  routerLink="about">Подробнее</a><p>
