@@ -32,7 +32,7 @@
                     <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
                 </div>
 
-                <div *ngIf="user.id != undefined || commentcount > 0" style="background: none !important; border: none !important" class="comment-top">
+                <div *ngIf="user.id != undefined && commentcount > 0" style="background: none !important; border: none !important" class="comment-top">
                     <h3 >Комментарии ({{commentcount}})</h3>
 
 
