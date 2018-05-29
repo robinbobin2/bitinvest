@@ -1,41 +1,74 @@
-<div class="row">
-<div class="col-lg-12">
-<h2>{{news?.title}}</h2>
-</div>
-<div class="col-lg-12" [innerHTML]="news?.desc">
-
-	</div>
-<div class="col-lg-12">
-	<h3>Оставить комментарий</h3>
-<form (ngSubmit)="submitComment(f, news.id, 'App\\Review')" #f="ngForm">
-	<div class="form-group">
-	<input type="hidden" ngModel name="post_id" value="{{news?.id}}">
-	<input type="hidden" ngModel name="commentable_type" value="App\Review">
-
-	<!-- <input type="hidden" > -->
-	<textarea ngModel name="body" class="form-control"></textarea>
-	<button type="submit" class="btn btn-success">Опубликовать</button>
-</div>
-</form>
-
-<h3>Комментарии</h3>
-       <div class="container">
-        <div class="row">
-
-                <div *ngFor="let item of comments" class="col-lg-12" style="margin-top:20px;">
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" height="64" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h6 class="media-heading">{{item.author}}
-                            <!-- <small>{{$comment->created_at->diffForHumans()}}</small>  -->
-                        </h6>
-                        <p>{{item.body}}</p>
-                        </div>
+<section class="news-card-wrap">
+    <div class="wrapper">
+        <div class="news-card-block">
+            <div class="news-big news-big2">
+                <a routerLink="/review/all" class="return"><span>&#60;</span>Вернуться к списку новостей</a>
+                <h2>{{news?.title}}</h2>
+                <div class="info info-top">
+                    <div class="left-block">
+                        <a [routerLink]="['/review/category', news.cat_id]" class="news-btn">{{news.category}}</a>
+                        <span class="date">{{news.created_at}}</span>
+                    </div>
+                    <div class="right-block">
+                        <a href="#" class="comments"><img src="img/comment.svg" alt="">5</a>
+                        <span class="views"><img src="img/eye.svg" alt="">1280</span>
                     </div>
                 </div>
-</div>
-</div>
-</div>
-</div>
+            </div>
+            <div class="innertext"  [innerHTML]='news?.desc | safeHtml'>
+            </div>
+            <div class="comment-block" id="comment-block">
+                <div class="comment-top" *ngIf="user.id != undefined">
+                    <h3>Добавить новый комментарий</h3>
+                    <form (ngSubmit)="submitComment(f, news.id, 'App\\Review')" #f="ngForm">
+                        <input type="hidden" ngModel name="post_id" value="{{news?.id}}">
+                        <input type="hidden" ngModel name="commentable_type" value="App\News">
+                        <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
+                        <button type="submit">Добавить</button>
+                    </form>
+                </div>
+                <div class="comment-top" *ngIf="user.id == undefined">
+                    <h3>Комментарии ({{news.comments_count}})</h3>
+                    <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
+                </div>
+
+                <div *ngIf="user.id != undefined" style="background: none !important; border: none !important" class="comment-top">
+                    <h3 >Комментарии ({{commentcount}})</h3>
+                    <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
+
+
+                </div>
+                <ul class="comment-items">
+                    <!--  -->
+                    <ng-template ngFor let-item [ngForOf]="comments" let-i="index">
+                        <li [ngClass]="i > 10 ? 'hidden' : ''" >
+                            <div class="left">
+                                <div class="info">
+                                    <div class="img-wrap">
+                                        <img src="{{item.photo}}" style="max-width: 35px; height: auto;" alt="">
+                                    </div>
+                                    <div class="text-wrap">
+                                        <p>{{item.author}}</p>
+                                        <span>Добавлен {{item.created_at}}</span>
+                                    </div>
+                                </div>
+                                <p class="comment-text">{{item.body}}</p>
+                            </div>
+                            <div class="right">
+                                <div class="img-wrap"></div>
+                                <div class="btn-block">
+                                    <span class="number-green" [ngClass]="rating_count[item.id] > -1 ? 'number-green' : 'number-red'">{{rating_count[item.id]}}</span>
+                                    <div class="buttons">
+                                        <a (click)="onVote(item.id, 1)" class="plus">+</a>
+                                        <a (click)="onVote(item.id, 0)" class="minus">-</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ng-template>
+                </ul>
+                <a *ngIf="news.comments_count > 10 && !hide" class="show-comments">Показать все комментарии ({{news.comments_count}})</a>
+            </div>
+        </div>
+    </div>
+</section>
