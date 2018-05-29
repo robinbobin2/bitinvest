@@ -25,7 +25,7 @@ class LunoConnector extends FounderConnector
         curl_setopt($curl, CURLOPT_URL, "https://api.mybitx.com/api/1/tickers");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($curl);
-        SupplierLog::log("search", $result, 70);
+        SupplierLog::log("search", $result, 46);
         return json_decode($result);
     }
 }
