@@ -44,9 +44,9 @@
           <a routerLink="/profile/edit"><img src="/img/settings-icon.png" alt=""></a>
           <a routerLink="/profile/portfolio"><div class="img-wrap" style="overflow: hidden"><img style="width: 100%; height: 100%;"
             src="{{user.photo ? user.photo.file : 'http://aiyd.org/wp-content/uploads/2016/09/no-image-icon-hi.png'}}" alt=""></div></a>
-          <a routerLink="/profile/portfolio"><div class="select-wrap">
-              <option value="all">{{user.name}}</option>
-          </div></a>
+          <a routerLink="/profile/portfolio">
+              <p style="margin-right: 0; color: #FFffff;" value="all">{{user.name}}</p>
+          </a>
         </div>
       </div>
     </div>
