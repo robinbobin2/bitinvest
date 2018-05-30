@@ -123,6 +123,7 @@ export class PortfolioComponent implements OnInit {
                                            this.miningService.getCryptoId(portfolioItem.symbol).subscribe((res)=>{
                                                portfolioItem.id = res['id'];
                                                console.log(res)
+                                               console.log(portfolioItem.id)
                                            })
                                        }
 

@@ -6816,6 +6816,7 @@ var PortfolioComponent = (function () {
                                     _this.miningService.getCryptoId(portfolioItem.symbol).subscribe(function (res) {
                                         portfolioItem.id = res['id'];
                                         console.log(res);
+                                        console.log(portfolioItem.id);
                                     });
                                 };
                                 for (var _i = 0, _a = _this.portfolios[item.id]; _i < _a.length; _i++) {
