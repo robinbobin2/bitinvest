@@ -8,7 +8,7 @@ import {OrderPipe} from "../../order-pipe/ngx-order.pipe";
 
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
-
+declare var $:any;
 export class NewsRaw {
   id: number;
   name: string;
@@ -147,11 +147,12 @@ export class IcoProjectCategoriesComponent implements OnInit {
                         // code...
                     } else {
                         this.portfoliosInfo = res['ico'];
-                        console.log(this.portfoliosInfo);
                     }
                 }),
                     this.checkInPortfolio(id);
-
+                setTimeout(()=> {
+                    $.getScript('/js/script.js');
+                }, 300)
             },
             error => console.log(error)
         )

@@ -8,7 +8,7 @@ import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 import { NgForm } from '@angular/forms';
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
-
+declare var $:any;
 export class NewsRaw {
   id: number;
     name:string;
@@ -161,10 +161,12 @@ export class CloudMiningCategoriesComponent implements OnInit {
                     // code...
                 } else {
                     this.portfoliosInfo = res['mining'];
-                    console.log(this.portfoliosInfo);
                 }
             });
             this.checkInPortfolio(id);
+            setTimeout(()=> {
+                $.getScript('/js/script.js');
+            }, 300)
         })
 
     }
@@ -185,7 +187,6 @@ export class CloudMiningCategoriesComponent implements OnInit {
             this.reverse = reverse;
         }
         this.order = value;
-        console.log(this.order);
     }
     submitPortfolio( post_id, type) {
 

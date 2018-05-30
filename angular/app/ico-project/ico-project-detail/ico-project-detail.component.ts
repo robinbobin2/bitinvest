@@ -61,6 +61,7 @@ export class Percent {
   percent:number;
   name: string;
 }
+declare var $:any;
 @Component({
   selector: 'app-ico-project-detail',
   templateUrl: './ico-project-detail.component.html',
@@ -286,11 +287,12 @@ percents: Array<Percent> = [];
                         // code...
                     } else {
                         this.portfoliosInfo = res['ico'];
-                        console.log(this.portfoliosInfo);
                     }
                 }),
                     this.checkInPortfolio(id);
-
+                setTimeout(()=> {
+                    $.getScript('/js/script.js');
+                }, 300)
             },
             error => console.log(error)
         )

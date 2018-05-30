@@ -85,7 +85,7 @@
                             <li><a href="{{route('categories.index')}}">Все категории</a></li>
                             <li><a href="{{route('mining.index')}}">Облачный майнинг</a></li>
                             <li><a href="{{route('icoproject.index')}}">ICO проекты</a></li>
-
+                            <li><a href="{{route('exchanges.index')}}">ICO проекты</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-9">

@@ -7,6 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import {StocksService} from '../stocks.service';
 import {AuthService} from "../auth.service";
+
+declare var $:any;
 @Component({
 	selector: 'app-exchange',
 	templateUrl: './exchange.component.html',
@@ -238,6 +240,9 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
                     }
                 }),
                     this.checkInPortfolio(id);
+                setTimeout(()=> {
+                    $.getScript('/js/script.js');
+                }, 300)
 
             },
             error => console.log(error)

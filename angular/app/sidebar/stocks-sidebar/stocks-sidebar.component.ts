@@ -46,7 +46,7 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
     .subscribe(response => {
       this.resp = response;
       this.data = this.alldata.subscribe(response => {
-      this.cryptoData=Observable.interval(3000).take(10).concatMap(()=>this.stocksService.getCrypto())
+      this.cryptoData=Observable.interval(5000).concatMap(()=>this.stocksService.getCrypto())
     .map((response)=>{this.resp = response}).subscribe(()=>{
       
         let admin = response;
@@ -55,9 +55,11 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
           let symbol = admin[index].symbol;
           let year = admin[index].year;
           let algo = admin[index].algo;
+
           this.animtype[index] = '';
           if (this.dataUsd[index]) {
               if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
+                  this.dataUsd[index].diff = this.dataUsd[index].now - this.resp[symbol + '/USD']['now']
                   if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
                       this.animtype[index] = 'redcolor';
                   } else {

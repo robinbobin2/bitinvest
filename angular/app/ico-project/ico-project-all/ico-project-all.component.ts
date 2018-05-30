@@ -31,7 +31,7 @@ export class NewsRaw {
   logo:string;
   comments_count:number
 }
-
+declare var $:any;
 @Component({
   selector: 'app-ico-project-all',
   templateUrl: './ico-project-all.component.html',
@@ -161,11 +161,12 @@ this.authService.getUser().subscribe(
            // code...
          } else {
          this.portfoliosInfo = res['ico'];
-         console.log(this.portfoliosInfo);
          }
        }),
         this.checkInPortfolio(id);
-
+          setTimeout(()=> {
+              $.getScript('/js/script.js');
+          }, 300)
       },
       error => console.log(error)
     )

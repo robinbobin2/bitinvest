@@ -9,7 +9,7 @@ import {AuthService} from "../auth.service";
 import { NgForm } from '@angular/forms';
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
-
+declare var $:any;
 @Component({
   selector: 'app-exchanges',
   templateUrl: './exchanges.component.html',
@@ -72,8 +72,8 @@ export class ExchangesComponent implements OnInit, OnDestroy {
       this.exchanges = res; 
       this.count = this.exchanges.length;
 
-        this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
-        this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
+        // this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
+        // this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
 
     });
 
@@ -95,17 +95,17 @@ export class ExchangesComponent implements OnInit, OnDestroy {
         }
     });
 
-  	this.volume_data = Observable.interval(2000).concatMap(()=>this.stockService.getVolumes())
-          .map((response)=>{
-              this.volumes = response;
-          }).subscribe( () => {
-              for(let item of this.volumes) {
-                  this.exchange_volumes[item.name] = {
-                      'btc': item.btc,
-                      'usd': item.usd
-                  }
-              }
-          } );
+  	// this.volume_data = Observable.interval(2000).concatMap(()=>this.stockService.getVolumes())
+       //    .map((response)=>{
+       //        this.volumes = response;
+       //    }).subscribe( () => {
+       //        for(let item of this.volumes) {
+       //            this.exchange_volumes[item.name] = {
+       //                'btc': item.btc,
+       //                'usd': item.usd
+       //            }
+       //        }
+       //    } );
   }
   setOrder(value: string) {
      if (this.order === value) {
@@ -126,6 +126,9 @@ export class ExchangesComponent implements OnInit, OnDestroy {
                 }
             });
             this.checkInPortfolio(id);
+            setTimeout(()=> {
+                $.getScript('/js/script.js');
+            }, 300)
         })
     }
 

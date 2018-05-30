@@ -20,6 +20,7 @@
                         @foreach($coins as $coin)
                         <li>
                             <label>
+                                @if()
                                 <input type="checkbox" name="coins[]" value="{{$coin->id}}">
                                 {{$coin->name}}
                             </label>
