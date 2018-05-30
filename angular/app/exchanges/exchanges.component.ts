@@ -71,7 +71,8 @@ export class ExchangesComponent implements OnInit, OnDestroy {
       this.count = this.exchanges.length;
       this.yearFilterArray =  this.exchanges.map(item => item.year)
             .filter((value, index, self) => self.indexOf(value) === index)
-
+        console.log(this.exchanges)
+        console.log(this.yearFilterArray)
     });
 
 
