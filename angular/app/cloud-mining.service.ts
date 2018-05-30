@@ -23,6 +23,11 @@ export class CloudMiningService {
         return this.http.get<any>('/icoraw/'+id);
 
     }
+    public getCryptoId(sym) {
+
+        return this.http.get<any>('/allcrypto/'+sym);
+
+    }
 
   public getIcoTop() {
        return this.http.get<any>(this.pathIco);

@@ -103,7 +103,7 @@ export class PortfolioComponent implements OnInit {
                             
                             if(type_id == 3) {
                                    
-                                   this.stockService.getCrypto().subscribe(crypto=>{
+                                   this.stockService.getCrypto().subscribe(crypto=> {
                                        
                                        this.dataUsd = crypto
                                        
@@ -119,12 +119,15 @@ export class PortfolioComponent implements OnInit {
                                            portfolioItem.marketCapUsd = crypto[portfolioItem['symbol']+"/USD"]['marketCapUsd'];
 
                                            this.diff[item.id] = portfolioItem.now - portfolioItem.last;
+
+                                           this.miningService.getCryptoId(portfolioItem.symbol).subscribe((res)=>{
+                                               portfolioItem.id = res['id'];
+                                           })
                                        }
 
-                                       console.log(crypto)
-                                       console.log(this.portfolios[item.id])
 
-                                   })
+
+                                   });
                                
                                 
                             }
@@ -152,6 +155,8 @@ export class PortfolioComponent implements OnInit {
                                     )
                                 }
                             }
+
+
                             
                             
                         }
