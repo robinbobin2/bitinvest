@@ -3967,11 +3967,8 @@ var ExchangesComponent = (function () {
         this.stockService.getExchanges().subscribe(function (res) {
             _this.exchanges = res;
             _this.count = _this.exchanges.length;
-            _this.yearFilter = _this.exchanges.map(function (data) { return data.year; });
-            // Unique currencies
-            _this.yearFilterArray = _this.yearFilter.filter(function (x, i, a) { return x && a.indexOf(x) === i; });
+            _this.yearFilterArray = _this.exchanges.filter(function (x, i, a) { return a.indexOf(x) == i; });
             console.log(_this.yearFilterArray);
-            console.log(_this.yearFilter);
         });
         this.stockService.getVolumes().subscribe(function (res) {
             _this.volumes = res;

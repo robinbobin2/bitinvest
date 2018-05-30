@@ -37,7 +37,6 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     portfolioInfo:any;
     getUserPortfolio = [];
     yearFilterArray: any;
-    yearFilter: any;
   constructor(private http:HttpClient,
               private router:Router,
               private route:ActivatedRoute,private stockService:StocksService, private orderPipe: OrderPipe,
@@ -72,12 +71,8 @@ export class ExchangesComponent implements OnInit, OnDestroy {
       this.count = this.exchanges.length;
 
 
-        this.yearFilter = this.exchanges.map(data => data.year);
-
-        // Unique currencies
-        this.yearFilterArray = this.yearFilter.filter((x, i, a) => x && a.indexOf(x) === i);
+        this.yearFilterArray = this.exchanges.filter((x, i, a) => a.indexOf(x) == i)
         console.log(this.yearFilterArray)
-        console.log(this.yearFilter)
 
     });
 
