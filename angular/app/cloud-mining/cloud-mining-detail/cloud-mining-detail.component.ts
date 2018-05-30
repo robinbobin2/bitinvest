@@ -258,6 +258,7 @@ submitted = false;
             this.checkInPortfolio(id);
 
             setTimeout(()=> {
+                console.log('get scr')
                 $.getScript('/js/script.js');
             }, 300)
         })

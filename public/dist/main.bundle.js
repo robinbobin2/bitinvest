@@ -2025,6 +2025,7 @@ var CloudMiningDetailComponent = (function () {
             });
             _this.checkInPortfolio(id);
             setTimeout(function () {
+                console.log('get scr');
                 $.getScript('/js/script.js');
             }, 300);
         });
