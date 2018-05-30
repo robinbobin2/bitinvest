@@ -69,7 +69,8 @@ export class ExchangesComponent implements OnInit, OnDestroy {
       );
     // все биржи из админки
     this.stockService.getExchanges().subscribe((res: Array<any>) => {
-      this.exchanges = res; 
+      this.exchanges = res;
+        this.load=false;
       this.count = this.exchanges.length;
       console.log(this.exchanges)
         // this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
@@ -78,24 +79,24 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     });
 
 
-  	this.stockService.getVolumes().subscribe(res => {
-
-      this.volumes = res
-      for(let item of this.volumes) {
-        this.exchange_volumes[item.name] = {
-          'btc': item.btc,
-          'usd': item.usd
-        }
-      }
-        console.log(this.volumes)
-    });
-  	this.stockService.getPairsCount().subscribe(res => {
-        this.load=false;
-        for(let item of res) {
-            this.pairs_count[item.name] = item['count(xt.id)'];
-        }
-        console.log(this.pairs_count)
-    });
+  	// this.stockService.getVolumes().subscribe(res => {
+    //
+    //   this.volumes = res
+    //   for(let item of this.volumes) {
+    //     this.exchange_volumes[item.name] = {
+    //       'btc': item.btc,
+    //       'usd': item.usd
+    //     }
+    //   }
+    //     console.log(this.volumes)
+    // });
+  	// this.stockService.getPairsCount().subscribe(res => {
+    //     this.load=false;
+    //     for(let item of res) {
+    //         this.pairs_count[item.name] = item['count(xt.id)'];
+    //     }
+    //     console.log(this.pairs_count)
+    // });
 
   	// this.volume_data = Observable.interval(2000).concatMap(()=>this.stockService.getVolumes())
        //    .map((response)=>{
