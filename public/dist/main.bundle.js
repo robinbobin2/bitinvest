@@ -3977,8 +3977,8 @@ var ExchangesComponent = (function () {
         this.stockService.getExchanges().subscribe(function (res) {
             _this.exchanges = res;
             _this.count = _this.exchanges.length;
-            _this.yearFilterArray = Array.from(new Set(_this.exchanges.map(function (item) { return item.year; }))).slice();
-            _this.languageFilterArray = Array.from(new Set(_this.exchanges.map(function (item) { return item.languages; }))).slice();
+            // this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
+            // this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
         });
         this.stockService.getVolumes().subscribe(function (res) {
             _this.volumes = res;

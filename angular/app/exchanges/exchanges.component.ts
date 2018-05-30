@@ -72,8 +72,8 @@ export class ExchangesComponent implements OnInit, OnDestroy {
       this.exchanges = res; 
       this.count = this.exchanges.length;
 
-        this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
-        this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
+        // this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
+        // this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
 
     });
 

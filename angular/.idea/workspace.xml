@@ -50,11 +50,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stocks-sidebar.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="stocks-sidebar.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
               <caret line="11" column="145" selection-start-line="11" selection-start-column="145" selection-end-line="11" selection-end-column="145" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exchanges.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="75" column="106" lean-forward="true" selection-start-line="74" selection-start-column="7" selection-end-line="75" selection-end-column="106" />
+              <folding>
+                <element signature="e#0#61#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,7 +154,6 @@
         <option value="$PROJECT_DIR$/app/crypto/crypto.component.html" />
         <option value="$PROJECT_DIR$/app/app.component.html" />
         <option value="$PROJECT_DIR$/app/exchanges/exchanges.component.html" />
-        <option value="$PROJECT_DIR$/app/exchanges/exchanges.component.ts" />
         <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.html" />
         <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts" />
         <option value="$PROJECT_DIR$/app/stocks.service.ts" />
@@ -152,6 +163,7 @@
         <option value="$PROJECT_DIR$/app/news/news-detail/news-detail.component.html" />
         <option value="$PROJECT_DIR$/app/review/review-detail/review-detail.component.html" />
         <option value="$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.html" />
+        <option value="$PROJECT_DIR$/app/exchanges/exchanges.component.ts" />
       </list>
     </option>
   </component>
@@ -363,12 +375,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="89171000" />
+      <workItem from="1526711663196" duration="89289000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135505000" />
+    <option name="totallyTimeSpent" value="135623000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -796,16 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="74" column="94" lean-forward="true" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="94" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
@@ -856,6 +858,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="11" column="145" selection-start-line="11" selection-start-column="145" selection-end-line="11" selection-end-column="145" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="75" column="106" lean-forward="true" selection-start-line="74" selection-start-column="7" selection-end-line="75" selection-end-column="106" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
