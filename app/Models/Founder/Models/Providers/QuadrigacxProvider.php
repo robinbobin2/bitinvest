@@ -19,7 +19,7 @@ class QuadrigacxProvider extends FounderProvider
 {
     public function getExchangeId()
     {
-        return 73;
+        return 74;
     }
 
     protected function getConnectorClass()
