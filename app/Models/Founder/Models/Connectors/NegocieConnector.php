@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: xeror
- * Date: 11.05.2018
- * Time: 16:31
+ * Date: 30.05.2018
+ * Time: 17:48
  */
 
 namespace App\Models\Founder\Models\Connectors;
@@ -11,49 +11,14 @@ namespace App\Models\Founder\Models\Connectors;
 
 use App\Models\Founder\Models\FounderConnector;
 
-class CoinnestConnector extends FounderConnector
+class NegocieConnector extends FounderConnector
 {
     private $coins = [
-        "btc",
-        "bch",
-        "btg",
-        "bcd",
-        "ubtc",
-        "btn",
-        "kst",
-        "ltc",
-        "act",
-        "eth",
-        "etc",
-        "ada",
-        "qtum",
-        "xlm",
-        "neo",
-        "gas",
-        "rpx",
-        "qlc",
-        "hsr",
-        "knc",
-        "tsl",
-        "tron",
-        "omg",
-        "wtc",
-        "mco",
-        "storm",
-        "gto",
-        "npxs",
-        "chat",
-        "vet",
-        "egcc",
-        "frec",
-        "ink",
-        "oc",
-        "hlc",
-        "ent",
-        "qbt",
-        "spc",
-        "put",
-        "hotc"
+        "btcbrl",
+        "ltcbrl",
+        "bchbrl",
+        "btgbrl",
+        "b2xbrl",
     ];
 
     public function search()
@@ -64,7 +29,7 @@ class CoinnestConnector extends FounderConnector
 
         foreach ($this->coins as $currency) {
             $curly[$currency] = curl_init();
-            curl_setopt($curly[$currency], CURLOPT_URL, "https://api.coinnest.co.kr/api/pub/ticker?coin=" . $currency);
+            curl_setopt($curly[$currency], CURLOPT_URL, "https://broker.negociecoins.com.br/api/v3/$currency/ticker");
             curl_setopt($curly[$currency], CURLOPT_HEADER, 0);
             curl_setopt($curly[$currency], CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($curly[$currency], CURLOPT_TIMEOUT, 30);
