@@ -254,8 +254,10 @@ submitted = false;
                     console.log(this.portfoliosInfo);
                 }
             });
-            $.getScript('/js/script.js');
+
             this.checkInPortfolio(id);
+
+            $.getScript('/js/script.js');
         })
 
     }

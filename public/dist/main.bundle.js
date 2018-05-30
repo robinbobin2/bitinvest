@@ -2023,8 +2023,8 @@ var CloudMiningDetailComponent = (function () {
                     console.log(_this.portfoliosInfo);
                 }
             });
-            $.getScript('/js/script.js');
             _this.checkInPortfolio(id);
+            $.getScript('/js/script.js');
         });
     };
     CloudMiningDetailComponent.prototype.createPortfolio = function (form) {
@@ -6724,10 +6724,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var PortfolioComponent = (function () {
     /**
-   * Example: Use Order pipe in the component
-   *
-   * @param {OrderPipe} orderPipe
-   */
+     * Example: Use Order pipe in the component
+     *
+     * @param {OrderPipe} orderPipe
+     */
     function PortfolioComponent(orderPipe, portfolioService, searchService, stockService, miningService) {
         this.orderPipe = orderPipe;
         this.portfolioService = portfolioService;
