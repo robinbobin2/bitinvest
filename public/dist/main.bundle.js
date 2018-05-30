@@ -3967,9 +3967,7 @@ var ExchangesComponent = (function () {
         this.stockService.getExchanges().subscribe(function (res) {
             _this.exchanges = res;
             _this.count = _this.exchanges.length;
-            _this.yearFilterArray = _this.exchanges.map(function (item) { return item.year; })
-                .filter(function (value, index, self) { return self.indexOf(value) === index; });
-            console.log(_this.exchanges);
+            _this.yearFilterArray = Array.from(new Set(_this.exchanges.map(function (item) { return item.year; }))).slice();
             console.log(_this.yearFilterArray);
         });
         this.stockService.getVolumes().subscribe(function (res) {
