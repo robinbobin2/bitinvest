@@ -14,11 +14,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="exchanges.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="crypto-all.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="379">
+              <caret line="27" column="66" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exchanges.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="73" column="40" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="40" />
+            <state relative-caret-position="593">
+              <caret line="74" column="94" lean-forward="true" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="94" />
+              <folding>
+                <element signature="e#0#61#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="crypto-all.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="410">
+              <caret line="43" column="20" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -60,7 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>abou</find>
       <find>gets</find>
       <find>getcr</find>
       <find>time_value</find>
@@ -90,6 +119,7 @@
       <find>padding</find>
       <find>подробнее</find>
       <find>Для того чтобы добавить свой комментарий -</find>
+      <find>dataUsd</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -107,8 +137,6 @@
         <option value="$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts" />
         <option value="$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts" />
         <option value="$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html" />
-        <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts" />
-        <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.html" />
         <option value="$PROJECT_DIR$/app/news/news.component.ts" />
         <option value="$PROJECT_DIR$/app/review/review.component.scss" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.ts" />
@@ -149,6 +177,8 @@
         <option value="$PROJECT_DIR$/app/stocks.service.ts" />
         <option value="$PROJECT_DIR$/app/exchanges/exchanges.component.html" />
         <option value="$PROJECT_DIR$/app/exchanges/exchanges.component.ts" />
+        <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts" />
+        <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.html" />
       </list>
     </option>
   </component>
@@ -223,6 +253,12 @@
               <item name="angular" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="crypto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="angular" type="b2602c69:ProjectViewProjectNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="crypto-all" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="angular" type="b2602c69:ProjectViewProjectNode" />
@@ -347,12 +383,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="86306000" />
+      <workItem from="1526711663196" duration="86573000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132640000" />
+    <option name="totallyTimeSpent" value="132907000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -385,13 +421,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="193" column="35" selection-start-line="193" selection-start-column="35" selection-end-line="193" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/news/news.component.scss">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -427,22 +456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="15" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="115" column="27" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -812,10 +825,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="73" column="40" selection-start-line="73" selection-start-column="40" selection-end-line="73" selection-end-column="40" />
+        <state relative-caret-position="593">
+          <caret line="74" column="94" lean-forward="true" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="94" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="43" column="20" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="27" column="66" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
