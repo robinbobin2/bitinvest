@@ -91,8 +91,6 @@ submitted = false;
     const info = http.get(path);
 
   		info.subscribe(response => {
-
-  			// console.log(response['news']);
   			this.news = {
 						id: response['news'].id,
 					    name:response['news'].name,
@@ -115,7 +113,6 @@ submitted = false;
                 cat_id: response['news'].cat_id,
 					};
 
-  			console.log(response['news']['history']);
   			for(let item of response['news'].history) {
   				this.histories.push({
 					id: item.id,
@@ -202,7 +199,6 @@ submitted = false;
         this.commentService.addVote(comment_id,positive).subscribe(
             res =>
             {
-                console.log(res) ;
                 if(res['error']) {
                     // code...
                 } else {
@@ -225,13 +221,11 @@ submitted = false;
 
     }
     checkInPortfolio(id) {
-        console.log(this.portfoliosInfo);
         if(this.portfoliosInfo == undefined) {
             return false;
         }
 
         for(let item of this.portfoliosInfo) {
-            console.log(item)
             for(let it of item) {
                 if(it.id ) {
 
@@ -251,14 +245,12 @@ submitted = false;
                     // code...
                 } else {
                     this.portfoliosInfo = res['mining'];
-                    console.log(this.portfoliosInfo);
                 }
             });
 
             this.checkInPortfolio(id);
 
             setTimeout(()=> {
-                console.log('get scr')
                 $.getScript('/js/script.js');
             }, 300)
         })
@@ -281,8 +273,7 @@ submitted = false;
                 'user_portfollable_type': type
             },
             {headers: headers}).subscribe(
-            (response) => this.router.navigate(['/profile/portfolio']),
-            (error) => console.log(error)
+            () => this.router.navigate(['/profile/portfolio'])
         );
     }
 
@@ -303,13 +294,11 @@ submitted = false;
           commentable_id:response['commentable_id'],
           photo: response['photo'],
           created_at: response['created_at']
-        }),
-        (error) => console.log(error)
+        })
       );
       form.reset();
       this.submitted = true;
       this.commentcount=this.commentcount+1;
-    // console.log(post_id + " " + form.value.body + " " + type); 
   }
 
  goBack() {

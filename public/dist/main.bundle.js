@@ -1722,10 +1722,12 @@ var CloudMiningCategoriesComponent = (function () {
                 }
                 else {
                     _this.portfoliosInfo = res['mining'];
-                    console.log(_this.portfoliosInfo);
                 }
             });
             _this.checkInPortfolio(id);
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 300);
         });
     };
     CloudMiningCategoriesComponent.prototype.createPortfolio = function (form) {
@@ -1741,7 +1743,6 @@ var CloudMiningCategoriesComponent = (function () {
             this.reverse = reverse;
         }
         this.order = value;
-        console.log(this.order);
     };
     CloudMiningCategoriesComponent.prototype.submitPortfolio = function (post_id, type) {
         var _this = this;
@@ -1865,7 +1866,6 @@ var CloudMiningDetailComponent = (function () {
         var path = "/miningraw/" + id;
         var info = http.get(path);
         info.subscribe(function (response) {
-            // console.log(response['news']);
             _this.news = {
                 id: response['news'].id,
                 name: response['news'].name,
@@ -1887,7 +1887,6 @@ var CloudMiningDetailComponent = (function () {
                 category: response['news'].category,
                 cat_id: response['news'].cat_id,
             };
-            console.log(response['news']['history']);
             for (var _i = 0, _a = response['news'].history; _i < _a.length; _i++) {
                 var item = _a[_i];
                 _this.histories.push({
@@ -1972,7 +1971,6 @@ var CloudMiningDetailComponent = (function () {
     CloudMiningDetailComponent.prototype.onVote = function (comment_id, positive) {
         var _this = this;
         this.commentService.addVote(comment_id, positive).subscribe(function (res) {
-            console.log(res);
             if (res['error']) {
                 // code...
             }
@@ -1993,13 +1991,11 @@ var CloudMiningDetailComponent = (function () {
         return (false);
     };
     CloudMiningDetailComponent.prototype.checkInPortfolio = function (id) {
-        console.log(this.portfoliosInfo);
         if (this.portfoliosInfo == undefined) {
             return false;
         }
         for (var _i = 0, _a = this.portfoliosInfo; _i < _a.length; _i++) {
             var item = _a[_i];
-            console.log(item);
             for (var _b = 0, item_1 = item; _b < item_1.length; _b++) {
                 var it = item_1[_b];
                 if (it.id) {
@@ -2020,12 +2016,10 @@ var CloudMiningDetailComponent = (function () {
                 }
                 else {
                     _this.portfoliosInfo = res['mining'];
-                    console.log(_this.portfoliosInfo);
                 }
             });
             _this.checkInPortfolio(id);
             setTimeout(function () {
-                console.log('get scr');
                 $.getScript('/js/script.js');
             }, 300);
         });
@@ -2041,7 +2035,7 @@ var CloudMiningDetailComponent = (function () {
             'user_portfollable_id': post_id,
             'user_portfolio_id': this.addPortfolio,
             'user_portfollable_type': type
-        }, { headers: headers }).subscribe(function (response) { return _this.router.navigate(['/profile/portfolio']); }, function (error) { return console.log(error); });
+        }, { headers: headers }).subscribe(function () { return _this.router.navigate(['/profile/portfolio']); });
     };
     CloudMiningDetailComponent.prototype.submitComment = function (form, post_id, type) {
         var _this = this;
@@ -2061,11 +2055,10 @@ var CloudMiningDetailComponent = (function () {
                 photo: response['photo'],
                 created_at: response['created_at']
             });
-        }, function (error) { return console.log(error); });
+        });
         form.reset();
         this.submitted = true;
         this.commentcount = this.commentcount + 1;
-        // console.log(post_id + " " + form.value.body + " " + type); 
     };
     CloudMiningDetailComponent.prototype.goBack = function () {
         this.router.navigateByUrl('/mining/all');
@@ -2439,10 +2432,12 @@ var CryptoAllComponent = (function () {
                 }
                 else {
                     _this.portfoliosInfo = res['crypto'];
-                    console.log(_this.portfoliosInfo);
                 }
             });
             _this.checkInPortfolio(id);
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 300);
         });
     };
     CryptoAllComponent.prototype.submitPortfolio = function (post_id, type) {
@@ -3386,6 +3381,9 @@ var CryptoComponent = (function () {
                 }
             }),
                 _this.checkInPortfolio(id);
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 300);
         }, function (error) { return console.log(error); });
     };
     CryptoComponent.prototype.basicRoute = function () {
@@ -3862,6 +3860,9 @@ var ExchangeComponent = (function () {
                 }
             }),
                 _this.checkInPortfolio(id);
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 300);
         }, function (error) { return console.log(error); });
     };
     ExchangeComponent.prototype.ngAfterViewInit = function () {
@@ -4035,6 +4036,9 @@ var ExchangesComponent = (function () {
                 }
             });
             _this.checkInPortfolio(id);
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 300);
         });
     };
     ExchangesComponent.prototype.createPortfolio = function (form) {
@@ -4722,10 +4726,12 @@ var IcoProjectAllComponent = (function () {
                 }
                 else {
                     _this.portfoliosInfo = res['ico'];
-                    console.log(_this.portfoliosInfo);
                 }
             }),
                 _this.checkInPortfolio(id);
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 300);
         }, function (error) { return console.log(error); });
     };
     IcoProjectAllComponent.prototype.setOrder = function (value) {
@@ -4924,10 +4930,12 @@ var IcoProjectCategoriesComponent = (function () {
                 }
                 else {
                     _this.portfoliosInfo = res['ico'];
-                    console.log(_this.portfoliosInfo);
                 }
             }),
                 _this.checkInPortfolio(id);
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 300);
         }, function (error) { return console.log(error); });
     };
     IcoProjectCategoriesComponent.prototype.checkInPortfolio = function (id) {
@@ -5280,10 +5288,12 @@ var IcoProjectDetailComponent = (function () {
                 }
                 else {
                     _this.portfoliosInfo = res['ico'];
-                    console.log(_this.portfoliosInfo);
                 }
             }),
                 _this.checkInPortfolio(id);
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 300);
         }, function (error) { return console.log(error); });
     };
     IcoProjectDetailComponent.prototype.checkInPortfolio = function (id) {

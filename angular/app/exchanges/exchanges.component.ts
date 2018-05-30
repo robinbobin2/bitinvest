@@ -9,7 +9,7 @@ import {AuthService} from "../auth.service";
 import { NgForm } from '@angular/forms';
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
-
+declare var $:any;
 @Component({
   selector: 'app-exchanges',
   templateUrl: './exchanges.component.html',
@@ -126,6 +126,9 @@ export class ExchangesComponent implements OnInit, OnDestroy {
                 }
             });
             this.checkInPortfolio(id);
+            setTimeout(()=> {
+                $.getScript('/js/script.js');
+            }, 300)
         })
     }
 

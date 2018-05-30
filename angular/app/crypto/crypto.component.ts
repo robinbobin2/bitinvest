@@ -8,6 +8,8 @@ import {StocksService} from '../stocks.service';
 import {NewsRaw} from "../cloud-mining/all-cloud-mining/all-cloud-mining.component";
 import {CommentsService} from "../comments.service";
 
+
+declare var $: any;
 export interface CryptoData {
 
   last: number;
@@ -487,7 +489,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
                     }
                 }),
                     this.checkInPortfolio(id);
-
+                setTimeout(()=> {
+                    $.getScript('/js/script.js');
+                }, 300)
             },
             error => console.log(error)
         )

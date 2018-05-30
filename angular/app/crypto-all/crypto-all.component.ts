@@ -21,7 +21,7 @@ export class Cripto {
 
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
-
+declare var $:any;
 @Component({
     selector: 'app-crypto-all',
     templateUrl: './crypto-all.component.html',
@@ -79,10 +79,12 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                     // code...
                 } else {
                     this.portfoliosInfo = res['crypto'];
-                    console.log(this.portfoliosInfo);
                 }
             });
             this.checkInPortfolio(id);
+            setTimeout(()=> {
+                $.getScript('/js/script.js');
+            }, 300)
         })
     }
 
