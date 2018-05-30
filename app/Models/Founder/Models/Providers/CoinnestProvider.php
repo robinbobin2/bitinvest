@@ -45,14 +45,14 @@ class CoinnestProvider extends FounderProvider
             return $result;
         }
 
-        foreach ($response as $value) {
+        foreach ($response as $currency => $value) {
             $ticker = new TickerEntity();
             $ticker->setAsk($value->buy / 1000);
             $ticker->setBid($value->sell / 1000);
             $ticker->setVolume($value->vol);
             $ticker->setValue($value->last / 1000);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(strtoupper($value) . "/" . "USD");
+            $ticker->setCurrency(strtoupper($currency) . "/" . "USD");
             $result[] = $ticker;
         }
 
