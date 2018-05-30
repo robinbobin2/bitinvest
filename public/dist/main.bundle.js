@@ -2024,7 +2024,9 @@ var CloudMiningDetailComponent = (function () {
                 }
             });
             _this.checkInPortfolio(id);
-            $.getScript('/js/script.js');
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 300);
         });
     };
     CloudMiningDetailComponent.prototype.createPortfolio = function (form) {
