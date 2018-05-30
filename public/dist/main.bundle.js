@@ -3912,8 +3912,9 @@ module.exports = ".select-wrapper1 {\n  width: 144px;\n  position: relative;\n  
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__portfolio_service__ = __webpack_require__("./angular/app/portfolio.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__portfolio_service__ = __webpack_require__("./angular/app/portfolio.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3923,6 +3924,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -3981,41 +3983,40 @@ var ExchangesComponent = (function () {
         // все биржи из админки
         this.stockService.getExchanges().subscribe(function (res) {
             _this.exchanges = res;
-            _this.load = false;
             _this.count = _this.exchanges.length;
             console.log(_this.exchanges);
             // this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
             // this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
         });
-        // this.stockService.getVolumes().subscribe(res => {
-        //
-        //   this.volumes = res
-        //   for(let item of this.volumes) {
-        //     this.exchange_volumes[item.name] = {
-        //       'btc': item.btc,
-        //       'usd': item.usd
-        //     }
-        //   }
-        //     console.log(this.volumes)
-        // });
-        // this.stockService.getPairsCount().subscribe(res => {
-        //     this.load=false;
-        //     for(let item of res) {
-        //         this.pairs_count[item.name] = item['count(xt.id)'];
-        //     }
-        //     console.log(this.pairs_count)
-        // });
-        // this.volume_data = Observable.interval(2000).concatMap(()=>this.stockService.getVolumes())
-        //    .map((response)=>{
-        //        this.volumes = response;
-        //    }).subscribe( () => {
-        //        for(let item of this.volumes) {
-        //            this.exchange_volumes[item.name] = {
-        //                'btc': item.btc,
-        //                'usd': item.usd
-        //            }
-        //        }
-        //    } );
+        this.stockService.getVolumes().subscribe(function (res) {
+            _this.volumes = res;
+            for (var _i = 0, _a = _this.volumes; _i < _a.length; _i++) {
+                var item = _a[_i];
+                _this.exchange_volumes[item.name] = {
+                    'btc': item.btc,
+                    'usd': item.usd
+                };
+            }
+        });
+        this.stockService.getPairsCount().subscribe(function (res) {
+            _this.load = false;
+            for (var _i = 0, res_1 = res; _i < res_1.length; _i++) {
+                var item = res_1[_i];
+                _this.pairs_count[item.name] = item['count(xt.id)'];
+            }
+            console.log(_this.pairs_count);
+        });
+        this.volume_data = __WEBPACK_IMPORTED_MODULE_5_rxjs_Rx__["a" /* Observable */].interval(2000).concatMap(function () { return _this.stockService.getVolumes(); })
+            .map(function (response) {
+        }).subscribe(function () {
+            for (var _i = 0, _a = _this.volumes; _i < _a.length; _i++) {
+                var item = _a[_i];
+                _this.exchange_volumes[item.name] = {
+                    'btc': item.btc,
+                    'usd': item.usd
+                };
+            }
+        });
     };
     ExchangesComponent.prototype.setOrder = function (value) {
         if (this.order === value) {
@@ -4084,9 +4085,9 @@ ExchangesComponent = __decorate([
         selector: 'app-exchanges',
         template: __webpack_require__("./angular/app/exchanges/exchanges.component.html"),
         styles: [__webpack_require__("./angular/app/exchanges/exchanges.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */], __WEBPACK_IMPORTED_MODULE_5__portfolio_service__["a" /* PortfolioService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */], __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__portfolio_service__["a" /* PortfolioService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__auth_service__["a" /* AuthService */]) === "function" && _g || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__auth_service__["a" /* AuthService */]) === "function" && _g || Object])
 ], ExchangesComponent);
 
 var _a, _b, _c, _d, _e, _f, _g;
