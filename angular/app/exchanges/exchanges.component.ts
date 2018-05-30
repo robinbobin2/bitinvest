@@ -95,17 +95,17 @@ export class ExchangesComponent implements OnInit, OnDestroy {
         }
     });
 
-  	this.volume_data = Observable.interval(2000).concatMap(()=>this.stockService.getVolumes())
-          .map((response)=>{
-              this.volumes = response;
-          }).subscribe( () => {
-              for(let item of this.volumes) {
-                  this.exchange_volumes[item.name] = {
-                      'btc': item.btc,
-                      'usd': item.usd
-                  }
-              }
-          } );
+  	// this.volume_data = Observable.interval(2000).concatMap(()=>this.stockService.getVolumes())
+       //    .map((response)=>{
+       //        this.volumes = response;
+       //    }).subscribe( () => {
+       //        for(let item of this.volumes) {
+       //            this.exchange_volumes[item.name] = {
+       //                'btc': item.btc,
+       //                'usd': item.usd
+       //            }
+       //        }
+       //    } );
   }
   setOrder(value: string) {
      if (this.order === value) {
