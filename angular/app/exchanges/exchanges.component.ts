@@ -71,7 +71,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     this.stockService.getExchanges().subscribe((res: Array<any>) => {
       this.exchanges = res; 
       this.count = this.exchanges.length;
-
+      console.log(this.exchanges)
         // this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
         // this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
 
@@ -87,12 +87,14 @@ export class ExchangesComponent implements OnInit, OnDestroy {
           'usd': item.usd
         }
       }
+        console.log(this.volumes)
     });
   	this.stockService.getPairsCount().subscribe(res => {
         this.load=false;
         for(let item of res) {
             this.pairs_count[item.name] = item['count(xt.id)'];
         }
+        console.log(this.pairs_count)
     });
 
   	// this.volume_data = Observable.interval(2000).concatMap(()=>this.stockService.getVolumes())

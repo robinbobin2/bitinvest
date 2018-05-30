@@ -3982,6 +3982,7 @@ var ExchangesComponent = (function () {
         this.stockService.getExchanges().subscribe(function (res) {
             _this.exchanges = res;
             _this.count = _this.exchanges.length;
+            console.log(_this.exchanges);
             // this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
             // this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
         });
@@ -3994,6 +3995,7 @@ var ExchangesComponent = (function () {
                     'usd': item.usd
                 };
             }
+            console.log(_this.volumes);
         });
         this.stockService.getPairsCount().subscribe(function (res) {
             _this.load = false;
@@ -4001,6 +4003,7 @@ var ExchangesComponent = (function () {
                 var item = res_1[_i];
                 _this.pairs_count[item.name] = item['count(xt.id)'];
             }
+            console.log(_this.pairs_count);
         });
         // this.volume_data = Observable.interval(2000).concatMap(()=>this.stockService.getVolumes())
         //    .map((response)=>{
