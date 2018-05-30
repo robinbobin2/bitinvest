@@ -70,8 +70,12 @@ export class ExchangesComponent implements OnInit, OnDestroy {
       this.exchanges = res; 
       this.count = this.exchanges.length;
 
-
-        this.yearFilterArray = this.exchanges.filter((x, i, a) => a.indexOf(x) == i)
+        for( var i in this.exchanges ){
+            if( typeof(this.yearFilterArray[this.exchanges[i].year]) == "undefined"){
+                this.yearFilterArray.push(this.exchanges[i].year);
+            }
+            this.yearFilterArray[this.exchanges[i].year] = 0;
+        }
         console.log(this.yearFilterArray)
 
     });
