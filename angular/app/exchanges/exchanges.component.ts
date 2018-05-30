@@ -69,14 +69,8 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     this.stockService.getExchanges().subscribe((res: Array<any>) => {
       this.exchanges = res; 
       this.count = this.exchanges.length;
-
-        for( var i in this.exchanges ){
-            if( typeof(this.yearFilterArray[this.exchanges[i].year]) == "undefined"){
-                this.yearFilterArray.push(this.exchanges[i].year);
-            }
-            this.yearFilterArray[this.exchanges[i].year] = 0;
-        }
-        console.log(this.yearFilterArray)
+      this.yearFilterArray =  this.exchanges.map(item => item.year)
+            .filter((value, index, self) => self.indexOf(value) === index)
 
     });
 

@@ -3967,13 +3967,8 @@ var ExchangesComponent = (function () {
         this.stockService.getExchanges().subscribe(function (res) {
             _this.exchanges = res;
             _this.count = _this.exchanges.length;
-            for (var i in _this.exchanges) {
-                if (typeof (_this.yearFilterArray[_this.exchanges[i].year]) == "undefined") {
-                    _this.yearFilterArray.push(_this.exchanges[i].year);
-                }
-                _this.yearFilterArray[_this.exchanges[i].year] = 0;
-            }
-            console.log(_this.yearFilterArray);
+            _this.yearFilterArray = _this.exchanges.map(function (item) { return item.year; })
+                .filter(function (value, index, self) { return self.indexOf(value) === index; });
         });
         this.stockService.getVolumes().subscribe(function (res) {
             _this.volumes = res;
