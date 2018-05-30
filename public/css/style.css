@@ -9050,3 +9050,23 @@ table tbody tr td .difference .buttons a {
 .setting-top-block .img-wrap:after {
   background: none;
 }
+
+.news {
+  height: 310px;
+}
+
+.follow .minus {
+  font-size: 24px;
+  color: #fff;
+  width: 22px;
+  background: #fa5252;
+}
+.follow .text {
+  width: 70px;
+  background: #fed5a8;
+  font-size: 14px;
+  color: #1d1f24;
+}
+.text.text-red {
+  background: #f8a3a3;
+}
