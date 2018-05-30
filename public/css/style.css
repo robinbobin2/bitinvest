@@ -9074,3 +9074,6 @@ table tbody tr td .difference .buttons a {
 .news-big.news-big2 {
   margin-bottom: 0 !important;
 }
+.main-news .news {
+  max-width: 430px;
+}

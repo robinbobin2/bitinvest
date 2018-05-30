@@ -200,7 +200,7 @@ export class PortfolioComponent implements OnInit {
      )
    }
    onRemove(itemid, id, index, type) {
-       if(confirm('Подтвердите удаление')) {
+
            this.portfolioService.removePortfolio(id, type, itemid).subscribe(
                res => {
                    if (index > -1) {
@@ -209,7 +209,7 @@ export class PortfolioComponent implements OnInit {
                    }
                }
            )
-       }
+
    }
     isNegative(now) {
         if(now >= 0) {

@@ -6650,11 +6650,13 @@ var PortfolioService = (function () {
             .post('/angular/userportfolio/create', { 'name': name, 'user_portfolio_type_id': type }, { headers: headers });
     };
     PortfolioService.prototype.removePortfolio = function (id, type, port_id) {
-        return this.http.post('/angular/userportfolio/remove/' + id, {
-            'user_portfollable_id': id,
-            'user_portfolio_id': port_id,
-            'user_portfollable_type': type
-        });
+        if (confirm('Подтвердите удаление')) {
+            return this.http.post('/angular/userportfolio/remove/' + id, {
+                'user_portfollable_id': id,
+                'user_portfolio_id': port_id,
+                'user_portfollable_type': type
+            });
+        }
     };
     PortfolioService.prototype.submitPortfolio = function (post_id, id, type) {
         return this.http.post('/storeportfolio', {
@@ -6874,14 +6876,12 @@ var PortfolioComponent = (function () {
     };
     PortfolioComponent.prototype.onRemove = function (itemid, id, index, type) {
         var _this = this;
-        if (confirm('Подтвердите удаление')) {
-            this.portfolioService.removePortfolio(id, type, itemid).subscribe(function (res) {
-                if (index > -1) {
-                    console.log(res);
-                    _this.portfolios[itemid].splice(index, 1);
-                }
-            });
-        }
+        this.portfolioService.removePortfolio(id, type, itemid).subscribe(function (res) {
+            if (index > -1) {
+                console.log(res);
+                _this.portfolios[itemid].splice(index, 1);
+            }
+        });
     };
     PortfolioComponent.prototype.isNegative = function (now) {
         if (now >= 0) {
