@@ -152,7 +152,7 @@
                   <button type="submit">Добавить</button>
                 </form>
               </div>
-              <h3 class="total-comments"  *ngIf="user.id">Всего комментариев ({{commentcount}})</h3>
+              <h3 class="total-comments"  *ngIf="user.id && commentcount > 0">Всего комментариев ({{commentcount}})</h3>
               <ul class="comment-items" style="padding-left: 0;">
                 <!--  -->
                 <li *ngFor="let item of comments">
@@ -280,7 +280,7 @@
           </div>
 
           <div class="tab-content comment-wrap"  [ngClass]="getRoute('comments') ? 'active' : ''">
-            <div class="comment-block">
+            <div class="comment-block" style="margin-top: 0">
               <div class="comment-top"  *ngIf="!user.id" style="background: none; padding-left: 0;">
                 <h3>Комментарии ({{commentcount}})</h3>
                 <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
@@ -368,15 +368,15 @@
             </div>
           </div>
 
-          <div class="tab-content description-content"  [ngClass]="getRoute('about') ? 'active' : ''">
-            <h2>Описание {{data?.symbol}} ({{data?.name}})</h2>
+          <div class="tab-content description-content overview-block"  [ngClass]="getRoute('about') ? 'active' : ''">
+            <h3>Описание {{data?.symbol}} ({{data?.name}})</h3>
             <div [innerHTML]='data?.desc'></div>
           </div>
 
         </div>
       </div>
       <aside class="sidebar">
-        <div class="description">
+        <div class="description" *ngIf="!getRoute('about')">
           <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
           <div [innerHTML]='data?.desc'></div>
           <br> <p><a class="more-sidebar"  routerLink="about">Подробнее</a><p>

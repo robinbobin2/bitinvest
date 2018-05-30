@@ -25,7 +25,7 @@
                             </div>
                             <ul class="select-items">
                                 <li (click)="algorithm=''"> <a >Алгоритм: Все</a></li>
-                                <li *ngFor="let data of dataUsd" (click)="algorithm=data?.algo"><a >Алгоритм: {{data?.algo}}</a></li>
+                                <li *ngFor="let data of algoFilter" (click)="algorithm=data"><a >Алгоритм: {{data}}</a></li>
                                 <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
                             </ul>
                         </div>

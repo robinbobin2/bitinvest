@@ -23,20 +23,22 @@ export class ExchangesComponent implements OnInit, OnDestroy {
   exchange_volumes = [];
     language = '';
     year: number = undefined;
+    сщгтекн = '';
   reverse: boolean = true;
   order = 'id';
   pairs_count = [];
   volume_data: any;
-  exchange_data: any;
   alive = true;
   stocks = [];
-    observale_pairs: any;
   load=true;
     portfoliosInfo = [];
     addPortfolio: any;
     show = false;
     portfolioInfo:any;
     getUserPortfolio = [];
+    yearFilterArray: any;
+    languageFilterArray: any;
+
   constructor(private http:HttpClient,
               private router:Router,
               private route:ActivatedRoute,private stockService:StocksService, private orderPipe: OrderPipe,
@@ -65,20 +67,14 @@ export class ExchangesComponent implements OnInit, OnDestroy {
               }
           }
       );
+    // все биржи из админки
     this.stockService.getExchanges().subscribe((res: Array<any>) => {
       this.exchanges = res; 
       this.count = this.exchanges.length;
-      // for(let item of this.exchanges) {
-      //     item.load = false;
-      //     this.stocks.push(
-      //     this.stockService.getExchangePairs(item.name).takeWhile(() => this.alive).map(
-      //     pairs => {item.count=pairs.length; item.load = true;}
-      // )
-      // );
-      // }
-      //   this.observale_pairs = Observable.from(this.stocks)
-      //       .concatAll()
-      //       .subscribe();
+
+        this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
+        this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
+
     });
 
 
@@ -179,6 +175,5 @@ export class ExchangesComponent implements OnInit, OnDestroy {
  ngOnDestroy() {
       this.alive = false;
    this.volume_data.unsubscribe();
-   // this.observale_pairs.unsubscribe();
  }
 }

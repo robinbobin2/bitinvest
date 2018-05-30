@@ -41,6 +41,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
   first_time:boolean = true;
   reverse: boolean = true;
   animtype = [];
+    algoFilter = [];
   diff:Array<number> = [];
     selectedItem = [];
     active = 0;
@@ -211,6 +212,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
        .map((response)=>{this.resp = response;}).subscribe(()=>{
 
          let admin = response;
+         this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
          for (var _i = 0; _i < admin.length; ++_i) {
         // console.log(this.admin[i].symbol);
         let index = _i;
@@ -218,7 +220,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         let year = admin[index].year;
              let algo = admin[index].algo;
              let logo = admin[index].logo;
-        let desc = 'DESC';
+
            this.animtype[index] = '';
            this.diff[index] = 0;
         if (this.dataUsd[index]) {
