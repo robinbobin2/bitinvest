@@ -26,16 +26,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="portfolio.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="portfolio.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="243" column="88" selection-start-line="243" selection-start-column="82" selection-end-line="243" selection-end-column="88" />
+            <state relative-caret-position="588">
+              <caret line="269" column="52" selection-start-line="269" selection-start-column="52" selection-end-line="269" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="portfolio.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="portfolio.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="445">
@@ -207,8 +207,8 @@
         <option value="$PROJECT_DIR$/app/portfolio.service.ts" />
         <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.ts" />
         <option value="$PROJECT_DIR$/app/cloud-mining.service.ts" />
-        <option value="$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html" />
         <option value="$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts" />
+        <option value="$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html" />
       </list>
     </option>
   </component>
@@ -447,12 +447,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="90648000" />
+      <workItem from="1526711663196" duration="90772000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136982000" />
+    <option name="totallyTimeSpent" value="137106000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -911,13 +911,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="243" column="88" selection-start-line="243" selection-start-column="82" selection-end-line="243" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
@@ -925,6 +918,13 @@
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="269" column="52" selection-start-line="269" selection-start-column="52" selection-end-line="269" selection-end-column="52" />
         </state>
       </provider>
     </entry>
