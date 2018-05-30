@@ -18,7 +18,7 @@
             <div class="innertext"  [innerHTML]='news?.desc | safeHtml'>
             </div>
             <div class="comment-block" id="comment-block">
-                <div class="comment-top" *ngIf="user.id != undefined">
+                <div class="comment-top" *ngIf="user.id != undefined" style="padding-top:0 !important;">
                     <h3>Добавить новый комментарий</h3>
                     <form (ngSubmit)="submitComment(f, news.id, 'App\\Analytics')" #f="ngForm">
                         <input type="hidden" ngModel name="post_id" value="{{news?.id}}">

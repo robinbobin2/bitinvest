@@ -9070,3 +9070,7 @@ table tbody tr td .difference .buttons a {
 .text.text-red {
   background: #f8a3a3;
 }
+
+.news-big.news-big2 {
+  margin-bottom: 0 !important;
+}
