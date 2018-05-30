@@ -6,7 +6,6 @@ import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { MinLengthValidator } from '@angular/forms';
 import { SearchService } from './search.service';
 import { Subject } from 'rxjs/Subject';
-const url = 'script.js';
 
 export class Login {
 	email: string;

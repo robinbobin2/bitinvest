@@ -35,11 +35,13 @@ export class PortfolioService {
   }
   public removePortfolio(id, type, port_id) {
       if(confirm('Подтвердите удаление')) {
+
           return this.http.post('/angular/userportfolio/remove/' + id, {
               'user_portfollable_id': id,
               'user_portfolio_id': port_id,
               'user_portfollable_type': type
           },);
+
       }
   }
   public submitPortfolio( post_id, id, type) {

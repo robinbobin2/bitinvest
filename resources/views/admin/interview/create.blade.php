@@ -79,13 +79,9 @@
 
                             <div class="col-md-12">
                                 <select class="form-control" name="main" id="main">
-                                        @if (Input::old('main') == 1)
-                                                  <option value="1" selected="selected">Да</option>
-                                                  <option value="0">Нет</option>
-                                            @else
+                                        
                                                   <option value="1">Да</option>
                                                   <option value="0" selected="selected">Нет</option>
-                                            @endif
                                 </select>
 
                                 @if ($errors->has('main'))

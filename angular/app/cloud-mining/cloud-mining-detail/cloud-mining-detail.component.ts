@@ -51,6 +51,7 @@ export class CommentRaw {
   photo:string;
   created_at: string;
 }
+declare var $:any;
 @Component({
   selector: 'app-cloud-mining-detail',
   templateUrl: './cloud-mining-detail.component.html',
@@ -253,6 +254,7 @@ submitted = false;
                     console.log(this.portfoliosInfo);
                 }
             });
+            $.getScript('/js/script.js');
             this.checkInPortfolio(id);
         })
 
