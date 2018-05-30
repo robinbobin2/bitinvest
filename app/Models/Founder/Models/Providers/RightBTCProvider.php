@@ -2,37 +2,37 @@
 /**
  * Created by PhpStorm.
  * User: xeror
- * Date: 11.05.2018
- * Time: 17:08
+ * Date: 30.05.2018
+ * Time: 16:44
  */
 
 namespace App\Models\Founder\Models\Providers;
 
 
 use App\Models\Entity\ExchangeRate;
-use App\Models\Founder\Models\Connectors\CoinnestConnector;
+use App\Models\Founder\Models\Connectors\RightBTCConnector;
 use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class CoinnestProvider extends FounderProvider
+class RightBTCProvider extends FounderProvider
 {
     public function getExchangeId()
     {
-        return 27;
+        return 71;
     }
 
     protected function getConnectorClass()
     {
-        return new CoinnestConnector();
+        return new RightBTCConnector();
     }
 
     /**
-     * @return CoinnestConnector
+     * @return RightBTCConnector
      */
     protected function getConnector()
     {
-        /** @var CoinnestConnector $connector */
+        /** @var RightBTCConnector $connector */
         $connector = parent::getConnector();
         return $connector;
     }
@@ -45,14 +45,14 @@ class CoinnestProvider extends FounderProvider
             return $result;
         }
 
-        foreach ($response as $value) {
+        foreach ($response->result as $value) {
             $ticker = new TickerEntity();
-            $ticker->setAsk($value->buy / 1000);
-            $ticker->setBid($value->sell / 1000);
+            $ticker->setAsk($value->buy);
+            $ticker->setBid($value->sell);
             $ticker->setVolume($value->vol);
-            $ticker->setValue($value->last / 1000);
+            $ticker->setValue($value->last);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(strtoupper($value) . "/" . "USD");
+            $ticker->setCurrency(substr($value->market, 0,3) . "/" . substr($value->market, 3));
             $result[] = $ticker;
         }
 
