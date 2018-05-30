@@ -69,16 +69,33 @@ class OTCBTCProvider extends FounderProvider
         }
         foreach ($response as $currency => $supplierTicker){
             $supplierTicker = $supplierTicker->ticker;
+
+            if($this->getCurrency($currency) == "BTC/USDT"){
+                $ticker = new TickerEntity();
+                $ticker->setAsk($supplierTicker->buy);
+                $ticker->setBid($supplierTicker->sell);
+                $ticker->setVolume($supplierTicker->vol);
+                $ticker->setValue($supplierTicker->last);
+                $ticker->setExchangeId($this->getExchangeId());
+                $ticker->setCurrency("BTC/USD");
+                $result[] = $ticker;
+            }
+
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->buy);
             $ticker->setBid($supplierTicker->sell);
             $ticker->setVolume($supplierTicker->vol);
             $ticker->setValue($supplierTicker->last);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(strtoupper(str_replace("_", "/", $currency)));
+            $ticker->setCurrency($this->getCurrency($currency));
             $result[] = $ticker;
         }
 
         return $result;
+    }
+
+    private function getCurrency($currency)
+    {
+        return strtoupper(str_replace("_", "/", $currency));
     }
 }

@@ -49,22 +49,40 @@ class C2CXProvider extends FounderProvider
         $response = [];
         $result = $this->getConnector()->search();
 
-        foreach ($result as $currency => $supplierTicker){
-            if(!isset($supplierTicker->data) || !isset($supplierTicker->data->buy)){
+        foreach ($result as $currency => $supplierTicker) {
+            if (!isset($supplierTicker->data) || !isset($supplierTicker->data->buy)) {
                 continue;
             }
             $supplierTicker = $supplierTicker->data;
+
+            if ($this->getCurrency($currency) == "BTC/USDT") {
+                $ticker = new TickerEntity();
+                $ticker->setAsk($supplierTicker->buy);
+                $ticker->setBid($supplierTicker->sell);
+                $ticker->setVolume($supplierTicker->volume);
+                $ticker->setValue($supplierTicker->last);
+                $ticker->setExchangeId($this->getExchangeId());
+                $ticker->setCurrency("BTC/USD");
+                $response[] = $ticker;
+            }
+
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->buy);
             $ticker->setBid($supplierTicker->sell);
             $ticker->setVolume($supplierTicker->volume);
             $ticker->setValue($supplierTicker->last);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(str_replace("_", "/", $currency));
+            $ticker->setCurrency($this->getCurrency($currency));
             $response[] = $ticker;
         }
 
         return $response;
+    }
+
+    private function getCurrency($currency)
+    {
+        $array = explode("_", $currency);
+        return $array[1] . "/" . $array[0];
     }
 
     public function getExchangeId()
