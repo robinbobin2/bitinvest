@@ -46,6 +46,9 @@ class QuadrigacxProvider extends FounderProvider
         }
 
         foreach ($response as $currency => $value) {
+            if(!isset($value->ask)){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->ask);
             $ticker->setBid($value->bid);

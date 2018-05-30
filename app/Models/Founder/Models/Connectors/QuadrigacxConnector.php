@@ -14,7 +14,16 @@ use App\Models\Founder\Models\FounderConnector;
 class QuadrigacxConnector extends FounderConnector
 {
     private $coins = [
-
+        "btc_cad",
+        "btc_usd",
+        "eth_cad",
+        "eth_btc",
+        "ltc_cad",
+        "ltc_btc",
+        "bch_cad",
+        "bch_btc",
+        "btg_cad",
+        "btg_btc"
     ];
 
     public function search()
