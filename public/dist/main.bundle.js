@@ -81,7 +81,7 @@ var AnalyticsCategoriesComponent = (function () {
             _this.id = params['id'];
             _this.news.length = 0;
             _this.main_news.length = 0;
-            _this.path = "/postsbycat/" + _this.id;
+            _this.path = "/analyticsbycat/" + _this.id;
             _this.info = _this.http.get(_this.path);
             _this.info.subscribe(function (response) {
                 // console.log(response['news']);
@@ -7174,7 +7174,7 @@ var ReviewCategoriesComponent = (function () {
             _this.id = params['id'];
             _this.news.length = 0;
             _this.main_news.length = 0;
-            _this.path = "/postsbycat/" + _this.id;
+            _this.path = "/reviewbycat/" + _this.id;
             _this.info = _this.http.get(_this.path);
             _this.info.subscribe(function (response) {
                 // console.log(response['news']);

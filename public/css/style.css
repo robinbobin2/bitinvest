@@ -9019,6 +9019,12 @@ app-all-analytics {
 app-ico-project-detail {
   width: 100%;
 }
+app-review-categories {
+  width: 100%
+}
+app-analytics-categories {
+  width: 100%
+}
 .select-content {
   min-width: 190px;
 }

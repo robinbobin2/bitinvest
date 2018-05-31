@@ -49,7 +49,7 @@ export class AnalyticsCategoriesComponent implements OnInit {
                 this.id = params['id'];
                 this.news.length = 0;
                 this.main_news.length = 0;
-                this.path = "/postsbycat/"+this.id;
+                this.path = "/analyticsbycat/"+this.id;
                 this.info = this.http.get(this.path);
                 this.info.subscribe(response => {
                     // console.log(response['news']);
