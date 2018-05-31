@@ -59,6 +59,7 @@ use App\Models\Founder\Models\Providers\LiveCoinProvider;
 use App\Models\Founder\Models\Providers\LunoProvider;
 use App\Models\Founder\Models\Providers\LuquiProvider;
 use App\Models\Founder\Models\Providers\LykkeProvider;
+use App\Models\Founder\Models\Providers\NegocieProvider;
 use App\Models\Founder\Models\Providers\NovaProvider;
 use App\Models\Founder\Models\Providers\OkCoinProvider;
 use App\Models\Founder\Models\Providers\OkexProvider;
@@ -67,11 +68,14 @@ use App\Models\Founder\Models\Providers\OneBTCXEProvider;
 use App\Models\Founder\Models\Providers\OTCBTCProvider;
 use App\Models\Founder\Models\Providers\PoloniexProvider;
 use App\Models\Founder\Models\Providers\QryptosProvider;
+use App\Models\Founder\Models\Providers\QuadrigacxProvider;
+use App\Models\Founder\Models\Providers\RightBTCProvider;
 use App\Models\Founder\Models\Providers\SimexProvider;
 use App\Models\Founder\Models\Providers\SouthXChangeProvider;
 use App\Models\Founder\Models\Providers\TheRockProvider;
 use App\Models\Founder\Models\Providers\TideBitProvider;
 use App\Models\Founder\Models\Providers\VaultoroProvider;
+use App\Models\Founder\Models\Providers\VebitcoinProvider;
 use App\Models\Founder\Models\Providers\VirWoxProvider;
 use App\Models\Founder\Models\Providers\XBTCEProvider;
 use App\Models\Founder\Models\Providers\ZaifProvider;
@@ -163,7 +167,11 @@ class Updater extends \Illuminate\Console\Command
         CryptopiaProvider::class,
         OTCBTCProvider::class,
         C2CXProvider::class,
-        SimexProvider::class
+        SimexProvider::class,
+        VebitcoinProvider::class,
+        NegocieProvider::class,
+        RightBTCProvider::class,
+        QuadrigacxProvider::class
     ];
 
     /**

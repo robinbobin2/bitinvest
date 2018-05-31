@@ -3,36 +3,36 @@
  * Created by PhpStorm.
  * User: xeror
  * Date: 30.05.2018
- * Time: 16:50
+ * Time: 18:27
  */
 
 namespace App\Models\Founder\Models\Providers;
 
 
 use App\Models\Entity\ExchangeRate;
-use App\Models\Founder\Models\Connectors\VebitcoinConnector;
+use App\Models\Founder\Models\Connectors\QuadrigacxConnector;
 use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class VebitcoinProvider extends FounderProvider
+class QuadrigacxProvider extends FounderProvider
 {
     public function getExchangeId()
     {
-        return 72;
+        return 74;
     }
 
     protected function getConnectorClass()
     {
-        return new VebitcoinConnector();
+        return new QuadrigacxConnector();
     }
 
     /**
-     * @return VebitcoinConnector
+     * @return QuadrigacxConnector
      */
     protected function getConnector()
     {
-        /** @var VebitcoinConnector $connector */
+        /** @var QuadrigacxConnector $connector */
         $connector = parent::getConnector();
         return $connector;
     }
@@ -45,14 +45,17 @@ class VebitcoinProvider extends FounderProvider
             return $result;
         }
 
-        foreach ($response as $value) {
+        foreach ($response as $currency => $value) {
+            if(!isset($value->ask)){
+                continue;
+            }
             $ticker = new TickerEntity();
-            $ticker->setAsk($value->Ask);
-            $ticker->setBid($value->Bid);
-            $ticker->setVolume($value->Volume);
-            $ticker->setValue($value->Last);
+            $ticker->setAsk($value->ask);
+            $ticker->setBid($value->bid);
+            $ticker->setVolume($value->volume);
+            $ticker->setValue($value->last);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(substr($value->Code, 0,3) . "/TRY");
+            $ticker->setCurrency($this->getCurrency($currency));
             $result[] = $ticker;
         }
 
@@ -81,4 +84,11 @@ class VebitcoinProvider extends FounderProvider
             }
         }
     }
+
+    private function getCurrency($currency)
+    {
+        $array = explode("_", $currency);
+        return strtoupper($array[0] . "/" . $array[1]);
+    }
+
 }
