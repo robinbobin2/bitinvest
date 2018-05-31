@@ -43,14 +43,6 @@ export class AllNewsComponent implements OnInit {
               'countAll': this.countAll
           };
       })
-    this.route.data.subscribe(
-        (data: Data) => {
-            this.resolved_data = data['news_resolver']
-            this.news = this.resolved_data['news']
-            this.main_news = this.resolved_data['main_news']
-            this.countAll = this.resolved_data['countAll']
-        }
-    );
     
   }
 setOrder(value: string) {

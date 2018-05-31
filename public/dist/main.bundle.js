@@ -6072,12 +6072,6 @@ var AllNewsComponent = (function () {
                 'countAll': _this.countAll
             };
         });
-        this.route.data.subscribe(function (data) {
-            _this.resolved_data = data['news_resolver'];
-            _this.news = _this.resolved_data['news'];
-            _this.main_news = _this.resolved_data['main_news'];
-            _this.countAll = _this.resolved_data['countAll'];
-        });
     };
     AllNewsComponent.prototype.setOrder = function (value) {
         if (this.order === value) {
