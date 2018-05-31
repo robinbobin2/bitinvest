@@ -9107,6 +9107,6 @@ table tbody tr td .difference .buttons a {
 .select > a {
   float: right;
 }
-.news-list .news:nth-child(3n+2) {
+.news-list .news:nth-child(3n+3) {
     margin-right: 0 !important
 }
