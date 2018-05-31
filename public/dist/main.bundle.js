@@ -5752,6 +5752,7 @@ module.exports = ".comment-block {\n  margin-top: 30px; }\n\n.comment-block .com
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__comments_service__ = __webpack_require__("./angular/app/comments.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5762,7 +5763,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
+
 
 
 var News = (function () {
@@ -5790,10 +5791,11 @@ var User = (function () {
 }());
 
 var InterviewDetailsComponent = (function () {
-    function InterviewDetailsComponent(http, router, route) {
+    function InterviewDetailsComponent(http, router, route, commentService) {
         this.http = http;
         this.router = router;
         this.route = route;
+        this.commentService = commentService;
         this.comments = [];
         this.photos = [];
         this.commentcount = 0;
@@ -5827,19 +5829,20 @@ var InterviewDetailsComponent = (function () {
         var path = "/interviewraw/" + id;
         var info = this.http.get(path);
         info.subscribe(function (response) {
+            console.log(response);
             _this.news = {
-                id: response['news'][0]['id'],
-                title: response['news'][0]['title'],
-                desc: response['news'][0]['desc'],
-                name_credits: response['news'][0]['name_credits'],
-                workplace: response['news'][0]['workplace'],
-                created_at: response['news'][0]['created_at'],
-                // photo:response['news'][0]['photos']['file'],
+                id: response['news']['id'],
+                title: response['news']['title'],
+                desc: response['news']['desc'],
+                name_credits: response['news']['name_credits'],
+                workplace: response['news']['workplace'],
+                created_at: response['news']['created_at'],
+                // photo:response['news']['photos']['file'],
                 comments_count: response['comments_count'],
             };
             _this.commentcount = response['comments_count'];
-            (_a = _this.comments).push.apply(_a, response['news'][0]['comments']);
-            for (var _i = 0, _b = response['news'][0]['comments']; _i < _b.length; _i++) {
+            (_a = _this.comments).push.apply(_a, response['news']['comments']);
+            for (var _i = 0, _b = response['news']['comments']; _i < _b.length; _i++) {
                 var item = _b[_i];
                 _this.rating_count[item['id']] = 0;
                 for (var _c = 0, _d = item.rating; _c < _d.length; _c++) {
@@ -5863,6 +5866,23 @@ var InterviewDetailsComponent = (function () {
         });
     };
     // @ViewChild('f') Form:NgForm;
+    InterviewDetailsComponent.prototype.onVote = function (comment_id, positive) {
+        var _this = this;
+        this.commentService.addVote(comment_id, positive).subscribe(function (res) {
+            console.log(res);
+            if (res['error']) {
+                // code...
+            }
+            else {
+                if (positive == 1) {
+                    _this.rating_count[comment_id] += 1;
+                }
+                else {
+                    _this.rating_count[comment_id] -= 1;
+                }
+            }
+        }, function (error) { return console.log(error); });
+    };
     InterviewDetailsComponent.prototype.submitComment = function (form, post_id, type) {
         var _this = this;
         var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
@@ -5887,12 +5907,13 @@ InterviewDetailsComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-interview-details',
         template: __webpack_require__("./angular/app/interview/interview-details/interview-details.component.html"),
-        styles: [__webpack_require__("./angular/app/interview/interview-details/interview-details.component.scss")]
+        styles: [__webpack_require__("./angular/app/interview/interview-details/interview-details.component.scss")],
+        providers: [__WEBPACK_IMPORTED_MODULE_3__comments_service__["a" /* CommentsService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__comments_service__["a" /* CommentsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__comments_service__["a" /* CommentsService */]) === "function" && _d || Object])
 ], InterviewDetailsComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=interview-details.component.js.map
 
 /***/ }),

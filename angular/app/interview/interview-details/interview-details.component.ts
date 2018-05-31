@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ElementRef } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {CommentsService} from "../../comments.service";
 
 export class News {
   id: number;
@@ -40,7 +36,8 @@ export class User {
 @Component({
   selector: 'app-interview-details',
   templateUrl: './interview-details.component.html',
-  styleUrls: ['./interview-details.component.scss']
+  styleUrls: ['./interview-details.component.scss'],
+    providers: [CommentsService]
 })
 export class InterviewDetailsComponent implements OnInit {
 news: News;
@@ -49,7 +46,7 @@ photos: Photos[] = [];
 commentcount = 0;
 user: User;
     rating_count: any;
-  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute, private commentService: CommentsService) {
     
 }
 
@@ -79,21 +76,22 @@ user: User;
     let path = "/interviewraw/"+id;
     const info = this.http.get(path);
       info.subscribe(response => {
+          console.log(response);
         this.news = {
-            id: response['news'][0]['id'],
-          title: response['news'][0]['title'],
-          desc: response['news'][0]['desc'],
-          name_credits: response['news'][0]['name_credits'],
-          workplace: response['news'][0]['workplace'],
-          created_at:response['news'][0]['created_at'],
-          // photo:response['news'][0]['photos']['file'],
+            id: response['news']['id'],
+          title: response['news']['title'],
+          desc: response['news']['desc'],
+          name_credits: response['news']['name_credits'],
+          workplace: response['news']['workplace'],
+          created_at:response['news']['created_at'],
+          // photo:response['news']['photos']['file'],
           comments_count: response['comments_count'],
-          // category: response['news'][0]['category'].name
+          // category: response['news']['category'].name
         }
         this.commentcount = response['comments_count'];
-          this.comments.push(...response['news'][0]['comments']);
+          this.comments.push(...response['news']['comments']);
 
-          for(let item of response['news'][0]['comments']) {
+          for(let item of response['news']['comments']) {
               this.rating_count[item['id']] = 0;
               for (let rating_item of item.rating) {
                   if (rating_item.positive == 1) {
@@ -119,6 +117,25 @@ user: User;
     'commentable_type': ''
   }
   // @ViewChild('f') Form:NgForm;
+    onVote(comment_id, positive) {
+        this.commentService.addVote(comment_id,positive).subscribe(
+            res =>
+            {
+                console.log(res) ;
+                if(res['error']) {
+                    // code...
+                } else {
+                    if (positive == 1) {
+                        this.rating_count[comment_id] += 1;
+                    } else {
+                        this.rating_count[comment_id] -= 1;
+
+                    }
+                }
+            },
+            error => console.log(error)
+        );
+    }
   submitComment(form: NgForm, post_id, type) {
     const headers = new HttpHeaders({'Content-type': 'Application/json '});
     this.http.post('/storecomment', {
