@@ -7,7 +7,7 @@ export class StocksService {
   constructor(private http:HttpClient) {  }
   path = '/bit/info';
   bitPath = '/bit';
-  exchangePath = '/angular/exchange';
+  exchangePath = '/angular/exchange/';
   exchangePairsPath = '/bit/pair/name?exchange=';
   observ: any;
   returnPath: any;

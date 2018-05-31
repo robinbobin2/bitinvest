@@ -51,6 +51,7 @@ comments: CommentRaw[] = [];
 photos: Photos[] = [];
 commentcount = 0;
 user: User;
+    rating_count: any;
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
     
 }
@@ -92,16 +93,19 @@ user: User;
           comments_count: response['comments_count'],
           // category: response['news'][0]['category'].name
         }
-        for(let item of response['comments']) {
-          this.comments.push({
-            id: item['id'],
-            email:item['email'],
-          author: item['author'],
-          body: item['body'],
-          commentable_id:item['commentable_id'],
-          photo: item['photo']
-        })
-        }
+        this.commentcount = response['comments_count'];
+          this.comments.push(...response['news'][0]['comments']);
+
+          for(let item of response['news'][0]['comments']) {
+              this.rating_count[item['id']] = 0;
+              for (let rating_item of item.rating) {
+                  if (rating_item.positive == 1) {
+                      this.rating_count[item['id']] +=1;
+                  } else {
+                      this.rating_count[item['id']] -=1;
+                  }
+              }
+          }
         for(let item of response['photos']) {
           this.photos.push({
             id: item['id'],

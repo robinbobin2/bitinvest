@@ -5837,24 +5837,29 @@ var InterviewDetailsComponent = (function () {
                 // photo:response['news'][0]['photos']['file'],
                 comments_count: response['comments_count'],
             };
-            for (var _i = 0, _a = response['comments']; _i < _a.length; _i++) {
-                var item = _a[_i];
-                _this.comments.push({
-                    id: item['id'],
-                    email: item['email'],
-                    author: item['author'],
-                    body: item['body'],
-                    commentable_id: item['commentable_id'],
-                    photo: item['photo']
-                });
+            _this.commentcount = response['comments_count'];
+            (_a = _this.comments).push.apply(_a, response['news'][0]['comments']);
+            for (var _i = 0, _b = response['news'][0]['comments']; _i < _b.length; _i++) {
+                var item = _b[_i];
+                _this.rating_count[item['id']] = 0;
+                for (var _c = 0, _d = item.rating; _c < _d.length; _c++) {
+                    var rating_item = _d[_c];
+                    if (rating_item.positive == 1) {
+                        _this.rating_count[item['id']] += 1;
+                    }
+                    else {
+                        _this.rating_count[item['id']] -= 1;
+                    }
+                }
             }
-            for (var _b = 0, _c = response['photos']; _b < _c.length; _b++) {
-                var item = _c[_b];
+            for (var _e = 0, _f = response['photos']; _e < _f.length; _e++) {
+                var item = _f[_e];
                 _this.photos.push({
                     id: item['id'],
                     file: item['file']
                 });
             }
+            var _a;
         });
     };
     // @ViewChild('f') Form:NgForm;
@@ -8067,7 +8072,7 @@ var StocksService = (function () {
         this.http = http;
         this.path = '/bit/info';
         this.bitPath = '/bit';
-        this.exchangePath = '/angular/exchange';
+        this.exchangePath = '/angular/exchange/';
         this.exchangePairsPath = '/bit/pair/name?exchange=';
     }
     StocksService.prototype.getStocks = function (pairs) {
