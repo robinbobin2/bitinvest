@@ -59,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="interview-details.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="interview-details.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/interview/interview-details/interview-details.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="142" column="21" selection-start-line="142" selection-start-column="21" selection-end-line="142" selection-end-column="21" />
+            <state relative-caret-position="428">
+              <caret line="78" column="29" lean-forward="true" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="29" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -71,7 +71,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="interview-details.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="interview-details.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/interview/interview-details/interview-details.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="173">
@@ -129,6 +129,7 @@
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
+      <replace>commentcount</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -183,8 +184,8 @@
         <option value="$PROJECT_DIR$/app/exchanges/exchanges.component.ts" />
         <option value="$PROJECT_DIR$/app/exchanges/exchanges.component.html" />
         <option value="$PROJECT_DIR$/app/stocks.service.ts" />
-        <option value="$PROJECT_DIR$/app/interview/interview-details/interview-details.component.ts" />
         <option value="$PROJECT_DIR$/app/interview/interview-details/interview-details.component.html" />
+        <option value="$PROJECT_DIR$/app/interview/interview-details/interview-details.component.ts" />
       </list>
     </option>
   </component>
@@ -411,12 +412,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="93686000" />
+      <workItem from="1526711663196" duration="93927000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140020000" />
+    <option name="totallyTimeSpent" value="140261000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -893,20 +894,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/interview/interview-details/interview-details.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="142" column="21" selection-start-line="142" selection-start-column="21" selection-end-line="142" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/interview/interview-details/interview-details.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
           <caret line="18" column="42" lean-forward="true" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/interview/interview-details/interview-details.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="78" column="29" lean-forward="true" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

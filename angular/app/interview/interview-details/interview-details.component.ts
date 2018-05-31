@@ -12,9 +12,6 @@ export class News {
   id: number;
   title: string;
   desc: string;
-  // main: number;
-  // category:string;
-  // photo: string;
   created_at:string;
   workplace: string;
   name_credits: string;
