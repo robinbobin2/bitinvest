@@ -76,22 +76,19 @@ user: User;
     let path = "/interviewraw/"+id;
     const info = this.http.get(path);
       info.subscribe(response => {
-          console.log(response);
         this.news = {
-            id: response['news']['id'],
-          title: response['news']['title'],
-          desc: response['news']['desc'],
-          name_credits: response['news']['name_credits'],
-          workplace: response['news']['workplace'],
-          created_at:response['news']['created_at'],
-          // photo:response['news']['photos']['file'],
+            id: response['news'][0]['id'],
+          title: response['news'][0]['title'],
+          desc: response['news'][0]['desc'],
+          name_credits: response['news'][0]['name_credits'],
+          workplace: response['news'][0]['workplace'],
+          created_at:response['news'][0]['created_at'],
           comments_count: response['comments_count'],
-          // category: response['news']['category'].name
         }
         this.commentcount = response['comments_count'];
-          this.comments.push(...response['news']['comments']);
+          this.comments.push(...response['news'][0]['comments']);
 
-          for(let item of response['news']['comments']) {
+          for(let item of response['news'][0]['comments']) {
               this.rating_count[item['id']] = 0;
               for (let rating_item of item.rating) {
                   if (rating_item.positive == 1) {
@@ -101,12 +98,7 @@ user: User;
                   }
               }
           }
-        for(let item of response['photos']) {
-          this.photos.push({
-            id: item['id'],
-            file: item['file']
-        })
-        }
+          this.photos.push(...response['photos'])
 
       });
   }

@@ -62,8 +62,8 @@
       <file leaf-file-name="interview-details.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/interview/interview-details/interview-details.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="78" column="32" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
+            <state relative-caret-position="242">
+              <caret line="85" column="53" selection-start-line="85" selection-start-column="53" selection-end-line="85" selection-end-column="53" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -412,12 +412,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="94218000" />
+      <workItem from="1526711663196" duration="94316000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140552000" />
+    <option name="totallyTimeSpent" value="140650000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -903,8 +903,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/interview/interview-details/interview-details.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="78" column="32" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
+        <state relative-caret-position="242">
+          <caret line="85" column="53" selection-start-line="85" selection-start-column="53" selection-end-line="85" selection-end-column="53" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>

@@ -5829,20 +5829,18 @@ var InterviewDetailsComponent = (function () {
         var path = "/interviewraw/" + id;
         var info = this.http.get(path);
         info.subscribe(function (response) {
-            console.log(response);
             _this.news = {
-                id: response['news']['id'],
-                title: response['news']['title'],
-                desc: response['news']['desc'],
-                name_credits: response['news']['name_credits'],
-                workplace: response['news']['workplace'],
-                created_at: response['news']['created_at'],
-                // photo:response['news']['photos']['file'],
+                id: response['news'][0]['id'],
+                title: response['news'][0]['title'],
+                desc: response['news'][0]['desc'],
+                name_credits: response['news'][0]['name_credits'],
+                workplace: response['news'][0]['workplace'],
+                created_at: response['news'][0]['created_at'],
                 comments_count: response['comments_count'],
             };
             _this.commentcount = response['comments_count'];
-            (_a = _this.comments).push.apply(_a, response['news']['comments']);
-            for (var _i = 0, _b = response['news']['comments']; _i < _b.length; _i++) {
+            (_a = _this.comments).push.apply(_a, response['news'][0]['comments']);
+            for (var _i = 0, _b = response['news'][0]['comments']; _i < _b.length; _i++) {
                 var item = _b[_i];
                 _this.rating_count[item['id']] = 0;
                 for (var _c = 0, _d = item.rating; _c < _d.length; _c++) {
@@ -5855,14 +5853,8 @@ var InterviewDetailsComponent = (function () {
                     }
                 }
             }
-            for (var _e = 0, _f = response['photos']; _e < _f.length; _e++) {
-                var item = _f[_e];
-                _this.photos.push({
-                    id: item['id'],
-                    file: item['file']
-                });
-            }
-            var _a;
+            (_e = _this.photos).push.apply(_e, response['photos']);
+            var _a, _e;
         });
     };
     // @ViewChild('f') Form:NgForm;
