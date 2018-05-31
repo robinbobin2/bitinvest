@@ -37,12 +37,7 @@ export class AllNewsComponent implements OnInit {
           this.main_news = response['main_news'];
           this.countAll = this.news.length+this.main_news.length;
 
-          return this.return_any = {
-              'main_news': this.main_news,
-              'news': this.news,
-              'countAll': this.countAll
-          };
-      })
+      }).subscribe()
     
   }
 setOrder(value: string) {

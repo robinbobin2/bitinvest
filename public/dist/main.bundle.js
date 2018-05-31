@@ -6066,12 +6066,7 @@ var AllNewsComponent = (function () {
             _this.news = response['news'];
             _this.main_news = response['main_news'];
             _this.countAll = _this.news.length + _this.main_news.length;
-            return _this.return_any = {
-                'main_news': _this.main_news,
-                'news': _this.news,
-                'countAll': _this.countAll
-            };
-        });
+        }).subscribe();
     };
     AllNewsComponent.prototype.setOrder = function (value) {
         if (this.order === value) {
