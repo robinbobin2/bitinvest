@@ -21,7 +21,7 @@
                     <span class="date">{{news?.created_at}}</span>
                   </div>
                   <div class="right-block">
-                    <a href="#" class="comments"><img src="img/comment.svg" alt="">{{news?.comments_count}}</a>
+                    <a href="#" class="comments"><img src="img/comment.svg" alt="">{{commentcount}}</a>
                     <span class="views"><img src="img/eye.svg" alt="">0</span>
                   </div>
                 </div>
@@ -43,12 +43,12 @@
                                 <p *ngIf="submitted">Комментарий успешно добавлен</p>
                     </div>
                     <div class="comment-top" *ngIf="user?.id == undefined">
-                        <h3>Комментарии ({{news?.comments_count}})</h3>
+                        <h3>Комментарии ({{commentcount}})</h3>
                         <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
                     </div>
                     
-                    <div *ngIf="user?.id != undefined && news?.comments_count > 0" style="background: none !important; border: none !important; padding-top: 0 !important" class="comment-top">
-                        <h3 >Комментарии ({{news?.comments_count}})</h3>
+                    <div *ngIf="user?.id != undefined && commentcount > 0" style="background: none !important; border: none !important; padding-top: 0 !important" class="comment-top">
+                        <h3 >Комментарии ({{commentcount}})</h3>
                         <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
 
                     
@@ -82,7 +82,7 @@
                                 </li>
                             </ng-template>
                         </ul>
-                        <a *ngIf="news.comments_count > 10 && !hide" class="show-comments">Показать все комментарии ({{news.comments_count}})</a>
+                        <a *ngIf="commentcount > 10 && !hide" class="show-comments">Показать все комментарии ({{commentcount}})</a>
                 </div>
               </div>
                 

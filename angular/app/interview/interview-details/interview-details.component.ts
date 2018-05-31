@@ -140,7 +140,7 @@ user: User;
         }),
         
       );
-    this.news.comments_count++;
+    this.commentcount++;
   }
 
 }
