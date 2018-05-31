@@ -9077,3 +9077,7 @@ table tbody tr td .difference .buttons a {
 .main-news .news {
   max-width: 430px !important;
 }
+
+.select > a {
+  float: right;
+}

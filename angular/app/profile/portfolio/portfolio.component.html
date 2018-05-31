@@ -239,8 +239,8 @@
           <tr  *ngFor="let data of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
             <td>
               <div class="img-wrap" [routerLink]="['/crypto', data.symbol]">
-     <!-- <img src="img/bitcoin-icon.png" alt=""> -->
-   </div>
+                <img *ngIf="data.logo" [src]="'images/'+data.logo" style="max-width: 50px;" alt="">
+                </div>
               <span [routerLink]="['/crypto', data.symbol]">{{data.name}} ({{data.symbol}})</span>
             </td>
             <td>

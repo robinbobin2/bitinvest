@@ -79,8 +79,8 @@ width: 94%">
 
 					</div>
 				</div>
-          <h3 class="ico-title">Распределение средств</h3>
-				<div class="distribution-funds" id="distribution-funds">
+          <h3 class="ico-title" *ngIf="percents > 0">Распределение средств</h3>
+				<div class="distribution-funds" id="distribution-funds" *ngIf="percents > 0">
 					<ul class="persent">
 						<li *ngFor="let percent of percents" style="width: 40%" [ngStyle]="{'width':percent.percent+'%'}"  [ngClass]="percentClass(percent.percent, 'first')">{{percent.percent}}%</li>
 					</ul>
