@@ -8985,10 +8985,35 @@ app-news-detail {
   width: 100%;
   margin-top: -20px;
 }
-app-all-news, app-all-cloud-mining, app-ico-project-all, 
-app-interview-details, app-all-review, app-review-detail, 
-app-all-analytics, app-analytics-detail, app-categories, app-cloud-mining-categories,
- app-ico-project-categories,  {
+app-all-news {
+width: 100%;
+} app-all-cloud-mining {
+  width: 100%;
+  } app-ico-project-all {
+    width: 100%;
+  } 
+app-interview-details {
+  width: 100%;
+  } 
+  app-all-review {
+    width: 100%;
+    } 
+    app-review-detail {
+      width: 100%;
+    }
+app-all-analytics {
+  width: 100%;
+  } 
+  app-analytics-detail {
+    width: 100%;
+    } 
+    app-categories{
+      width: 100%;
+      } 
+      app-cloud-mining-categories{
+        width: 100%;
+      }
+ app-ico-project-categories {
   width: 100%;
 }
 app-ico-project-detail {
