@@ -69,7 +69,11 @@
       </file>
       <file leaf-file-name="ico-project-categories.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-categories/ico-project-categories.component.html">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="52" column="115" selection-start-line="51" selection-start-column="36" selection-end-line="52" selection-end-column="115" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -398,15 +402,16 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="98350000" />
+      <workItem from="1526711663196" duration="98414000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144684000" />
+    <option name="totallyTimeSpent" value="144748000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20555556" />
@@ -873,7 +878,11 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-categories/ico-project-categories.component.html">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="52" column="115" selection-start-line="51" selection-start-column="36" selection-end-line="52" selection-end-column="115" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
