@@ -5729,7 +5729,7 @@ var _a, _b, _c;
 /***/ "./angular/app/interview/interview-details/interview-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n              <div class=\"interview-card-content\">\n                <a routerLink='/interview/all' class=\"return\"><span>&lt;</span>Вернуться к списку интервью</a>\n                <div class=\"top-block\">\n                    <h2>{{news?.title}}</h2>\n\n                </div>\n                <div class=\"comment comment-card\">\n                  <div class=\"img-wrap\">\n                    <a href=\"#\"><img style=\"width: 100px; height: 100px;\" src=\"{{photo?.file}}\" alt=\"\"></a>\n                  </div>\n                  <div class=\"text-wrap\">\n                    <a href=\"#\" class=\"name\">{{news?.name_credits}}</a>\n                    <span>{{news?.workplace}}</span>\n                    <p> </p>\n                  </div>\n                </div>\n                <div class=\"info info-top\">\n                  <div class=\"left-block\">\n                    <a href=\"#\" class=\"news-btn\"> </a>\n                    <span class=\"date\">{{news?.created_at}}</span>\n                  </div>\n                  <div class=\"right-block\">\n                    <a href=\"#\" class=\"comments\"><img src=\"img/comment.svg\" alt=\"\">{{commentcount}}</a>\n                    <span class=\"views\"><img src=\"img/eye.svg\" alt=\"\">0</span>\n                  </div>\n                </div>\n                <div class=\"text-wrap\" [innerHTML]=\"news.desc\">\n                    \n                </div>\n    \n                   <!--  -->\n                    <!-- <a href=\"#\" class=\"show-comments\">Показать все комментарии (22)</a> -->\n                    <div class=\"comment-block\" id=\"comment-block\">\n                    <div class=\"comment-top\" *ngIf=\"user?.id != undefined\">\n                                <h3>Добавить новый комментарий</h3>\n                                <form (ngSubmit)=\"submitComment(f, news.id, 'App\\\\Interview')\" #f=\"ngForm\">\n                                    <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{news?.id}}\">\n                                    <input type=\"hidden\" ngModel name=\"commentable_type\" value=\"App\\News\">\n                                    <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                                    <button type=\"submit\">Добавить</button>\n                                </form>\n                                <p *ngIf=\"submitted\">Комментарий успешно добавлен</p>\n                    </div>\n                    <div class=\"comment-top\" *ngIf=\"user?.id == undefined\">\n                        <h3>Комментарии ({{commentcount}})</h3>\n                        <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n                    </div>\n                    \n                    <div *ngIf=\"user?.id != undefined && commentcount > 0\" style=\"background: none !important; border: none !important; padding-top: 0 !important\" class=\"comment-top\">\n                        <h3 >Комментарии ({{commentcount}})</h3>\n                        <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p> -->\n\n                    \n                    </div>\n                        <!--<ul class=\"comment-items\">-->\n                            <!--&lt;!&ndash;  &ndash;&gt;-->\n                            <!--<ng-template ngFor let-item [ngForOf]=\"comments\" let-i=\"index\">-->\n                                <!--<li [ngClass]=\"i > 10 ? 'hidden' : ''\" >-->\n                                    <!--<div class=\"left\">-->\n                                        <!--<div class=\"info\">-->\n                                            <!--<div class=\"img-wrap\">-->\n                                                <!--<img src=\"{{item.photo}}\" style=\"max-width: 35px; height: auto;\" alt=\"\">-->\n                                            <!--</div>-->\n                                            <!--<div class=\"text-wrap\">-->\n                                                <!--<p>{{item.author}}</p>-->\n                                                <!--<span>Добавлен {{item.created_at}}</span>-->\n                                            <!--</div>-->\n                                        <!--</div>-->\n                                        <!--<p class=\"comment-text\">{{item.body}}</p>-->\n                                    <!--</div>-->\n                                    <!--<div class=\"right\">-->\n                                        <!--<div class=\"img-wrap\"></div>-->\n                                        <!--<div class=\"btn-block\">-->\n                                            <!--<span class=\"number-green\" [ngClass]=\"rating_count[item.id] > -1 ? 'number-green' : 'number-red'\">{{rating_count[item.id]}}</span>-->\n                                            <!--<div class=\"buttons\">-->\n                                                <!--<a (click)=\"onVote(item.id, 1)\" class=\"plus\">+</a>-->\n                                                <!--<a (click)=\"onVote(item.id, 0)\" class=\"minus\">-</a>-->\n                                            <!--</div>-->\n                                        <!--</div>-->\n                                    <!--</div>-->\n                                <!--</li>-->\n                            <!--</ng-template>-->\n                        <!--</ul>-->\n                        <a *ngIf=\"commentcount > 10 && !hide\" class=\"show-comments\">Показать все комментарии ({{commentcount}})</a>\n                </div>\n              </div>\n                "
+module.exports = "\n              <div class=\"interview-card-content\">\n                <a routerLink='/interview/all' class=\"return\"><span>&lt;</span>Вернуться к списку интервью</a>\n                <div class=\"top-block\">\n                    <h2>{{news?.title}}</h2>\n\n                </div>\n                <div class=\"comment comment-card\">\n                  <div class=\"img-wrap\">\n                    <a href=\"#\"><img style=\"width: 100px; height: 100px;\" src=\"{{photo?.file}}\" alt=\"\"></a>\n                  </div>\n                  <div class=\"text-wrap\">\n                    <a href=\"#\" class=\"name\">{{news?.name_credits}}</a>\n                    <span>{{news?.workplace}}</span>\n                    <p> </p>\n                  </div>\n                </div>\n                <div class=\"info info-top\">\n                  <div class=\"left-block\">\n                    <a href=\"#\" class=\"news-btn\"> </a>\n                    <span class=\"date\">{{news?.created_at}}</span>\n                  </div>\n                  <div class=\"right-block\">\n                    <a href=\"#\" class=\"comments\"><img src=\"img/comment.svg\" alt=\"\">{{commentcount}}</a>\n                    <span class=\"views\"><img src=\"img/eye.svg\" alt=\"\">0</span>\n                  </div>\n                </div>\n                <div class=\"text-wrap\" >\n                    {{news?.desc}}\n                </div>\n    \n                   <!--  -->\n                    <!-- <a href=\"#\" class=\"show-comments\">Показать все комментарии (22)</a> -->\n                    <div class=\"comment-block\" id=\"comment-block\">\n                    <div class=\"comment-top\" *ngIf=\"user?.id != undefined\">\n                                <h3>Добавить новый комментарий</h3>\n                                <form (ngSubmit)=\"submitComment(f, news.id, 'App\\\\Interview')\" #f=\"ngForm\">\n                                    <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{news?.id}}\">\n                                    <input type=\"hidden\" ngModel name=\"commentable_type\" value=\"App\\News\">\n                                    <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                                    <button type=\"submit\">Добавить</button>\n                                </form>\n                                <p *ngIf=\"submitted\">Комментарий успешно добавлен</p>\n                    </div>\n                    <div class=\"comment-top\" *ngIf=\"user?.id == undefined\">\n                        <h3>Комментарии ({{commentcount}})</h3>\n                        <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n                    </div>\n                    \n                    <div *ngIf=\"user?.id != undefined && commentcount > 0\" style=\"background: none !important; border: none !important; padding-top: 0 !important\" class=\"comment-top\">\n                        <h3 >Комментарии ({{commentcount}})</h3>\n                        <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p> -->\n\n                    \n                    </div>\n                        <ul class=\"comment-items\">\n                            <!--  -->\n                            <ng-template ngFor let-item [ngForOf]=\"comments\" let-i=\"index\">\n                                <li [ngClass]=\"i > 10 ? 'hidden' : ''\" >\n                                    <div class=\"left\">\n                                        <div class=\"info\">\n                                            <div class=\"img-wrap\">\n                                                <img src=\"{{item.photo}}\" style=\"max-width: 35px; height: auto;\" alt=\"\">\n                                            </div>\n                                            <div class=\"text-wrap\">\n                                                <p>{{item.author}}</p>\n                                                <span>Добавлен {{item.created_at}}</span>\n                                            </div>\n                                        </div>\n                                        <p class=\"comment-text\">{{item.body}}</p>\n                                    </div>\n                                    <div class=\"right\">\n                                        <div class=\"img-wrap\"></div>\n                                        <div class=\"btn-block\">\n                                            <span class=\"number-green\" [ngClass]=\"rating_count[item.id] > -1 ? 'number-green' : 'number-red'\">{{rating_count[item.id]}}</span>\n                                            <div class=\"buttons\">\n                                                <a (click)=\"onVote(item.id, 1)\" class=\"plus\">+</a>\n                                                <a (click)=\"onVote(item.id, 0)\" class=\"minus\">-</a>\n                                            </div>\n                                        </div>\n                                    </div>\n                                </li>\n                            </ng-template>\n                        </ul>\n                        <a *ngIf=\"commentcount > 10 && !hide\" class=\"show-comments\">Показать все комментарии ({{commentcount}})</a>\n                </div>\n              </div>\n                "
 
 /***/ }),
 
@@ -5806,6 +5806,39 @@ var InterviewDetailsComponent = (function () {
             'commentable_type': ''
         };
     }
+    InterviewDetailsComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        var id = this.route.snapshot.params['id'];
+        var path = "/interviewraw/" + id;
+        var info = this.http.get(path);
+        info.subscribe(function (response) {
+            console.log(response['news'][0]['desc']);
+            _this.news = {
+                id: response['news'][0]['id'],
+                title: response['news'][0]['title'],
+                desc: response['news'][0]['desc'],
+                name_credits: response['news'][0]['name_credits'],
+                workplace: response['news'][0]['workplace'],
+                created_at: response['news'][0]['created_at'],
+                comments_count: response['comments_count'],
+            };
+            _this.commentcount = response['comments_count'];
+            (_a = _this.comments).push.apply(_a, response['news'][0]['comments']);
+            for (var _i = 0, _b = response['news'][0]['comments']; _i < _b.length; _i++) {
+                var item = _b[_i];
+                _this.rating_count[item['id']] = 0;
+                // for (let rating_item of item.rating) {
+                //     if (rating_item.positive == 1) {
+                //         this.rating_count[item['id']] +=1;
+                //     } else {
+                //         this.rating_count[item['id']] -=1;
+                //     }
+                // }
+            }
+            (_c = _this.photos).push.apply(_c, response['photos']);
+            var _a, _c;
+        });
+    };
     InterviewDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
         var userpath = "/angular/user";
@@ -5824,36 +5857,6 @@ var InterviewDetailsComponent = (function () {
                 return;
             }
             window.scrollTo(0, 0);
-        });
-        var id = this.route.snapshot.params['id'];
-        var path = "/interviewraw/" + id;
-        var info = this.http.get(path);
-        info.subscribe(function (response) {
-            console.log(response['news'][0]['desc']);
-            _this.news = {
-                id: response['news'][0]['id'],
-                title: response['news'][0]['title'],
-                desc: response['news'][0]['desc'],
-                name_credits: response['news'][0]['name_credits'],
-                workplace: response['news'][0]['workplace'],
-                created_at: response['news'][0]['created_at'],
-                comments_count: response['comments_count'],
-            };
-            _this.commentcount = response['comments_count'];
-            // this.comments.push(...response['news'][0]['comments']);
-            //
-            // for(let item of response['news'][0]['comments']) {
-            //     this.rating_count[item['id']] = 0;
-            //     for (let rating_item of item.rating) {
-            //         if (rating_item.positive == 1) {
-            //             this.rating_count[item['id']] +=1;
-            //         } else {
-            //             this.rating_count[item['id']] -=1;
-            //         }
-            //     }
-            // }
-            (_a = _this.photos).push.apply(_a, response['photos']);
-            var _a;
         });
     };
     // @ViewChild('f') Form:NgForm;

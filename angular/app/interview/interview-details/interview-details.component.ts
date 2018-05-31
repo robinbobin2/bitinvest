@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -39,7 +39,7 @@ export class User {
   styleUrls: ['./interview-details.component.scss'],
     providers: [CommentsService]
 })
-export class InterviewDetailsComponent implements OnInit {
+export class InterviewDetailsComponent implements OnInit, AfterViewInit {
 news: News;
 comments: CommentRaw[] = [];
 photos: Photos[] = [];
@@ -49,7 +49,38 @@ user: User;
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute, private commentService: CommentsService) {
     
 }
+ ngAfterViewInit() {
+     let id = this.route.snapshot.params['id'];
+     let path = "/interviewraw/"+id;
+     const info = this.http.get(path);
+     info.subscribe(response => {
+         console.log(response['news'][0]['desc'])
+         this.news = {
+             id: response['news'][0]['id'],
+             title: response['news'][0]['title'],
+             desc: response['news'][0]['desc'],
+             name_credits: response['news'][0]['name_credits'],
+             workplace: response['news'][0]['workplace'],
+             created_at:response['news'][0]['created_at'],
+             comments_count: response['comments_count'],
+         }
+         this.commentcount = response['comments_count'];
+         this.comments.push(...response['news'][0]['comments']);
 
+         for(let item of response['news'][0]['comments']) {
+             this.rating_count[item['id']] = 0;
+             // for (let rating_item of item.rating) {
+             //     if (rating_item.positive == 1) {
+             //         this.rating_count[item['id']] +=1;
+             //     } else {
+             //         this.rating_count[item['id']] -=1;
+             //     }
+             // }
+         }
+         this.photos.push(...response['photos'])
+
+     });
+ }
   ngOnInit() {
     const userpath = "/angular/user";
      const userinfo = this.http.get<User>(userpath);
@@ -72,36 +103,7 @@ user: User;
 
 
 
-    let id = this.route.snapshot.params['id'];
-    let path = "/interviewraw/"+id;
-    const info = this.http.get(path);
-      info.subscribe(response => {
-          console.log(response['news'][0]['desc'])
-        this.news = {
-            id: response['news'][0]['id'],
-          title: response['news'][0]['title'],
-          desc: response['news'][0]['desc'],
-          name_credits: response['news'][0]['name_credits'],
-          workplace: response['news'][0]['workplace'],
-          created_at:response['news'][0]['created_at'],
-          comments_count: response['comments_count'],
-        }
-        this.commentcount = response['comments_count'];
-          // this.comments.push(...response['news'][0]['comments']);
-          //
-          // for(let item of response['news'][0]['comments']) {
-          //     this.rating_count[item['id']] = 0;
-          //     for (let rating_item of item.rating) {
-          //         if (rating_item.positive == 1) {
-          //             this.rating_count[item['id']] +=1;
-          //         } else {
-          //             this.rating_count[item['id']] -=1;
-          //         }
-          //     }
-          // }
-          this.photos.push(...response['photos'])
 
-      });
   }
   comment = { 
     'post_id': '',
