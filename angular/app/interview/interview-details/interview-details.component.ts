@@ -87,18 +87,18 @@ user: User;
           comments_count: response['comments_count'],
         }
         this.commentcount = response['comments_count'];
-          this.comments.push(...response['news'][0]['comments']);
-
-          for(let item of response['news'][0]['comments']) {
-              this.rating_count[item['id']] = 0;
-              for (let rating_item of item.rating) {
-                  if (rating_item.positive == 1) {
-                      this.rating_count[item['id']] +=1;
-                  } else {
-                      this.rating_count[item['id']] -=1;
-                  }
-              }
-          }
+          // this.comments.push(...response['news'][0]['comments']);
+          //
+          // for(let item of response['news'][0]['comments']) {
+          //     this.rating_count[item['id']] = 0;
+          //     for (let rating_item of item.rating) {
+          //         if (rating_item.positive == 1) {
+          //             this.rating_count[item['id']] +=1;
+          //         } else {
+          //             this.rating_count[item['id']] -=1;
+          //         }
+          //     }
+          // }
           this.photos.push(...response['photos'])
 
       });
