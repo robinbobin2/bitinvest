@@ -20,7 +20,7 @@ webpackEmptyAsyncContext.id = "./angular/$$_gendir lazy recursive";
 /***/ "./angular/app/analytics-categories/analytics-categories.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n        <div class=\"col-md-4\" style=\"padding-left:20px;\">\n        <h3 style=\"float:left; margin-top: 3px;\">Аналитика</h3>\n  <h6 style=\"color:#9b9b9b;margin-top:10px;float:left;width:10%;text-align:center\">228</h6>\n      </div>\n\n    \n      <div class=\"col-md-8\">\n        <ul class=\"tags\">\n          <li><a routerLinkActive=\"active\"  routerLink=\"/analytics/all\">Новое за сегодня</a></li>\n          <li><a routerLinkActive=\"active\" href=\"#\">Самое популярное</a></li>\n          <li><a routerLinkActive=\"active\" href=\"#\">Самое обсуждаемое</a></li>\n        </ul>\n      </div>\n </div>\n\n <div class=\"main-block\" style=\"width: 48%;float:left;margin:1%;\" *ngFor=\"let main_item of main_news\">\n        <div class=\"block\" style=\"background-size: cover; width: 100%; height: 240px; box-sizing: border-box;\">\n          <div style=\"position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;\"></div>\n          <img style=\"z-index: 1; position: absolute; top: 0; left: 0; right: 0;\n          bottom: 0;\" src=\"{{main_item.photo}}\">\n          <div class=\"block-content\">\n            <span class=\"tag\"><a href=\"#\">{{main_item.category}}</a></span>\n            <table style=\"height: 140px;\"><tr><td valign=\"bottom\">\n            \n            <h2 style=\"position: relative; z-index: 999\"><a (click)=\"loadMore(main_item.id)\">{{main_item.title}}</a></h2>\n          </td></tr></table>\n\n            <div class=\"meta\" style=\"z-index: 99\">\n              <span class=\"date\">{{main_item.created_at}}</span>\n              <span class=\"spy\">0</span>\n              <span class=\"chat\">0</span>\n            </div>\n          </div>\n        </div>\n        <p>{{main_item.desc}} <a (click)=\"loadMore(main_item.id)\">Подробнее</a></p>\n      </div>\n\n<masonry class=\"masonry\" [options]=\"myOptions\" style=\"float:left;\">\n        \n\t\n\t  \n\t  \t  \t\t<masonry-brick class=\"masonry-item\" *ngFor=\"let item of news\">\n        <div class=\"grid-item-bg\" style=\" position: relative; background-size: cover; box-sizing: border-box;\">\n          <div style=\"position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;\"></div>\n          <img style=\"z-index: 1; position: absolute; top: 0; left: 0; right: 0;\n          bottom: 0;\" src=\"{{item.photo}}\">\n          <div class=\"block-content\" style=\"z-index: 99\">\n            <span class=\"tag\"><a href=\"#\">{{item.category}}</a></span>\n            \n            <div class=\"meta\" style=\"z-index: 99\">\n              <span class=\"date\">{{item.created_at}}</span>\n            </div>\n          </div>\n        </div>\n        <h3><a  (click)=\"loadMore(item.id)\" >{{item.title}}</a></h3>\n      </masonry-brick>\n      \n\t  \n      </masonry>"
+module.exports = "<div class=\"news-content\">\n    <div class=\"news-head\">\n        <h1>Аналитика<span>{{countAll}}</span></h1>\n        <ul class=\"news-tabs\">\n            <li class=\"active\"><a (click)=\"setOrder('id')\">Новое за сегодня</a></li>\n            <li><a (click)=\"setOrder('views_count')\">Самое популярное</a></li>\n            <li><a  (click)=\"setOrder('comments_count')\">Самое обсуждаемое</a></li>\n        </ul>\n    </div>\n    <div class=\"news-body\">\n        <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n                <div class=\"news\" *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')'}\">\n                        <a routerLink=\"/analytics/category/{{item.cat_id}}\" class=\"news-btn\">{{item.category}}</a>\n                        <a routerLink=\"/analytics/item/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                        <div class=\"info\">\n                            <span class=\"date\">{{item.created_at}}</span>\n                            <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                            <a href=\"/analytics/item/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                        </div>\n                    </div>\n                    <div class=\"text\">\n                        <p>{{item.desc | striphtml |excerpt:80}}  <a routerLink=\"/anamytics/item/{{item.id}}\">Подробнее</a></p>\n                    </div>\n                </div>\n            </div>\n            <div class=\"news-list\">\n                <div class=\"news\" *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')' }\">\n                        <a routerLink=\"/analytics/category/{{item.cat_id}}\" class=\"news-btn\">{{item.category}}</a>\n                        <div class=\"info\">\n                            <span class=\"date\">{{item.created_at}}</span>\n                        </div>\n                    </div>\n                    <div class=\"text\">\n                        <h3>\n                            <a routerLink=\"/analytics/item/{{item.id}}\">{{item.title}}</a>\n                        </h3>\n                    </div>\n                    <div class=\"text2\">\n                        <p>{{item.desc | striphtml |excerpt:80}}</p>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n    </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -39,7 +39,8 @@ module.exports = "body {\n  background: #f9f9f9;\n  font-family: \"PT Sans\"; }\
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AnalyticsCategoriesComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -50,7 +51,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
+
 
 
 var NewsRaw = (function () {
@@ -60,12 +61,19 @@ var NewsRaw = (function () {
 }());
 
 var AnalyticsCategoriesComponent = (function () {
-    function AnalyticsCategoriesComponent(http, router, route) {
+    /**
+     * @param {OrderPipe}
+     */
+    function AnalyticsCategoriesComponent(orderPipe, http, router, route) {
+        this.orderPipe = orderPipe;
         this.http = http;
         this.router = router;
         this.route = route;
+        this.countAll = 0;
         this.news = [];
         this.main_news = [];
+        this.order = 'id';
+        this.reverse = true;
     }
     AnalyticsCategoriesComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -73,7 +81,7 @@ var AnalyticsCategoriesComponent = (function () {
             _this.id = params['id'];
             _this.news.length = 0;
             _this.main_news.length = 0;
-            _this.path = "/analyticsbycat/" + _this.id;
+            _this.path = "/postsbycat/" + _this.id;
             _this.info = _this.http.get(_this.path);
             _this.info.subscribe(function (response) {
                 // console.log(response['news']);
@@ -88,7 +96,8 @@ var AnalyticsCategoriesComponent = (function () {
                         main: item.main,
                         created_at: item.created_at,
                         category: item.category.name,
-                        photo: item.photos[0].file
+                        photo: item.photos[0].file,
+                        comments_count: item.comments_count
                     });
                 }
                 for (var _b = 0, _c = response['main_news']; _b < _c.length; _b++) {
@@ -101,17 +110,20 @@ var AnalyticsCategoriesComponent = (function () {
                         main: item.main,
                         category: item.category.name,
                         created_at: item.created_at,
-                        photo: item.photos[0].file
+                        photo: item.photos[0].file,
+                        comments_count: item.comments_count
                     });
                 }
-                // this.news.push(response['news']);
-                //   this.main_news.push(response['main_news']);
-                // console.log(response['news']);
+                _this.countAll = _this.news.length + _this.main_news.length;
             });
         });
     };
-    AnalyticsCategoriesComponent.prototype.loadMore = function (id) {
-        this.router.navigate(['/analytics/item', id]);
+    AnalyticsCategoriesComponent.prototype.setOrder = function (value) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+        console.log(this.order);
     };
     return AnalyticsCategoriesComponent;
 }());
@@ -121,10 +133,10 @@ AnalyticsCategoriesComponent = __decorate([
         template: __webpack_require__("./angular/app/analytics-categories/analytics-categories.component.html"),
         styles: [__webpack_require__("./angular/app/analytics-categories/analytics-categories.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
 ], AnalyticsCategoriesComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=analytics-categories.component.js.map
 
 /***/ }),
@@ -837,7 +849,7 @@ var appRoutes = [
                 path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_15__categories_categories_component__["a" /* CategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_14__news_all_news_all_news_component__["a" /* AllNewsComponent */], resolve: { news_resolver: __WEBPACK_IMPORTED_MODULE_63__news_news_resolver_service__["a" /* NewsResolverService */] }
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_14__news_all_news_all_news_component__["a" /* AllNewsComponent */]
             }
         ]
     },
@@ -6045,9 +6057,21 @@ var AllNewsComponent = (function () {
         this.countAll = 0;
         this.order = 'position';
         this.reverse = false;
+        var path = "/newsraw";
+        this.info = http.get(path);
     }
     AllNewsComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.info.map(function (response) {
+            _this.news = response['news'];
+            _this.main_news = response['main_news'];
+            _this.countAll = _this.news.length + _this.main_news.length;
+            return _this.return_any = {
+                'main_news': _this.main_news,
+                'news': _this.news,
+                'countAll': _this.countAll
+            };
+        });
         this.route.data.subscribe(function (data) {
             _this.resolved_data = data['news_resolver'];
             _this.news = _this.resolved_data['news'];
@@ -6338,21 +6362,8 @@ var NewsResolverService = (function () {
         this.news = [];
         this.main_news = [];
         this.countAll = 0;
-        var path = "/newsraw";
-        this.info = http.get(path);
     }
     NewsResolverService.prototype.resolve = function (route, state) {
-        var _this = this;
-        return this.info.map(function (response) {
-            _this.news = response['news'];
-            _this.main_news = response['main_news'];
-            _this.countAll = _this.news.length + _this.main_news.length;
-            return _this.return_any = {
-                'main_news': _this.main_news,
-                'news': _this.news,
-                'countAll': _this.countAll
-            };
-        });
     };
     return NewsResolverService;
 }());
@@ -7102,7 +7113,7 @@ var _a, _b;
 /***/ "./angular/app/review/review-categories/review-categories.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n        <div class=\"col-md-4\" style=\"padding-left:20px;\">\n        <h3 style=\"float:left; margin-top: 3px;\">Обзоры</h3>\n  <h6 style=\"color:#9b9b9b;margin-top:10px;float:left;width:10%;text-align:center\">228</h6>\n      </div>\n\n    \n      <div class=\"col-md-8\">\n        <ul class=\"tags\">\n          <li><a routerLinkActive=\"active\"  routerLink=\"/review/all\">Новое за сегодня</a></li>\n          <li><a routerLinkActive=\"active\" href=\"#\">Самое популярное</a></li>\n          <li><a routerLinkActive=\"active\" href=\"#\">Самое обсуждаемое</a></li>\n        </ul>\n      </div>\n </div>\n\n <div class=\"main-block\" style=\"width: 48%;float:left;margin:1%;\" *ngFor=\"let main_item of main_news\">\n        <div class=\"block\" style=\"background-size: cover; width: 100%; height: 240px; box-sizing: border-box;\">\n          <div style=\"position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;\"></div>\n          <img style=\"z-index: 1; position: absolute; top: 0; left: 0; right: 0;\n          bottom: 0;\" src=\"{{main_item.photo}}\">\n          <div class=\"block-content\">\n            <span class=\"tag\"><a href=\"#\">{{main_item.category}}</a></span>\n            <table style=\"height: 140px;\"><tr><td valign=\"bottom\">\n            \n            <h2 style=\"position: relative; z-index: 999\"><a (click)=\"loadMore(main_item.id)\">{{main_item.title}}</a></h2>\n          </td></tr></table>\n\n            <div class=\"meta\" style=\"z-index: 99\">\n              <span class=\"date\">{{main_item.created_at}}</span>\n              <span class=\"spy\">0</span>\n              <span class=\"chat\">0</span>\n            </div>\n          </div>\n        </div>\n        <p>{{main_item.desc}} <a (click)=\"loadMore(main_item.id)\">Подробнее</a></p>\n      </div>\n\n<masonry class=\"masonry\" [options]=\"myOptions\" style=\"float:left;\">\n        \n\t\n\t  \n\t  \t  \t\t<masonry-brick class=\"masonry-item\" *ngFor=\"let item of news\">\n        <div class=\"grid-item-bg\" style=\" position: relative; background-size: cover; box-sizing: border-box;\">\n          <div style=\"position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;\"></div>\n          <img style=\"z-index: 1; position: absolute; top: 0; left: 0; right: 0;\n          bottom: 0;\" src=\"{{item.photo}}\">\n          <div class=\"block-content\" style=\"z-index: 99\">\n            <span class=\"tag\"><a href=\"#\">{{item.category}}</a></span>\n            \n            <div class=\"meta\" style=\"z-index: 99\">\n              <span class=\"date\">{{item.created_at}}</span>\n            </div>\n          </div>\n        </div>\n        <h3><a  (click)=\"loadMore(item.id)\" >{{item.title}}</a></h3>\n      </masonry-brick>\n      \n\t  \n      </masonry>"
+module.exports = "<div class=\"news-content\">\n    <div class=\"news-head\">\n        <h1>Обзоры<span>{{countAll}}</span></h1>\n        <ul class=\"news-tabs\">\n            <li class=\"active\"><a (click)=\"setOrder('id')\">Новое за сегодня</a></li>\n            <li><a (click)=\"setOrder('views_count')\">Самое популярное</a></li>\n            <li><a  (click)=\"setOrder('comments_count')\">Самое обсуждаемое</a></li>\n        </ul>\n    </div>\n    <div class=\"news-body\">\n        <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n                <div class=\"news\" *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')'}\">\n                        <a routerLink=\"/reviews/category/{{item.cat_id}}\" class=\"news-btn\">{{item.category}}</a>\n                        <a routerLink=\"/reviews/item/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                        <div class=\"info\">\n                            <span class=\"date\">{{item.created_at}}</span>\n                            <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                            <a href=\"/reviews/item/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                        </div>\n                    </div>\n                    <div class=\"text\">\n                        <p>{{item.desc | striphtml |excerpt:80}}  <a routerLink=\"/anamytics/item/{{item.id}}\">Подробнее</a></p>\n                    </div>\n                </div>\n            </div>\n            <div class=\"news-list\">\n                <div class=\"news\" *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')' }\">\n                        <a routerLink=\"/reviews/category/{{item.cat_id}}\" class=\"news-btn\">{{item.category}}</a>\n                        <div class=\"info\">\n                            <span class=\"date\">{{item.created_at}}</span>\n                        </div>\n                    </div>\n                    <div class=\"text\">\n                        <h3>\n                            <a routerLink=\"/reviews/item/{{item.id}}\">{{item.title}}</a>\n                        </h3>\n                    </div>\n                    <div class=\"text2\">\n                        <p>{{item.desc | striphtml |excerpt:80}}</p>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n    </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -7121,7 +7132,8 @@ module.exports = "body {\n  background: #f9f9f9;\n  font-family: \"PT Sans\"; }\
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReviewCategoriesComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7132,10 +7144,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
 
 
-var scr = 'http://ppql.ru/masonry.js';
+
 var NewsRaw = (function () {
     function NewsRaw() {
     }
@@ -7143,32 +7154,27 @@ var NewsRaw = (function () {
 }());
 
 var ReviewCategoriesComponent = (function () {
-    function ReviewCategoriesComponent(http, router, route) {
+    /**
+     * @param {OrderPipe}
+     */
+    function ReviewCategoriesComponent(orderPipe, http, router, route) {
+        this.orderPipe = orderPipe;
         this.http = http;
         this.router = router;
         this.route = route;
-        this.myOptions = {
-            transitionDuration: '0'
-        };
+        this.countAll = 0;
         this.news = [];
         this.main_news = [];
+        this.order = 'id';
+        this.reverse = true;
     }
-    ReviewCategoriesComponent.prototype.loadScript = function () {
-        console.log('preparing to load...');
-        var node = document.createElement('script');
-        node.src = scr;
-        node.type = 'text/javascript';
-        node.async = false;
-        node.charset = 'utf-8';
-        document.getElementsByTagName('body')[0].appendChild(node);
-    };
     ReviewCategoriesComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
             _this.id = params['id'];
             _this.news.length = 0;
             _this.main_news.length = 0;
-            _this.path = "/reviewbycat/" + _this.id;
+            _this.path = "/postsbycat/" + _this.id;
             _this.info = _this.http.get(_this.path);
             _this.info.subscribe(function (response) {
                 // console.log(response['news']);
@@ -7183,7 +7189,8 @@ var ReviewCategoriesComponent = (function () {
                         main: item.main,
                         created_at: item.created_at,
                         category: item.category.name,
-                        photo: item.photos[0].file
+                        photo: item.photos[0].file,
+                        comments_count: item.comments_count
                     });
                 }
                 for (var _b = 0, _c = response['main_news']; _b < _c.length; _b++) {
@@ -7196,17 +7203,20 @@ var ReviewCategoriesComponent = (function () {
                         main: item.main,
                         category: item.category.name,
                         created_at: item.created_at,
-                        photo: item.photos[0].file
+                        photo: item.photos[0].file,
+                        comments_count: item.comments_count
                     });
                 }
-                // this.news.push(response['news']);
-                //   this.main_news.push(response['main_news']);
-                // console.log(response['news']);
+                _this.countAll = _this.news.length + _this.main_news.length;
             });
         });
     };
-    ReviewCategoriesComponent.prototype.loadMore = function (id) {
-        this.router.navigate(['/review/item', id]);
+    ReviewCategoriesComponent.prototype.setOrder = function (value) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+        console.log(this.order);
     };
     return ReviewCategoriesComponent;
 }());
@@ -7216,10 +7226,10 @@ ReviewCategoriesComponent = __decorate([
         template: __webpack_require__("./angular/app/review/review-categories/review-categories.component.html"),
         styles: [__webpack_require__("./angular/app/review/review-categories/review-categories.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
 ], ReviewCategoriesComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=review-categories.component.js.map
 
 /***/ }),

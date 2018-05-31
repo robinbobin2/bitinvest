@@ -15,6 +15,7 @@ class CreateFrontEndsTable extends Migration
     {
         Schema::create('front_ends', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->timestamps();
         });
     }

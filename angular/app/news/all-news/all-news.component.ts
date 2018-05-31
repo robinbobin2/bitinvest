@@ -10,10 +10,12 @@ import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 })
 export class AllNewsComponent implements OnInit {
 
-  news_raw: any[];
-	news= [];
-  main_news= [];
-  countAll = 0;
+    news_raw: any[];
+    news= [];
+    main_news= [];
+    countAll = 0;
+    info: any;
+    return_any: any;
   order: string = 'position';
   reverse: boolean = false;
 
@@ -21,13 +23,26 @@ export class AllNewsComponent implements OnInit {
   /**
    * @param {OrderPipe} 
    */
-   constructor(private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+   constructor(private orderPipe: OrderPipe, private http:HttpClient, private router:Router, private route:ActivatedRoute) {
 
 
-
+      let path = "/newsraw"
+      this.info = http.get(path)
 
    }
   ngOnInit() {
+      this.info.map(response => {
+          this.news = response['news'];
+
+          this.main_news = response['main_news'];
+          this.countAll = this.news.length+this.main_news.length;
+
+          return this.return_any = {
+              'main_news': this.main_news,
+              'news': this.news,
+              'countAll': this.countAll
+          };
+      })
     this.route.data.subscribe(
         (data: Data) => {
             this.resolved_data = data['news_resolver']

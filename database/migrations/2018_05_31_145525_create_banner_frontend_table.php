@@ -15,6 +15,8 @@ class CreateBannerFrontendTable extends Migration
     {
         Schema::create('banner_frontend', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('banner_id');
+            $table->integer('frontend_id');
             $table->timestamps();
         });
     }

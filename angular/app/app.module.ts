@@ -97,7 +97,7 @@ const appRoutes: Routes = [
       path:'category/:id', component:CategoriesComponent
      },
      {
-      path:'all', component:AllNewsComponent, resolve: { news_resolver: NewsResolverService}
+      path:'all', component:AllNewsComponent
      }
     ]
   },
