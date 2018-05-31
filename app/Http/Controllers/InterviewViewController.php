@@ -54,11 +54,12 @@ class InterviewViewController extends Controller
 
     public function show($id) {
         $news = Interview::first()->with('comments.rating')->get()->where('id', $id)->toArray();
-        $comments = $news->comments;
+        $commentnews = Interview::findOrFail($id);
+        $comments = $commentnews->comments;
         $news = array_values($news);
         $user = Auth::user();
-        $photos = $news->photos;
-        $category = $news->category;
+        $photos = $commentnews->photos;
+        $category = $commentnews->category;
         return response()->json([
             'news' => $news,
             'user' => $user,
