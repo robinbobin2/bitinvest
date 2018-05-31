@@ -76,6 +76,7 @@ user: User;
     let path = "/interviewraw/"+id;
     const info = this.http.get(path);
       info.subscribe(response => {
+          console.log(response['news'][0]['desc'])
         this.news = {
             id: response['news'][0]['id'],
           title: response['news'][0]['title'],

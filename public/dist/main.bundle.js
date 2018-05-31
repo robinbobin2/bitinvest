@@ -5829,6 +5829,7 @@ var InterviewDetailsComponent = (function () {
         var path = "/interviewraw/" + id;
         var info = this.http.get(path);
         info.subscribe(function (response) {
+            console.log(response['news'][0]['desc']);
             _this.news = {
                 id: response['news'][0]['id'],
                 title: response['news'][0]['title'],
