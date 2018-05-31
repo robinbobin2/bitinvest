@@ -1,6 +1,6 @@
 <div class="news-content">
         <div class="news-head">
-          <h1>Новости<span>{{countAll}}</span></h1>
+          <h1>Новости<span *ngIf="countAll">{{countAll}}</span></h1>
           <ul class="news-tabs">
             <li class="active"><a (click)="setOrder('id')">Новое за сегодня</a></li>
             <li><a (click)="setOrder('views_count')">Самое популярное</a></li>
@@ -8,6 +8,9 @@
           </ul>
         </div>
         <div class="news-body">
+          <div style="width: 50px; height: 50px; margin: 40px auto;" *ngIf="load == true" >
+            <img src="/img/load.gif" *ngIf="load == true" style=" width: 50px; height: 50px; text-align: center">
+          </div>
           <div class="news-tab-content active">
             <div class="main-news">
               <div  *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.workplace ? 'news trust' : 'news'">

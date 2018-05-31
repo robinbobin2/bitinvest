@@ -18,6 +18,7 @@ export class AllNewsComponent implements OnInit {
     return_any: any;
   order: string = 'position';
   reverse: boolean = false;
+  load = true;
 
   resolved_data: any;
   /**
@@ -36,6 +37,7 @@ export class AllNewsComponent implements OnInit {
 
           this.main_news = response['main_news'];
           this.countAll = this.news.length+this.main_news.length;
+          this.load = false;
 
       }).subscribe()
     
