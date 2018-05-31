@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute, Data} from '@angular/router';
+import { Component, AfterViewInit } from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 
@@ -8,7 +8,7 @@ import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
   templateUrl: './all-news.component.html',
   styleUrls: ['./all-news.component.css']
 })
-export class AllNewsComponent implements OnInit {
+export class AllNewsComponent implements AfterViewInit {
 
     news_raw: any[];
     news= [];
@@ -31,7 +31,7 @@ export class AllNewsComponent implements OnInit {
       this.info = http.get(path)
 
    }
-  ngOnInit() {
+  ngAfterViewInit() {
       this.info.map(response => {
           this.news = response['news'];
 

@@ -38,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="all-news.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="all-news.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+            <state relative-caret-position="423">
+              <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -50,7 +50,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="all-news.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="all-news.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -177,8 +177,8 @@
         <option value="$PROJECT_DIR$/app/review/review-categories/review-categories.component.html" />
         <option value="$PROJECT_DIR$/app/review/review-categories/review-categories.component.ts" />
         <option value="$PROJECT_DIR$/app/analytics-categories/analytics-categories.component.ts" />
-        <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.ts" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.html" />
+        <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.ts" />
       </list>
     </option>
   </component>
@@ -431,12 +431,12 @@
       <workItem from="1526329369492" duration="703000" />
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
-      <workItem from="1526711663196" duration="100886000" />
+      <workItem from="1526711663196" duration="101568000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147220000" />
+    <option name="totallyTimeSpent" value="147902000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -879,16 +879,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
@@ -915,6 +905,16 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
