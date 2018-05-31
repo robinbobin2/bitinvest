@@ -5799,6 +5799,7 @@ var InterviewDetailsComponent = (function () {
         this.comments = [];
         this.photos = [];
         this.commentcount = 0;
+        this.rating_count = [];
         this.comment = {
             'post_id': '',
             'body': '',

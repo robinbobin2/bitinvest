@@ -45,7 +45,7 @@ comments: CommentRaw[] = [];
 photos: Photos[] = [];
 commentcount = 0;
 user: User;
-    rating_count: any;
+    rating_count: any[]=[];
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute, private commentService: CommentsService) {
     
 }
