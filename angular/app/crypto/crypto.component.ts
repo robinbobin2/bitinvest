@@ -148,36 +148,36 @@ export class CryptoComponent implements OnInit, OnDestroy {
       
     }
 
-    if(localStorage.getItem(symbol+'USD stocks')) {
-      this.stocks = JSON.parse(localStorage.getItem(symbol+'USD stocks'));
-      this.load = false;
-      if(this.volume === 0) {
-        
-        for(let item of this.stocks) {
-            if(item.ask > 0) {
-                this.min.push(item.ask);
-
-            }
-            if(item.bid) {
-                this.max.push(item.bid);
-            }
-          this.volume = this.volume+item.volume;
-        this.time.push(item.time);
-      }
-      if (localStorage.getItem(symbol+'time_value')) {
-          this.time_value = JSON.parse(localStorage.getItem(symbol+'time_value'));;
-
-      } else {
-          this.time_value = Math.max.apply(null, this.time);
-          localStorage.removeItem(symbol+'time_value');
-          localStorage.setItem(symbol+'time_value', JSON.stringify(this.time_value));
-      }
-
-          this.min_value = Math.min.apply(null, this.min);
-          this.max_value = Math.max.apply(null, this.max);
-      }
-
-    }
+    // if(localStorage.getItem(symbol+'USD stocks')) {
+    //   this.stocks = JSON.parse(localStorage.getItem(symbol+'USD stocks'));
+    //   this.load = false;
+    //   if(this.volume === 0) {
+    //
+    //     for(let item of this.stocks) {
+    //         if(item.ask > 0) {
+    //             this.min.push(item.ask);
+    //
+    //         }
+    //         if(item.bid) {
+    //             this.max.push(item.bid);
+    //         }
+    //       this.volume = this.volume+item.volume;
+    //     this.time.push(item.time);
+    //   }
+    //   if (localStorage.getItem(symbol+'time_value')) {
+    //       this.time_value = JSON.parse(localStorage.getItem(symbol+'time_value'));;
+    //
+    //   } else {
+    //       this.time_value = Math.max.apply(null, this.time);
+    //       localStorage.removeItem(symbol+'time_value');
+    //       localStorage.setItem(symbol+'time_value', JSON.stringify(this.time_value));
+    //   }
+    //
+    //       this.min_value = Math.min.apply(null, this.min);
+    //       this.max_value = Math.max.apply(null, this.max);
+    //   }
+    //
+    // }
 
       this.stocksService.getStocks(symbol+'/USD').subscribe(response => {
         this.load = true;
@@ -477,24 +477,26 @@ export class CryptoComponent implements OnInit, OnDestroy {
     }
 
     removePortfolio(id) {
-        const removeUrl = '/angular/userportfolio/crypto/remove/';
-        const removePost = this.http.get(removeUrl+id);
-        removePost.subscribe(
-            response => {
-                this.portfolioInfo.subscribe(res=>{
-                    if(res['error']) {
-                        // code...
-                    } else {
-                        this.portfoliosInfo = res['crypto'];
-                    }
-                }),
-                    this.checkInPortfolio(id);
-                setTimeout(()=> {
-                    $.getScript('/js/script.js');
-                }, 300)
-            },
-            error => console.log(error)
-        )
+        if(confirm('Подтвердите удаление')) {
+            const removeUrl = '/angular/userportfolio/crypto/remove/';
+            const removePost = this.http.get(removeUrl + id);
+            removePost.subscribe(
+                () => {
+                    this.portfolioInfo.subscribe(res => {
+                        if (res['error']) {
+                            // code...
+                        } else {
+                            this.portfoliosInfo = res['crypto'];
+                        }
+                    }),
+                        this.checkInPortfolio(id);
+                    setTimeout(() => {
+                        $.getScript('/js/script.js');
+                    }, 300)
+                },
+                error => console.log(error)
+            )
+        }
     }
     basicRoute() {
       let symbol = this.route.snapshot.params['sym'];

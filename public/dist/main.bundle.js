@@ -3089,34 +3089,36 @@ var CryptoComponent = (function () {
         if (localStorage.getItem(symbol + 'ask')) {
             this.bid_ask.ask = JSON.parse(localStorage.getItem('ask'));
         }
-        if (localStorage.getItem(symbol + 'USD stocks')) {
-            this.stocks = JSON.parse(localStorage.getItem(symbol + 'USD stocks'));
-            this.load = false;
-            if (this.volume === 0) {
-                for (var _a = 0, _b = this.stocks; _a < _b.length; _a++) {
-                    var item = _b[_a];
-                    if (item.ask > 0) {
-                        this.min.push(item.ask);
-                    }
-                    if (item.bid) {
-                        this.max.push(item.bid);
-                    }
-                    this.volume = this.volume + item.volume;
-                    this.time.push(item.time);
-                }
-                if (localStorage.getItem(symbol + 'time_value')) {
-                    this.time_value = JSON.parse(localStorage.getItem(symbol + 'time_value'));
-                    ;
-                }
-                else {
-                    this.time_value = Math.max.apply(null, this.time);
-                    localStorage.removeItem(symbol + 'time_value');
-                    localStorage.setItem(symbol + 'time_value', JSON.stringify(this.time_value));
-                }
-                this.min_value = Math.min.apply(null, this.min);
-                this.max_value = Math.max.apply(null, this.max);
-            }
-        }
+        // if(localStorage.getItem(symbol+'USD stocks')) {
+        //   this.stocks = JSON.parse(localStorage.getItem(symbol+'USD stocks'));
+        //   this.load = false;
+        //   if(this.volume === 0) {
+        //
+        //     for(let item of this.stocks) {
+        //         if(item.ask > 0) {
+        //             this.min.push(item.ask);
+        //
+        //         }
+        //         if(item.bid) {
+        //             this.max.push(item.bid);
+        //         }
+        //       this.volume = this.volume+item.volume;
+        //     this.time.push(item.time);
+        //   }
+        //   if (localStorage.getItem(symbol+'time_value')) {
+        //       this.time_value = JSON.parse(localStorage.getItem(symbol+'time_value'));;
+        //
+        //   } else {
+        //       this.time_value = Math.max.apply(null, this.time);
+        //       localStorage.removeItem(symbol+'time_value');
+        //       localStorage.setItem(symbol+'time_value', JSON.stringify(this.time_value));
+        //   }
+        //
+        //       this.min_value = Math.min.apply(null, this.min);
+        //       this.max_value = Math.max.apply(null, this.max);
+        //   }
+        //
+        // }
         this.stocksService.getStocks(symbol + '/USD').subscribe(function (response) {
             _this.load = true;
             _this.stocks = response;
@@ -3381,22 +3383,24 @@ var CryptoComponent = (function () {
     };
     CryptoComponent.prototype.removePortfolio = function (id) {
         var _this = this;
-        var removeUrl = '/angular/userportfolio/crypto/remove/';
-        var removePost = this.http.get(removeUrl + id);
-        removePost.subscribe(function (response) {
-            _this.portfolioInfo.subscribe(function (res) {
-                if (res['error']) {
-                    // code...
-                }
-                else {
-                    _this.portfoliosInfo = res['crypto'];
-                }
-            }),
-                _this.checkInPortfolio(id);
-            setTimeout(function () {
-                $.getScript('/js/script.js');
-            }, 300);
-        }, function (error) { return console.log(error); });
+        if (confirm('Подтвердите удаление')) {
+            var removeUrl = '/angular/userportfolio/crypto/remove/';
+            var removePost = this.http.get(removeUrl + id);
+            removePost.subscribe(function () {
+                _this.portfolioInfo.subscribe(function (res) {
+                    if (res['error']) {
+                        // code...
+                    }
+                    else {
+                        _this.portfoliosInfo = res['crypto'];
+                    }
+                }),
+                    _this.checkInPortfolio(id);
+                setTimeout(function () {
+                    $.getScript('/js/script.js');
+                }, 300);
+            }, function (error) { return console.log(error); });
+        }
     };
     CryptoComponent.prototype.basicRoute = function () {
         var symbol = this.route.snapshot.params['sym'];
@@ -4724,28 +4728,30 @@ var IcoProjectAllComponent = (function () {
     };
     IcoProjectAllComponent.prototype.removePortfolio = function (id, type) {
         var _this = this;
-        var removeUrl;
-        if (type == 'App\\IcoProject') {
-            removeUrl = '/angular/userportfolio/ico/remove/';
+        if (confirm('Подтвердите удаление')) {
+            var removeUrl = void 0;
+            if (type == 'App\\IcoProject') {
+                removeUrl = '/angular/userportfolio/ico/remove/';
+            }
+            else {
+                removeUrl = '/angular/userportfolio/remove/';
+            }
+            var removePost = this.http.get(removeUrl + id);
+            removePost.subscribe(function (response) {
+                _this.portfolioInfo.subscribe(function (res) {
+                    if (res['error']) {
+                        // code...
+                    }
+                    else {
+                        _this.portfoliosInfo = res['ico'];
+                    }
+                }),
+                    _this.checkInPortfolio(id);
+                setTimeout(function () {
+                    $.getScript('/js/script.js');
+                }, 300);
+            }, function (error) { return console.log(error); });
         }
-        else {
-            removeUrl = '/angular/userportfolio/remove/';
-        }
-        var removePost = this.http.get(removeUrl + id);
-        removePost.subscribe(function (response) {
-            _this.portfolioInfo.subscribe(function (res) {
-                if (res['error']) {
-                    // code...
-                }
-                else {
-                    _this.portfoliosInfo = res['ico'];
-                }
-            }),
-                _this.checkInPortfolio(id);
-            setTimeout(function () {
-                $.getScript('/js/script.js');
-            }, 300);
-        }, function (error) { return console.log(error); });
     };
     IcoProjectAllComponent.prototype.setOrder = function (value) {
         if (this.order === value) {
@@ -4928,28 +4934,30 @@ var IcoProjectCategoriesComponent = (function () {
     };
     IcoProjectCategoriesComponent.prototype.removePortfolio = function (id, type) {
         var _this = this;
-        var removeUrl;
-        if (type == 'App\\IcoProject') {
-            removeUrl = '/angular/userportfolio/ico/remove/';
+        if (confirm('Подтвердите удаление')) {
+            var removeUrl = void 0;
+            if (type == 'App\\IcoProject') {
+                removeUrl = '/angular/userportfolio/ico/remove/';
+            }
+            else {
+                removeUrl = '/angular/userportfolio/remove/';
+            }
+            var removePost = this.http.get(removeUrl + id);
+            removePost.subscribe(function (response) {
+                _this.portfolioInfo.subscribe(function (res) {
+                    if (res['error']) {
+                        // code...
+                    }
+                    else {
+                        _this.portfoliosInfo = res['ico'];
+                    }
+                }),
+                    _this.checkInPortfolio(id);
+                setTimeout(function () {
+                    $.getScript('/js/script.js');
+                }, 300);
+            }, function (error) { return console.log(error); });
         }
-        else {
-            removeUrl = '/angular/userportfolio/remove/';
-        }
-        var removePost = this.http.get(removeUrl + id);
-        removePost.subscribe(function (response) {
-            _this.portfolioInfo.subscribe(function (res) {
-                if (res['error']) {
-                    // code...
-                }
-                else {
-                    _this.portfoliosInfo = res['ico'];
-                }
-            }),
-                _this.checkInPortfolio(id);
-            setTimeout(function () {
-                $.getScript('/js/script.js');
-            }, 300);
-        }, function (error) { return console.log(error); });
     };
     IcoProjectCategoriesComponent.prototype.checkInPortfolio = function (id) {
         if (this.portfoliosInfo == undefined) {
@@ -5286,28 +5294,30 @@ var IcoProjectDetailComponent = (function () {
     };
     IcoProjectDetailComponent.prototype.removePortfolio = function (id, type) {
         var _this = this;
-        var removeUrl;
-        if (type == 'App\\IcoProject') {
-            removeUrl = '/angular/userportfolio/ico/remove/';
+        if (confirm('Подтвердите удаление')) {
+            var removeUrl = void 0;
+            if (type == 'App\\IcoProject') {
+                removeUrl = '/angular/userportfolio/ico/remove/';
+            }
+            else {
+                removeUrl = '/angular/userportfolio/remove/';
+            }
+            var removePost = this.http.get(removeUrl + id);
+            removePost.subscribe(function (response) {
+                _this.portfolioInfo.subscribe(function (res) {
+                    if (res['error']) {
+                        // code...
+                    }
+                    else {
+                        _this.portfoliosInfo = res['ico'];
+                    }
+                }),
+                    _this.checkInPortfolio(id);
+                setTimeout(function () {
+                    $.getScript('/js/script.js');
+                }, 300);
+            }, function (error) { return console.log(error); });
         }
-        else {
-            removeUrl = '/angular/userportfolio/remove/';
-        }
-        var removePost = this.http.get(removeUrl + id);
-        removePost.subscribe(function (response) {
-            _this.portfolioInfo.subscribe(function (res) {
-                if (res['error']) {
-                    // code...
-                }
-                else {
-                    _this.portfoliosInfo = res['ico'];
-                }
-            }),
-                _this.checkInPortfolio(id);
-            setTimeout(function () {
-                $.getScript('/js/script.js');
-            }, 300);
-        }, function (error) { return console.log(error); });
     };
     IcoProjectDetailComponent.prototype.checkInPortfolio = function (id) {
         if (this.portfoliosInfo == undefined) {
