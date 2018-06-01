@@ -79,11 +79,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
   infoCrypto: any;
   stocksData: any;
   cryptoFirst:any;
-  lowest: number;
   cryptoData: any;
   bid_ask: {bid: number; ask: number;} = {bid: 0, ask: 0};
   animtype = '';
-  animtypebg = '';
   diff = 0;
   volume = 0;
   animstock = [];
@@ -94,6 +92,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
   max = [];
   time = [];
   time_value = 0;
+  news_container: any;
   selectedItem: PositionData;
     portfolioInfo:any;
 
@@ -103,7 +102,6 @@ export class CryptoComponent implements OnInit, OnDestroy {
     checkPortfolio = false;
     rating:any;
     rating_count = [];
-    countScroll = 3;
     constructor(private http:HttpClient,private stocksService:StocksService,
     private router:Router, private route:ActivatedRoute, 
     public auth: AuthService,
@@ -327,6 +325,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       newsInfo.subscribe(response => {
         this.main_news = response['main_news'];
         this.news = response['news'];
+        this.news_container = this.news.slice(0,2);
         console.log(this.news);
         console.log(this.main_news);
       });
@@ -367,13 +366,13 @@ export class CryptoComponent implements OnInit, OnDestroy {
       }
       );
   }
-    onScroll(event: any): void {
-        let elementHeight = event.target.scrollTopMax;
-        let scrollPosition = event.target.scrollTop;
-        console.log(elementHeight)
-        console.log(scrollPosition)
-        if( elementHeight - scrollPosition < 1000) {
-            this.countScroll = this.countScroll+3
+    onScroll() {
+        if(this.news_container.length < this.news.length){
+            let len = this.news_container.length;
+
+            for(let i = len; i <= len+3; i++){
+                this.news_container.push(this.news[i]);
+            }
         }
     }
   submitComment(form: NgForm,post_id, type) {

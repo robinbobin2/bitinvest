@@ -1,16 +1,18 @@
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {Routes, RouterModule} from "@angular/router";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 
 import { CryptoComponent } from './crypto/crypto.component';
 import { CmcComponent } from './cmc/cmc.component';
 import { ExmoComponent } from './exmo/exmo.component';
 import { AppComponent } from './app.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './news/header/header.component';
 import { NewsComponent } from './news/news.component';
 import { NewsDetailComponent } from './news/news-detail/news-detail.component';
@@ -280,7 +282,9 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     OrderPipe
   ],
-  providers: [HttpClientModule, OrderPipe, SidebarResolverService, CommentsService, NewsResolverService],
+  providers: [HttpClientModule, OrderPipe, SidebarResolverService, CommentsService, NewsResolverService, InfiniteScrollModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

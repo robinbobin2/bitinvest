@@ -691,71 +691,74 @@ var _a, _b, _c, _d, _e;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__crypto_crypto_component__ = __webpack_require__("./angular/app/crypto/crypto.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__cmc_cmc_component__ = __webpack_require__("./angular/app/cmc/cmc.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__exmo_exmo_component__ = __webpack_require__("./angular/app/exmo/exmo.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_component__ = __webpack_require__("./angular/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__news_header_header_component__ = __webpack_require__("./angular/app/news/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__news_news_component__ = __webpack_require__("./angular/app/news/news.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__news_news_detail_news_detail_component__ = __webpack_require__("./angular/app/news/news-detail/news-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__news_all_news_all_news_component__ = __webpack_require__("./angular/app/news/all-news/all-news.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__categories_categories_component__ = __webpack_require__("./angular/app/categories/categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_angular2_masonry__ = __webpack_require__("./node_modules/angular2-masonry/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__analytics_analytics_component__ = __webpack_require__("./angular/app/analytics/analytics.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__analytics_all_analytics_all_analytics_component__ = __webpack_require__("./angular/app/analytics/all-analytics/all-analytics.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__analytics_analytics_detail_analytics_detail_component__ = __webpack_require__("./angular/app/analytics/analytics-detail/analytics-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__analytics_categories_analytics_categories_component__ = __webpack_require__("./angular/app/analytics-categories/analytics-categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__interview_interview_component__ = __webpack_require__("./angular/app/interview/interview.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__interview_all_interview_all_interview_component__ = __webpack_require__("./angular/app/interview/all-interview/all-interview.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__interview_interview_details_interview_details_component__ = __webpack_require__("./angular/app/interview/interview-details/interview-details.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__interview_interview_categories_interview_categories_component__ = __webpack_require__("./angular/app/interview/interview-categories/interview-categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__review_review_component__ = __webpack_require__("./angular/app/review/review.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__review_all_review_all_review_component__ = __webpack_require__("./angular/app/review/all-review/all-review.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__review_review_detail_review_detail_component__ = __webpack_require__("./angular/app/review/review-detail/review-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__review_review_categories_review_categories_component__ = __webpack_require__("./angular/app/review/review-categories/review-categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__cloud_mining_cloud_mining_component__ = __webpack_require__("./angular/app/cloud-mining/cloud-mining.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__cloud_mining_all_cloud_mining_all_cloud_mining_component__ = __webpack_require__("./angular/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__ = __webpack_require__("./angular/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__crypto_all_crypto_all_component__ = __webpack_require__("./angular/app/crypto-all/crypto-all.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__crypto_root_crypto_root_component__ = __webpack_require__("./angular/app/crypto-root/crypto-root.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__filter_name_pipe__ = __webpack_require__("./angular/app/filter-name.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__ico_project_ico_project_component__ = __webpack_require__("./angular/app/ico-project/ico-project.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__ico_project_ico_project_all_ico_project_all_component__ = __webpack_require__("./angular/app/ico-project/ico-project-all/ico-project-all.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_detail_ico_project_detail_component__ = __webpack_require__("./angular/app/ico-project/ico-project-detail/ico-project-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_categories_ico_project_categories_component__ = __webpack_require__("./angular/app/ico-project/ico-project-categories/ico-project-categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__shorten_pipe_pipe__ = __webpack_require__("./angular/app/shorten-pipe.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__filter_name_active_pipe__ = __webpack_require__("./angular/app/filter-name-active.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__cloud_mining_cloud_mining_categories_cloud_mining_categories_component__ = __webpack_require__("./angular/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__edit_profile_edit_profile_component__ = __webpack_require__("./angular/app/edit-profile/edit-profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__filter_name_age_pipe__ = __webpack_require__("./angular/app/filter-name-age.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__crypto_chart_chart_component__ = __webpack_require__("./angular/app/crypto/chart/chart.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__sidebar_sidebar_component__ = __webpack_require__("./angular/app/sidebar/sidebar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__sidebar_cloud_mining_top_cloud_mining_top_component__ = __webpack_require__("./angular/app/sidebar/cloud-mining-top/cloud-mining-top.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__sidebar_stocks_sidebar_stocks_sidebar_component__ = __webpack_require__("./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__profile_profile_component__ = __webpack_require__("./angular/app/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__profile_portfolio_portfolio_component__ = __webpack_require__("./angular/app/profile/portfolio/portfolio.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__import_pipe__ = __webpack_require__("./angular/app/import.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__safe_html_pipe__ = __webpack_require__("./angular/app/safe-html.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__striphtml_pipe__ = __webpack_require__("./angular/app/striphtml.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__excerpt_pipe__ = __webpack_require__("./angular/app/excerpt.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__ = __webpack_require__("./angular/app/sidebar-resolver.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__exchanges_exchanges_component__ = __webpack_require__("./angular/app/exchanges/exchanges.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__exchange_exchange_component__ = __webpack_require__("./angular/app/exchange/exchange.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__sidebar_top_ico_top_ico_component__ = __webpack_require__("./angular/app/sidebar/top-ico/top-ico.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__comments_service__ = __webpack_require__("./angular/app/comments.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__click_outside_directive__ = __webpack_require__("./angular/app/click-outside.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__crypto_chart2_chart2_component__ = __webpack_require__("./angular/app/crypto/chart2/chart2.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__crypto_chart3_chart3_component__ = __webpack_require__("./angular/app/crypto/chart3/chart3.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__news_news_resolver_service__ = __webpack_require__("./angular/app/news/news-resolver.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ngx_infinite_scroll__ = __webpack_require__("./node_modules/ngx-infinite-scroll/modules/ngx-infinite-scroll.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser_dynamic__ = __webpack_require__("./node_modules/@angular/platform-browser-dynamic/@angular/platform-browser-dynamic.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__ = __webpack_require__("./angular/app/crypto/crypto.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__cmc_cmc_component__ = __webpack_require__("./angular/app/cmc/cmc.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__exmo_exmo_component__ = __webpack_require__("./angular/app/exmo/exmo.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__("./angular/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__news_header_header_component__ = __webpack_require__("./angular/app/news/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__news_news_component__ = __webpack_require__("./angular/app/news/news.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__news_news_detail_news_detail_component__ = __webpack_require__("./angular/app/news/news-detail/news-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__news_all_news_all_news_component__ = __webpack_require__("./angular/app/news/all-news/all-news.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__categories_categories_component__ = __webpack_require__("./angular/app/categories/categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_angular2_masonry__ = __webpack_require__("./node_modules/angular2-masonry/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__analytics_analytics_component__ = __webpack_require__("./angular/app/analytics/analytics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__analytics_all_analytics_all_analytics_component__ = __webpack_require__("./angular/app/analytics/all-analytics/all-analytics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__analytics_analytics_detail_analytics_detail_component__ = __webpack_require__("./angular/app/analytics/analytics-detail/analytics-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__analytics_categories_analytics_categories_component__ = __webpack_require__("./angular/app/analytics-categories/analytics-categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__interview_interview_component__ = __webpack_require__("./angular/app/interview/interview.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__interview_all_interview_all_interview_component__ = __webpack_require__("./angular/app/interview/all-interview/all-interview.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__interview_interview_details_interview_details_component__ = __webpack_require__("./angular/app/interview/interview-details/interview-details.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__interview_interview_categories_interview_categories_component__ = __webpack_require__("./angular/app/interview/interview-categories/interview-categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__review_review_component__ = __webpack_require__("./angular/app/review/review.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__review_all_review_all_review_component__ = __webpack_require__("./angular/app/review/all-review/all-review.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__review_review_detail_review_detail_component__ = __webpack_require__("./angular/app/review/review-detail/review-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__review_review_categories_review_categories_component__ = __webpack_require__("./angular/app/review/review-categories/review-categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__cloud_mining_cloud_mining_component__ = __webpack_require__("./angular/app/cloud-mining/cloud-mining.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__cloud_mining_all_cloud_mining_all_cloud_mining_component__ = __webpack_require__("./angular/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__ = __webpack_require__("./angular/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__crypto_all_crypto_all_component__ = __webpack_require__("./angular/app/crypto-all/crypto-all.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__crypto_root_crypto_root_component__ = __webpack_require__("./angular/app/crypto-root/crypto-root.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__filter_name_pipe__ = __webpack_require__("./angular/app/filter-name.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_component__ = __webpack_require__("./angular/app/ico-project/ico-project.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_all_ico_project_all_component__ = __webpack_require__("./angular/app/ico-project/ico-project-all/ico-project-all.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_detail_ico_project_detail_component__ = __webpack_require__("./angular/app/ico-project/ico-project-detail/ico-project-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__ico_project_ico_project_categories_ico_project_categories_component__ = __webpack_require__("./angular/app/ico-project/ico-project-categories/ico-project-categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__shorten_pipe_pipe__ = __webpack_require__("./angular/app/shorten-pipe.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__filter_name_active_pipe__ = __webpack_require__("./angular/app/filter-name-active.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__cloud_mining_cloud_mining_categories_cloud_mining_categories_component__ = __webpack_require__("./angular/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__edit_profile_edit_profile_component__ = __webpack_require__("./angular/app/edit-profile/edit-profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__filter_name_age_pipe__ = __webpack_require__("./angular/app/filter-name-age.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__crypto_chart_chart_component__ = __webpack_require__("./angular/app/crypto/chart/chart.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__sidebar_sidebar_component__ = __webpack_require__("./angular/app/sidebar/sidebar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__sidebar_cloud_mining_top_cloud_mining_top_component__ = __webpack_require__("./angular/app/sidebar/cloud-mining-top/cloud-mining-top.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__sidebar_stocks_sidebar_stocks_sidebar_component__ = __webpack_require__("./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__profile_profile_component__ = __webpack_require__("./angular/app/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__profile_portfolio_portfolio_component__ = __webpack_require__("./angular/app/profile/portfolio/portfolio.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__import_pipe__ = __webpack_require__("./angular/app/import.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__safe_html_pipe__ = __webpack_require__("./angular/app/safe-html.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__striphtml_pipe__ = __webpack_require__("./angular/app/striphtml.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__excerpt_pipe__ = __webpack_require__("./angular/app/excerpt.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__sidebar_resolver_service__ = __webpack_require__("./angular/app/sidebar-resolver.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__exchanges_exchanges_component__ = __webpack_require__("./angular/app/exchanges/exchanges.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__exchange_exchange_component__ = __webpack_require__("./angular/app/exchange/exchange.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__sidebar_top_ico_top_ico_component__ = __webpack_require__("./angular/app/sidebar/top-ico/top-ico.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__comments_service__ = __webpack_require__("./angular/app/comments.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__click_outside_directive__ = __webpack_require__("./angular/app/click-outside.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__crypto_chart2_chart2_component__ = __webpack_require__("./angular/app/crypto/chart2/chart2.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__crypto_chart3_chart3_component__ = __webpack_require__("./angular/app/crypto/chart3/chart3.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__news_news_resolver_service__ = __webpack_require__("./angular/app/news/news-resolver.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 
 
@@ -822,133 +825,133 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var appRoutes = [
     {
-        path: 'crypto/:sym', component: __WEBPACK_IMPORTED_MODULE_6__crypto_crypto_component__["a" /* CryptoComponent */], children: [
+        path: 'crypto/:sym', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */], children: [
             {
-                path: 'news', component: __WEBPACK_IMPORTED_MODULE_6__crypto_crypto_component__["a" /* CryptoComponent */]
+                path: 'news', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */]
             },
             {
-                path: 'about', component: __WEBPACK_IMPORTED_MODULE_6__crypto_crypto_component__["a" /* CryptoComponent */]
+                path: 'about', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */]
             },
             {
-                path: 'graph', component: __WEBPACK_IMPORTED_MODULE_6__crypto_crypto_component__["a" /* CryptoComponent */]
+                path: 'graph', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */]
             },
             {
-                path: 'comments', component: __WEBPACK_IMPORTED_MODULE_6__crypto_crypto_component__["a" /* CryptoComponent */]
+                path: 'comments', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */]
             },
             {
-                path: 'analytics', component: __WEBPACK_IMPORTED_MODULE_6__crypto_crypto_component__["a" /* CryptoComponent */]
+                path: 'analytics', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */]
             }
         ]
     },
     {
-        path: 'posts', component: __WEBPACK_IMPORTED_MODULE_12__news_news_component__["a" /* NewsComponent */], children: [
+        path: 'posts', component: __WEBPACK_IMPORTED_MODULE_14__news_news_component__["a" /* NewsComponent */], children: [
             {
-                path: 'post/:id', component: __WEBPACK_IMPORTED_MODULE_13__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */]
+                path: 'post/:id', component: __WEBPACK_IMPORTED_MODULE_15__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */]
             },
             {
-                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_15__categories_categories_component__["a" /* CategoriesComponent */]
+                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_17__categories_categories_component__["a" /* CategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_14__news_all_news_all_news_component__["a" /* AllNewsComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_16__news_all_news_all_news_component__["a" /* AllNewsComponent */]
             }
         ]
     },
     {
-        path: 'analytics', component: __WEBPACK_IMPORTED_MODULE_17__analytics_analytics_component__["a" /* AnalyticsComponent */], children: [
+        path: 'analytics', component: __WEBPACK_IMPORTED_MODULE_19__analytics_analytics_component__["a" /* AnalyticsComponent */], children: [
             {
-                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_19__analytics_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */]
+                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_21__analytics_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */]
             },
             {
-                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_20__analytics_categories_analytics_categories_component__["a" /* AnalyticsCategoriesComponent */]
+                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_22__analytics_categories_analytics_categories_component__["a" /* AnalyticsCategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_18__analytics_all_analytics_all_analytics_component__["a" /* AllAnalyticsComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_20__analytics_all_analytics_all_analytics_component__["a" /* AllAnalyticsComponent */]
             }
         ]
     },
     {
-        path: 'interview', component: __WEBPACK_IMPORTED_MODULE_21__interview_interview_component__["a" /* InterviewComponent */], children: [
+        path: 'interview', component: __WEBPACK_IMPORTED_MODULE_23__interview_interview_component__["a" /* InterviewComponent */], children: [
             {
-                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_23__interview_interview_details_interview_details_component__["a" /* InterviewDetailsComponent */]
+                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_25__interview_interview_details_interview_details_component__["a" /* InterviewDetailsComponent */]
             },
             {
-                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_24__interview_interview_categories_interview_categories_component__["a" /* InterviewCategoriesComponent */]
+                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_26__interview_interview_categories_interview_categories_component__["a" /* InterviewCategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_22__interview_all_interview_all_interview_component__["a" /* AllInterviewComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_24__interview_all_interview_all_interview_component__["a" /* AllInterviewComponent */]
             }
         ]
     },
     {
-        path: 'review', component: __WEBPACK_IMPORTED_MODULE_25__review_review_component__["a" /* ReviewComponent */], children: [
+        path: 'review', component: __WEBPACK_IMPORTED_MODULE_27__review_review_component__["a" /* ReviewComponent */], children: [
             {
-                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_27__review_review_detail_review_detail_component__["a" /* ReviewDetailComponent */]
+                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_29__review_review_detail_review_detail_component__["a" /* ReviewDetailComponent */]
             },
             {
-                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_28__review_review_categories_review_categories_component__["a" /* ReviewCategoriesComponent */]
+                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_30__review_review_categories_review_categories_component__["a" /* ReviewCategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_26__review_all_review_all_review_component__["a" /* AllReviewComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_28__review_all_review_all_review_component__["a" /* AllReviewComponent */]
             }
         ]
     },
     {
-        path: 'ico', component: __WEBPACK_IMPORTED_MODULE_36__ico_project_ico_project_component__["a" /* IcoProjectComponent */], children: [
+        path: 'ico', component: __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_component__["a" /* IcoProjectComponent */], children: [
             {
-                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_detail_ico_project_detail_component__["a" /* IcoProjectDetailComponent */]
+                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_detail_ico_project_detail_component__["a" /* IcoProjectDetailComponent */]
             },
             {
-                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_categories_ico_project_categories_component__["a" /* IcoProjectCategoriesComponent */]
+                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_41__ico_project_ico_project_categories_ico_project_categories_component__["a" /* IcoProjectCategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_37__ico_project_ico_project_all_ico_project_all_component__["a" /* IcoProjectAllComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_all_ico_project_all_component__["a" /* IcoProjectAllComponent */]
             }
         ]
     },
     {
-        path: 'cloud-mining', component: __WEBPACK_IMPORTED_MODULE_29__cloud_mining_cloud_mining_component__["a" /* CloudMiningComponent */], children: [
+        path: 'cloud-mining', component: __WEBPACK_IMPORTED_MODULE_31__cloud_mining_cloud_mining_component__["a" /* CloudMiningComponent */], children: [
             {
-                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_31__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__["a" /* CloudMiningDetailComponent */]
+                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_33__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__["a" /* CloudMiningDetailComponent */]
             },
             {
-                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_42__cloud_mining_cloud_mining_categories_cloud_mining_categories_component__["a" /* CloudMiningCategoriesComponent */]
+                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_44__cloud_mining_cloud_mining_categories_cloud_mining_categories_component__["a" /* CloudMiningCategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_30__cloud_mining_all_cloud_mining_all_cloud_mining_component__["a" /* AllCloudMiningComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_32__cloud_mining_all_cloud_mining_all_cloud_mining_component__["a" /* AllCloudMiningComponent */]
             }
         ]
     },
     {
-        path: 'cryptocurrency', component: __WEBPACK_IMPORTED_MODULE_33__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */], children: [
+        path: 'cryptocurrency', component: __WEBPACK_IMPORTED_MODULE_35__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */], children: [
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_32__crypto_all_crypto_all_component__["a" /* CryptoAllComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_34__crypto_all_crypto_all_component__["a" /* CryptoAllComponent */]
             },
             {
-                path: 'cmc', component: __WEBPACK_IMPORTED_MODULE_7__cmc_cmc_component__["a" /* CmcComponent */]
+                path: 'cmc', component: __WEBPACK_IMPORTED_MODULE_9__cmc_cmc_component__["a" /* CmcComponent */]
             },
             {
-                path: 'exmo', component: __WEBPACK_IMPORTED_MODULE_8__exmo_exmo_component__["a" /* ExmoComponent */]
+                path: 'exmo', component: __WEBPACK_IMPORTED_MODULE_10__exmo_exmo_component__["a" /* ExmoComponent */]
             },
             {
-                path: 'crypto', component: __WEBPACK_IMPORTED_MODULE_6__crypto_crypto_component__["a" /* CryptoComponent */]
+                path: 'crypto', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */]
             }
         ]
     },
     {
-        path: 'profile', component: __WEBPACK_IMPORTED_MODULE_49__profile_profile_component__["a" /* ProfileComponent */], children: [
+        path: 'profile', component: __WEBPACK_IMPORTED_MODULE_51__profile_profile_component__["a" /* ProfileComponent */], children: [
             {
-                path: 'edit', component: __WEBPACK_IMPORTED_MODULE_43__edit_profile_edit_profile_component__["a" /* EditProfileComponent */]
+                path: 'edit', component: __WEBPACK_IMPORTED_MODULE_45__edit_profile_edit_profile_component__["a" /* EditProfileComponent */]
             },
             {
-                path: 'portfolio', component: __WEBPACK_IMPORTED_MODULE_50__profile_portfolio_portfolio_component__["a" /* PortfolioComponent */]
+                path: 'portfolio', component: __WEBPACK_IMPORTED_MODULE_52__profile_portfolio_portfolio_component__["a" /* PortfolioComponent */]
             },
         ]
     },
     {
-        path: 'exchanges', component: __WEBPACK_IMPORTED_MODULE_56__exchanges_exchanges_component__["a" /* ExchangesComponent */]
+        path: 'exchanges', component: __WEBPACK_IMPORTED_MODULE_58__exchanges_exchanges_component__["a" /* ExchangesComponent */]
     },
     {
-        path: 'exchange/:name', component: __WEBPACK_IMPORTED_MODULE_57__exchange_exchange_component__["a" /* ExchangeComponent */]
+        path: 'exchange/:name', component: __WEBPACK_IMPORTED_MODULE_59__exchange_exchange_component__["a" /* ExchangeComponent */]
     },
 ];
 var AppModule = (function () {
@@ -959,59 +962,59 @@ var AppModule = (function () {
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["M" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__crypto_crypto_component__["a" /* CryptoComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__cmc_cmc_component__["a" /* CmcComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__exmo_exmo_component__["a" /* ExmoComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__news_header_header_component__["a" /* HeaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__news_news_component__["a" /* NewsComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__news_all_news_all_news_component__["a" /* AllNewsComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__categories_categories_component__["a" /* CategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__analytics_analytics_component__["a" /* AnalyticsComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__analytics_all_analytics_all_analytics_component__["a" /* AllAnalyticsComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__analytics_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__analytics_categories_analytics_categories_component__["a" /* AnalyticsCategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__interview_interview_component__["a" /* InterviewComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__interview_all_interview_all_interview_component__["a" /* AllInterviewComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__interview_interview_details_interview_details_component__["a" /* InterviewDetailsComponent */],
-            __WEBPACK_IMPORTED_MODULE_24__interview_interview_categories_interview_categories_component__["a" /* InterviewCategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__review_review_component__["a" /* ReviewComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__review_all_review_all_review_component__["a" /* AllReviewComponent */],
-            __WEBPACK_IMPORTED_MODULE_27__review_review_detail_review_detail_component__["a" /* ReviewDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__review_review_categories_review_categories_component__["a" /* ReviewCategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_29__cloud_mining_cloud_mining_component__["a" /* CloudMiningComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__cloud_mining_all_cloud_mining_all_cloud_mining_component__["a" /* AllCloudMiningComponent */],
-            __WEBPACK_IMPORTED_MODULE_31__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__["a" /* CloudMiningDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_32__crypto_all_crypto_all_component__["a" /* CryptoAllComponent */],
-            __WEBPACK_IMPORTED_MODULE_33__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */],
-            __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */],
-            __WEBPACK_IMPORTED_MODULE_35__filter_name_pipe__["a" /* FilterNamePipe */],
-            __WEBPACK_IMPORTED_MODULE_36__ico_project_ico_project_component__["a" /* IcoProjectComponent */],
-            __WEBPACK_IMPORTED_MODULE_37__ico_project_ico_project_all_ico_project_all_component__["a" /* IcoProjectAllComponent */],
-            __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_detail_ico_project_detail_component__["a" /* IcoProjectDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_categories_ico_project_categories_component__["a" /* IcoProjectCategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_40__shorten_pipe_pipe__["a" /* ShortenPipePipe */],
-            __WEBPACK_IMPORTED_MODULE_41__filter_name_active_pipe__["a" /* FilterNameActivePipe */],
-            __WEBPACK_IMPORTED_MODULE_42__cloud_mining_cloud_mining_categories_cloud_mining_categories_component__["a" /* CloudMiningCategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_43__edit_profile_edit_profile_component__["a" /* EditProfileComponent */],
-            __WEBPACK_IMPORTED_MODULE_44__filter_name_age_pipe__["a" /* FilterNameAgePipe */],
-            __WEBPACK_IMPORTED_MODULE_45__crypto_chart_chart_component__["a" /* ChartComponent */],
-            __WEBPACK_IMPORTED_MODULE_46__sidebar_sidebar_component__["a" /* SidebarComponent */],
-            __WEBPACK_IMPORTED_MODULE_47__sidebar_cloud_mining_top_cloud_mining_top_component__["a" /* CloudMiningTopComponent */],
-            __WEBPACK_IMPORTED_MODULE_48__sidebar_stocks_sidebar_stocks_sidebar_component__["a" /* StocksSidebarComponent */],
-            __WEBPACK_IMPORTED_MODULE_49__profile_profile_component__["a" /* ProfileComponent */],
-            __WEBPACK_IMPORTED_MODULE_50__profile_portfolio_portfolio_component__["a" /* PortfolioComponent */],
-            __WEBPACK_IMPORTED_MODULE_51__import_pipe__["a" /* ImportPipe */],
-            __WEBPACK_IMPORTED_MODULE_52__safe_html_pipe__["a" /* SafeHtmlPipe */],
-            __WEBPACK_IMPORTED_MODULE_53__striphtml_pipe__["a" /* StriphtmlPipe */],
-            __WEBPACK_IMPORTED_MODULE_54__excerpt_pipe__["a" /* ExcerptPipe */],
-            __WEBPACK_IMPORTED_MODULE_56__exchanges_exchanges_component__["a" /* ExchangesComponent */],
-            __WEBPACK_IMPORTED_MODULE_57__exchange_exchange_component__["a" /* ExchangeComponent */],
-            __WEBPACK_IMPORTED_MODULE_58__sidebar_top_ico_top_ico_component__["a" /* TopIcoComponent */],
-            __WEBPACK_IMPORTED_MODULE_60__click_outside_directive__["a" /* ClickOutsideDirective */],
-            __WEBPACK_IMPORTED_MODULE_61__crypto_chart2_chart2_component__["a" /* Chart2Component */],
-            __WEBPACK_IMPORTED_MODULE_62__crypto_chart3_chart3_component__["a" /* Chart3Component */]
+            __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__cmc_cmc_component__["a" /* CmcComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__exmo_exmo_component__["a" /* ExmoComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__news_header_header_component__["a" /* HeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__news_news_component__["a" /* NewsComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__news_all_news_all_news_component__["a" /* AllNewsComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__categories_categories_component__["a" /* CategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__analytics_analytics_component__["a" /* AnalyticsComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__analytics_all_analytics_all_analytics_component__["a" /* AllAnalyticsComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__analytics_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__analytics_categories_analytics_categories_component__["a" /* AnalyticsCategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__interview_interview_component__["a" /* InterviewComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__interview_all_interview_all_interview_component__["a" /* AllInterviewComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__interview_interview_details_interview_details_component__["a" /* InterviewDetailsComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__interview_interview_categories_interview_categories_component__["a" /* InterviewCategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__review_review_component__["a" /* ReviewComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__review_all_review_all_review_component__["a" /* AllReviewComponent */],
+            __WEBPACK_IMPORTED_MODULE_29__review_review_detail_review_detail_component__["a" /* ReviewDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__review_review_categories_review_categories_component__["a" /* ReviewCategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__cloud_mining_cloud_mining_component__["a" /* CloudMiningComponent */],
+            __WEBPACK_IMPORTED_MODULE_32__cloud_mining_all_cloud_mining_all_cloud_mining_component__["a" /* AllCloudMiningComponent */],
+            __WEBPACK_IMPORTED_MODULE_33__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__["a" /* CloudMiningDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__crypto_all_crypto_all_component__["a" /* CryptoAllComponent */],
+            __WEBPACK_IMPORTED_MODULE_35__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */],
+            __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__["a" /* OrderPipe */],
+            __WEBPACK_IMPORTED_MODULE_37__filter_name_pipe__["a" /* FilterNamePipe */],
+            __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_component__["a" /* IcoProjectComponent */],
+            __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_all_ico_project_all_component__["a" /* IcoProjectAllComponent */],
+            __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_detail_ico_project_detail_component__["a" /* IcoProjectDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_41__ico_project_ico_project_categories_ico_project_categories_component__["a" /* IcoProjectCategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_42__shorten_pipe_pipe__["a" /* ShortenPipePipe */],
+            __WEBPACK_IMPORTED_MODULE_43__filter_name_active_pipe__["a" /* FilterNameActivePipe */],
+            __WEBPACK_IMPORTED_MODULE_44__cloud_mining_cloud_mining_categories_cloud_mining_categories_component__["a" /* CloudMiningCategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_45__edit_profile_edit_profile_component__["a" /* EditProfileComponent */],
+            __WEBPACK_IMPORTED_MODULE_46__filter_name_age_pipe__["a" /* FilterNameAgePipe */],
+            __WEBPACK_IMPORTED_MODULE_47__crypto_chart_chart_component__["a" /* ChartComponent */],
+            __WEBPACK_IMPORTED_MODULE_48__sidebar_sidebar_component__["a" /* SidebarComponent */],
+            __WEBPACK_IMPORTED_MODULE_49__sidebar_cloud_mining_top_cloud_mining_top_component__["a" /* CloudMiningTopComponent */],
+            __WEBPACK_IMPORTED_MODULE_50__sidebar_stocks_sidebar_stocks_sidebar_component__["a" /* StocksSidebarComponent */],
+            __WEBPACK_IMPORTED_MODULE_51__profile_profile_component__["a" /* ProfileComponent */],
+            __WEBPACK_IMPORTED_MODULE_52__profile_portfolio_portfolio_component__["a" /* PortfolioComponent */],
+            __WEBPACK_IMPORTED_MODULE_53__import_pipe__["a" /* ImportPipe */],
+            __WEBPACK_IMPORTED_MODULE_54__safe_html_pipe__["a" /* SafeHtmlPipe */],
+            __WEBPACK_IMPORTED_MODULE_55__striphtml_pipe__["a" /* StriphtmlPipe */],
+            __WEBPACK_IMPORTED_MODULE_56__excerpt_pipe__["a" /* ExcerptPipe */],
+            __WEBPACK_IMPORTED_MODULE_58__exchanges_exchanges_component__["a" /* ExchangesComponent */],
+            __WEBPACK_IMPORTED_MODULE_59__exchange_exchange_component__["a" /* ExchangeComponent */],
+            __WEBPACK_IMPORTED_MODULE_60__sidebar_top_ico_top_ico_component__["a" /* TopIcoComponent */],
+            __WEBPACK_IMPORTED_MODULE_62__click_outside_directive__["a" /* ClickOutsideDirective */],
+            __WEBPACK_IMPORTED_MODULE_63__crypto_chart2_chart2_component__["a" /* Chart2Component */],
+            __WEBPACK_IMPORTED_MODULE_64__crypto_chart3_chart3_component__["a" /* Chart3Component */]
         ],
         imports: [
             // BrowserAnimationsModule,
@@ -1020,20 +1023,21 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCheckboxModule */],
-            __WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */],
+            __WEBPACK_IMPORTED_MODULE_12__angular_common_http__["b" /* HttpClientModule */],
             __WEBPACK_IMPORTED_MODULE_5__angular_router__["d" /* RouterModule */].forRoot(appRoutes),
-            __WEBPACK_IMPORTED_MODULE_16_angular2_masonry__["a" /* MasonryModule */],
+            __WEBPACK_IMPORTED_MODULE_18_angular2_masonry__["a" /* MasonryModule */],
         ],
         exports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCheckboxModule */],
-            __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]
+            __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_10__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_34__order_pipe_ngx_order_pipe__["a" /* OrderPipe */], __WEBPACK_IMPORTED_MODULE_55__sidebar_resolver_service__["a" /* SidebarResolverService */], __WEBPACK_IMPORTED_MODULE_59__comments_service__["a" /* CommentsService */], __WEBPACK_IMPORTED_MODULE_63__news_news_resolver_service__["a" /* NewsResolverService */]],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_12__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__["a" /* OrderPipe */], __WEBPACK_IMPORTED_MODULE_57__sidebar_resolver_service__["a" /* SidebarResolverService */], __WEBPACK_IMPORTED_MODULE_61__comments_service__["a" /* CommentsService */], __WEBPACK_IMPORTED_MODULE_65__news_news_resolver_service__["a" /* NewsResolverService */], __WEBPACK_IMPORTED_MODULE_6_ngx_infinite_scroll__["a" /* InfiniteScrollModule */]],
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
+Object(__WEBPACK_IMPORTED_MODULE_7__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(AppModule);
 //# sourceMappingURL=app.module.js.map
 
 /***/ }),
@@ -2972,7 +2976,7 @@ module.exports = "\n\n.comment-block {\n  margin-top: 30px;\n}\n.comment-block .
 /***/ "./angular/app/crypto/crypto.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"single-top-block\">\n  <div class=\"wrapper\" style=\"max-width: 1180px;\">\n    <a routerLink=\"/cryptocurrency/all\" class=\"return\"><span>&#60;</span>Вернуться к списку криптовалют</a>\n    <div class=\"currency\">\n      <h2>{{data?.symbol}}/USD - {{data?.name}} Доллар США</h2>\n      <ul>\n          <li class=\"active\"><a href=\"#\">USD</a></li><!-- \n          <li><a href=\"#\">EUR</a></li>\n          <li><a href=\"#\">RUR</a></li> -->\n          <li>\n            <div id=\"select-currency\" class=\"select-wrap select-gray\">\n          <!--     <select>\n                <option value=\"all\">Еще</option>\n                <option value=\"gbp\">GBP</option>\n                <option value=\"gel\">GEL</option>\n              </select> -->\n            </div>\n          </li>\n          <li class=\"follow\"><a href=\"#login-popup\" *ngIf=\"!checkAuth()\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a>\n            <a href=\"#follow-popup\" *ngIf=\"!checkInPortfolio(data?.id) && checkAuth()\" (click)=\"selectedItem = data\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a>\n\n            <a class=\"follow\"  *ngIf=\"checkInPortfolio(data?.id) && checkAuth()\"  (click)=\"removePortfolio(data?.id)\"><span class=\"minus\"><img src=\"img/minus.png\" alt=\"\"></span><span class=\"text text-red\">Следить</span></a>\n          </li>\n        </ul>\n      </div>\n      <div class=\"price-block\">\n        <div class=\"last-update\">\n          <div class=\"prices-wrap\">\n            <span class=\"price\" style=\"color: #000;\" [ngStyle]=\"{ 'animation': animtype+' 2s', '-webkit-animation': animtype+' 2s'  }\">${{dataUsd?.now | number:'1.0-1'}}</span>\n            <span [ngClass]=\"diff > 0 ? 'green-price' : 'red-price'\">{{diff | number:'1.0-5'}}</span>\n            <span [ngClass]=\"diff > 0 ? 'bg-price-green' : 'bg-price'\">{{countPercent(dataUsd.now, prev) | number:'1.2-3'}}%</span>\n          </div>\n          <p *ngIf=\"time_value\">Последнее обновление {{time_value*1000 | date:'HH:mm:ss'}}</p>\n        </div>\n        <ul>\n          <li><span>Объем за 24ч.</span><span class=\"black\">{{volume | number:'1.0-1'}}</span></li>\n          <li><span>Спрос / Предложение</span><span class=\"black\">{{bid_ask.ask | number:'1.0-2'}} / {{bid_ask.bid | number:'1.0-2'}}</span></li>\n          <li><span>Дневной диапазон</span><span><span class=\"red\">{{min_value | number:'1.0-1'}}</span> <span class=\"black\">/</span> <span class=\"green\">{{max_value | number:'1.0-1'}}</span></span>\n          </li>\n          <li><span>Капитализация</span><span class=\"black\">${{dataUsd.marketCapUsd| number:'1.0-2'}}</span></li>\n          <li><span>Алгоритм</span><span class=\"black\">{{data?.algo}}</span></li>\n          <!-- <li><span>Всего монет / Получено</span><span class=\"black\">21 000 000 000 / 89 000 891 (52%)</span></li> -->\n        </ul>\n      </div>\n    </div>\n  </div>\n\n<section class=\"crypto-single-wrap\">\n    <div class=\"wrapper\">\n      <div class=\"crypto-single-content\">\n        <ul class=\"crypto-tab-menu\">\n          <li routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"><a routerLink=\"./\">Обзор</a></li>\n          <li routerLinkActive=\"active\"><a routerLink=\"graph\">График</a></li>\n          <li routerLinkActive=\"active\"><a routerLink=\"news\">Новости</a></li>\n          <li routerLinkActive=\"active\"><a routerLink=\"comments\">Комментарии ({{commentcount}})</a></li>\n          <li routerLinkActive=\"active\"><a routerLink=\"analytics\">Аналитика</a></li>\n          <li routerLinkActive=\"active\" class=\"desc\"><a routerLink=\"about\" >Описание</a></li>\n        </ul>\n        <div class=\"tab-content-wrap\">\n          <div class=\"tab-content\"  [ngClass]=\"basicRoute() ? 'active' : ''\">\n            <div class=\"overview-content\">\n              <ul class=\"overview-list\">\n                 <li><span>Объем за 24ч.</span><span class=\"black\">{{volume | number:'1.0-1'}}</span></li>\n          <li><span>Спрос / Предложение</span><span class=\"black\">{{bid_ask.ask | number:'1.0-2'}} / {{bid_ask.bid | number:'1.0-2'}}</span></li>\n          <li><span>Дневной диапазон</span><span><span class=\"red\">{{min_value | number:'1.0-1'}}</span> <span class=\"black\">/</span> <span class=\"green\">{{max_value | number:'1.0-1'}}</span></span>\n          </li>\n          <li><span>Капитализация</span><span class=\"black\">${{dataUsd.marketCapUsd| number:'1.0-2'}}</span></li>\n          <li><span>Алгоритм</span><span class=\"black\">{{data?.algo}}</span></li>\n              </ul>\n              <div class=\"overview-block\">\n                <h3>{{data?.symbol}}/USD График криптовалюты</h3>\n                <app-chart></app-chart>\n              </div>\n              <div class=\"overview-table-wrap\">\n                <div class=\"overview-title-block\">\n                  <h2>Котировки {{data?.symbol}}/USD на различных биржах</h2>\n                </div>\n                <table>\n                  <thead>\n                    <tr>\n                      <th width=\"17%\"><span>Биржа</span></th>\n                      <th width=\"10%\"><span>Стоимость</span></th>\n                      <th width=\"10%\"><span>Спрос</span></th>\n                      <th width=\"13%\"><span>Предложение</span></th>\n                      <th width=\"13%\"><span>Объем за 24ч. (BTC)</span></th>\n                      <th width=\"13%\"><span>Объем за 24ч. </span></th>\n                      <th width=\"11%\"><span>Изм. за 24 ч.</span></th>\n                      <th width=\"14%\"><span>Обновлено</span></th>\n                    </tr>\n                  </thead>\n                  <tbody *ngIf=\"load==false\" style=\"position: relative; min-height: 65px;\">\n\n                    <tr *ngFor=\"let stock of stocks; let i = index\">\n                      <td>\n                        <a href=\"#\">\n                          <!-- <span class=\"img-wrap\"><img src=\"img/bitfinex-icon.png\" alt=\"\"></span> -->\n                          <span class=\"text\">{{stock.name}}</span>\n                        </a>\n                      </td>\n                      <td>\n                        <span class=\"cost\" \n                        [ngStyle]=\"{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s'}\">${{stock.value | number:'1.0-1'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"demand\" *ngIf=\"stock.ask\">${{stock.ask | number:'1.0-1'}}</span>\n                        <span class=\"demand\" *ngIf=\"!stock.ask\">-</span>\n                      </td>\n                      <td>\n                        <span class=\"sentence\" *ngIf=\"stock.bid\">${{stock.bid | number:'1.0-1'}}</span>\n                        <span class=\"sentence\" *ngIf=\"!stock.bid\">-</span>\n                      </td>\n                      <td>\n                        <span class=\"amount\">{{stock.volume | number:'1.0-2'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"amount\">${{stock.volumeCommon | number:'1.0-2'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"growth-green\" [ngStyle]=\"{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s', 'color': 'black'}\">{{stock.percent | number:'1.0-3'}}%</span>\n                      </td>\n                      <td>\n                        <span class=\"updated\">{{stock.time * 1000  | date:'HH:mm:ss'}}</span>\n                      </td>\n                    </tr>\n                    \n                  </tbody>\n                </table>\n                <div style=\"width: 50px; height: 50px; margin: 40px auto;\" *ngIf=\"load == true\">\n                  <img src=\"/img/load.gif\" *ngIf=\"load == true\" style=\" width: 50px; height: 50px; text-align: center\">\n                </div>\n                <!-- <a href=\"#\" class=\"show-exchange\">Показать все биржи (105)</a> -->\n              </div>\n              <div class=\"desc-wrap\">\n                <div class=\"description\">\n                  <h5>Описание {{data?.symbol}} ({{data?.name}})</h5>\n                  <div [innerHTML]='data?.desc'></div>\n                </div>\n                <a href=\"#\" class=\"banner-black banner-black-top\"><img src=\"img/banner-black-small.jpg\" alt=\"\"></a>\n              </div>\n            </div>\n            <div class=\"comment-block\">\n              <div class=\"comment-top\"  style=\"background: none; padding-left: 0;\"  *ngIf=\"!user.id\">\n                <h3>Комментарии ({{commentcount}})</h3>\n                <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n              </div>\n              <div class=\"comment-top\"   style=\"background: none; padding-left: 0;\"  *ngIf=\"user.id\">\n                <h3>Добавить новый комментарий</h3>\n                <form (ngSubmit)=\"submitComment(f,data.id, 'App\\\\CryptoStat')\" #f=\"ngForm\">\n                  <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{dataUsd?.id}}\">\n                  <input type=\"hidden\" ngModel name=\"type\" value=\"App\\CryptoStat\">\n                  <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                  <button type=\"submit\">Добавить</button>\n                </form>\n              </div>\n              <h3 class=\"total-comments\"  *ngIf=\"user.id && commentcount > 0\">Всего комментариев ({{commentcount}})</h3>\n              <ul class=\"comment-items\" style=\"padding-left: 0;\">\n                <!--  -->\n                <li *ngFor=\"let item of comments\">\n                  <div class=\"left\">\n                    <div class=\"info\">\n                      <div class=\"img-wrap\">\n                        <img src=\"img/comment-img2.jpg\" style=\"max-width: 35px; height: auto;\" alt=\"\">\n                      </div>\n                      <div class=\"text-wrap\">\n                        <p>{{item.name}}</p>\n                        <span>Добавлен {{item.created_at}}</span>\n                      </div>\n                    </div>\n                    <p class=\"comment-text\">{{item.body}}</p>\n                  </div>\n                  <div class=\"right\">\n                    <div class=\"img-wrap\"></div>\n                    <div class=\"btn-block\">\n                      <span class=\"number-green\">{{rating_count[item.id]}}</span>\n                      <div class=\"buttons\">\n                        <a (click)=\"onVote(item.id, 1)\" class=\"plus\">+</a>\n                        <a (click)=\"onVote(item.id, 0)\" class=\"minus\">-</a>\n                        </div>\n                    </div>\n                  </div>\n                </li>\n\n              </ul>\n              <!-- <a href=\"#\" class=\"show-comments\">Показать все комментарии (22)</a> -->\n            </div>\n            <div class=\"news-body\">\n              <div class=\"news-tab-content active\">\n                <h3>Новости #{{data.name}}</h3>\n                <div class=\"main-news\">\n                  <div class=\"news\" *ngFor=\"let item of main_news\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                      <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                      <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                        <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                        <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>0</a>\n                      </div>\n                    </div>\n                    <div class=\"text\">\n                      <p>{{item.desc | striphtml | excerpt:140}}<a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"news-list\" (window:scroll)=\"onScroll($event)\">\n              <ng-template ngFor let-item [ngForOf]=\"news\" let-i=\"index\">\n                  <div class=\"news\" *ngIf=\"i<countScroll\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                      <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                      </div>\n                    </div>\n                    <div class=\"text\">\n                      <h3>\n                        <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                      </h3>\n                    </div>\n                    <div class=\"text2\">\n                      <p>{{item.desc | striphtml |excerpt:80}}</p>\n                    </div>\n                  </div>\n                </ng-template>\n                <a routerLink=\"/posts/all\" class=\"show-news\">Показать больше новостей</a>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"tab-content\" [ngClass]=\"getRoute('graph') ? 'active' : ''\">\n            <div class=\"overview-block\">\n              <h3>Потоковый график {{data?.symbol}}/USD</h3>\n              <app-chart3></app-chart3>\n            </div>\n            <div class=\"overview-block overview-block-2\">\n              <h3>Интерактивный график {{data?.symbol}}/USD</h3>\n              <app-chart2></app-chart2>\n            </div>\n          </div>\n\n          <div class=\"tab-content news-wrapper\"  [ngClass]=\"getRoute('news') ? 'active' : ''\">\n            <div class=\"news-body\">\n              <div class=\"news-tab-content active\">\n                <div class=\"main-news\">\n                  <div class=\"news\" *ngFor=\"let item of main_news\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                      <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                      <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                        <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                        <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>0</a>\n                      </div>\n                    </div>\n                    <div class=\"text\">\n                      <p>{{item.desc | striphtml | excerpt:140}}<a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"news-list\">\n                  <div class=\"news\" *ngFor=\"let item of news\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                      <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                      </div>\n                    </div>\n                    <div class=\"text\">\n                      <h3>\n                        <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                      </h3>\n                    </div>\n                    <div class=\"text2\">\n                      <p>{{item.desc | striphtml |excerpt:80}}</p>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"tab-content comment-wrap\"  [ngClass]=\"getRoute('comments') ? 'active' : ''\">\n            <div class=\"comment-block\" style=\"margin-top: 0\">\n              <div class=\"comment-top\"  *ngIf=\"!user.id\" style=\"background: none; padding-left: 0;\">\n                <h3>Комментарии ({{commentcount}})</h3>\n                <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n              </div>\n              <div class=\"comment-top\"  *ngIf=\"user.id\"  style=\"background: none; padding-left: 0;\">\n                <h3>Добавить новый комментарий</h3>\n                <form (ngSubmit)=\"submitComment(f,data.id, 'App\\\\CryptoStat')\" #f=\"ngForm\">\n                  <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{dataUsd?.id}}\">\n                  <input type=\"hidden\" ngModel name=\"type\" value=\"App\\CryptoStat\">\n                  <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                  <button type=\"submit\">Добавить</button>\n                </form>\n              </div>\n              <h3 class=\"total-comments\"  *ngIf=\"user.id\">Всего комментариев ({{commentcount}})</h3>\n              <ul class=\"comment-items\">\n                <!--  -->\n                <li *ngFor=\"let item of comments\">\n                  <div class=\"left\">\n                    <div class=\"info\">\n                      <div class=\"img-wrap\">\n                        <img src=\"img/comment-img2.jpg\" style=\"max-width: 35px; height: auto;\" alt=\"\">\n                      </div>\n                      <div class=\"text-wrap\">\n                        <p>{{item.email}}</p>\n                        <span>Добавлен {{item.created_at}}</span>\n                      </div>\n                    </div>\n                    <p class=\"comment-text\">{{item.body}}</p>\n                  </div>\n                  <div class=\"right\">\n                    <div class=\"img-wrap\"></div>\n                    <div class=\"btn-block\">\n                      <span class=\"number-green\">{{rating_count[item.id]}}</span>\n                      <div class=\"buttons\">\n                        <a (click)=\"onVote(item.id, 1)\" class=\"plus\">+</a>\n                        <a (click)=\"onVote(item.id, 0)\" class=\"minus\">-</a>\n                    </div>\n                  </div>\n                    </div>\n                </li>\n\n              </ul>\n            </div>\n\n          </div>\n\n          <div class=\"tab-content news-wrapper\"  [ngClass]=\"getRoute('analytics') ? 'active' : ''\">\n            <div class=\"news-body\">\n              <div class=\"news-tab-content active\">\n                <div class=\"main-news\">\n                  <div class=\"news\" *ngFor=\"let item of main_news\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                      <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                      <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                        <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                        <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>0</a>\n                      </div>\n                    </div>\n                    <div class=\"text\">\n                      <p>{{item.desc | striphtml | excerpt:140}}<a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"news-list\">\n                  <div class=\"news\" *ngFor=\"let item of news\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                      <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                      </div>\n                    </div>\n                    <div class=\"text\">\n                      <h3>\n                        <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                      </h3>\n                    </div>\n                    <div class=\"text2\">\n                      <p>{{item.desc | striphtml | excerpt:80}}</p>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"tab-content description-content overview-block\"  [ngClass]=\"getRoute('about') ? 'active' : ''\">\n            <h3>Описание {{data?.symbol}} ({{data?.name}})</h3>\n            <div [innerHTML]='data?.desc'></div>\n          </div>\n\n        </div>\n      </div>\n      <aside class=\"sidebar\">\n        <div class=\"description\" *ngIf=\"!getRoute('about')\">\n          <h5 class=\"titles\">Описание {{data?.symbol}} ({{data?.name}})</h5>\n          <div [innerHTML]='data?.desc'></div>\n          <br> <p><a class=\"more-sidebar\"  routerLink=\"about\">Подробнее</a><p>\n          </div>\n          <app-sidebar></app-sidebar>\n        </aside>\n      </div>\n    </section>\n<div id=\"follow-popup\" class=\"popup mfp-with-anim mfp-hide\">\n  <div class=\"popup-body\">\n    <h2>Следить за {{selectedItem?.name}}</h2>\n    <p>Выберите портфель для сохранения {{selectedItem?.name}}</p>\n    <div class=\"checkbox-list\">\n      <div class=\"checkbox-wrap\" *ngFor=\"let portfolio of getUserPortfolio; let i = index\">\n        <input type=\"radio\" name=\"id\" [(ngModel)]=\"addPortfolio\" value=\"{{portfolio.id}}\" checked=\"checked\" id=\"{{i}}\">\n        <label for=\"{{i}}\">\n          <span></span>{{portfolio.name}}\n        </label>\n      </div>\n    </div>\n    <a href=\"#\" class=\"add-portfolio\">+Добавить портфель</a>\n    <form class=\"hidden\" #f=\"ngForm\">\n      <input type=\"text\" ngModel name=\"name\" required=\"\" placeholder=\"Введите название...\">\n      <button (click)=\"createPortfolio(f)\" type=\"submit\">Добавить</button>\n    </form>\n  </div>\n  <div class=\"save-block\">\n    <a (click)=\"submitPortfolio(selectedItem?.id, 'App\\\\CryptoStat')\" class=\"save-settings\">Сохранить настройки</a>\n    <a href=\"#\" class=\"close-text\">Отменить и закрыть</a>\n  </div>\n</div>"
+module.exports = "<div class=\"single-top-block\">\n  <div class=\"wrapper\" style=\"max-width: 1180px;\">\n    <a routerLink=\"/cryptocurrency/all\" class=\"return\"><span>&#60;</span>Вернуться к списку криптовалют</a>\n    <div class=\"currency\">\n      <h2>{{data?.symbol}}/USD - {{data?.name}} Доллар США</h2>\n      <ul>\n          <li class=\"active\"><a href=\"#\">USD</a></li><!-- \n          <li><a href=\"#\">EUR</a></li>\n          <li><a href=\"#\">RUR</a></li> -->\n          <li>\n            <div id=\"select-currency\" class=\"select-wrap select-gray\">\n          <!--     <select>\n                <option value=\"all\">Еще</option>\n                <option value=\"gbp\">GBP</option>\n                <option value=\"gel\">GEL</option>\n              </select> -->\n            </div>\n          </li>\n          <li class=\"follow\"><a href=\"#login-popup\" *ngIf=\"!checkAuth()\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a>\n            <a href=\"#follow-popup\" *ngIf=\"!checkInPortfolio(data?.id) && checkAuth()\" (click)=\"selectedItem = data\" class=\"popup-link follow\" data-effect=\"mfp-zoom-in\"><span class=\"plus\">+</span><span class=\"text\">Следить</span></a>\n\n            <a class=\"follow\"  *ngIf=\"checkInPortfolio(data?.id) && checkAuth()\"  (click)=\"removePortfolio(data?.id)\"><span class=\"minus\"><img src=\"img/minus.png\" alt=\"\"></span><span class=\"text text-red\">Следить</span></a>\n          </li>\n        </ul>\n      </div>\n      <div class=\"price-block\">\n        <div class=\"last-update\">\n          <div class=\"prices-wrap\">\n            <span class=\"price\" style=\"color: #000;\" [ngStyle]=\"{ 'animation': animtype+' 2s', '-webkit-animation': animtype+' 2s'  }\">${{dataUsd?.now | number:'1.0-1'}}</span>\n            <span [ngClass]=\"diff > 0 ? 'green-price' : 'red-price'\">{{diff | number:'1.0-5'}}</span>\n            <span [ngClass]=\"diff > 0 ? 'bg-price-green' : 'bg-price'\">{{countPercent(dataUsd.now, prev) | number:'1.2-3'}}%</span>\n          </div>\n          <p *ngIf=\"time_value\">Последнее обновление {{time_value*1000 | date:'HH:mm:ss'}}</p>\n        </div>\n        <ul>\n          <li><span>Объем за 24ч.</span><span class=\"black\">{{volume | number:'1.0-1'}}</span></li>\n          <li><span>Спрос / Предложение</span><span class=\"black\">{{bid_ask.ask | number:'1.0-2'}} / {{bid_ask.bid | number:'1.0-2'}}</span></li>\n          <li><span>Дневной диапазон</span><span><span class=\"red\">{{min_value | number:'1.0-1'}}</span> <span class=\"black\">/</span> <span class=\"green\">{{max_value | number:'1.0-1'}}</span></span>\n          </li>\n          <li><span>Капитализация</span><span class=\"black\">${{dataUsd.marketCapUsd| number:'1.0-2'}}</span></li>\n          <li><span>Алгоритм</span><span class=\"black\">{{data?.algo}}</span></li>\n          <!-- <li><span>Всего монет / Получено</span><span class=\"black\">21 000 000 000 / 89 000 891 (52%)</span></li> -->\n        </ul>\n      </div>\n    </div>\n  </div>\n\n<section class=\"crypto-single-wrap\">\n    <div class=\"wrapper\">\n      <div class=\"crypto-single-content\">\n        <ul class=\"crypto-tab-menu\">\n          <li routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"><a routerLink=\"./\">Обзор</a></li>\n          <li routerLinkActive=\"active\"><a routerLink=\"graph\">График</a></li>\n          <li routerLinkActive=\"active\"><a routerLink=\"news\">Новости</a></li>\n          <li routerLinkActive=\"active\"><a routerLink=\"comments\">Комментарии ({{commentcount}})</a></li>\n          <li routerLinkActive=\"active\"><a routerLink=\"analytics\">Аналитика</a></li>\n          <li routerLinkActive=\"active\" class=\"desc\"><a routerLink=\"about\" >Описание</a></li>\n        </ul>\n        <div class=\"tab-content-wrap\">\n          <div class=\"tab-content\"  [ngClass]=\"basicRoute() ? 'active' : ''\">\n            <div class=\"overview-content\">\n              <ul class=\"overview-list\">\n                 <li><span>Объем за 24ч.</span><span class=\"black\">{{volume | number:'1.0-1'}}</span></li>\n          <li><span>Спрос / Предложение</span><span class=\"black\">{{bid_ask.ask | number:'1.0-2'}} / {{bid_ask.bid | number:'1.0-2'}}</span></li>\n          <li><span>Дневной диапазон</span><span><span class=\"red\">{{min_value | number:'1.0-1'}}</span> <span class=\"black\">/</span> <span class=\"green\">{{max_value | number:'1.0-1'}}</span></span>\n          </li>\n          <li><span>Капитализация</span><span class=\"black\">${{dataUsd.marketCapUsd| number:'1.0-2'}}</span></li>\n          <li><span>Алгоритм</span><span class=\"black\">{{data?.algo}}</span></li>\n              </ul>\n              <div class=\"overview-block\">\n                <h3>{{data?.symbol}}/USD График криптовалюты</h3>\n                <app-chart></app-chart>\n              </div>\n              <div class=\"overview-table-wrap\">\n                <div class=\"overview-title-block\">\n                  <h2>Котировки {{data?.symbol}}/USD на различных биржах</h2>\n                </div>\n                <table>\n                  <thead>\n                    <tr>\n                      <th width=\"17%\"><span>Биржа</span></th>\n                      <th width=\"10%\"><span>Стоимость</span></th>\n                      <th width=\"10%\"><span>Спрос</span></th>\n                      <th width=\"13%\"><span>Предложение</span></th>\n                      <th width=\"13%\"><span>Объем за 24ч. (BTC)</span></th>\n                      <th width=\"13%\"><span>Объем за 24ч. </span></th>\n                      <th width=\"11%\"><span>Изм. за 24 ч.</span></th>\n                      <th width=\"14%\"><span>Обновлено</span></th>\n                    </tr>\n                  </thead>\n                  <tbody *ngIf=\"load==false\" style=\"position: relative; min-height: 65px;\">\n\n                    <tr *ngFor=\"let stock of stocks; let i = index\">\n                      <td>\n                        <a href=\"#\">\n                          <!-- <span class=\"img-wrap\"><img src=\"img/bitfinex-icon.png\" alt=\"\"></span> -->\n                          <span class=\"text\">{{stock.name}}</span>\n                        </a>\n                      </td>\n                      <td>\n                        <span class=\"cost\" \n                        [ngStyle]=\"{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s'}\">${{stock.value | number:'1.0-1'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"demand\" *ngIf=\"stock.ask\">${{stock.ask | number:'1.0-1'}}</span>\n                        <span class=\"demand\" *ngIf=\"!stock.ask\">-</span>\n                      </td>\n                      <td>\n                        <span class=\"sentence\" *ngIf=\"stock.bid\">${{stock.bid | number:'1.0-1'}}</span>\n                        <span class=\"sentence\" *ngIf=\"!stock.bid\">-</span>\n                      </td>\n                      <td>\n                        <span class=\"amount\">{{stock.volume | number:'1.0-2'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"amount\">${{stock.volumeCommon | number:'1.0-2'}}</span>\n                      </td>\n                      <td>\n                        <span class=\"growth-green\" [ngStyle]=\"{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s', 'color': 'black'}\">{{stock.percent | number:'1.0-3'}}%</span>\n                      </td>\n                      <td>\n                        <span class=\"updated\">{{stock.time * 1000  | date:'HH:mm:ss'}}</span>\n                      </td>\n                    </tr>\n                    \n                  </tbody>\n                </table>\n                <div style=\"width: 50px; height: 50px; margin: 40px auto;\" *ngIf=\"load == true\">\n                  <img src=\"/img/load.gif\" *ngIf=\"load == true\" style=\" width: 50px; height: 50px; text-align: center\">\n                </div>\n                <!-- <a href=\"#\" class=\"show-exchange\">Показать все биржи (105)</a> -->\n              </div>\n              <div class=\"desc-wrap\">\n                <div class=\"description\">\n                  <h5>Описание {{data?.symbol}} ({{data?.name}})</h5>\n                  <div [innerHTML]='data?.desc'></div>\n                </div>\n                <a href=\"#\" class=\"banner-black banner-black-top\"><img src=\"img/banner-black-small.jpg\" alt=\"\"></a>\n              </div>\n            </div>\n            <div class=\"comment-block\">\n              <div class=\"comment-top\"  style=\"background: none; padding-left: 0;\"  *ngIf=\"!user.id\">\n                <h3>Комментарии ({{commentcount}})</h3>\n                <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n              </div>\n              <div class=\"comment-top\"   style=\"background: none; padding-left: 0;\"  *ngIf=\"user.id\">\n                <h3>Добавить новый комментарий</h3>\n                <form (ngSubmit)=\"submitComment(f,data.id, 'App\\\\CryptoStat')\" #f=\"ngForm\">\n                  <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{dataUsd?.id}}\">\n                  <input type=\"hidden\" ngModel name=\"type\" value=\"App\\CryptoStat\">\n                  <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                  <button type=\"submit\">Добавить</button>\n                </form>\n              </div>\n              <h3 class=\"total-comments\"  *ngIf=\"user.id && commentcount > 0\">Всего комментариев ({{commentcount}})</h3>\n              <ul class=\"comment-items\" style=\"padding-left: 0;\">\n                <!--  -->\n                <li *ngFor=\"let item of comments\">\n                  <div class=\"left\">\n                    <div class=\"info\">\n                      <div class=\"img-wrap\">\n                        <img src=\"img/comment-img2.jpg\" style=\"max-width: 35px; height: auto;\" alt=\"\">\n                      </div>\n                      <div class=\"text-wrap\">\n                        <p>{{item.name}}</p>\n                        <span>Добавлен {{item.created_at}}</span>\n                      </div>\n                    </div>\n                    <p class=\"comment-text\">{{item.body}}</p>\n                  </div>\n                  <div class=\"right\">\n                    <div class=\"img-wrap\"></div>\n                    <div class=\"btn-block\">\n                      <span class=\"number-green\">{{rating_count[item.id]}}</span>\n                      <div class=\"buttons\">\n                        <a (click)=\"onVote(item.id, 1)\" class=\"plus\">+</a>\n                        <a (click)=\"onVote(item.id, 0)\" class=\"minus\">-</a>\n                        </div>\n                    </div>\n                  </div>\n                </li>\n\n              </ul>\n              <!-- <a href=\"#\" class=\"show-comments\">Показать все комментарии (22)</a> -->\n            </div>\n            <div class=\"news-body\">\n              <div class=\"news-tab-content active\">\n                <h3>Новости #{{data.name}}</h3>\n                <div class=\"main-news\">\n                  <div class=\"news\" *ngFor=\"let item of main_news\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                      <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                      <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                        <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                        <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>0</a>\n                      </div>\n                    </div>\n                    <div class=\"text\">\n                      <p>{{item.desc | striphtml | excerpt:140}}<a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"news-list\"\n                     infiniteScroll\n                     [infiniteScrollDistance]=\"2\"\n                     [infiniteScrollThrottle]=\"50\"\n                     (scrolled)=\"onScroll()\">\n              <ng-template ngFor let-item [ngForOf]=\"news_container\" let-i=\"index\">\n                  <div class=\"news\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                      <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                      </div>\n                    </div>\n                    <div class=\"text\">\n                      <h3>\n                        <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                      </h3>\n                    </div>\n                    <div class=\"text2\">\n                      <p>{{item.desc | striphtml |excerpt:80}}</p>\n                    </div>\n                  </div>\n                </ng-template>\n                <a routerLink=\"/posts/all\" class=\"show-news\">Показать больше новостей</a>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"tab-content\" [ngClass]=\"getRoute('graph') ? 'active' : ''\">\n            <div class=\"overview-block\">\n              <h3>Потоковый график {{data?.symbol}}/USD</h3>\n              <app-chart3></app-chart3>\n            </div>\n            <div class=\"overview-block overview-block-2\">\n              <h3>Интерактивный график {{data?.symbol}}/USD</h3>\n              <app-chart2></app-chart2>\n            </div>\n          </div>\n\n          <div class=\"tab-content news-wrapper\"  [ngClass]=\"getRoute('news') ? 'active' : ''\">\n            <div class=\"news-body\">\n              <div class=\"news-tab-content active\">\n                <div class=\"main-news\">\n                  <div class=\"news\" *ngFor=\"let item of main_news\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                      <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                      <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                        <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                        <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>0</a>\n                      </div>\n                    </div>\n                    <div class=\"text\">\n                      <p>{{item.desc | striphtml | excerpt:140}}<a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"news-list\">\n                  <div class=\"news\" *ngFor=\"let item of news\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                      <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                      </div>\n                    </div>\n                    <div class=\"text\">\n                      <h3>\n                        <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                      </h3>\n                    </div>\n                    <div class=\"text2\">\n                      <p>{{item.desc | striphtml |excerpt:80}}</p>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"tab-content comment-wrap\"  [ngClass]=\"getRoute('comments') ? 'active' : ''\">\n            <div class=\"comment-block\" style=\"margin-top: 0\">\n              <div class=\"comment-top\"  *ngIf=\"!user.id\" style=\"background: none; padding-left: 0;\">\n                <h3>Комментарии ({{commentcount}})</h3>\n                <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n              </div>\n              <div class=\"comment-top\"  *ngIf=\"user.id\"  style=\"background: none; padding-left: 0;\">\n                <h3>Добавить новый комментарий</h3>\n                <form (ngSubmit)=\"submitComment(f,data.id, 'App\\\\CryptoStat')\" #f=\"ngForm\">\n                  <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{dataUsd?.id}}\">\n                  <input type=\"hidden\" ngModel name=\"type\" value=\"App\\CryptoStat\">\n                  <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                  <button type=\"submit\">Добавить</button>\n                </form>\n              </div>\n              <h3 class=\"total-comments\"  *ngIf=\"user.id\">Всего комментариев ({{commentcount}})</h3>\n              <ul class=\"comment-items\">\n                <!--  -->\n                <li *ngFor=\"let item of comments\">\n                  <div class=\"left\">\n                    <div class=\"info\">\n                      <div class=\"img-wrap\">\n                        <img src=\"img/comment-img2.jpg\" style=\"max-width: 35px; height: auto;\" alt=\"\">\n                      </div>\n                      <div class=\"text-wrap\">\n                        <p>{{item.email}}</p>\n                        <span>Добавлен {{item.created_at}}</span>\n                      </div>\n                    </div>\n                    <p class=\"comment-text\">{{item.body}}</p>\n                  </div>\n                  <div class=\"right\">\n                    <div class=\"img-wrap\"></div>\n                    <div class=\"btn-block\">\n                      <span class=\"number-green\">{{rating_count[item.id]}}</span>\n                      <div class=\"buttons\">\n                        <a (click)=\"onVote(item.id, 1)\" class=\"plus\">+</a>\n                        <a (click)=\"onVote(item.id, 0)\" class=\"minus\">-</a>\n                    </div>\n                  </div>\n                    </div>\n                </li>\n\n              </ul>\n            </div>\n\n          </div>\n\n          <div class=\"tab-content news-wrapper\"  [ngClass]=\"getRoute('analytics') ? 'active' : ''\">\n            <div class=\"news-body\">\n              <div class=\"news-tab-content active\">\n                <div class=\"main-news\">\n                  <div class=\"news\" *ngFor=\"let item of main_news\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                      <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                      <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                        <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                        <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>0</a>\n                      </div>\n                    </div>\n                    <div class=\"text\">\n                      <p>{{item.desc | striphtml | excerpt:140}}<a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"news-list\">\n                  <div class=\"news\" *ngFor=\"let item of news\">\n                    <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                      <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                      </div>\n                    </div>\n                    <div class=\"text\">\n                      <h3>\n                        <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                      </h3>\n                    </div>\n                    <div class=\"text2\">\n                      <p>{{item.desc | striphtml | excerpt:80}}</p>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"tab-content description-content overview-block\"  [ngClass]=\"getRoute('about') ? 'active' : ''\">\n            <h3>Описание {{data?.symbol}} ({{data?.name}})</h3>\n            <div [innerHTML]='data?.desc'></div>\n          </div>\n\n        </div>\n      </div>\n      <aside class=\"sidebar\">\n        <div class=\"description\" *ngIf=\"!getRoute('about')\">\n          <h5 class=\"titles\">Описание {{data?.symbol}} ({{data?.name}})</h5>\n          <div [innerHTML]='data?.desc'></div>\n          <br> <p><a class=\"more-sidebar\"  routerLink=\"about\">Подробнее</a><p>\n          </div>\n          <app-sidebar></app-sidebar>\n        </aside>\n      </div>\n    </section>\n<div id=\"follow-popup\" class=\"popup mfp-with-anim mfp-hide\">\n  <div class=\"popup-body\">\n    <h2>Следить за {{selectedItem?.name}}</h2>\n    <p>Выберите портфель для сохранения {{selectedItem?.name}}</p>\n    <div class=\"checkbox-list\">\n      <div class=\"checkbox-wrap\" *ngFor=\"let portfolio of getUserPortfolio; let i = index\">\n        <input type=\"radio\" name=\"id\" [(ngModel)]=\"addPortfolio\" value=\"{{portfolio.id}}\" checked=\"checked\" id=\"{{i}}\">\n        <label for=\"{{i}}\">\n          <span></span>{{portfolio.name}}\n        </label>\n      </div>\n    </div>\n    <a href=\"#\" class=\"add-portfolio\">+Добавить портфель</a>\n    <form class=\"hidden\" #f=\"ngForm\">\n      <input type=\"text\" ngModel name=\"name\" required=\"\" placeholder=\"Введите название...\">\n      <button (click)=\"createPortfolio(f)\" type=\"submit\">Добавить</button>\n    </form>\n  </div>\n  <div class=\"save-block\">\n    <a (click)=\"submitPortfolio(selectedItem?.id, 'App\\\\CryptoStat')\" class=\"save-settings\">Сохранить настройки</a>\n    <a href=\"#\" class=\"close-text\">Отменить и закрыть</a>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -3041,7 +3045,6 @@ var CryptoComponent = (function () {
         this.stocks = [];
         this.bid_ask = { bid: 0, ask: 0 };
         this.animtype = '';
-        this.animtypebg = '';
         this.diff = 0;
         this.volume = 0;
         this.animstock = [];
@@ -3056,7 +3059,6 @@ var CryptoComponent = (function () {
         this.getUserPortfolio = [];
         this.checkPortfolio = false;
         this.rating_count = [];
-        this.countScroll = 3;
     }
     CryptoComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -3259,6 +3261,7 @@ var CryptoComponent = (function () {
             newsInfo.subscribe(function (response) {
                 _this.main_news = response['main_news'];
                 _this.news = response['news'];
+                _this.news_container = _this.news.slice(0, 2);
                 console.log(_this.news);
                 console.log(_this.main_news);
             });
@@ -3289,13 +3292,12 @@ var CryptoComponent = (function () {
             _this.auth.setUser(_this.user);
         });
     };
-    CryptoComponent.prototype.onScroll = function (event) {
-        var elementHeight = event.target.scrollTopMax;
-        var scrollPosition = event.target.scrollTop;
-        console.log(elementHeight);
-        console.log(scrollPosition);
-        if (elementHeight - scrollPosition < 1000) {
-            this.countScroll = this.countScroll + 3;
+    CryptoComponent.prototype.onScroll = function () {
+        if (this.news_container.length < this.news.length) {
+            var len = this.news_container.length;
+            for (var i = len; i <= len + 3; i++) {
+                this.news_container.push(this.news[i]);
+            }
         }
     };
     CryptoComponent.prototype.submitComment = function (form, post_id, type) {
