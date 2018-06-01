@@ -1,7 +1,9 @@
 <section class="my-portfolio">
     <div class="wrapper">
       <div class="portfolio-head">
-        <h2>Мой портфель<a href="#">+</a></h2>
+        <h2>Мой портфель
+          <!--<a href="#">+</a>-->
+        </h2>
         <p>Отслеживайте все важные изменения по монетам, биржам, майнингу, ico проектам и др. Вся информация в одном месте! <br>
 Настраивайте индивидуальные уведомления...</p>
       </div>
@@ -140,7 +142,8 @@
           </tr>
           </thead>
           <tbody>
-
+          <p *ngIf="portfolios[item.id] <= 0" style="font-size: 14px;
+          font-weight: bold; color: #c0c0c0;">К сожалению, у данного проекта еще не истории операций</p>
           <ng-template [ngIf]="item.user_portfolio_type_id == 1">
             <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
               <td>
@@ -167,7 +170,7 @@
                 <div class="difference">
                   <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span>
                   <div class="buttons">
-                    <a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>
+                    <!--<a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>-->
                     <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\CloudMining')" class="minus"><img src="/img/minus.png" alt=""></a>
                   </div>
                 </div>
@@ -200,7 +203,7 @@
                 <div class="difference">
                   <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Активен' : 'Закончен'}}</span>
                   <div class="buttons">
-                    <a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>
+                    <!--<a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>-->
                     <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\IcoProject')" class="minus"><img src="/img/minus.png" alt=""></a>
                   </div>
                 </div>
@@ -227,7 +230,7 @@
                 <span>{{volumes[portfolioItem.name]?.btc | number:'1.0-5'}}</span>
                   </div>
                   <div class="buttons">
-                    <a href="#" class="settings"><img src="img/settings.svg" alt=""></a>
+                    <!--<a href="#" class="settings"><img src="img/settings.svg" alt=""></a>-->
                     <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\Stock')" class="minus"><img src="/img/minus.png" alt=""></a>
                   </div>
                 </div>
@@ -266,7 +269,7 @@
                 <span class="red">{{ countPercent(data.now, data.month) | number: '1.2'}}%</span>
 
                 <div class="buttons">
-                  <a href="#" class="settings"><img src="img/settings.svg" alt=""></a>
+                  <!--<a href="#" class="settings"><img src="img/settings.svg" alt=""></a>-->
                   <a (click)="onRemove(item.id, data.id, in, 'App\\CryptoStat')" class="minus"><img src="/img/minus.png" alt=""></a>
                 </div>
               </div>
