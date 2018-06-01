@@ -103,6 +103,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     checkPortfolio = false;
     rating:any;
     rating_count = [];
+    countScroll = 3;
     constructor(private http:HttpClient,private stocksService:StocksService,
     private router:Router, private route:ActivatedRoute, 
     public auth: AuthService,
@@ -366,7 +367,13 @@ export class CryptoComponent implements OnInit, OnDestroy {
       }
       );
   }
-
+    onScroll(event: any): void {
+        let elementHeight = event.target.scrollTopMax;
+        let scrollPosition = event.target.scrollTop;
+        if( elementHeight - scrollPosition < 100) {
+            this.countScroll = this.countScroll+3
+        }
+    }
   submitComment(form: NgForm,post_id, type) {
 
     const headers = new HttpHeaders({'Content-type': 'Application/json '});
