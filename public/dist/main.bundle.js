@@ -3122,45 +3122,6 @@ var CryptoComponent = (function () {
         //   }
         //
         // }
-        this.stocksService.getStocks(symbol + '/USD').subscribe(function (response) {
-            _this.load = true;
-            _this.stocks = response;
-            _this.load = false;
-            _this.diff = _this.dataUsd.now - _this.dataUsd.last;
-            localStorage.setItem(symbol + 'USD stocks', JSON.stringify(_this.stocks));
-            for (var _a = 0, _b = _this.stocks; _a < _b.length; _a++) {
-                var item = _b[_a];
-                if (item.ask > 0) {
-                    _this.min.push(item.ask);
-                }
-                if (item.bid) {
-                    _this.max.push(item.bid);
-                }
-                if (_this.volume === 0) {
-                    _this.volume = _this.volume + item.volume;
-                }
-                else {
-                    _this.volume = 0;
-                    _this.volume = _this.volume + item.volume;
-                }
-                if (_this.bid_ask.ask < item.ask) {
-                    _this.bid_ask.ask = item.ask;
-                    localStorage.removeItem(symbol + 'ask');
-                    localStorage.setItem(symbol + 'ask', JSON.stringify(_this.bid_ask.ask));
-                }
-                if (_this.bid_ask.bid < item.bid) {
-                    _this.bid_ask.bid = item.bid;
-                    localStorage.removeItem(symbol + 'bid');
-                    localStorage.setItem(symbol + 'bid', JSON.stringify(_this.bid_ask.bid));
-                }
-                _this.time.push(item.time);
-            }
-            _this.time_value = Math.max.apply(null, _this.time);
-            localStorage.removeItem(symbol + 'time_value');
-            localStorage.setItem(symbol + 'time_value', JSON.stringify(_this.time_value));
-            _this.min_value = Math.min.apply(null, _this.min);
-            _this.max_value = Math.max.apply(null, _this.max);
-        });
         this.stocksData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(3000).concatMap(function () {
             return _this.stocksService.getStocks(symbol + '/USD');
         })
@@ -3261,7 +3222,7 @@ var CryptoComponent = (function () {
             newsInfo.subscribe(function (response) {
                 _this.main_news = response['main_news'];
                 _this.news = response['news'];
-                _this.news_container = _this.news.slice(0, 2);
+                _this.news_container = _this.news.slice(0, 3);
                 console.log(_this.news);
                 console.log(_this.main_news);
             });
@@ -3293,6 +3254,7 @@ var CryptoComponent = (function () {
         });
     };
     CryptoComponent.prototype.onScroll = function () {
+        console.log('scroll');
         if (this.news_container.length < this.news.length) {
             var len = this.news_container.length;
             for (var i = len; i <= len + 3; i++) {

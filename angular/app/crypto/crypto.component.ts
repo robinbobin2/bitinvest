@@ -178,47 +178,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     //
     // }
 
-      this.stocksService.getStocks(symbol+'/USD').subscribe(response => {
-        this.load = true;
-      this.stocks = response;
-      this.load = false;
-      this.diff = this.dataUsd.now-this.dataUsd.last;
-      localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
-      for(let item of this.stocks) {
-        if(item.ask > 0) {
-          this.min.push(item.ask);
 
-        }
-        if(item.bid) {
-          this.max.push(item.bid);
-        }
-        if(this.volume === 0) {
-
-            this.volume = this.volume+item.volume;
-
-        } else {
-          this.volume = 0;
-          this.volume = this.volume+item.volume;
-        }
-        if(this.bid_ask.ask < item.ask) {
-        this.bid_ask.ask = item.ask
-        localStorage.removeItem(symbol+'ask')
-        localStorage.setItem(symbol+'ask', JSON.stringify(this.bid_ask.ask))
-        }
-        if(this.bid_ask.bid < item.bid) {
-        this.bid_ask.bid = item.bid
-        localStorage.removeItem(symbol+'bid')
-        localStorage.setItem(symbol+'bid', JSON.stringify(this.bid_ask.bid))
-        }
-        this.time.push(item.time);
-      }
-      this.time_value = Math.max.apply(null, this.time);
-          localStorage.removeItem(symbol+'time_value');
-          localStorage.setItem(symbol+'time_value', JSON.stringify(this.time_value));
-      this.min_value = Math.min.apply(null, this.min);
-      this.max_value = Math.max.apply(null, this.max);
-
-    });
     this.stocksData = Observable.interval(3000).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USD'))
     .map(response => {
@@ -325,7 +285,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       newsInfo.subscribe(response => {
         this.main_news = response['main_news'];
         this.news = response['news'];
-        this.news_container = this.news.slice(0,2);
+        this.news_container = this.news.slice(0,3);
         console.log(this.news);
         console.log(this.main_news);
       });
@@ -367,6 +327,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       );
   }
     onScroll() {
+        console.log('scroll')
         if(this.news_container.length < this.news.length){
             let len = this.news_container.length;
 
