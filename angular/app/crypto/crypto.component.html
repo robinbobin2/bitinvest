@@ -204,10 +204,10 @@
                 </div>
                 <div class="news-list"
                      infiniteScroll
-                     [infiniteScrollDistance]="2"
-                     [infiniteScrollThrottle]="50"
+                     infiniteScrollDistance="2"
+                     infiniteScrollThrottle="50"
                      (scrolled)="onScroll()"
-                     [scrollWindow]="false">
+                     scrollWindow="false">
               <ng-template ngFor let-item [ngForOf]="news_container" let-i="index">
                   <div class="news">
                     <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
