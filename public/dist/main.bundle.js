@@ -3292,7 +3292,9 @@ var CryptoComponent = (function () {
     CryptoComponent.prototype.onScroll = function (event) {
         var elementHeight = event.target.scrollTopMax;
         var scrollPosition = event.target.scrollTop;
-        if (elementHeight - scrollPosition < 100) {
+        console.log(elementHeight);
+        console.log(scrollPosition);
+        if (elementHeight - scrollPosition < 1000) {
             this.countScroll = this.countScroll + 3;
         }
     };

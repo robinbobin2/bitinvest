@@ -370,7 +370,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
     onScroll(event: any): void {
         let elementHeight = event.target.scrollTopMax;
         let scrollPosition = event.target.scrollTop;
-        if( elementHeight - scrollPosition < 100) {
+        console.log(elementHeight)
+        console.log(scrollPosition)
+        if( elementHeight - scrollPosition < 1000) {
             this.countScroll = this.countScroll+3
         }
     }
