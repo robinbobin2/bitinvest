@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterContentInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
@@ -8,7 +8,7 @@ import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
   templateUrl: './all-news.component.html',
   styleUrls: ['./all-news.component.css']
 })
-export class AllNewsComponent implements AfterViewInit {
+export class AllNewsComponent implements AfterContentInit {
 
     news_raw: any[];
     news= [];
@@ -31,7 +31,7 @@ export class AllNewsComponent implements AfterViewInit {
       this.info = http.get(path)
 
    }
-  ngAfterViewInit() {
+    ngAfterContentInit() {
       this.info.map(response => {
           this.news = response['news'];
 

@@ -6061,7 +6061,7 @@ var AllNewsComponent = (function () {
         var path = "/newsraw";
         this.info = http.get(path);
     }
-    AllNewsComponent.prototype.ngAfterViewInit = function () {
+    AllNewsComponent.prototype.ngAfterContentInit = function () {
         var _this = this;
         this.info.map(function (response) {
             _this.news = response['news'];
