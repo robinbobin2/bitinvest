@@ -202,7 +202,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="news-list" (scroll)="onScroll($event)">
+                <div class="news-list" (window:scroll)="onScroll($event)">
               <ng-template ngFor let-item [ngForOf]="news" let-i="index">
                   <div class="news" *ngIf="i<countScroll">
                     <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
