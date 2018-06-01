@@ -203,9 +203,10 @@
                   </div>
                 </div>
                 <div class="news-list"
-                     infiniteScroll
-                     infiniteScrollDistance="2"
-                     infiniteScrollThrottle="50"
+                     [infiniteScroll]
+                     [infiniteScrollDistance]="'2'"
+                     infiniteScrollThrottle="10"
+                     scrollWindow="false"
                      (scrolled)="onScroll()">
               <ng-template ngFor let-item [ngForOf]="news_container" let-i="index">
                   <div class="news">
