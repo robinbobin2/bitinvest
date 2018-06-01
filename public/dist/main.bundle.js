@@ -1026,11 +1026,14 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_12__angular_common_http__["b" /* HttpClientModule */],
             __WEBPACK_IMPORTED_MODULE_5__angular_router__["d" /* RouterModule */].forRoot(appRoutes),
             __WEBPACK_IMPORTED_MODULE_18_angular2_masonry__["a" /* MasonryModule */],
+            __WEBPACK_IMPORTED_MODULE_6_ngx_infinite_scroll__["a" /* InfiniteScrollModule */]
+            // MarketsComponent,
         ],
         exports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCheckboxModule */],
-            __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]
+            __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__["a" /* OrderPipe */],
+            __WEBPACK_IMPORTED_MODULE_6_ngx_infinite_scroll__["a" /* InfiniteScrollModule */]
         ],
         providers: [__WEBPACK_IMPORTED_MODULE_12__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__["a" /* OrderPipe */], __WEBPACK_IMPORTED_MODULE_57__sidebar_resolver_service__["a" /* SidebarResolverService */], __WEBPACK_IMPORTED_MODULE_61__comments_service__["a" /* CommentsService */], __WEBPACK_IMPORTED_MODULE_65__news_news_resolver_service__["a" /* NewsResolverService */], __WEBPACK_IMPORTED_MODULE_6_ngx_infinite_scroll__["a" /* InfiniteScrollModule */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]]

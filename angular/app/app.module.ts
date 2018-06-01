@@ -274,13 +274,15 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     MasonryModule,
+      InfiniteScrollModule
     
     // MarketsComponent,
   ],
   exports: [
     MatButtonModule,
     MatCheckboxModule,
-    OrderPipe
+    OrderPipe,
+      InfiniteScrollModule
   ],
   providers: [HttpClientModule, OrderPipe, SidebarResolverService, CommentsService, NewsResolverService, InfiniteScrollModule],
   bootstrap: [AppComponent]
