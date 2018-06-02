@@ -14,26 +14,11 @@ class ReviewViewController extends Controller
 
         $main_news = Review::with('photos')->with('category')->latest()->get()->where('main', 1)->take(2)->toArray();
         $main_news = array_values($main_news);
-        // $news = $news->toJson();
-        // $news = array_values($news);
-        // $comments = $news->comments();
-        // $photos = $news->photos();
-        // for ($i=0; $i < count($news); $i++) { 
-        //     if($news[$i]->photos){
-        //                 foreach ($news[$i]->photos as $photo) {
-                         
-        //                 // $news[$i]['photos']['file'] = array($photo->file);   # code...
-        //                 // echo $photo->file;
-        //             }
-        //     }
-        // }
         return response()->json([
             'news' => $news,
             'main_news' => $main_news,
             // 'photos'=>$photos
         ]);
-        // dd($news);
-        // return $news->toJson();
 
 
     }
@@ -44,26 +29,10 @@ class ReviewViewController extends Controller
 
         $main_news = Review::with('photos')->with('category')->where('cat_id', $id)->latest()->get()->where('main', 1)->take(2)->toArray();
         $main_news = array_values($main_news);
-        // $news = $news->toJson();
-        // $news = array_values($news);
-        // $comments = $news->comments();
-        // $photos = $news->photos();
-        // for ($i=0; $i < count($news); $i++) { 
-        //     if($news[$i]->photos){
-        //                 foreach ($news[$i]->photos as $photo) {
-                         
-        //                 // $news[$i]['photos']['file'] = array($photo->file);   # code...
-        //                 // echo $photo->file;
-        //             }
-        //     }
-        // }
         return response()->json([
             'news' => $news,
             'main_news' => $main_news,
-            // 'photos'=>$photos
         ]);
-        // dd($news);
-        // return $news->toJson();
 
 
     }
@@ -83,9 +52,6 @@ class ReviewViewController extends Controller
             'category' => $category,
             'comments_count' => count($comments)
         ]);
-        // dd($news);
-        // return $news->toJson();
-
 
     }
 }

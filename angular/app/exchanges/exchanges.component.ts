@@ -23,7 +23,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
   exchange_volumes = [];
     language = '';
     year: number = undefined;
-    сщгтекн = '';
+    country = '';
   reverse: boolean = true;
   order = 'id';
   pairs_count = [];
@@ -38,6 +38,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     getUserPortfolio = [];
     yearFilterArray: any;
     languageFilterArray: any;
+
 
   constructor(private http:HttpClient,
               private router:Router,

@@ -171,7 +171,9 @@
                   <div class="right">
                     <div class="img-wrap"></div>
                     <div class="btn-block">
-                      <span class="number-green">{{rating_count[item.id]}}</span>
+                      <span *ngIf="rating_count[item.id] > 0" class="number-green">{{rating_count[item.id]}}</span>
+                      <span *ngIf="rating_count[item.id] < 0" class="number-red">{{rating_count[item.id]}}</span>
+                      <span *ngIf="rating_count[item.id] == 0" class="number">{{rating_count[item.id]}}</span>
                       <div class="buttons">
                         <a (click)="onVote(item.id, 1)" class="plus">+</a>
                         <a (click)="onVote(item.id, 0)" class="minus">-</a>
@@ -202,9 +204,14 @@
                     </div>
                   </div>
                 </div>
-                <div class="news-list">
-              <ng-template ngFor let-item [ngForOf]="news" let-i="index">
-                  <div class="news" *ngIf="i<3">
+                <div class="news-list" style="height: 90%"
+                     infiniteScroll
+                     infiniteScrollDistance="2"
+                     infiniteScrollThrottle="50"
+                     (scrolled)="onScroll()"
+                     scrollWindow="false">
+              <ng-template ngFor let-item [ngForOf]="news_container" let-i="index">
+                  <div class="news">
                     <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
                       <a href="#" class="news-btn">{{item.category.name}}</a>
                       <div class="info">
@@ -221,7 +228,7 @@
                     </div>
                   </div>
                 </ng-template>
-                <a routerLink="/posts/all" class="show-news">Показать больше новостей</a>
+                <a routerLink="/posts/all" class="show-comments btn-style">Показать больше новостей</a>
                 </div>
               </div>
             </div>
@@ -364,6 +371,7 @@
                     </div>
                   </div>
                 </div>
+                <a routerLink="/posts/all" class="show-more">Показать ещё</a>
               </div>
             </div>
           </div>

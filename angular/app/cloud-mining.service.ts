@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+const headers = new HttpHeaders({'Content-type': 'Application/json '});
 
 @Injectable()
 export class CloudMiningService {
@@ -26,6 +26,13 @@ export class CloudMiningService {
     public getCryptoId(sym) {
 
         return this.http.get<any>('/allcrypto/'+sym);
+
+    }
+
+    public incrementView(type, id) {
+
+        return this.http
+            .post('/angular/incrementView', {'type': type, 'id': id},{headers: headers})
 
     }
 

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {CommentsService} from "../../comments.service";
+import {CloudMiningService} from "../../cloud-mining.service";
 
 export class News {
   id: number;
@@ -13,6 +14,7 @@ export class News {
   photo: string;
   created_at:string;
   comments_count: number;
+  view_count: number;
 
 }
 export class CommentRaw {
@@ -34,9 +36,10 @@ export class User {
 @Component({
   selector: 'app-news-detail',
   templateUrl: './news-detail.component.html',
-  styleUrls: ['./news-detail.component.scss']
+  styleUrls: ['./news-detail.component.scss'],
+    providers: [CloudMiningService]
 })
-export class NewsDetailComponent implements OnInit {
+export class NewsDetailComponent implements OnInit, AfterViewInit {
 news: News;
 comments: CommentRaw[] = [];
 submitted = false;
@@ -44,9 +47,10 @@ commentcount = 0;
 rating_count = [];
 user: User;
 hide = false;
-  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute, private commentService: CommentsService) {
-    let id = route.snapshot.params['id'];
-    let path = "/newsraw/"+id;
+id = 0;
+  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute, private commentService: CommentsService, private viewService: CloudMiningService) {
+    this.id = route.snapshot.params['id'];
+    let path = "/newsraw/"+this.id;
     const info = http.get(path);
   		info.subscribe(response => {
   			this.news = {
@@ -56,7 +60,8 @@ hide = false;
           created_at:response['news'][0]['created_at'],
           category:response['category'].name,
           photo:response['photos'][0].file,
-          comments_count:response['comments_count']
+          comments_count:response['comments_count'],
+                view_count: response['news'][0]['view_count']
         }
         this.commentcount = response['comments_count'];
         this.comments.push(...response['news'][0]['comments']);
@@ -77,6 +82,8 @@ hide = false;
 }
 
   ngOnInit() {
+
+      this.viewService.incrementView('news', this.id).subscribe()
     this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
                 return;
@@ -147,5 +154,9 @@ hide = false;
       );
       form.reset();
       
+  }
+
+  ngAfterViewInit() {
+
   }
 }

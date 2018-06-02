@@ -273,29 +273,31 @@ percents: Array<Percent> = [];
 
     }
     removePortfolio(id, type) {
-        let removeUrl: string;
-        if(type == 'App\\IcoProject') {
-            removeUrl = '/angular/userportfolio/ico/remove/';
-        } else{
-            removeUrl = '/angular/userportfolio/remove/';
+        if(confirm('Подтвердите удаление')) {
+            let removeUrl: string;
+            if (type == 'App\\IcoProject') {
+                removeUrl = '/angular/userportfolio/ico/remove/';
+            } else {
+                removeUrl = '/angular/userportfolio/remove/';
+            }
+            const removePost = this.http.get(removeUrl + id);
+            removePost.subscribe(
+                response => {
+                    this.portfolioInfo.subscribe(res => {
+                        if (res['error']) {
+                            // code...
+                        } else {
+                            this.portfoliosInfo = res['ico'];
+                        }
+                    }),
+                        this.checkInPortfolio(id);
+                    setTimeout(() => {
+                        $.getScript('/js/script.js');
+                    }, 300)
+                },
+                error => console.log(error)
+            )
         }
-        const removePost = this.http.get(removeUrl+id);
-        removePost.subscribe(
-            response => {
-                this.portfolioInfo.subscribe(res=>{
-                    if(res['error']) {
-                        // code...
-                    } else {
-                        this.portfoliosInfo = res['ico'];
-                    }
-                }),
-                    this.checkInPortfolio(id);
-                setTimeout(()=> {
-                    $.getScript('/js/script.js');
-                }, 300)
-            },
-            error => console.log(error)
-        )
     }
 
     checkInPortfolio(id) {

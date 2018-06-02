@@ -1,6 +1,6 @@
 <div class="news-content">
         <div class="news-head">
-          <h1>Новости<span>{{countAll}}</span></h1>
+          <h1>Новости<span *ngIf="countAll">{{countAll}}</span></h1>
           <ul class="news-tabs">
             <li class="active"><a (click)="setOrder('id')">Новое за сегодня</a></li>
             <li><a (click)="setOrder('views_count')">Самое популярное</a></li>
@@ -8,6 +8,9 @@
           </ul>
         </div>
         <div class="news-body">
+          <div style="width: 50px; height: 50px; margin: 40px auto;" *ngIf="load == true" >
+            <img src="/img/load.gif" *ngIf="load == true" style=" width: 50px; height: 50px; text-align: center">
+          </div>
           <div class="news-tab-content active">
             <div class="main-news">
               <div  *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.workplace ? 'news trust' : 'news'">
@@ -16,8 +19,8 @@
                   <a href="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
                   <div class="info">
                     <span class="date">{{item.created_at}}</span>
-                    <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>0</span>
-                    <a  href="/posts/post/{{item.id}}#comment-block"  class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>
+                    <span class="views" *ngIf="item.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item.view_count}}</span>
+                    <a  href="/posts/post/{{item.id}}#comment-block"  class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>
                   </div>
                 </div>
                 <div class="text">
@@ -26,7 +29,7 @@
               </div>
             </div>
             <div class="news-list">
-              <div *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.name_credits ? 'trust' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
+              <div *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.name_credits ? 'trust news' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
                 <div *ngIf="item.name_credits" class="img-wrap"><img src="img/trust.png" alt=""></div>
                 <h4 *ngIf="item.name_credits">{{item.title}}</h4>
                 <p *ngIf="item.name_credits" class="name">{{item.name_credits}}</p>

@@ -79,11 +79,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
   infoCrypto: any;
   stocksData: any;
   cryptoFirst:any;
-  lowest: number;
   cryptoData: any;
   bid_ask: {bid: number; ask: number;} = {bid: 0, ask: 0};
   animtype = '';
-  animtypebg = '';
   diff = 0;
   volume = 0;
   animstock = [];
@@ -94,6 +92,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
   max = [];
   time = [];
   time_value = 0;
+  news_container: any;
   selectedItem: PositionData;
     portfolioInfo:any;
 
@@ -139,91 +138,81 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.prev = this.dataUsd.last;
       
     }
-    if(localStorage.getItem(symbol+'bid')) {
-      this.bid_ask.bid = JSON.parse(localStorage.getItem('bid'));
-      
-    }
-    if(localStorage.getItem(symbol+'ask')) {
-      this.bid_ask.ask = JSON.parse(localStorage.getItem('ask'));
-      
-    }
+      if(localStorage.getItem(symbol+'bid')) {
+          this.bid_ask.bid = JSON.parse(localStorage.getItem(symbol+'bid'));
 
-    if(localStorage.getItem(symbol+'USD stocks')) {
-      this.stocks = JSON.parse(localStorage.getItem(symbol+'USD stocks'));
-      this.load = false;
-      if(this.volume === 0) {
-        
-        for(let item of this.stocks) {
-            if(item.ask > 0) {
-                this.min.push(item.ask);
-
-            }
-            if(item.bid) {
-                this.max.push(item.bid);
-            }
-          this.volume = this.volume+item.volume;
-        this.time.push(item.time);
       }
-      if (localStorage.getItem(symbol+'time_value')) {
-          this.time_value = JSON.parse(localStorage.getItem(symbol+'time_value'));;
+      if(localStorage.getItem(symbol+'min')) {
+          this.min_value = JSON.parse(localStorage.getItem(symbol+'min'));
 
-      } else {
+      }
+      if(localStorage.getItem(symbol+'max')) {
+          this.max_value = JSON.parse(localStorage.getItem(symbol+'max'));
+
+      }
+    if(localStorage.getItem(symbol+'ask')) {
+      this.bid_ask.ask = JSON.parse(localStorage.getItem(symbol+'ask'));
+      
+    }
+      if(localStorage.getItem(symbol+'volume')) {
+          this.volume = JSON.parse(localStorage.getItem(symbol+'volume'));
+
+      }
+
+      this.stocksService.getStocks(symbol+'/USD')
+  .subscribe(response => {
+          this.stocks = response
+          for (var _i = 0; _i < this.stocks.length; ++_i) {
+              this.time.push(this.stocks[_i].time);
+              }
           this.time_value = Math.max.apply(null, this.time);
           localStorage.removeItem(symbol+'time_value');
           localStorage.setItem(symbol+'time_value', JSON.stringify(this.time_value));
-      }
+          this.load = false;
+          localStorage.removeItem(symbol+'USD stocks');
+          localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
+      this.bid_ask.bid = 0
+      this.bid_ask.ask = 0
+      this.volume = 0
+          for(let item of this.stocks) {
+              if(item.ask > 0) {
+                  this.min.push(item.ask);
+
+              }
+              if(item.bid) {
+                  this.max.push(item.bid);
+              }
+              this.volume = this.volume+item.volume
+
+              if(this.bid_ask.ask < item.ask) {
+                  this.bid_ask.ask = item.ask
+                  localStorage.removeItem(symbol+'ask')
+                  localStorage.setItem(symbol+'ask', JSON.stringify(this.bid_ask.ask))
+              }
+
+              if(this.bid_ask.bid < item.bid) {
+                  this.bid_ask.bid = item.bid
+                  localStorage.removeItem(symbol+'bid')
+                  localStorage.setItem(symbol+'bid', JSON.stringify(this.bid_ask.bid))
+              }
+
+          }
+      localStorage.removeItem(symbol+'volume')
+      localStorage.setItem(symbol+'volume', JSON.stringify(this.volume))
+
 
           this.min_value = Math.min.apply(null, this.min);
           this.max_value = Math.max.apply(null, this.max);
-      }
+      localStorage.removeItem(symbol+'min')
+      localStorage.setItem(symbol+'min', JSON.stringify(this.min_value))
+      localStorage.removeItem(symbol+'max')
+      localStorage.setItem(symbol+'max', JSON.stringify(this.max_value))
+      })
 
-    }
-
-      this.stocksService.getStocks(symbol+'/USD').subscribe(response => {
-        this.load = true;
-      this.stocks = response;
-      this.load = false;
-      this.diff = this.dataUsd.now-this.dataUsd.last;
-      localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
-      for(let item of this.stocks) {
-        if(item.ask > 0) {
-          this.min.push(item.ask);
-
-        }
-        if(item.bid) {
-          this.max.push(item.bid);
-        }
-        if(this.volume === 0) {
-
-            this.volume = this.volume+item.volume;
-
-        } else {
-          this.volume = 0;
-          this.volume = this.volume+item.volume;
-        }
-        if(this.bid_ask.ask < item.ask) {
-        this.bid_ask.ask = item.ask
-        localStorage.removeItem(symbol+'ask')
-        localStorage.setItem(symbol+'ask', JSON.stringify(this.bid_ask.ask))
-        }
-        if(this.bid_ask.bid < item.bid) {
-        this.bid_ask.bid = item.bid
-        localStorage.removeItem(symbol+'bid')
-        localStorage.setItem(symbol+'bid', JSON.stringify(this.bid_ask.bid))
-        }
-        this.time.push(item.time);
-      }
-      this.time_value = Math.max.apply(null, this.time);
-          localStorage.removeItem(symbol+'time_value');
-          localStorage.setItem(symbol+'time_value', JSON.stringify(this.time_value));
-      this.min_value = Math.min.apply(null, this.min);
-      this.max_value = Math.max.apply(null, this.max);
-
-    });
-    this.stocksData = Observable.interval(3000).concatMap(()=>
+    this.stocksData = Observable.interval(1000).take(10).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USD'))
     .map(response => {
-
+    console.log(response);
       for (var _i = 0; _i < this.stocks.length; ++_i) {
         this.time.push(this.stocks[_i].time);
         this.animstock[_i] = '';
@@ -252,6 +241,8 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.load = false;
       localStorage.removeItem(symbol+'USD stocks');
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
+        this.bid_ask.bid = 0
+        this.bid_ask.ask = 0
       for(let item of this.stocks) {
           if(item.ask > 0) {
               this.min.push(item.ask);
@@ -260,14 +251,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
           if(item.bid) {
               this.max.push(item.bid);
           }
-        if(this.volume === 0) {
 
-            this.volume = this.volume+item.volume;
-          
-        } else {
-          this.volume = 0;
-            this.volume = this.volume+item.volume;
-        }
         if(this.bid_ask.ask < item.ask) {
         this.bid_ask.ask = item.ask
         localStorage.removeItem('ask')
@@ -326,12 +310,13 @@ export class CryptoComponent implements OnInit, OnDestroy {
       newsInfo.subscribe(response => {
         this.main_news = response['main_news'];
         this.news = response['news'];
+        this.news_container = this.news.slice(0,3);
         console.log(this.news);
         console.log(this.main_news);
       });
     });
 
-    this.cryptoData=Observable.interval(2000).concatMap(
+    this.cryptoData=Observable.interval(2000).take(10).concatMap(
         ()=>
             this.stocksService.getCrypto())
     .map((response)=>{
@@ -366,7 +351,16 @@ export class CryptoComponent implements OnInit, OnDestroy {
       }
       );
   }
+    onScroll() {
+        console.log('scroll')
+        if(this.news_container.length < this.news.length){
+            let len = this.news_container.length;
 
+            for(let i = len; i <= len+3; i++){
+                this.news_container.push(this.news[i]);
+            }
+        }
+    }
   submitComment(form: NgForm,post_id, type) {
 
     const headers = new HttpHeaders({'Content-type': 'Application/json '});
@@ -477,24 +471,26 @@ export class CryptoComponent implements OnInit, OnDestroy {
     }
 
     removePortfolio(id) {
-        const removeUrl = '/angular/userportfolio/crypto/remove/';
-        const removePost = this.http.get(removeUrl+id);
-        removePost.subscribe(
-            response => {
-                this.portfolioInfo.subscribe(res=>{
-                    if(res['error']) {
-                        // code...
-                    } else {
-                        this.portfoliosInfo = res['crypto'];
-                    }
-                }),
-                    this.checkInPortfolio(id);
-                setTimeout(()=> {
-                    $.getScript('/js/script.js');
-                }, 300)
-            },
-            error => console.log(error)
-        )
+        if(confirm('Подтвердите удаление')) {
+            const removeUrl = '/angular/userportfolio/crypto/remove/';
+            const removePost = this.http.get(removeUrl + id);
+            removePost.subscribe(
+                () => {
+                    this.portfolioInfo.subscribe(res => {
+                        if (res['error']) {
+                            // code...
+                        } else {
+                            this.portfoliosInfo = res['crypto'];
+                        }
+                    }),
+                        this.checkInPortfolio(id);
+                    setTimeout(() => {
+                        $.getScript('/js/script.js');
+                    }, 300)
+                },
+                error => console.log(error)
+            )
+        }
     }
     basicRoute() {
       let symbol = this.route.snapshot.params['sym'];

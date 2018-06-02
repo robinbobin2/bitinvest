@@ -64,7 +64,15 @@ export class AppComponent implements OnInit {
 	constructor(public auth: AuthService, private http:HttpClient, 
     private router:Router, private activatedRoute: ActivatedRoute,
     private searchService: SearchService) {
+        this.router.events
+            .filter(event => event instanceof NavigationEnd)
+            .map(() => this.activatedRoute)
+            .subscribe((event) => {
+                setTimeout(()=> {
+                    $.getScript('/js/script.js');
+                }, 300)
 
+            });
     this.searchService.mainSearch(this.searchTerm$)
       .subscribe(results => {
           if (results['error']) {
@@ -171,15 +179,7 @@ checkAuth() {
         }
       );
 
-        this.router.events
-        .filter(event => event instanceof NavigationEnd)
-        .map(() => this.activatedRoute)
-        .subscribe((event) => {
-          setTimeout(()=> {
-            $.getScript('/js/script.js');
-          }, 300)
-           
-        });
+
   	// this.user = this.auth.getUser();
   }
 }

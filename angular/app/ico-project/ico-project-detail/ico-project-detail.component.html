@@ -79,8 +79,8 @@ width: 94%">
 
 					</div>
 				</div>
-          <h3 class="ico-title">Распределение средств</h3>
-				<div class="distribution-funds" id="distribution-funds">
+          <h3 class="ico-title" *ngIf="percents > 0">Распределение средств</h3>
+				<div class="distribution-funds" id="distribution-funds" *ngIf="percents > 0">
 					<ul class="persent">
 						<li *ngFor="let percent of percents" style="width: 40%" [ngStyle]="{'width':percent.percent+'%'}"  [ngClass]="percentClass(percent.percent, 'first')">{{percent.percent}}%</li>
 					</ul>
@@ -152,7 +152,9 @@ width: 94%">
 								<div class="right">
 									<div class="img-wrap"></div>
 									<div class="btn-block">
-										<span class="number-green" [ngClass]="rating_count[item.id] > -1 ? 'number-green' : 'number-red'">{{rating_count[item.id]}}</span>
+										<span *ngIf="rating_count[item.id] > 0" class="number-green">{{rating_count[item.id]}}</span>
+										<span *ngIf="rating_count[item.id] < 0" class="number-red">{{rating_count[item.id]}}</span>
+										<span *ngIf="rating_count[item.id] == 0" class="number">{{rating_count[item.id]}}</span>
 										<div class="buttons">
 											<a (click)="onVote(item.id, 1)" class="plus">+</a>
 											<a (click)="onVote(item.id, 0)" class="minus">-</a>

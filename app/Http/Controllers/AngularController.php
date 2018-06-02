@@ -9,6 +9,7 @@ use App\CryptoStat;
 use App\IcoPercent;
 use App\IcoProject;
 use App\Interview;
+use App\News;
 use App\Stock;
 use App\User;
 use App\UserPortfolio;
@@ -252,5 +253,24 @@ JOIN exchangeRatesInfo exi on exi.exchangeId = ex.id and exi.currency = 'BTC/USD
             CommentRating::create($data);
             return ['success' => 'voted'];
         }
+    }
+
+    public function viewCount(Request $request) {
+        if ($request->type == "news") {
+
+            News::where('id', $request->id)->increment('view_count');
+
+        } elseif ($request->type == "mining") {
+            CloudMining::where('id', $request->id)->increment('view_count');
+        } elseif ($request->type == "ico") {
+            IcoProject::where('id', $request->id)->increment('view_count');
+        } elseif ($request->type == "review") {
+            Review::where('id', $request->id)->increment('view_count');
+        } elseif ($request->type == "interview") {
+            Interview::where('id', $request->id)->increment('view_count');
+        } elseif ($request->type == "analytics") {
+            Analytics::where('id', $request->id)->increment('view_count');
+        }
+        
     }
 }

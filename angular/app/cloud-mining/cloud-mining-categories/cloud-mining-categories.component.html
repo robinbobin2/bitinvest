@@ -9,12 +9,12 @@
             <input type="text" placeholder="Поиск по названию">
           </form>
         </div>
-        <div class="select-content">
+        <div class="select-content" (click) = "showCaret = true" (appClickOutside)="showCaret=false">
           <div class="select-head">
             <p>По алфавиту</p>
             <span class="curret"></span>
           </div>
-          <ul class="select-body">
+          <ul *ngIf="showCaret==true"  class="select-body">
             <li><a href="#" (click)="setOrder('name', false)" >По алфавиту</a></li>
 
             <li><a href="#" (click)="setOrder('proc', true)" >Доход на уменьшение</a></li>
@@ -53,7 +53,7 @@
               </div>
             </div>
             <div class="more-project-wrap">
-              <p class="more-project">{{item.desc}}
+              <p class="more-project">{{item.desc | striphtml | excerpt:140}}
               <a routerLink="/cloud-mining/item/{{item.id}}">Подробнее о проекте</a></p>
               
               <a href="/cloud-mining/item/{{item.id}}#comment-block" class="comment-wrapper">

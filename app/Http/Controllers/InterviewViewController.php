@@ -44,64 +44,29 @@ class InterviewViewController extends Controller
 
         $main_news = Interview::with('photos')->with('category')->withCount('comments')->where('cat_id', $id)->latest()->get()->where('main', 1)->take(3)->toArray();
         $main_news = array_values($main_news);
-        // $news = $news->toJson();
-        // $news = array_values($news);
-        // $comments = $news->comments();
-        // $photos = $news->photos();
-        // for ($i=0; $i < count($news); $i++) { 
-        //     if($news[$i]->photos){
-        //                 foreach ($news[$i]->photos as $photo) {
-                         
-        //                 // $news[$i]['photos']['file'] = array($photo->file);   # code...
-        //                 // echo $photo->file;
-        //             }
-        //     }
-        // }
         return response()->json([
             'news' => $news,
             'main_news' => $main_news,
-            // 'photos'=>$photos
         ]);
-        // dd($news);
-        // return $news->toJson();
 
 
     }
 
     public function show($id) {
-        $news = Interview::with('category')->first()->get()->where('id', $id)->toArray();
+        $news = Interview::first()->with('comments.rating')->get()->where('id', $id)->toArray();
         $commentnews = Interview::findOrFail($id);
         $comments = $commentnews->comments;
-        $photos = $commentnews->photos;
         $news = array_values($news);
-        // $user = Auth::user();
-        
-        // $main_news = News::with('photos')->with('category')->get()->where('main', 1)->take(2)->toArray();
-        // $main_news = array_values($main_news);
-        // $news = $news->toJson();
-        // $news = array_values($news);
-        // $comments = $news->comments();
-        // $photos = $news->photos();
-        // for ($i=0; $i < count($news); $i++) { 
-        //     if($news[$i]->photos){
-        //                 foreach ($news[$i]->photos as $photo) {
-                         
-        //                 // $news[$i]['photos']['file'] = array($photo->file);   # code...
-        //                 // echo $photo->file;
-        //             }
-        //     }
-        // }
+        $user = Auth::user();
+        $photos = $commentnews->photos;
+        $category = $commentnews->category;
         return response()->json([
-            'news'=>$news,
-            // 'user'=>$user,
-            'comments'=>$comments,
-            'photos'=>$photos,
-            'comments_count'=>count($comments)
-            // 'main_news' => $main_news,
-            // 'photos'=>$photos
+            'news' => $news,
+            'user' => $user,
+            'photos' => $photos,
+            'category' => $category,
+            'comments_count' => count($comments)
         ]);
-        // dd($news);
-        // return $news->toJson();
 
 
     }

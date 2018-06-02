@@ -58,6 +58,7 @@ export class CloudMiningCategoriesComponent implements OnInit {
     show = false;
     portfolioInfo:any;
 	news: Array<NewsRaw> = [];
+	showCaret = false;
    constructor(private http:HttpClient,private orderPipe: OrderPipe,  private router:Router, private route:ActivatedRoute, private authService: AuthService, private portfolioService: PortfolioService) {
 
 

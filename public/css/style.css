@@ -3298,7 +3298,7 @@ margin-bottom: 15px;
   max-width: 280px;
   width: 100%;
   float: left;
-  margin-right: 13px;
+  margin-right: 19px;
 }
 .news-body .news-list .banner-orange,
 .interview-body .news-list .banner-orange {
@@ -8985,13 +8985,45 @@ app-news-detail {
   width: 100%;
   margin-top: -20px;
 }
-app-all-news, app-all-cloud-mining, app-ico-project-all, 
-app-interview-details, app-all-review, app-review-detail, 
-app-all-analytics, app-analytics-detail {
+app-all-news {
+width: 100%;
+} app-all-cloud-mining {
+  width: 100%;
+  } app-ico-project-all {
+    width: 100%;
+  } 
+app-interview-details {
+  width: 100%;
+  } 
+  app-all-review {
+    width: 100%;
+    } 
+    app-review-detail {
+      width: 100%;
+    }
+app-all-analytics {
+  width: 100%;
+  } 
+  app-analytics-detail {
+    width: 100%;
+    } 
+    app-categories{
+      width: 100%;
+      } 
+      app-cloud-mining-categories{
+        width: 100%;
+      }
+ app-ico-project-categories {
   width: 100%;
 }
 app-ico-project-detail {
   width: 100%;
+}
+app-review-categories {
+  width: 100%
+}
+app-analytics-categories {
+  width: 100%
 }
 .select-content {
   min-width: 190px;
@@ -9076,4 +9108,21 @@ table tbody tr td .difference .buttons a {
 }
 .main-news .news {
   max-width: 430px !important;
+}
+
+.select > a {
+  float: right;
+}
+.news-list .news:nth-child(3n+3) {
+    margin-right: 0 !important
+}
+.select-items.open {
+  display: block;
+  max-height: 310px;
+  overflow-y: auto;
+  box-shadow: 0px 2px 3px rgba(0,0,0,.2)
+}
+.number {
+  font-size: 24px;
+  color: #616162;
 }
