@@ -29,6 +29,7 @@ class IndependentReserveProvider extends FounderProvider
             if(!isset($value->result)){
                 continue;
             }
+            $value = $value->result;
             $ticker = new TickerEntity();
             $ticker->setAsk($value->CurrentLowestOfferPrice);
             $ticker->setBid($value->CurrentHighestBidPrice);
