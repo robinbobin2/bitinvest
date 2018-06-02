@@ -11,7 +11,7 @@
         <div class="table-title">
           <h3>{{item.name}}</h3>
           <div class="buttons">
-            <a href="#"><img src="/img/setting-icon-table.png" alt=""></a>
+            <!--<a href="#"><img src="/img/setting-icon-table.png" alt=""></a>-->
             <a (click)="onDelete(item.id, i)" class="basket"><img src="/img/basket-white.png" alt=""></a>
           </div>
         </div>
@@ -142,8 +142,9 @@
           </tr>
           </thead>
           <tbody>
-          <p *ngIf="portfolios[item.id] <= 0" style="font-size: 14px;
-          font-weight: bold; color: #c0c0c0;">К сожалению, у данного проекта еще не истории операций</p>
+          <p *ngIf="portfolios[item.id].length = 0" style="font-size: 14px;
+          font-weight: bold; color: #c0c0c0;">У Вас еще нет добавлены ICO проектов. Перейдите в <a routerLink="/ico/all">каталог</a> для добавления.
+          </p>
           <ng-template [ngIf]="item.user_portfolio_type_id == 1">
             <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
               <td>
