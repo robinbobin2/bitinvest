@@ -26,8 +26,8 @@
       <file leaf-file-name="crypto.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="149" column="24" selection-start-line="149" selection-start-column="24" selection-end-line="149" selection-end-column="24" />
+            <state relative-caret-position="467">
+              <caret line="159" column="7" selection-start-line="159" selection-start-column="7" selection-end-line="159" selection-end-column="7" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -133,8 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>rating_count</find>
-      <find>расп</find>
       <find>webs</find>
       <find>analytics</find>
       <find>load</find>
@@ -161,8 +159,10 @@
       <find>bid_ask.bid</find>
       <find>JSON.stringify(this.bid_ask.ask</find>
       <find>bid_ask</find>
-      <find>bid</find>
       <find>min_value</find>
+      <find>value</find>
+      <find>bid</find>
+      <find>this.volu</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -504,12 +504,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="7455000" />
+      <workItem from="1527928097804" duration="7625000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164627000" />
+    <option name="totallyTimeSpent" value="164797000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1025,8 +1025,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="149" column="24" selection-start-line="149" selection-start-column="24" selection-end-line="149" selection-end-column="24" />
+        <state relative-caret-position="467">
+          <caret line="159" column="7" selection-start-line="159" selection-start-column="7" selection-end-line="159" selection-end-column="7" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>

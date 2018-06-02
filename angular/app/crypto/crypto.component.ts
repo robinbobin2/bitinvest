@@ -154,7 +154,10 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.bid_ask.ask = JSON.parse(localStorage.getItem(symbol+'ask'));
       
     }
+      if(localStorage.getItem(symbol+'volume')) {
+          this.volume = JSON.parse(localStorage.getItem(symbol+'volume'));
 
+      }
 
       this.stocksService.getStocks(symbol+'/USD')
   .subscribe(response => {
@@ -168,6 +171,8 @@ export class CryptoComponent implements OnInit, OnDestroy {
           this.load = false;
           localStorage.removeItem(symbol+'USD stocks');
           localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
+      this.bid_ask.bid = 0
+      this.bid_ask.ask = 0
           for(let item of this.stocks) {
               if(item.ask > 0) {
                   this.min.push(item.ask);
@@ -177,8 +182,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
                   this.max.push(item.bid);
               }
               this.volume = this.volume+item.volume
-              this.bid_ask.bid = 0
-              this.bid_ask.ask = 0
+
               if(this.bid_ask.ask < item.ask) {
                   this.bid_ask.ask = item.ask
                   localStorage.removeItem(symbol+'ask')
@@ -192,6 +196,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
               }
 
           }
+      localStorage.removeItem(symbol+'volume')
+      localStorage.setItem(symbol+'volume', JSON.stringify(this.volume))
+
 
           this.min_value = Math.min.apply(null, this.min);
           this.max_value = Math.max.apply(null, this.max);
@@ -233,6 +240,8 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.load = false;
       localStorage.removeItem(symbol+'USD stocks');
       localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
+        this.bid_ask.bid = 0
+        this.bid_ask.ask = 0
       for(let item of this.stocks) {
           if(item.ask > 0) {
               this.min.push(item.ask);
@@ -241,8 +250,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
           if(item.bid) {
               this.max.push(item.bid);
           }
-          this.bid_ask.bid = 0
-          this.bid_ask.ask = 0
+
         if(this.bid_ask.ask < item.ask) {
         this.bid_ask.ask = item.ask
         localStorage.removeItem('ask')

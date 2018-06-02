@@ -3106,6 +3106,9 @@ var CryptoComponent = (function () {
         if (localStorage.getItem(symbol + 'ask')) {
             this.bid_ask.ask = JSON.parse(localStorage.getItem(symbol + 'ask'));
         }
+        if (localStorage.getItem(symbol + 'volume')) {
+            this.volume = JSON.parse(localStorage.getItem(symbol + 'volume'));
+        }
         this.stocksService.getStocks(symbol + '/USD')
             .subscribe(function (response) {
             _this.stocks = response;
@@ -3118,6 +3121,8 @@ var CryptoComponent = (function () {
             _this.load = false;
             localStorage.removeItem(symbol + 'USD stocks');
             localStorage.setItem(symbol + 'USD stocks', JSON.stringify(_this.stocks));
+            _this.bid_ask.bid = 0;
+            _this.bid_ask.ask = 0;
             for (var _a = 0, _b = _this.stocks; _a < _b.length; _a++) {
                 var item = _b[_a];
                 if (item.ask > 0) {
@@ -3127,8 +3132,6 @@ var CryptoComponent = (function () {
                     _this.max.push(item.bid);
                 }
                 _this.volume = _this.volume + item.volume;
-                _this.bid_ask.bid = 0;
-                _this.bid_ask.ask = 0;
                 if (_this.bid_ask.ask < item.ask) {
                     _this.bid_ask.ask = item.ask;
                     localStorage.removeItem(symbol + 'ask');
@@ -3140,6 +3143,8 @@ var CryptoComponent = (function () {
                     localStorage.setItem(symbol + 'bid', JSON.stringify(_this.bid_ask.bid));
                 }
             }
+            localStorage.removeItem(symbol + 'volume');
+            localStorage.setItem(symbol + 'volume', JSON.stringify(_this.volume));
             _this.min_value = Math.min.apply(null, _this.min);
             _this.max_value = Math.max.apply(null, _this.max);
             localStorage.removeItem(symbol + 'min');
@@ -3180,6 +3185,8 @@ var CryptoComponent = (function () {
             _this.load = false;
             localStorage.removeItem(symbol + 'USD stocks');
             localStorage.setItem(symbol + 'USD stocks', JSON.stringify(_this.stocks));
+            _this.bid_ask.bid = 0;
+            _this.bid_ask.ask = 0;
             for (var _a = 0, _b = _this.stocks; _a < _b.length; _a++) {
                 var item = _b[_a];
                 if (item.ask > 0) {
@@ -3188,8 +3195,6 @@ var CryptoComponent = (function () {
                 if (item.bid) {
                     _this.max.push(item.bid);
                 }
-                _this.bid_ask.bid = 0;
-                _this.bid_ask.ask = 0;
                 if (_this.bid_ask.ask < item.ask) {
                     _this.bid_ask.ask = item.ask;
                     localStorage.removeItem('ask');
