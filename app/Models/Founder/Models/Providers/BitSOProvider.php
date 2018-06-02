@@ -2,21 +2,41 @@
 /**
  * Created by PhpStorm.
  * User: xeror
- * Date: 11.05.2018
- * Time: 17:36
+ * Date: 02.06.2018
+ * Time: 21:09
  */
 
 namespace App\Models\Founder\Models\Providers;
 
 
 use App\Models\Entity\ExchangeRate;
-use App\Models\Founder\Models\Connectors\IndependentReserveConnector;
+use App\Models\Founder\Models\Connectors\BitSOConnector;
 use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class IndependentReserveProvider extends FounderProvider
+class BitSOProvider extends FounderProvider
 {
+    public function getExchangeId()
+    {
+        return 81;
+    }
+
+    protected function getConnectorClass()
+    {
+        return new BitSOConnector();
+    }
+
+    /**
+     * @return BitSOConnector
+     */
+    protected function getConnector()
+    {
+        /** @var BitSOConnector $connector */
+        $connector = parent::getConnector();
+        return $connector;
+    }
+
     public function search(Request $request)
     {
         $response = $this->getConnector()->search();
@@ -25,38 +45,18 @@ class IndependentReserveProvider extends FounderProvider
             return $result;
         }
 
-        foreach ($response as $currency => $value) {
+        foreach ($response->payload as $value) {
             $ticker = new TickerEntity();
-            $ticker->setAsk($value->CurrentLowestOfferPrice);
-            $ticker->setBid($value->CurrentHighestBidPrice);
-            $ticker->setVolume($value->DayVolumeXbt);
-            $ticker->setValue($value->LastPrice);
+            $ticker->setAsk($value->ask);
+            $ticker->setBid($value->bid);
+            $ticker->setVolume($value->volume);
+            $ticker->setValue($value->last);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency($currency);
+            $ticker->setCurrency(strtoupper(str_replace("_", "/", $value->book)));
             $result[] = $ticker;
         }
 
         return $result;
-    }
-
-    public function getExchangeId()
-    {
-        return 3;
-    }
-
-    protected function getConnectorClass()
-    {
-        return new IndependentReserveConnector();
-    }
-
-    /**
-     * @return IndependentReserveConnector
-     */
-    protected function getConnector()
-    {
-        /** @var IndependentReserveConnector $connector */
-        $connector = parent::getConnector();
-        return $connector;
     }
 
     /**

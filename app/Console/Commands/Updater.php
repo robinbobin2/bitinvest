@@ -11,14 +11,17 @@ namespace App\Console\Commands;
 
 use App\Models\Founder\Models\Providers\ACXProvider;
 use App\Models\Founder\Models\Providers\AllCoinProvider;
+use App\Models\Founder\Models\Providers\BCexProvider;
 use App\Models\Founder\Models\Providers\BiBoxProvider;
 use App\Models\Founder\Models\Providers\BinanceProvider;
 use App\Models\Founder\Models\Providers\Bit2CProvider;
 use App\Models\Founder\Models\Providers\BitBayProvider;
+use App\Models\Founder\Models\Providers\BitBnsProvider;
 use App\Models\Founder\Models\Providers\BitFinexProvider;
 use App\Models\Founder\Models\Providers\BitHumbProvider;
 use App\Models\Founder\Models\Providers\BitMarketProvider;
 use App\Models\Founder\Models\Providers\BitMexProvider;
+use App\Models\Founder\Models\Providers\BitSOProvider;
 use App\Models\Founder\Models\Providers\BitTrexProvider;
 use App\Models\Founder\Models\Providers\BitzProvider;
 use App\Models\Founder\Models\Providers\BraziliexProvider;
@@ -36,10 +39,13 @@ use App\Models\Founder\Models\Providers\CoinGiProvider;
 use App\Models\Founder\Models\Providers\CoinMarketCapProvider;
 use App\Models\Founder\Models\Providers\CoinnestProvider;
 use App\Models\Founder\Models\Providers\CoinoneProvider;
+use App\Models\Founder\Models\Providers\CoinRoomProvider;
 use App\Models\Founder\Models\Providers\CoinTigerProvider;
 use App\Models\Founder\Models\Providers\CryptopiaProvider;
+use App\Models\Founder\Models\Providers\DSXProvider;
 use App\Models\Founder\Models\Providers\ExmoProvider;
 use App\Models\Founder\Models\Providers\ExxProvider;
+use App\Models\Founder\Models\Providers\FargoBaseProvider;
 use App\Models\Founder\Models\Providers\FlowBTCProvider;
 use App\Models\Founder\Models\Providers\GateCoinProvider;
 use App\Models\Founder\Models\Providers\GateIOProvider;
@@ -51,6 +57,7 @@ use App\Models\Founder\Models\Providers\IBankProvider;
 use App\Models\Founder\Models\Providers\Ice3XProvider;
 use App\Models\Founder\Models\Providers\IndependentReserveProvider;
 use App\Models\Founder\Models\Providers\JubiProvider;
+use App\Models\Founder\Models\Providers\KoineksProvider;
 use App\Models\Founder\Models\Providers\KrakenProvider;
 use App\Models\Founder\Models\Providers\KuCoinProvider;
 use App\Models\Founder\Models\Providers\KunaProvider;
@@ -171,7 +178,14 @@ class Updater extends \Illuminate\Console\Command
         VebitcoinProvider::class,
         NegocieProvider::class,
         RightBTCProvider::class,
-        QuadrigacxProvider::class
+        QuadrigacxProvider::class,
+        BCexProvider::class,
+        BitBnsProvider::class,
+        BitSOProvider::class,
+        CoinRoomProvider::class,
+        DSXProvider::class,
+        FargoBaseProvider::class,
+        KoineksProvider::class
     ];
 
     /**

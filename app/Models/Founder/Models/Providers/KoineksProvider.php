@@ -2,21 +2,41 @@
 /**
  * Created by PhpStorm.
  * User: xeror
- * Date: 11.05.2018
- * Time: 17:36
+ * Date: 02.06.2018
+ * Time: 20:28
  */
 
 namespace App\Models\Founder\Models\Providers;
 
 
 use App\Models\Entity\ExchangeRate;
-use App\Models\Founder\Models\Connectors\IndependentReserveConnector;
+use App\Models\Founder\Models\Connectors\KoineksConnector;
 use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class IndependentReserveProvider extends FounderProvider
+class KoineksProvider extends FounderProvider
 {
+    public function getExchangeId()
+    {
+        return 78;
+    }
+
+    protected function getConnectorClass()
+    {
+        return new KoineksConnector();
+    }
+
+    /**
+     * @return KoineksConnector
+     */
+    protected function getConnector()
+    {
+        /** @var KoineksConnector $connector */
+        $connector = parent::getConnector();
+        return $connector;
+    }
+
     public function search(Request $request)
     {
         $response = $this->getConnector()->search();
@@ -27,36 +47,16 @@ class IndependentReserveProvider extends FounderProvider
 
         foreach ($response as $currency => $value) {
             $ticker = new TickerEntity();
-            $ticker->setAsk($value->CurrentLowestOfferPrice);
-            $ticker->setBid($value->CurrentHighestBidPrice);
-            $ticker->setVolume($value->DayVolumeXbt);
-            $ticker->setValue($value->LastPrice);
+            $ticker->setAsk($value->ask);
+            $ticker->setBid($value->bid);
+            $ticker->setVolume($value->volume);
+            $ticker->setValue($value->current);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency($currency);
+            $ticker->setCurrency($value->short_code . "/" . $value->currency);
             $result[] = $ticker;
         }
 
         return $result;
-    }
-
-    public function getExchangeId()
-    {
-        return 3;
-    }
-
-    protected function getConnectorClass()
-    {
-        return new IndependentReserveConnector();
-    }
-
-    /**
-     * @return IndependentReserveConnector
-     */
-    protected function getConnector()
-    {
-        /** @var IndependentReserveConnector $connector */
-        $connector = parent::getConnector();
-        return $connector;
     }
 
     /**
