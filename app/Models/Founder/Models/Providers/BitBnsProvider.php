@@ -49,7 +49,7 @@ class BitBnsProvider extends FounderProvider
             $ticker = new TickerEntity();
             $ticker->setAsk($value->highest_buy_bid);
             $ticker->setBid($value->lowest_sell_bid);
-            $ticker->setVolume($value->volume->volume);
+            $ticker->setVolume(isset($value->volume->volume) ? $value->volume->volume : 0);
             $ticker->setValue($value->last_traded_price);
             $ticker->setExchangeId($this->getExchangeId());
             $ticker->setCurrency(strtoupper($currency) . "/" . "INR");
