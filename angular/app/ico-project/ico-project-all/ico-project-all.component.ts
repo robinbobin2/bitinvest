@@ -43,7 +43,7 @@ export class IcoProjectAllComponent implements OnInit {
   activeCount = 0;
   inactiveCount = 0;
   icoCount = 0;
-  order: string = '';
+  order: string = 'name';
   reverse: boolean = false;
   portfolios=[];
   selectedItem: NewsRaw;

@@ -311,6 +311,7 @@ $(document).ready(function () {
 		$(".select-head p").text(text);
 
 		$(".select-body").slideToggle(200);
+		console.log('select-body li a')
 	});
 
 	$(document).click(function (event) {
@@ -318,7 +319,10 @@ $(document).ready(function () {
 			if ($('.select-body').is(":visible")) {
 				$(".select-body").slideToggle(200);
 			}
+
+			console.log('docc if')
 		}
+		console.log('docc')
 	});
 
 $('.select-wrap select').select2({
