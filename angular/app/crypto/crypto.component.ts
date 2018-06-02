@@ -226,7 +226,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
           if(item.bid) {
               this.max.push(item.bid);
           }
-        
+
         if(this.bid_ask.ask < item.ask) {
         this.bid_ask.ask = item.ask
         localStorage.removeItem('ask')
