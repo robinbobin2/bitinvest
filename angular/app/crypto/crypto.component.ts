@@ -147,42 +147,13 @@ export class CryptoComponent implements OnInit, OnDestroy {
       
     }
 
-    if(localStorage.getItem(symbol+'USD stocks')) {
-      this.stocks = JSON.parse(localStorage.getItem(symbol+'USD stocks'));
-      this.load = false;
-      if(this.volume === 0) {
 
-        for(let item of this.stocks) {
-            if(item.ask > 0) {
-                this.min.push(item.ask);
-
-            }
-            if(item.bid) {
-                this.max.push(item.bid);
-            }
-          this.volume = this.volume+item.volume;
-        this.time.push(item.time);
-      }
-      if (localStorage.getItem(symbol+'time_value')) {
-          this.time_value = JSON.parse(localStorage.getItem(symbol+'time_value'));;
-
-      } else {
-          this.time_value = Math.max.apply(null, this.time);
-          localStorage.removeItem(symbol+'time_value');
-          localStorage.setItem(symbol+'time_value', JSON.stringify(this.time_value));
-      }
-
-          this.min_value = Math.min.apply(null, this.min);
-          this.max_value = Math.max.apply(null, this.max);
-      }
-
-    }
 
 
     this.stocksData = Observable.interval(1000).take(10).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USD'))
     .map(response => {
-
+    console.log(response);
       for (var _i = 0; _i < this.stocks.length; ++_i) {
         this.time.push(this.stocks[_i].time);
         this.animstock[_i] = '';
