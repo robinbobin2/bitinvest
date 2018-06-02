@@ -25,7 +25,7 @@ class BitBnsConnector extends FounderConnector
         curl_setopt($curl, CURLOPT_URL, "https://bitbns.com/order/getTickerWithVolume/");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($curl);
-        SupplierLog::log("search", $result, 66);
+        SupplierLog::log("search", $result, 75);
         return json_decode($result);
     }
 }
