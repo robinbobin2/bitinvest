@@ -6250,7 +6250,9 @@ var NewsDetailComponent = (function () {
     }
     NewsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.viewService.incrementView('news', this.id).subscribe();
+        if (this.viewService.incrementView('news', this.id).subscribe()) {
+            console.log('incrd');
+        }
         this.router.events.subscribe(function (evt) {
             if (!(evt instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */])) {
                 return;

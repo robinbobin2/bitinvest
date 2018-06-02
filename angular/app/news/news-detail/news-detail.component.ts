@@ -80,7 +80,9 @@ id = 0;
 }
 
   ngOnInit() {
-      this.viewService.incrementView('news', this.id).subscribe();
+      if(this.viewService.incrementView('news', this.id).subscribe()) {
+          console.log('incrd');
+      }
     this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
                 return;
