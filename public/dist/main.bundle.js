@@ -5806,6 +5806,7 @@ var InterviewDetailsComponent = (function () {
         this.comments = [];
         this.photos = [];
         this.commentcount = 0;
+        this.id = 0;
         this.rating_count = [];
         this.comment = {
             'post_id': '',
@@ -5813,12 +5814,11 @@ var InterviewDetailsComponent = (function () {
             'commentable_id': '',
             'commentable_type': ''
         };
+        this.id = this.route.snapshot.params['id'];
     }
     InterviewDetailsComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
-        var id = this.route.snapshot.params['id'];
-        this.viewService.incrementView('news', id).subscribe();
-        var path = "/interviewraw/" + id;
+        var path = "/interviewraw/" + this.id;
         var info = this.http.get(path);
         info.subscribe(function (response) {
             console.log(response['news'][0]['desc']);
@@ -5851,6 +5851,7 @@ var InterviewDetailsComponent = (function () {
     };
     InterviewDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.viewService.incrementView('news', this.id).subscribe();
         var userpath = "/angular/user";
         var userinfo = this.http.get(userpath);
         userinfo.subscribe(function (response) {
@@ -6256,6 +6257,7 @@ var NewsDetailComponent = (function () {
     }
     NewsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.viewService.incrementView('news', this.id).subscribe();
         this.router.events.subscribe(function (evt) {
             if (!(evt instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */])) {
                 return;
@@ -6316,7 +6318,6 @@ var NewsDetailComponent = (function () {
         form.reset();
     };
     NewsDetailComponent.prototype.ngAfterViewInit = function () {
-        this.viewService.incrementView('news', this.id).subscribe();
     };
     return NewsDetailComponent;
 }());

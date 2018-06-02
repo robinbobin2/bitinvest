@@ -83,7 +83,7 @@ id = 0;
 
   ngOnInit() {
 
-
+      this.viewService.incrementView('news', this.id).subscribe()
     this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
                 return;
@@ -157,6 +157,6 @@ id = 0;
   }
 
   ngAfterViewInit() {
-      this.viewService.incrementView('news', this.id).subscribe()
+
   }
 }

@@ -46,19 +46,18 @@ news: News;
 comments: CommentRaw[] = [];
 photos: Photos[] = [];
 commentcount = 0;
+id = 0;
 user: User;
     rating_count: any[]=[];
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute,
               private commentService: CommentsService, private viewService: CloudMiningService) {
-    
+      this.id = this.route.snapshot.params['id'];
 }
  ngAfterViewInit() {
 
-     let id = this.route.snapshot.params['id'];
 
-     this.viewService.incrementView('news', id).subscribe()
 
-     let path = "/interviewraw/"+id;
+     let path = "/interviewraw/"+this.id;
 
      const info = this.http.get(path);
 
@@ -92,7 +91,7 @@ user: User;
      });
  }
   ngOnInit() {
-
+      this.viewService.incrementView('news', this.id).subscribe()
     const userpath = "/angular/user";
      const userinfo = this.http.get<User>(userpath);
      userinfo.subscribe(response => {
