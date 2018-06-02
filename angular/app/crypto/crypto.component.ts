@@ -148,7 +148,50 @@ export class CryptoComponent implements OnInit, OnDestroy {
     }
 
 
+      this.stocksService.getStocks(symbol+'/USD')
+  .subscribe(response => {
+          this.stocks = response
+          for (var _i = 0; _i < this.stocks.length; ++_i) {
+              this.time.push(this.stocks[_i].time);
+              }
+          this.time_value = Math.max.apply(null, this.time);
+          localStorage.removeItem(symbol+'time_value');
+          localStorage.setItem(symbol+'time_value', JSON.stringify(this.time_value));
+          this.load = false;
+          localStorage.removeItem(symbol+'USD stocks');
+          localStorage.setItem(symbol+'USD stocks', JSON.stringify(this.stocks));
+          for(let item of this.stocks) {
+              if(item.ask > 0) {
+                  this.min.push(item.ask);
 
+              }
+              if(item.bid) {
+                  this.max.push(item.bid);
+              }
+              if(this.volume === 0) {
+
+                  this.volume = this.volume+item.volume;
+
+              } else {
+                  this.volume = 0;
+                  this.volume = this.volume+item.volume;
+              }
+              if(this.bid_ask.ask < item.ask) {
+                  this.bid_ask.ask = item.ask
+                  localStorage.removeItem('ask')
+                  localStorage.setItem('ask', JSON.stringify(this.bid_ask.ask))
+              }
+              if(this.bid_ask.bid < item.bid) {
+                  this.bid_ask.bid = item.bid
+                  localStorage.removeItem('bid')
+                  localStorage.setItem('bid', JSON.stringify(this.bid_ask.bid))
+              }
+
+          }
+
+          this.min_value = Math.min.apply(null, this.min);
+          this.max_value = Math.max.apply(null, this.max);
+      })
 
     this.stocksData = Observable.interval(1000).take(10).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USD'))
