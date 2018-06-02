@@ -142,9 +142,7 @@
           </tr>
           </thead>
           <tbody>
-          <p *ngIf="!portfolios[item.id]" style="font-size: 14px;
-          font-weight: bold; color: #c0c0c0;">У Вас еще нет добавлены ICO проектов. Перейдите в <a routerLink="/ico/all">каталог</a> для добавления.
-          </p>
+
           <ng-template [ngIf]="item.user_portfolio_type_id == 1">
             <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
               <td>
@@ -340,6 +338,19 @@
               <!--&lt;!&ndash;</td>&ndash;&gt;-->
             <!--</tr>-->
           </tbody>
+          <div *ngIf="!portfolios[item.id]" style="width: 100%; text-align: center;"><p *ngIf="!portfolios[item.id] && item.user_portfolio_type_id == 1" style="font-size: 14px;
+          font-weight: bold; color: #c0c0c0;">У Вас еще не добавлены проекты Облачного майнинга. Перейдите в <a style="color: #fa5252; text-decoration: underline;" routerLink="/cloud-mining/all">каталог</a> для добавления.
+          </p>
+            <p *ngIf="!portfolios[item.id] && item.user_portfolio_type_id == 2" style="font-size: 14px;
+          font-weight: bold; color: #c0c0c0;">У Вас еще не добавлены ICO проектов. Перейдите в <a style="color: #fa5252; text-decoration: underline;" routerLink="/ico/all">каталог</a> для добавления.
+            </p>
+            <p *ngIf="!portfolios[item.id] && item.user_portfolio_type_id == 3" style="font-size: 14px;
+          font-weight: bold; color: #c0c0c0;">У Вас еще не добавлены криптовалюты. Перейдите в <a style="color: #fa5252; text-decoration: underline;" routerLink="/cryptocurrency/all">каталог</a> для добавления.
+            </p>
+            <p *ngIf="!portfolios[item.id] && item.user_portfolio_type_id == 4" style="font-size: 14px;
+          font-weight: bold; color: #c0c0c0;">У Вас еще нет добавлены биржи. Перейдите в <a style="color: #fa5252; text-decoration: underline;" routerLink="/exchanges">каталог</a> для добавления.
+            </p>
+          </div>
         </table>
       </div>
     </div>
