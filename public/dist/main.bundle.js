@@ -653,10 +653,17 @@ var AppComponent = (function () {
             _this.auth.setUser(_this.user);
             console.log(_this.user);
         });
+        var exec = false;
         this.router.events
             .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* NavigationEnd */]; })
             .map(function () { return _this.activatedRoute; })
             .subscribe(function (event) {
+            if (!exec) {
+                setTimeout(function () {
+                    $.getScript('/js/script.js');
+                }, 300);
+                exec = true;
+            }
         });
         // this.user = this.auth.getUser();
     };

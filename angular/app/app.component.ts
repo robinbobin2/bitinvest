@@ -170,13 +170,18 @@ checkAuth() {
           console.log(this.user);
         }
       );
-
+let exec = false;
         this.router.events
         .filter(event => event instanceof NavigationEnd)
         .map(() => this.activatedRoute)
         .subscribe((event) => {
+            if(!exec) {
+                setTimeout(() => {
+                    $.getScript('/js/script.js');
+                }, 300)
 
-           
+                exec = true;
+            }
         });
   	// this.user = this.auth.getUser();
   }
