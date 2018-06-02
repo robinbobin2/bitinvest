@@ -64,7 +64,15 @@ export class AppComponent implements OnInit {
 	constructor(public auth: AuthService, private http:HttpClient, 
     private router:Router, private activatedRoute: ActivatedRoute,
     private searchService: SearchService) {
+        this.router.events
+            .filter(event => event instanceof NavigationEnd)
+            .map(() => this.activatedRoute)
+            .subscribe((event) => {
+                setTimeout(()=> {
+                    $.getScript('/js/script.js');
+                }, 300)
 
+            });
     this.searchService.mainSearch(this.searchTerm$)
       .subscribe(results => {
           if (results['error']) {
@@ -79,15 +87,6 @@ export class AppComponent implements OnInit {
 	console.log(this.user);
 	console.log('user');
 	// auth.getUser();
-        this.router.events
-            .filter(event => event instanceof NavigationEnd)
-            .map(() => this.activatedRoute)
-            .subscribe(() => {
-                    setTimeout(() => {
-                        $.getScript('/js/script.js');
-                    }, 300)
-                    console.log('loaded')
-            });
 }
 checkAuth() {
 	if(this.user.id !=undefined) {
@@ -158,7 +157,14 @@ checkAuth() {
           this.errorLostPass = 'Данного email-адреса нет в базе';}
       );
   }
-
+  checkUser() {
+    // console.log(this.user.error);
+  if(this.user.error == 'User not loggined') {
+    return false;
+  } else {
+    return true;
+  }
+  }
   close(results) {
     results = undefined;
   }
@@ -172,6 +178,8 @@ checkAuth() {
           console.log(this.user);
         }
       );
+
+
   	// this.user = this.auth.getUser();
   }
 }

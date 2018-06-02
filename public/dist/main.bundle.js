@@ -560,6 +560,14 @@ var AppComponent = (function () {
         this.searchTerm$ = new __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__["b" /* Subject */]();
         this.search = '';
         this.searchAll = '';
+        this.router.events
+            .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* NavigationEnd */]; })
+            .map(function () { return _this.activatedRoute; })
+            .subscribe(function (event) {
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 300);
+        });
         this.searchService.mainSearch(this.searchTerm$)
             .subscribe(function (results) {
             if (results['error']) {
@@ -573,15 +581,6 @@ var AppComponent = (function () {
         console.log(this.user);
         console.log('user');
         // auth.getUser();
-        this.router.events
-            .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* NavigationEnd */]; })
-            .map(function () { return _this.activatedRoute; })
-            .subscribe(function () {
-            setTimeout(function () {
-                $.getScript('/js/script.js');
-            }, 300);
-            console.log('loaded');
-        });
     }
     AppComponent.prototype.checkAuth = function () {
         if (this.user.id != undefined) {
@@ -640,6 +639,15 @@ var AppComponent = (function () {
             console.log(error);
             _this.errorLostPass = 'Данного email-адреса нет в базе';
         });
+    };
+    AppComponent.prototype.checkUser = function () {
+        // console.log(this.user.error);
+        if (this.user.error == 'User not loggined') {
+            return false;
+        }
+        else {
+            return true;
+        }
     };
     AppComponent.prototype.close = function (results) {
         results = undefined;
