@@ -142,7 +142,7 @@
           </tr>
           </thead>
           <tbody>
-          <p *ngIf="portfolios[item.id].length = 0" style="font-size: 14px;
+          <p *ngIf="portfolios[item.id].length == 0" style="font-size: 14px;
           font-weight: bold; color: #c0c0c0;">У Вас еще нет добавлены ICO проектов. Перейдите в <a routerLink="/ico/all">каталог</a> для добавления.
           </p>
           <ng-template [ngIf]="item.user_portfolio_type_id == 1">
