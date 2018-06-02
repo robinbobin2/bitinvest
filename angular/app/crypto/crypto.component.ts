@@ -179,7 +179,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     // }
 
 
-    this.stocksData = Observable.interval(3000).take(10).concatMap(()=>
+    this.stocksData = Observable.interval(1000).take(10).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USD'))
     .map(response => {
 

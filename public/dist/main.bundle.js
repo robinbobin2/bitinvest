@@ -3130,7 +3130,7 @@ var CryptoComponent = (function () {
         //   }
         //
         // }
-        this.stocksData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(3000).take(10).concatMap(function () {
+        this.stocksData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).take(10).concatMap(function () {
             return _this.stocksService.getStocks(symbol + '/USD');
         })
             .map(function (response) {
