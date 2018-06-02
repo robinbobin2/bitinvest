@@ -142,6 +142,7 @@ Route::get('/angular/exchanges/', "AngularController@exchanges");
 Route::get('/angular/exchange/{name}', "AngularController@exchange");
 Route::get('/angular/search', "AngularController@search");
 Route::post('/angular/vote', "AngularController@vote");
+Route::post('/angular/incrementView', "AngularController@viewCount");
 
 // Route::get('/crypto', "AngularController@serve");
 
