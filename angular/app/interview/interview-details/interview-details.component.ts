@@ -91,7 +91,7 @@ user: User;
      });
  }
   ngOnInit() {
-      this.viewService.incrementView('news', this.id).subscribe()
+      this.viewService.incrementView('interview', this.id).subscribe()
     const userpath = "/angular/user";
      const userinfo = this.http.get<User>(userpath);
      userinfo.subscribe(response => {

@@ -5851,7 +5851,7 @@ var InterviewDetailsComponent = (function () {
     };
     InterviewDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.viewService.incrementView('news', this.id).subscribe();
+        this.viewService.incrementView('interview', this.id).subscribe();
         var userpath = "/angular/user";
         var userinfo = this.http.get(userpath);
         userinfo.subscribe(function (response) {
