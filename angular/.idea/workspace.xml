@@ -32,7 +32,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cloud-mining-categories.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cloud-mining-categories.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="446">
@@ -44,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="all-cloud-mining.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="all-cloud-mining.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="47" column="14" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="38" />
+            <state relative-caret-position="313">
+              <caret line="42" column="63" selection-start-line="42" selection-start-column="63" selection-end-line="42" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -157,10 +157,10 @@
         <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.html" />
         <option value="$PROJECT_DIR$/app/analytics/analytics-detail/analytics-detail.component.html" />
         <option value="$PROJECT_DIR$/app/review/review-detail/review-detail.component.html" />
-        <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html" />
         <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts" />
         <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.html" />
         <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.ts" />
+        <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html" />
       </list>
     </option>
   </component>
@@ -460,12 +460,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="10042000" />
+      <workItem from="1527928097804" duration="10142000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167214000" />
+    <option name="totallyTimeSpent" value="167314000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -949,13 +949,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="47" column="14" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
@@ -970,6 +963,13 @@
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="42" column="63" selection-start-line="42" selection-start-column="63" selection-end-line="42" selection-end-column="63" />
         </state>
       </provider>
     </entry>
