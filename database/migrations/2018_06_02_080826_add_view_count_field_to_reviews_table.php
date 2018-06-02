@@ -13,7 +13,10 @@ class AddViewCountFieldToReviewsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('reviews', function (Blueprint $table) {
+            //
+            $table->integer('view_count')->default(0);
+        });
     }
 
     /**
@@ -24,5 +27,6 @@ class AddViewCountFieldToReviewsTable extends Migration
     public function down()
     {
         //
+        $table->dropColumn('view_count');
     }
 }

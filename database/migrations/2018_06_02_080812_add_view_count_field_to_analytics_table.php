@@ -13,7 +13,10 @@ class AddViewCountFieldToAnalyticsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('analytics', function (Blueprint $table) {
+            //
+            $table->integer('view_count')->default(0);
+        });
     }
 
     /**
@@ -24,5 +27,6 @@ class AddViewCountFieldToAnalyticsTable extends Migration
     public function down()
     {
         //
+        $table->dropColumn('view_count');
     }
 }

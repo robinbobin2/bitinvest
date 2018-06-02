@@ -1326,6 +1326,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
 var CloudMiningService = (function () {
     function CloudMiningService(http) {
         this.http = http;
@@ -1343,6 +1344,10 @@ var CloudMiningService = (function () {
     };
     CloudMiningService.prototype.getCryptoId = function (sym) {
         return this.http.get('/allcrypto/' + sym);
+    };
+    CloudMiningService.prototype.incrementView = function (type, id) {
+        return this.http
+            .post('/angular/incrementView', { 'type': type, 'id': id }, { headers: headers });
     };
     CloudMiningService.prototype.getIcoTop = function () {
         return this.http.get(this.pathIco);
@@ -6159,6 +6164,7 @@ module.exports = ".comment-block {\n  margin-top: 30px; }\n\n.comment-block .com
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__comments_service__ = __webpack_require__("./angular/app/comments.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__cloud_mining_service__ = __webpack_require__("./angular/app/cloud-mining.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6168,6 +6174,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -6191,25 +6198,27 @@ var User = (function () {
 }());
 
 var NewsDetailComponent = (function () {
-    function NewsDetailComponent(http, router, route, commentService) {
+    function NewsDetailComponent(http, router, route, commentService, viewService) {
         var _this = this;
         this.http = http;
         this.router = router;
         this.route = route;
         this.commentService = commentService;
+        this.viewService = viewService;
         this.comments = [];
         this.submitted = false;
         this.commentcount = 0;
         this.rating_count = [];
         this.hide = false;
+        this.id = 0;
         this.comment = {
             'post_id': '',
             'body': '',
             'commentable_id': '',
             'commentable_type': ''
         };
-        var id = route.snapshot.params['id'];
-        var path = "/newsraw/" + id;
+        this.id = route.snapshot.params['id'];
+        var path = "/newsraw/" + this.id;
         var info = http.get(path);
         info.subscribe(function (response) {
             _this.news = {
@@ -6241,6 +6250,7 @@ var NewsDetailComponent = (function () {
     }
     NewsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.viewService.incrementView('news', this.id).subscribe();
         this.router.events.subscribe(function (evt) {
             if (!(evt instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */])) {
                 return;
@@ -6306,12 +6316,13 @@ NewsDetailComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-news-detail',
         template: __webpack_require__("./angular/app/news/news-detail/news-detail.component.html"),
-        styles: [__webpack_require__("./angular/app/news/news-detail/news-detail.component.scss")]
+        styles: [__webpack_require__("./angular/app/news/news-detail/news-detail.component.scss")],
+        providers: [__WEBPACK_IMPORTED_MODULE_4__cloud_mining_service__["a" /* CloudMiningService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__comments_service__["a" /* CommentsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__comments_service__["a" /* CommentsService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__comments_service__["a" /* CommentsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__comments_service__["a" /* CommentsService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__cloud_mining_service__["a" /* CloudMiningService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__cloud_mining_service__["a" /* CloudMiningService */]) === "function" && _e || Object])
 ], NewsDetailComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=news-detail.component.js.map
 
 /***/ }),

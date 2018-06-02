@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
 
 @Injectable()

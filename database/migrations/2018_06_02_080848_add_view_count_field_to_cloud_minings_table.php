@@ -13,7 +13,10 @@ class AddViewCountFieldToCloudMiningsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('cloud_minings', function (Blueprint $table) {
+            //
+            $table->integer('view_count')->default(0);
+        });
     }
 
     /**
@@ -24,5 +27,6 @@ class AddViewCountFieldToCloudMiningsTable extends Migration
     public function down()
     {
         //
+        $table->dropColumn('view_count');
     }
 }

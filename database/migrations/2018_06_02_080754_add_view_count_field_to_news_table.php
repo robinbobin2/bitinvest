@@ -13,7 +13,10 @@ class AddViewCountFieldToNewsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('news', function (Blueprint $table) {
+            //
+            $table->integer('view_count')->default(0);
+        });
     }
 
     /**
@@ -24,5 +27,6 @@ class AddViewCountFieldToNewsTable extends Migration
     public function down()
     {
         //
+        $table->dropColumn('view_count');
     }
 }
