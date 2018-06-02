@@ -573,6 +573,15 @@ var AppComponent = (function () {
         console.log(this.user);
         console.log('user');
         // auth.getUser();
+        this.router.events
+            .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* NavigationEnd */]; })
+            .map(function () { return _this.activatedRoute; })
+            .subscribe(function () {
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 300);
+            console.log('loaded');
+        });
     }
     AppComponent.prototype.checkAuth = function () {
         if (this.user.id != undefined) {
@@ -632,15 +641,6 @@ var AppComponent = (function () {
             _this.errorLostPass = 'Данного email-адреса нет в базе';
         });
     };
-    AppComponent.prototype.checkUser = function () {
-        // console.log(this.user.error);
-        if (this.user.error == 'User not loggined') {
-            return false;
-        }
-        else {
-            return true;
-        }
-    };
     AppComponent.prototype.close = function (results) {
         results = undefined;
     };
@@ -652,20 +652,6 @@ var AppComponent = (function () {
             _this.user = response;
             _this.auth.setUser(_this.user);
             console.log(_this.user);
-        });
-        var exec = false;
-        this.router.events
-            .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* NavigationEnd */]; })
-            .map(function () { return _this.activatedRoute; })
-            .subscribe(function (event) {
-            exec = false;
-            if (!exec) {
-                setTimeout(function () {
-                    $.getScript('/js/script.js');
-                }, 300);
-                console.log('loaded');
-                exec = true;
-            }
         });
         // this.user = this.auth.getUser();
     };
