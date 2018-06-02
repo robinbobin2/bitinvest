@@ -5477,7 +5477,7 @@ ImportPipe = __decorate([
 /***/ "./angular/app/interview/all-interview/all-interview.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "          <div class=\"interview-content\">\n        <div class=\"interview-head\">\n          <h1>Интервью<span>{{allCount}}</span></h1>\n          <ul class=\"interview-tabs\">\n            <li class=\"active\"><a href=\"#\">Новое за сегодня</a></li>\n            <li><a href=\"#\">Самое популярное</a></li>\n            <li><a href=\"#\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n        <div class=\"interview-body\">\n          <div class=\"interview-tab-content active\">\n            <div class=\"interview-blocks\">\n              <div class=\"interview-item\" *ngFor=\"let main_item of main_news\">\n                <div class=\"info\">\n                  <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                  <a [routerLink]=\"['/interview/item', main_item.id]\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{main_item.comments_count}}</a>\n                </div>\n                <div class=\"img-wrap\">\n                  <a [routerLink]=\"['/interview/item', main_item.id]\">\n                    <img src=\"{{main_item.photo}}\" alt=\"\">\n                  </a>\n                </div>\n                <h2><a [routerLink]=\"['/interview/item', main_item.id]\">{{main_item.title}}</a></h2>\n                <p class=\"name\"><a [routerLink]=\"['/interview/item', main_item.id]\">{{main_item.name_credits}}</a></p>\n                <p class=\"seo\">{{main_item.workplace}}</p>\n                <div class=\"orange-wrap\">\n                  <p class=\"orange\">{{main_item.category}}</p>\n                </div>\n              </div>\n            </div>\n            <div class=\"interview-comments\">\n              <div class=\"comment\" *ngFor=\"let item of news\">\n                <div class=\"img-wrap\">\n                  <a [routerLink]=\"['/interview/item', item.id]\"><img src=\"{{item.photo}}\" alt=\"\"></a>\n                </div>\n                <div class=\"text-wrap\">\n                  <a [routerLink]=\"['/interview/item', item.id]\" class=\"title\">{{item.title}}</a>\n                  <p [innerHTML]='item.desc'>\n                    \n                  </p>\n                  <div class=\"comment-footer\">\n                    <a href=\"interview-card.html\" class=\"name\">{{item.name_credits}}</a>\n                    <div class=\"date-wrap\">\n                      <span>{{item.workplace}}</span>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                        <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                        <a href=\"interview-card.html\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item?.comments_count}}</a>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n              \n            </div>\n            <a href=\"#\" class=\"show-more\">Показать еще</a>\n          </div>\n          \n        </div>\n      </div><!-- \n\n<div class=\"row\">\n        <div class=\"col-md-4\" style=\"padding-left:20px;\">\n        <h3 style=\"float:left;\">Интервью</h3>\n\t<h6 style=\"color:#9b9b9b;margin-top:10px;float:left;width:10%;text-align:center\">228</h6>\n      </div>\n\t  \n\n\t  \n      <div class=\"col-md-8\">\n        <ul class=\"tags\">\n          <li><a routerLinkActive=\"active\"  routerLink=\"/interview/all\">Новое за сегодня</a></li>\n          <li><a routerLinkActive=\"active\" href=\"#\">Самое популярное</a></li>\n          <li><a routerLinkActive=\"active\" href=\"#\">Самое обсуждаемое</a></li>\n        </ul>\n      </div>\n </div>\n\n <div class=\"main-block\" style=\"width: 48%;float:left;margin:1%;\" *ngFor=\"let main_item of main_news\">\n        <div class=\"block\" style=\"background-size: cover; width: 100%; height: 240px; box-sizing: border-box;\">\n          <div style=\"position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;\"></div>\n          <img style=\"z-index: 1; position: absolute; top: 0; left: 0; right: 0;\n          bottom: 0;\" src=\"{{main_item.photo}}\">\n          <div class=\"block-content\">\n            <span class=\"tag\"><a href=\"#\">{{main_item.category}}</a></span>\n            <table style=\"height: 140px;\"><tr><td valign=\"bottom\">\n            \n            <h2 style=\"position: relative; z-index: 999\"><a (click)=\"loadMore(main_item.id)\">{{main_item.title}}</a></h2>\n          </td></tr></table>\n\n            <div class=\"meta\" style=\"z-index: 99\">\n              <span class=\"date\">{{main_item.created_at}}</span>\n              <span class=\"spy\">0</span>\n              <span class=\"chat\">0</span>\n            </div>\n          </div>\n        </div>\n        <p>{{main_item.desc}} <a (click)=\"loadMore(main_item.id)\">Подробнее</a></p>\n      </div>\n\n<masonry [options]=\"myOptions\" class=\"masonry\" style=\"float:left; transition: none !important;\">\n        \n\t\n\t  \n\t  \t  \t\t<masonry-brick style=\"transition: none !important;\" class=\"masonry-item\" *ngFor=\"let item of news\">\n        <div class=\"grid-item-bg\" style=\" position: relative; background-size: cover; box-sizing: border-box;\">\n          <div style=\"position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;\"></div>\n          <img style=\"z-index: 1; position: absolute; top: 0; left: 0; right: 0;\n          bottom: 0;\" src=\"{{item.photo}}\">\n          <div class=\"block-content\" style=\"z-index: 99\">\n            <span class=\"tag\"><a href=\"#\">{{item.category}}</a></span>\n            \n            <div class=\"meta\" style=\"z-index: 99\">\n              <span class=\"date\">{{item.created_at}}</span>\n            </div>\n          </div>\n        </div>\n        <h3><a  (click)=\"loadMore(item.id)\" >{{item.title}}</a></h3>\n      </masonry-brick>\n      \n\t  \n      </masonry> -->"
+module.exports = "          <div class=\"interview-content\">\n        <div class=\"interview-head\">\n          <h1>Интервью<span>{{allCount}}</span></h1>\n          <ul class=\"interview-tabs\">\n            <li class=\"active\"><a href=\"#\">Новое за сегодня</a></li>\n            <li><a href=\"#\">Самое популярное</a></li>\n            <li><a href=\"#\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n        <div class=\"interview-body\">\n          <div class=\"interview-tab-content active\">\n            <div class=\"interview-blocks\">\n              <div class=\"interview-item\" *ngFor=\"let main_item of main_news\">\n                <div class=\"info\">\n                  <span class=\"views\" *ngIf=\"main_item?.view_count\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>{{main_item?.view_count}}</span>\n                  <a *ngIf=\"main_item?.comments_count > 0\" [routerLink]=\"['/interview/item', main_item.id]\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{main_item?.comments_count}}</a>\n                </div>\n                <div class=\"img-wrap\">\n                  <a [routerLink]=\"['/interview/item', main_item.id]\">\n                    <img src=\"{{main_item.photo}}\" alt=\"\">\n                  </a>\n                </div>\n                <h2><a [routerLink]=\"['/interview/item', main_item.id]\">{{main_item.title}}</a></h2>\n                <p class=\"name\"><a [routerLink]=\"['/interview/item', main_item.id]\">{{main_item.name_credits}}</a></p>\n                <p class=\"seo\">{{main_item.workplace}}</p>\n                <div class=\"orange-wrap\">\n                  <p class=\"orange\">{{main_item.category}}</p>\n                </div>\n              </div>\n            </div>\n            <div class=\"interview-comments\">\n              <div class=\"comment\" *ngFor=\"let item of news\">\n                <div class=\"img-wrap\">\n                  <a [routerLink]=\"['/interview/item', item.id]\"><img src=\"{{item.photo}}\" alt=\"\"></a>\n                </div>\n                <div class=\"text-wrap\">\n                  <a [routerLink]=\"['/interview/item', item.id]\" class=\"title\">{{item.title}}</a>\n                  <p [innerHTML]='item.desc'>\n                    \n                  </p>\n                  <div class=\"comment-footer\">\n                    <a href=\"interview-card.html\" class=\"name\">{{item.name_credits}}</a>\n                    <div class=\"date-wrap\">\n                      <span>{{item.workplace}}</span>\n                      <div class=\"info\">\n                        <span class=\"date\">{{item.created_at}}</span>\n                        <span class=\"views\" *ngIf=\"item?.view_count > 0\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>{{item?.view_count}}</span>\n                        <a *ngIf=\"item?.comments_count > 0\" href=\"interview-card.html\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item?.comments_count}}</a>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n              \n            </div>\n            <a href=\"#\" class=\"show-more\">Показать еще</a>\n          </div>\n          \n        </div>\n      </div><!-- \n\n<div class=\"row\">\n        <div class=\"col-md-4\" style=\"padding-left:20px;\">\n        <h3 style=\"float:left;\">Интервью</h3>\n\t<h6 style=\"color:#9b9b9b;margin-top:10px;float:left;width:10%;text-align:center\">228</h6>\n      </div>\n\t  \n\n\t  \n      <div class=\"col-md-8\">\n        <ul class=\"tags\">\n          <li><a routerLinkActive=\"active\"  routerLink=\"/interview/all\">Новое за сегодня</a></li>\n          <li><a routerLinkActive=\"active\" href=\"#\">Самое популярное</a></li>\n          <li><a routerLinkActive=\"active\" href=\"#\">Самое обсуждаемое</a></li>\n        </ul>\n      </div>\n </div>\n\n <div class=\"main-block\" style=\"width: 48%;float:left;margin:1%;\" *ngFor=\"let main_item of main_news\">\n        <div class=\"block\" style=\"background-size: cover; width: 100%; height: 240px; box-sizing: border-box;\">\n          <div style=\"position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;\"></div>\n          <img style=\"z-index: 1; position: absolute; top: 0; left: 0; right: 0;\n          bottom: 0;\" src=\"{{main_item.photo}}\">\n          <div class=\"block-content\">\n            <span class=\"tag\"><a href=\"#\">{{main_item.category}}</a></span>\n            <table style=\"height: 140px;\"><tr><td valign=\"bottom\">\n            \n            <h2 style=\"position: relative; z-index: 999\"><a (click)=\"loadMore(main_item.id)\">{{main_item.title}}</a></h2>\n          </td></tr></table>\n\n            <div class=\"meta\" style=\"z-index: 99\">\n              <span class=\"date\">{{main_item.created_at}}</span>\n              <span class=\"spy\">0</span>\n              <span class=\"chat\">0</span>\n            </div>\n          </div>\n        </div>\n        <p>{{main_item.desc}} <a (click)=\"loadMore(main_item.id)\">Подробнее</a></p>\n      </div>\n\n<masonry [options]=\"myOptions\" class=\"masonry\" style=\"float:left; transition: none !important;\">\n        \n\t\n\t  \n\t  \t  \t\t<masonry-brick style=\"transition: none !important;\" class=\"masonry-item\" *ngFor=\"let item of news\">\n        <div class=\"grid-item-bg\" style=\" position: relative; background-size: cover; box-sizing: border-box;\">\n          <div style=\"position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;\"></div>\n          <img style=\"z-index: 1; position: absolute; top: 0; left: 0; right: 0;\n          bottom: 0;\" src=\"{{item.photo}}\">\n          <div class=\"block-content\" style=\"z-index: 99\">\n            <span class=\"tag\"><a href=\"#\">{{item.category}}</a></span>\n            \n            <div class=\"meta\" style=\"z-index: 99\">\n              <span class=\"date\">{{item.created_at}}</span>\n            </div>\n          </div>\n        </div>\n        <h3><a  (click)=\"loadMore(item.id)\" >{{item.title}}</a></h3>\n      </masonry-brick>\n      \n\t  \n      </masonry> -->"
 
 /***/ }),
 
@@ -5507,10 +5507,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
 
 
-var scr = 'http://ppql.ru/masonry.js';
 var NewsRaw = (function () {
     function NewsRaw() {
     }
@@ -5519,7 +5517,6 @@ var NewsRaw = (function () {
 
 var AllInterviewComponent = (function () {
     function AllInterviewComponent(http, router, route) {
-        var _this = this;
         this.http = http;
         this.router = router;
         this.route = route;
@@ -5529,20 +5526,23 @@ var AllInterviewComponent = (function () {
         this.news = [];
         this.main_news = [];
         this.allCount = 0;
+    }
+    AllInterviewComponent.prototype.ngOnInit = function () {
+        var _this = this;
         var path = "/interviewraw";
-        var info = http.get(path);
+        var info = this.http.get(path);
         info.subscribe(function (response) {
             // console.log(response['news']);
             // this.news = response['news'];
             for (var _i = 0, _a = response['news']; _i < _a.length; _i++) {
                 var item = _a[_i];
-                console.log(item.photos[0].file);
                 _this.news.push({
                     id: item.id,
                     title: item.title,
                     desc: item.desc,
                     main: item.main,
                     created_at: item.created_at,
+                    view_count: item.view_count,
                     category: item.category.name,
                     photo: item.photos[0].file,
                     name_credits: item.name_credits,
@@ -5552,7 +5552,6 @@ var AllInterviewComponent = (function () {
             }
             for (var _b = 0, _c = response['main_news']; _b < _c.length; _b++) {
                 var item = _c[_b];
-                console.log(item);
                 _this.main_news.push({
                     id: item.id,
                     title: item.title,
@@ -5561,24 +5560,14 @@ var AllInterviewComponent = (function () {
                     category: item.category.name,
                     created_at: item.created_at,
                     photo: item.photos[0].file,
+                    view_count: item.view_count,
                     name_credits: item.name_credits,
                     workplace: item.workplace,
                     comments_count: item.comments_count
                 });
             }
-            // this.news.push(response['news']);
-            //   this.main_news.push(response['main_news']);
-            // console.log(response['news']);
-            console.log(_this.news);
-            console.log(_this.news[0].photo);
-            console.log(_this.main_news);
             _this.allCount = _this.main_news.length + _this.news.length;
         });
-    }
-    AllInterviewComponent.prototype.ngOnInit = function () {
-    };
-    AllInterviewComponent.prototype.loadMore = function (id) {
-        this.router.navigate(['/interview/item', id]);
     };
     return AllInterviewComponent;
 }());
