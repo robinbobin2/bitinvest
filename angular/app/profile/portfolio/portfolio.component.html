@@ -15,7 +15,7 @@
             <a (click)="onDelete(item.id, i)" class="basket"><img src="/img/basket-white.png" alt=""></a>
           </div>
         </div>
-        <table class="table crypto-table">
+        <table class="table crypto-table" style="position:relative;">
           <thead *ngIf="item.user_portfolio_type_id == 3">
           <tr>
             <th [class.active]="order === 'sym'"
@@ -338,7 +338,7 @@
               <!--&lt;!&ndash;</td>&ndash;&gt;-->
             <!--</tr>-->
           </tbody>
-          <div *ngIf="!portfolios[item.id]" style="width: 100%; text-align: center;"><p *ngIf="!portfolios[item.id] && item.user_portfolio_type_id == 1" style="font-size: 14px;
+          <div *ngIf="!portfolios[item.id]" style="width: 100%; text-align: center; position:absolute; top: 40px;"><p *ngIf="!portfolios[item.id] && item.user_portfolio_type_id == 1" style="font-size: 14px;
           font-weight: bold; color: #c0c0c0;">У Вас еще не добавлены проекты Облачного майнинга. Перейдите в <a style="color: #fa5252; text-decoration: underline;" routerLink="/cloud-mining/all">каталог</a> для добавления.
           </p>
             <p *ngIf="!portfolios[item.id] && item.user_portfolio_type_id == 2" style="font-size: 14px;
