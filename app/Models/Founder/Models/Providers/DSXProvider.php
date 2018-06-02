@@ -46,6 +46,9 @@ class DSXProvider extends FounderProvider
         }
 
         foreach ($response as $currency => $value) {
+            if(!$value){
+                continue;
+            }
             foreach ($value as $supplierTicker){
                 $ticker = new TickerEntity();
                 $ticker->setAsk($supplierTicker->buy);
