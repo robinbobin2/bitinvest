@@ -304,26 +304,23 @@ $(document).ready(function () {
 		$(".select-body").slideToggle(200);
 	});
 
-	$(".select-body li a").on("click", function (e) {
-		e.preventDefault();
-		var text = $(this).text();
+	// $(".select-body li a").on("click", function (e) {
+	// 	e.preventDefault();
+	// 	var text = $(this).text();
 
-		$(".select-head p").text(text);
+	// 	$(".select-head p").text(text);
 
-		$(".select-body").slideToggle(200);
-		console.log('select-body li a')
-	});
+	// 	$(".select-body").slideToggle(200);
+	// 	console.log('select-body li a')
+	// });
 
-	$(document).click(function (event) {
-		if (!$(event.target).closest('.select-content').length) {
-			if ($('.select-body').is(":visible")) {
-				$(".select-body").slideToggle(200);
-			}
-
-			console.log('docc if')
-		}
-		console.log('docc')
-	});
+	// $(document).click(function (event) {
+	// 	if (!$(event.target).closest('.select-content').length) {
+	// 		if ($('.select-body').is(":visible")) {
+	// 			$(".select-body").slideToggle(200);
+	// 		}
+	// 	}
+	// });
 
 $('.select-wrap select').select2({
 		minimumResultsForSearch: -1
