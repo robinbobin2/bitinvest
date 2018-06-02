@@ -3121,17 +3121,17 @@ var CryptoComponent = (function () {
                     _this.max.push(item.bid);
                 }
                 _this.volume = _this.volume + item.volume;
-                if (_this.bid_ask.ask < item.ask) {
-                    _this.bid_ask.ask = item.ask;
-                    localStorage.removeItem('ask');
-                    localStorage.setItem('ask', JSON.stringify(_this.bid_ask.ask));
-                }
                 _this.bid_ask.bid = 0;
                 _this.bid_ask.ask = 0;
+                if (_this.bid_ask.ask < item.ask) {
+                    _this.bid_ask.ask = item.ask;
+                    localStorage.removeItem(symbol + 'ask');
+                    localStorage.setItem(symbol + 'ask', JSON.stringify(_this.bid_ask.ask));
+                }
                 if (_this.bid_ask.bid < item.bid) {
                     _this.bid_ask.bid = item.bid;
-                    localStorage.removeItem('bid');
-                    localStorage.setItem('bid', JSON.stringify(_this.bid_ask.bid));
+                    localStorage.removeItem(symbol + 'bid');
+                    localStorage.setItem(symbol + 'bid', JSON.stringify(_this.bid_ask.bid));
                 }
             }
             _this.min_value = Math.min.apply(null, _this.min);
@@ -3178,6 +3178,8 @@ var CryptoComponent = (function () {
                 if (item.bid) {
                     _this.max.push(item.bid);
                 }
+                _this.bid_ask.bid = 0;
+                _this.bid_ask.ask = 0;
                 if (_this.bid_ask.ask < item.ask) {
                     _this.bid_ask.ask = item.ask;
                     localStorage.removeItem('ask');
