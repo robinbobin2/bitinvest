@@ -26,8 +26,8 @@
       <file leaf-file-name="crypto.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="232" column="30" selection-start-line="232" selection-start-column="30" selection-end-line="232" selection-end-column="30" />
+            <state relative-caret-position="534">
+              <caret line="149" column="24" selection-start-line="149" selection-start-column="24" selection-end-line="149" selection-end-column="24" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -38,8 +38,8 @@
       <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3420">
-              <caret line="228" column="73" selection-start-line="228" selection-start-column="50" selection-end-line="228" selection-end-column="73" />
+            <state relative-caret-position="218">
+              <caret line="37" column="78" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="78" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -133,8 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lang</find>
-      <find>[0]</find>
       <find>rating_count</find>
       <find>расп</find>
       <find>webs</find>
@@ -163,6 +161,8 @@
       <find>bid_ask.bid</find>
       <find>JSON.stringify(this.bid_ask.ask</find>
       <find>bid_ask</find>
+      <find>bid</find>
+      <find>min_value</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -504,12 +504,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="7270000" />
+      <workItem from="1527928097804" duration="7455000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164442000" />
+    <option name="totallyTimeSpent" value="164627000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1013,8 +1013,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3420">
-          <caret line="228" column="73" selection-start-line="228" selection-start-column="50" selection-end-line="228" selection-end-column="73" />
+        <state relative-caret-position="218">
+          <caret line="37" column="78" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="78" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -1025,8 +1025,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="232" column="30" selection-start-line="232" selection-start-column="30" selection-end-line="232" selection-end-column="30" />
+        <state relative-caret-position="534">
+          <caret line="149" column="24" selection-start-line="149" selection-start-column="24" selection-end-line="149" selection-end-column="24" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>

@@ -138,12 +138,20 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.prev = this.dataUsd.last;
       
     }
-    if(localStorage.getItem(symbol+'bid')) {
-      this.bid_ask.bid = JSON.parse(localStorage.getItem('bid'));
-      
-    }
+      if(localStorage.getItem(symbol+'bid')) {
+          this.bid_ask.bid = JSON.parse(localStorage.getItem(symbol+'bid'));
+
+      }
+      if(localStorage.getItem(symbol+'min')) {
+          this.min_value = JSON.parse(localStorage.getItem(symbol+'min'));
+
+      }
+      if(localStorage.getItem(symbol+'max')) {
+          this.max_value = JSON.parse(localStorage.getItem(symbol+'max'));
+
+      }
     if(localStorage.getItem(symbol+'ask')) {
-      this.bid_ask.ask = JSON.parse(localStorage.getItem('ask'));
+      this.bid_ask.ask = JSON.parse(localStorage.getItem(symbol+'ask'));
       
     }
 
@@ -187,6 +195,10 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
           this.min_value = Math.min.apply(null, this.min);
           this.max_value = Math.max.apply(null, this.max);
+      localStorage.removeItem(symbol+'min')
+      localStorage.setItem(symbol+'min', JSON.stringify(this.min_value))
+      localStorage.removeItem(symbol+'max')
+      localStorage.setItem(symbol+'max', JSON.stringify(this.max_value))
       })
 
     this.stocksData = Observable.interval(1000).take(10).concatMap(()=>

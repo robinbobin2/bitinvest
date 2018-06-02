@@ -3095,10 +3095,16 @@ var CryptoComponent = (function () {
             this.prev = this.dataUsd.last;
         }
         if (localStorage.getItem(symbol + 'bid')) {
-            this.bid_ask.bid = JSON.parse(localStorage.getItem('bid'));
+            this.bid_ask.bid = JSON.parse(localStorage.getItem(symbol + 'bid'));
+        }
+        if (localStorage.getItem(symbol + 'min')) {
+            this.min_value = JSON.parse(localStorage.getItem(symbol + 'min'));
+        }
+        if (localStorage.getItem(symbol + 'max')) {
+            this.max_value = JSON.parse(localStorage.getItem(symbol + 'max'));
         }
         if (localStorage.getItem(symbol + 'ask')) {
-            this.bid_ask.ask = JSON.parse(localStorage.getItem('ask'));
+            this.bid_ask.ask = JSON.parse(localStorage.getItem(symbol + 'ask'));
         }
         this.stocksService.getStocks(symbol + '/USD')
             .subscribe(function (response) {
@@ -3136,6 +3142,10 @@ var CryptoComponent = (function () {
             }
             _this.min_value = Math.min.apply(null, _this.min);
             _this.max_value = Math.max.apply(null, _this.max);
+            localStorage.removeItem(symbol + 'min');
+            localStorage.setItem(symbol + 'min', JSON.stringify(_this.min_value));
+            localStorage.removeItem(symbol + 'max');
+            localStorage.setItem(symbol + 'max', JSON.stringify(_this.max_value));
         });
         this.stocksData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).take(10).concatMap(function () {
             return _this.stocksService.getStocks(symbol + '/USD');
