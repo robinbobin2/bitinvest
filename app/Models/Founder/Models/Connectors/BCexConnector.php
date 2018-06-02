@@ -26,7 +26,7 @@ class BCexConnector extends FounderConnector
         $mh = curl_multi_init();
 
         foreach ($this->coins as $code => $coin) {
-            $currency = $this->coins[$coin];
+            $currency = $coin;
             $curly[$currency] = curl_init();
             curl_setopt($curly[$currency], CURLOPT_URL, "https://www.bcex.ca/Api_Order/ticker");
             curl_setopt($curly[$currency], CURLOPT_HEADER, 0);
