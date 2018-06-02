@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {CommentsService} from "../../comments.service";
+import {CloudMiningService} from "../../cloud-mining.service";
 
 export class News {
   id: number;
@@ -12,6 +13,7 @@ export class News {
   workplace: string;
   name_credits: string;
   comments_count: number;
+  view_count: number;
 
 }
 export class CommentRaw {
@@ -37,7 +39,7 @@ export class User {
   selector: 'app-interview-details',
   templateUrl: './interview-details.component.html',
   styleUrls: ['./interview-details.component.scss'],
-    providers: [CommentsService]
+    providers: [CommentsService, CloudMiningService]
 })
 export class InterviewDetailsComponent implements OnInit, AfterViewInit {
 news: News;
@@ -46,19 +48,27 @@ photos: Photos[] = [];
 commentcount = 0;
 user: User;
     rating_count: any[]=[];
-  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute, private commentService: CommentsService) {
+  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute,
+              private commentService: CommentsService, private viewService: CloudMiningService) {
     
 }
  ngAfterViewInit() {
+
      let id = this.route.snapshot.params['id'];
+
+     this.viewService.incrementView('news', id).subscribe()
+
      let path = "/interviewraw/"+id;
+
      const info = this.http.get(path);
+
      info.subscribe(response => {
          console.log(response['news'][0]['desc'])
          this.news = {
              id: response['news'][0]['id'],
              title: response['news'][0]['title'],
              desc: response['news'][0]['desc'],
+             view_count: response['news'][0]['view_count'],
              name_credits: response['news'][0]['name_credits'],
              workplace: response['news'][0]['workplace'],
              created_at:response['news'][0]['created_at'],
@@ -82,6 +92,7 @@ user: User;
      });
  }
   ngOnInit() {
+
     const userpath = "/angular/user";
      const userinfo = this.http.get<User>(userpath);
      userinfo.subscribe(response => {

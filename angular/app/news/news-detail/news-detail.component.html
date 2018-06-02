@@ -10,8 +10,8 @@
               <span class="date">{{news.created_at}}</span>
             </div>
             <div class="right-block">
-            <a href="#" class="comments"><img src="img/comment.svg" alt="">{{commentcount}}</a>
-            <span class="views"><img src="img/eye.svg" alt="">0</span>
+            <a href="#" class="comments" *ngIf="commentcount > 0"><img src="img/comment.svg" alt="">{{commentcount}}</a>
+            <span class="views" *ngIf="news.view_count > 0"><img src="img/eye.svg" alt="">{{news.view_count}}</span>
           </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -14,6 +14,7 @@ export class News {
   photo: string;
   created_at:string;
   comments_count: number;
+  view_count: number;
 
 }
 export class CommentRaw {
@@ -38,7 +39,7 @@ export class User {
   styleUrls: ['./news-detail.component.scss'],
     providers: [CloudMiningService]
 })
-export class NewsDetailComponent implements OnInit {
+export class NewsDetailComponent implements OnInit, AfterViewInit {
 news: News;
 comments: CommentRaw[] = [];
 submitted = false;
@@ -59,7 +60,8 @@ id = 0;
           created_at:response['news'][0]['created_at'],
           category:response['category'].name,
           photo:response['photos'][0].file,
-          comments_count:response['comments_count']
+          comments_count:response['comments_count'],
+                view_count: response['news'][0]['view_count']
         }
         this.commentcount = response['comments_count'];
         this.comments.push(...response['news'][0]['comments']);
@@ -80,9 +82,8 @@ id = 0;
 }
 
   ngOnInit() {
-      if(this.viewService.incrementView('news', this.id).subscribe()) {
-          console.log('incrd');
-      }
+
+
     this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
                 return;
@@ -153,5 +154,9 @@ id = 0;
       );
       form.reset();
       
+  }
+
+  ngAfterViewInit() {
+      this.viewService.incrementView('news', this.id).subscribe()
   }
 }
