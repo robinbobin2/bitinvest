@@ -175,7 +175,7 @@ checkAuth() {
         .filter(event => event instanceof NavigationEnd)
         .map(() => this.activatedRoute)
         .subscribe((event) => {
-          
+
            
         });
   	// this.user = this.auth.getUser();
