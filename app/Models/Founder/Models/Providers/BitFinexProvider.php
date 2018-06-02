@@ -43,4 +43,12 @@ class BitFinexProvider extends FounderProvider
     {
         return new BitFinexConnector();
     }
+
+    /**
+     * @return int
+     */
+    public function getCooldownTime()
+    {
+        return 5;
+    }
 }

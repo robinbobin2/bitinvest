@@ -317,6 +317,9 @@ class BitFinexConnector extends FounderConnector
         for ($i = 0; $i < count ($tickers); $i++) {
             $ticker = $tickers[$i];
             $id = $ticker[0];
+            if(!isset($this->markets_by_id[$id])){
+                continue;
+            }
             $market = $this->markets_by_id[$id];
             $symbol = $market['symbol'];
             $result[$symbol] = $this->parse_ticker($ticker, $market);
