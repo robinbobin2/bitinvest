@@ -26,6 +26,9 @@ class IndependentReserveProvider extends FounderProvider
         }
 
         foreach ($response as $currency => $value) {
+            if(!isset($value->result)){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->CurrentLowestOfferPrice);
             $ticker->setBid($value->CurrentHighestBidPrice);
