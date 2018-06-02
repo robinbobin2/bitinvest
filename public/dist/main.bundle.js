@@ -3176,13 +3176,6 @@ var CryptoComponent = (function () {
                 if (item.bid) {
                     _this.max.push(item.bid);
                 }
-                if (_this.volume === 0) {
-                    _this.volume = _this.volume + item.volume;
-                }
-                else {
-                    _this.volume = 0;
-                    _this.volume = _this.volume + item.volume;
-                }
                 if (_this.bid_ask.ask < item.ask) {
                     _this.bid_ask.ask = item.ask;
                     localStorage.removeItem('ask');

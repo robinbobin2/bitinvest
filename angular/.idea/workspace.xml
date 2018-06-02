@@ -26,8 +26,8 @@
       <file leaf-file-name="crypto.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="170" column="51" selection-start-line="170" selection-start-column="51" selection-end-line="170" selection-end-column="51" />
+            <state relative-caret-position="429">
+              <caret line="228" column="8" selection-start-line="228" selection-start-column="8" selection-end-line="228" selection-end-column="8" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -133,7 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>removep</find>
       <find>now</find>
       <find>comments_</find>
       <find>news.desc</find>
@@ -163,6 +162,7 @@
       <find>getst</find>
       <find>getStocks</find>
       <find>this.stocks</find>
+      <find>this.volume</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -504,12 +504,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="5646000" />
+      <workItem from="1527928097804" duration="5953000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162818000" />
+    <option name="totallyTimeSpent" value="163125000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1025,8 +1025,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="170" column="51" selection-start-line="170" selection-start-column="51" selection-end-line="170" selection-end-column="51" />
+        <state relative-caret-position="429">
+          <caret line="228" column="8" selection-start-line="228" selection-start-column="8" selection-end-line="228" selection-end-column="8" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>
