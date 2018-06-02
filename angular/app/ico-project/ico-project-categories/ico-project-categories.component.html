@@ -9,17 +9,16 @@
           <input type="text" placeholder="Поиск по названию">
         </form>
       </div>
-      <div class="select-content">
+    <div class="select-content" (click) = "showCaret = true" (appClickOutside)="showCaret=false">
         <div class="select-head">
-          <p>Доход от большего к меньшему</p>
-          <span class="curret"></span>
+            <p>По алфавиту</p>
+            <span class="curret"></span>
         </div>
         <ul class="select-body">
-          <li><a href="#">Доход на уменьшение</a></li>
-          <li><a href="#">Депозит на уменьшение</a></li>
-          <li><a href="#">Депозит на увеличение</a></li>
+            <li><a (click)="setOrder('percentage')">По сумме собранных средств увеличение</a></li>
+            <li><a (click)="setOrder('percentage')">По сумме собранных средств уменьшение</a></li>
         </ul>
-      </div>
+    </div>
 				<div class="project-wrapper active">
 					<div *ngFor="let item of news | filterNameActive:status:'status' | filterName:filteredName:'name' | orderBy: order:reverse:'case-insensitive'" class="project-block" [ngClass]="item.status==1 ? ' ' : 'no-bg'">
             <div class="img-wrap">

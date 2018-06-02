@@ -9,12 +9,12 @@
             <input type="text" placeholder="Поиск по названию">
           </form>
         </div>
-        <div class="select-content">
+        <div class="select-content" (click) = "showCaret = true" (appClickOutside)="showCaret=false">
           <div class="select-head">
             <p>По алфавиту</p>
             <span class="curret"></span>
           </div>
-          <ul *ngIf="showCaret==true"  class="select-body"  (appClickOutside)="showCaret=false">
+          <ul *ngIf="showCaret==true"  class="select-body">
             <li><a href="#" (click)="setOrder('name', false)" >По алфавиту</a></li>
 
             <li><a href="#" (click)="setOrder('proc', true)" >Доход на уменьшение</a></li>

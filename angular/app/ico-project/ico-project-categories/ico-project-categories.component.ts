@@ -39,7 +39,7 @@ export class NewsRaw {
 })
 export class IcoProjectCategoriesComponent implements OnInit {
 
-    order: string = '';
+    order: string = 'name';
     reverse: boolean = false;
     /**
      * @param {OrderPipe}
@@ -50,6 +50,7 @@ export class IcoProjectCategoriesComponent implements OnInit {
   activeCount = 0;
   inactiveCount = 0;
   icoCount = 0;
+    showCaret = false
   news_raw: any[];
 	news: Array<NewsRaw> = [];
 

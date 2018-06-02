@@ -58,6 +58,7 @@ export class IcoProjectAllComponent implements OnInit {
   removed = false;
   hide = false;
   portfolioInfo:any;
+  showCaret = false;
   /**
    * @param {OrderPipe} 
    */
