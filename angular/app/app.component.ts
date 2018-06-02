@@ -180,7 +180,7 @@ let exec = false;
                 setTimeout(() => {
                     $.getScript('/js/script.js');
                 }, 300)
-
+                console.log('loaded')
                 exec = true;
             }
         });

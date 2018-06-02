@@ -663,6 +663,7 @@ var AppComponent = (function () {
                 setTimeout(function () {
                     $.getScript('/js/script.js');
                 }, 300);
+                console.log('loaded');
                 exec = true;
             }
         });
