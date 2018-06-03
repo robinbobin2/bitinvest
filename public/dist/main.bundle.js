@@ -6241,45 +6241,47 @@ var NewsDetailComponent = (function () {
     }
     NewsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.id = this.route.snapshot.params['id'];
-        var path = "/newsraw/" + this.id;
-        var info = this.http.get(path);
-        info.subscribe(function (response) {
-            _this.news = {
-                id: response['news'][0]['id'],
-                title: response['news'][0]['title'],
-                desc: response['news'][0]['desc'],
-                created_at: response['news'][0]['created_at'],
-                category: response['category'].name,
-                photo: response['photos'][0].file,
-                comments_count: response['comments_count'],
-                view_count: response['news'][0]['view_count'],
-                cat_id: response['news'][0]['cat_id']
-            };
-            _this.commentcount = response['comments_count'];
-            (_a = _this.comments).push.apply(_a, response['news'][0]['comments']);
-            for (var _i = 0, _b = response['news'][0]['comments']; _i < _b.length; _i++) {
-                var item = _b[_i];
-                _this.rating_count[item['id']] = 0;
-                for (var _c = 0, _d = item.rating; _c < _d.length; _c++) {
-                    var rating_item = _d[_c];
-                    if (rating_item.positive == 1) {
-                        _this.rating_count[item['id']] += 1;
-                    }
-                    else {
-                        _this.rating_count[item['id']] -= 1;
+        this.route.params.subscribe(function (params) {
+            _this.id = params['id'];
+            var path = "/newsraw/" + _this.id;
+            var info = _this.http.get(path);
+            info.subscribe(function (response) {
+                _this.news = {
+                    id: response['news'][0]['id'],
+                    title: response['news'][0]['title'],
+                    desc: response['news'][0]['desc'],
+                    created_at: response['news'][0]['created_at'],
+                    category: response['category'].name,
+                    photo: response['photos'][0].file,
+                    comments_count: response['comments_count'],
+                    view_count: response['news'][0]['view_count'],
+                    cat_id: response['news'][0]['cat_id']
+                };
+                _this.commentcount = response['comments_count'];
+                (_a = _this.comments).push.apply(_a, response['news'][0]['comments']);
+                for (var _i = 0, _b = response['news'][0]['comments']; _i < _b.length; _i++) {
+                    var item = _b[_i];
+                    _this.rating_count[item['id']] = 0;
+                    for (var _c = 0, _d = item.rating; _c < _d.length; _c++) {
+                        var rating_item = _d[_c];
+                        if (rating_item.positive == 1) {
+                            _this.rating_count[item['id']] += 1;
+                        }
+                        else {
+                            _this.rating_count[item['id']] -= 1;
+                        }
                     }
                 }
-            }
-            _this.similarPosts.getSimilarPosts(_this.news.cat_id, 'postsbycat')
-                .subscribe(function (posts) {
-                (_a = _this.relatedNews).push.apply(_a, posts['news']);
-                _this.relatedNews = _this.relatedNews.slice(0, 3);
+                _this.similarPosts.getSimilarPosts(_this.news.cat_id, 'postsbycat')
+                    .subscribe(function (posts) {
+                    (_a = _this.relatedNews).push.apply(_a, posts['news']);
+                    _this.relatedNews = _this.relatedNews.slice(0, 3);
+                    var _a;
+                });
                 var _a;
             });
-            var _a;
+            _this.viewService.incrementView('news', _this.id).subscribe();
         });
-        this.viewService.incrementView('news', this.id).subscribe();
         this.router.events.subscribe(function (evt) {
             if (!(evt instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */])) {
                 return;

@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
+import {Router, ActivatedRoute, NavigationEnd, Params} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {CommentsService} from "../../comments.service";
 import {CloudMiningService} from "../../cloud-mining.service";
@@ -60,46 +60,49 @@ relatedNews = [];
 }
 
   ngOnInit() {
-      this.id = this.route.snapshot.params['id'];
-      let path = "/newsraw/"+this.id;
-      const info = this.http.get(path);
-      info.subscribe(response => {
-          this.news = {
-              id: response['news'][0]['id'],
-              title: response['news'][0]['title'],
-              desc: response['news'][0]['desc'],
-              created_at:response['news'][0]['created_at'],
-              category:response['category'].name,
-              photo:response['photos'][0].file,
-              comments_count:response['comments_count'],
-              view_count: response['news'][0]['view_count'],
-              cat_id: response['news'][0]['cat_id']
-          }
-          this.commentcount = response['comments_count'];
-          this.comments.push(...response['news'][0]['comments']);
-
-          for(let item of response['news'][0]['comments']) {
-              this.rating_count[item['id']] = 0;
-              for (let rating_item of item.rating) {
-                  if (rating_item.positive == 1) {
-                      this.rating_count[item['id']] +=1;
-                  } else {
-                      this.rating_count[item['id']] -=1;
+      this.route.params.subscribe(
+          (params: Params) => {
+              this.id = params['id'];
+              let path = "/newsraw/" + this.id;
+              const info = this.http.get(path);
+              info.subscribe(response => {
+                  this.news = {
+                      id: response['news'][0]['id'],
+                      title: response['news'][0]['title'],
+                      desc: response['news'][0]['desc'],
+                      created_at: response['news'][0]['created_at'],
+                      category: response['category'].name,
+                      photo: response['photos'][0].file,
+                      comments_count: response['comments_count'],
+                      view_count: response['news'][0]['view_count'],
+                      cat_id: response['news'][0]['cat_id']
                   }
-              }
-          }
+                  this.commentcount = response['comments_count'];
+                  this.comments.push(...response['news'][0]['comments']);
 
-          this.similarPosts.getSimilarPosts(this.news.cat_id, 'postsbycat')
-              .subscribe(posts=>{
+                  for (let item of response['news'][0]['comments']) {
+                      this.rating_count[item['id']] = 0;
+                      for (let rating_item of item.rating) {
+                          if (rating_item.positive == 1) {
+                              this.rating_count[item['id']] += 1;
+                          } else {
+                              this.rating_count[item['id']] -= 1;
+                          }
+                      }
+                  }
 
-                  this.relatedNews.push(...posts['news']);
-                  this.relatedNews = this.relatedNews.slice(0,3);
+                  this.similarPosts.getSimilarPosts(this.news.cat_id, 'postsbycat')
+                      .subscribe(posts => {
 
+                          this.relatedNews.push(...posts['news']);
+                          this.relatedNews = this.relatedNews.slice(0, 3);
+
+                      });
               });
-      });
 
 
-      this.viewService.incrementView('news', this.id).subscribe()
+              this.viewService.incrementView('news', this.id).subscribe()
+          });
     this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
                 return;
