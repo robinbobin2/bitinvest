@@ -44,6 +44,11 @@ abstract class FounderProvider
     public function save($response)
     {
         sleep($this->getCooldownTime());
+        $query = "
+        Start transaction;
+        SET FOREIGN_KEY_CHECKS = 0;
+        SET UNIQUE_CHECKS = 0;
+        SET AUTOCOMMIT = 0;";
         foreach ($response as $rate) {
             if (empty($rate['last']) || empty($rate['symbol'])) {
                 continue;
@@ -53,36 +58,49 @@ abstract class FounderProvider
                 if ($pos !== false) {
                     $newRate = $rate;
                     $newRate['symbol'] = str_replace("USDT", "USD", $newRate['symbol']);
-                    $exchange = new ExchangeRate();
-                    $exchange->value = $newRate['last'];
-                    $exchange->volume = $newRate['baseVolume'];
-                    $exchange->bid = isset($newRate['bid']) ? $newRate['bid'] : null;
-                    $exchange->ask = isset($newRate['ask']) ? $newRate['ask'] : null;
-                    $exchange->currency = $newRate['symbol'];
-                    $exchange->exchangeId = $this->getExchangeId();
-                    $exchange->createTime = time();
-                    try {
-                        $exchange->save();
-                    } catch (\Exception $e) {
+                    $query .= "
+                    INSERT INTO `exchangeRates` (`currency`, `value`, `createTime`, `exchangeId`, `volume`, `bid`, `ask`)
+                    VALUES ('" . $newRate['symbol'] . "','" . $newRate['last'] . "', '" . time() . "', '" . $this->getExchangeId() . "',
+                    '" . $newRate['baseVolume'] . "', '" . isset($newRate['bid']) ? $newRate['bid'] : null . "', '" . isset($newRate['ask']) ? $newRate['ask'] : null . "');";
 
-                    }
+//                    $exchange = new ExchangeRate();
+//                    $exchange->value = $newRate['last'];
+//                    $exchange->volume = $newRate['baseVolume'];
+//                    $exchange->bid = isset($newRate['bid']) ? $newRate['bid'] : null;
+//                    $exchange->ask = isset($newRate['ask']) ? $newRate['ask'] : null;
+//                    $exchange->currency = $newRate['symbol'];
+//                    $exchange->exchangeId = $this->getExchangeId();
+//                    $exchange->createTime = time();
+//                    try {
+//                        $exchange->save();
+//                    } catch (\Exception $e) {
+//
+//                    }
                 }
             }
-            $exchange = new ExchangeRate();
-            $exchange->value = $rate['last'];
-            $exchange->volume = $rate['baseVolume'];
-            $exchange->bid = isset($rate['bid']) ? $rate['bid'] : null;
-            $exchange->ask = isset($rate['ask']) ? $rate['ask'] : null;
-            $exchange->currency = $rate['symbol'];
-            $exchange->exchangeId = $this->getExchangeId();
-            $exchange->createTime = time();
-            try {
-                $exchange->save();
-            } catch (\Exception $e) {
+            $query .= "
+                    INSERT INTO `exchangeRates` (`currency`, `value`, `createTime`, `exchangeId`, `volume`, `bid`, `ask`)
+                    VALUES ('" . $rate['symbol'] . "','" . $rate['last'] . "', '" . time() . "', '" . $this->getExchangeId() . "',
+                    '" . $rate['baseVolume'] . "', '" . isset($rate['bid']) ? $rate['bid'] : null . "', '" . isset($rate['ask']) ? $rate['ask'] : null . "');";
 
-            }
+//            $exchange = new ExchangeRate();
+//            $exchange->value = $rate['last'];
+//            $exchange->volume = $rate['baseVolume'];
+//            $exchange->bid = isset($rate['bid']) ? $rate['bid'] : null;
+//            $exchange->ask = isset($rate['ask']) ? $rate['ask'] : null;
+//            $exchange->currency = $rate['symbol'];
+//            $exchange->exchangeId = $this->getExchangeId();
+//            $exchange->createTime = time();
+//            try {
+//                $exchange->save();
+//            } catch (\Exception $e) {
+//
+//            }
         }
-
+        $query .= "commit;
+        SET UNIQUE_CHECKS = 1;
+        SET FOREIGN_KEY_CHECKS = 1;";
+        DB::statement($query);
     }
 
     public function getDefaultRelation()

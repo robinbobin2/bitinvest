@@ -46,6 +46,9 @@ class VebitcoinProvider extends FounderProvider
         }
 
         foreach ($response as $value) {
+            if(!isset($value->Ask)){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->Ask);
             $ticker->setBid($value->Bid);
