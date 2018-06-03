@@ -77,9 +77,11 @@
                 <a *ngIf="news.comments_count > 10 && !hide" class="show-comments">Показать все комментарии
                     ({{news.comments_count}})</a>
             </div>
-            <div class="news-body comment-block">
-                <div class="news-tab-content active comment-top">
-                    <h3>Похожие новости</h3>
+            <div class="news-body ">
+                <div class="news-tab-content active comment-block">
+                    <h3 style="font-size: 24px;
+color: #000;
+margin-bottom: 10px;">Похожие новости</h3>
                     <div class="news-list" style="height: 90%">
                         <ng-template ngFor let-item [ngForOf]="relatedNews" let-i="index">
                             <div class="news">
