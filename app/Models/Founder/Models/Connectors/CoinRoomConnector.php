@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: xeror
- * Date: 11.05.2018
- * Time: 16:36
+ * Date: 02.06.2018
+ * Time: 20:22
  */
 
 namespace App\Models\Founder\Models\Connectors;
@@ -11,14 +11,35 @@ namespace App\Models\Founder\Models\Connectors;
 
 use App\Models\Founder\Models\FounderConnector;
 
-class IndependentReserveConnector extends FounderConnector
+class CoinRoomConnector extends FounderConnector
 {
-    private $primaryCoins = [
-        "Xbt", "Eth", "Bch", "Ltc"
+    private $real = [
+        "USD",
+        "EUR",
+        "PLN",
+        "GBP",
+        "NOK",
+        "CHF",
+        "CZK",
+        "DKK"
     ];
-
-    private $secondatyCoins = [
-        "Usd", "Aud", "Nzd"
+    private $crypto = [
+        "BTC",
+        "LTC",
+        "ETH",
+        "DASH",
+        "XMR",
+        "BCC",
+        "PIVX",
+        "ZCOIN",
+        "LSK",
+        "ZEC",
+        "BURST",
+        "VIA",
+        "ETC",
+        "VTC",
+        "ZOI",
+        "HUSH"
     ];
 
     public function search()
@@ -27,11 +48,11 @@ class IndependentReserveConnector extends FounderConnector
         $result = [];
         $mh = curl_multi_init();
 
-        foreach ($this->primaryCoins as $primaryCoin) {
-            foreach ($this->secondatyCoins as $secondatyCoin) {
-                $currency = strtoupper($primaryCoin) . '/' . strtoupper($secondatyCoin);
+        foreach ($this->real as $real) {
+            foreach ($this->crypto as $crypto) {
+                $currency = strtoupper($crypto) . '/' . strtoupper($real);
                 $curly[$currency] = curl_init();
-                curl_setopt($curly[$currency], CURLOPT_URL, "https://api.coinnest.co.kr/api/pub/ticker?coin=" . $currency);
+                curl_setopt($curly[$currency], CURLOPT_URL, "https://coinroom.com/api/ticker/$crypto/$real");
                 curl_setopt($curly[$currency], CURLOPT_HEADER, 0);
                 curl_setopt($curly[$currency], CURLOPT_RETURNTRANSFER, 1);
                 curl_setopt($curly[$currency], CURLOPT_TIMEOUT, 30);

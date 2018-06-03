@@ -195,6 +195,9 @@ class IBankConnector extends FounderConnector
             'symbol' => 'all',
         ), $params));
         $result = array ();
+        if(!$tickers){
+            $tickers = [];
+        }
         foreach ($tickers as $ticker) {
             $id = $ticker['symbol'];
             $market = $this->marketsById[$id];

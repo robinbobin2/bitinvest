@@ -2,37 +2,37 @@
 /**
  * Created by PhpStorm.
  * User: xeror
- * Date: 30.05.2018
- * Time: 16:50
+ * Date: 02.06.2018
+ * Time: 20:00
  */
 
 namespace App\Models\Founder\Models\Providers;
 
 
 use App\Models\Entity\ExchangeRate;
-use App\Models\Founder\Models\Connectors\VebitcoinConnector;
+use App\Models\Founder\Models\Connectors\BitBnsConnector;
 use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class VebitcoinProvider extends FounderProvider
+class BitBnsProvider extends FounderProvider
 {
     public function getExchangeId()
     {
-        return 72;
+        return 75;
     }
 
     protected function getConnectorClass()
     {
-        return new VebitcoinConnector();
+        return new BitBnsConnector();
     }
 
     /**
-     * @return VebitcoinConnector
+     * @return BitBnsConnector
      */
     protected function getConnector()
     {
-        /** @var VebitcoinConnector $connector */
+        /** @var BitBnsConnector $connector */
         $connector = parent::getConnector();
         return $connector;
     }
@@ -45,17 +45,14 @@ class VebitcoinProvider extends FounderProvider
             return $result;
         }
 
-        foreach ($response as $value) {
-            if(!isset($value->Ask)){
-                continue;
-            }
+        foreach ($response as $currency => $value) {
             $ticker = new TickerEntity();
-            $ticker->setAsk($value->Ask);
-            $ticker->setBid($value->Bid);
-            $ticker->setVolume($value->Volume);
-            $ticker->setValue($value->Last);
+            $ticker->setAsk($value->highest_buy_bid);
+            $ticker->setBid($value->lowest_sell_bid);
+            $ticker->setVolume(isset($value->volume->volume) ? $value->volume->volume : 0);
+            $ticker->setValue($value->last_traded_price);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(substr($value->Code, 0,3) . "/TRY");
+            $ticker->setCurrency(strtoupper($currency) . "/" . "INR");
             $result[] = $ticker;
         }
 
