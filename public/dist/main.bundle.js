@@ -6159,7 +6159,7 @@ HeaderComponent = __decorate([
 /***/ "./angular/app/news/news-detail/news-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = " <section class=\"news-card-wrap\">\n          <div class=\"wrapper\">\n                <div class=\"news-card-block\">\n        <div class=\"news-big news-big2\">\n          <a routerLink=\"/posts/all\" class=\"return\"><span>&#60;</span>Вернуться к списку новостей</a>\n          <h2>{{news?.title}}</h2>\n          <div class=\"info info-top\">\n          <div class=\"left-block\">\n              <a [routerLink]=\"['/news/category', news?.cat_id]\" class=\"news-btn\">{{news.category}}</a>\n              <span class=\"date\">{{news.created_at}}</span>\n            </div>\n            <div class=\"right-block\">\n            <a href=\"#\" class=\"comments\" *ngIf=\"commentcount > 0\"><img src=\"img/comment.svg\" alt=\"\">{{commentcount}}</a>\n            <span class=\"views\" *ngIf=\"news.view_count > 0\"><img src=\"img/eye.svg\" alt=\"\">{{news.view_count}}</span>\n          </div>\n          </div>\n        </div>\n                <div class=\"innertext\"  [innerHTML]='news?.desc | safeHtml'>\n            </div>\n            <div class=\"comment-block\" id=\"comment-block\">\n                    <div class=\"comment-top\" *ngIf=\"user.id != undefined\"  style=\"padding-top:0 !important;\">\n                                <h3>Добавить новый комментарий</h3>\n                                <form (ngSubmit)=\"submitComment(f, news.id, 'App\\\\News')\" #f=\"ngForm\">\n                                    <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{news?.id}}\">\n                                    <input type=\"hidden\" ngModel name=\"commentable_type\" value=\"App\\News\">\n                                    <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                                    <button type=\"submit\">Добавить</button>\n                                </form>\n                    </div>\n                    <div class=\"comment-top\" *ngIf=\"user.id == undefined\">\n                        <h3>Комментарии ({{news.comments_count}})</h3>\n                        <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n                    </div>\n                    \n                    <div *ngIf=\"user.id != undefined && commentcount > 0\" style=\"background: none !important; border: none !important\" class=\"comment-top\">\n                        <h3 >Комментарии ({{commentcount}})</h3>\n                        <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p> -->\n\n                    \n                    </div>\n                    <ul class=\"comment-items\">\n                        <!--  -->\n                        <ng-template ngFor let-item [ngForOf]=\"comments\" let-i=\"index\">\n                        <li [ngClass]=\"i > 10 ? 'hidden' : ''\" >\n                            <div class=\"left\">\n                                <div class=\"info\">\n                                    <div class=\"img-wrap\">\n                                        <img src=\"{{item.photo}}\" style=\"max-width: 35px; height: auto;\" alt=\"\">\n                                    </div>\n                                    <div class=\"text-wrap\">\n                                        <p>{{item.author}}</p>\n                                        <span>Добавлен {{item.created_at}}</span>\n                                    </div>\n                                </div>\n                                <p class=\"comment-text\">{{item.body}}</p>\n                            </div>\n                            <div class=\"right\">\n                                <div class=\"img-wrap\"></div>\n                                <div class=\"btn-block\">\n                                    <span *ngIf=\"rating_count[item.id] > 0\" class=\"number-green\">{{rating_count[item.id]}}</span>\n                                    <span *ngIf=\"rating_count[item.id] < 0\" class=\"number-red\">{{rating_count[item.id]}}</span>\n                                    <span *ngIf=\"rating_count[item.id] == 0\" class=\"number\">{{rating_count[item.id]}}</span>\n                                    <div class=\"buttons\">\n                                        <a (click)=\"onVote(item.id, 1)\" class=\"plus\">+</a>\n                                        <a (click)=\"onVote(item.id, 0)\" class=\"minus\">-</a>\n                                    </div>\n                                </div>\n                            </div>\n                        </li>\n                        </ng-template>\n                    </ul>\n                     <a *ngIf=\"news.comments_count > 10 && !hide\" class=\"show-comments\">Показать все комментарии ({{news.comments_count}})</a>\n                </div>\n              </div>\n            </div>\n                </section>"
+module.exports = "<section class=\"news-card-wrap\">\n    <div class=\"wrapper\">\n        <div class=\"news-card-block\">\n            <div class=\"news-big news-big2\">\n                <a routerLink=\"/posts/all\" class=\"return\"><span>&#60;</span>Вернуться к списку новостей</a>\n                <h2>{{news?.title}}</h2>\n                <div class=\"info info-top\">\n                    <div class=\"left-block\">\n                        <a [routerLink]=\"['/news/category', news?.cat_id]\" class=\"news-btn\">{{news.category}}</a>\n                        <span class=\"date\">{{news.created_at}}</span>\n                    </div>\n                    <div class=\"right-block\">\n                        <a href=\"#\" class=\"comments\" *ngIf=\"commentcount > 0\"><img src=\"img/comment.svg\" alt=\"\">{{commentcount}}</a>\n                        <span class=\"views\" *ngIf=\"news.view_count > 0\"><img src=\"img/eye.svg\" alt=\"\">{{news.view_count}}</span>\n                    </div>\n                </div>\n            </div>\n            <div class=\"innertext\" [innerHTML]='news?.desc | safeHtml'>\n            </div>\n            <div class=\"comment-block\" id=\"comment-block\">\n                <div class=\"comment-top\" *ngIf=\"user.id != undefined\" style=\"padding-top:0 !important;\">\n                    <h3>Добавить новый комментарий</h3>\n                    <form (ngSubmit)=\"submitComment(f, news.id, 'App\\\\News')\" #f=\"ngForm\">\n                        <input type=\"hidden\" ngModel name=\"post_id\" value=\"{{news?.id}}\">\n                        <input type=\"hidden\" ngModel name=\"commentable_type\" value=\"App\\News\">\n                        <textarea ngModel name=\"body\" placeholder=\"Начните вводить комментарий...\"></textarea>\n                        <button type=\"submit\">Добавить</button>\n                    </form>\n                </div>\n                <div class=\"comment-top\" *ngIf=\"user.id == undefined\">\n                    <h3>Комментарии ({{news.comments_count}})</h3>\n                    <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\"\n                                                                                    class=\"popup-link\">авторизоваться</a>\n                        или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p>\n                </div>\n\n                <div *ngIf=\"user.id != undefined && commentcount > 0\"\n                     style=\"background: none !important; border: none !important\" class=\"comment-top\">\n                    <h3>Комментарии ({{commentcount}})</h3>\n                    <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href=\"#login-popup\" class=\"popup-link\">авторизоваться</a> или <a href=\"#check-popup\" class=\"popup-link\">пройти регистрацию.</a></p> -->\n\n\n                </div>\n                <ul class=\"comment-items\">\n                    <!--  -->\n                    <ng-template ngFor let-item [ngForOf]=\"comments\" let-i=\"index\">\n                        <li [ngClass]=\"i > 10 ? 'hidden' : ''\">\n                            <div class=\"left\">\n                                <div class=\"info\">\n                                    <div class=\"img-wrap\">\n                                        <img src=\"{{item.photo}}\" style=\"max-width: 35px; height: auto;\" alt=\"\">\n                                    </div>\n                                    <div class=\"text-wrap\">\n                                        <p>{{item.author}}</p>\n                                        <span>Добавлен {{item.created_at}}</span>\n                                    </div>\n                                </div>\n                                <p class=\"comment-text\">{{item.body}}</p>\n                            </div>\n                            <div class=\"right\">\n                                <div class=\"img-wrap\"></div>\n                                <div class=\"btn-block\">\n                                    <span *ngIf=\"rating_count[item.id] > 0\" class=\"number-green\">{{rating_count[item.id]}}</span>\n                                    <span *ngIf=\"rating_count[item.id] < 0\"\n                                          class=\"number-red\">{{rating_count[item.id]}}</span>\n                                    <span *ngIf=\"rating_count[item.id] == 0\"\n                                          class=\"number\">{{rating_count[item.id]}}</span>\n                                    <div class=\"buttons\">\n                                        <a (click)=\"onVote(item.id, 1)\" class=\"plus\">+</a>\n                                        <a (click)=\"onVote(item.id, 0)\" class=\"minus\">-</a>\n                                    </div>\n                                </div>\n                            </div>\n                        </li>\n                    </ng-template>\n                </ul>\n                <a *ngIf=\"news.comments_count > 10 && !hide\" class=\"show-comments\">Показать все комментарии\n                    ({{news.comments_count}})</a>\n            </div>\n            <div class=\"news-body\">\n                <div class=\"news-tab-content active\">\n                    <h3>Новости #{{data.name}}</h3>\n                    <div class=\"news-list\" style=\"height: 90%\"\n                         infiniteScroll\n                         infiniteScrollDistance=\"2\"\n                         infiniteScrollThrottle=\"50\"\n                         (scrolled)=\"onScroll()\"\n                         scrollWindow=\"false\">\n                        <ng-template ngFor let-item [ngForOf]=\"relatedNews\" let-i=\"index\">\n                            <div class=\"news\">\n                                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                                    <a href=\"#\" class=\"news-btn\">{{item.category.name}}</a>\n                                    <div class=\"info\">\n                                        <span class=\"date\">{{item.created_at}}</span>\n                                    </div>\n                                </div>\n                                <div class=\"text\">\n                                    <h3>\n                                        <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                                    </h3>\n                                </div>\n                                <div class=\"text2\">\n                                    <p>{{item.desc | striphtml |excerpt:80}}</p>\n                                </div>\n                            </div>\n                        </ng-template>\n                        <a routerLink=\"/posts/all\" class=\"show-comments btn-style\">Показать больше новостей</a>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>"
 
 /***/ }),
 
@@ -6183,6 +6183,7 @@ module.exports = ".comment-block {\n  margin-top: 30px; }\n\n.comment-block .com
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__comments_service__ = __webpack_require__("./angular/app/comments.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__cloud_mining_service__ = __webpack_require__("./angular/app/cloud-mining.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__similar_posts_service__ = __webpack_require__("./angular/app/similar-posts.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6192,6 +6193,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -6216,28 +6218,32 @@ var User = (function () {
 }());
 
 var NewsDetailComponent = (function () {
-    function NewsDetailComponent(http, router, route, commentService, viewService) {
-        var _this = this;
+    function NewsDetailComponent(http, router, route, commentService, viewService, similarPosts) {
         this.http = http;
         this.router = router;
         this.route = route;
         this.commentService = commentService;
         this.viewService = viewService;
+        this.similarPosts = similarPosts;
         this.comments = [];
         this.submitted = false;
         this.commentcount = 0;
         this.rating_count = [];
         this.hide = false;
         this.id = 0;
+        this.relatedNews = [];
         this.comment = {
             'post_id': '',
             'body': '',
             'commentable_id': '',
             'commentable_type': ''
         };
-        this.id = route.snapshot.params['id'];
+    }
+    NewsDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.id = this.route.snapshot.params['id'];
         var path = "/newsraw/" + this.id;
-        var info = http.get(path);
+        var info = this.http.get(path);
         info.subscribe(function (response) {
             _this.news = {
                 id: response['news'][0]['id'],
@@ -6247,7 +6253,8 @@ var NewsDetailComponent = (function () {
                 category: response['category'].name,
                 photo: response['photos'][0].file,
                 comments_count: response['comments_count'],
-                view_count: response['news'][0]['view_count']
+                view_count: response['news'][0]['view_count'],
+                cat_id: response['news'][0]['cat_id']
             };
             _this.commentcount = response['comments_count'];
             (_a = _this.comments).push.apply(_a, response['news'][0]['comments']);
@@ -6264,11 +6271,14 @@ var NewsDetailComponent = (function () {
                     }
                 }
             }
+            _this.similarPosts.getSimilarPosts(_this.news.cat_id, 'postsbycat')
+                .subscribe(function (posts) {
+                (_a = _this.relatedNews).push.apply(_a, posts['news']);
+                _this.relatedNews = _this.relatedNews.slice(0, 3);
+                var _a;
+            });
             var _a;
         });
-    }
-    NewsDetailComponent.prototype.ngOnInit = function () {
-        var _this = this;
         this.viewService.incrementView('news', this.id).subscribe();
         this.router.events.subscribe(function (evt) {
             if (!(evt instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */])) {
@@ -6338,12 +6348,12 @@ NewsDetailComponent = __decorate([
         selector: 'app-news-detail',
         template: __webpack_require__("./angular/app/news/news-detail/news-detail.component.html"),
         styles: [__webpack_require__("./angular/app/news/news-detail/news-detail.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_4__cloud_mining_service__["a" /* CloudMiningService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_4__cloud_mining_service__["a" /* CloudMiningService */], __WEBPACK_IMPORTED_MODULE_5__similar_posts_service__["a" /* SimilarPostsService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__comments_service__["a" /* CommentsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__comments_service__["a" /* CommentsService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__cloud_mining_service__["a" /* CloudMiningService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__cloud_mining_service__["a" /* CloudMiningService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__comments_service__["a" /* CommentsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__comments_service__["a" /* CommentsService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__cloud_mining_service__["a" /* CloudMiningService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__cloud_mining_service__["a" /* CloudMiningService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__similar_posts_service__["a" /* SimilarPostsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__similar_posts_service__["a" /* SimilarPostsService */]) === "function" && _f || Object])
 ], NewsDetailComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=news-detail.component.js.map
 
 /***/ }),
@@ -8082,6 +8092,43 @@ TopIcoComponent = __decorate([
 
 var _a;
 //# sourceMappingURL=top-ico.component.js.map
+
+/***/ }),
+
+/***/ "./angular/app/similar-posts.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SimilarPostsService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var SimilarPostsService = (function () {
+    function SimilarPostsService(http) {
+        this.http = http;
+    }
+    SimilarPostsService.prototype.getSimilarPosts = function (id, type) {
+        return this.http.get(type + '/' + id);
+    };
+    return SimilarPostsService;
+}());
+SimilarPostsService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+], SimilarPostsService);
+
+var _a;
+//# sourceMappingURL=similar-posts.service.js.map
 
 /***/ }),
 
