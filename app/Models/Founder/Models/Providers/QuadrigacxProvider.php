@@ -49,6 +49,9 @@ class QuadrigacxProvider extends FounderProvider
             if(!isset($value->ask)){
                 continue;
             }
+            if(!$this->validate($this->getCurrency($currency))){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->ask);
             $ticker->setBid($value->bid);

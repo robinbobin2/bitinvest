@@ -46,6 +46,9 @@ class CoinnestProvider extends FounderProvider
         }
 
         foreach ($response as $currency => $value) {
+            if(!$this->validate(strtoupper($currency) . "/" . "USD")){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->buy / 1000);
             $ticker->setBid($value->sell / 1000);

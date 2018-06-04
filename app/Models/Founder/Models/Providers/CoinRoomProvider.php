@@ -46,6 +46,9 @@ class CoinRoomProvider extends FounderProvider
         }
 
         foreach ($response as $currency => $value) {
+            if(!$this->validate($currency)){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->ask);
             $ticker->setBid($value->bid);

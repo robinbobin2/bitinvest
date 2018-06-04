@@ -81,6 +81,9 @@ class HitBTCProvider extends FounderProvider
             if (!isset($this->pairs[$value->symbol])) {
                 continue;
             }
+            if(!$this->validate($this->pairs[$value->symbol])){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk((float)$value->ask);
             $ticker->setBid((float)$value->bid);
