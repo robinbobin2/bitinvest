@@ -9126,3 +9126,7 @@ table tbody tr td .difference .buttons a {
   font-size: 24px;
   color: #616162;
 }
+
+.select-content .select-body {
+  display: block;
+}
