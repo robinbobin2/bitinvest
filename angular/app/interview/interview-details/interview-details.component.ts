@@ -87,6 +87,8 @@ user: User;
              // }
          }
          this.photos.push(...response['photos'])
+         console.log('photos')
+         console.log(this.photos)
 
      });
  }

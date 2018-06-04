@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { MasonryOptions } from 'angular2-masonry';
+import {OrderPipe} from "../../order-pipe/ngx-order.pipe";
  
 
 
@@ -24,15 +23,17 @@ export class NewsRaw {
   styleUrls: ['./all-interview.component.scss']
 })
 export class AllInterviewComponent implements OnInit {
+    order: string = 'id';
+    reverse: boolean = false;
 
-public myOptions: MasonryOptions = { 
-      transitionDuration: '0' 
-};
   news_raw: any[];
 	news: NewsRaw[] = [];
   main_news: NewsRaw[] = [];
   allCount = 0;
-   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+/**
+* @param {OrderPipe}
+*/
+constructor(private orderPipe: OrderPipe, private http:HttpClient) {
 
 
 
@@ -44,8 +45,6 @@ public myOptions: MasonryOptions = {
       let path = "/interviewraw";
       const info = this.http.get(path);
       info.subscribe(response => {
-          // console.log(response['news']);
-          // this.news = response['news'];
           for (let item of response['news']) {
               this.news.push( {
                   id: item.id,

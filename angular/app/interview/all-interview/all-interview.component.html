@@ -2,15 +2,15 @@
         <div class="interview-head">
           <h1>Интервью<span>{{allCount}}</span></h1>
           <ul class="interview-tabs">
-            <li class="active"><a href="#">Новое за сегодня</a></li>
-            <li><a href="#">Самое популярное</a></li>
-            <li><a href="#">Самое обсуждаемое</a></li>
+            <li class="active"><a (click)="setOrder('id')">Новое за сегодня</a></li>
+            <li><a (click)="setOrder('views_count')">Самое популярное</a></li>
+            <li><a  (click)="setOrder('comments_count')">Самое обсуждаемое</a></li>
           </ul>
         </div>
         <div class="interview-body">
           <div class="interview-tab-content active">
             <div class="interview-blocks">
-              <div class="interview-item" *ngFor="let main_item of main_news">
+              <div class="interview-item" *ngFor="let main_item of main_news | orderBy: order:reverse:'case-insensitive'">
                 <div class="info">
                   <span class="views" *ngIf="main_item?.view_count"><i class="fa fa-eye" aria-hidden="true"></i>{{main_item?.view_count}}</span>
                   <a *ngIf="main_item?.comments_count > 0" [routerLink]="['/interview/item', main_item.id]" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{main_item?.comments_count}}</a>
@@ -35,8 +35,8 @@
                 </div>
                 <div class="text-wrap">
                   <a [routerLink]="['/interview/item', item.id]" class="title">{{item.title}}</a>
-                  <p [innerHTML]='item.desc'>
-                    
+                  <p>
+                    {{item.desc  | striphtml | excerpt:140}}
                   </p>
                   <div class="comment-footer">
                     <a href="interview-card.html" class="name">{{item.name_credits}}</a>
@@ -53,7 +53,7 @@
               </div>
               
             </div>
-            <a href="#" class="show-more">Показать еще</a>
+            <!--<a href="#" class="show-more">Показать еще</a>-->
           </div>
           
         </div>
