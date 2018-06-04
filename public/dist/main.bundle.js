@@ -1443,7 +1443,7 @@ var AllCloudMiningComponent = (function () {
         this.checkPortfolio = false;
         this.removed = false;
         this.show = false;
-        this.showCaret = true;
+        this.showCaret = false;
         this.portfolio = {
             'id': '',
             'name': '',
