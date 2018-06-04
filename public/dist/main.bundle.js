@@ -575,6 +575,7 @@ var AppComponent = (function () {
             }
             else {
                 _this.results = results;
+                console.log(results);
             }
             console.log(results);
         });
