@@ -24,6 +24,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ExchangeRate extends Model
 {
+    private $connections = [
+        "mysql",
+        "mysql2",
+        "mysql3",
+    ];
+
     private $currencies = [
         "BTC",
         "ETH",
@@ -53,6 +59,12 @@ class ExchangeRate extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    public function __construct(array $attributes = [])
+    {
+        $this->connection = array_rand($this->connections);
+        parent::__construct($attributes);
+    }
 
     public function save(array $options = [])
     {

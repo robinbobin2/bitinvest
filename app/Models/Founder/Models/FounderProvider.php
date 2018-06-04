@@ -73,11 +73,18 @@ abstract class FounderProvider
     }
 
 
+    /**
+     *
+     * @param array $response
+     */
     public function save($response)
     {
         sleep($this->getCooldownTime());
         foreach ($response as $rate) {
             if (empty($rate['last']) || empty($rate['symbol'])) {
+                continue;
+            }
+            if(!$this->validate($rate['symbol'])){
                 continue;
             }
             if ($this->isCrypto()) {
@@ -118,7 +125,7 @@ abstract class FounderProvider
 
     public function getDefaultRelation()
     {
-        return 'BTC/USDT';
+        return 'BTC/USD';
     }
 
     abstract public function getExchangeId();
@@ -133,6 +140,6 @@ abstract class FounderProvider
      */
     public function getCooldownTime()
     {
-        return 5;
+        return 0;
     }
 }
