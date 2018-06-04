@@ -25,8 +25,7 @@
                     <span class="views" *ngIf="news?.view_count > 0"><img src="img/eye.svg" alt="">{{news?.view_count}}</span>
                   </div>
                 </div>
-                <div class="text-wrap" >
-                    {{news?.desc}}
+                <div class="text-wrap" [innerHTML]='news?.desc | safeHtml'>
                 </div>
     
                    <!--  -->

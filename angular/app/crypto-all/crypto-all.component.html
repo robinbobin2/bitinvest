@@ -68,6 +68,8 @@
       <img src="img/arr-top-table.png" alt="">
     </th>
     <th
+            [class.active]="order === 'marketCapUsd'"
+            (click)="setOrder('marketCapUsd')"
 
     width="15%">
     <span>Капитализация</span>
@@ -93,12 +95,16 @@ width="4.7%">
 <span>Год</span>
 <img src="img/arr-top-table.png" alt="">
 </th>
-<th 
+<th
+        [class.active]="order === 'percentDay'"
+        (click)="setOrder('percentDay')"
 width="11%">
 <span>Изм. за 24ч</span>
 <img src="img/arr-top-table.png" alt="">
 </th>
-<th 
+<th
+        [class.active]="order === 'percentWeek'"
+        (click)="setOrder('percentWeek')"
 width="18.3%">
 <span>Изм. за 7д</span>
 <img src="img/arr-top-table.png" alt="">

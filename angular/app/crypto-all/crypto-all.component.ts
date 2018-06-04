@@ -190,6 +190,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                             this.dataUsd[index].day = this.resp[symbol + "/USD"]['day'];
                             this.dataUsd[index].week = this.resp[symbol + "/USD"]['week'];
                             this.dataUsd[index].marketCapUsd = this.resp[symbol + "/USD"]['marketCapUsd'];
+                            this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
+                            this.dataUsd[index].percentWeek = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
 
 
                         } else {
@@ -206,7 +208,9 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                 algo: algo,
                                 week: this.resp[symbol + "/USD"]['week'],
                                 day: this.resp[symbol + "/USD"]['day'],
-                                marketCapUsd: this.resp[symbol + "/USD"]['marketCapUsd']
+                                marketCapUsd: this.resp[symbol + "/USD"]['marketCapUsd'],
+                                percentDay: this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day),
+                                percentWeek: this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
                             }
                         }
                         this.load = false;
@@ -261,6 +265,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                             this.dataUsd[index].week = this.resp[symbol + "/USD"]['week'];
                             this.dataUsd[index].marketCapUsd = this.resp[symbol + "/USD"]['marketCapUsd'];
                             this.dataUsd[index].logo = logo;
+                            this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
+                            this.dataUsd[index].percentWeek = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
                         }
 
                         localStorage.removeItem('data');
