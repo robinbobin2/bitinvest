@@ -19,7 +19,7 @@ export class Chart2Component implements OnInit {
                 {
                     "width": 881,
                     "height": 393,
-                    "symbol": "BITSTAMP:"+symbol+"USD",
+                    "symbol": "COINBASE:"+symbol+"USD",
                     "interval": "D",
                     "timezone": "Etc/UTC",
                     "theme": "Light",
