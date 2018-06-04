@@ -42,7 +42,6 @@ class LunoProvider extends FounderProvider
      */
     public function save($response)
     {
-        sleep(1);
         foreach ($response as $ticker) {
             $exchange = new ExchangeRate();
             $exchange->value = $ticker->getValue();
