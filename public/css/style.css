@@ -9128,5 +9128,5 @@ table tbody tr td .difference .buttons a {
 }
 
 .select-content .select-body {
-  display: block;
+  display: block !important;
 }

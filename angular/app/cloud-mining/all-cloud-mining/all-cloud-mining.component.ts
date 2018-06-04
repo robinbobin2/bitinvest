@@ -64,7 +64,7 @@ order: string = 'name';
   removed = false;
   show = false;
   portfolioInfo:any;
-  showCaret = true;
+  showCaret = false;
    constructor(private authService: AuthService, 
      private orderPipe: OrderPipe, 
      private http:HttpClient, 
