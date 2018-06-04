@@ -29,8 +29,8 @@
       <file leaf-file-name="all-cloud-mining.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+            <state relative-caret-position="109">
+              <caret line="42" column="34" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -475,12 +475,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="20085000" />
+      <workItem from="1527928097804" duration="20202000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177257000" />
+    <option name="totallyTimeSpent" value="177374000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -990,8 +990,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+        <state relative-caret-position="109">
+          <caret line="42" column="34" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="34" />
         </state>
       </provider>
     </entry>

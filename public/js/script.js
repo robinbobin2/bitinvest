@@ -300,9 +300,9 @@ $(document).ready(function () {
 
 	$(".autocomplete-input").easyAutocomplete(options);
 
-	$(".select-head").on("click", function () {
-		$(".select-body").slideToggle(200);
-	});
+	// $(".select-head").on("click", function () {
+	// 	$(".select-body").slideToggle(200);
+	// });
 
 	// $(".select-body li a").on("click", function (e) {
 	// 	e.preventDefault();
