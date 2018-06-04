@@ -8,7 +8,7 @@
           </div>
           <div class="text-wrap">
             <div class="text-info">
-              <p class="project-title">Биржа {{exchange.name}}</p>
+              <p class="project-title">Биржа {{exchange?.name}}</p>
             </div>
             <div class="project-info-content">
               <div class="info">
@@ -40,7 +40,7 @@
         </div>
         <ul class="card-menu">
           <li><a [routerLink]="['/exchange', exchange.name]" fragment="general" (click)="onAnchorClick()">Общее</a></li>
-          <li><a [routerLink]="['/exchange', exchange.name]" fragment="coins" (click)="onAnchorClick()">Доступные монеты ({{exchange.coins_count}})</a></li>
+          <li><a [routerLink]="['/exchange', exchange.name]" fragment="coins" (click)="onAnchorClick()">Доступные монеты ({{exchange?.coins_count}})</a></li>
           <li><a [routerLink]="['/exchange', exchange.name]" fragment="output" (click)="onAnchorClick()">Способы вывода</a></li>
           <li><a [routerLink]="['/exchange', exchange.name]" fragment="exchanges-table" (click)="onAnchorClick()">Доступные пары ({{count_pairs}})</a></li>
           <li><a [routerLink]="['/exchange', exchange.name]" fragment="comment-block" (click)="onAnchorClick()">Комментарии ({{commentcount}})</a></li>
@@ -50,11 +50,11 @@
         <div class="basic-information" id="general">
           <div class="basic-information-wrap">
             <div class="left">
-              
+
               <ul>
-                <li><span class="gray">Официальный сайт:</span> <span class="black"><a href="{{exchange.logo}}">{{exchange.website}}</a></span></li>
-                <li><span class="gray">Рефферальная система:</span><span class="black">{{exchange.ref}}</span> </li>
-                <li><span class="gray">Год основания биржи:</span><span class="black">{{exchange.year}}</span></li>
+                <li><span class="gray">Официальный сайт:</span> <span class="black"><a href="{{exchange?.logo}}">{{exchange.website}}</a></span></li>
+                <li><span class="gray">Рефферальная система:</span><span class="black">{{exchange?.ref}}</span> </li>
+                <li><span class="gray">Год основания биржи:</span><span class="black">{{exchange?.year}}</span></li>
                 <li><span class="gray">Язык интерфейса:</span>
                   <span class="black">
                     <p>{{exchange.languages}}</p>
@@ -74,24 +74,24 @@
             <p>{{exchange.desc}}</p>
           </div>
         </div>
-        <h3 class="ico-title" *ngIf="exchange.coins_count > 0">Доступные монеты ({{exchange.coins_count}})</h3>
+        <h3 class="ico-title" *ngIf="exchange.coins_count > 0">Доступные монеты ({{exchange?.coins_count}})</h3>
         <div class="distribution-funds" id="coins" *ngIf="exchange.coins_count > 0">
-          
+
           <ul *ngIf="exchange.coins" >
             <li *ngFor="let coin of exchange.coins">
-              <div class="img-wrap"><img *ngIf="coin.logo" src="'images/'+coin.logo" alt=""></div><span>{{coin.name}} ({{coin.symbol}})</span></li>
-            
+              <div class="img-wrap"><img *ngIf="coin.logo" src="'images/'+coin.logo" alt=""></div><span>{{coin?.name}} ({{coin?.symbol}})</span></li>
+
           </ul>
         </div>
         <h3 class="ico-title">Способы вывода средств</h3>
           <div class="footer-text" id="output">
-            
-            <p>{{exchange.exchange}}</p>
+
+            <p>{{exchange?.exchange}}</p>
           </div>
         <div class="history-table exchanges-table" id="exchanges-table">
           <div class="history-title-block exchanges-title-block" style="background: none; padding-right: 0;">
         <h3 style="padding-right: 15px" class="ico-title">Доступные пары ({{count_pairs}})</h3>
-            
+
             <form><input type="text" placeholder="Введите монету, например: BTC" [(ngModel)]="filteredName" name="filteredName"></form>
             <span>Обновлено: 10.11.2017 в 12:45</span>
           </div>
@@ -123,7 +123,7 @@
                   <span [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }" >{{pair.percentVolume | number:'1.2-8'}}%</span>
                 </td>
               </tr>
-              
+
             </tbody>
           </table>
             <div style="width: 50px; height: 50px; margin: 40px auto;" *ngIf="load == true">
@@ -140,14 +140,14 @@
                                 </form>
                     </div>
                     <div class="comment-top" *ngIf="user.id == undefined">
-                        <h3>Комментарии ({{news.comments_count}})</h3>
+                        <h3>Комментарии ({{news?.comments_count}})</h3>
                         <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
                     </div>
-                    
+
                     <div *ngIf="user.id != undefined || news.comments_count > 0" style="background: none !important; border: none !important" class="comment-top" >
                         <h3 >Комментарии ({{commentcount}})</h3>
 
-                    
+
                     </div>
             <ul class="comment-items">
                 <!--  -->
@@ -165,10 +165,12 @@
                             </div>
                             <p class="comment-text">{{item.body}}</p>
                         </div>
-                        <div class="right">
+                        <div class="right" *ngIf="rating_count != undefined">
                             <div class="img-wrap"></div>
                             <div class="btn-block">
-                                <span class="number-green" [ngClass]="rating_count[item.id] > -1 ? 'number-green' : 'number-red'">{{rating_count[item.id]}}</span>
+                                <span *ngIf="rating_count[item.id] > 0" class="number-green">{{rating_count[item.id]}}</span>
+                                <span *ngIf="rating_count[item.id] < 0" class="number-red">{{rating_count[item.id]}}</span>
+                                <span *ngIf="rating_count[item.id] == 0" class="number">{{rating_count[item.id]}}</span>
                                 <div class="buttons">
                                     <a (click)="onVote(item.id, 1)" class="plus">+</a>
                                     <a (click)="onVote(item.id, 0)" class="minus">-</a>

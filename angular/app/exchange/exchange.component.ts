@@ -76,6 +76,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
     });
 		this.stockService.getExchange(this.name).subscribe(res => {
 			this.exchange = res;
+			console.log(this.exchange)
 			this.commentcount = this.exchange.comments_count;
 			this.comments = this.exchange.comments;
 			for(let item of this.exchange.categories) {
