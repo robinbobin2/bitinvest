@@ -24,6 +24,27 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ExchangeRate extends Model
 {
+    private $currencies = [
+        "BTC",
+        "ETH",
+        "XRP",
+        "BCH",
+        "LTC",
+        "ETC",
+        "GTC",
+        "BCH",
+        "QTUM",
+        "NEO",
+        "EOS",
+        "BCC",
+        "TRX",
+    ];
+
+    private $connections = [
+        "mysql",
+        "mysql2",
+        "mysql3",
+    ];
 
     /**
      * The table associated with the model.
@@ -38,5 +59,24 @@ class ExchangeRate extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    public function save(array $options = [])
+    {
+        if(!$this->validate()){
+            return false;
+        }
+        $this->connection = array_rand($this->connections);
+        return parent::save($options);
+    }
+
+    public function validate(){
+        foreach ($this->currencies as $validCurrency){
+            $pos = strpos($this->currency, $validCurrency);
+            if ($pos !== false) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
