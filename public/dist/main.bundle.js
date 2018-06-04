@@ -2878,7 +2878,7 @@ var Chart2Component = (function () {
             new TradingView.widget({
                 "width": 881,
                 "height": 393,
-                "symbol": "COINBASE:" + symbol + "USD",
+                "symbol": "BITSTAMP:" + symbol + "USD",
                 "interval": "D",
                 "timezone": "Etc/UTC",
                 "theme": "Light",
