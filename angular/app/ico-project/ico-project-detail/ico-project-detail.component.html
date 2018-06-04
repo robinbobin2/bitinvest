@@ -112,7 +112,7 @@ width: 94%">
 					</ul>
 				</div>
 				<div class="comment-block" id="comment-block">
-					<div class="comment-top" *ngIf="user.id != undefined">
+					<div style="padding-top:0" class="comment-top" *ngIf="user.id != undefined">
 								<h3>Добавить новый комментарий</h3>
 								<form (ngSubmit)="submitComment(f, news.id, 'App\\IcoProject')" #f="ngForm">
 									<input type="hidden" ngModel name="post_id" value="{{news?.id}}">
@@ -122,7 +122,7 @@ width: 94%">
 								</form>
 								<p *ngIf="submitted">Комментарий успешно добавлен</p>
 					</div>
-					<div class="comment-top" *ngIf="user.id == undefined" style="background: none !important; border: none !important">
+					<div style="padding-top:0" class="comment-top" *ngIf="user.id == undefined" style="background: none !important; border: none !important">
 						<h3>Комментарии ({{commentcount}})</h3>
 						<p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
 					</div>
