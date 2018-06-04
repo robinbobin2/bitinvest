@@ -70,7 +70,7 @@ class NovaProvider extends FounderProvider
         $result = $this->getConnector()->search();
 
         foreach ($result->markets as $currency => $supplierTicker){
-            if(!$this->validate(str_replace("_", "/", $supplierTicker->marketname))){
+            if(!$this->validate($supplierTicker->marketname)){
                 continue;
             }
             $ticker = new TickerEntity();

@@ -74,7 +74,7 @@ class CcexProvider extends FounderProvider
             return $result;
         }
         foreach ($response->result as $supplierTicker){
-            if(!$this->validate(strtoupper(str_replace("-", "/", $supplierTicker->MarketName)))){
+            if(!$this->validate($supplierTicker->MarketName)){
                 continue;
             }
             $ticker = new TickerEntity();
