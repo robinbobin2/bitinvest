@@ -79,6 +79,7 @@ export class AppComponent implements OnInit {
               this.results = undefined;
           } else {
               this.results = results;
+              console.log(results);
           }
 
         console.log(results);

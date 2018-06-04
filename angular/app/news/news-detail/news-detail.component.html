@@ -1,47 +1,50 @@
- <section class="news-card-wrap">
-          <div class="wrapper">
-                <div class="news-card-block">
-        <div class="news-big news-big2">
-          <a routerLink="/posts/all" class="return"><span>&#60;</span>Вернуться к списку новостей</a>
-          <h2>{{news?.title}}</h2>
-          <div class="info info-top">
-          <div class="left-block">
-              <a [routerLink]="['/news/category', news?.cat_id]" class="news-btn">{{news.category}}</a>
-              <span class="date">{{news.created_at}}</span>
+<section class="news-card-wrap">
+    <div class="wrapper">
+        <div class="news-card-block">
+            <div class="news-big news-big2">
+                <a routerLink="/posts/all" class="return"><span>&#60;</span>Вернуться к списку новостей</a>
+                <h2>{{news?.title}}</h2>
+                <div class="info info-top">
+                    <div class="left-block">
+                        <a [routerLink]="['/news/category', news?.cat_id]" class="news-btn">{{news.category}}</a>
+                        <span class="date">{{news.created_at}}</span>
+                    </div>
+                    <div class="right-block">
+                        <a href="#" class="comments" *ngIf="commentcount > 0"><img src="img/comment.svg" alt="">{{commentcount}}</a>
+                        <span class="views" *ngIf="news.view_count > 0"><img src="img/eye.svg" alt="">{{news.view_count}}</span>
+                    </div>
+                </div>
             </div>
-            <div class="right-block">
-            <a href="#" class="comments" *ngIf="commentcount > 0"><img src="img/comment.svg" alt="">{{commentcount}}</a>
-            <span class="views" *ngIf="news.view_count > 0"><img src="img/eye.svg" alt="">{{news.view_count}}</span>
-          </div>
-          </div>
-        </div>
-                <div class="innertext"  [innerHTML]='news?.desc | safeHtml'>
+            <div class="innertext" [innerHTML]='news?.desc | safeHtml'>
             </div>
             <div class="comment-block" id="comment-block">
-                    <div class="comment-top" *ngIf="user.id != undefined"  style="padding-top:0 !important;">
-                                <h3>Добавить новый комментарий</h3>
-                                <form (ngSubmit)="submitComment(f, news.id, 'App\\News')" #f="ngForm">
-                                    <input type="hidden" ngModel name="post_id" value="{{news?.id}}">
-                                    <input type="hidden" ngModel name="commentable_type" value="App\News">
-                                    <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
-                                    <button type="submit">Добавить</button>
-                                </form>
-                    </div>
-                    <div class="comment-top" *ngIf="user.id == undefined">
-                        <h3>Комментарии ({{news.comments_count}})</h3>
-                        <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
-                    </div>
-                    
-                    <div *ngIf="user.id != undefined && commentcount > 0" style="background: none !important; border: none !important" class="comment-top">
-                        <h3 >Комментарии ({{commentcount}})</h3>
-                        <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
+                <div class="comment-top" *ngIf="user.id != undefined" style="padding-top:0 !important;">
+                    <h3>Добавить новый комментарий</h3>
+                    <form (ngSubmit)="submitComment(f, news.id, 'App\\News')" #f="ngForm">
+                        <input type="hidden" ngModel name="post_id" value="{{news?.id}}">
+                        <input type="hidden" ngModel name="commentable_type" value="App\News">
+                        <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
+                        <button type="submit">Добавить</button>
+                    </form>
+                </div>
+                <div class="comment-top" *ngIf="user.id == undefined">
+                    <h3>Комментарии ({{news.comments_count}})</h3>
+                    <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup"
+                                                                                    class="popup-link">авторизоваться</a>
+                        или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
+                </div>
 
-                    
-                    </div>
-                    <ul class="comment-items">
-                        <!--  -->
-                        <ng-template ngFor let-item [ngForOf]="comments" let-i="index">
-                        <li [ngClass]="i > 10 ? 'hidden' : ''" >
+                <div *ngIf="user.id != undefined && commentcount > 0"
+                     style="background: none !important; border: none !important" class="comment-top">
+                    <h3>Комментарии ({{commentcount}})</h3>
+                    <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
+
+
+                </div>
+                <ul class="comment-items">
+                    <!--  -->
+                    <ng-template ngFor let-item [ngForOf]="comments" let-i="index">
+                        <li [ngClass]="i > 10 ? 'hidden' : ''">
                             <div class="left">
                                 <div class="info">
                                     <div class="img-wrap">
@@ -58,8 +61,10 @@
                                 <div class="img-wrap"></div>
                                 <div class="btn-block">
                                     <span *ngIf="rating_count[item.id] > 0" class="number-green">{{rating_count[item.id]}}</span>
-                                    <span *ngIf="rating_count[item.id] < 0" class="number-red">{{rating_count[item.id]}}</span>
-                                    <span *ngIf="rating_count[item.id] == 0" class="number">{{rating_count[item.id]}}</span>
+                                    <span *ngIf="rating_count[item.id] < 0"
+                                          class="number-red">{{rating_count[item.id]}}</span>
+                                    <span *ngIf="rating_count[item.id] == 0"
+                                          class="number">{{rating_count[item.id]}}</span>
                                     <div class="buttons">
                                         <a (click)="onVote(item.id, 1)" class="plus">+</a>
                                         <a (click)="onVote(item.id, 0)" class="minus">-</a>
@@ -67,10 +72,38 @@
                                 </div>
                             </div>
                         </li>
-                        </ng-template>
-                    </ul>
-                     <a *ngIf="news.comments_count > 10 && !hide" class="show-comments">Показать все комментарии ({{news.comments_count}})</a>
-                </div>
-              </div>
+                    </ng-template>
+                </ul>
+                <a *ngIf="news.comments_count > 10 && !hide" class="show-comments">Показать все комментарии
+                    ({{news.comments_count}})</a>
             </div>
-                </section>
+            <div class="news-body ">
+                <div class="news-tab-content active comment-block">
+                    <h3 style="font-size: 24px;
+color: #000;
+margin-bottom: 10px;">Похожие новости</h3>
+                    <div class="news-list" style="height: 90%">
+                        <ng-template ngFor let-item [ngForOf]="relatedNews" let-i="index">
+                            <div class="news">
+                                <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
+                                    <a href="#" class="news-btn">{{item.category.name}}</a>
+                                    <div class="info">
+                                        <span class="date">{{item.created_at}}</span>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <h3>
+                                        <a routerLink="/posts/post/{{item.id}}">{{item.title}}</a>
+                                    </h3>
+                                </div>
+                                <div class="text2">
+                                    <p>{{item.desc | striphtml |excerpt:80}}</p>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
