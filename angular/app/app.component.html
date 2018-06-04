@@ -21,7 +21,7 @@
                 <li (click)="results=NULL" *ngIf="result.depo" [routerLink]="['/cloud-mining/item', result.id]" style="cursor: pointer">
                   {{ result?.name }}
                 </li>
-                <li (click)="results=NULL" *ngIf="result.country" [routerLink]="['/exchange', result.name]" style="cursor: pointer">
+                <li (click)="results=NULL" *ngIf="result.exchange" [routerLink]="['/exchange', result.name]" style="cursor: pointer">
                   {{ result?.name }}
                 </li>
                 <li (click)="results=NULL" *ngIf="result.workplace" [routerLink]="['/interview/item', result.id]" style="cursor: pointer">
