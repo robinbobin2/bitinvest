@@ -40,12 +40,6 @@ class ExchangeRate extends Model
         "TRX",
     ];
 
-    private $connections = [
-        "mysql",
-        "mysql2",
-        "mysql3",
-    ];
-
     /**
      * The table associated with the model.
      *
@@ -65,7 +59,6 @@ class ExchangeRate extends Model
         if(!$this->validate()){
             return false;
         }
-        $this->connection = array_rand($this->connections);
         return parent::save($options);
     }
 

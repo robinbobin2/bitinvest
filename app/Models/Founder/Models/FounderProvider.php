@@ -86,9 +86,6 @@ abstract class FounderProvider
             if (empty($rate['last']) || empty($rate['symbol'])) {
                 continue;
             }
-            if(!$this->validate($rate['symbol'])){
-                continue;
-            }
             if ($this->isCrypto()) {
                 $pos = strpos($rate['symbol'], "USDT");
                 if ($pos !== false) {
