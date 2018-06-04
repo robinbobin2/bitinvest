@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ExchangeRate extends Model
 {
+
     /**
      * The table associated with the model.
      *
@@ -37,4 +38,5 @@ class ExchangeRate extends Model
      * @var bool
      */
     public $timestamps = false;
+
 }
