@@ -26,6 +26,9 @@ class BitzProvider extends FounderProvider
         }
 
         foreach ($response->data as $currency => $value) {
+            if(!$this->validate(strtoupper(str_replace("_", "/", $currency)))){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->buy);
             $ticker->setBid($value->sell);

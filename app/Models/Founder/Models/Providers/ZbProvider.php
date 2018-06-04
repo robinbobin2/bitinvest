@@ -24,6 +24,9 @@ class ZbProvider extends FounderProvider
 
         foreach ($result as $currency => $supplierTicker) {
             $supplierTicker = $supplierTicker->ticker;
+            if(!$this->validate(strtoupper(str_replace("_", "/", $currency)))){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->sell);
             $ticker->setBid($supplierTicker->buy);

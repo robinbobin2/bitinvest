@@ -46,6 +46,9 @@ class CryptopiaProvider extends FounderProvider
         }
 
         foreach ($response->Data as $value) {
+            if(!$this->validate($value->Label)){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->AskPrice);
             $ticker->setBid($value->BidPrice);

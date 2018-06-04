@@ -50,7 +50,9 @@ class BCexProvider extends FounderProvider
                 continue;
             }
             $value = $value->data;
-
+            if(!$this->validate($currency)){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->buy);
             $ticker->setBid($value->sell);

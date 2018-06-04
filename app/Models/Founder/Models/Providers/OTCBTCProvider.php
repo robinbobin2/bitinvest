@@ -69,7 +69,9 @@ class OTCBTCProvider extends FounderProvider
         }
         foreach ($response as $currency => $supplierTicker){
             $supplierTicker = $supplierTicker->ticker;
-
+            if(!$this->validate($currency)){
+                continue;
+            }
             if($this->getCurrency($currency) == "BTC/USDT"){
                 $ticker = new TickerEntity();
                 $ticker->setAsk($supplierTicker->buy);

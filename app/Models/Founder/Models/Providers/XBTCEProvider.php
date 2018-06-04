@@ -46,6 +46,9 @@ class XBTCEProvider extends FounderProvider
         }
 
         foreach ($response->Data as $value) {
+            if(!$this->validate(substr($value->Symbol, 0,3) . "/" . substr($value->Symbol, 3))){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->BestAsk);
             $ticker->setBid($value->BestBid);
