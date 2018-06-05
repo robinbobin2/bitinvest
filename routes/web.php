@@ -156,6 +156,7 @@ Route::get('/bit/', "BitController@index");
 Route::get('/bit/exchange/{id}', "BitController@exchange");
 Route::get('/bit/pair', "BitController@pair");
 Route::get('/bit/pair', "BitController@pair");
+Route::get('/bit/currencyVolumes', "BitController@currencyVolumes");
 Route::get('/bit/volumes', "BitController@exchangesVolume");
 Route::get('/bit/info', "BitController@info");
 Route::get('/bit/pair/name', "BitController@pairByExchange");

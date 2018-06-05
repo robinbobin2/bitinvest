@@ -68,14 +68,15 @@ class ExchangeRate extends Model
 
     public function save(array $options = [])
     {
-        if(!$this->validate()){
+        if (!$this->validate()) {
             return false;
         }
         return parent::save($options);
     }
 
-    public function validate(){
-        foreach ($this->currencies as $validCurrency){
+    public function validate()
+    {
+        foreach ($this->currencies as $validCurrency) {
             $pos = strpos($this->currency, $validCurrency);
             if ($pos !== false) {
                 return true;

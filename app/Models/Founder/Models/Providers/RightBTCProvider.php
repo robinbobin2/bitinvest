@@ -47,10 +47,10 @@ class RightBTCProvider extends FounderProvider
 
         foreach ($response->result as $value) {
             $ticker = new TickerEntity();
-            $ticker->setAsk($value->buy);
-            $ticker->setBid($value->sell);
-            $ticker->setVolume($value->vol);
-            $ticker->setValue($value->last);
+            $ticker->setAsk($value->buy/100000000);
+            $ticker->setBid($value->sell/100000000);
+            $ticker->setVolume($value->vol/100000000);
+            $ticker->setValue($value->last/100000000);
             $ticker->setExchangeId($this->getExchangeId());
             $ticker->setCurrency(substr($value->market, 0,3) . "/" . substr($value->market, 3));
             $result[] = $ticker;

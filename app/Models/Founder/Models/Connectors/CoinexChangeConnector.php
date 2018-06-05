@@ -655,7 +655,7 @@ class CoinexChangeConnector extends FounderConnector
             'change' => $this->safe_float($ticker, 'Change'),
             'percentage' => null,
             'average' => null,
-            'baseVolume' => $this->safe_float($ticker, 'Volume') / $last,
+            'baseVolume' => $last ? $this->safe_float($ticker, 'Volume') / $last : null,
             'quoteVolume' => $this->safe_float($ticker, 'Volume'),
             'info' => $ticker,
         );
