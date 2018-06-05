@@ -14,6 +14,7 @@ class AddExchangeToCryptoStatsTableTable=cryptoStats extends Migration
     public function up()
     {
         //
+        $table->string('exchange_graph')->default('COINBASE');
     }
 
     /**
@@ -24,5 +25,6 @@ class AddExchangeToCryptoStatsTableTable=cryptoStats extends Migration
     public function down()
     {
         //
+        $table->dropColumn('exchange_path');
     }
 }

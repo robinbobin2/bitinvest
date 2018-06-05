@@ -9,7 +9,7 @@ class Banner extends Model
     //
     protected $fillable = [
 
-    	'file'
+    	'file', 'start_date', 'end_date'
 
     ];
 
