@@ -15,6 +15,7 @@ class AddExchangeFieldToCryptoStatsTable extends Migration
     {
         Schema::table('crypto_stats', function (Blueprint $table) {
             //
+            $table->string('exchange')->default('COINBASE');
         });
     }
 
@@ -27,6 +28,7 @@ class AddExchangeFieldToCryptoStatsTable extends Migration
     {
         Schema::table('crypto_stats', function (Blueprint $table) {
             //
+            $table->dropColumn('exchange');
         });
     }
 }

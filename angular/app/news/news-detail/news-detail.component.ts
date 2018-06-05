@@ -101,7 +101,7 @@ relatedNews = [];
                       .subscribe(posts => {
 
                           this.relatedNews.push(...posts['news']);
-                          this.relatedNews = this.relatedNews.slice(0, 3);
+                          this.relatedNews = this.relatedNews.slice(0, 9);
 
                       });
 

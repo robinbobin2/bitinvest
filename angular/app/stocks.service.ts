@@ -43,6 +43,10 @@ export class StocksService {
   public getVolumes() {
     return this.http.get<any>('/bit/volumes').publishReplay(1).refCount();
   }
+  public getCryptoVol() {
+
+      return this.http.get<any>('/bit/currencyVolumes').publishReplay(1).refCount();
+  }
   public getExchange(name) {
     return this.http.get<any>(this.exchangePath+name).publishReplay(1).refCount();
   }

@@ -155,6 +155,7 @@ Route::get('/angular/bannersbyfrontid/{id}', "BannerController@bannersByFront");
 Route::post('/angular/vote', "AngularController@vote");
 Route::post('/angular/incrementView', "AngularController@viewCount");
 
+Route::get('/angular/similarnews', "NewsViewController@similarNews");
 // Route::get('/crypto', "AngularController@serve");
 
 Route::get('/crypto/{symbol}', "AngularController@crypto");

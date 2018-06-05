@@ -4,11 +4,11 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class SimilarPostsService {
 
-  constructor(private http:HttpClient) { }
+    constructor(private http:HttpClient) { }
 
-  getSimilarPosts(id, type) {
+    getSimilarPosts(id, type) {
 
-     return this.http.get(type+'/'+id)
-  }
+        return this.http.get(type+'/'+id)
+    }
 
 }
