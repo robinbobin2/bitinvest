@@ -6,20 +6,28 @@
 <h1>Создать баннер</h1>
 
 <div class="col-lg-12">
-  <form enctype="multipart/form-data" method="post" class="col-lg-10" action="{{route('mining.store')}}" >
+  <form enctype="multipart/form-data" method="post" class="col-lg-10" action="{{route('banner.store')}}" >
 	<div class="row"> 
     
 
 {{csrf_field()}}
 <div class="form-group">
 <label for="name">Название</label> 
-<input type="text" value="" name="name" id="name" class="form-control">
+<input type="file" name="file" id="file" class="form-control">
 </div>
 <div class="form-group">
-                            <label for="cat_id" class="control-label">Категория</label>
+<label for="start_date">Дата начала</label> 
+<input type="date" name="start_date" value="{{date()}}" id="start_date" class="form-control">
+</div>
+<div class="form-group">
+<label for="start_date">Дата окончания</label> 
+<input type="date" name="start_date" id="start_date" class="form-control">
+</div>
+<div class="form-group">
+                            <label for="cat_id" class="control-label">Где отображать</label>
 
                                     @foreach($front as $item)
-                                       <label> <input type="checkbox" name="{{$item->id}}"> {{$item->name}}</label>
+                                       <label> <input type="checkbox" name="{{$item->id}}"> {{$item->name}}</label><br>
                                     @endforeach
 </div>
 

@@ -32,6 +32,10 @@ Route::get('profile/',  ['as' => 'profile.index', 'uses' => 'ProfileController@i
 
 Route::get('admin/banners',  ['as' => 'banner.index', 'uses' => 'BannerController@index']);
 Route::get('admin/banners/create',  ['as' => 'banner.create', 'uses' => 'BannerController@create']);
+Route::get('admin/banners/edit',  ['as' => 'banner.edit', 'uses' => 'BannerController@edit']);
+Route::get('angular/banners',  ['as' => 'banner.banners', 'uses' => 'BannerController@banners']);
+Route::post('admin/banners/update',  ['as' => 'banner.update', 'uses' => 'BannerController@update']);
+Route::post('admin/banners/store',  ['as' => 'banner.store', 'uses' => 'BannerController@store']);
 // Route::get('profile/{user}',  ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 Route::get('users/raw', function() {
 	return User::all();
