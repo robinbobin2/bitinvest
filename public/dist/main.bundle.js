@@ -6296,7 +6296,6 @@ var NewsDetailComponent = (function () {
                 });
                 var _a;
             });
-            _this.viewService.incrementView('news', _this.id).subscribe();
         });
         this.router.events.subscribe(function (evt) {
             if (!(evt instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */])) {
@@ -6358,6 +6357,7 @@ var NewsDetailComponent = (function () {
         form.reset();
     };
     NewsDetailComponent.prototype.ngAfterViewInit = function () {
+        this.viewService.incrementView('news', this.id).subscribe();
     };
     return NewsDetailComponent;
 }());

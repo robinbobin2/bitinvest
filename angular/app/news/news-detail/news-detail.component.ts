@@ -97,7 +97,6 @@ relatedNews = [];
                           }
                       }
                   }
-
                   this.similarPosts.getSimilarPosts(this.news.cat_id, 'postsbycat')
                       .subscribe(posts => {
 
@@ -105,10 +104,11 @@ relatedNews = [];
                           this.relatedNews = this.relatedNews.slice(0, 3);
 
                       });
+
               });
 
 
-              this.viewService.incrementView('news', this.id).subscribe()
+
           });
     this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
@@ -183,6 +183,6 @@ relatedNews = [];
   }
 
   ngAfterViewInit() {
-
+      this.viewService.incrementView('news', this.id).subscribe()
   }
 }
