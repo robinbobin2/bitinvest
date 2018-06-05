@@ -7,7 +7,7 @@
                 <div class="info info-top">
                     <div class="left-block">
                         <a *ngIf="news?.category" [routerLink]="['/news/category', news?.cat_id]" class="news-btn">{{news.category}}</a>
-                        <span class="date">{{news.created_at}}</span>
+                        <span class="date">{{news?.created_at}}</span>
                     </div>
                     <div class="right-block">
                         <a href="#" class="comments" *ngIf="commentcount > 0"><img src="img/comment.svg" alt="">{{commentcount}}</a>
