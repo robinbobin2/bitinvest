@@ -41,6 +41,8 @@ banner: any;
   ngOnInit() {
       this.bannerService.getBannersById(2).subscribe(res => {
           this.banner = res
+          console.log(this.banner)
+          console.log(res)
       })
   }
   loadCat(id) {
