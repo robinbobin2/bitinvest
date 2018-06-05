@@ -60,6 +60,13 @@ relatedNews = [];
 }
 
   ngOnInit() {
+      this.user = {
+          id:0,
+          name: '',
+          email:'',
+          photo_id: 0,
+          role_id: 0
+      }
       this.route.params.subscribe(
           (params: Params) => {
               this.id = params['id'];
