@@ -1,11 +1,12 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class StocksService {
-
-    bit:any;
+    bit:Subject<any> = new BehaviorSubject<any>("");
+    bit$ = this.bit.asObservable();
     cryptoData:any;
   constructor(private http:HttpClient) {
 
@@ -31,11 +32,9 @@ export class StocksService {
     })
   }
 
-  public setBit(bit) {
-    this.bit = bit;
-  }
-  public getBit(){
-      return this.bit;
+  public setBit(res) {
+      this.bit.next(res);
+
   }
 
   public getExchanges() {

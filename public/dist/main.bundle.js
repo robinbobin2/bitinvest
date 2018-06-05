@@ -663,8 +663,13 @@ var AppComponent = (function () {
         this.cryptoData = __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["a" /* Observable */].interval(1000).concatMap(function () {
             return _this.stockService.getCrypto();
         })
-            .subscribe();
-        console.log(this.stockService.getBit());
+            .subscribe(function (result) {
+            _this.stockService.setBit(result);
+        });
+        this.stockService.bit$.subscribe(function (n) {
+            _this.bitres = n;
+            console.log(_this.bitres);
+        });
         this.auth
             .getUser()
             .subscribe(function (response) {
@@ -8214,6 +8219,7 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StocksService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__("./node_modules/rxjs/_esm5/BehaviorSubject.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8225,9 +8231,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var StocksService = (function () {
     function StocksService(http) {
         this.http = http;
+        this.bit = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["a" /* BehaviorSubject */]("");
+        this.bit$ = this.bit.asObservable();
         this.path = '/bit/info';
         this.bitPath = '/bit';
         this.exchangePath = '/angular/exchange/';
@@ -8243,11 +8252,8 @@ var StocksService = (function () {
             return res;
         });
     };
-    StocksService.prototype.setBit = function (bit) {
-        this.bit = bit;
-    };
-    StocksService.prototype.getBit = function () {
-        return this.bit;
+    StocksService.prototype.setBit = function (res) {
+        this.bit.next(res);
     };
     StocksService.prototype.getExchanges = function () {
         return this.http.get('/angular/exchanges').publishReplay(1).refCount();

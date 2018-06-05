@@ -43,6 +43,7 @@ const headers = new HttpHeaders({'Content-type': 'Application/json '});
 export class AppComponent implements OnInit {
   loadAPI: Promise<any>;
   login: Login;
+    bitres: any;
   cryptoData: any;
   lostPass: LostPass;
   registration: Registration;
@@ -175,8 +176,14 @@ checkAuth() {
   ngOnInit() {
       this.cryptoData=Observable.interval(1000).concatMap(()=>
           this.stockService.getCrypto())
-          .subscribe()
-      console.log(this.stockService.getBit());
+          .subscribe(result => {
+              this.stockService.setBit(result)
+
+          })
+      this.stockService.bit$.subscribe(n => {
+          this.bitres = n;
+          console.log(this.bitres)
+      });
   	this.auth
       .getUser()
       .subscribe(
