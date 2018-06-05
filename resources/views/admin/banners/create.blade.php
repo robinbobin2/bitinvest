@@ -27,7 +27,7 @@
                             <label for="cat_id" class="control-label">Где отображать</label>
 
                                     @foreach($front as $item)
-                                       <label> <input type="checkbox" name="{{$item->id}}"> {{$item->name}}</label><br>
+                                       <label> <input type="checkbox" name="front[]" value="{{$item->id}}"> {{$item->name}}</label><br>
                                     @endforeach
 </div>
 

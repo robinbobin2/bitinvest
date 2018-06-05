@@ -27,16 +27,10 @@ class BannerController extends Controller
             $name = time(). $file->getClientOriginalName();
             $file->move('images', $name);
             $banner = Banner::create(['file'=>$name, 'start_date'=>$request->start_date, 'end_date'=>$request->end_date]);
+            $banner->frontends()->sync($request->front);
         }
-        $front = FrontEnd::all();
         return redirect('/admin/banners')
             ->with('message', 'Banner Created Successfully');
-    }
-
-    public function store()
-    {
-        $banners = Banner::all();
-        return view('admin.banners.index', compact('banners'));
     }
 
     public function destroy()
