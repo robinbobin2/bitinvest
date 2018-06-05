@@ -39,6 +39,7 @@ banner: any;
 }
 
   ngOnInit() {
+      console.log('asdasd')
       this.bannerService.getBannersById(2).subscribe(res => {
           this.banner = res
           console.log(this.banner)

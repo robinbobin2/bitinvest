@@ -2206,6 +2206,7 @@ var CloudMiningComponent = (function () {
     }
     CloudMiningComponent.prototype.ngOnInit = function () {
         var _this = this;
+        console.log('asdasd');
         this.bannerService.getBannersById(2).subscribe(function (res) {
             _this.banner = res;
             console.log(_this.banner);
