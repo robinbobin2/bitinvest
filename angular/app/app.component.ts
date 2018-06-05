@@ -182,7 +182,7 @@ checkAuth() {
           })
       this.stockService.bit$.subscribe(n => {
           this.bitres = n;
-          console.log(this.bitres)
+
       });
   	this.auth
       .getUser()
@@ -190,7 +190,6 @@ checkAuth() {
         (response) => {
           this.user = response;
           this.auth.setUser(this.user);
-          console.log(this.user);
         }
       );
 

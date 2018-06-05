@@ -668,14 +668,12 @@ var AppComponent = (function () {
         });
         this.stockService.bit$.subscribe(function (n) {
             _this.bitres = n;
-            console.log(_this.bitres);
         });
         this.auth
             .getUser()
             .subscribe(function (response) {
             _this.user = response;
             _this.auth.setUser(_this.user);
-            console.log(_this.user);
         });
         // this.user = this.auth.getUser();
     };
@@ -7974,8 +7972,7 @@ module.exports = ""
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7985,7 +7982,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -8015,71 +8011,78 @@ var StocksSidebarComponent = (function () {
     }
     StocksSidebarComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
-        this.stocksService.getCrypto()
-            .subscribe(function (response) {
-            _this.resp = response;
-            _this.data = _this.alldata.subscribe(function (response) {
-                _this.cryptoData = __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.stocksService.getCrypto(); })
-                    .map(function (response) { _this.resp = response; }).subscribe(function () {
-                    var admin = response;
-                    for (var _i = 0; _i < admin.length; ++_i) {
-                        var index = _i;
-                        var symbol = admin[index].symbol;
-                        var year = admin[index].year;
-                        var algo = admin[index].algo;
-                        _this.animtype[index] = '';
-                        if (_this.dataUsd[index]) {
-                            if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
-                                _this.dataUsd[index].diff = _this.dataUsd[index].now - _this.resp[symbol + '/USD']['now'];
-                                if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
-                                    _this.animtype[index] = 'redcolor';
-                                }
-                                else {
-                                    _this.animtype[index] = 'greencolor';
-                                }
-                            }
-                        }
-                        if (_this.dataUsd[index]) {
-                            _this.dataUsd[index].sym = symbol;
-                            _this.dataUsd[index].algo = algo;
-                            _this.dataUsd[index].year = year;
-                            _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
-                            _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
-                            _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
-                            _this.dataUsd[index].max = _this.resp[symbol + '/USD']['max'];
-                            _this.dataUsd[index].value = _this.resp[symbol + '/USD']['value'];
-                            _this.dataUsd[index].day = _this.resp[symbol + "/USD"]['day'];
-                            _this.dataUsd[index].week = _this.resp[symbol + "/USD"]['week'];
-                            _this.dataUsd[index].month = _this.resp[symbol + "/USD"]['month'];
-                            _this.dataUsd[index].changePercent = _this.resp[symbol + "/USD"]['changePercent'];
-                            _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
-                            _this.dataUsd[index].percentDay = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day);
-                            _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
-                            _this.dataUsd[index].percentMonth = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].month);
-                        }
-                        else {
-                            _this.dataUsd[index] = {
-                                sym: '',
-                                last: 0,
-                                now: 0,
-                                min: 0,
-                                max: 0,
-                                value: 0,
-                                year: 0,
-                                algo: '',
-                                week: 0,
-                                day: 0,
-                                month: 0
-                            };
-                        }
-                        // console.log(this.dataUsd);
-                        _this.load = false;
-                        localStorage.removeItem('data');
-                        localStorage.setItem('data', JSON.stringify(_this.dataUsd));
-                    }
-                });
-            });
+        this.stocksService.bit$.subscribe(function (n) {
+            _this.dataUsd = n;
         });
+        //   this.stocksService.getCrypto()
+        //   .subscribe(response => {
+        //     this.resp = response;
+        //     this.data = this.alldata.subscribe(response => {
+        //     this.cryptoData=Observable.interval(5000).concatMap(()=>this.stocksService.getCrypto())
+        //   .map((response)=>{this.resp = response}).subscribe(()=>{
+        //
+        //       let admin = response;
+        //       for (var _i = 0; _i < admin.length; ++_i) {
+        //         let index = _i;
+        //         let symbol = admin[index].symbol;
+        //         let year = admin[index].year;
+        //         let algo = admin[index].algo;
+        //
+        //         this.animtype[index] = '';
+        //         if (this.dataUsd[index]) {
+        //             if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
+        //                 this.dataUsd[index].diff = this.dataUsd[index].now - this.resp[symbol + '/USD']['now']
+        //                 if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
+        //                     this.animtype[index] = 'redcolor';
+        //                 } else {
+        //                     this.animtype[index] = 'greencolor';
+        //
+        //                 }
+        //             }
+        //         }
+        //         if(this.dataUsd[index]) {
+        //           this.dataUsd[index].sym = symbol;
+        //           this.dataUsd[index].algo = algo;
+        //           this.dataUsd[index].year = year;
+        //           this.dataUsd[index].last = this.resp[symbol+'/USD']['last'];
+        //           this.dataUsd[index].now = this.resp[symbol+'/USD']['now'];
+        //           this.dataUsd[index].min = this.resp[symbol+'/USD']['min'];
+        //           this.dataUsd[index].max = this.resp[symbol+'/USD']['max'];
+        //           this.dataUsd[index].value = this.resp[symbol+'/USD']['value'];
+        //           this.dataUsd[index].day = this.resp[symbol+"/USD"]['day'];
+        //             this.dataUsd[index].week = this.resp[symbol+"/USD"]['week'];
+        //             this.dataUsd[index].month = this.resp[symbol+"/USD"]['month'];
+        //           this.dataUsd[index].changePercent = this.resp[symbol+"/USD"]['changePercent'];
+        //         this.dataUsd[index].marketCapUsd = this.resp[symbol+"/USD"]['marketCapUsd'];
+        //
+        //             this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
+        //             this.dataUsd[index].percentWeek = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
+        //             this.dataUsd[index].percentMonth = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].month)
+        //
+        //
+        //         } else {
+        //           this.dataUsd[index] = {
+        //             sym: '',
+        //             last: 0,
+        //             now: 0,
+        //             min:0,
+        //             max: 0,
+        //             value:0,
+        //             year: 0,
+        //             algo: '',
+        //             week: 0,
+        //             day: 0,
+        //               month: 0
+        //           }
+        //         }
+        //         // console.log(this.dataUsd);
+        //         this.load = false;
+        //         localStorage.removeItem('data');
+        //         localStorage.setItem('data',JSON.stringify(this.dataUsd))
+        //       }
+        //     });
+        //   });
+        // });
     };
     StocksSidebarComponent.prototype.ngOnInit = function () {
         if (localStorage.getItem('data')) {
@@ -8103,9 +8106,8 @@ StocksSidebarComponent = __decorate([
         selector: 'app-stocks-sidebar',
         template: __webpack_require__("./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.html"),
         styles: [__webpack_require__("./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_2__stocks_service__["a" /* StocksService */]],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__stocks_service__["a" /* StocksService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__stocks_service__["a" /* StocksService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
 ], StocksSidebarComponent);
 
 var _a, _b, _c, _d;
