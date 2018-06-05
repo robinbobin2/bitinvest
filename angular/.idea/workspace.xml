@@ -41,8 +41,8 @@
       <file leaf-file-name="interview-details.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/interview/interview-details/interview-details.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="17" column="84" selection-start-line="17" selection-start-column="84" selection-end-line="17" selection-end-column="84" />
+            <state relative-caret-position="500">
+              <caret line="48" column="198" selection-start-line="48" selection-start-column="198" selection-end-line="48" selection-end-column="198" />
               <folding>
                 <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#li#0;n#ng-template#0;n#ul#0;n#div#4;n#div#0;n#!!top" expanded="true" />
@@ -105,10 +105,10 @@
       <find>news-l</find>
       <find>rating</find>
       <find>market</find>
-      <find>comment-top</find>
       <find>photo</find>
       <find>desc</find>
       <find>link-button.png</find>
+      <find>comment-top</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -484,12 +484,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="21922000" />
+      <workItem from="1527928097804" duration="22018000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179094000" />
+    <option name="totallyTimeSpent" value="179190000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -995,8 +995,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/interview/interview-details/interview-details.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="17" column="84" selection-start-line="17" selection-start-column="84" selection-end-line="17" selection-end-column="84" />
+        <state relative-caret-position="500">
+          <caret line="48" column="198" selection-start-line="48" selection-start-column="198" selection-end-line="48" selection-end-column="198" />
           <folding>
             <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#li#0;n#ng-template#0;n#ul#0;n#div#4;n#div#0;n#!!top" expanded="true" />
