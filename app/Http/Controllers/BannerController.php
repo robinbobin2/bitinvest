@@ -41,6 +41,6 @@ class BannerController extends Controller
 
     public function banners() {
         $banners = Banner::all()->withPivot('frontends')->get()->toArray();
-        return $banners
+        return $banners;
     }
 }
