@@ -11,7 +11,7 @@
                     </div>
                     <div class="right-block">
                         <a href="#" class="comments" *ngIf="commentcount > 0"><img src="img/comment.svg" alt="">{{commentcount}}</a>
-                        <span class="views" *ngIf="news.view_count > 0"><img src="img/eye.svg" alt="">{{news.view_count}}</span>
+                        <span class="views" *ngIf="news?.view_count !=undefined"><img src="img/eye.svg" alt="">{{news?.view_count}}</span>
                     </div>
                 </div>
             </div>
