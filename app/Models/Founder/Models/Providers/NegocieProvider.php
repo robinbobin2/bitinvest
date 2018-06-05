@@ -52,7 +52,7 @@ class NegocieProvider extends FounderProvider
             $ticker->setVolume($value->vol);
             $ticker->setValue($value->last);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(strtoupper(substr($currency, 0,3) . "/" . substr($currency, 3)));
+            $ticker->setCurrency($this->getCurrency($currency));
             $result[] = $ticker;
         }
 
@@ -79,5 +79,10 @@ class NegocieProvider extends FounderProvider
 
             }
         }
+    }
+
+    public function getCurrency($currency)
+    {
+        return strtoupper(substr($currency, 0,3) . "/" . substr($currency, 3));
     }
 }
