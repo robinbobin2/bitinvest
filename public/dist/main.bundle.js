@@ -1134,6 +1134,43 @@ var _a;
 
 /***/ }),
 
+/***/ "./angular/app/banner.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BannerService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var BannerService = (function () {
+    function BannerService(http) {
+        this.http = http;
+    }
+    BannerService.prototype.getBannersById = function (pageId) {
+        return this.http.get(' ebfb' + pageId);
+    };
+    return BannerService;
+}());
+BannerService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+], BannerService);
+
+var _a;
+//# sourceMappingURL=banner.service.js.map
+
+/***/ }),
+
 /***/ "./angular/app/categories/categories.component.html":
 /***/ (function(module, exports) {
 
@@ -2110,7 +2147,7 @@ var _a, _b, _c, _d, _e, _f, _g;
 /***/ "./angular/app/cloud-mining/cloud-mining.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <section class=\"mining-wrapper\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n  <!--<h2 class=\"categories-ico-title\">Категории</h2>-->\n        <ul class=\"tag-list\">\n          <li routerLinkActive=\"active\"><a routerLink=\"/cloud-mining/all\" >Все</a></li>\n          <li *ngFor=\"let category of categories\">\n          <a routerLinkActive=\"active\"\n           [routerLink]=\"['/cloud-mining/category', category.id]\" >{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n        <app-sidebar></app-sidebar>\n      </aside>\n      </div>\n  </section>"
+module.exports = "  <section class=\"mining-wrapper\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n  <!--<h2 class=\"categories-ico-title\">Категории</h2>-->\n        <ul class=\"tag-list\">\n          <li routerLinkActive=\"active\"><a routerLink=\"/cloud-mining/all\" >Все</a></li>\n          <li *ngFor=\"let category of categories\">\n          <a routerLinkActive=\"active\"\n           [routerLink]=\"['/cloud-mining/category', category.id]\" >{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n    <app-stocks-sidebar>Загрузка</app-stocks-sidebar>\n\n    <a *ngFor=\"let item of banner\" href=\"#\" class=\"banner-black\"><img src=\"{{item.file}}\" alt=\"\"></a>\n    <app-cloud-mining-top></app-cloud-mining-top>\n    <div class=\"social\">\n        <h5 class=\"titles\">Мы в соц.сетях</h5>\n        <ul>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n        </ul>\n    </div>\n    <app-top-ico></app-top-ico>\n      </aside>\n      </div>\n  </section>"
 
 /***/ }),
 
@@ -2129,6 +2166,7 @@ module.exports = ""
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__banner_service__ = __webpack_require__("./angular/app/banner.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2139,15 +2177,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
+
 
 
 var CloudMiningComponent = (function () {
-    function CloudMiningComponent(http, router, route) {
+    function CloudMiningComponent(http, router, route, bannerService) {
         var _this = this;
         this.http = http;
         this.router = router;
         this.route = route;
+        this.bannerService = bannerService;
         this.categories = [];
         var path = "/categoriesraw/6";
         var info = http.get(path);
@@ -2166,6 +2205,10 @@ var CloudMiningComponent = (function () {
         });
     }
     CloudMiningComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.bannerService.getBannersById(2).subscribe(function (res) {
+            _this.banner = res;
+        });
     };
     CloudMiningComponent.prototype.loadCat = function (id) {
         var _this = this;
@@ -2181,12 +2224,13 @@ CloudMiningComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-cloud-mining',
         template: __webpack_require__("./angular/app/cloud-mining/cloud-mining.component.html"),
-        styles: [__webpack_require__("./angular/app/cloud-mining/cloud-mining.component.scss")]
+        styles: [__webpack_require__("./angular/app/cloud-mining/cloud-mining.component.scss")],
+        providers: [__WEBPACK_IMPORTED_MODULE_3__banner_service__["a" /* BannerService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__banner_service__["a" /* BannerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__banner_service__["a" /* BannerService */]) === "function" && _d || Object])
 ], CloudMiningComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=cloud-mining.component.js.map
 
 /***/ }),

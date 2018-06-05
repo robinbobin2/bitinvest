@@ -151,6 +151,7 @@ Route::get('/angular/funds/{id}', "AngularController@funds");
 Route::get('/angular/exchanges/', "AngularController@exchanges");
 Route::get('/angular/exchange/{name}', "AngularController@exchange");
 Route::get('/angular/search', "AngularController@search");
+Route::get('/angular//angular/bannersbyfrontid/{id}', "BannerController@bannersByFront");
 Route::post('/angular/vote', "AngularController@vote");
 Route::post('/angular/incrementView', "AngularController@viewCount");
 

@@ -43,4 +43,8 @@ class BannerController extends Controller
         $banners = Banner::all()->load('frontends');
         return $banners;
     }
+    public function bannersByFront($id) {
+        $frontend = FrontEnd::findOrFail($id)->load('banners');
+        return $banners;
+    }
 }
