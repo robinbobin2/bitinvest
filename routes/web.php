@@ -31,7 +31,7 @@ Route::get('/chart',['as' => 'chart.example', 'uses' =>'ChartController@example'
 Route::get('profile/',  ['as' => 'profile.index', 'uses' => 'ProfileController@index']);
 
 Route::get('admin/banners',  ['as' => 'banner.index', 'uses' => 'BannerController@index']);
-Route::get('admin/banners/reate',  ['as' => 'banner.create', 'uses' => 'BannerController@create']);
+Route::get('admin/banners/create',  ['as' => 'banner.create', 'uses' => 'BannerController@create']);
 // Route::get('profile/{user}',  ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 Route::get('users/raw', function() {
 	return User::all();
