@@ -219,6 +219,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
 
                         this.StockService.getCryptoVol().subscribe( res => {
                             this.dataUsd[index].currencyVol = res[symbol + '/USD'];
+                            console.log(res[symbol + '/USD'])
+                            console.log(res)
                         })
                     }
 
