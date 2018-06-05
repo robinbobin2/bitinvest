@@ -2643,7 +2643,10 @@ var CryptoAllComponent = (function () {
                     localStorage.removeItem('data');
                     localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                     _this.StockService.getCryptoVol().subscribe(function (res) {
+                        console.log(res.currency);
                         if (res.currency == symbol + '/USD') {
+                            console.log('tre');
+                            console.log(res.currency);
                             _this.dataUsd[index].currencyVol == res.volume;
                         }
                     });
