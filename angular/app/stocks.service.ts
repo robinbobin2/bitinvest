@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class StocksService {
 
-    bit = new EventEmitter<any>();
+    bit:any;
     cryptoData:any;
   constructor(private http:HttpClient) {
 
@@ -26,9 +26,16 @@ export class StocksService {
 
   public getCrypto() {
   	return this.returnPath = this.http.get<any>(this.bitPath).publishReplay(1).refCount().map((res)=>{
-  	    this.bit.emit(res);
+        this.setBit(res)
   	    return res;
     })
+  }
+
+  public setBit(bit) {
+    this.bit = bit;
+  }
+  public getBit(){
+      return this.bit;
   }
 
   public getExchanges() {

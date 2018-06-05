@@ -175,9 +175,8 @@ checkAuth() {
   ngOnInit() {
       this.cryptoData=Observable.interval(1000).concatMap(()=>
           this.stockService.getCrypto())
-          .subscribe((result) => {
-              console.log(this.stockService.bit)
-          })
+          .subscribe()
+      console.log(this.stockService.getBit());
   	this.auth
       .getUser()
       .subscribe(

@@ -663,9 +663,8 @@ var AppComponent = (function () {
         this.cryptoData = __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["a" /* Observable */].interval(1000).concatMap(function () {
             return _this.stockService.getCrypto();
         })
-            .subscribe(function (result) {
-            console.log(_this.stockService.bit);
-        });
+            .subscribe();
+        console.log(this.stockService.getBit());
         this.auth
             .getUser()
             .subscribe(function (response) {
@@ -8229,7 +8228,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var StocksService = (function () {
     function StocksService(http) {
         this.http = http;
-        this.bit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.path = '/bit/info';
         this.bitPath = '/bit';
         this.exchangePath = '/angular/exchange/';
@@ -8241,9 +8239,15 @@ var StocksService = (function () {
     StocksService.prototype.getCrypto = function () {
         var _this = this;
         return this.returnPath = this.http.get(this.bitPath).publishReplay(1).refCount().map(function (res) {
-            _this.bit.emit(res);
+            _this.setBit(res);
             return res;
         });
+    };
+    StocksService.prototype.setBit = function (bit) {
+        this.bit = bit;
+    };
+    StocksService.prototype.getBit = function () {
+        return this.bit;
     };
     StocksService.prototype.getExchanges = function () {
         return this.http.get('/angular/exchanges').publishReplay(1).refCount();
