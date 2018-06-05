@@ -14,7 +14,7 @@ class FrontEnd extends Model
 
 	public function banners()
     {
-        return $this->belongsToMany('App\Banner', 'banner_frontend');
+        return $this->belongsToMany('App\Banner', 'banner_front_ends');
     }
     //
 }
