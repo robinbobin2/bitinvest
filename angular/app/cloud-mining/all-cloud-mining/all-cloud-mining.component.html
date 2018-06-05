@@ -40,8 +40,8 @@
             <input type="text" placeholder="Поиск по названию" [(ngModel)]="filteredName" name="filteredName">
           </form>
         </div>
-        <div class="select-content" (click) = "showCaret = !showCaret" (appClickOutside)="showCaret=false">
-          <div class="select-head" (click) = "showCaret = !showCaret">
+        <div class="select-content" (click) = "showCaret = true" (appClickOutside)="showCaret=false">
+          <div class="select-head" (click) = "showCaret = true">
             <p>По алфавиту</p>
             <span class="curret"></span>
           </div>
