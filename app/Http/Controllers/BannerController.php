@@ -17,7 +17,7 @@ class BannerController extends Controller
 
     public function create()
     {
-        $front = FrontEnd::all()
+        $front = FrontEnd::all();
         return view('admin.banners.create', compact('front'));
     }
 
