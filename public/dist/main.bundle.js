@@ -495,6 +495,7 @@ module.exports = " <header>\n    <div class=\"top-head\">\n      <div class=\"wr
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__search_service__ = __webpack_require__("./angular/app/search.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__ = __webpack_require__("./node_modules/rxjs/_esm5/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -504,6 +505,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -537,13 +539,14 @@ var User = (function () {
 ;
 var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
 var AppComponent = (function () {
-    function AppComponent(auth, http, router, activatedRoute, searchService) {
+    function AppComponent(auth, http, router, activatedRoute, searchService, stockService) {
         var _this = this;
         this.auth = auth;
         this.http = http;
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.searchService = searchService;
+        this.stockService = stockService;
         this.user = {
             id: 0,
             name: '',
@@ -655,6 +658,7 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
+        console.log(this.stockService.crypto);
         this.auth
             .getUser()
             .subscribe(function (response) {
@@ -671,12 +675,12 @@ AppComponent = __decorate([
         selector: 'app-root',
         template: __webpack_require__("./angular/app/app.component.html"),
         styles: [__webpack_require__("./angular/app/app.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */], __WEBPACK_IMPORTED_MODULE_6__stocks_service__["a" /* StocksService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__stocks_service__["a" /* StocksService */]) === "function" && _f || Object])
 ], AppComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -8204,6 +8208,7 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StocksService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("./node_modules/rxjs/_esm5/Observable.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8215,13 +8220,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var StocksService = (function () {
     function StocksService(http) {
+        var _this = this;
         this.http = http;
+        this.crypto = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.path = '/bit/info';
         this.bitPath = '/bit';
         this.exchangePath = '/angular/exchange/';
         this.exchangePairsPath = '/bit/pair/name?exchange=';
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["a" /* Observable */].interval(1000).concatMap(function () {
+            return _this.http.get(_this.bitPath);
+        })
+            .subscribe(function (result) {
+            _this.crypto.emit(result);
+        });
     }
     StocksService.prototype.getStocks = function (pairs) {
         return this.http.get(this.path + '?pair=' + pairs).publishReplay(1).refCount();

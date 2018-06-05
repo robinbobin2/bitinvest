@@ -3,9 +3,9 @@ import {AuthService} from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
-import { MinLengthValidator } from '@angular/forms';
 import { SearchService } from './search.service';
 import { Subject } from 'rxjs/Subject';
+import {StocksService} from "./stocks.service";
 
 export class Login {
 	email: string;
@@ -36,7 +36,7 @@ const headers = new HttpHeaders({'Content-type': 'Application/json '});
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [AuthService,SearchService]
+  providers: [AuthService,SearchService, StocksService]
 })
 
 export class AppComponent implements OnInit {
@@ -63,7 +63,8 @@ export class AppComponent implements OnInit {
   searchAll = '';
 	constructor(public auth: AuthService, private http:HttpClient, 
     private router:Router, private activatedRoute: ActivatedRoute,
-    private searchService: SearchService) {
+    private searchService: SearchService,
+                public stockService:StocksService) {
         this.router.events
             .filter(event => event instanceof NavigationEnd)
             .map(() => this.activatedRoute)
@@ -170,6 +171,7 @@ checkAuth() {
     results = undefined;
   }
   ngOnInit() {
+	   console.log( this.stockService.crypto)
   	this.auth
       .getUser()
       .subscribe(

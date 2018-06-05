@@ -1,10 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class StocksService {
 
-  constructor(private http:HttpClient) {  }
+    crypto = new EventEmitter<any>();
+    cryptoData:any;
+  constructor(private http:HttpClient) {
+      this.cryptoData=Observable.interval(1000).concatMap(()=>
+          this.http.get<any>(this.bitPath))
+          .subscribe((result) => {
+          this.crypto.emit(result)
+      })
+  }
+
   path = '/bit/info';
   bitPath = '/bit';
   exchangePath = '/angular/exchange/';
@@ -19,7 +29,7 @@ export class StocksService {
   }
 
   public getCrypto() {
-  	return this.returnPath = this.http.get<any>(this.bitPath).publishReplay(1).refCount();
+  	return this.returnPath = this.http.get<any>(this.bitPath).publishReplay(1).refCount()
   }
 
   public getExchanges() {
