@@ -2619,6 +2619,7 @@ var CryptoAllComponent = (function () {
                         _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
                         _this.dataUsd[index].percentDay = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day);
                         _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
+                        _this.dataUsd[index].currencyVol = 0;
                     }
                     else {
                         _this.dataUsd[index] = {
@@ -2636,7 +2637,8 @@ var CryptoAllComponent = (function () {
                             day: _this.resp[symbol + "/USD"]['day'],
                             marketCapUsd: _this.resp[symbol + "/USD"]['marketCapUsd'],
                             percentDay: _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day),
-                            percentWeek: _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week)
+                            percentWeek: _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week),
+                            currencyVol: 0
                         };
                     }
                     _this.load = false;
