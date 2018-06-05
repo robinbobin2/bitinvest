@@ -223,8 +223,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                             for (let it of res) {
                                 if (it.currency == symbol + '/USD') {
                                     console.log('tre');
-                                    console.log(it.currency);
-                                    this.dataUsd[index].currencyVol == it.volume
+                                    console.log(it.volume);
+                                    this.dataUsd[index].currencyVol = it.volume
                                 }
                             }
 

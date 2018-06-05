@@ -2649,8 +2649,8 @@ var CryptoAllComponent = (function () {
                             var it = res_1[_a];
                             if (it.currency == symbol + '/USD') {
                                 console.log('tre');
-                                console.log(it.currency);
-                                _this.dataUsd[index].currencyVol == it.volume;
+                                console.log(it.volume);
+                                _this.dataUsd[index].currencyVol = it.volume;
                             }
                         }
                     });
