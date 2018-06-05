@@ -1,5 +1,7 @@
 <?php
 
+use App\Banner;
+use App\FrontEnd;
 use App\Stock;
 use App\User;
 use App\UserPortfolioType;
@@ -170,8 +172,19 @@ Route::get('/profile/edit/{id}', "ProfileController@edit");
 
 // Route::get('/crypto/XRP', "AngularController@serve");
 Route::get('/read', function() {
-
-	 return UserPortfolioType::create(['name'=>'Криптовалюты']);
+	$ico = FrontEnd::create(['name'=>'Ico Проекты']);
+	$cloud = FrontEnd::create(['name'=>'Облачный майнинг']);
+	$interview = FrontEnd::create(['name'=>'Интервью']);
+	$review = FrontEnd::create(['name'=>'Обзоры']);
+	$analytics = FrontEnd::create(['name'=>'Аналитика']);
+	$news = FrontEnd::create(['name'=>'Новости']);
+	 $banner = Banner::create([
+	 	'file'=>'http://188.225.46.169/img/banner-black.jpg', 
+	 	'start_date'=>'1528192858', 
+	 	'end_date'=>'1536710400']);
+	 $banner->frontends()->sync([1,5,3,4]);
+	 $return_banner = Banner::all();
+	 return $return_banner;
 });
 
 // ENDANGULAR
