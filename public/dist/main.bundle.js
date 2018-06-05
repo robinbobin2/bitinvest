@@ -1157,7 +1157,7 @@ var BannerService = (function () {
         this.http = http;
     }
     BannerService.prototype.getBannersById = function (pageId) {
-        return this.http.get(' ebfb' + pageId);
+        return this.http.get('/angular/bannersbyfrontid/' + pageId);
     };
     return BannerService;
 }());

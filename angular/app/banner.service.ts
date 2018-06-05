@@ -10,7 +10,7 @@ export class BannerService {
 
 
   getBannersById(pageId) {
-      return this.http.get(' ebfb'+pageId)
+      return this.http.get('/angular/bannersbyfrontid/'+pageId)
   }
 
 }
