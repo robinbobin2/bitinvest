@@ -41,11 +41,11 @@
           </form>
         </div>
         <div class="select-content" (click) = "showCaret = !showCaret" (appClickOutside)="showCaret=false">
-          <div class="select-head" (click) = "showCaret = !showCaret">
+          <div class="select-head">
             <p>По алфавиту</p>
             <span class="curret"></span>
           </div>
-          <ul *ngIf="showCaret==true" class="select-body" >
+          <ul class="select-body" >
             <li><a (click)="setOrder('name', false); showCaret=false" >По алфавиту</a></li>
             <li><a (click)="setOrder('proc', true); showCaret=false" >Доход на уменьшение</a></li>
             <li><a (click)="setOrder('proc', false); showCaret=false">Доход на увеличение</a></li>
