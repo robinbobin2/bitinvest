@@ -8,7 +8,6 @@ declare const TradingView: any;
     styleUrls: ['./chart3.component.scss']
 })
 export class Chart3Component implements OnInit {
-    loadAPI: Promise<any>;
     constructor(private router:Router, private route:ActivatedRoute) { }
 
     ngOnInit() {

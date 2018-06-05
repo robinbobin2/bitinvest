@@ -15,7 +15,7 @@
                     <p> </p>
                   </div>
                 </div>
-                <div class="info info-top">
+                <div class="info info-top" style="margin-bottom: 20px; margin-top: 0">
                   <div class="left-block">
                     <a href="#" class="news-btn"> </a>
                     <span class="date">{{news?.created_at}}</span>
@@ -46,7 +46,7 @@
                         <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
                     </div>
                     
-                    <div *ngIf="user?.id != undefined && commentcount > 0" style="background: none !important; border: none !important; padding-top: 0 !important" class="comment-top">
+                    <div *ngIf="user?.id != undefined && commentcount > 0" style="background: none !important; border: none !important; padding-top: 0 !important; padding-bottom: 0; margin-bottom: 0;" class="comment-top">
                         <h3 >Комментарии ({{commentcount}})</h3>
                         <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
 

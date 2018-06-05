@@ -60,6 +60,13 @@ relatedNews = [];
 }
 
   ngOnInit() {
+      this.user = {
+          id:0,
+          name: '',
+          email:'',
+          photo_id: 0,
+          role_id: 0
+      }
       this.route.params.subscribe(
           (params: Params) => {
               this.id = params['id'];
@@ -90,7 +97,6 @@ relatedNews = [];
                           }
                       }
                   }
-
                   this.similarPosts.getSimilarPosts(this.news.cat_id, 'postsbycat')
                       .subscribe(posts => {
 
@@ -98,10 +104,11 @@ relatedNews = [];
                           this.relatedNews = this.relatedNews.slice(0, 3);
 
                       });
+
               });
 
 
-              this.viewService.incrementView('news', this.id).subscribe()
+
           });
     this.router.events.subscribe((evt) => {
             if (!(evt instanceof NavigationEnd)) {
@@ -176,6 +183,6 @@ relatedNews = [];
   }
 
   ngAfterViewInit() {
-
+      this.viewService.incrementView('news', this.id).subscribe()
   }
 }
