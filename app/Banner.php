@@ -12,6 +12,12 @@ class Banner extends Model
     	'file', 'start_date', 'end_date'
 
     ];
+    protected $uploads = '/images/';
+
+
+    public function getFileAttribute($file) {
+    	return $this->uploads.$file;
+    }
 
     public function frontends()
     {
