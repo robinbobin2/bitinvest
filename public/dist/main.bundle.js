@@ -496,6 +496,7 @@ module.exports = " <header>\n    <div class=\"top-head\">\n      <div class=\"wr
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__search_service__ = __webpack_require__("./angular/app/search.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__ = __webpack_require__("./node_modules/rxjs/_esm5/Subject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__ = __webpack_require__("./node_modules/rxjs/_esm5/Observable.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -505,6 +506,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -658,7 +660,12 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log(this.stockService.crypto);
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["a" /* Observable */].interval(1000).concatMap(function () {
+            return _this.stockService.getCrypto();
+        })
+            .subscribe(function (result) {
+            console.log(_this.stockService.bit);
+        });
         this.auth
             .getUser()
             .subscribe(function (response) {
@@ -8208,7 +8215,6 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StocksService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("./node_modules/rxjs/_esm5/Observable.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8220,28 +8226,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 var StocksService = (function () {
     function StocksService(http) {
-        var _this = this;
         this.http = http;
-        this.crypto = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.bit = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.path = '/bit/info';
         this.bitPath = '/bit';
         this.exchangePath = '/angular/exchange/';
         this.exchangePairsPath = '/bit/pair/name?exchange=';
-        this.cryptoData = __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["a" /* Observable */].interval(1000).concatMap(function () {
-            return _this.http.get(_this.bitPath);
-        })
-            .subscribe(function (result) {
-            _this.crypto.emit(result);
-        });
     }
     StocksService.prototype.getStocks = function (pairs) {
         return this.http.get(this.path + '?pair=' + pairs).publishReplay(1).refCount();
     };
     StocksService.prototype.getCrypto = function () {
-        return this.returnPath = this.http.get(this.bitPath).publishReplay(1).refCount();
+        var _this = this;
+        return this.returnPath = this.http.get(this.bitPath).publishReplay(1).refCount().map(function (res) {
+            _this.bit.emit(res);
+            return res;
+        });
     };
     StocksService.prototype.getExchanges = function () {
         return this.http.get('/angular/exchanges').publishReplay(1).refCount();

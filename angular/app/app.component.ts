@@ -6,6 +6,7 @@ import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { SearchService } from './search.service';
 import { Subject } from 'rxjs/Subject';
 import {StocksService} from "./stocks.service";
+import {Observable} from 'rxjs/Observable';
 
 export class Login {
 	email: string;
@@ -42,6 +43,7 @@ const headers = new HttpHeaders({'Content-type': 'Application/json '});
 export class AppComponent implements OnInit {
   loadAPI: Promise<any>;
   login: Login;
+  cryptoData: any;
   lostPass: LostPass;
   registration: Registration;
   user: User = {
@@ -171,7 +173,11 @@ checkAuth() {
     results = undefined;
   }
   ngOnInit() {
-	   console.log( this.stockService.crypto)
+      this.cryptoData=Observable.interval(1000).concatMap(()=>
+          this.stockService.getCrypto())
+          .subscribe((result) => {
+              console.log(this.stockService.bit)
+          })
   	this.auth
       .getUser()
       .subscribe(
