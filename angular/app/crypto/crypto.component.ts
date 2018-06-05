@@ -209,7 +209,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       localStorage.setItem(symbol+'max', JSON.stringify(this.max_value))
       })
 
-    this.stocksData = Observable.interval(1000).take(10).concatMap(()=>
+    this.stocksData = Observable.interval(2000).take(700).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USD'))
     .map(response => {
     console.log(response);
@@ -316,7 +316,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.cryptoData=Observable.interval(2000).take(10).concatMap(
+    this.cryptoData=Observable.interval(2000).take(700).concatMap(
         ()=>
             this.stocksService.getCrypto())
     .map((response)=>{
