@@ -2643,9 +2643,9 @@ var CryptoAllComponent = (function () {
                     localStorage.removeItem('data');
                     localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                     _this.StockService.getCryptoVol().subscribe(function (res) {
-                        _this.dataUsd[index].currencyVol = res[symbol + '/USD'];
-                        console.log(res[symbol + '/USD']);
-                        console.log(res);
+                        if (res.currency == symbol + '/USD') {
+                            _this.dataUsd[index].currencyVol == res.volume;
+                        }
                     });
                 };
                 for (var _i = 0; _i < admin.length; ++_i) {
