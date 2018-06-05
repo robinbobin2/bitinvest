@@ -28,13 +28,13 @@
                     </form>
                 </div>
                 <div class="comment-top" *ngIf="user.id == undefined">
-                    <h3>Комментарии ({{news.comments_count}})</h3>
+                    <h3>Комментарии ({{commentcount}})</h3>
                     <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup"
                                                                                     class="popup-link">авторизоваться</a>
                         или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
                 </div>
 
-                <div *ngIf="user.id != undefined && commentcount > 0"
+                <div *ngIf="user?.id != undefined && commentcount > 0"
                      style="background: none !important; border: none !important" class="comment-top">
                     <h3>Комментарии ({{commentcount}})</h3>
                     <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->
@@ -74,8 +74,8 @@
                         </li>
                     </ng-template>
                 </ul>
-                <a *ngIf="news.comments_count > 10 && !hide" class="show-comments">Показать все комментарии
-                    ({{news.comments_count}})</a>
+                <a *ngIf="commentcount > 10 && !hide" class="show-comments">Показать все комментарии
+                    ({{commentcount}})</a>
             </div>
             <div class="news-body ">
                 <div class="news-tab-content active comment-block">
