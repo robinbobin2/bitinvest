@@ -108,4 +108,25 @@ class BitController extends Controller
         $response = $provider->search($request);
         return json_encode($response);
     }
+
+    public function currencyVolumes()
+    {
+        return DB::select('SELECT ex.currency, sum(ex.volume * ex.value) as volume FROM (select * from exchangeRatesInfo where 
+currency IN (
+"BTC/USD",
+"ETH/USD",
+"XRP/USD",
+"BCH/USD",
+"LTC/USD",
+"ETC/USD",
+"GTC/USD",
+"QTUM/USD",
+"NEO/USD",
+"EOS/USD",
+"BCC/USD",
+"TRX/USD") and volume is not null) t 
+
+JOIN exchangeRates ex on ex.id = t.nowId
+GROUP BY ex.currency');
+    }
 }
