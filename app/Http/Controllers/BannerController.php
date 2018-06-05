@@ -41,10 +41,8 @@ class BannerController extends Controller
 
     public function banners() {
         $banners = Banner::all();
-        foreach ( $banners as $banner) {
-            foreach ($banner->frontends as $front) {
-               echo( $front );
-            }
+        foreach ($banners as $banner) {
+           echo $banners->frontends()->get();
         }
     }
 }

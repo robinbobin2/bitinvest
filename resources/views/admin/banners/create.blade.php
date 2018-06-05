@@ -19,12 +19,14 @@
 <label for="start_date">Дата начала</label> 
 <input type="date" name="start_date" value="{{date('dd.mm.yy')}}" id="start_date" class="form-control">
 </div>
+<hr>
 <div class="form-group">
 <label for="start_date">Дата окончания</label> 
 <input type="date" name="end_date" id="end_date" class="form-control">
 </div>
+<hr>
 <div class="form-group">
-                            <label for="cat_id" class="control-label">Где отображать</label>
+                           <h2>Где отображать</h2>
 
                                     @foreach($front as $item)
                                        <label> <input type="checkbox" name="front[]" value="{{$item->id}}"> {{$item->name}}</label><br>
