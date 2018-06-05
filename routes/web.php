@@ -29,6 +29,9 @@ Route::get('/chart',['as' => 'chart.example', 'uses' =>'ChartController@example'
 
 
 Route::get('profile/',  ['as' => 'profile.index', 'uses' => 'ProfileController@index']);
+
+Route::get('admin/banners',  ['as' => 'banner.index', 'uses' => 'BannerController@index']);
+Route::get('admin/banners/reate',  ['as' => 'banner.create', 'uses' => 'BannerController@create']);
 // Route::get('profile/{user}',  ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 Route::get('users/raw', function() {
 	return User::all();
@@ -183,8 +186,8 @@ Route::get('/read', function() {
 	 	'start_date'=>'1528192858', 
 	 	'end_date'=>'1536710400']);
 	 $banner->frontends()->sync([1,5,3,4]);
-	 $return_banner = Banner::all();
-	 return $return_banner;
+	 $return_banner = Banner::findOrFail(5);
+	 return $return_banner->frontends;
 });
 
 // ENDANGULAR
