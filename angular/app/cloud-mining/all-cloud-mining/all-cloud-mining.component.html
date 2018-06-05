@@ -45,7 +45,7 @@
             <p>По алфавиту</p>
             <span class="curret"></span>
           </div>
-          <ul class="select-body" >
+          <ul *ngIf="showCaret==true" class="select-body" >
             <li><a (click)="setOrder('name', false); showCaret=false" >По алфавиту</a></li>
             <li><a (click)="setOrder('proc', true); showCaret=false" >Доход на уменьшение</a></li>
             <li><a (click)="setOrder('proc', false); showCaret=false">Доход на увеличение</a></li>
