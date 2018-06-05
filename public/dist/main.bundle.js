@@ -2643,11 +2643,13 @@ var CryptoAllComponent = (function () {
                     localStorage.removeItem('data');
                     localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                     _this.StockService.getCryptoVol().subscribe(function (res) {
-                        console.log(res.currency);
-                        if (res.currency == symbol + '/USD') {
-                            console.log('tre');
-                            console.log(res.currency);
-                            _this.dataUsd[index].currencyVol == res.volume;
+                        for (var _a = 0, res_1 = res; _a < res_1.length; _a++) {
+                            var it = res_1[_a];
+                            if (it.currency == symbol + '/USD') {
+                                console.log('tre');
+                                console.log(it.currency);
+                                _this.dataUsd[index].currencyVol == it.volume;
+                            }
                         }
                     });
                 };
