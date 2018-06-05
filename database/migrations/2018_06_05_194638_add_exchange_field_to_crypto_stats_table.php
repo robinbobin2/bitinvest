@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddViewCountFieldToInterviewTable extends Migration
+class AddExchangeFieldToCryptoStatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddViewCountFieldToInterviewTable extends Migration
      */
     public function up()
     {
-        Schema::table('interviews', function (Blueprint $table) {
+        Schema::table('crypto_stats', function (Blueprint $table) {
             //
-            $table->integer('view_count')->default(0);
+            $table->string('exchange')->default('COINBASE');
         });
     }
 
@@ -26,7 +26,9 @@ class AddViewCountFieldToInterviewTable extends Migration
      */
     public function down()
     {
-        //
-        $table->dropColumn('view_count');
+        Schema::table('crypto_stats', function (Blueprint $table) {
+            //
+            $table->dropColumn('exchange');
+        });
     }
 }

@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import {BannerService} from "../banner.service";
 
 interface Categories {
   id: number;
@@ -16,12 +13,13 @@ interface Categories {
 @Component({
   selector: 'app-cloud-mining',
   templateUrl: './cloud-mining.component.html',
-  styleUrls: ['./cloud-mining.component.scss']
+  styleUrls: ['./cloud-mining.component.scss'],
+    providers: [BannerService]
 })
 export class CloudMiningComponent implements OnInit {
-
+banner: any;
    categories: Categories[] = [];
-  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute, private bannerService:BannerService) {
     let path = "/categoriesraw/6";
     const info = http.get(path);
   		info.subscribe(response => {
@@ -41,7 +39,12 @@ export class CloudMiningComponent implements OnInit {
 }
 
   ngOnInit() {
-
+      console.log('asdasd')
+      this.bannerService.getBannersById(2).subscribe(res => {
+          this.banner = res
+          console.log(this.banner)
+          console.log(res)
+      })
   }
   loadCat(id) {
   	this.router.navigate(['/posts/category', id]);

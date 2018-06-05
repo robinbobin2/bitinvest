@@ -25,6 +25,8 @@
     <input type="text" class="form-control" id="year" name="year" />
     <label for="algo">Алгоритм</label>
     <input type="text" class="form-control" id="algo" name="algo" />
+    <label for="exchange">Биржа для графика </label>
+    <input type="text" class="form-control" id="exchange" name="exchange" />
     <label for="desc">Описание</label>
     <textarea class="summernote" name="desc"></textarea>
     <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Добавить</button>

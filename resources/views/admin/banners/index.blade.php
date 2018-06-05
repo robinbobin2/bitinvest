@@ -23,16 +23,16 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($news as $n)
+                        @foreach($banners as $n)
                           <tr>
-                              <td>{{$n->title}}</td>
+                              <td><img src="{{$n->file}}" width="100" /></td>
                               <td>
-                                  <a href="{{route('interview.edit', $n->id)}}">Edit</a> | 
+                                  <a href="{{route('banner.edit', $n->id)}}">Edit</a> | 
                                   <a href="#" onclick="event.preventDefault();
                                       document.getElementById('delete-news-{{$n->id}}').submit();">
                                       Delete
                                   </a>
-                                  <form id="delete-news-{{$n->id}}" action="{{route('interview.destroy', $n->id)}}" method="POST" style="display: none;">
+                                  <form id="delete-news-{{$n->id}}" action="{{route('banner.destroy', $n->id)}}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
                                   </form>

@@ -9,13 +9,19 @@ class Banner extends Model
     //
     protected $fillable = [
 
-    	'file'
+    	'file', 'start_date', 'end_date'
 
     ];
+    protected $uploads = '/images/';
+
+
+    public function getFileAttribute($file) {
+    	return $this->uploads.$file;
+    }
 
     public function frontends()
     {
-        return $this->belongsToMany('App\FrontEnd', 'banner_frontend');
+        return $this->belongsToMany('App\FrontEnd', 'banners_front_ends');
     }
 
 }

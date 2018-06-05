@@ -192,6 +192,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                             this.dataUsd[index].marketCapUsd = this.resp[symbol + "/USD"]['marketCapUsd'];
                             this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
                             this.dataUsd[index].percentWeek = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
+                            this.dataUsd[index].currencyVol = 0
 
 
                         } else {
@@ -210,14 +211,29 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                 day: this.resp[symbol + "/USD"]['day'],
                                 marketCapUsd: this.resp[symbol + "/USD"]['marketCapUsd'],
                                 percentDay: this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day),
-                                percentWeek: this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
+                                percentWeek: this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week),
+                                currencyVol: 0
                             }
                         }
                         this.load = false;
                         localStorage.removeItem('data');
                         localStorage.setItem('data', JSON.stringify(this.dataUsd))
+
+                        this.StockService.getCryptoVol().subscribe( res => {
+                            for (let it of res) {
+                                if (it.currency == symbol + '/USD') {
+                                    console.log('tre');
+                                    console.log(it.volume);
+                                    this.dataUsd[index].currencyVol = it.volume
+                                }
+                            }
+
+
+                        })
                     }
+
                 });
+
             });
         alldata.subscribe(response => {
             this.cryptoData = Observable.interval(1000).concatMap(() => this.StockService.getCrypto())

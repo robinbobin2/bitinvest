@@ -1,10 +1,8 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {StocksService} from '../../stocks.service';
-import { Observable } from 'rxjs/Rx';
 import {Router, ActivatedRoute} from '@angular/router';
-import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
-
+import { Observable } from 'rxjs/Rx';
 export class Cripto {
   id: number;
   name:string;
@@ -17,7 +15,6 @@ export class Cripto {
   selector: 'app-stocks-sidebar',
   templateUrl: './stocks-sidebar.component.html',
   styleUrls: ['./stocks-sidebar.component.scss'],
-  providers: [StocksService],
 })
 
 export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -41,14 +38,17 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
   alldata = this.http.get<Array<Cripto>>('/allcrypto');
   symbol = "";
   ngAfterViewInit() {
+      this.stocksService.bit$.subscribe(n => {
+          console.log(n);
 
+      });
     this.stocksService.getCrypto()
     .subscribe(response => {
       this.resp = response;
       this.data = this.alldata.subscribe(response => {
       this.cryptoData=Observable.interval(5000).concatMap(()=>this.stocksService.getCrypto())
     .map((response)=>{this.resp = response}).subscribe(()=>{
-      
+
         let admin = response;
         for (var _i = 0; _i < admin.length; ++_i) {
           let index = _i;

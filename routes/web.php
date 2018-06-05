@@ -1,5 +1,7 @@
 <?php
 
+use App\Banner;
+use App\FrontEnd;
 use App\Stock;
 use App\User;
 use App\UserPortfolioType;
@@ -27,6 +29,14 @@ Route::get('/chart',['as' => 'chart.example', 'uses' =>'ChartController@example'
 
 
 Route::get('profile/',  ['as' => 'profile.index', 'uses' => 'ProfileController@index']);
+
+Route::get('admin/banners',  ['as' => 'banner.index', 'uses' => 'BannerController@index']);
+Route::get('admin/banners/create',  ['as' => 'banner.create', 'uses' => 'BannerController@create']);
+Route::get('admin/banners/edit',  ['as' => 'banner.edit', 'uses' => 'BannerController@edit']);
+Route::get('angular/banners',  ['as' => 'banner.banners', 'uses' => 'BannerController@banners']);
+Route::patch('admin/banners/update',  ['as' => 'banner.update', 'uses' => 'BannerController@update']);
+Route::post('admin/banners/store',  ['as' => 'banner.store', 'uses' => 'BannerController@store']);
+Route::delete('admin/banners/delete',  ['as' => 'banner.destroy', 'uses' => 'BannerController@destroy']);
 // Route::get('profile/{user}',  ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 Route::get('users/raw', function() {
 	return User::all();
@@ -141,9 +151,11 @@ Route::get('/angular/funds/{id}', "AngularController@funds");
 Route::get('/angular/exchanges/', "AngularController@exchanges");
 Route::get('/angular/exchange/{name}', "AngularController@exchange");
 Route::get('/angular/search', "AngularController@search");
+Route::get('/angular/bannersbyfrontid/{id}', "BannerController@bannersByFront");
 Route::post('/angular/vote', "AngularController@vote");
 Route::post('/angular/incrementView', "AngularController@viewCount");
 
+Route::get('/angular/similarnews', "NewsViewController@similarNews");
 // Route::get('/crypto', "AngularController@serve");
 
 Route::get('/crypto/{symbol}', "AngularController@crypto");
@@ -170,8 +182,8 @@ Route::get('/profile/edit/{id}', "ProfileController@edit");
 
 // Route::get('/crypto/XRP', "AngularController@serve");
 Route::get('/read', function() {
-
-	 return UserPortfolioType::create(['name'=>'Криптовалюты']);
+	 $return_banner = Banner::findOrFail(5);
+	 return $return_banner->frontends;
 });
 
 // ENDANGULAR

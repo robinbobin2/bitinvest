@@ -1,10 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class StocksService {
+    bit:Subject<any> = new BehaviorSubject<any>("");
+    bit$ = this.bit.asObservable();
+    cryptoData:any;
+  constructor(private http:HttpClient) {
 
-  constructor(private http:HttpClient) {  }
+  }
+
   path = '/bit/info';
   bitPath = '/bit';
   exchangePath = '/angular/exchange/';
@@ -19,7 +26,15 @@ export class StocksService {
   }
 
   public getCrypto() {
-  	return this.returnPath = this.http.get<any>(this.bitPath).publishReplay(1).refCount();
+  	return this.returnPath = this.http.get<any>(this.bitPath).publishReplay(1).refCount().map((res)=>{
+        this.setBit(res)
+  	    return res;
+    })
+  }
+
+  public setBit(res) {
+      this.bit.next(res);
+
   }
 
   public getExchanges() {
@@ -27,6 +42,10 @@ export class StocksService {
   }
   public getVolumes() {
     return this.http.get<any>('/bit/volumes').publishReplay(1).refCount();
+  }
+  public getCryptoVol() {
+
+      return this.http.get<any>('/bit/currencyVolumes').publishReplay(1).refCount();
   }
   public getExchange(name) {
     return this.http.get<any>(this.exchangePath+name).publishReplay(1).refCount();

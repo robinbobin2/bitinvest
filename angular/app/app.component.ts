@@ -3,9 +3,10 @@ import {AuthService} from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
-import { MinLengthValidator } from '@angular/forms';
 import { SearchService } from './search.service';
 import { Subject } from 'rxjs/Subject';
+import {StocksService} from "./stocks.service";
+import {Observable} from 'rxjs/Observable';
 
 export class Login {
 	email: string;
@@ -36,12 +37,14 @@ const headers = new HttpHeaders({'Content-type': 'Application/json '});
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [AuthService,SearchService]
+  providers: [AuthService,SearchService, StocksService]
 })
 
 export class AppComponent implements OnInit {
   loadAPI: Promise<any>;
   login: Login;
+    bitres: any;
+  cryptoData: any;
   lostPass: LostPass;
   registration: Registration;
   user: User = {
@@ -63,7 +66,8 @@ export class AppComponent implements OnInit {
   searchAll = '';
 	constructor(public auth: AuthService, private http:HttpClient, 
     private router:Router, private activatedRoute: ActivatedRoute,
-    private searchService: SearchService) {
+    private searchService: SearchService,
+                public stockService:StocksService) {
         this.router.events
             .filter(event => event instanceof NavigationEnd)
             .map(() => this.activatedRoute)
@@ -170,13 +174,22 @@ checkAuth() {
     results = undefined;
   }
   ngOnInit() {
+      this.cryptoData=Observable.interval(1000).concatMap(()=>
+          this.stockService.getCrypto())
+          .subscribe(result => {
+              this.stockService.setBit(result)
+
+          })
+      this.stockService.bit$.subscribe(n => {
+          this.bitres = n;
+
+      });
   	this.auth
       .getUser()
       .subscribe(
         (response) => {
           this.user = response;
           this.auth.setUser(this.user);
-          console.log(this.user);
         }
       );
 

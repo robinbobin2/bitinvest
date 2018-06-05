@@ -495,6 +495,8 @@ module.exports = " <header>\n    <div class=\"top-head\">\n      <div class=\"wr
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__search_service__ = __webpack_require__("./angular/app/search.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__ = __webpack_require__("./node_modules/rxjs/_esm5/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__ = __webpack_require__("./node_modules/rxjs/_esm5/Observable.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -504,6 +506,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -537,13 +541,14 @@ var User = (function () {
 ;
 var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
 var AppComponent = (function () {
-    function AppComponent(auth, http, router, activatedRoute, searchService) {
+    function AppComponent(auth, http, router, activatedRoute, searchService, stockService) {
         var _this = this;
         this.auth = auth;
         this.http = http;
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.searchService = searchService;
+        this.stockService = stockService;
         this.user = {
             id: 0,
             name: '',
@@ -655,12 +660,20 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["a" /* Observable */].interval(1000).concatMap(function () {
+            return _this.stockService.getCrypto();
+        })
+            .subscribe(function (result) {
+            _this.stockService.setBit(result);
+        });
+        this.stockService.bit$.subscribe(function (n) {
+            _this.bitres = n;
+        });
         this.auth
             .getUser()
             .subscribe(function (response) {
             _this.user = response;
             _this.auth.setUser(_this.user);
-            console.log(_this.user);
         });
         // this.user = this.auth.getUser();
     };
@@ -671,12 +684,12 @@ AppComponent = __decorate([
         selector: 'app-root',
         template: __webpack_require__("./angular/app/app.component.html"),
         styles: [__webpack_require__("./angular/app/app.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */], __WEBPACK_IMPORTED_MODULE_6__stocks_service__["a" /* StocksService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__search_service__["a" /* SearchService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__stocks_service__["a" /* StocksService */]) === "function" && _f || Object])
 ], AppComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -1131,6 +1144,43 @@ AuthService = __decorate([
 
 var _a;
 //# sourceMappingURL=auth.service.js.map
+
+/***/ }),
+
+/***/ "./angular/app/banner.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BannerService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var BannerService = (function () {
+    function BannerService(http) {
+        this.http = http;
+    }
+    BannerService.prototype.getBannersById = function (pageId) {
+        return this.http.get('/angular/bannersbyfrontid/' + pageId);
+    };
+    return BannerService;
+}());
+BannerService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+], BannerService);
+
+var _a;
+//# sourceMappingURL=banner.service.js.map
 
 /***/ }),
 
@@ -2110,7 +2160,7 @@ var _a, _b, _c, _d, _e, _f, _g;
 /***/ "./angular/app/cloud-mining/cloud-mining.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <section class=\"mining-wrapper\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n  <!--<h2 class=\"categories-ico-title\">Категории</h2>-->\n        <ul class=\"tag-list\">\n          <li routerLinkActive=\"active\"><a routerLink=\"/cloud-mining/all\" >Все</a></li>\n          <li *ngFor=\"let category of categories\">\n          <a routerLinkActive=\"active\"\n           [routerLink]=\"['/cloud-mining/category', category.id]\" >{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n        <app-sidebar></app-sidebar>\n      </aside>\n      </div>\n  </section>"
+module.exports = "  <section class=\"mining-wrapper\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n  <!--<h2 class=\"categories-ico-title\">Категории</h2>-->\n        <ul class=\"tag-list\">\n          <li routerLinkActive=\"active\"><a routerLink=\"/cloud-mining/all\" >Все</a></li>\n          <li *ngFor=\"let category of categories\">\n          <a routerLinkActive=\"active\"\n           [routerLink]=\"['/cloud-mining/category', category.id]\" >{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n    <app-stocks-sidebar>Загрузка</app-stocks-sidebar>\n\n    <a *ngFor=\"let item of banner?.banners\" href=\"#\" class=\"banner-black\"><img src=\"{{item.file}}\" alt=\"\" style=\"max-width: 100%;\"></a>\n    <app-cloud-mining-top></app-cloud-mining-top>\n    <div class=\"social\">\n        <h5 class=\"titles\">Мы в соц.сетях</h5>\n        <ul>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n        </ul>\n    </div>\n    <app-top-ico></app-top-ico>\n      </aside>\n      </div>\n  </section>"
 
 /***/ }),
 
@@ -2129,6 +2179,7 @@ module.exports = ""
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__banner_service__ = __webpack_require__("./angular/app/banner.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2139,15 +2190,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
+
 
 
 var CloudMiningComponent = (function () {
-    function CloudMiningComponent(http, router, route) {
+    function CloudMiningComponent(http, router, route, bannerService) {
         var _this = this;
         this.http = http;
         this.router = router;
         this.route = route;
+        this.bannerService = bannerService;
         this.categories = [];
         var path = "/categoriesraw/6";
         var info = http.get(path);
@@ -2166,6 +2218,13 @@ var CloudMiningComponent = (function () {
         });
     }
     CloudMiningComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        console.log('asdasd');
+        this.bannerService.getBannersById(2).subscribe(function (res) {
+            _this.banner = res;
+            console.log(_this.banner);
+            console.log(res);
+        });
     };
     CloudMiningComponent.prototype.loadCat = function (id) {
         var _this = this;
@@ -2181,12 +2240,13 @@ CloudMiningComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-cloud-mining',
         template: __webpack_require__("./angular/app/cloud-mining/cloud-mining.component.html"),
-        styles: [__webpack_require__("./angular/app/cloud-mining/cloud-mining.component.scss")]
+        styles: [__webpack_require__("./angular/app/cloud-mining/cloud-mining.component.scss")],
+        providers: [__WEBPACK_IMPORTED_MODULE_3__banner_service__["a" /* BannerService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__banner_service__["a" /* BannerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__banner_service__["a" /* BannerService */]) === "function" && _d || Object])
 ], CloudMiningComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=cloud-mining.component.js.map
 
 /***/ }),
@@ -2369,7 +2429,7 @@ var _a;
 /***/ "./angular/app/crypto-all/crypto-all.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\t<!--<section class=\"crypto-active\">-->\n\t\t<!--<div class=\"wrapper\">-->\n\t\t\t<!--<div class=\"select-block\">-->\n\t\t\t\t<!--<h1 class=\"table-title-big\">Криптовалюты<span>195</span><a href=\"balant-mining-filter.html\"><img src=\"img/mining-icon.png\" alt=\"\"></a></h1>-->\n\t\t\t\t<!--<div class=\"filters\">-->\n\n      <!--</div>-->\n    <!--</div>-->\n    <section class=\"crypto-active\">\n        <div class=\"wrapper\">\n            <div class=\"select-block\">\n                <h1 class=\"table-title-big\">Криптовалюты<span>195</span><a href=\"balant-mining-filter.html\"><img src=\"img/mining-icon.png\" alt=\"\"></a></h1>\n                <div class=\"crypto-select-wrap\">\n                        <!-- <div class=\"select-wrap\">\n                            <select>\n                                <option value=\"all\">Валюта: Любая</option>\n                                <option value=\"usd\">Валюта: USD</option>\n                                <option value=\"eur\">Валюта: EUR</option>\n                            </select>\n                        </div> -->\n                        <div class=\"select-wrapper1\" id=\"select-algo\">\n                            <div class=\"select\">\n                                <span class=\"text\"><span style=\"padding-top: 12px;\">{{algorithm !='' ? algorithm : 'Алгоритм: Все'}}</span></span>\n                                <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n                            </div>\n                            <ul class=\"select-items\">\n                                <li (click)=\"algorithm=''\"> <a >Алгоритм: Все</a></li>\n                                <li *ngFor=\"let data of algoFilter\" (click)=\"algorithm=data\"><a >Алгоритм: {{data}}</a></li>\n                                <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n                            </ul>\n                        </div>\n                        <div class=\"select-wrapper1\" id=\"select-age\">\n                            <div class=\"select\">\n                                <span class=\"text\"><span style=\"padding-top: 12px;\">{{age !='' ? age : 'Год: Все'}}</span></span>\n                                <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n                            </div>\n                            <ul class=\"select-items\">\n                                <li (click)=\"age=''\"> <a>Год: Все</a></li>\n                                <li *ngFor=\"let data of dataUsd\" (click)=\"age=data?.year\"><a >Год: {{data?.year}}</a></li>\n                                <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n                            </ul>\n                        </div>\n                        <div class=\"crypto-select-wrap\">\n                            <input type=\"text\" placeholder=\"Поиск по названию монеты...\" [(ngModel)]=\"filteredName\" name=\"filteredName\" value=\"\">\n                        </div>\n\n                </div>\n            </div>\n    <div class=\"table-wrap\" style=\"margin-bottom: 20px;\">\n      <table class=\"table crypto-table\">\n       <thead>\n        <tr>\n         <th width=\"4.4%\">\n          <span>#</span>\n          <img src=\"img/arr-top-table.png\" alt=\"\">\n        </th>\n        <th [class.active]=\"order === 'sym'\"\n        (click)=\"setOrder('sym')\"\n        width=\"12.9%\">\n        <span>Название</span>\n        <img src=\"img/arr-top-table.png\" alt=\"\">\n      </th>\n      <th [class.active]=\"order === 'now'\"\n      (click)=\"setOrder('now')\"\n      width=\"15%\">\n      <span>Стоимость</span>\n\n      <img src=\"img/arr-top-table.png\" alt=\"\">\n    </th>\n    <th\n            [class.active]=\"order === 'marketCapUsd'\"\n            (click)=\"setOrder('marketCapUsd')\"\n\n    width=\"15%\">\n    <span>Капитализация</span>\n    <img src=\"img/arr-top-table.png\" alt=\"\">\n  </th>\n<th [class.active]=\"order === 'value'\"\n(click)=\"setOrder('value')\"\n\nwidth=\"12.4%\">\n<span>Объем BTC (за 24 ч.)</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th \n[class.active]=\"order === 'algo'\"\n(click)=\"setOrder('algo')\"\nwidth=\"6.3%\">\n<span>Алгоритм</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th [class.active]=\"order === 'year'\"\n(click)=\"setOrder('year')\"\nwidth=\"4.7%\">\n<span>Год</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th\n        [class.active]=\"order === 'percentDay'\"\n        (click)=\"setOrder('percentDay')\"\nwidth=\"11%\">\n<span>Изм. за 24ч</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th\n        [class.active]=\"order === 'percentWeek'\"\n        (click)=\"setOrder('percentWeek')\"\nwidth=\"18.3%\">\n<span>Изм. за 7д</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n</tr>\n</thead>\n<tbody style=\"position: relative;\" *ngIf=\"load == false\">\n\n  <tr *ngFor=\"let data of dataUsd  | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index\">\n   <td>\n    <span>{{i+1}}</span>\n  </td>\n  <td>\n    <div class=\"img-wrap\" [routerLink]=\"['/crypto', data.sym]\">\n      <img *ngIf=\"data.logo\" [src]=\"'images/'+data.logo\" style=\"max-width: 40px;\" alt=\"\">\n   </div>\n   <span [routerLink]=\"['/crypto', data.sym]\">{{data.sym}}</span>\n </td>\n <td [ngStyle]=\"{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">\n  <span class=\"price\">${{data.now | number: '1.2'}}</span>\n  <span *ngIf=\"diff[i] >0 || diff[i] < 0\" [ngClass]=\"isNegative(diff[i])==true ? 'change-red' : 'change'\">(${{diff[i] | number: '1.2'}})</span>\n</td>\n<td>\n  <span class=\"capitalization\">${{data.marketCapUsd| number: '1.0-3'}}</span>\n</td>\n<td>\n  <span class=\"bargaining\">{{data.volume | number: '1.3'}}</span>\n</td>\n<td>\n  <span class=\"algorithm\">{{data?.algo}}</span>\n</td>\n<td>\n  <span class=\"year\">{{data?.year}}</span>\n</td>\n<td>\n  <span [ngClass]=\"isNegativePercent(data.now, data.day)==true ? 'change-red' : 'change-green'\">{{ countPercent(data.now, data.day) | number: '1.2'}}%</span>\n\n</td>\n<td>\n  <div class=\"difference\">\n   <span [ngClass]=\"isNegativePercent(data.now, data.week)==true ? 'change-red' : 'change-green'\">{{ countPercent(data.now, data.week) | number: '1.2'}}%</span>\n   <div class=\"buttons\">\n    <button class=\"right\" [routerLink]=\"['/crypto', data.sym]\">></button>\n       <a href=\"#login-popup\" *ngIf=\"!checkAuth()\" class=\"popup-link follow plus\" data-effect=\"mfp-zoom-in\" data-effect=\"mfp-zoom-in\">+</a>\n       <a href=\"#follow-popup\" *ngIf=\"!checkInPortfolio(data.id) && checkAuth()\" (click)=\"selectedItem = data\" class=\"plus popup-link follow\" data-effect=\"mfp-zoom-in\">+</a>\n\n       <button  *ngIf=\"checkInPortfolio(data.id) && checkAuth()\"  (click)=\"removePortfolio(data.id)\" class=\"minus\" data-effect=\"mfp-zoom-in\"><img src=\"img/minus.png\" alt=\"\"></button>\n\n   </div>\n</div>\n</td>\n</tr>\n<tr class=\"hidden\">\n <td>\n  <span>122</span>\n</td>\n<td>\n  <div class=\"img-wrap\">\n   <img src=\"img/bitcoin-icon.png\" alt=\"\">\n </div>\n <span>Bitcoin (BTC)</span>\n</td>\n<td>\n  <span class=\"price\">$9,200</span>\n\n</td>\n<td>\n  <span class=\"capitalization\">$95,113,177,098</span>\n</td>\n<td>\n  ><span class=\"total\">21 000 000 000</span>\n  <span class=\"received\">890 910</span>\n</td>\n<td>\n  <span class=\"bargaining\">$95,113,177</span>\n</td>\n<td>\n  <span class=\"algorithm\">SHA-256</span>\n</td>\n<td>\n  <span class=\"year\">2009</span>\n</td>\n<td>\n  <span class=\"change-green\">+ 3,5% (+200,09)</span>\n\n</td>\n<td>\n  <div class=\"difference\">\n   <span class=\"change-red\">-2,3% (-201,11)</span>\n   <div class=\"buttons\">\n\n  </div>\n</div>\n</td>\n</tr>\n</tbody>\n</table>\n        <div style=\"width: 50px; height: 50px; margin: 40px auto;\" *ngIf=\"load == true\">\n            <img src=\"/img/load.gif\" *ngIf=\"load == true\" style=\" width: 50px; height: 50px; text-align: center\">\n        </div>\n</div>\n<!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n</div>\n</section>\n\n    <div id=\"follow-popup\" class=\"popup mfp-with-anim mfp-hide\">\n        <div class=\"popup-body\">\n            <h2>Следить за {{selectedItem?.name}}</h2>\n            <p>Выберите портфель для сохранения {{selectedItem?.name}}</p>\n            <div class=\"checkbox-list\">\n                <div class=\"checkbox-wrap\" *ngFor=\"let portfolio of getUserPortfolio; let i = index\">\n                    <input type=\"radio\" name=\"id\" [(ngModel)]=\"addPortfolio\" value=\"{{portfolio.id}}\" checked=\"checked\" id=\"{{i}}\">\n                    <label for=\"{{i}}\">\n                        <span></span>{{portfolio.name}}\n                    </label>\n                </div>\n            </div>\n            <a href=\"#\" class=\"add-portfolio\">+Добавить портфель</a>\n            <form class=\"hidden\" #f=\"ngForm\">\n                <input type=\"text\" ngModel name=\"name\" required=\"\" placeholder=\"Введите название...\">\n                <button (click)=\"createPortfolio(f)\" type=\"submit\">Добавить</button>\n            </form>\n        </div>\n        <div class=\"save-block\">\n            <a (click)=\"submitPortfolio(selectedItem?.id, 'App\\\\CryptoStat')\" class=\"save-settings\">Сохранить настройки</a>\n            <a href=\"#\" class=\"close-text\">Отменить и закрыть</a>\n        </div>\n    </div>"
+module.exports = "\t<!--<section class=\"crypto-active\">-->\n\t\t<!--<div class=\"wrapper\">-->\n\t\t\t<!--<div class=\"select-block\">-->\n\t\t\t\t<!--<h1 class=\"table-title-big\">Криптовалюты<span>195</span><a href=\"balant-mining-filter.html\"><img src=\"img/mining-icon.png\" alt=\"\"></a></h1>-->\n\t\t\t\t<!--<div class=\"filters\">-->\n\n      <!--</div>-->\n    <!--</div>-->\n    <section class=\"crypto-active\">\n        <div class=\"wrapper\">\n            <div class=\"select-block\">\n                <h1 class=\"table-title-big\">Криптовалюты<span>195</span><a href=\"balant-mining-filter.html\"><img src=\"img/mining-icon.png\" alt=\"\"></a></h1>\n                <div class=\"crypto-select-wrap\">\n                        <!-- <div class=\"select-wrap\">\n                            <select>\n                                <option value=\"all\">Валюта: Любая</option>\n                                <option value=\"usd\">Валюта: USD</option>\n                                <option value=\"eur\">Валюта: EUR</option>\n                            </select>\n                        </div> -->\n                        <div class=\"select-wrapper1\" id=\"select-algo\">\n                            <div class=\"select\">\n                                <span class=\"text\"><span style=\"padding-top: 12px;\">{{algorithm !='' ? algorithm : 'Алгоритм: Все'}}</span></span>\n                                <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n                            </div>\n                            <ul class=\"select-items\">\n                                <li (click)=\"algorithm=''\"> <a >Алгоритм: Все</a></li>\n                                <li *ngFor=\"let data of algoFilter\" (click)=\"algorithm=data\"><a >Алгоритм: {{data}}</a></li>\n                                <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n                            </ul>\n                        </div>\n                        <div class=\"select-wrapper1\" id=\"select-age\">\n                            <div class=\"select\">\n                                <span class=\"text\"><span style=\"padding-top: 12px;\">{{age !='' ? age : 'Год: Все'}}</span></span>\n                                <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n                            </div>\n                            <ul class=\"select-items\">\n                                <li (click)=\"age=''\"> <a>Год: Все</a></li>\n                                <li *ngFor=\"let data of dataUsd\" (click)=\"age=data?.year\"><a >Год: {{data?.year}}</a></li>\n                                <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n                            </ul>\n                        </div>\n                        <div class=\"crypto-select-wrap\">\n                            <input type=\"text\" placeholder=\"Поиск по названию монеты...\" [(ngModel)]=\"filteredName\" name=\"filteredName\" value=\"\">\n                        </div>\n\n                </div>\n            </div>\n    <div class=\"table-wrap\" style=\"margin-bottom: 20px;\">\n      <table class=\"table crypto-table\">\n       <thead>\n        <tr>\n         <th width=\"4.4%\">\n          <span>#</span>\n          <img src=\"img/arr-top-table.png\" alt=\"\">\n        </th>\n        <th [class.active]=\"order === 'sym'\"\n        (click)=\"setOrder('sym')\"\n        width=\"12.9%\">\n        <span>Название</span>\n        <img src=\"img/arr-top-table.png\" alt=\"\">\n      </th>\n      <th [class.active]=\"order === 'now'\"\n      (click)=\"setOrder('now')\"\n      width=\"15%\">\n      <span>Стоимость</span>\n\n      <img src=\"img/arr-top-table.png\" alt=\"\">\n    </th>\n    <th\n            [class.active]=\"order === 'marketCapUsd'\"\n            (click)=\"setOrder('marketCapUsd')\"\n\n    width=\"15%\">\n    <span>Капитализация</span>\n    <img src=\"img/arr-top-table.png\" alt=\"\">\n  </th>\n<th [class.active]=\"order === 'value'\"\n(click)=\"setOrder('value')\"\n\nwidth=\"12.4%\">\n<span>Объем в $ (за 24 ч.)</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th \n[class.active]=\"order === 'algo'\"\n(click)=\"setOrder('algo')\"\nwidth=\"6.3%\">\n<span>Алгоритм</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th [class.active]=\"order === 'year'\"\n(click)=\"setOrder('year')\"\nwidth=\"4.7%\">\n<span>Год</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th\n        [class.active]=\"order === 'percentDay'\"\n        (click)=\"setOrder('percentDay')\"\nwidth=\"11%\">\n<span>Изм. за 24ч</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th\n        [class.active]=\"order === 'percentWeek'\"\n        (click)=\"setOrder('percentWeek')\"\nwidth=\"18.3%\">\n<span>Изм. за 7д</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n</tr>\n</thead>\n<tbody style=\"position: relative;\" *ngIf=\"load == false\">\n\n  <tr *ngFor=\"let data of dataUsd  | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index\">\n   <td>\n    <span>{{i+1}}</span>\n  </td>\n  <td>\n    <div class=\"img-wrap\" [routerLink]=\"['/crypto', data.sym]\">\n      <img *ngIf=\"data.logo\" [src]=\"'images/'+data.logo\" style=\"max-width: 40px;\" alt=\"\">\n   </div>\n   <span [routerLink]=\"['/crypto', data.sym]\">{{data.sym}}</span>\n </td>\n <td [ngStyle]=\"{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">\n  <span class=\"price\">${{data.now | number: '1.2'}}</span>\n  <span *ngIf=\"diff[i] >0 || diff[i] < 0\" [ngClass]=\"isNegative(diff[i])==true ? 'change-red' : 'change'\">(${{diff[i] | number: '1.2'}})</span>\n</td>\n<td>\n  <span class=\"capitalization\">${{data.marketCapUsd| number: '1.0-3'}}</span>\n</td>\n<td>\n  <span class=\"bargaining\">${{data.currencyVol | number: '1.3'}}</span>\n</td>\n<td>\n  <span class=\"algorithm\">{{data?.algo}}</span>\n</td>\n<td>\n  <span class=\"year\">{{data?.year}}</span>\n</td>\n<td>\n  <span [ngClass]=\"isNegativePercent(data.now, data.day)==true ? 'change-red' : 'change-green'\">{{ countPercent(data.now, data.day) | number: '1.2'}}%</span>\n\n</td>\n<td>\n  <div class=\"difference\">\n   <span [ngClass]=\"isNegativePercent(data.now, data.week)==true ? 'change-red' : 'change-green'\">{{ countPercent(data.now, data.week) | number: '1.2'}}%</span>\n   <div class=\"buttons\">\n    <button class=\"right\" [routerLink]=\"['/crypto', data.sym]\">></button>\n       <a href=\"#login-popup\" *ngIf=\"!checkAuth()\" class=\"popup-link follow plus\" data-effect=\"mfp-zoom-in\" data-effect=\"mfp-zoom-in\">+</a>\n       <a href=\"#follow-popup\" *ngIf=\"!checkInPortfolio(data.id) && checkAuth()\" (click)=\"selectedItem = data\" class=\"plus popup-link follow\" data-effect=\"mfp-zoom-in\">+</a>\n\n       <button  *ngIf=\"checkInPortfolio(data.id) && checkAuth()\"  (click)=\"removePortfolio(data.id)\" class=\"minus\" data-effect=\"mfp-zoom-in\"><img src=\"img/minus.png\" alt=\"\"></button>\n\n   </div>\n</div>\n</td>\n</tr>\n<tr class=\"hidden\">\n <td>\n  <span>122</span>\n</td>\n<td>\n  <div class=\"img-wrap\">\n   <img src=\"img/bitcoin-icon.png\" alt=\"\">\n </div>\n <span>Bitcoin (BTC)</span>\n</td>\n<td>\n  <span class=\"price\">$9,200</span>\n\n</td>\n<td>\n  <span class=\"capitalization\">$95,113,177,098</span>\n</td>\n<td>\n  ><span class=\"total\">21 000 000 000</span>\n  <span class=\"received\">890 910</span>\n</td>\n<td>\n  <span class=\"bargaining\">$95,113,177</span>\n</td>\n<td>\n  <span class=\"algorithm\">SHA-256</span>\n</td>\n<td>\n  <span class=\"year\">2009</span>\n</td>\n<td>\n  <span class=\"change-green\">+ 3,5% (+200,09)</span>\n\n</td>\n<td>\n  <div class=\"difference\">\n   <span class=\"change-red\">-2,3% (-201,11)</span>\n   <div class=\"buttons\">\n\n  </div>\n</div>\n</td>\n</tr>\n</tbody>\n</table>\n        <div style=\"width: 50px; height: 50px; margin: 40px auto;\" *ngIf=\"load == true\">\n            <img src=\"/img/load.gif\" *ngIf=\"load == true\" style=\" width: 50px; height: 50px; text-align: center\">\n        </div>\n</div>\n<!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n</div>\n</section>\n\n    <div id=\"follow-popup\" class=\"popup mfp-with-anim mfp-hide\">\n        <div class=\"popup-body\">\n            <h2>Следить за {{selectedItem?.name}}</h2>\n            <p>Выберите портфель для сохранения {{selectedItem?.name}}</p>\n            <div class=\"checkbox-list\">\n                <div class=\"checkbox-wrap\" *ngFor=\"let portfolio of getUserPortfolio; let i = index\">\n                    <input type=\"radio\" name=\"id\" [(ngModel)]=\"addPortfolio\" value=\"{{portfolio.id}}\" checked=\"checked\" id=\"{{i}}\">\n                    <label for=\"{{i}}\">\n                        <span></span>{{portfolio.name}}\n                    </label>\n                </div>\n            </div>\n            <a href=\"#\" class=\"add-portfolio\">+Добавить портфель</a>\n            <form class=\"hidden\" #f=\"ngForm\">\n                <input type=\"text\" ngModel name=\"name\" required=\"\" placeholder=\"Введите название...\">\n                <button (click)=\"createPortfolio(f)\" type=\"submit\">Добавить</button>\n            </form>\n        </div>\n        <div class=\"save-block\">\n            <a (click)=\"submitPortfolio(selectedItem?.id, 'App\\\\CryptoStat')\" class=\"save-settings\">Сохранить настройки</a>\n            <a href=\"#\" class=\"close-text\">Отменить и закрыть</a>\n        </div>\n    </div>"
 
 /***/ }),
 
@@ -2535,7 +2595,7 @@ var CryptoAllComponent = (function () {
             _this.resp = response;
             alldata.subscribe(function (response) {
                 var admin = response;
-                for (var _i = 0; _i < admin.length; ++_i) {
+                var _loop_1 = function () {
                     // console.log(this.admin[i].symbol);
                     var index = _i;
                     var symbol = admin[index].symbol;
@@ -2559,6 +2619,7 @@ var CryptoAllComponent = (function () {
                         _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
                         _this.dataUsd[index].percentDay = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day);
                         _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
+                        _this.dataUsd[index].currencyVol = 0;
                     }
                     else {
                         _this.dataUsd[index] = {
@@ -2576,12 +2637,26 @@ var CryptoAllComponent = (function () {
                             day: _this.resp[symbol + "/USD"]['day'],
                             marketCapUsd: _this.resp[symbol + "/USD"]['marketCapUsd'],
                             percentDay: _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day),
-                            percentWeek: _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week)
+                            percentWeek: _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week),
+                            currencyVol: 0
                         };
                     }
                     _this.load = false;
                     localStorage.removeItem('data');
                     localStorage.setItem('data', JSON.stringify(_this.dataUsd));
+                    _this.StockService.getCryptoVol().subscribe(function (res) {
+                        for (var _a = 0, res_1 = res; _a < res_1.length; _a++) {
+                            var it = res_1[_a];
+                            if (it.currency == symbol + '/USD') {
+                                console.log('tre');
+                                console.log(it.volume);
+                                _this.dataUsd[index].currencyVol = it.volume;
+                            }
+                        }
+                    });
+                };
+                for (var _i = 0; _i < admin.length; ++_i) {
+                    _loop_1();
                 }
             });
         });
@@ -2780,6 +2855,7 @@ module.exports = ""
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChartComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2791,33 +2867,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var ChartComponent = (function () {
-    function ChartComponent(router, route) {
+    function ChartComponent(router, route, http) {
         this.router = router;
         this.route = route;
+        this.http = http;
     }
     ChartComponent.prototype.ngOnInit = function () {
+        var _this = this;
         var symbol = this.route.snapshot.params['sym'];
-        setTimeout(function () {
-            new TradingView.MediumWidget({
-                "container_id": "tv-medium-widget",
-                "symbols": [
-                    [
-                        symbol,
-                        "COINBASE:" + symbol + "USD|1d"
-                    ]
-                ],
-                "greyText": "Котировки предоставлены",
-                "gridLineColor": "#e9e9ea",
-                "fontColor": "#83888D",
-                "underLineColor": "rgba(242, 242, 242, 0.19)",
-                "trendLineColor": "rgba(255, 152, 0, 1)",
-                "width": "881px",
-                "height": "361px",
-                "locale": "ru",
-                "chartOnly": true
-            });
-        }, 200);
+        var infoCryptoPath = "/allcrypto/" + symbol;
+        this.infoCrypto = this.http.get(infoCryptoPath).publishReplay(1).refCount();
+        this.infoCrypto.subscribe(function (response) {
+            _this.data = response;
+            setTimeout(function () {
+                new TradingView.MediumWidget({
+                    "container_id": "tv-medium-widget",
+                    "symbols": [
+                        [
+                            symbol,
+                            _this.data.exchange + ":" + symbol + "USD|1d"
+                        ]
+                    ],
+                    "greyText": "Котировки предоставлены",
+                    "gridLineColor": "#e9e9ea",
+                    "fontColor": "#83888D",
+                    "underLineColor": "rgba(242, 242, 242, 0.19)",
+                    "trendLineColor": "rgba(255, 152, 0, 1)",
+                    "width": "881px",
+                    "height": "361px",
+                    "locale": "ru",
+                    "chartOnly": true
+                });
+            }, 200);
+        });
     };
     return ChartComponent;
 }());
@@ -2827,10 +2911,10 @@ ChartComponent = __decorate([
         template: __webpack_require__("./angular/app/crypto/chart/chart.component.html"),
         styles: [__webpack_require__("./angular/app/crypto/chart/chart.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _c || Object])
 ], ChartComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=chart.component.js.map
 
 /***/ }),
@@ -2856,6 +2940,7 @@ module.exports = ""
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Chart2Component; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2867,29 +2952,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var Chart2Component = (function () {
-    function Chart2Component(router, route) {
+    function Chart2Component(router, route, http) {
         this.router = router;
         this.route = route;
+        this.http = http;
     }
     Chart2Component.prototype.ngOnInit = function () {
+        var _this = this;
         var symbol = this.route.snapshot.params['sym'];
-        setTimeout(function () {
-            new TradingView.widget({
-                "width": 881,
-                "height": 393,
-                "symbol": "BITSTAMP:" + symbol + "USD",
-                "interval": "D",
-                "timezone": "Etc/UTC",
-                "theme": "Light",
-                "style": "1",
-                "locale": "ru",
-                "toolbar_bg": "#f1f3f6",
-                "enable_publishing": false,
-                "allow_symbol_change": true,
-                "container_id": "tradingview_4e1cc"
-            });
-        }, 200);
+        var infoCryptoPath = "/allcrypto/" + symbol;
+        this.infoCrypto = this.http.get(infoCryptoPath).publishReplay(1).refCount();
+        this.infoCrypto.subscribe(function (response) {
+            _this.data = response;
+            setTimeout(function () {
+                new TradingView.widget({
+                    "width": 881,
+                    "height": 393,
+                    "symbol": _this.data.exchange + ":" + symbol + "USD",
+                    "interval": "D",
+                    "timezone": "Etc/UTC",
+                    "theme": "Light",
+                    "style": "1",
+                    "locale": "ru",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "allow_symbol_change": true,
+                    "container_id": "tradingview_4e1cc"
+                });
+            }, 200);
+        });
     };
     return Chart2Component;
 }());
@@ -2899,10 +2992,10 @@ Chart2Component = __decorate([
         template: __webpack_require__("./angular/app/crypto/chart2/chart2.component.html"),
         styles: [__webpack_require__("./angular/app/crypto/chart2/chart2.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _c || Object])
 ], Chart2Component);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=chart2.component.js.map
 
 /***/ }),
@@ -2928,6 +3021,7 @@ module.exports = ""
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Chart3Component; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2939,33 +3033,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var Chart3Component = (function () {
-    function Chart3Component(router, route) {
+    function Chart3Component(router, route, http) {
         this.router = router;
         this.route = route;
+        this.http = http;
     }
     Chart3Component.prototype.ngOnInit = function () {
+        var _this = this;
         var symbol = this.route.snapshot.params['sym'];
-        setTimeout(function () {
-            new TradingView.MediumWidget({
-                "container_id": "tv-medium-widget-3",
-                "symbols": [
-                    [
-                        symbol,
-                        "COINBASE:" + symbol + "USD|1d"
-                    ]
-                ],
-                "greyText": "Котировки предоставлены",
-                "gridLineColor": "#e9e9ea",
-                "fontColor": "#83888D",
-                "underLineColor": "rgba(242, 242, 242, 0.19)",
-                "trendLineColor": "rgba(255, 152, 0, 1)",
-                "width": "881px",
-                "height": "361px",
-                "locale": "ru",
-                "chartOnly": true
-            });
-        }, 200);
+        var infoCryptoPath = "/allcrypto/" + symbol;
+        this.infoCrypto = this.http.get(infoCryptoPath).publishReplay(1).refCount();
+        this.infoCrypto.subscribe(function (response) {
+            _this.data = response;
+            setTimeout(function () {
+                new TradingView.MediumWidget({
+                    "container_id": "tv-medium-widget",
+                    "symbols": [
+                        [
+                            symbol,
+                            _this.data.exchange + ":" + symbol + "USD|1d"
+                        ]
+                    ],
+                    "greyText": "Котировки предоставлены",
+                    "gridLineColor": "#e9e9ea",
+                    "fontColor": "#83888D",
+                    "underLineColor": "rgba(242, 242, 242, 0.19)",
+                    "trendLineColor": "rgba(255, 152, 0, 1)",
+                    "width": "881px",
+                    "height": "361px",
+                    "locale": "ru",
+                    "chartOnly": true
+                });
+            }, 200);
+        });
     };
     return Chart3Component;
 }());
@@ -2975,10 +3077,10 @@ Chart3Component = __decorate([
         template: __webpack_require__("./angular/app/crypto/chart3/chart3.component.html"),
         styles: [__webpack_require__("./angular/app/crypto/chart3/chart3.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _c || Object])
 ], Chart3Component);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=chart3.component.js.map
 
 /***/ }),
@@ -6291,7 +6393,7 @@ var NewsDetailComponent = (function () {
                 _this.similarPosts.getSimilarPosts(_this.news.cat_id, 'postsbycat')
                     .subscribe(function (posts) {
                     (_a = _this.relatedNews).push.apply(_a, posts['news']);
-                    _this.relatedNews = _this.relatedNews.slice(0, 3);
+                    _this.relatedNews = _this.relatedNews.slice(0, 9);
                     var _a;
                 });
                 var _a;
@@ -7912,8 +8014,8 @@ module.exports = ""
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7953,11 +8055,14 @@ var StocksSidebarComponent = (function () {
     }
     StocksSidebarComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
+        this.stocksService.bit$.subscribe(function (n) {
+            console.log(n);
+        });
         this.stocksService.getCrypto()
             .subscribe(function (response) {
             _this.resp = response;
             _this.data = _this.alldata.subscribe(function (response) {
-                _this.cryptoData = __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.stocksService.getCrypto(); })
+                _this.cryptoData = __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.stocksService.getCrypto(); })
                     .map(function (response) { _this.resp = response; }).subscribe(function () {
                     var admin = response;
                     for (var _i = 0; _i < admin.length; ++_i) {
@@ -8041,9 +8146,8 @@ StocksSidebarComponent = __decorate([
         selector: 'app-stocks-sidebar',
         template: __webpack_require__("./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.html"),
         styles: [__webpack_require__("./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_2__stocks_service__["a" /* StocksService */]],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__stocks_service__["a" /* StocksService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__stocks_service__["a" /* StocksService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object])
 ], StocksSidebarComponent);
 
 var _a, _b, _c, _d;
@@ -8157,6 +8261,7 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StocksService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__("./node_modules/rxjs/_esm5/BehaviorSubject.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8168,9 +8273,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var StocksService = (function () {
     function StocksService(http) {
         this.http = http;
+        this.bit = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["a" /* BehaviorSubject */]("");
+        this.bit$ = this.bit.asObservable();
         this.path = '/bit/info';
         this.bitPath = '/bit';
         this.exchangePath = '/angular/exchange/';
@@ -8180,13 +8288,23 @@ var StocksService = (function () {
         return this.http.get(this.path + '?pair=' + pairs).publishReplay(1).refCount();
     };
     StocksService.prototype.getCrypto = function () {
-        return this.returnPath = this.http.get(this.bitPath).publishReplay(1).refCount();
+        var _this = this;
+        return this.returnPath = this.http.get(this.bitPath).publishReplay(1).refCount().map(function (res) {
+            _this.setBit(res);
+            return res;
+        });
+    };
+    StocksService.prototype.setBit = function (res) {
+        this.bit.next(res);
     };
     StocksService.prototype.getExchanges = function () {
         return this.http.get('/angular/exchanges').publishReplay(1).refCount();
     };
     StocksService.prototype.getVolumes = function () {
         return this.http.get('/bit/volumes').publishReplay(1).refCount();
+    };
+    StocksService.prototype.getCryptoVol = function () {
+        return this.http.get('/bit/currencyVolumes').publishReplay(1).refCount();
     };
     StocksService.prototype.getExchange = function (name) {
         return this.http.get(this.exchangePath + name).publishReplay(1).refCount();
