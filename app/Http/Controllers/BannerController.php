@@ -40,7 +40,7 @@ class BannerController extends Controller
     }
 
     public function banners() {
-        $banners = Banner::all()->withPivot('frontends')->get()->toArray();
+        $banners = Banner::all()->load('frontends')->get()->toArray();
         return $banners;
     }
 }
