@@ -43,7 +43,7 @@ class BannerController extends Controller
         $banners = Banner::all();
         foreach ( $banners as $banner) {
             foreach ($banner->frontends as $front) {
-               print_r( $front );
+               echo( $front );
             }
         }
     }
