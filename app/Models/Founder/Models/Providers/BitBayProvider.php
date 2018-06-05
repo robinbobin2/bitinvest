@@ -68,15 +68,19 @@ class BitBayProvider extends FounderProvider
         if (!$response) {
             return $result;
         }
-
-        $ticker = new TickerEntity();
-        $ticker->setAsk($response->ask);
-        $ticker->setBid($response->bid);
-        $ticker->setVolume($response->volume);
-        $ticker->setValue($response->last);
-        $ticker->setExchangeId($this->getExchangeId());
-        $ticker->setCurrency("BTC/USD");
-        $result[] = $ticker;
+        foreach ($response as $currency => $supplierTicker){
+            if(!isset($supplierTicker->ask)){
+                continue;
+            }
+            $ticker = new TickerEntity();
+            $ticker->setAsk($supplierTicker->ask);
+            $ticker->setBid($supplierTicker->bid);
+            $ticker->setVolume($supplierTicker->volume);
+            $ticker->setValue($supplierTicker->last);
+            $ticker->setExchangeId($this->getExchangeId());
+            $ticker->setCurrency($currency);
+            $result[] = $ticker;
+        }
 
         return $result;
     }

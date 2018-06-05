@@ -70,7 +70,7 @@ class BitBnsProvider extends FounderProvider
             $exchange->volume = $ticker->getVolume();
             $exchange->bid = $ticker->getBid();
             $exchange->ask = $ticker->getAsk();
-            $exchange->currency = $ticker->getCurrency(ь);
+            $exchange->currency = $ticker->getCurrency();
             $exchange->exchangeId = $this->getExchangeId();
             $exchange->createTime = time();
             try {

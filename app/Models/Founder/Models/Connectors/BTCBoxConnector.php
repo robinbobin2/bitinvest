@@ -28,7 +28,7 @@ class BTCBoxConnector extends FounderConnector
 
         foreach ($this->currenciesArray as $currency) {
             $curly[$currency] = curl_init();
-            curl_setopt($curly[$currency], CURLOPT_URL, "https://www.btcbox.co.jp/api/v1/ticker?coin=" . $currency);
+            curl_setopt($curly[$currency], CURLOPT_URL, "https://www.btcbox.co.jp/api/v1/ticker?coin=$currency");
             curl_setopt($curly[$currency], CURLOPT_HEADER, 0);
             curl_setopt($curly[$currency], CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($curly[$currency], CURLOPT_TIMEOUT, 30);

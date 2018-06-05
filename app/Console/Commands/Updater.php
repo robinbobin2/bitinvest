@@ -106,6 +106,14 @@ class Updater extends \Illuminate\Console\Command
      */
     protected $description = 'Command description';
 
+    private $newExchanges = [
+        BitBayProvider::class,
+        BCexProvider::class,
+        BTCBoxProvider::class,
+        BTCTurkProvider::class,
+        NegocieProvider::class
+    ];
+
     private $suppliers = [
         BinanceProvider::class,
         PoloniexProvider::class,
@@ -195,8 +203,8 @@ class Updater extends \Illuminate\Console\Command
      */
     public function handle()
     {
-        shuffle($this->suppliers);
-        foreach ($this->suppliers as $supplier) {
+        shuffle($this->newExchanges);
+        foreach ($this->newExchanges as $supplier) {
             $supplier = new $supplier;
             $newRequest = new Request();
             $newRequest->setProvider($supplier);
