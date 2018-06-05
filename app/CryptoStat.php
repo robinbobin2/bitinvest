@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CryptoStat extends Model
 {
     //
-    protected $fillable = ['name', 'symbol', 'year', 'algo', 'desc', 'logo'];
+    protected $fillable = ['name', 'symbol', 'year', 'algo', 'desc', 'logo', 'exchange'];
     public function comments() {
         return $this->morphMany('App\Comment', 'commentable')->orderByDesc('created_at');
     }
