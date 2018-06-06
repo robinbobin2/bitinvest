@@ -82,9 +82,6 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
                           let logo = admin[index].logo;
                           let id = admin[index].id;
 
-
-                          this.diff[index] = 0;
-
                           if (this.resp[symbol + '/USD']) {
                               if (this.dataUsd[index]) {
                                   if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {

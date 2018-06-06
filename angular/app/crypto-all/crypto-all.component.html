@@ -125,7 +125,7 @@ width="18.3%">
  </td>
  <td [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">
   <span class="price">${{data?.now | number: '1.0-3'}}</span>
-  <span *ngIf="(diff[i] >0 || diff[i] < 0) && data?.now" [ngClass]="isNegative(diff[i])==true ? 'change-red' : 'change'">(${{diff[i] | number: '1.2'}})</span>
+  <span *ngIf="(diff[i] >0 || diff[i] < 0) && data?.now" [ngClass]="isNegative(diff[i])==true ? 'change-red' : 'change'">(${{diff[i] | number: '1.2-3'}})</span>
 </td>
 <td>
   <span class="capitalization">${{data?.marketCapUsd| number: '1.0-3'}}</span>
