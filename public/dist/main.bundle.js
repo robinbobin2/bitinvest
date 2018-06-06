@@ -2593,12 +2593,11 @@ var CryptoAllComponent = (function () {
             _this.StockService.getCryptoVol().debounceTime(10000).subscribe(function (volumes) {
                 _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.StockService.bit$; })
                     .subscribe(function (resp) {
-                    _this.diff = [];
                     _this.resp = resp;
                     // console.log(this.resp)
                     _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
                     _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
-                    for (var _i = 0; _i < admin.length; ++_i) {
+                    var _loop_1 = function () {
                         // console.log(this.admin[i].symbol);
                         var index = _i;
                         var symbol = admin[index].symbol;
@@ -2608,9 +2607,14 @@ var CryptoAllComponent = (function () {
                         var id = admin[index].id;
                         if (_this.dataUsd[index]) {
                             if (_this.resp[symbol + '/USD']) {
+                                _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
+                                setTimeout(function () {
+                                    _this.diff[index] = 0;
+                                }, 1800);
+                            }
+                            if (_this.resp[symbol + '/USD']) {
                                 if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
                                     _this.first_time = false;
-                                    _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
                                     if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
                                         _this.animtype[index] = '';
                                         _this.animtype[index] = 'redbg';
@@ -2667,6 +2671,9 @@ var CryptoAllComponent = (function () {
                                 _this.dataUsd[index].currencyVol = it.volume;
                             }
                         }
+                    };
+                    for (var _i = 0; _i < admin.length; ++_i) {
+                        _loop_1();
                     }
                 });
             });
