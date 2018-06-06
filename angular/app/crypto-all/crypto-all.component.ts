@@ -235,63 +235,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                 });
 
             });
-        alldata.subscribe(response => {
-            this.cryptoData = Observable.interval(1000).concatMap(() => this.StockService.getCrypto())
-                .map((response) => {
-                    this.resp = response;
-                }).subscribe(() => {
-
-                    let admin = response;
-                    this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
-                    this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
-                    for (var _i = 0; _i < admin.length; ++_i) {
-                        // console.log(this.admin[i].symbol);
-                        let index = _i;
-                        let symbol = admin[index].symbol;
-                        let year = admin[index].year;
-                        let algo = admin[index].algo;
-                        let logo = admin[index].logo;
-
-                        this.animtype[index] = '';
-                        this.diff[index] = 0;
-                        if (this.dataUsd[index]) {
-                            if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
-                                this.first_time = false;
-                                this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
-                                if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
-
-
-                                    this.animtype[index] = 'redbg';
-                                } else {
-                                    this.animtype[index] = 'greenbg';
-
-                                }
-                            }
-                        }
-                        if (this.dataUsd[index]) {
-                            this.dataUsd[index].sym = symbol;
-                            this.dataUsd[index].algo = algo;
-                            this.dataUsd[index].year = year;
-                            this.dataUsd[index].last = this.resp[symbol + '/USD']['last'];
-                            this.dataUsd[index].now = this.resp[symbol + '/USD']['now'];
-                            this.dataUsd[index].min = this.resp[symbol + '/USD']['min'];
-                            this.dataUsd[index].max = this.resp[symbol + '/USD']['max'];
-                            this.dataUsd[index].volume = this.resp[symbol + '/USD']['volume'];
-                            this.dataUsd[index].day = this.resp[symbol + "/USD"]['day'];
-                            this.dataUsd[index].week = this.resp[symbol + "/USD"]['week'];
-                            this.dataUsd[index].marketCapUsd = this.resp[symbol + "/USD"]['marketCapUsd'];
-                            this.dataUsd[index].logo = logo;
-                            this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
-                            this.dataUsd[index].percentWeek = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
-                        }
-
-                        localStorage.removeItem('data');
-                        localStorage.setItem('data', JSON.stringify(this.dataUsd))
-
-                    }
-
-                });
-        });
+        
     }
 
     isNegative(now) {
