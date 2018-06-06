@@ -17,10 +17,22 @@
       <file leaf-file-name="crypto-all.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="164" column="39" selection-start-line="164" selection-start-column="39" selection-end-line="164" selection-end-column="39" />
+            <state relative-caret-position="745">
+              <caret line="271" column="19" lean-forward="true" selection-start-line="164" selection-start-column="39" selection-end-line="271" selection-end-column="19" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/app.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="501">
+              <caret line="182" selection-start-line="182" selection-end-line="182" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,7 +66,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>news-l</find>
       <find>rating</find>
       <find>market</find>
       <find>photo</find>
@@ -84,6 +95,7 @@
       <find>getCryptoVol</find>
       <find>volume</find>
       <find>.subscrib</find>
+      <find>stock</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -137,7 +149,6 @@
         <option value="$PROJECT_DIR$/app/crypto/chart2/chart2.component.ts" />
         <option value="$PROJECT_DIR$/app/similar-posts.service.ts" />
         <option value="$PROJECT_DIR$/app/stocks.service.ts" />
-        <option value="$PROJECT_DIR$/app/app.component.ts" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.html" />
         <option value="$PROJECT_DIR$/app/news/news-detail/news-detail.component.ts" />
         <option value="$PROJECT_DIR$/app/interview/interview-details/interview-details.component.ts" />
@@ -145,6 +156,7 @@
         <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.html" />
         <option value="$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.html" />
         <option value="$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts" />
+        <option value="$PROJECT_DIR$/app/app.component.ts" />
         <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts" />
       </list>
     </option>
@@ -459,12 +471,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="40789000" />
+      <workItem from="1527928097804" duration="40886000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197961000" />
+    <option name="totallyTimeSpent" value="198058000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -809,16 +821,6 @@
     <entry file="file://$PROJECT_DIR$/app/crypto/chart/chart.component.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="149" column="8" lean-forward="true" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/app.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -953,10 +955,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="182" selection-start-line="182" selection-end-line="182" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="164" column="39" selection-start-line="164" selection-start-column="39" selection-end-line="164" selection-end-column="39" />
+        <state relative-caret-position="745">
+          <caret line="271" column="19" lean-forward="true" selection-start-line="164" selection-start-column="39" selection-end-line="271" selection-end-column="19" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
           </folding>

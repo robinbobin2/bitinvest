@@ -180,10 +180,7 @@ checkAuth() {
               this.stockService.setBit(result)
 
           })
-      this.stockService.bit$.subscribe(n => {
-          this.bitres = n;
 
-      });
   	this.auth
       .getUser()
       .subscribe(
