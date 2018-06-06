@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
 import {Router, ActivatedRoute} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -29,7 +29,7 @@ declare var $:any;
     providers: [PortfolioService],
 })
 
-export class CryptoAllComponent implements OnInit, OnDestroy {
+export class CryptoAllComponent implements AfterViewInit, OnDestroy {
     public object: Object;
     load: boolean = true;
 
@@ -135,7 +135,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         this.order = value;
     }
 
-    ngOnInit() {
+    ngAfterViewInit() {
         let portfolioUrl = '/angular/userportfolio';
         this.portfolioInfo = this.http.get<any>(portfolioUrl);
         this.portfolioInfo.subscribe(

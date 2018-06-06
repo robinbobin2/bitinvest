@@ -2561,7 +2561,7 @@ var CryptoAllComponent = (function () {
         }
         this.order = value;
     };
-    CryptoAllComponent.prototype.ngOnInit = function () {
+    CryptoAllComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
         var portfolioUrl = '/angular/userportfolio';
         this.portfolioInfo = this.http.get(portfolioUrl);
