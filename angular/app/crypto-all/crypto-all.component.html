@@ -119,7 +119,7 @@ width="18.3%">
   </td>
   <td>
     <div class="img-wrap" [routerLink]="['/crypto', data?.sym]">
-      <img *ngIf="data.logo" [src]="'images/'+data.logo" style="max-width: 40px;" alt="">
+      <img *ngIf="data?.logo" [src]="'images/'+data?.logo" style="max-width: 40px;" alt="">
    </div>
    <span [routerLink]="['/crypto', data?.sym]">{{data.sym}}</span>
  </td>
