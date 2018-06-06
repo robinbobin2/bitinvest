@@ -68,10 +68,6 @@ class CexProvider extends FounderProvider
             return $result;
         }
         foreach ($response->data as $supplierTicker){
-
-            if(!$this->validate($supplierTicker->pair)){
-                continue;
-            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->ask);
             $ticker->setBid($supplierTicker->bid);

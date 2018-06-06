@@ -70,9 +70,6 @@ class BTCBoxProvider extends FounderProvider
         $result = $this->getConnector()->search();
 
         foreach ($result as $currency => $supplierTicker){
-            if(!$this->validate(strtoupper($currency) . "/USD")){
-                continue;
-            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->sell/100);
             $ticker->setBid($supplierTicker->buy/100);
