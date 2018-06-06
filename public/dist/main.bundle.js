@@ -5958,7 +5958,7 @@ var InterviewDetailsComponent = (function () {
             }
             (_c = _this.photos).push.apply(_c, response['photos']);
             _this.similarPosts.getSimilarPosts(_this.news.cat_id, 'interviewsbycat').subscribe(function (resp) {
-                _this.similar_posts = resp;
+                _this.similar_posts = resp['news'];
                 _this.similar_posts = _this.similar_posts.slice(0, 5);
             });
             var _a, _c;
