@@ -2603,56 +2603,54 @@ var CryptoAllComponent = (function () {
                         var algo = admin[index].algo;
                         var logo = admin[index].logo;
                         var id = admin[index].id;
-                        if (_this.resp[symbol + '/USD']) {
-                            if (_this.dataUsd[index]) {
-                                if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
-                                    _this.diff[index] = 0;
-                                    _this.first_time = false;
-                                    _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
-                                    if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
-                                        _this.animtype[index] = '';
-                                        _this.animtype[index] = 'redbg';
-                                    }
-                                    else {
-                                        _this.animtype[index] = '';
-                                        _this.animtype[index] = 'greenbg';
-                                    }
+                        _this.diff[index] = 0;
+                        if (_this.dataUsd[index]) {
+                            if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
+                                _this.first_time = false;
+                                _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
+                                if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
+                                    _this.animtype[index] = '';
+                                    _this.animtype[index] = 'redbg';
                                 }
-                                _this.dataUsd[index].sym = symbol;
-                                _this.dataUsd[index].algo = algo;
-                                _this.dataUsd[index].year = year;
-                                _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
-                                _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
-                                _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
-                                _this.dataUsd[index].max = _this.resp[symbol + '/USD']['max'];
-                                _this.dataUsd[index].volume = _this.resp[symbol + '/USD']['volume'];
-                                _this.dataUsd[index].day = _this.resp[symbol + "/USD"]['day'];
-                                _this.dataUsd[index].week = _this.resp[symbol + "/USD"]['week'];
-                                _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
-                                _this.dataUsd[index].logo = logo;
-                                _this.dataUsd[index].percentDay = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day);
-                                _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
+                                else {
+                                    _this.animtype[index] = '';
+                                    _this.animtype[index] = 'greenbg';
+                                }
                             }
-                            else {
-                                _this.dataUsd[index] = {
-                                    id: id,
-                                    name: name,
-                                    sym: symbol,
-                                    last: _this.resp[symbol + '/USD']['last'],
-                                    now: _this.resp[symbol + '/USD']['now'],
-                                    min: _this.resp[symbol + '/USD']['min'],
-                                    max: _this.resp[symbol + '/USD']['max'],
-                                    volume: _this.resp[symbol + '/USD']['volume'],
-                                    year: year,
-                                    algo: algo,
-                                    week: _this.resp[symbol + "/USD"]['week'],
-                                    day: _this.resp[symbol + "/USD"]['day'],
-                                    marketCapUsd: _this.resp[symbol + "/USD"]['marketCapUsd'],
-                                    percentDay: 0,
-                                    percentWeek: 0,
-                                    currencyVol: 0
-                                };
-                            }
+                            _this.dataUsd[index].sym = symbol;
+                            _this.dataUsd[index].algo = algo;
+                            _this.dataUsd[index].year = year;
+                            _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
+                            _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
+                            _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
+                            _this.dataUsd[index].max = _this.resp[symbol + '/USD']['max'];
+                            _this.dataUsd[index].volume = _this.resp[symbol + '/USD']['volume'];
+                            _this.dataUsd[index].day = _this.resp[symbol + "/USD"]['day'];
+                            _this.dataUsd[index].week = _this.resp[symbol + "/USD"]['week'];
+                            _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
+                            _this.dataUsd[index].logo = logo;
+                            _this.dataUsd[index].percentDay = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day);
+                            _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
+                        }
+                        else {
+                            _this.dataUsd[index] = {
+                                id: id,
+                                name: name,
+                                sym: symbol,
+                                last: _this.resp[symbol + '/USD']['last'],
+                                now: _this.resp[symbol + '/USD']['now'],
+                                min: _this.resp[symbol + '/USD']['min'],
+                                max: _this.resp[symbol + '/USD']['max'],
+                                volume: _this.resp[symbol + '/USD']['volume'],
+                                year: year,
+                                algo: algo,
+                                week: _this.resp[symbol + "/USD"]['week'],
+                                day: _this.resp[symbol + "/USD"]['day'],
+                                marketCapUsd: _this.resp[symbol + "/USD"]['marketCapUsd'],
+                                percentDay: 0,
+                                percentWeek: 0,
+                                currencyVol: 0
+                            };
                         }
                         _this.load = false;
                         localStorage.removeItem('data');
@@ -7965,7 +7963,7 @@ SidebarComponent = __decorate([
 /***/ "./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"symbol == ''\" class=\"quotes\">\n          <h5 class=\"titles\">Котировки криптовалют</h5>\n          <ul>\n            <img src=\"/img/load.gif\" *ngIf=\"load==true\" style=\"display: block;\n            margin: 10px auto; width: 25px; height: 25px;\">\n              <ng-template ngFor let-item [ngForOf]=\"dataUsd\" let-i=\"index\">\n            <li *ngIf=\"i < 5\">\n              <a *ngIf=\"i < 5\" routerLink=\"/crypto/{{item.sym}}\">\n                <span *ngIf=\"i < 5\" class=\"crypto\" >{{item.sym}}</span>\n                <span *ngIf=\"i < 5\" class=\"usd\" [ngStyle]=\"{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">${{item.now | number:'1.0-3'}}</span>\n                <!--<span *ngIf=\"i < 5\" class=\"rub\" [ngStyle]=\"{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">₽{{item.now*60 | number:'1.0-1'}}</span>-->\n                  <span *ngIf=\"i < 5 && diff[i]\" class=\"change\" [ngClass]=\"diff[i] > 0 ? 'change-green' : 'change-red'\" style=\"\">(${{diff[i] | number: '1.0-6'}})</span>\n                  <span *ngIf=\"i < 5 && !diff[i]\" class=\"change\" [ngClass]=\"item.now-item.last > 0 ? 'change-green' : 'change-red'\" style=\"\">{{item.now-item.last | number:'1.0-6'}}</span>\n              </a>\n            </li>\n              </ng-template>\n          </ul>\n          <a routerLink=\"/cryptocurrency/all\" class=\"show-all\">Показать все котировки</a>\n          <!--<p class=\"updated\">Последнее обновление: 26.10.17, 12:42</p>-->\n        </div>\n<div class=\"top-crypto\">\n    <h5 class=\"titles\"><span>ТОП 5</span>криптовалют (% роста)</h5>\n    <div class=\"periods\">\n        <ul class=\"period-tabs\">\n            <li class=\"active\"><a href=\"#\">День</a></li>\n            <li><a href=\"#\">Неделя</a></li>\n            <li><a href=\"#\">Месяц</a></li>\n        </ul>\n        <div class=\"period-content\">\n            <div class=\"tab-content active\">\n                <ul>\n                    <li *ngFor=\"let item of dataUsd | orderBy: order:reverse:'case-insensitive'; let i = index\">\n                        <a *ngIf=\"i < 5\" href=\"\" class=\"name\">{{item.sym}}</a>\n                        <span *ngIf=\"i < 5\" class=\"price\"> ${{item.marketCapUsd| number: '1.0-0'}}</span>\n                        <span *ngIf=\"i < 5\" class=\"percent\">{{ item.percentDay | number: '1.0-2'}}%</span>\n                    </li>\n\n                </ul>\n            </div>\n            <div class=\"tab-content\">\n                <ul>\n                    <li *ngFor=\"let item of dataUsd | orderBy: 'percentWeek':reverse:'case-insensitive'; let i = index\">\n                        <a *ngIf=\"i < 5\" href=\"\" class=\"name\">{{item.sym}}</a>\n                        <span *ngIf=\"i < 5\" class=\"price\"> ${{item.marketCapUsd| number: '1.0-0'}}</span>\n                        <span *ngIf=\"i < 5\" class=\"percent\">{{ item.percentWeek | number: '1.0-2'}}%</span>\n                    </li>\n\n                </ul>\n            </div>\n            <div class=\"tab-content\">\n                <ul>\n                    <li *ngFor=\"let item of dataUsd | orderBy: 'percentMonth':reverse:'case-insensitive'; let i = index\">\n                        <a *ngIf=\"i < 5\" href=\"\" class=\"name\">{{item.sym}}</a>\n                        <span *ngIf=\"i < 5\" class=\"price\"> ${{item.marketCapUsd| number: '1.0-0'}}</span>\n                        <span *ngIf=\"i < 5\" class=\"percent\">{{ item.percentMonth | number: '1.0-2'}}%</span>\n                    </li>\n\n                </ul>\n            </div>\n            <div class=\"tab-content\">\n                <ul>\n                    <li>\n                        <a href=\"\" class=\"name\">Bitcoin</a>\n                        <span class=\"price\">$2829101929191</span>\n                        <span class=\"percent\">11%</span>\n                    </li>\n                    <li>\n                        <a href=\"\" class=\"name\">Ethereum</a>\n                        <span class=\"price\">$2829101929191</span>\n                        <span class=\"percent\">11%</span>\n                    </li>\n                    <li>\n                        <a href=\"\" class=\"name\">BitcoinCash</a>\n                        <span class=\"price\">$90819201</span>\n                        <span class=\"percent\">8%</span>\n                    </li>\n                    <li>\n                        <a href=\"\" class=\"name\">EthereumClassic</a>\n                        <span class=\"price\">$8790899</span>\n                        <span class=\"percent\">7,2%</span>\n                    </li>\n                    <li>\n                        <a href=\"\" class=\"name\">Ripple</a>\n                        <span class=\"price\">$2829</span>\n                        <span class=\"percent\">2%</span>\n                    </li>\n                </ul>\n            </div>\n        </div>\n    </div>\n    <a routerLink=\"/cryptocurrency/all\" class=\"details\">Подробный рейтинг</a>\n</div>"
+module.exports = "<div *ngIf=\"symbol == ''\" class=\"quotes\">\n          <h5 class=\"titles\">Котировки криптовалют</h5>\n          <ul>\n            <img src=\"/img/load.gif\" *ngIf=\"load==true\" style=\"display: block;\n            margin: 10px auto; width: 25px; height: 25px;\">\n              <ng-template ngFor let-item [ngForOf]=\"dataUsd\" let-i=\"index\">\n            <li *ngIf=\"i < 5\">\n              <a *ngIf=\"i < 5\" routerLink=\"/crypto/{{item.sym}}\">\n                <span *ngIf=\"i < 5\" class=\"crypto\" >{{item.sym}}</span>\n                <span *ngIf=\"i < 5\" class=\"usd\" [ngStyle]=\"{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">${{item.now | number:'1.0-3'}}</span>\n                <!--<span *ngIf=\"i < 5\" class=\"rub\" [ngStyle]=\"{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">₽{{item.now*60 | number:'1.0-1'}}</span>-->\n                  <span *ngIf=\"i < 5 && diff[i]\" class=\"change\" [ngClass]=\"diff[i] > 0 ? 'change-green' : 'change-red'\" style=\"\">(${{diff[i] | number: '1.2'}})</span>\n                  <span *ngIf=\"i < 5 && !diff[i]\" class=\"change\" [ngClass]=\"item.now-item.last > 0 ? 'change-green' : 'change-red'\" style=\"\">{{item.now-item.last | number:'1.0-6'}}</span>\n              </a>\n            </li>\n              </ng-template>\n          </ul>\n          <a routerLink=\"/cryptocurrency/all\" class=\"show-all\">Показать все котировки</a>\n          <!--<p class=\"updated\">Последнее обновление: 26.10.17, 12:42</p>-->\n        </div>\n<div class=\"top-crypto\">\n    <h5 class=\"titles\"><span>ТОП 5</span>криптовалют (% роста)</h5>\n    <div class=\"periods\">\n        <ul class=\"period-tabs\">\n            <li class=\"active\"><a href=\"#\">День</a></li>\n            <li><a href=\"#\">Неделя</a></li>\n            <li><a href=\"#\">Месяц</a></li>\n        </ul>\n        <div class=\"period-content\">\n            <div class=\"tab-content active\">\n                <ul>\n                    <li *ngFor=\"let item of dataUsd | orderBy: order:reverse:'case-insensitive'; let i = index\">\n                        <a *ngIf=\"i < 5\" href=\"\" class=\"name\">{{item.sym}}</a>\n                        <span *ngIf=\"i < 5\" class=\"price\"> ${{item.marketCapUsd| number: '1.0-0'}}</span>\n                        <span *ngIf=\"i < 5\" class=\"percent\">{{ item.percentDay | number: '1.0-2'}}%</span>\n                    </li>\n\n                </ul>\n            </div>\n            <div class=\"tab-content\">\n                <ul>\n                    <li *ngFor=\"let item of dataUsd | orderBy: 'percentWeek':reverse:'case-insensitive'; let i = index\">\n                        <a *ngIf=\"i < 5\" href=\"\" class=\"name\">{{item.sym}}</a>\n                        <span *ngIf=\"i < 5\" class=\"price\"> ${{item.marketCapUsd| number: '1.0-0'}}</span>\n                        <span *ngIf=\"i < 5\" class=\"percent\">{{ item.percentWeek | number: '1.0-2'}}%</span>\n                    </li>\n\n                </ul>\n            </div>\n            <div class=\"tab-content\">\n                <ul>\n                    <li *ngFor=\"let item of dataUsd | orderBy: 'percentMonth':reverse:'case-insensitive'; let i = index\">\n                        <a *ngIf=\"i < 5\" href=\"\" class=\"name\">{{item.sym}}</a>\n                        <span *ngIf=\"i < 5\" class=\"price\"> ${{item.marketCapUsd| number: '1.0-0'}}</span>\n                        <span *ngIf=\"i < 5\" class=\"percent\">{{ item.percentMonth | number: '1.0-2'}}%</span>\n                    </li>\n\n                </ul>\n            </div>\n            <div class=\"tab-content\">\n                <ul>\n                    <li>\n                        <a href=\"\" class=\"name\">Bitcoin</a>\n                        <span class=\"price\">$2829101929191</span>\n                        <span class=\"percent\">11%</span>\n                    </li>\n                    <li>\n                        <a href=\"\" class=\"name\">Ethereum</a>\n                        <span class=\"price\">$2829101929191</span>\n                        <span class=\"percent\">11%</span>\n                    </li>\n                    <li>\n                        <a href=\"\" class=\"name\">BitcoinCash</a>\n                        <span class=\"price\">$90819201</span>\n                        <span class=\"percent\">8%</span>\n                    </li>\n                    <li>\n                        <a href=\"\" class=\"name\">EthereumClassic</a>\n                        <span class=\"price\">$8790899</span>\n                        <span class=\"percent\">7,2%</span>\n                    </li>\n                    <li>\n                        <a href=\"\" class=\"name\">Ripple</a>\n                        <span class=\"price\">$2829</span>\n                        <span class=\"percent\">2%</span>\n                    </li>\n                </ul>\n            </div>\n        </div>\n    </div>\n    <a routerLink=\"/cryptocurrency/all\" class=\"details\">Подробный рейтинг</a>\n</div>"
 
 /***/ }),
 

@@ -188,14 +188,10 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                 let algo = admin[index].algo;
                                 let logo = admin[index].logo;
                                 let id = admin[index].id;
+                                this.diff[index] = 0;
 
-
-
-
-                                if (this.resp[symbol + '/USD']) {
                                     if (this.dataUsd[index]) {
                                         if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
-                                            this.diff[index] = 0;
                                             this.first_time = false;
                                             this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
                                             if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
@@ -242,7 +238,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                             currencyVol: 0
                                         }
                                     }
-                                }
+
                                 this.load = false;
                                 localStorage.removeItem('data');
                                 localStorage.setItem('data', JSON.stringify(this.dataUsd))
