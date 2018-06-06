@@ -96,6 +96,7 @@ similar_posts:any;
 
          this.similarPosts.getSimilarPosts(this.news.cat_id, 'interviewsbycat').subscribe(resp => {
              this.similar_posts = resp['news'];
+             this.similar_posts.push(...resp['main_news']);
              this.similar_posts = this.similar_posts.slice(0, 5);
          })
 

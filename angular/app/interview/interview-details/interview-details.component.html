@@ -90,7 +90,7 @@
                           <div class="interview-comments">
                               <div class="comment" *ngFor="let item of similar_posts">
                                   <div class="img-wrap">
-                                      <a [routerLink]="['/interview/item', item.id]"><img src="{{item.photo}}" alt=""></a>
+                                      <a [routerLink]="['/interview/item', item.id]"><img src="{{item?.photos[0].file}}" alt=""></a>
                                   </div>
                                   <div class="text-wrap">
                                       <a [routerLink]="['/interview/item', item.id]" class="title">{{item.title}}</a>
