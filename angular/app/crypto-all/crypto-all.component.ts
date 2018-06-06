@@ -193,9 +193,10 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                     if (this.dataUsd[index]) {
                                         if (this.resp[symbol + '/USD'])  {
                                             this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
-setTimeout(()=> {
-    this.diff[index] = 0;
-}, 1800)
+                                            console.log(this.diff[index])
+                                            setTimeout(()=> {
+                                                this.diff[index] = 0;
+                                            }, 1800)
                                         }
 
                                         if (this.resp[symbol + '/USD']) {
