@@ -232,6 +232,25 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                     currencyVol: 0
                                 }
                             }
+                        } else {
+                            this.dataUsd[index] = {
+                                id: id,
+                                name: name,
+                                sym: symbol,
+                                last: 0,
+                                now: 0,
+                                min: 0,
+                                max: 0,
+                                volume: 0,
+                                year: year,
+                                algo: algo,
+                                week: 0,
+                                day: 0,
+                                marketCapUsd: 0,
+                                percentDay: 0,
+                                percentWeek: 0,
+                                currencyVol: 0
+                            }
                         }
                         this.load = false;
                         localStorage.removeItem('data');
