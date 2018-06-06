@@ -2611,7 +2611,7 @@ var CryptoAllComponent = (function () {
                                 console.log(_this.diff[index]);
                                 setTimeout(function () {
                                     _this.diff[index] = 0;
-                                }, 1800);
+                                }, 10800);
                             }
                             if (_this.resp[symbol + '/USD']) {
                                 if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
