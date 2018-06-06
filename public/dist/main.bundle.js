@@ -703,65 +703,64 @@ var _a, _b, _c, _d, _e, _f;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ngx_infinite_scroll__ = __webpack_require__("./node_modules/ngx-infinite-scroll/modules/ngx-infinite-scroll.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser_dynamic__ = __webpack_require__("./node_modules/@angular/platform-browser-dynamic/@angular/platform-browser-dynamic.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__ = __webpack_require__("./angular/app/crypto/crypto.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__cmc_cmc_component__ = __webpack_require__("./angular/app/cmc/cmc.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__exmo_exmo_component__ = __webpack_require__("./angular/app/exmo/exmo.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__("./angular/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__news_header_header_component__ = __webpack_require__("./angular/app/news/header/header.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__news_news_component__ = __webpack_require__("./angular/app/news/news.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__news_news_detail_news_detail_component__ = __webpack_require__("./angular/app/news/news-detail/news-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__news_all_news_all_news_component__ = __webpack_require__("./angular/app/news/all-news/all-news.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__categories_categories_component__ = __webpack_require__("./angular/app/categories/categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_angular2_masonry__ = __webpack_require__("./node_modules/angular2-masonry/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__analytics_analytics_component__ = __webpack_require__("./angular/app/analytics/analytics.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__analytics_all_analytics_all_analytics_component__ = __webpack_require__("./angular/app/analytics/all-analytics/all-analytics.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__analytics_analytics_detail_analytics_detail_component__ = __webpack_require__("./angular/app/analytics/analytics-detail/analytics-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__analytics_categories_analytics_categories_component__ = __webpack_require__("./angular/app/analytics-categories/analytics-categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__interview_interview_component__ = __webpack_require__("./angular/app/interview/interview.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__interview_all_interview_all_interview_component__ = __webpack_require__("./angular/app/interview/all-interview/all-interview.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__interview_interview_details_interview_details_component__ = __webpack_require__("./angular/app/interview/interview-details/interview-details.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__interview_interview_categories_interview_categories_component__ = __webpack_require__("./angular/app/interview/interview-categories/interview-categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__review_review_component__ = __webpack_require__("./angular/app/review/review.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__review_all_review_all_review_component__ = __webpack_require__("./angular/app/review/all-review/all-review.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__review_review_detail_review_detail_component__ = __webpack_require__("./angular/app/review/review-detail/review-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__review_review_categories_review_categories_component__ = __webpack_require__("./angular/app/review/review-categories/review-categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__cloud_mining_cloud_mining_component__ = __webpack_require__("./angular/app/cloud-mining/cloud-mining.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__cloud_mining_all_cloud_mining_all_cloud_mining_component__ = __webpack_require__("./angular/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__ = __webpack_require__("./angular/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__crypto_all_crypto_all_component__ = __webpack_require__("./angular/app/crypto-all/crypto-all.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__crypto_root_crypto_root_component__ = __webpack_require__("./angular/app/crypto-root/crypto-root.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__filter_name_pipe__ = __webpack_require__("./angular/app/filter-name.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_component__ = __webpack_require__("./angular/app/ico-project/ico-project.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_all_ico_project_all_component__ = __webpack_require__("./angular/app/ico-project/ico-project-all/ico-project-all.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_detail_ico_project_detail_component__ = __webpack_require__("./angular/app/ico-project/ico-project-detail/ico-project-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__ico_project_ico_project_categories_ico_project_categories_component__ = __webpack_require__("./angular/app/ico-project/ico-project-categories/ico-project-categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__shorten_pipe_pipe__ = __webpack_require__("./angular/app/shorten-pipe.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__filter_name_active_pipe__ = __webpack_require__("./angular/app/filter-name-active.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__cloud_mining_cloud_mining_categories_cloud_mining_categories_component__ = __webpack_require__("./angular/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__edit_profile_edit_profile_component__ = __webpack_require__("./angular/app/edit-profile/edit-profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__filter_name_age_pipe__ = __webpack_require__("./angular/app/filter-name-age.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__crypto_chart_chart_component__ = __webpack_require__("./angular/app/crypto/chart/chart.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__sidebar_sidebar_component__ = __webpack_require__("./angular/app/sidebar/sidebar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__sidebar_cloud_mining_top_cloud_mining_top_component__ = __webpack_require__("./angular/app/sidebar/cloud-mining-top/cloud-mining-top.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__sidebar_stocks_sidebar_stocks_sidebar_component__ = __webpack_require__("./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__profile_profile_component__ = __webpack_require__("./angular/app/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__profile_portfolio_portfolio_component__ = __webpack_require__("./angular/app/profile/portfolio/portfolio.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__import_pipe__ = __webpack_require__("./angular/app/import.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__safe_html_pipe__ = __webpack_require__("./angular/app/safe-html.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__striphtml_pipe__ = __webpack_require__("./angular/app/striphtml.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__excerpt_pipe__ = __webpack_require__("./angular/app/excerpt.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__sidebar_resolver_service__ = __webpack_require__("./angular/app/sidebar-resolver.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__exchanges_exchanges_component__ = __webpack_require__("./angular/app/exchanges/exchanges.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__exchange_exchange_component__ = __webpack_require__("./angular/app/exchange/exchange.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__sidebar_top_ico_top_ico_component__ = __webpack_require__("./angular/app/sidebar/top-ico/top-ico.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__comments_service__ = __webpack_require__("./angular/app/comments.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__click_outside_directive__ = __webpack_require__("./angular/app/click-outside.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__crypto_chart2_chart2_component__ = __webpack_require__("./angular/app/crypto/chart2/chart2.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__crypto_chart3_chart3_component__ = __webpack_require__("./angular/app/crypto/chart3/chart3.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__news_news_resolver_service__ = __webpack_require__("./angular/app/news/news-resolver.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__crypto_crypto_component__ = __webpack_require__("./angular/app/crypto/crypto.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__cmc_cmc_component__ = __webpack_require__("./angular/app/cmc/cmc.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__exmo_exmo_component__ = __webpack_require__("./angular/app/exmo/exmo.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__("./angular/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__news_header_header_component__ = __webpack_require__("./angular/app/news/header/header.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__news_news_component__ = __webpack_require__("./angular/app/news/news.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__news_news_detail_news_detail_component__ = __webpack_require__("./angular/app/news/news-detail/news-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__news_all_news_all_news_component__ = __webpack_require__("./angular/app/news/all-news/all-news.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__categories_categories_component__ = __webpack_require__("./angular/app/categories/categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angular2_masonry__ = __webpack_require__("./node_modules/angular2-masonry/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__analytics_analytics_component__ = __webpack_require__("./angular/app/analytics/analytics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__analytics_all_analytics_all_analytics_component__ = __webpack_require__("./angular/app/analytics/all-analytics/all-analytics.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__analytics_analytics_detail_analytics_detail_component__ = __webpack_require__("./angular/app/analytics/analytics-detail/analytics-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__analytics_categories_analytics_categories_component__ = __webpack_require__("./angular/app/analytics-categories/analytics-categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__interview_interview_component__ = __webpack_require__("./angular/app/interview/interview.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__interview_all_interview_all_interview_component__ = __webpack_require__("./angular/app/interview/all-interview/all-interview.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__interview_interview_details_interview_details_component__ = __webpack_require__("./angular/app/interview/interview-details/interview-details.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__interview_interview_categories_interview_categories_component__ = __webpack_require__("./angular/app/interview/interview-categories/interview-categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__review_review_component__ = __webpack_require__("./angular/app/review/review.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__review_all_review_all_review_component__ = __webpack_require__("./angular/app/review/all-review/all-review.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__review_review_detail_review_detail_component__ = __webpack_require__("./angular/app/review/review-detail/review-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__review_review_categories_review_categories_component__ = __webpack_require__("./angular/app/review/review-categories/review-categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__cloud_mining_cloud_mining_component__ = __webpack_require__("./angular/app/cloud-mining/cloud-mining.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__cloud_mining_all_cloud_mining_all_cloud_mining_component__ = __webpack_require__("./angular/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__ = __webpack_require__("./angular/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__crypto_all_crypto_all_component__ = __webpack_require__("./angular/app/crypto-all/crypto-all.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__crypto_root_crypto_root_component__ = __webpack_require__("./angular/app/crypto-root/crypto-root.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__filter_name_pipe__ = __webpack_require__("./angular/app/filter-name.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__ico_project_ico_project_component__ = __webpack_require__("./angular/app/ico-project/ico-project.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_all_ico_project_all_component__ = __webpack_require__("./angular/app/ico-project/ico-project-all/ico-project-all.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_detail_ico_project_detail_component__ = __webpack_require__("./angular/app/ico-project/ico-project-detail/ico-project-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_categories_ico_project_categories_component__ = __webpack_require__("./angular/app/ico-project/ico-project-categories/ico-project-categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__shorten_pipe_pipe__ = __webpack_require__("./angular/app/shorten-pipe.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__filter_name_active_pipe__ = __webpack_require__("./angular/app/filter-name-active.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__cloud_mining_cloud_mining_categories_cloud_mining_categories_component__ = __webpack_require__("./angular/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__edit_profile_edit_profile_component__ = __webpack_require__("./angular/app/edit-profile/edit-profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__filter_name_age_pipe__ = __webpack_require__("./angular/app/filter-name-age.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__crypto_chart_chart_component__ = __webpack_require__("./angular/app/crypto/chart/chart.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__sidebar_sidebar_component__ = __webpack_require__("./angular/app/sidebar/sidebar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__sidebar_cloud_mining_top_cloud_mining_top_component__ = __webpack_require__("./angular/app/sidebar/cloud-mining-top/cloud-mining-top.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__sidebar_stocks_sidebar_stocks_sidebar_component__ = __webpack_require__("./angular/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__profile_profile_component__ = __webpack_require__("./angular/app/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__profile_portfolio_portfolio_component__ = __webpack_require__("./angular/app/profile/portfolio/portfolio.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__import_pipe__ = __webpack_require__("./angular/app/import.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__safe_html_pipe__ = __webpack_require__("./angular/app/safe-html.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__striphtml_pipe__ = __webpack_require__("./angular/app/striphtml.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__excerpt_pipe__ = __webpack_require__("./angular/app/excerpt.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__sidebar_resolver_service__ = __webpack_require__("./angular/app/sidebar-resolver.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__exchanges_exchanges_component__ = __webpack_require__("./angular/app/exchanges/exchanges.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__exchange_exchange_component__ = __webpack_require__("./angular/app/exchange/exchange.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__sidebar_top_ico_top_ico_component__ = __webpack_require__("./angular/app/sidebar/top-ico/top-ico.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__comments_service__ = __webpack_require__("./angular/app/comments.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__click_outside_directive__ = __webpack_require__("./angular/app/click-outside.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__crypto_chart2_chart2_component__ = __webpack_require__("./angular/app/crypto/chart2/chart2.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__crypto_chart3_chart3_component__ = __webpack_require__("./angular/app/crypto/chart3/chart3.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__news_news_resolver_service__ = __webpack_require__("./angular/app/news/news-resolver.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -833,136 +832,135 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
 var appRoutes = [
     {
-        path: 'crypto/:sym', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */], children: [
+        path: 'crypto/:sym', component: __WEBPACK_IMPORTED_MODULE_7__crypto_crypto_component__["a" /* CryptoComponent */], children: [
             {
-                path: 'news', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */]
+                path: 'news', component: __WEBPACK_IMPORTED_MODULE_7__crypto_crypto_component__["a" /* CryptoComponent */]
             },
             {
-                path: 'about', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */]
+                path: 'about', component: __WEBPACK_IMPORTED_MODULE_7__crypto_crypto_component__["a" /* CryptoComponent */]
             },
             {
-                path: 'graph', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */]
+                path: 'graph', component: __WEBPACK_IMPORTED_MODULE_7__crypto_crypto_component__["a" /* CryptoComponent */]
             },
             {
-                path: 'comments', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */]
+                path: 'comments', component: __WEBPACK_IMPORTED_MODULE_7__crypto_crypto_component__["a" /* CryptoComponent */]
             },
             {
-                path: 'analytics', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */]
+                path: 'analytics', component: __WEBPACK_IMPORTED_MODULE_7__crypto_crypto_component__["a" /* CryptoComponent */]
             }
         ]
     },
     {
-        path: 'posts', component: __WEBPACK_IMPORTED_MODULE_14__news_news_component__["a" /* NewsComponent */], children: [
+        path: 'posts', component: __WEBPACK_IMPORTED_MODULE_13__news_news_component__["a" /* NewsComponent */], children: [
             {
-                path: 'post/:id', component: __WEBPACK_IMPORTED_MODULE_15__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */]
+                path: 'post/:id', component: __WEBPACK_IMPORTED_MODULE_14__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */]
             },
             {
-                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_17__categories_categories_component__["a" /* CategoriesComponent */]
+                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_16__categories_categories_component__["a" /* CategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_16__news_all_news_all_news_component__["a" /* AllNewsComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_15__news_all_news_all_news_component__["a" /* AllNewsComponent */]
             }
         ]
     },
     {
-        path: 'analytics', component: __WEBPACK_IMPORTED_MODULE_19__analytics_analytics_component__["a" /* AnalyticsComponent */], children: [
+        path: 'analytics', component: __WEBPACK_IMPORTED_MODULE_18__analytics_analytics_component__["a" /* AnalyticsComponent */], children: [
             {
-                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_21__analytics_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */]
+                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_20__analytics_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */]
             },
             {
-                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_22__analytics_categories_analytics_categories_component__["a" /* AnalyticsCategoriesComponent */]
+                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_21__analytics_categories_analytics_categories_component__["a" /* AnalyticsCategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_20__analytics_all_analytics_all_analytics_component__["a" /* AllAnalyticsComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_19__analytics_all_analytics_all_analytics_component__["a" /* AllAnalyticsComponent */]
             }
         ]
     },
     {
-        path: 'interview', component: __WEBPACK_IMPORTED_MODULE_23__interview_interview_component__["a" /* InterviewComponent */], children: [
+        path: 'interview', component: __WEBPACK_IMPORTED_MODULE_22__interview_interview_component__["a" /* InterviewComponent */], children: [
             {
-                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_25__interview_interview_details_interview_details_component__["a" /* InterviewDetailsComponent */]
+                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_24__interview_interview_details_interview_details_component__["a" /* InterviewDetailsComponent */]
             },
             {
-                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_26__interview_interview_categories_interview_categories_component__["a" /* InterviewCategoriesComponent */]
+                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_25__interview_interview_categories_interview_categories_component__["a" /* InterviewCategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_24__interview_all_interview_all_interview_component__["a" /* AllInterviewComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_23__interview_all_interview_all_interview_component__["a" /* AllInterviewComponent */]
             }
         ]
     },
     {
-        path: 'review', component: __WEBPACK_IMPORTED_MODULE_27__review_review_component__["a" /* ReviewComponent */], children: [
+        path: 'review', component: __WEBPACK_IMPORTED_MODULE_26__review_review_component__["a" /* ReviewComponent */], children: [
             {
-                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_29__review_review_detail_review_detail_component__["a" /* ReviewDetailComponent */]
+                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_28__review_review_detail_review_detail_component__["a" /* ReviewDetailComponent */]
             },
             {
-                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_30__review_review_categories_review_categories_component__["a" /* ReviewCategoriesComponent */]
+                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_29__review_review_categories_review_categories_component__["a" /* ReviewCategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_28__review_all_review_all_review_component__["a" /* AllReviewComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_27__review_all_review_all_review_component__["a" /* AllReviewComponent */]
             }
         ]
     },
     {
-        path: 'ico', component: __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_component__["a" /* IcoProjectComponent */], children: [
+        path: 'ico', component: __WEBPACK_IMPORTED_MODULE_37__ico_project_ico_project_component__["a" /* IcoProjectComponent */], children: [
             {
-                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_detail_ico_project_detail_component__["a" /* IcoProjectDetailComponent */]
+                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_detail_ico_project_detail_component__["a" /* IcoProjectDetailComponent */]
             },
             {
-                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_41__ico_project_ico_project_categories_ico_project_categories_component__["a" /* IcoProjectCategoriesComponent */]
+                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_categories_ico_project_categories_component__["a" /* IcoProjectCategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_all_ico_project_all_component__["a" /* IcoProjectAllComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_all_ico_project_all_component__["a" /* IcoProjectAllComponent */]
             }
         ]
     },
     {
-        path: 'cloud-mining', component: __WEBPACK_IMPORTED_MODULE_31__cloud_mining_cloud_mining_component__["a" /* CloudMiningComponent */], children: [
+        path: 'cloud-mining', component: __WEBPACK_IMPORTED_MODULE_30__cloud_mining_cloud_mining_component__["a" /* CloudMiningComponent */], children: [
             {
-                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_33__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__["a" /* CloudMiningDetailComponent */]
+                path: 'item/:id', component: __WEBPACK_IMPORTED_MODULE_32__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__["a" /* CloudMiningDetailComponent */]
             },
             {
-                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_44__cloud_mining_cloud_mining_categories_cloud_mining_categories_component__["a" /* CloudMiningCategoriesComponent */]
+                path: 'category/:id', component: __WEBPACK_IMPORTED_MODULE_43__cloud_mining_cloud_mining_categories_cloud_mining_categories_component__["a" /* CloudMiningCategoriesComponent */]
             },
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_32__cloud_mining_all_cloud_mining_all_cloud_mining_component__["a" /* AllCloudMiningComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_31__cloud_mining_all_cloud_mining_all_cloud_mining_component__["a" /* AllCloudMiningComponent */]
             }
         ]
     },
     {
-        path: 'cryptocurrency', component: __WEBPACK_IMPORTED_MODULE_35__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */], children: [
+        path: 'cryptocurrency', component: __WEBPACK_IMPORTED_MODULE_34__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */], children: [
             {
-                path: 'all', component: __WEBPACK_IMPORTED_MODULE_34__crypto_all_crypto_all_component__["a" /* CryptoAllComponent */]
+                path: 'all', component: __WEBPACK_IMPORTED_MODULE_33__crypto_all_crypto_all_component__["a" /* CryptoAllComponent */]
             },
             {
-                path: 'cmc', component: __WEBPACK_IMPORTED_MODULE_9__cmc_cmc_component__["a" /* CmcComponent */]
+                path: 'cmc', component: __WEBPACK_IMPORTED_MODULE_8__cmc_cmc_component__["a" /* CmcComponent */]
             },
             {
-                path: 'exmo', component: __WEBPACK_IMPORTED_MODULE_10__exmo_exmo_component__["a" /* ExmoComponent */]
+                path: 'exmo', component: __WEBPACK_IMPORTED_MODULE_9__exmo_exmo_component__["a" /* ExmoComponent */]
             },
             {
-                path: 'crypto', component: __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */]
+                path: 'crypto', component: __WEBPACK_IMPORTED_MODULE_7__crypto_crypto_component__["a" /* CryptoComponent */]
             }
         ]
     },
     {
-        path: 'profile', component: __WEBPACK_IMPORTED_MODULE_51__profile_profile_component__["a" /* ProfileComponent */], children: [
+        path: 'profile', component: __WEBPACK_IMPORTED_MODULE_50__profile_profile_component__["a" /* ProfileComponent */], children: [
             {
-                path: 'edit', component: __WEBPACK_IMPORTED_MODULE_45__edit_profile_edit_profile_component__["a" /* EditProfileComponent */]
+                path: 'edit', component: __WEBPACK_IMPORTED_MODULE_44__edit_profile_edit_profile_component__["a" /* EditProfileComponent */]
             },
             {
-                path: 'portfolio', component: __WEBPACK_IMPORTED_MODULE_52__profile_portfolio_portfolio_component__["a" /* PortfolioComponent */]
+                path: 'portfolio', component: __WEBPACK_IMPORTED_MODULE_51__profile_portfolio_portfolio_component__["a" /* PortfolioComponent */]
             },
         ]
     },
     {
-        path: 'exchanges', component: __WEBPACK_IMPORTED_MODULE_58__exchanges_exchanges_component__["a" /* ExchangesComponent */]
+        path: 'exchanges', component: __WEBPACK_IMPORTED_MODULE_57__exchanges_exchanges_component__["a" /* ExchangesComponent */]
     },
     {
-        path: 'exchange/:name', component: __WEBPACK_IMPORTED_MODULE_59__exchange_exchange_component__["a" /* ExchangeComponent */]
+        path: 'exchange/:name', component: __WEBPACK_IMPORTED_MODULE_58__exchange_exchange_component__["a" /* ExchangeComponent */]
     },
 ];
 var AppModule = (function () {
@@ -973,59 +971,59 @@ var AppModule = (function () {
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["M" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_8__crypto_crypto_component__["a" /* CryptoComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__cmc_cmc_component__["a" /* CmcComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__exmo_exmo_component__["a" /* ExmoComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__news_header_header_component__["a" /* HeaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__news_news_component__["a" /* NewsComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__news_all_news_all_news_component__["a" /* AllNewsComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__categories_categories_component__["a" /* CategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__analytics_analytics_component__["a" /* AnalyticsComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__analytics_all_analytics_all_analytics_component__["a" /* AllAnalyticsComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__analytics_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__analytics_categories_analytics_categories_component__["a" /* AnalyticsCategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__interview_interview_component__["a" /* InterviewComponent */],
-            __WEBPACK_IMPORTED_MODULE_24__interview_all_interview_all_interview_component__["a" /* AllInterviewComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__interview_interview_details_interview_details_component__["a" /* InterviewDetailsComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__interview_interview_categories_interview_categories_component__["a" /* InterviewCategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_27__review_review_component__["a" /* ReviewComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__review_all_review_all_review_component__["a" /* AllReviewComponent */],
-            __WEBPACK_IMPORTED_MODULE_29__review_review_detail_review_detail_component__["a" /* ReviewDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__review_review_categories_review_categories_component__["a" /* ReviewCategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_31__cloud_mining_cloud_mining_component__["a" /* CloudMiningComponent */],
-            __WEBPACK_IMPORTED_MODULE_32__cloud_mining_all_cloud_mining_all_cloud_mining_component__["a" /* AllCloudMiningComponent */],
-            __WEBPACK_IMPORTED_MODULE_33__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__["a" /* CloudMiningDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_34__crypto_all_crypto_all_component__["a" /* CryptoAllComponent */],
-            __WEBPACK_IMPORTED_MODULE_35__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */],
-            __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__["a" /* OrderPipe */],
-            __WEBPACK_IMPORTED_MODULE_37__filter_name_pipe__["a" /* FilterNamePipe */],
-            __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_component__["a" /* IcoProjectComponent */],
-            __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_all_ico_project_all_component__["a" /* IcoProjectAllComponent */],
-            __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_detail_ico_project_detail_component__["a" /* IcoProjectDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_41__ico_project_ico_project_categories_ico_project_categories_component__["a" /* IcoProjectCategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_42__shorten_pipe_pipe__["a" /* ShortenPipePipe */],
-            __WEBPACK_IMPORTED_MODULE_43__filter_name_active_pipe__["a" /* FilterNameActivePipe */],
-            __WEBPACK_IMPORTED_MODULE_44__cloud_mining_cloud_mining_categories_cloud_mining_categories_component__["a" /* CloudMiningCategoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_45__edit_profile_edit_profile_component__["a" /* EditProfileComponent */],
-            __WEBPACK_IMPORTED_MODULE_46__filter_name_age_pipe__["a" /* FilterNameAgePipe */],
-            __WEBPACK_IMPORTED_MODULE_47__crypto_chart_chart_component__["a" /* ChartComponent */],
-            __WEBPACK_IMPORTED_MODULE_48__sidebar_sidebar_component__["a" /* SidebarComponent */],
-            __WEBPACK_IMPORTED_MODULE_49__sidebar_cloud_mining_top_cloud_mining_top_component__["a" /* CloudMiningTopComponent */],
-            __WEBPACK_IMPORTED_MODULE_50__sidebar_stocks_sidebar_stocks_sidebar_component__["a" /* StocksSidebarComponent */],
-            __WEBPACK_IMPORTED_MODULE_51__profile_profile_component__["a" /* ProfileComponent */],
-            __WEBPACK_IMPORTED_MODULE_52__profile_portfolio_portfolio_component__["a" /* PortfolioComponent */],
-            __WEBPACK_IMPORTED_MODULE_53__import_pipe__["a" /* ImportPipe */],
-            __WEBPACK_IMPORTED_MODULE_54__safe_html_pipe__["a" /* SafeHtmlPipe */],
-            __WEBPACK_IMPORTED_MODULE_55__striphtml_pipe__["a" /* StriphtmlPipe */],
-            __WEBPACK_IMPORTED_MODULE_56__excerpt_pipe__["a" /* ExcerptPipe */],
-            __WEBPACK_IMPORTED_MODULE_58__exchanges_exchanges_component__["a" /* ExchangesComponent */],
-            __WEBPACK_IMPORTED_MODULE_59__exchange_exchange_component__["a" /* ExchangeComponent */],
-            __WEBPACK_IMPORTED_MODULE_60__sidebar_top_ico_top_ico_component__["a" /* TopIcoComponent */],
-            __WEBPACK_IMPORTED_MODULE_62__click_outside_directive__["a" /* ClickOutsideDirective */],
-            __WEBPACK_IMPORTED_MODULE_63__crypto_chart2_chart2_component__["a" /* Chart2Component */],
-            __WEBPACK_IMPORTED_MODULE_64__crypto_chart3_chart3_component__["a" /* Chart3Component */]
+            __WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__crypto_crypto_component__["a" /* CryptoComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__cmc_cmc_component__["a" /* CmcComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__exmo_exmo_component__["a" /* ExmoComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__news_header_header_component__["a" /* HeaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__news_news_component__["a" /* NewsComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__news_news_detail_news_detail_component__["a" /* NewsDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__news_all_news_all_news_component__["a" /* AllNewsComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__categories_categories_component__["a" /* CategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__analytics_analytics_component__["a" /* AnalyticsComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__analytics_all_analytics_all_analytics_component__["a" /* AllAnalyticsComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__analytics_analytics_detail_analytics_detail_component__["a" /* AnalyticsDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__analytics_categories_analytics_categories_component__["a" /* AnalyticsCategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__interview_interview_component__["a" /* InterviewComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__interview_all_interview_all_interview_component__["a" /* AllInterviewComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__interview_interview_details_interview_details_component__["a" /* InterviewDetailsComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__interview_interview_categories_interview_categories_component__["a" /* InterviewCategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__review_review_component__["a" /* ReviewComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__review_all_review_all_review_component__["a" /* AllReviewComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__review_review_detail_review_detail_component__["a" /* ReviewDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_29__review_review_categories_review_categories_component__["a" /* ReviewCategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__cloud_mining_cloud_mining_component__["a" /* CloudMiningComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__cloud_mining_all_cloud_mining_all_cloud_mining_component__["a" /* AllCloudMiningComponent */],
+            __WEBPACK_IMPORTED_MODULE_32__cloud_mining_cloud_mining_detail_cloud_mining_detail_component__["a" /* CloudMiningDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_33__crypto_all_crypto_all_component__["a" /* CryptoAllComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */],
+            __WEBPACK_IMPORTED_MODULE_35__order_pipe_ngx_order_pipe__["a" /* OrderPipe */],
+            __WEBPACK_IMPORTED_MODULE_36__filter_name_pipe__["a" /* FilterNamePipe */],
+            __WEBPACK_IMPORTED_MODULE_37__ico_project_ico_project_component__["a" /* IcoProjectComponent */],
+            __WEBPACK_IMPORTED_MODULE_38__ico_project_ico_project_all_ico_project_all_component__["a" /* IcoProjectAllComponent */],
+            __WEBPACK_IMPORTED_MODULE_39__ico_project_ico_project_detail_ico_project_detail_component__["a" /* IcoProjectDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_40__ico_project_ico_project_categories_ico_project_categories_component__["a" /* IcoProjectCategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_41__shorten_pipe_pipe__["a" /* ShortenPipePipe */],
+            __WEBPACK_IMPORTED_MODULE_42__filter_name_active_pipe__["a" /* FilterNameActivePipe */],
+            __WEBPACK_IMPORTED_MODULE_43__cloud_mining_cloud_mining_categories_cloud_mining_categories_component__["a" /* CloudMiningCategoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_44__edit_profile_edit_profile_component__["a" /* EditProfileComponent */],
+            __WEBPACK_IMPORTED_MODULE_45__filter_name_age_pipe__["a" /* FilterNameAgePipe */],
+            __WEBPACK_IMPORTED_MODULE_46__crypto_chart_chart_component__["a" /* ChartComponent */],
+            __WEBPACK_IMPORTED_MODULE_47__sidebar_sidebar_component__["a" /* SidebarComponent */],
+            __WEBPACK_IMPORTED_MODULE_48__sidebar_cloud_mining_top_cloud_mining_top_component__["a" /* CloudMiningTopComponent */],
+            __WEBPACK_IMPORTED_MODULE_49__sidebar_stocks_sidebar_stocks_sidebar_component__["a" /* StocksSidebarComponent */],
+            __WEBPACK_IMPORTED_MODULE_50__profile_profile_component__["a" /* ProfileComponent */],
+            __WEBPACK_IMPORTED_MODULE_51__profile_portfolio_portfolio_component__["a" /* PortfolioComponent */],
+            __WEBPACK_IMPORTED_MODULE_52__import_pipe__["a" /* ImportPipe */],
+            __WEBPACK_IMPORTED_MODULE_53__safe_html_pipe__["a" /* SafeHtmlPipe */],
+            __WEBPACK_IMPORTED_MODULE_54__striphtml_pipe__["a" /* StriphtmlPipe */],
+            __WEBPACK_IMPORTED_MODULE_55__excerpt_pipe__["a" /* ExcerptPipe */],
+            __WEBPACK_IMPORTED_MODULE_57__exchanges_exchanges_component__["a" /* ExchangesComponent */],
+            __WEBPACK_IMPORTED_MODULE_58__exchange_exchange_component__["a" /* ExchangeComponent */],
+            __WEBPACK_IMPORTED_MODULE_59__sidebar_top_ico_top_ico_component__["a" /* TopIcoComponent */],
+            __WEBPACK_IMPORTED_MODULE_61__click_outside_directive__["a" /* ClickOutsideDirective */],
+            __WEBPACK_IMPORTED_MODULE_62__crypto_chart2_chart2_component__["a" /* Chart2Component */],
+            __WEBPACK_IMPORTED_MODULE_63__crypto_chart3_chart3_component__["a" /* Chart3Component */]
         ],
         imports: [
             // BrowserAnimationsModule,
@@ -1034,24 +1032,24 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_4__angular_http__["b" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCheckboxModule */],
-            __WEBPACK_IMPORTED_MODULE_12__angular_common_http__["b" /* HttpClientModule */],
+            __WEBPACK_IMPORTED_MODULE_11__angular_common_http__["b" /* HttpClientModule */],
             __WEBPACK_IMPORTED_MODULE_5__angular_router__["d" /* RouterModule */].forRoot(appRoutes),
-            __WEBPACK_IMPORTED_MODULE_18_angular2_masonry__["a" /* MasonryModule */],
+            __WEBPACK_IMPORTED_MODULE_17_angular2_masonry__["a" /* MasonryModule */],
             __WEBPACK_IMPORTED_MODULE_6_ngx_infinite_scroll__["a" /* InfiniteScrollModule */]
             // MarketsComponent,
         ],
         exports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCheckboxModule */],
-            __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__["a" /* OrderPipe */],
+            __WEBPACK_IMPORTED_MODULE_35__order_pipe_ngx_order_pipe__["a" /* OrderPipe */],
             __WEBPACK_IMPORTED_MODULE_6_ngx_infinite_scroll__["a" /* InfiniteScrollModule */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_12__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_36__order_pipe_ngx_order_pipe__["a" /* OrderPipe */], __WEBPACK_IMPORTED_MODULE_57__sidebar_resolver_service__["a" /* SidebarResolverService */], __WEBPACK_IMPORTED_MODULE_61__comments_service__["a" /* CommentsService */], __WEBPACK_IMPORTED_MODULE_65__news_news_resolver_service__["a" /* NewsResolverService */], __WEBPACK_IMPORTED_MODULE_6_ngx_infinite_scroll__["a" /* InfiniteScrollModule */]],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_11__angular_common_http__["b" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_35__order_pipe_ngx_order_pipe__["a" /* OrderPipe */], __WEBPACK_IMPORTED_MODULE_56__sidebar_resolver_service__["a" /* SidebarResolverService */], __WEBPACK_IMPORTED_MODULE_60__comments_service__["a" /* CommentsService */], __WEBPACK_IMPORTED_MODULE_64__news_news_resolver_service__["a" /* NewsResolverService */], __WEBPACK_IMPORTED_MODULE_6_ngx_infinite_scroll__["a" /* InfiniteScrollModule */]],
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
-Object(__WEBPACK_IMPORTED_MODULE_7__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(AppModule);
+// platformBrowserDynamic().bootstrapModule(AppModule); 
 //# sourceMappingURL=app.module.js.map
 
 /***/ }),
