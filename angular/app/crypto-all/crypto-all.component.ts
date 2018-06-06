@@ -167,19 +167,35 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                 this.resp = response;
                 alldata.subscribe(response => {
                     let admin = response;
+                    this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
+                    this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
                     for (var _i = 0; _i < admin.length; ++_i) {
-
                         // console.log(this.admin[i].symbol);
                         let index = _i;
                         let symbol = admin[index].symbol;
                         let year = admin[index].year;
                         let algo = admin[index].algo;
+                        let logo = admin[index].logo;
                         let id = admin[index].id;
-                        let name = admin[index].name;
+
+                        this.animtype[index] = '';
+                        this.diff[index] = 0;
+                        if (this.dataUsd[index]) {
+                            if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
+                                this.first_time = false;
+                                this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
+                                if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
+
+
+                                    this.animtype[index] = 'redbg';
+                                } else {
+                                    this.animtype[index] = 'greenbg';
+
+                                }
+                            }
+                        }
                         if (this.dataUsd[index]) {
                             this.dataUsd[index].sym = symbol;
-                            this.dataUsd[index].id = id;
-                            this.dataUsd[index].name = name;
                             this.dataUsd[index].algo = algo;
                             this.dataUsd[index].year = year;
                             this.dataUsd[index].last = this.resp[symbol + '/USD']['last'];
@@ -190,11 +206,9 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                             this.dataUsd[index].day = this.resp[symbol + "/USD"]['day'];
                             this.dataUsd[index].week = this.resp[symbol + "/USD"]['week'];
                             this.dataUsd[index].marketCapUsd = this.resp[symbol + "/USD"]['marketCapUsd'];
+                            this.dataUsd[index].logo = logo;
                             this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
                             this.dataUsd[index].percentWeek = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
-                            this.dataUsd[index].currencyVol = 0
-
-
                         } else {
                             this.dataUsd[index] = {
                                 id: id,
