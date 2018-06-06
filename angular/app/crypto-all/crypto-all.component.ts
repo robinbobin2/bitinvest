@@ -212,24 +212,25 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                             this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
                             this.dataUsd[index].percentWeek = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
                         } else {
-                            this.dataUsd[index] = {
-                                id: id,
-                                name: name,
-                                sym: symbol,
-                                last: this.resp[symbol + '/USD']['last'],
-                                now: this.resp[symbol + '/USD']['now'],
-                                min: this.resp[symbol + '/USD']['min'],
-                                max: this.resp[symbol + '/USD']['max'],
-                                volume: this.resp[symbol + '/USD']['volume'],
-                                year: year,
-                                algo: algo,
-                                week: this.resp[symbol + "/USD"]['week'],
-                                day: this.resp[symbol + "/USD"]['day'],
-                                marketCapUsd: this.resp[symbol + "/USD"]['marketCapUsd'],
-                                percentDay: 0,
-                                percentWeek: 0,
-                                currencyVol: 0
-                            }
+                            this.resp[symbol + '/USD']
+                            // this.dataUsd[index] = {
+                            //     id: id,
+                            //     name: name,
+                            //     sym: symbol,
+                            //     last: this.resp[symbol + '/USD']['last'],
+                            //     now: this.resp[symbol + '/USD']['now'],
+                            //     min: this.resp[symbol + '/USD']['min'],
+                            //     max: this.resp[symbol + '/USD']['max'],
+                            //     volume: this.resp[symbol + '/USD']['volume'],
+                            //     year: year,
+                            //     algo: algo,
+                            //     week: this.resp[symbol + "/USD"]['week'],
+                            //     day: this.resp[symbol + "/USD"]['day'],
+                            //     marketCapUsd: this.resp[symbol + "/USD"]['marketCapUsd'],
+                            //     percentDay: 0,
+                            //     percentWeek: 0,
+                            //     currencyVol: 0
+                            // }
                         }
                         this.load = false;
                         localStorage.removeItem('data');

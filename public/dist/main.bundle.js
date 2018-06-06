@@ -2637,24 +2637,25 @@ var CryptoAllComponent = (function () {
                         _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
                     }
                     else {
-                        _this.dataUsd[index] = {
-                            id: id,
-                            name: name,
-                            sym: symbol,
-                            last: _this.resp[symbol + '/USD']['last'],
-                            now: _this.resp[symbol + '/USD']['now'],
-                            min: _this.resp[symbol + '/USD']['min'],
-                            max: _this.resp[symbol + '/USD']['max'],
-                            volume: _this.resp[symbol + '/USD']['volume'],
-                            year: year,
-                            algo: algo,
-                            week: _this.resp[symbol + "/USD"]['week'],
-                            day: _this.resp[symbol + "/USD"]['day'],
-                            marketCapUsd: _this.resp[symbol + "/USD"]['marketCapUsd'],
-                            percentDay: 0,
-                            percentWeek: 0,
-                            currencyVol: 0
-                        };
+                        _this.resp[symbol + '/USD'];
+                        // this.dataUsd[index] = {
+                        //     id: id,
+                        //     name: name,
+                        //     sym: symbol,
+                        //     last: this.resp[symbol + '/USD']['last'],
+                        //     now: this.resp[symbol + '/USD']['now'],
+                        //     min: this.resp[symbol + '/USD']['min'],
+                        //     max: this.resp[symbol + '/USD']['max'],
+                        //     volume: this.resp[symbol + '/USD']['volume'],
+                        //     year: year,
+                        //     algo: algo,
+                        //     week: this.resp[symbol + "/USD"]['week'],
+                        //     day: this.resp[symbol + "/USD"]['day'],
+                        //     marketCapUsd: this.resp[symbol + "/USD"]['marketCapUsd'],
+                        //     percentDay: 0,
+                        //     percentWeek: 0,
+                        //     currencyVol: 0
+                        // }
                     }
                     _this.load = false;
                     localStorage.removeItem('data');
