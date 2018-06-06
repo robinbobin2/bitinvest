@@ -121,7 +121,7 @@ width="18.3%">
     <div class="img-wrap" [routerLink]="['/crypto', data?.sym]">
       <img *ngIf="data?.logo" [src]="'images/'+data?.logo" style="max-width: 40px;" alt="">
    </div>
-   <span [routerLink]="['/crypto', data?.sym]">{{data.sym}}</span>
+   <span [routerLink]="['/crypto', data?.sym]">{{data?.sym}}</span>
  </td>
  <td [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">
   <span class="price">${{data?.now | number: '1.0-3'}}</span>
@@ -140,7 +140,7 @@ width="18.3%">
   <span class="year">{{data?.year}}</span>
 </td>
 <td>
-  <span *ngIf="data?.now" [ngClass]="isNegativePercent(data.now, data.day)==true ? 'change-red' : 'change-green'">{{ countPercent(data.now, data.day) | number: '1.2'}}%</span>
+  <span *ngIf="data?.now" [ngClass]="isNegativePercent(data?.now, data?.day)==true ? 'change-red' : 'change-green'">{{ countPercent(data?.now, data?.day) | number: '1.2'}}%</span>
 
 </td>
 <td>

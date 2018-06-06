@@ -29,8 +29,8 @@
       <file leaf-file-name="crypto-all.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="153" column="108" selection-start-line="153" selection-start-column="108" selection-end-line="153" selection-end-column="108" />
+            <state relative-caret-position="291">
+              <caret line="142" column="148" selection-start-line="142" selection-start-column="148" selection-end-line="142" selection-end-column="148" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -108,7 +108,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>comments_</find>
       <find>commentcount</find>
       <find>user</find>
       <find>view</find>
@@ -138,6 +137,7 @@
       <find>diff[</find>
       <find>this.diff</find>
       <find>diff</find>
+      <find>data.</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -513,12 +513,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="45690000" />
+      <workItem from="1527928097804" duration="45790000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202862000" />
+    <option name="totallyTimeSpent" value="202962000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1003,8 +1003,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="153" column="108" selection-start-line="153" selection-start-column="108" selection-end-line="153" selection-end-column="108" />
+        <state relative-caret-position="291">
+          <caret line="142" column="148" selection-start-line="142" selection-start-column="148" selection-end-line="142" selection-end-column="148" />
           <folding>
             <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
