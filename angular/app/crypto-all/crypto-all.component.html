@@ -119,9 +119,9 @@ width="18.3%">
   </td>
   <td>
     <div class="img-wrap" [routerLink]="['/crypto', data.sym]">
-      <img *ngIf="data.logo" [src]="'images/'+data.logo" style="max-width: 40px;" alt="">
+      <img *ngIf="data.logo" [src]="'images/'+data?.logo" style="max-width: 40px;" alt="">
    </div>
-   <span [routerLink]="['/crypto', data.sym]">{{data.sym}}</span>
+   <span [routerLink]="['/crypto', data?.sym]">{{data.sym}}</span>
  </td>
  <td [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">
   <span class="price">${{data.now | number: '1.2'}}</span>
