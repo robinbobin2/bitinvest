@@ -2561,7 +2561,7 @@ var CryptoAllComponent = (function () {
         }
         this.order = value;
     };
-    CryptoAllComponent.prototype.ngAfterViewInit = function () {
+    CryptoAllComponent.prototype.ngOnInit = function () {
         var _this = this;
         var portfolioUrl = '/angular/userportfolio';
         this.portfolioInfo = this.http.get(portfolioUrl);
@@ -2575,10 +2575,12 @@ var CryptoAllComponent = (function () {
             }
         });
         this.authService.getUser().subscribe(function (response) {
-            for (var _a = 0, _b = response['portfolio']; _a < _b.length; _a++) {
-                var item = _b[_a];
-                if (item.user_portfolio_type_id == 3) {
-                    _this.getUserPortfolio.push(item);
+            if (response['portfolio']) {
+                for (var _a = 0, _b = response['portfolio']; _a < _b.length; _a++) {
+                    var item = _b[_a];
+                    if (item.user_portfolio_type_id == 3) {
+                        _this.getUserPortfolio.push(item);
+                    }
                 }
             }
         });

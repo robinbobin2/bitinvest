@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
 import {Router, ActivatedRoute} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -29,7 +29,7 @@ declare var $:any;
     providers: [PortfolioService],
 })
 
-export class CryptoAllComponent implements AfterViewInit, OnDestroy {
+export class CryptoAllComponent implements OnInit, OnDestroy {
     public object: Object;
     load: boolean = true;
 
@@ -135,7 +135,7 @@ export class CryptoAllComponent implements AfterViewInit, OnDestroy {
         this.order = value;
     }
 
-    ngAfterViewInit() {
+    ngOnInit() {
         let portfolioUrl = '/angular/userportfolio';
         this.portfolioInfo = this.http.get<any>(portfolioUrl);
         this.portfolioInfo.subscribe(
@@ -150,9 +150,11 @@ export class CryptoAllComponent implements AfterViewInit, OnDestroy {
         );
         this.authService.getUser().subscribe(
             response => {
-                for (let item of response['portfolio']) {
-                    if (item.user_portfolio_type_id == 3) {
-                        this.getUserPortfolio.push(item)
+                if (response['portfolio']) {
+                    for (let item of response['portfolio']) {
+                        if (item.user_portfolio_type_id == 3) {
+                            this.getUserPortfolio.push(item)
+                        }
                     }
                 }
             }
