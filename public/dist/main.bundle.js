@@ -2596,8 +2596,8 @@ var CryptoAllComponent = (function () {
                     _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
                     _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
                     for (var _i = 0; _i < admin.length; ++_i) {
-                        // console.log(this.admin[i].symbol);
                         var index = _i;
+                        _this.diff[index] = 0;
                         var symbol = admin[index].symbol;
                         var year = admin[index].year;
                         var algo = admin[index].algo;
@@ -2616,7 +2616,6 @@ var CryptoAllComponent = (function () {
                                         _this.animtype[index] = '';
                                         _this.animtype[index] = 'greenbg';
                                     }
-                                    _this.diff[index] = 0;
                                 }
                                 _this.dataUsd[index].sym = symbol;
                                 _this.dataUsd[index].algo = algo;

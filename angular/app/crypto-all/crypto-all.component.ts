@@ -171,15 +171,15 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                 this.cryptoData = Observable.interval(5000).concatMap(() => this.StockService.bit$)
                     .subscribe(resp => {
 
+
                         this.resp = resp;
                         // console.log(this.resp)
                         this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
                         this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
 
                             for (var _i = 0; _i < admin.length; ++_i) {
-
-                                // console.log(this.admin[i].symbol);
                                 let index = _i;
+                                this.diff[index] = 0;
 
 
                                 let symbol = admin[index].symbol;
@@ -204,7 +204,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                                 this.animtype[index] = 'greenbg';
 
                                             }
-                                            this.diff[index] = 0;
+
                                         }
                                         this.dataUsd[index].sym = symbol;
                                         this.dataUsd[index].algo = algo;
