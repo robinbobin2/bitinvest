@@ -225,8 +225,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                 week: this.resp[symbol + "/USD"]['week'],
                                 day: this.resp[symbol + "/USD"]['day'],
                                 marketCapUsd: this.resp[symbol + "/USD"]['marketCapUsd'],
-                                percentDay: this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day),
-                                percentWeek: this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week),
+                                percentDay: 0,
+                                percentWeek: 0,
                                 currencyVol: 0
                             }
                         }

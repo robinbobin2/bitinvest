@@ -2650,8 +2650,8 @@ var CryptoAllComponent = (function () {
                             week: _this.resp[symbol + "/USD"]['week'],
                             day: _this.resp[symbol + "/USD"]['day'],
                             marketCapUsd: _this.resp[symbol + "/USD"]['marketCapUsd'],
-                            percentDay: _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day),
-                            percentWeek: _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week),
+                            percentDay: 0,
+                            percentWeek: 0,
                             currencyVol: 0
                         };
                     }
