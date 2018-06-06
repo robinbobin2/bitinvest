@@ -2592,12 +2592,12 @@ var CryptoAllComponent = (function () {
         }
         alldata.subscribe(function (response) {
             var admin = response;
-            _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(3000).concatMap(function () { return _this.StockService.bit$; })
+            _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.StockService.bit$; })
                 .subscribe(function (response) {
                 _this.resp = response;
                 _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
                 _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
-                var _loop_1 = function () {
+                for (var _i = 0; _i < admin.length; ++_i) {
                     // console.log(this.admin[i].symbol);
                     var index = _i;
                     var symbol = admin[index].symbol;
@@ -2658,19 +2658,17 @@ var CryptoAllComponent = (function () {
                     _this.load = false;
                     localStorage.removeItem('data');
                     localStorage.setItem('data', JSON.stringify(_this.dataUsd));
-                    _this.StockService.getCryptoVol().subscribe(function (res) {
-                        for (var _a = 0, res_1 = res; _a < res_1.length; _a++) {
-                            var it = res_1[_a];
-                            if (it.currency == symbol + '/USD') {
-                                console.log('tre');
-                                console.log(it.volume);
-                                _this.dataUsd[index].currencyVol = it.volume;
-                            }
-                        }
-                    });
-                };
-                for (var _i = 0; _i < admin.length; ++_i) {
-                    _loop_1();
+                    // this.StockService.getCryptoVol().subscribe( res => {
+                    //     for (let it of res) {
+                    //         if (it.currency == symbol + '/USD') {
+                    //             console.log('tre');
+                    //             console.log(it.volume);
+                    //             this.dataUsd[index].currencyVol = it.volume
+                    //         }
+                    //     }
+                    //
+                    //
+                    // })
                 }
             });
         });
@@ -8019,9 +8017,10 @@ var StocksSidebarComponent = (function () {
     }
     StocksSidebarComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
-        this.stocksService.bit$.subscribe(function (n) {
-            console.log(n);
-        });
+        // this.stocksService.bit$.subscribe(n => {
+        //     console.log(n);
+        //
+        // });
         this.stocksService.getCrypto()
             .subscribe(function (response) {
             _this.resp = response;

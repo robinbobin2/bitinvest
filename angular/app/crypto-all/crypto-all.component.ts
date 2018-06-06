@@ -164,7 +164,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         }
         alldata.subscribe(response => {
             let admin = response;
-            this.cryptoData = Observable.interval(3000).concatMap(() => this.StockService.bit$)
+            this.cryptoData = Observable.interval(5000).concatMap(() => this.StockService.bit$)
             .subscribe(response => {
 
                 this.resp = response;
@@ -234,17 +234,17 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                         localStorage.removeItem('data');
                         localStorage.setItem('data', JSON.stringify(this.dataUsd))
 
-                        this.StockService.getCryptoVol().subscribe( res => {
-                            for (let it of res) {
-                                if (it.currency == symbol + '/USD') {
-                                    console.log('tre');
-                                    console.log(it.volume);
-                                    this.dataUsd[index].currencyVol = it.volume
-                                }
-                            }
-
-
-                        })
+                        // this.StockService.getCryptoVol().subscribe( res => {
+                        //     for (let it of res) {
+                        //         if (it.currency == symbol + '/USD') {
+                        //             console.log('tre');
+                        //             console.log(it.volume);
+                        //             this.dataUsd[index].currencyVol = it.volume
+                        //         }
+                        //     }
+                        //
+                        //
+                        // })
                     }
 
                 });
