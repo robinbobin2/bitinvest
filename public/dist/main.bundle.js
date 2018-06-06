@@ -2603,7 +2603,6 @@ var CryptoAllComponent = (function () {
                         var algo = admin[index].algo;
                         var logo = admin[index].logo;
                         var id = admin[index].id;
-                        _this.diff[index] = 0;
                         if (_this.resp[symbol + '/USD']) {
                             if (_this.dataUsd[index]) {
                                 if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
@@ -2617,6 +2616,7 @@ var CryptoAllComponent = (function () {
                                         _this.animtype[index] = '';
                                         _this.animtype[index] = 'greenbg';
                                     }
+                                    _this.diff[index] = 0;
                                 }
                                 _this.dataUsd[index].sym = symbol;
                                 _this.dataUsd[index].algo = algo;
