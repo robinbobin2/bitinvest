@@ -9,6 +9,7 @@
 namespace App\Models\Founder\Models\Rabbit;
 
 
+use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\Requests\Request;
 use Illuminate\Support\Facades\DB;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
@@ -57,9 +58,11 @@ class RabbitTestHandler
     public $test = [];
 
     /**
-     * @var mixed
+     * @var TickerEntity[]
      */
-    private $response;
+    private $response = [];
+
+    private $time;
 
     /**
      * RabbitHandler constructor.
@@ -67,6 +70,7 @@ class RabbitTestHandler
     public function __construct()
     {
         $this->initConnection();
+        $this->time = time();
     }
 
     /**
@@ -76,7 +80,23 @@ class RabbitTestHandler
     {
         foreach ($this->test as $key => $job) {
             if ($key == $rep->get('correlation_id')) {
-                $this->test[$rep->get('correlation_id')]->provider->save(unserialize($rep->body));
+//                $this->test[$rep->get('correlation_id')]->provider->save(unserialize($rep->body));
+                $this->response = array_merge($this->response, unserialize($rep->body));
+                if((time() - $this->time) > 2){
+                    $this->time = time();
+                    if(!empty($this->response)){
+                        $query = "INSERT INTO `bit`.`exchangeRates` (`currency`, `value`, `createTime`, `exchangeId`, `volume`, `bid`, `ask`) VALUES ";
+                        $inserts = [];
+                        foreach ($this->response as $item){
+                            $inserts[] = "('".$item->getCurrency()."','".$item->getValue()."','".time()."','".$item->getExchangeId()."','".$item->getVolume()."','".$item->getBid()."','".$item->getAsk()."')";
+                        }
+                        $query .= implode(", ", $inserts);
+                        DB::statement($query);
+                    }
+
+                    $this->response = [];
+                    echo "clear" . PHP_EOL;
+                }
                 $msg = new AMQPMessage(
                     serialize($this->test[$rep->get('correlation_id')]), [
                         'correlation_id' => $rep->get('correlation_id'),

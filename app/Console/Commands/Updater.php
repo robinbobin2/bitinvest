@@ -111,7 +111,13 @@ class Updater extends \Illuminate\Console\Command
         BCexProvider::class,
         BTCBoxProvider::class,
         BTCTurkProvider::class,
-        NegocieProvider::class
+        NegocieProvider::class,
+        CoinGiProvider::class,
+        ACXProvider::class,
+        BitSOProvider::class,
+        KoineksProvider::class,
+        BitBnsProvider::class,
+        RightBTCProvider::class,
     ];
 
     private $suppliers = [
@@ -191,9 +197,6 @@ class Updater extends \Illuminate\Console\Command
         ZaifProvider::class,
 //        CryptopiaProvider::class,
         VebitcoinProvider::class,
-        RightBTCProvider::class,
-        BitBnsProvider::class,
-        BitSOProvider::class,
     ];
 
     /**

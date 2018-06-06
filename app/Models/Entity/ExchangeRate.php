@@ -68,9 +68,6 @@ class ExchangeRate extends Model
 
     public function save(array $options = [])
     {
-        if (!$this->validate()) {
-            return false;
-        }
         return parent::save($options);
     }
 
