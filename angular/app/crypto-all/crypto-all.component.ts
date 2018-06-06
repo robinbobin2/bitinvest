@@ -181,7 +181,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                 // console.log(this.admin[i].symbol);
                                 let index = _i;
 
-                                
+
                                 let symbol = admin[index].symbol;
                                 let year = admin[index].year;
                                 let algo = admin[index].algo;
@@ -197,8 +197,10 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                             this.first_time = false;
                                             this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
                                             if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
+                                                this.animtype[index] = '';
                                                 this.animtype[index] = 'redbg';
                                             } else {
+                                                this.animtype[index] = '';
                                                 this.animtype[index] = 'greenbg';
 
                                             }
