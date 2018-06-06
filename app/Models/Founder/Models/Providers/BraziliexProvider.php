@@ -31,9 +31,6 @@ class BraziliexProvider extends FounderProvider
         }
 
         foreach ($result as $currency => $supplierTicker) {
-            if(!$this->validate(strtoupper(str_replace("_", "/", $currency)))){
-                continue;
-            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->lowestAsk);
             $ticker->setBid($supplierTicker->highestBid);

@@ -165,6 +165,7 @@ Route::get('/crypto/{symbol}/about', "AngularController@crypto");
 Route::get('/crypto/{symbol}/comments', "AngularController@crypto");
 Route::get('/crypto/{symbol}/graph', "AngularController@crypto");
 Route::get('/bit/', "BitController@index");
+Route::get('/t/', "BitController@t");
 Route::get('/bit/exchange/{id}', "BitController@exchange");
 Route::get('/bit/pair', "BitController@pair");
 Route::get('/bit/pair', "BitController@pair");
