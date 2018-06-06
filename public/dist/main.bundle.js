@@ -496,6 +496,7 @@ module.exports = " <header>\n    <div class=\"top-head\">\n      <div class=\"wr
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__search_service__ = __webpack_require__("./angular/app/search.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__ = __webpack_require__("./node_modules/rxjs/_esm5/Subject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__ = __webpack_require__("./node_modules/rxjs/_esm5/Observable.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -505,6 +506,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -657,13 +659,13 @@ var AppComponent = (function () {
         results = undefined;
     };
     AppComponent.prototype.ngOnInit = function () {
-        // this.cryptoData=Observable.interval(3000).concatMap(()=>
-        //     this.stockService.getCrypto())
-        //     .subscribe(result => {
-        //         this.stockService.setBit(result)
-        //
-        //     })
         var _this = this;
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["a" /* Observable */].interval(3000).concatMap(function () {
+            return _this.stockService.getCrypto();
+        })
+            .subscribe(function (result) {
+            _this.stockService.setBit(result);
+        });
         this.auth
             .getUser()
             .subscribe(function (response) {
