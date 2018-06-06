@@ -191,7 +191,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
 
 
                                     if (this.dataUsd[index]) {
-                                        this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
+
                                         if (this.resp[symbol + '/USD']) {
 
                                             if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
@@ -211,6 +211,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                         this.dataUsd[index].algo = algo;
                                         this.dataUsd[index].year = year;
                                         if (this.resp[symbol + '/USD']) {
+                                            this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
                                             this.dataUsd[index].last = this.resp[symbol + '/USD']['last'];
                                             this.dataUsd[index].now = this.resp[symbol + '/USD']['now'];
                                             this.dataUsd[index].min = this.resp[symbol + '/USD']['min'];
