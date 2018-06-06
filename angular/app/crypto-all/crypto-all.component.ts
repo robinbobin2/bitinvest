@@ -190,9 +190,10 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                 let id = admin[index].id;
 
 
-                                this.diff[index] = 0;
+
 
                                 if (this.resp[symbol + '/USD']) {
+                                    this.diff[index] = 0;
                                     if (this.dataUsd[index]) {
                                         if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
                                             this.first_time = false;
