@@ -2447,12 +2447,13 @@ module.exports = ".select-wrapper1 {\n  width: 334px;\n  position: relative;\n  
 /* unused harmony export Cripto */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CryptoAllComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__portfolio_service__ = __webpack_require__("./angular/app/portfolio.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__("./node_modules/rxjs/_esm5/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__ = __webpack_require__("./angular/app/order-pipe/ngx-order.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__portfolio_service__ = __webpack_require__("./angular/app/portfolio.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__auth_service__ = __webpack_require__("./angular/app/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2469,13 +2470,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Cripto = (function () {
     function Cripto() {
     }
     return Cripto;
 }());
 
-var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
+var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
 var CryptoAllComponent = (function () {
     /**
      * Example: Use Order pipe in the component
@@ -2588,11 +2590,14 @@ var CryptoAllComponent = (function () {
             this.dataUsd = JSON.parse(localStorage.getItem('data'));
             this.load = false;
         }
-        this.StockService.bit$
-            .subscribe(function (response) {
-            _this.resp = response;
-            alldata.subscribe(function (response) {
-                var admin = response;
+        alldata.subscribe(function (response) {
+            var admin = response;
+            _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(3000).concatMap(function () { return _this.StockService.bit$; })
+                .map(function (response) {
+                _this.resp = response;
+            })
+                .subscribe(function (response) {
+                _this.resp = response;
                 _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
                 _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
                 var _loop_1 = function () {
@@ -2704,7 +2709,7 @@ var CryptoAllComponent = (function () {
     };
     CryptoAllComponent.prototype.createPortfolio = function (form) {
         var _this = this;
-        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
+        var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpHeaders */]({ 'Content-type': 'Application/json ' });
         this.http.post('/angular/userportfolio/create', {
             'name': form.value.name,
             'user_portfolio_type_id': 3
@@ -2727,9 +2732,9 @@ CryptoAllComponent = __decorate([
         selector: 'app-crypto-all',
         template: __webpack_require__("./angular/app/crypto-all/crypto-all.component.html"),
         styles: [__webpack_require__("./angular/app/crypto-all/crypto-all.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_5__portfolio_service__["a" /* PortfolioService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */]],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__stocks_service__["a" /* StocksService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__portfolio_service__["a" /* PortfolioService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__auth_service__["a" /* AuthService */]) === "function" && _g || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__auth_service__["a" /* AuthService */]) === "function" && _g || Object])
 ], CryptoAllComponent);
 
 var _a, _b, _c, _d, _e, _f, _g;

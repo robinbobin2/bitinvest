@@ -162,13 +162,19 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
             this.dataUsd = JSON.parse(localStorage.getItem('data'));
             this.load = false;
         }
-        this.StockService.bit$
+        alldata.subscribe(response => {
+            let admin = response;
+            this.cryptoData = Observable.interval(3000).concatMap(() => this.StockService.bit$)
+                .map((response) => {
+                    this.resp = response;
+                })
+
             .subscribe(response => {
                 this.resp = response;
-                alldata.subscribe(response => {
-                    let admin = response;
-                    this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
-                    this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
+
+
+                this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
+                this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
                     for (var _i = 0; _i < admin.length; ++_i) {
                         // console.log(this.admin[i].symbol);
                         let index = _i;
