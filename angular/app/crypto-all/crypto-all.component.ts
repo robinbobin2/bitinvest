@@ -170,33 +170,35 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                 this.StockService.getCryptoVol().debounceTime(10000).subscribe(volumes => {
                 this.cryptoData = Observable.interval(5000).concatMap(() => this.StockService.bit$)
                     .subscribe(resp => {
+
                         this.resp = resp;
                         // console.log(this.resp)
                         this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
                         this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
 
                             for (var _i = 0; _i < admin.length; ++_i) {
+
                                 // console.log(this.admin[i].symbol);
                                 let index = _i;
+
+                                
                                 let symbol = admin[index].symbol;
                                 let year = admin[index].year;
                                 let algo = admin[index].algo;
                                 let logo = admin[index].logo;
                                 let id = admin[index].id;
 
-                                this.animtype[index] = '';
+
                                 this.diff[index] = 0;
 
+                                if (this.resp[symbol + '/USD']) {
                                     if (this.dataUsd[index]) {
                                         if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
                                             this.first_time = false;
                                             this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
                                             if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
-                                                console.log('redbg')
-
                                                 this.animtype[index] = 'redbg';
                                             } else {
-                                                console.log('greenbg')
                                                 this.animtype[index] = 'greenbg';
 
                                             }
@@ -236,6 +238,26 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                             currencyVol: 0
                                         }
                                     }
+                                } else {
+                                    this.dataUsd[index] = {
+                                        id: id,
+                                        name: name,
+                                        sym: symbol,
+                                        last: 0,
+                                        now: 0,
+                                        min: 0,
+                                        max: 0,
+                                        volume: 0,
+                                        year: year,
+                                        algo: algo,
+                                        week: 0,
+                                        day: 0,
+                                        marketCapUsd: 0,
+                                        percentDay: 0,
+                                        percentWeek: 0,
+                                        currencyVol: 0
+                                    }
+                                }
                                 this.load = false;
                                 localStorage.removeItem('data');
                                 localStorage.setItem('data', JSON.stringify(this.dataUsd))
