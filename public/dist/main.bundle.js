@@ -2591,8 +2591,11 @@ var CryptoAllComponent = (function () {
         }
         alldata.subscribe(function (response) {
             var admin = response;
+            var i = 0;
             _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.StockService.bit$; })
                 .subscribe(function (resp) {
+                console.log('asdasdasd' + i);
+                i = i + 1;
                 _this.resp = resp;
                 // console.log(this.resp)
                 _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();

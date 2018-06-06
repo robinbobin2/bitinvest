@@ -60,7 +60,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
      *
      * @param {OrderPipe} orderPipe
      */
-    constructor(private orderPipe: OrderPipe,
+    constructor(
+                private orderPipe: OrderPipe,
                 private http: HttpClient,
                 private router: Router,
                 private route: ActivatedRoute,
@@ -166,9 +167,11 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
         }
         alldata.subscribe(response => {
             let admin = response;
+            let i = 0;
             this.cryptoData = Observable.interval(5000).concatMap(() => this.StockService.bit$)
             .subscribe(resp => {
-
+                console.log('asdasdasd'+ i);
+                i = i+1;
                 this.resp = resp;
                 // console.log(this.resp)
                 this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
