@@ -5937,6 +5937,7 @@ var InterviewDetailsComponent = (function () {
                 workplace: response['news'][0]['workplace'],
                 created_at: response['news'][0]['created_at'],
                 comments_count: response['comments_count'],
+                category: response['category']['name']
             };
             _this.commentcount = response['comments_count'];
             (_a = _this.comments).push.apply(_a, response['news'][0]['comments']);

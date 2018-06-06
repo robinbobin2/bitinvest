@@ -88,8 +88,8 @@
       <file leaf-file-name="interview-details.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/interview/interview-details/interview-details.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="90" column="32" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
+            <state relative-caret-position="240">
+              <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
               <folding>
                 <element signature="e#0#65#0" expanded="true" />
               </folding>
@@ -199,7 +199,6 @@
         <option value="$PROJECT_DIR$/app/ico-project/ico-project-detail/ico-project-detail.component.html" />
         <option value="$PROJECT_DIR$/app/interview/all-interview/all-interview.component.ts" />
         <option value="$PROJECT_DIR$/app/interview/all-interview/all-interview.component.html" />
-        <option value="$PROJECT_DIR$/app/interview/interview-details/interview-details.component.ts" />
         <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html" />
         <option value="$PROJECT_DIR$/app/interview/interview-details/interview-details.component.html" />
         <option value="$PROJECT_DIR$/app/news/news-detail/news-detail.component.html" />
@@ -223,6 +222,7 @@
         <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.html" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.html" />
         <option value="$PROJECT_DIR$/app/news/news-detail/news-detail.component.ts" />
+        <option value="$PROJECT_DIR$/app/interview/interview-details/interview-details.component.ts" />
       </list>
     </option>
   </component>
@@ -536,12 +536,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="36410000" />
+      <workItem from="1527928097804" duration="36646000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193582000" />
+    <option name="totallyTimeSpent" value="193818000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1028,8 +1028,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/interview/interview-details/interview-details.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="90" column="32" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
+        <state relative-caret-position="240">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding>
             <element signature="e#0#65#0" expanded="true" />
           </folding>

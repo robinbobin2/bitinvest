@@ -14,6 +14,7 @@ export class News {
   name_credits: string;
   comments_count: number;
   view_count: number;
+    category: string;
 
 }
 export class CommentRaw {
@@ -72,6 +73,7 @@ user: User;
              workplace: response['news'][0]['workplace'],
              created_at:response['news'][0]['created_at'],
              comments_count: response['comments_count'],
+             category: response['category']['name']
          }
          this.commentcount = response['comments_count'];
          this.comments.push(...response['news'][0]['comments']);
