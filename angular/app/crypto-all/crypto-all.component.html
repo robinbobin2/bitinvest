@@ -124,7 +124,7 @@ width="18.3%">
    <span [routerLink]="['/crypto', data.sym]">{{data.sym}}</span>
  </td>
  <td [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">
-  <span class="price">${{data.now | number: '1.2'}}</span>
+  <span class="price">${{data.now | number: '1.0-3'}}</span>
   <span *ngIf="diff[i] >0 || diff[i] < 0" [ngClass]="isNegative(diff[i])==true ? 'change-red' : 'change'">(${{diff[i] | number: '1.2'}})</span>
 </td>
 <td>
