@@ -2605,7 +2605,6 @@ var CryptoAllComponent = (function () {
                         var algo = admin[index].algo;
                         var logo = admin[index].logo;
                         var id = admin[index].id;
-                        _this.diff[index] = 0;
                         if (_this.dataUsd[index]) {
                             if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
                                 _this.first_time = false;
