@@ -191,16 +191,18 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                 this.diff[index] = 0;
 
                                     if (this.dataUsd[index]) {
-                                        if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
-                                            this.first_time = false;
-                                            this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
-                                            if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
-                                                this.animtype[index] = '';
-                                                this.animtype[index] = 'redbg';
-                                            } else {
-                                                this.animtype[index] = '';
-                                                this.animtype[index] = 'greenbg';
+                                        if (this.resp[symbol + '/USD']) {
+                                            if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
+                                                this.first_time = false;
+                                                this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
+                                                if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
+                                                    this.animtype[index] = '';
+                                                    this.animtype[index] = 'redbg';
+                                                } else {
+                                                    this.animtype[index] = '';
+                                                    this.animtype[index] = 'greenbg';
 
+                                                }
                                             }
                                         }
                                         this.dataUsd[index].sym = symbol;
