@@ -2595,7 +2595,7 @@ var CryptoAllComponent = (function () {
                     // console.log(this.resp)
                     _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
                     _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
-                    for (var _i = 0; _i < admin.length; ++_i) {
+                    var _loop_1 = function () {
                         // console.log(this.admin[i].symbol);
                         var index = _i;
                         var symbol = admin[index].symbol;
@@ -2603,7 +2603,7 @@ var CryptoAllComponent = (function () {
                         var algo = admin[index].algo;
                         var logo = admin[index].logo;
                         var id = admin[index].id;
-                        _this.diff[index] = 0;
+                        setTimeout(function () { return _this.diff[index] = 0; }, 2000);
                         if (_this.resp[symbol + '/USD']) {
                             if (_this.dataUsd[index]) {
                                 if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
@@ -2683,6 +2683,9 @@ var CryptoAllComponent = (function () {
                                 _this.dataUsd[index].currencyVol = it.volume;
                             }
                         }
+                    };
+                    for (var _i = 0; _i < admin.length; ++_i) {
+                        _loop_1();
                     }
                 });
             });
