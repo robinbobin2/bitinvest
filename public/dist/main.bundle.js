@@ -2607,8 +2607,8 @@ var CryptoAllComponent = (function () {
                         var id = admin[index].id;
                         _this.diff[index] = 0;
                         if (_this.dataUsd[index]) {
+                            _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
                             if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
-                                _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
                                 _this.first_time = false;
                                 if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
                                     _this.animtype[index] = '';
