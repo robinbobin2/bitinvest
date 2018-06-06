@@ -171,6 +171,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                 // console.log(this.resp)
                 this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
                 this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
+                this.StockService.getCryptoVol().debounceTime(10000).subscribe( volumes => {
                     for (var _i = 0; _i < admin.length; ++_i) {
                         // console.log(this.admin[i].symbol);
                         let index = _i;
@@ -256,16 +257,17 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                         localStorage.removeItem('data');
                         localStorage.setItem('data', JSON.stringify(this.dataUsd))
 
-                        this.StockService.getCryptoVol().debounceTime(10000).subscribe( res => {
-                            for (let it of res) {
+
+                            for (let it of volumes) {
                                 if (it.currency == symbol + '/USD') {
                                     this.dataUsd[index].currencyVol = it.volume
                                 }
                             }
 
 
-                        })
+
                     }
+                })
 
                 });
 
