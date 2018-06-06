@@ -6337,6 +6337,7 @@ var NewsDetailComponent = (function () {
     }
     NewsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.route.fragment.subscribe(function (fragment) { _this.fragment = fragment; });
         this.user = {
             id: 0,
             name: '',
@@ -6445,6 +6446,10 @@ var NewsDetailComponent = (function () {
     };
     NewsDetailComponent.prototype.ngAfterViewInit = function () {
         this.viewService.incrementView('news', this.id).subscribe();
+        try {
+            document.querySelector('#' + this.fragment).scrollIntoView();
+        }
+        catch (e) { }
     };
     return NewsDetailComponent;
 }());

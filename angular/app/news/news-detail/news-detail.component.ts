@@ -51,6 +51,7 @@ user: User;
 hide = false;
 id = 0;
 relatedNews = [];
+    fragment: any;
   constructor(private http:HttpClient, private router:Router,
               private route:ActivatedRoute, private commentService: CommentsService,
               private viewService: CloudMiningService,
@@ -60,6 +61,7 @@ relatedNews = [];
 }
 
   ngOnInit() {
+      this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
       this.user = {
           id:0,
           name: '',
@@ -184,5 +186,8 @@ relatedNews = [];
 
   ngAfterViewInit() {
       this.viewService.incrementView('news', this.id).subscribe()
+      try {
+          document.querySelector('#' + this.fragment).scrollIntoView();
+      } catch (e) { }
   }
 }
