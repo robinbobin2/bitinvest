@@ -2495,6 +2495,7 @@ var CryptoAllComponent = (function () {
         this.animtype = [];
         this.algoFilter = [];
         this.yearFilter = [];
+        this.diff = [];
         this.selectedItem = [];
         this.active = 0;
         this.inactive = 0;

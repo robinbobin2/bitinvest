@@ -43,7 +43,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
     animtype = [];
     algoFilter = [];
     yearFilter = [];
-    diff: any;
+    diff = [];
     selectedItem = [];
     active = 0;
     inactive = 0;
