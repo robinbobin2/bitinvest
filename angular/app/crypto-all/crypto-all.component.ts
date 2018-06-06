@@ -43,7 +43,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
     animtype = [];
     algoFilter = [];
     yearFilter = [];
-    diff = [];
+    diff: Array<number> = [];
     selectedItem = [];
     active = 0;
     inactive = 0;
@@ -52,8 +52,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
     show = false;
     portfolioInfo: any;
     getUserPortfolio = [];
-    algorithm = ''
-    age = ''
+
     /**
      * Example: Use Order pipe in the component
      *
@@ -171,6 +170,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                 this.StockService.getCryptoVol().debounceTime(10000).subscribe(volumes => {
                 this.cryptoData = Observable.interval(5000).concatMap(() => this.StockService.bit$)
                     .subscribe(resp => {
+
                         this.resp = resp;
 
                         // console.log(this.resp)
@@ -189,61 +189,78 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                 let logo = admin[index].logo;
                                 let id = admin[index].id;
 
-                                if (this.dataUsd[index]) {
-                                    if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
-                                        this.first_time = false;
-                                        this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
-                                                if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
 
+                                this.diff[index] = 0;
 
-                                                    this.animtype[index] = '';
-                                                    this.animtype[index] = 'redbg';
-                                                } else {
-                                                    this.animtype[index] = '';
-                                                    this.animtype[index] = 'greenbg';
+                                if (this.resp[symbol + '/USD']) {
+                                    if (this.dataUsd[index]) {
+                                        if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
+                                            this.first_time = false;
+                                            this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
+                                            if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
+                                                this.animtype[index] = '';
+                                                this.animtype[index] = 'redbg';
+                                            } else {
+                                                this.animtype[index] = '';
+                                                this.animtype[index] = 'greenbg';
 
-                                                }
                                             }
+                                        }
                                         this.dataUsd[index].sym = symbol;
                                         this.dataUsd[index].algo = algo;
                                         this.dataUsd[index].year = year;
-                                        if (this.resp[symbol + '/USD']) {
-
-                                            this.dataUsd[index].last = this.resp[symbol + '/USD']['last'];
-                                            this.dataUsd[index].now = this.resp[symbol + '/USD']['now'];
-                                            this.dataUsd[index].min = this.resp[symbol + '/USD']['min'];
-                                            this.dataUsd[index].max = this.resp[symbol + '/USD']['max'];
-                                            this.dataUsd[index].volume = this.resp[symbol + '/USD']['volume'];
-                                            this.dataUsd[index].day = this.resp[symbol + "/USD"]['day'];
-                                            this.dataUsd[index].week = this.resp[symbol + "/USD"]['week'];
-                                            this.dataUsd[index].marketCapUsd = this.resp[symbol + "/USD"]['marketCapUsd'];
-                                            this.dataUsd[index].logo = logo;
-                                            this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
-                                            this.dataUsd[index].percentWeek = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
-                                        }
+                                        this.dataUsd[index].last = this.resp[symbol + '/USD']['last'];
+                                        this.dataUsd[index].now = this.resp[symbol + '/USD']['now'];
+                                        this.dataUsd[index].min = this.resp[symbol + '/USD']['min'];
+                                        this.dataUsd[index].max = this.resp[symbol + '/USD']['max'];
+                                        this.dataUsd[index].volume = this.resp[symbol + '/USD']['volume'];
+                                        this.dataUsd[index].day = this.resp[symbol + "/USD"]['day'];
+                                        this.dataUsd[index].week = this.resp[symbol + "/USD"]['week'];
+                                        this.dataUsd[index].marketCapUsd = this.resp[symbol + "/USD"]['marketCapUsd'];
+                                        this.dataUsd[index].logo = logo;
+                                        this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
+                                        this.dataUsd[index].percentWeek = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
                                     } else {
-                                        if (this.resp[symbol + '/USD']) {
-                                            this.dataUsd[index] = {
-                                                id: id,
-                                                name: name,
-                                                sym: symbol,
-                                                last: this.resp[symbol + '/USD']['last'],
-                                                now: this.resp[symbol + '/USD']['now'],
-                                                min: this.resp[symbol + '/USD']['min'],
-                                                max: this.resp[symbol + '/USD']['max'],
-                                                volume: this.resp[symbol + '/USD']['volume'],
-                                                year: year,
-                                                algo: algo,
-                                                week: this.resp[symbol + "/USD"]['week'],
-                                                day: this.resp[symbol + "/USD"]['day'],
-                                                marketCapUsd: this.resp[symbol + "/USD"]['marketCapUsd'],
-                                                percentDay: 0,
-                                                percentWeek: 0,
-                                                currencyVol: 0
-                                            }
+
+                                        this.dataUsd[index] = {
+                                            id: id,
+                                            name: name,
+                                            sym: symbol,
+                                            last: this.resp[symbol + '/USD']['last'],
+                                            now: this.resp[symbol + '/USD']['now'],
+                                            min: this.resp[symbol + '/USD']['min'],
+                                            max: this.resp[symbol + '/USD']['max'],
+                                            volume: this.resp[symbol + '/USD']['volume'],
+                                            year: year,
+                                            algo: algo,
+                                            week: this.resp[symbol + "/USD"]['week'],
+                                            day: this.resp[symbol + "/USD"]['day'],
+                                            marketCapUsd: this.resp[symbol + "/USD"]['marketCapUsd'],
+                                            percentDay: 0,
+                                            percentWeek: 0,
+                                            currencyVol: 0
                                         }
                                     }
-
+                                } else {
+                                    this.dataUsd[index] = {
+                                        id: id,
+                                        name: name,
+                                        sym: symbol,
+                                        last: 0,
+                                        now: 0,
+                                        min: 0,
+                                        max: 0,
+                                        volume: 0,
+                                        year: year,
+                                        algo: algo,
+                                        week: 0,
+                                        day: 0,
+                                        marketCapUsd: 0,
+                                        percentDay: 0,
+                                        percentWeek: 0,
+                                        currencyVol: 0
+                                    }
+                                }
                                 this.load = false;
                                 localStorage.removeItem('data');
                                 localStorage.setItem('data', JSON.stringify(this.dataUsd))

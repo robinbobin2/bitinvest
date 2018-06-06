@@ -2502,8 +2502,6 @@ var CryptoAllComponent = (function () {
         this.portfoliosInfo = [];
         this.show = false;
         this.getUserPortfolio = [];
-        this.algorithm = '';
-        this.age = '';
     }
     CryptoAllComponent.prototype.removePortfolio = function (id) {
         var _this = this;
@@ -2605,23 +2603,24 @@ var CryptoAllComponent = (function () {
                         var algo = admin[index].algo;
                         var logo = admin[index].logo;
                         var id = admin[index].id;
-                        if (_this.dataUsd[index]) {
-                            if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
-                                _this.first_time = false;
-                                _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
-                                if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
-                                    _this.animtype[index] = '';
-                                    _this.animtype[index] = 'redbg';
+                        _this.diff[index] = 0;
+                        if (_this.resp[symbol + '/USD']) {
+                            if (_this.dataUsd[index]) {
+                                if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
+                                    _this.first_time = false;
+                                    _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
+                                    if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
+                                        _this.animtype[index] = '';
+                                        _this.animtype[index] = 'redbg';
+                                    }
+                                    else {
+                                        _this.animtype[index] = '';
+                                        _this.animtype[index] = 'greenbg';
+                                    }
                                 }
-                                else {
-                                    _this.animtype[index] = '';
-                                    _this.animtype[index] = 'greenbg';
-                                }
-                            }
-                            _this.dataUsd[index].sym = symbol;
-                            _this.dataUsd[index].algo = algo;
-                            _this.dataUsd[index].year = year;
-                            if (_this.resp[symbol + '/USD']) {
+                                _this.dataUsd[index].sym = symbol;
+                                _this.dataUsd[index].algo = algo;
+                                _this.dataUsd[index].year = year;
                                 _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
                                 _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
                                 _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
@@ -2634,9 +2633,7 @@ var CryptoAllComponent = (function () {
                                 _this.dataUsd[index].percentDay = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day);
                                 _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
                             }
-                        }
-                        else {
-                            if (_this.resp[symbol + '/USD']) {
+                            else {
                                 _this.dataUsd[index] = {
                                     id: id,
                                     name: name,
@@ -2656,6 +2653,26 @@ var CryptoAllComponent = (function () {
                                     currencyVol: 0
                                 };
                             }
+                        }
+                        else {
+                            _this.dataUsd[index] = {
+                                id: id,
+                                name: name,
+                                sym: symbol,
+                                last: 0,
+                                now: 0,
+                                min: 0,
+                                max: 0,
+                                volume: 0,
+                                year: year,
+                                algo: algo,
+                                week: 0,
+                                day: 0,
+                                marketCapUsd: 0,
+                                percentDay: 0,
+                                percentWeek: 0,
+                                currencyVol: 0
+                            };
                         }
                         _this.load = false;
                         localStorage.removeItem('data');
