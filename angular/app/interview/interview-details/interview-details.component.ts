@@ -42,7 +42,7 @@ export class User {
   selector: 'app-interview-details',
   templateUrl: './interview-details.component.html',
   styleUrls: ['./interview-details.component.scss'],
-    providers: [CommentsService, CloudMiningService]
+    providers: [CommentsService, CloudMiningService, SimilarPostsService]
 })
 export class InterviewDetailsComponent implements OnInit, AfterViewInit {
 news: News;
