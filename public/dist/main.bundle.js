@@ -2679,7 +2679,7 @@ var CryptoAllComponent = (function () {
                     _this.load = false;
                     localStorage.removeItem('data');
                     localStorage.setItem('data', JSON.stringify(_this.dataUsd));
-                    _this.StockService.getCryptoVol().take(1).subscribe(function (res) {
+                    _this.StockService.getCryptoVol().debounceTime(10000).subscribe(function (res) {
                         for (var _a = 0, res_1 = res; _a < res_1.length; _a++) {
                             var it = res_1[_a];
                             if (it.currency == symbol + '/USD') {

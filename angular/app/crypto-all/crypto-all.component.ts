@@ -256,7 +256,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                         localStorage.removeItem('data');
                         localStorage.setItem('data', JSON.stringify(this.dataUsd))
 
-                        this.StockService.getCryptoVol().take(1).subscribe( res => {
+                        this.StockService.getCryptoVol().debounceTime(10000).subscribe( res => {
                             for (let it of res) {
                                 if (it.currency == symbol + '/USD') {
                                     this.dataUsd[index].currencyVol = it.volume
