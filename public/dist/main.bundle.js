@@ -8046,13 +8046,13 @@ var StocksSidebarComponent = (function () {
         }
         alldata.subscribe(function (response) {
             var admin = response;
-            _this.cryptoData = __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.StockService.bit$; })
-                .subscribe(function (response) {
-                _this.resp = response;
-                // console.log(this.resp)
-                _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
-                _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
-                _this.StockService.getCryptoVol().debounceTime(10000).subscribe(function (volumes) {
+            _this.StockService.getCryptoVol().debounceTime(10000).subscribe(function (volumes) {
+                _this.cryptoData = __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.StockService.bit$; })
+                    .subscribe(function (resp) {
+                    _this.resp = resp;
+                    // console.log(this.resp)
+                    _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
+                    _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
                     for (var _i = 0; _i < admin.length; ++_i) {
                         // console.log(this.admin[i].symbol);
                         var index = _i;
@@ -8061,7 +8061,6 @@ var StocksSidebarComponent = (function () {
                         var algo = admin[index].algo;
                         var logo = admin[index].logo;
                         var id = admin[index].id;
-                        _this.animtype[index] = '';
                         _this.diff[index] = 0;
                         if (_this.resp[symbol + '/USD']) {
                             if (_this.dataUsd[index]) {
@@ -8069,9 +8068,11 @@ var StocksSidebarComponent = (function () {
                                     _this.first_time = false;
                                     _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
                                     if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
+                                        _this.animtype[index] = '';
                                         _this.animtype[index] = 'redbg';
                                     }
                                     else {
+                                        _this.animtype[index] = '';
                                         _this.animtype[index] = 'greenbg';
                                     }
                                 }
@@ -8110,26 +8111,6 @@ var StocksSidebarComponent = (function () {
                                     currencyVol: 0
                                 };
                             }
-                        }
-                        else {
-                            _this.dataUsd[index] = {
-                                id: id,
-                                name: name,
-                                sym: symbol,
-                                last: 0,
-                                now: 0,
-                                min: 0,
-                                max: 0,
-                                volume: 0,
-                                year: year,
-                                algo: algo,
-                                week: 0,
-                                day: 0,
-                                marketCapUsd: 0,
-                                percentDay: 0,
-                                percentWeek: 0,
-                                currencyVol: 0
-                            };
                         }
                         _this.load = false;
                         localStorage.removeItem('data');
