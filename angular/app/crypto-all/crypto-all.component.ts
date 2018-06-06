@@ -197,7 +197,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                             }
                         }
                         if (this.dataUsd[index]) {
-                            if (this.resp[symbol + '/USD']) {
                                 this.dataUsd[index].sym = symbol;
                                 this.dataUsd[index].algo = algo;
                                 this.dataUsd[index].year = year;
@@ -212,9 +211,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                 this.dataUsd[index].logo = logo;
                                 this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
                                 this.dataUsd[index].percentWeek = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
-                            }
                         } else {
-                            console.log(this.resp[symbol + '/USD'])
+
                             if (this.resp[symbol + '/USD']) {
                                 this.dataUsd[index] = {
                                     id: id,
