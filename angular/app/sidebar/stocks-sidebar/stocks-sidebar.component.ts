@@ -38,10 +38,10 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
   alldata = this.http.get<Array<Cripto>>('/allcrypto');
   symbol = "";
   ngAfterViewInit() {
-      this.stocksService.bit$.subscribe(n => {
-          console.log(n);
-
-      });
+      // this.stocksService.bit$.subscribe(n => {
+      //     console.log(n);
+      //
+      // });
     this.stocksService.getCrypto()
     .subscribe(response => {
       this.resp = response;

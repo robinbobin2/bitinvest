@@ -660,7 +660,7 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.cryptoData = __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["a" /* Observable */].interval(1000).concatMap(function () {
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["a" /* Observable */].interval(3000).concatMap(function () {
             return _this.stockService.getCrypto();
         })
             .subscribe(function (result) {
@@ -2429,7 +2429,7 @@ var _a;
 /***/ "./angular/app/crypto-all/crypto-all.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\t<!--<section class=\"crypto-active\">-->\n\t\t<!--<div class=\"wrapper\">-->\n\t\t\t<!--<div class=\"select-block\">-->\n\t\t\t\t<!--<h1 class=\"table-title-big\">Криптовалюты<span>195</span><a href=\"balant-mining-filter.html\"><img src=\"img/mining-icon.png\" alt=\"\"></a></h1>-->\n\t\t\t\t<!--<div class=\"filters\">-->\n\n      <!--</div>-->\n    <!--</div>-->\n    <section class=\"crypto-active\">\n        <div class=\"wrapper\">\n            <div class=\"select-block\">\n                <h1 class=\"table-title-big\">Криптовалюты<span>195</span><a href=\"balant-mining-filter.html\"><img src=\"img/mining-icon.png\" alt=\"\"></a></h1>\n                <div class=\"crypto-select-wrap\">\n                        <!-- <div class=\"select-wrap\">\n                            <select>\n                                <option value=\"all\">Валюта: Любая</option>\n                                <option value=\"usd\">Валюта: USD</option>\n                                <option value=\"eur\">Валюта: EUR</option>\n                            </select>\n                        </div> -->\n                        <div class=\"select-wrapper1\" id=\"select-algo\">\n                            <div class=\"select\">\n                                <span class=\"text\"><span style=\"padding-top: 12px;\">{{algorithm !='' ? algorithm : 'Алгоритм: Все'}}</span></span>\n                                <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n                            </div>\n                            <ul class=\"select-items\">\n                                <li (click)=\"algorithm=''\"> <a >Алгоритм: Все</a></li>\n                                <li *ngFor=\"let data of algoFilter\" (click)=\"algorithm=data\"><a >Алгоритм: {{data}}</a></li>\n                                <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n                            </ul>\n                        </div>\n                        <div class=\"select-wrapper1\" id=\"select-age\">\n                            <div class=\"select\">\n                                <span class=\"text\"><span style=\"padding-top: 12px;\">{{age !='' ? age : 'Год: Все'}}</span></span>\n                                <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n                            </div>\n                            <ul class=\"select-items\">\n                                <li (click)=\"age=''\"> <a>Год: Все</a></li>\n                                <li *ngFor=\"let data of dataUsd\" (click)=\"age=data?.year\"><a >Год: {{data?.year}}</a></li>\n                                <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n                            </ul>\n                        </div>\n                        <div class=\"crypto-select-wrap\">\n                            <input type=\"text\" placeholder=\"Поиск по названию монеты...\" [(ngModel)]=\"filteredName\" name=\"filteredName\" value=\"\">\n                        </div>\n\n                </div>\n            </div>\n    <div class=\"table-wrap\" style=\"margin-bottom: 20px;\">\n      <table class=\"table crypto-table\">\n       <thead>\n        <tr>\n         <th width=\"4.4%\">\n          <span>#</span>\n          <img src=\"img/arr-top-table.png\" alt=\"\">\n        </th>\n        <th [class.active]=\"order === 'sym'\"\n        (click)=\"setOrder('sym')\"\n        width=\"12.9%\">\n        <span>Название</span>\n        <img src=\"img/arr-top-table.png\" alt=\"\">\n      </th>\n      <th [class.active]=\"order === 'now'\"\n      (click)=\"setOrder('now')\"\n      width=\"15%\">\n      <span>Стоимость</span>\n\n      <img src=\"img/arr-top-table.png\" alt=\"\">\n    </th>\n    <th\n            [class.active]=\"order === 'marketCapUsd'\"\n            (click)=\"setOrder('marketCapUsd')\"\n\n    width=\"15%\">\n    <span>Капитализация</span>\n    <img src=\"img/arr-top-table.png\" alt=\"\">\n  </th>\n<th [class.active]=\"order === 'value'\"\n(click)=\"setOrder('value')\"\n\nwidth=\"12.4%\">\n<span>Объем в $ (за 24 ч.)</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th \n[class.active]=\"order === 'algo'\"\n(click)=\"setOrder('algo')\"\nwidth=\"6.3%\">\n<span>Алгоритм</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th [class.active]=\"order === 'year'\"\n(click)=\"setOrder('year')\"\nwidth=\"4.7%\">\n<span>Год</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th\n        [class.active]=\"order === 'percentDay'\"\n        (click)=\"setOrder('percentDay')\"\nwidth=\"11%\">\n<span>Изм. за 24ч</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th\n        [class.active]=\"order === 'percentWeek'\"\n        (click)=\"setOrder('percentWeek')\"\nwidth=\"18.3%\">\n<span>Изм. за 7д</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n</tr>\n</thead>\n<tbody style=\"position: relative;\" *ngIf=\"load == false\">\n\n  <tr *ngFor=\"let data of dataUsd  | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index\">\n   <td>\n    <span>{{i+1}}</span>\n  </td>\n  <td>\n    <div class=\"img-wrap\" [routerLink]=\"['/crypto', data.sym]\">\n      <img *ngIf=\"data.logo\" [src]=\"'images/'+data.logo\" style=\"max-width: 40px;\" alt=\"\">\n   </div>\n   <span [routerLink]=\"['/crypto', data.sym]\">{{data.sym}}</span>\n </td>\n <td [ngStyle]=\"{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">\n  <span class=\"price\">${{data.now | number: '1.2'}}</span>\n  <span *ngIf=\"diff[i] >0 || diff[i] < 0\" [ngClass]=\"isNegative(diff[i])==true ? 'change-red' : 'change'\">(${{diff[i] | number: '1.2'}})</span>\n</td>\n<td>\n  <span class=\"capitalization\">${{data.marketCapUsd| number: '1.0-3'}}</span>\n</td>\n<td>\n  <span class=\"bargaining\">${{data.currencyVol | number: '1.3'}}</span>\n</td>\n<td>\n  <span class=\"algorithm\">{{data?.algo}}</span>\n</td>\n<td>\n  <span class=\"year\">{{data?.year}}</span>\n</td>\n<td>\n  <span [ngClass]=\"isNegativePercent(data.now, data.day)==true ? 'change-red' : 'change-green'\">{{ countPercent(data.now, data.day) | number: '1.2'}}%</span>\n\n</td>\n<td>\n  <div class=\"difference\">\n   <span [ngClass]=\"isNegativePercent(data.now, data.week)==true ? 'change-red' : 'change-green'\">{{ countPercent(data.now, data.week) | number: '1.2'}}%</span>\n   <div class=\"buttons\">\n    <button class=\"right\" [routerLink]=\"['/crypto', data.sym]\">></button>\n       <a href=\"#login-popup\" *ngIf=\"!checkAuth()\" class=\"popup-link follow plus\" data-effect=\"mfp-zoom-in\" data-effect=\"mfp-zoom-in\">+</a>\n       <a href=\"#follow-popup\" *ngIf=\"!checkInPortfolio(data.id) && checkAuth()\" (click)=\"selectedItem = data\" class=\"plus popup-link follow\" data-effect=\"mfp-zoom-in\">+</a>\n\n       <button  *ngIf=\"checkInPortfolio(data.id) && checkAuth()\"  (click)=\"removePortfolio(data.id)\" class=\"minus\" data-effect=\"mfp-zoom-in\"><img src=\"img/minus.png\" alt=\"\"></button>\n\n   </div>\n</div>\n</td>\n</tr>\n<tr class=\"hidden\">\n <td>\n  <span>122</span>\n</td>\n<td>\n  <div class=\"img-wrap\">\n   <img src=\"img/bitcoin-icon.png\" alt=\"\">\n </div>\n <span>Bitcoin (BTC)</span>\n</td>\n<td>\n  <span class=\"price\">$9,200</span>\n\n</td>\n<td>\n  <span class=\"capitalization\">$95,113,177,098</span>\n</td>\n<td>\n  ><span class=\"total\">21 000 000 000</span>\n  <span class=\"received\">890 910</span>\n</td>\n<td>\n  <span class=\"bargaining\">$95,113,177</span>\n</td>\n<td>\n  <span class=\"algorithm\">SHA-256</span>\n</td>\n<td>\n  <span class=\"year\">2009</span>\n</td>\n<td>\n  <span class=\"change-green\">+ 3,5% (+200,09)</span>\n\n</td>\n<td>\n  <div class=\"difference\">\n   <span class=\"change-red\">-2,3% (-201,11)</span>\n   <div class=\"buttons\">\n\n  </div>\n</div>\n</td>\n</tr>\n</tbody>\n</table>\n        <div style=\"width: 50px; height: 50px; margin: 40px auto;\" *ngIf=\"load == true\">\n            <img src=\"/img/load.gif\" *ngIf=\"load == true\" style=\" width: 50px; height: 50px; text-align: center\">\n        </div>\n</div>\n<!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n</div>\n</section>\n\n    <div id=\"follow-popup\" class=\"popup mfp-with-anim mfp-hide\">\n        <div class=\"popup-body\">\n            <h2>Следить за {{selectedItem?.name}}</h2>\n            <p>Выберите портфель для сохранения {{selectedItem?.name}}</p>\n            <div class=\"checkbox-list\">\n                <div class=\"checkbox-wrap\" *ngFor=\"let portfolio of getUserPortfolio; let i = index\">\n                    <input type=\"radio\" name=\"id\" [(ngModel)]=\"addPortfolio\" value=\"{{portfolio.id}}\" checked=\"checked\" id=\"{{i}}\">\n                    <label for=\"{{i}}\">\n                        <span></span>{{portfolio.name}}\n                    </label>\n                </div>\n            </div>\n            <a href=\"#\" class=\"add-portfolio\">+Добавить портфель</a>\n            <form class=\"hidden\" #f=\"ngForm\">\n                <input type=\"text\" ngModel name=\"name\" required=\"\" placeholder=\"Введите название...\">\n                <button (click)=\"createPortfolio(f)\" type=\"submit\">Добавить</button>\n            </form>\n        </div>\n        <div class=\"save-block\">\n            <a (click)=\"submitPortfolio(selectedItem?.id, 'App\\\\CryptoStat')\" class=\"save-settings\">Сохранить настройки</a>\n            <a href=\"#\" class=\"close-text\">Отменить и закрыть</a>\n        </div>\n    </div>"
+module.exports = "\t<!--<section class=\"crypto-active\">-->\n\t\t<!--<div class=\"wrapper\">-->\n\t\t\t<!--<div class=\"select-block\">-->\n\t\t\t\t<!--<h1 class=\"table-title-big\">Криптовалюты<span>195</span><a href=\"balant-mining-filter.html\"><img src=\"img/mining-icon.png\" alt=\"\"></a></h1>-->\n\t\t\t\t<!--<div class=\"filters\">-->\n\n      <!--</div>-->\n    <!--</div>-->\n    <section class=\"crypto-active\">\n        <div class=\"wrapper\">\n            <div class=\"select-block\">\n                <h1 class=\"table-title-big\">Криптовалюты<span>195</span><a href=\"balant-mining-filter.html\"><img src=\"img/mining-icon.png\" alt=\"\"></a></h1>\n                <div class=\"crypto-select-wrap\">\n                        <!-- <div class=\"select-wrap\">\n                            <select>\n                                <option value=\"all\">Валюта: Любая</option>\n                                <option value=\"usd\">Валюта: USD</option>\n                                <option value=\"eur\">Валюта: EUR</option>\n                            </select>\n                        </div> -->\n                        <div class=\"select-wrapper1\" id=\"select-algo\">\n                            <div class=\"select\">\n                                <span class=\"text\"><span style=\"padding-top: 12px;\">{{algorithm !='' ? algorithm : 'Алгоритм: Все'}}</span></span>\n                                <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n                            </div>\n                            <ul class=\"select-items\">\n                                <li (click)=\"algorithm=''\"> <a >Алгоритм: Все</a></li>\n                                <li *ngFor=\"let data of algoFilter\" (click)=\"algorithm=data\"><a >Алгоритм: {{data}}</a></li>\n                                <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n                            </ul>\n                        </div>\n                        <div class=\"select-wrapper1\" id=\"select-age\">\n                            <div class=\"select\">\n                                <span class=\"text\"><span style=\"padding-top: 12px;\">{{age !='' ? age : 'Год: Все'}}</span></span>\n                                <a href=\"#\"><img src=\"/img/select-drop-icon.png\" alt=\"\"></a>\n                            </div>\n                            <ul class=\"select-items\">\n                                <li (click)=\"age=''\"> <a>Год: Все</a></li>\n                                <li *ngFor=\"let data of dataUsd\" (click)=\"age=data?.year\"><a >Год: {{data?.year}}</a></li>\n                                <!-- <li (click)=\"setOrder('percentage')\"><a >Фильтрация: По сумме собранных средств</a></li> -->\n                            </ul>\n                        </div>\n                        <div class=\"crypto-select-wrap\">\n                            <input type=\"text\" placeholder=\"Поиск по названию монеты...\" [(ngModel)]=\"filteredName\" name=\"filteredName\" value=\"\">\n                        </div>\n\n                </div>\n            </div>\n    <div class=\"table-wrap\" style=\"margin-bottom: 20px;\">\n      <table class=\"table crypto-table\">\n       <thead>\n        <tr>\n         <th width=\"4.4%\">\n          <span>#</span>\n          <img src=\"img/arr-top-table.png\" alt=\"\">\n        </th>\n        <th [class.active]=\"order === 'sym'\"\n        (click)=\"setOrder('sym')\"\n        width=\"12.9%\">\n        <span>Название</span>\n        <img src=\"img/arr-top-table.png\" alt=\"\">\n      </th>\n      <th [class.active]=\"order === 'now'\"\n      (click)=\"setOrder('now')\"\n      width=\"15%\">\n      <span>Стоимость</span>\n\n      <img src=\"img/arr-top-table.png\" alt=\"\">\n    </th>\n    <th\n            [class.active]=\"order === 'marketCapUsd'\"\n            (click)=\"setOrder('marketCapUsd')\"\n\n    width=\"15%\">\n    <span>Капитализация</span>\n    <img src=\"img/arr-top-table.png\" alt=\"\">\n  </th>\n<th [class.active]=\"order === 'value'\"\n(click)=\"setOrder('value')\"\n\nwidth=\"12.4%\">\n<span>Объем в $ (за 24 ч.)</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th \n[class.active]=\"order === 'algo'\"\n(click)=\"setOrder('algo')\"\nwidth=\"6.3%\">\n<span>Алгоритм</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th [class.active]=\"order === 'year'\"\n(click)=\"setOrder('year')\"\nwidth=\"4.7%\">\n<span>Год</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th\n        [class.active]=\"order === 'percentDay'\"\n        (click)=\"setOrder('percentDay')\"\nwidth=\"11%\">\n<span>Изм. за 24ч</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n<th\n        [class.active]=\"order === 'percentWeek'\"\n        (click)=\"setOrder('percentWeek')\"\nwidth=\"18.3%\">\n<span>Изм. за 7д</span>\n<img src=\"img/arr-top-table.png\" alt=\"\">\n</th>\n</tr>\n</thead>\n<tbody style=\"position: relative;\" *ngIf=\"load == false\">\n\n  <tr *ngFor=\"let data of dataUsd  | orderBy: order:reverse:'case-insensitive' | filterName:filteredName:'sym' | filterNameActive:age:'year' | filterNameActive:algorithm:'algo'; let i = index\">\n   <td>\n    <span>{{i+1}}</span>\n  </td>\n  <td>\n    <div class=\"img-wrap\" [routerLink]=\"['/crypto', data.sym]\">\n      <img *ngIf=\"data.logo\" [src]=\"'images/'+data.logo\" style=\"max-width: 40px;\" alt=\"\">\n   </div>\n   <span [routerLink]=\"['/crypto', data.sym]\">{{data.sym}}</span>\n </td>\n <td [ngStyle]=\"{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }\">\n  <span class=\"price\">${{data.now | number: '1.2'}}</span>\n  <span *ngIf=\"diff[i] >0 || diff[i] < 0\" [ngClass]=\"isNegative(diff[i])==true ? 'change-red' : 'change'\">(${{diff[i] | number: '1.2'}})</span>\n</td>\n<td>\n  <span class=\"capitalization\">${{data.marketCapUsd| number: '1.0-3'}}</span>\n</td>\n<td>\n  <span class=\"bargaining\">{{data.currencyVol | number: '1.3'}}</span>\n</td>\n<td>\n  <span class=\"algorithm\">{{data?.algo}}</span>\n</td>\n<td>\n  <span class=\"year\">{{data?.year}}</span>\n</td>\n<td>\n  <span [ngClass]=\"isNegativePercent(data.now, data.day)==true ? 'change-red' : 'change-green'\">{{ countPercent(data.now, data.day) | number: '1.2'}}%</span>\n\n</td>\n<td>\n  <div class=\"difference\">\n   <span [ngClass]=\"isNegativePercent(data.now, data.week)==true ? 'change-red' : 'change-green'\">{{ countPercent(data.now, data.week) | number: '1.2'}}%</span>\n   <div class=\"buttons\">\n    <button class=\"right\" [routerLink]=\"['/crypto', data.sym]\">></button>\n       <a href=\"#login-popup\" *ngIf=\"!checkAuth()\" class=\"popup-link follow plus\" data-effect=\"mfp-zoom-in\" data-effect=\"mfp-zoom-in\">+</a>\n       <a href=\"#follow-popup\" *ngIf=\"!checkInPortfolio(data.id) && checkAuth()\" (click)=\"selectedItem = data\" class=\"plus popup-link follow\" data-effect=\"mfp-zoom-in\">+</a>\n\n       <button  *ngIf=\"checkInPortfolio(data.id) && checkAuth()\"  (click)=\"removePortfolio(data.id)\" class=\"minus\" data-effect=\"mfp-zoom-in\"><img src=\"img/minus.png\" alt=\"\"></button>\n\n   </div>\n</div>\n</td>\n</tr>\n<tr class=\"hidden\">\n <td>\n  <span>122</span>\n</td>\n<td>\n  <div class=\"img-wrap\">\n   <img src=\"img/bitcoin-icon.png\" alt=\"\">\n </div>\n <span>Bitcoin (BTC)</span>\n</td>\n<td>\n  <span class=\"price\">$9,200</span>\n\n</td>\n<td>\n  <span class=\"capitalization\">$95,113,177,098</span>\n</td>\n<td>\n  ><span class=\"total\">21 000 000 000</span>\n  <span class=\"received\">890 910</span>\n</td>\n<td>\n  <span class=\"bargaining\">$95,113,177</span>\n</td>\n<td>\n  <span class=\"algorithm\">SHA-256</span>\n</td>\n<td>\n  <span class=\"year\">2009</span>\n</td>\n<td>\n  <span class=\"change-green\">+ 3,5% (+200,09)</span>\n\n</td>\n<td>\n  <div class=\"difference\">\n   <span class=\"change-red\">-2,3% (-201,11)</span>\n   <div class=\"buttons\">\n\n  </div>\n</div>\n</td>\n</tr>\n</tbody>\n</table>\n        <div style=\"width: 50px; height: 50px; margin: 40px auto;\" *ngIf=\"load == true\">\n            <img src=\"/img/load.gif\" *ngIf=\"load == true\" style=\" width: 50px; height: 50px; text-align: center\">\n        </div>\n</div>\n<!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n</div>\n</section>\n\n    <div id=\"follow-popup\" class=\"popup mfp-with-anim mfp-hide\">\n        <div class=\"popup-body\">\n            <h2>Следить за {{selectedItem?.name}}</h2>\n            <p>Выберите портфель для сохранения {{selectedItem?.name}}</p>\n            <div class=\"checkbox-list\">\n                <div class=\"checkbox-wrap\" *ngFor=\"let portfolio of getUserPortfolio; let i = index\">\n                    <input type=\"radio\" name=\"id\" [(ngModel)]=\"addPortfolio\" value=\"{{portfolio.id}}\" checked=\"checked\" id=\"{{i}}\">\n                    <label for=\"{{i}}\">\n                        <span></span>{{portfolio.name}}\n                    </label>\n                </div>\n            </div>\n            <a href=\"#\" class=\"add-portfolio\">+Добавить портфель</a>\n            <form class=\"hidden\" #f=\"ngForm\">\n                <input type=\"text\" ngModel name=\"name\" required=\"\" placeholder=\"Введите название...\">\n                <button (click)=\"createPortfolio(f)\" type=\"submit\">Добавить</button>\n            </form>\n        </div>\n        <div class=\"save-block\">\n            <a (click)=\"submitPortfolio(selectedItem?.id, 'App\\\\CryptoStat')\" class=\"save-settings\">Сохранить настройки</a>\n            <a href=\"#\" class=\"close-text\">Отменить и закрыть</a>\n        </div>\n    </div>"
 
 /***/ }),
 
@@ -2590,54 +2590,89 @@ var CryptoAllComponent = (function () {
             this.dataUsd = JSON.parse(localStorage.getItem('data'));
             this.load = false;
         }
-        this.StockService.getCrypto()
-            .subscribe(function (response) {
-            _this.resp = response;
-            alldata.subscribe(function (response) {
-                var admin = response;
+        alldata.subscribe(function (response) {
+            var admin = response;
+            _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.StockService.bit$; })
+                .subscribe(function (response) {
+                _this.resp = response;
+                // console.log(this.resp)
+                _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
+                _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
                 var _loop_1 = function () {
                     // console.log(this.admin[i].symbol);
                     var index = _i;
                     var symbol = admin[index].symbol;
                     var year = admin[index].year;
                     var algo = admin[index].algo;
+                    var logo = admin[index].logo;
                     var id = admin[index].id;
-                    var name = admin[index].name;
-                    if (_this.dataUsd[index]) {
-                        _this.dataUsd[index].sym = symbol;
-                        _this.dataUsd[index].id = id;
-                        _this.dataUsd[index].name = name;
-                        _this.dataUsd[index].algo = algo;
-                        _this.dataUsd[index].year = year;
-                        _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
-                        _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
-                        _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
-                        _this.dataUsd[index].max = _this.resp[symbol + '/USD']['max'];
-                        _this.dataUsd[index].volume = _this.resp[symbol + '/USD']['volume'];
-                        _this.dataUsd[index].day = _this.resp[symbol + "/USD"]['day'];
-                        _this.dataUsd[index].week = _this.resp[symbol + "/USD"]['week'];
-                        _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
-                        _this.dataUsd[index].percentDay = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day);
-                        _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
-                        _this.dataUsd[index].currencyVol = 0;
+                    _this.animtype[index] = '';
+                    _this.diff[index] = 0;
+                    if (_this.resp[symbol + '/USD']) {
+                        if (_this.dataUsd[index]) {
+                            if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
+                                _this.first_time = false;
+                                _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
+                                if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
+                                    _this.animtype[index] = 'redbg';
+                                }
+                                else {
+                                    _this.animtype[index] = 'greenbg';
+                                }
+                            }
+                            _this.dataUsd[index].sym = symbol;
+                            _this.dataUsd[index].algo = algo;
+                            _this.dataUsd[index].year = year;
+                            _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
+                            _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
+                            _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
+                            _this.dataUsd[index].max = _this.resp[symbol + '/USD']['max'];
+                            _this.dataUsd[index].volume = _this.resp[symbol + '/USD']['volume'];
+                            _this.dataUsd[index].day = _this.resp[symbol + "/USD"]['day'];
+                            _this.dataUsd[index].week = _this.resp[symbol + "/USD"]['week'];
+                            _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
+                            _this.dataUsd[index].logo = logo;
+                            _this.dataUsd[index].percentDay = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day);
+                            _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
+                        }
+                        else {
+                            _this.dataUsd[index] = {
+                                id: id,
+                                name: name,
+                                sym: symbol,
+                                last: _this.resp[symbol + '/USD']['last'],
+                                now: _this.resp[symbol + '/USD']['now'],
+                                min: _this.resp[symbol + '/USD']['min'],
+                                max: _this.resp[symbol + '/USD']['max'],
+                                volume: _this.resp[symbol + '/USD']['volume'],
+                                year: year,
+                                algo: algo,
+                                week: _this.resp[symbol + "/USD"]['week'],
+                                day: _this.resp[symbol + "/USD"]['day'],
+                                marketCapUsd: _this.resp[symbol + "/USD"]['marketCapUsd'],
+                                percentDay: 0,
+                                percentWeek: 0,
+                                currencyVol: 0
+                            };
+                        }
                     }
                     else {
                         _this.dataUsd[index] = {
                             id: id,
                             name: name,
                             sym: symbol,
-                            last: _this.resp[symbol + '/USD']['last'],
-                            now: _this.resp[symbol + '/USD']['now'],
-                            min: _this.resp[symbol + '/USD']['min'],
-                            max: _this.resp[symbol + '/USD']['max'],
-                            volume: _this.resp[symbol + '/USD']['volume'],
+                            last: 0,
+                            now: 0,
+                            min: 0,
+                            max: 0,
+                            volume: 0,
                             year: year,
                             algo: algo,
-                            week: _this.resp[symbol + "/USD"]['week'],
-                            day: _this.resp[symbol + "/USD"]['day'],
-                            marketCapUsd: _this.resp[symbol + "/USD"]['marketCapUsd'],
-                            percentDay: _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day),
-                            percentWeek: _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week),
+                            week: 0,
+                            day: 0,
+                            marketCapUsd: 0,
+                            percentDay: 0,
+                            percentWeek: 0,
                             currencyVol: 0
                         };
                     }
@@ -2657,56 +2692,6 @@ var CryptoAllComponent = (function () {
                 };
                 for (var _i = 0; _i < admin.length; ++_i) {
                     _loop_1();
-                }
-            });
-        });
-        alldata.subscribe(function (response) {
-            _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).concatMap(function () { return _this.StockService.getCrypto(); })
-                .map(function (response) {
-                _this.resp = response;
-            }).subscribe(function () {
-                var admin = response;
-                _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
-                _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
-                for (var _i = 0; _i < admin.length; ++_i) {
-                    // console.log(this.admin[i].symbol);
-                    var index = _i;
-                    var symbol = admin[index].symbol;
-                    var year = admin[index].year;
-                    var algo = admin[index].algo;
-                    var logo = admin[index].logo;
-                    _this.animtype[index] = '';
-                    _this.diff[index] = 0;
-                    if (_this.dataUsd[index]) {
-                        if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
-                            _this.first_time = false;
-                            _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
-                            if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
-                                _this.animtype[index] = 'redbg';
-                            }
-                            else {
-                                _this.animtype[index] = 'greenbg';
-                            }
-                        }
-                    }
-                    if (_this.dataUsd[index]) {
-                        _this.dataUsd[index].sym = symbol;
-                        _this.dataUsd[index].algo = algo;
-                        _this.dataUsd[index].year = year;
-                        _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
-                        _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
-                        _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
-                        _this.dataUsd[index].max = _this.resp[symbol + '/USD']['max'];
-                        _this.dataUsd[index].volume = _this.resp[symbol + '/USD']['volume'];
-                        _this.dataUsd[index].day = _this.resp[symbol + "/USD"]['day'];
-                        _this.dataUsd[index].week = _this.resp[symbol + "/USD"]['week'];
-                        _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
-                        _this.dataUsd[index].logo = logo;
-                        _this.dataUsd[index].percentDay = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day);
-                        _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
-                    }
-                    localStorage.removeItem('data');
-                    localStorage.setItem('data', JSON.stringify(_this.dataUsd));
                 }
             });
         });
@@ -2765,7 +2750,7 @@ CryptoAllComponent = __decorate([
         selector: 'app-crypto-all',
         template: __webpack_require__("./angular/app/crypto-all/crypto-all.component.html"),
         styles: [__webpack_require__("./angular/app/crypto-all/crypto-all.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */], __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */]],
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__auth_service__["a" /* AuthService */]) === "function" && _g || Object])
 ], CryptoAllComponent);
@@ -6138,7 +6123,7 @@ module.exports = ".news-content {\nwidth: 880px !important;\n}\n.main-news .news
 /***/ "./angular/app/news/all-news/all-news.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"news-content\">\n        <div class=\"news-head\">\n          <h1>Новости<span *ngIf=\"countAll\">{{countAll}}</span></h1>\n          <ul class=\"news-tabs\">\n            <li class=\"active\"><a (click)=\"setOrder('id')\">Новое за сегодня</a></li>\n            <li><a (click)=\"setOrder('views_count')\">Самое популярное</a></li>\n            <li><a  (click)=\"setOrder('comments_count')\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n        <div class=\"news-body\">\n          <div style=\"width: 50px; height: 50px; margin: 40px auto;\" *ngIf=\"load == true\" >\n            <img src=\"/img/load.gif\" *ngIf=\"load == true\" style=\" width: 50px; height: 50px; text-align: center\">\n          </div>\n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div  *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.workplace ? 'news trust' : 'news'\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a href=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\" *ngIf=\"item.view_count > 0\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>{{item.view_count}}</span>\n                    <a  href=\"/posts/post/{{item.id}}#comment-block\"  class=\"comments\" *ngIf=\"item.comments_count > 0\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml | excerpt:140}} <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p> \n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.name_credits ? 'trust news' : 'news'\" [routerLink]=\"item.name_credits ? ['/interview/item', item.id] : null\">\n                <div *ngIf=\"item.name_credits\" class=\"img-wrap\"><img src=\"img/trust.png\" alt=\"\"></div>\n                <h4 *ngIf=\"item.name_credits\">{{item.title}}</h4>\n                <p *ngIf=\"item.name_credits\" class=\"name\">{{item.name_credits}}</p>\n                <span *ngIf=\"item.name_credits\">{{item.workplace}}</span>\n                <div *ngIf=\"!item.name_credits\" class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div *ngIf=\"!item.name_credits\" class=\"text\">\n                  <h3>\n                    <a [routerLink]=\"['/posts/post', item.id]\">{{item.title}}</a>\n                  </h3>\n                </div>\n\n                <div *ngIf=\"!item.name_credits\" class=\"text2\">\n                  <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n              \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n          \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n\n"
+module.exports = "<div class=\"news-content\">\n        <div class=\"news-head\">\n          <h1>Новости<span *ngIf=\"countAll\">{{countAll}}</span></h1>\n          <ul class=\"news-tabs\">\n            <li class=\"active\"><a (click)=\"setOrder('id')\">Новое за сегодня</a></li>\n            <li><a (click)=\"setOrder('views_count')\">Самое популярное</a></li>\n            <li><a  (click)=\"setOrder('comments_count')\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n        <div class=\"news-body\">\n          <div style=\"width: 50px; height: 50px; margin: 40px auto;\" *ngIf=\"load == true\" >\n            <img src=\"/img/load.gif\" *ngIf=\"load == true\" style=\" width: 50px; height: 50px; text-align: center\">\n          </div>\n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div  *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.workplace ? 'news trust' : 'news'\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')'}\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a routerLink=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\" *ngIf=\"item.view_count > 0\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>{{item.view_count}}</span>\n                    <a  [routerLink]=\"['/posts/post', item.id]\" fragment=\"comment-block\" class=\"comments\" *ngIf=\"item.comments_count > 0\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml | excerpt:140}} <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p> \n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.name_credits ? 'trust news' : 'news'\" [routerLink]=\"item.name_credits ? ['/interview/item', item.id] : null\">\n                <div *ngIf=\"item.name_credits\" class=\"img-wrap\"><img src=\"img/trust.png\" alt=\"\"></div>\n                <h4 *ngIf=\"item.name_credits\">{{item.title}}</h4>\n                <p *ngIf=\"item.name_credits\" class=\"name\">{{item.name_credits}}</p>\n                <span *ngIf=\"item.name_credits\">{{item.workplace}}</span>\n                <div *ngIf=\"!item.name_credits\" class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div *ngIf=\"!item.name_credits\" class=\"text\">\n                  <h3>\n                    <a [routerLink]=\"['/posts/post', item.id]\">{{item.title}}</a>\n                  </h3>\n                </div>\n\n                <div *ngIf=\"!item.name_credits\" class=\"text2\">\n                  <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n              \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n          \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n\n"
 
 /***/ }),
 
@@ -6352,6 +6337,7 @@ var NewsDetailComponent = (function () {
     }
     NewsDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.route.fragment.subscribe(function (fragment) { _this.fragment = fragment; });
         this.user = {
             id: 0,
             name: '',
@@ -6460,6 +6446,10 @@ var NewsDetailComponent = (function () {
     };
     NewsDetailComponent.prototype.ngAfterViewInit = function () {
         this.viewService.incrementView('news', this.id).subscribe();
+        try {
+            document.querySelector('#' + this.fragment).scrollIntoView();
+        }
+        catch (e) { }
     };
     return NewsDetailComponent;
 }());
@@ -8055,9 +8045,10 @@ var StocksSidebarComponent = (function () {
     }
     StocksSidebarComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
-        this.stocksService.bit$.subscribe(function (n) {
-            console.log(n);
-        });
+        // this.stocksService.bit$.subscribe(n => {
+        //     console.log(n);
+        //
+        // });
         this.stocksService.getCrypto()
             .subscribe(function (response) {
             _this.resp = response;

@@ -173,7 +173,7 @@ $(document).ready(function () {
 
 	//  popup init
 	$('.popup-link').magnificPopup({
-		removalDelay: 500,
+		removalDelay: 10,
 		callbacks: {
 			beforeOpen: function () {
 				this.st.mainClass = this.st.el.attr('data-effect');

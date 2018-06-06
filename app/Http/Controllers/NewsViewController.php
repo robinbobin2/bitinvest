@@ -36,6 +36,16 @@ class NewsViewController extends Controller
         ]);
     }
 
+    public function similarNews()
+    {
+        $news = News::with('photos')->with('category')->latest()->withCount('comments')->get()->where('main', 0)->toArray();
+        $news = array_values($news);
+        $news = shuffle($news);
+        return response()->json([
+            'news' => $news,
+        ]);
+    }
+
     public function byCat($id)
     {
         $news = News::with('photos')->withCount('comments')->with('category')->where('cat_id', $id)->latest()->get()->where('main', 0)->toArray();
