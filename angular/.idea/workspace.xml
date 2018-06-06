@@ -17,8 +17,8 @@
       <file leaf-file-name="crypto-all.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="190" column="52" selection-start-line="190" selection-start-column="52" selection-end-line="190" selection-end-column="52" />
+            <state relative-caret-position="398">
+              <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -513,12 +513,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="46176000" />
+      <workItem from="1527928097804" duration="46264000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="203348000" />
+    <option name="totallyTimeSpent" value="203436000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1009,8 +1009,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="190" column="52" selection-start-line="190" selection-start-column="52" selection-end-line="190" selection-end-column="52" />
+        <state relative-caret-position="398">
+          <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
           </folding>

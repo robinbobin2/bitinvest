@@ -2495,7 +2495,7 @@ var CryptoAllComponent = (function () {
         this.animtype = [];
         this.algoFilter = [];
         this.yearFilter = [];
-        this.diff = [];
+        this.diff = [0];
         this.selectedItem = [];
         this.active = 0;
         this.inactive = 0;
@@ -2605,20 +2605,18 @@ var CryptoAllComponent = (function () {
                         var algo = admin[index].algo;
                         var logo = admin[index].logo;
                         var id = admin[index].id;
-                        _this.diff[index] = 0;
                         if (_this.dataUsd[index]) {
-                            if (_this.resp[symbol + '/USD']) {
-                                if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
-                                    _this.first_time = false;
-                                    if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
-                                        _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
-                                        _this.animtype[index] = '';
-                                        _this.animtype[index] = 'redbg';
-                                    }
-                                    else {
-                                        _this.animtype[index] = '';
-                                        _this.animtype[index] = 'greenbg';
-                                    }
+                            _this.diff[index] = 0;
+                            if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
+                                _this.first_time = false;
+                                if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
+                                    _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
+                                    _this.animtype[index] = '';
+                                    _this.animtype[index] = 'redbg';
+                                }
+                                else {
+                                    _this.animtype[index] = '';
+                                    _this.animtype[index] = 'greenbg';
                                 }
                             }
                             _this.dataUsd[index].sym = symbol;

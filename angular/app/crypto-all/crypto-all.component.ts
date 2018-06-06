@@ -43,7 +43,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
     animtype = [];
     algoFilter = [];
     yearFilter = [];
-    diff: Array<number> = [];
+    diff: Array<number> = [0];
     selectedItem = [];
     active = 0;
     inactive = 0;
@@ -188,13 +188,11 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                 let algo = admin[index].algo;
                                 let logo = admin[index].logo;
                                 let id = admin[index].id;
-                                this.diff[index] = 0
+
 
 
                                     if (this.dataUsd[index]) {
-
-                                        if (this.resp[symbol + '/USD']) {
-
+                                        this.diff[index] = 0
                                             if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
                                                 this.first_time = false;
 
@@ -209,7 +207,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
 
                                                 }
                                             }
-                                        }
                                         this.dataUsd[index].sym = symbol;
                                         this.dataUsd[index].algo = algo;
                                         this.dataUsd[index].year = year;
