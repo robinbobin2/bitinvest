@@ -71,10 +71,10 @@
       <file leaf-file-name="stocks-sidebar.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="9" column="144" selection-start-line="9" selection-start-column="144" selection-end-line="9" selection-end-column="144" />
+            <state relative-caret-position="795">
+              <caret line="54" column="68" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
               <folding>
-                <marker date="1528326413000" expanded="true" signature="674:855" ph="..." />
+                <marker date="1528326460000" expanded="true" signature="674:855" ph="..." />
               </folding>
             </state>
           </provider>
@@ -513,12 +513,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="46882000" />
+      <workItem from="1527928097804" duration="46935000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="204054000" />
+    <option name="totallyTimeSpent" value="204107000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1009,10 +1009,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="144" selection-start-line="9" selection-start-column="144" selection-end-line="9" selection-end-column="144" />
+        <state relative-caret-position="795">
+          <caret line="54" column="68" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
           <folding>
-            <marker date="1528326413000" expanded="true" signature="674:855" ph="..." />
+            <marker date="1528326460000" expanded="true" signature="674:855" ph="..." />
           </folding>
         </state>
       </provider>

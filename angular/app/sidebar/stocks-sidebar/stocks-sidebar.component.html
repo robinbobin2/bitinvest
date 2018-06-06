@@ -30,9 +30,9 @@
             <div class="tab-content active">
                 <ul>
                     <li *ngFor="let item of dataUsd | orderBy: order:reverse:'case-insensitive'; let i = index">
-                        <a *ngIf="i < 5" href="" class="name">{{item.sym}}</a>
-                        <span *ngIf="i < 5" class="price"> ${{item.marketCapUsd| number: '1.0-0'}}</span>
-                        <span *ngIf="i < 5" class="percent">{{ item.percentDay | number: '1.0-2'}}%</span>
+                        <a *ngIf="i < 5" href="" class="name">{{item?.sym}}</a>
+                        <span *ngIf="i < 5" class="price"> ${{item?.marketCapUsd| number: '1.0-0'}}</span>
+                        <span *ngIf="i < 5" class="percent">{{ item?.percentDay | number: '1.0-2'}}%</span>
                     </li>
 
                 </ul>
@@ -40,9 +40,9 @@
             <div class="tab-content">
                 <ul>
                     <li *ngFor="let item of dataUsd | orderBy: 'percentWeek':reverse:'case-insensitive'; let i = index">
-                        <a *ngIf="i < 5" href="" class="name">{{item.sym}}</a>
-                        <span *ngIf="i < 5" class="price"> ${{item.marketCapUsd| number: '1.0-0'}}</span>
-                        <span *ngIf="i < 5" class="percent">{{ item.percentWeek | number: '1.0-2'}}%</span>
+                        <a *ngIf="i < 5" href="" class="name">{{item?.sym}}</a>
+                        <span *ngIf="i < 5" class="price"> ${{item?.marketCapUsd| number: '1.0-0'}}</span>
+                        <span *ngIf="i < 5" class="percent">{{ item?.percentWeek | number: '1.0-2'}}%</span>
                     </li>
 
                 </ul>
@@ -50,9 +50,9 @@
             <div class="tab-content">
                 <ul>
                     <li *ngFor="let item of dataUsd | orderBy: 'percentMonth':reverse:'case-insensitive'; let i = index">
-                        <a *ngIf="i < 5" href="" class="name">{{item.sym}}</a>
-                        <span *ngIf="i < 5" class="price"> ${{item.marketCapUsd| number: '1.0-0'}}</span>
-                        <span *ngIf="i < 5" class="percent">{{ item.percentMonth | number: '1.0-2'}}%</span>
+                        <a *ngIf="i < 5" href="" class="name">{{item?.sym}}</a>
+                        <span *ngIf="i < 5" class="price"> ${{item?.marketCapUsd| number: '1.0-0'}}</span>
+                        <span *ngIf="i < 5" class="percent">{{ item?.percentMonth | number: '1.0-2'}}%</span>
                     </li>
 
                 </ul>
