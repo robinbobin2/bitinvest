@@ -26,7 +26,7 @@ declare var $:any;
     selector: 'app-crypto-all',
     templateUrl: './crypto-all.component.html',
     styleUrls: ['./crypto-all.component.scss'],
-    providers: [StocksService, PortfolioService],
+    providers: [PortfolioService],
 })
 
 export class CryptoAllComponent implements OnInit, OnDestroy {
@@ -162,7 +162,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
             this.dataUsd = JSON.parse(localStorage.getItem('data'));
             this.load = false;
         }
-        this.StockService.getCrypto()
+        this.StockService.bit$
             .subscribe(response => {
                 this.resp = response;
                 alldata.subscribe(response => {

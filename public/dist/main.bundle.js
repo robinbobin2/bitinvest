@@ -660,7 +660,7 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.cryptoData = __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["a" /* Observable */].interval(1000).concatMap(function () {
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["a" /* Observable */].interval(3000).concatMap(function () {
             return _this.stockService.getCrypto();
         })
             .subscribe(function (result) {
@@ -2590,7 +2590,7 @@ var CryptoAllComponent = (function () {
             this.dataUsd = JSON.parse(localStorage.getItem('data'));
             this.load = false;
         }
-        this.StockService.getCrypto()
+        this.StockService.bit$
             .subscribe(function (response) {
             _this.resp = response;
             alldata.subscribe(function (response) {
@@ -2765,7 +2765,7 @@ CryptoAllComponent = __decorate([
         selector: 'app-crypto-all',
         template: __webpack_require__("./angular/app/crypto-all/crypto-all.component.html"),
         styles: [__webpack_require__("./angular/app/crypto-all/crypto-all.component.scss")],
-        providers: [__WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */], __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */]],
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__["a" /* OrderPipe */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__order_pipe_ngx_order_pipe__["a" /* OrderPipe */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__stocks_service__["a" /* StocksService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__portfolio_service__["a" /* PortfolioService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__auth_service__["a" /* AuthService */]) === "function" && _g || Object])
 ], CryptoAllComponent);
