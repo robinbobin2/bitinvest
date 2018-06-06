@@ -14,19 +14,7 @@ class InterviewViewController extends Controller
 
         $main_news = Interview::with('photos')->with('category')->withCount('comments')->latest()->get()->where('main', 1)->take(3)->toArray();
         $main_news = array_values($main_news);
-        // $news = $news->toJson();
-        // $news = array_values($news);
-        // $comments = $news->comments();
-        // $photos = $news->photos();
-        // for ($i=0; $i < count($news); $i++) { 
-        //     if($news[$i]->photos){
-        //                 foreach ($news[$i]->photos as $photo) {
-                         
-        //                 // $news[$i]['photos']['file'] = array($photo->file);   # code...
-        //                 // echo $photo->file;
-        //             }
-        //     }
-        // }
+        
         return response()->json([
             'news' => $news,
             'main_news' => $main_news,
@@ -53,7 +41,7 @@ class InterviewViewController extends Controller
     }
 
     public function show($id) {
-        $news = Interview::first()->with('comments.rating')->get()->where('id', $id)->toArray();
+        $news = Interview::first()->with('comments.rating')->with('category')->get()->where('id', $id)->toArray();
         $commentnews = Interview::findOrFail($id);
         $comments = $commentnews->comments;
         $news = array_values($news);
