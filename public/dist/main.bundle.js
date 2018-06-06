@@ -2593,13 +2593,13 @@ var CryptoAllComponent = (function () {
             }
             alldata.subscribe(function (response) {
                 var admin = response;
-                _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.StockService.bit$; })
-                    .subscribe(function (resp) {
-                    _this.resp = resp;
-                    // console.log(this.resp)
-                    _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
-                    _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
-                    _this.StockService.getCryptoVol().debounceTime(10000).subscribe(function (volumes) {
+                _this.StockService.getCryptoVol().debounceTime(10000).subscribe(function (volumes) {
+                    _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.StockService.bit$; })
+                        .subscribe(function (resp) {
+                        _this.resp = resp;
+                        // console.log(this.resp)
+                        _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
+                        _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
                         for (var _i = 0; _i < admin.length; ++_i) {
                             // console.log(this.admin[i].symbol);
                             var index = _i;
