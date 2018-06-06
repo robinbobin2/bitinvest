@@ -171,7 +171,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                 this.StockService.getCryptoVol().debounceTime(10000).subscribe(volumes => {
                 this.cryptoData = Observable.interval(5000).concatMap(() => this.StockService.bit$)
                     .subscribe(resp => {
-
+                        this.diff = [];
                         this.resp = resp;
 
                         // console.log(this.resp)
@@ -194,7 +194,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                     if (this.dataUsd[index]) {
 
                                         if (this.resp[symbol + '/USD']) {
-                                            this.diff[index] = 0;
+
                                             if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
                                                 this.first_time = false;
                                                 this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
