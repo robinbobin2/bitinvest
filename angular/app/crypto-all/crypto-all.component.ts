@@ -52,7 +52,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
     show = false;
     portfolioInfo: any;
     getUserPortfolio = [];
-
+    algorithm = ''
+    age = ''
     /**
      * Example: Use Order pipe in the component
      *
@@ -188,10 +189,12 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                 let algo = admin[index].algo;
                                 let logo = admin[index].logo;
                                 let id = admin[index].id;
-                                this.diff[index] = 0;
+
 
                                     if (this.dataUsd[index]) {
+
                                         if (this.resp[symbol + '/USD']) {
+                                            this.diff[index] = 0;
                                             if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
                                                 this.first_time = false;
                                                 this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;

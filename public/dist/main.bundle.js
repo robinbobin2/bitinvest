@@ -2502,6 +2502,8 @@ var CryptoAllComponent = (function () {
         this.portfoliosInfo = [];
         this.show = false;
         this.getUserPortfolio = [];
+        this.algorithm = '';
+        this.age = '';
     }
     CryptoAllComponent.prototype.removePortfolio = function (id) {
         var _this = this;
@@ -2603,8 +2605,8 @@ var CryptoAllComponent = (function () {
                         var algo = admin[index].algo;
                         var logo = admin[index].logo;
                         var id = admin[index].id;
-                        _this.diff[index] = 0;
                         if (_this.dataUsd[index]) {
+                            _this.diff[index] = 0;
                             if (_this.resp[symbol + '/USD']) {
                                 if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
                                     _this.first_time = false;
