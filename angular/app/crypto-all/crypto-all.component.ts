@@ -168,7 +168,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
             .subscribe(response => {
 
                 this.resp = response;
-                console.log(this.resp)
+                // console.log(this.resp)
                 this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
                 this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
                     for (var _i = 0; _i < admin.length; ++_i) {
@@ -212,7 +212,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                             this.dataUsd[index].percentDay = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].day)
                             this.dataUsd[index].percentWeek = this.countPercent(this.dataUsd[index].now, this.dataUsd[index].week)
                         } else {
-                            this.resp[symbol + '/USD']
+                            console.log(this.resp[symbol + '/USD'])
                             // this.dataUsd[index] = {
                             //     id: id,
                             //     name: name,

@@ -2595,7 +2595,7 @@ var CryptoAllComponent = (function () {
             _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.StockService.bit$; })
                 .subscribe(function (response) {
                 _this.resp = response;
-                console.log(_this.resp);
+                // console.log(this.resp)
                 _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
                 _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
                 for (var _i = 0; _i < admin.length; ++_i) {
@@ -2637,7 +2637,7 @@ var CryptoAllComponent = (function () {
                         _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
                     }
                     else {
-                        _this.resp[symbol + '/USD'];
+                        console.log(_this.resp[symbol + '/USD']);
                         // this.dataUsd[index] = {
                         //     id: id,
                         //     name: name,
