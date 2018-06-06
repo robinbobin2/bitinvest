@@ -171,15 +171,16 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                 this.cryptoData = Observable.interval(5000).concatMap(() => this.StockService.bit$)
                     .subscribe(resp => {
 
-
                         this.resp = resp;
+
                         // console.log(this.resp)
                         this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
                         this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
 
                             for (var _i = 0; _i < admin.length; ++_i) {
+
+                                // console.log(this.admin[i].symbol);
                                 let index = _i;
-                                this.diff[index] = 0;
 
 
                                 let symbol = admin[index].symbol;
@@ -189,7 +190,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                 let id = admin[index].id;
 
 
-
+                                this.diff[index] = 0;
 
                                 if (this.resp[symbol + '/USD']) {
                                     if (this.dataUsd[index]) {
@@ -204,7 +205,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                                 this.animtype[index] = 'greenbg';
 
                                             }
-
                                         }
                                         this.dataUsd[index].sym = symbol;
                                         this.dataUsd[index].algo = algo;
@@ -240,25 +240,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                             percentWeek: 0,
                                             currencyVol: 0
                                         }
-                                    }
-                                } else {
-                                    this.dataUsd[index] = {
-                                        id: id,
-                                        name: name,
-                                        sym: symbol,
-                                        last: 0,
-                                        now: 0,
-                                        min: 0,
-                                        max: 0,
-                                        volume: 0,
-                                        year: year,
-                                        algo: algo,
-                                        week: 0,
-                                        day: 0,
-                                        marketCapUsd: 0,
-                                        percentDay: 0,
-                                        percentWeek: 0,
-                                        currencyVol: 0
                                     }
                                 }
                                 this.load = false;
