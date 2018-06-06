@@ -2605,11 +2605,13 @@ var CryptoAllComponent = (function () {
                         var algo = admin[index].algo;
                         var logo = admin[index].logo;
                         var id = admin[index].id;
+                        _this.diff[index] = 0;
                         if (_this.dataUsd[index]) {
                             if (_this.resp[symbol + '/USD']) {
                                 if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
                                     _this.first_time = false;
                                     if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
+                                        _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
                                         _this.animtype[index] = '';
                                         _this.animtype[index] = 'redbg';
                                     }
@@ -2623,7 +2625,6 @@ var CryptoAllComponent = (function () {
                             _this.dataUsd[index].algo = algo;
                             _this.dataUsd[index].year = year;
                             if (_this.resp[symbol + '/USD']) {
-                                _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
                                 _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
                                 _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
                                 _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
