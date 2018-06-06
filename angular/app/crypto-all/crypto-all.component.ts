@@ -52,9 +52,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
     show = false;
     portfolioInfo: any;
     getUserPortfolio = [];
-    age = '';
-    algorithm = '';
-    loaded=true;
 
     /**
      * Example: Use Order pipe in the component
@@ -162,8 +159,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                 }
             }
         );
-        if (this.loaded == true) {
-            this.loaded = false;
+
             const alldata = this.http.get<Array<Cripto>>('/allcrypto');
             if (localStorage.getItem('data')) {
                 this.dataUsd = JSON.parse(localStorage.getItem('data'));
@@ -197,10 +193,11 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                             this.first_time = false;
                                             this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
                                             if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
-
+                                                console.log('redbg')
 
                                                 this.animtype[index] = 'redbg';
                                             } else {
+                                                console.log('greenbg')
                                                 this.animtype[index] = 'greenbg';
 
                                             }
@@ -278,7 +275,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                     });
 
             });
-        }
+
 
     }
 
