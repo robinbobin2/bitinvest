@@ -85,7 +85,7 @@ class ProfileController extends Controller
             } else {
                 if($name->id != $user->id) {
                     return [
-                        'error' => 'Такое имя уже занято';
+                        'error' => 'Такое имя уже занято'
                     ];
                 }
                 
