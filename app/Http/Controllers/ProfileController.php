@@ -76,7 +76,18 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         if($request->request->get("email")){
-            $user->email = $request->request->get("email");
+            $email = User::where('email', '=' ,$request->request->get("email"))->first();
+            if ($email) {
+                if($email->id != $user->id) {
+                    return [
+                        'error' => 'Такой email уже занят'
+                    ];
+                }
+            } else {
+                
+                $user->email = $request->request->get("email");
+                
+            }
         }
         if($request->request->get("name")) {
             $name = User::where('name', '=' ,$request->request->get("name"))->first();
