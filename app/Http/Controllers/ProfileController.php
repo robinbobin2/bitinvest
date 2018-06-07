@@ -79,7 +79,7 @@ class ProfileController extends Controller
             $user->email = $request->request->get("email");
         }
         if($request->request->get("name")) {
-            $name = User::where('name', $request->request->get("name"))->first();
+            $name = User::where('name', $request->request->get("name"))->first()->get();
             if ($name->id) {
                 $user->name = $request->request->get("name");
             } else {
