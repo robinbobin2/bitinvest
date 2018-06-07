@@ -79,8 +79,18 @@ class ProfileController extends Controller
             $user->email = $request->request->get("email");
         }
         if($request->request->get("name")) {
-             $users = User::all();
-              return $users;
+            $name = User::where('name', '=' ,$request->request->get("name"))->first();
+            if ($name) {
+                if($name->id != $user->id) {
+                    return [
+                        'error' => 'Такое имя уже занято'
+                    ];
+                }
+            } else {
+                
+                $user->name = $request->request->get("name");
+                
+            }
             
         }
         if($request->request->get("telegram")){
