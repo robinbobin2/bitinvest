@@ -107,7 +107,7 @@ onUpdate(form) {
 		name: form.value.name
 	} 
     this.http.patch('/users/'+this.user.id+'/update', this.newData, {headers: headers}).subscribe(
-        (response) => response,
+        (response) => console.log(response),
         (error) => console.log(error)
       );
     this.submitted = true;
