@@ -659,7 +659,7 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.cryptoData = __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["a" /* Observable */].interval(3000).concatMap(function () {
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["a" /* Observable */].interval(5000).concatMap(function () {
             return _this.stockService.getCrypto();
         })
             .subscribe(function (result) {
@@ -3549,7 +3549,7 @@ var _a, _b, _c, _d, _e, _f;
 /***/ "./angular/app/edit-profile/edit-profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\t<section class=\"setting-wrap\">\n\t\t<div class=\"wrapper\">\n\t\t\t<h2>Настройки аккаунта</h2>\n\t\t\t<ul class=\"setting-tabs\">\n\t\t\t\t<li class=\"active\"><a href=\"#\">Личные данные и пароль</a></li>\n\t\t\t\t<!--<li><a href=\"#\">Настройка уведомлений</a></li>-->\n\t\t\t</ul>\n\t\t\t<div class=\"setting-content\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<form (ngSubmit)=\"onUpdate(update)\" #update=\"ngForm\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Электронная почта для уведомлений</label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.email\" name=\"email\"  required email>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Аккаунт telegram (для уведомлений)</label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.telegram\"  name=\"telegram\" >\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Никнейм </label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.name\"  name=\"name\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button type=\"submit\">Сохранить</button>\n            <p *ngIf=\"submitted\">Изменения успешно сохранены</p>\n\t\t\t\t\t</form>\n\t\t\t\t\t<form (ngSubmit)=\"onUpdatePass(updatePass)\" #updatePass=\"ngForm\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Ваш старый пароль</label>\n\t\t\t\t\t\t\t<input type=\"password\" ngModel name=\"oldpassword\" required>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Новый пароль</label>\n\t\t\t\t\t\t\t<input type=\"password\" ngModel name=\"password\"  required>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<div >\n\t\t\t\t\t\t\t\t<label>Повторите Ваш новый пароль</label>\n\t\t\t\t\t\t\t\t<input type=\"password\" name=\"password_repeat\"  ngModel required>\n\t\t\t\t\t\t\t\t<!-- <p><img src=\"img/close-password.png\" alt=\"\">Пароли не совпадают</p> -->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button type=\"submit\" >Изменить</button>\n            <p *ngIf=\"submittedPass\">Пароль успешно изменен</p>\n            <p *ngIf=\"error !=''\">{{error}}</p>\n\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"right\">\n          <div class=\"img-wrap\"><img src=\"{{user.photo ? user.photo.file : 'http://aiyd.org/wp-content/uploads/2016/09/no-image-icon-hi.png'}}\" alt=\"\"></div>\n          <form class=\"upload\">\n            <div class=\"input-wrap\">\n              <input type=\"file\" id=\"file\" #fileInput name=\"file\" class=\"input-file ng-pristine ng-valid ng-touched\" files-model=\"\" ng-model=\"project.fileList\" (change)=\"handleFileInput($event.target.files)\">\n              <label for=\"file\">\n                <span class=\"add-image\">\n                Выбрать и загрузить фото\n                </span>\n                <output id=\"list\"></output>\n              </label>\n            </div>\n            <a href=\"#\"><img src=\"img/basket-icon.png\" alt=\"\">Удалить фото</a>\n          </form>\n        </div>\n\t\t\t</div>\n\t\t</div>\n\t</section>"
+module.exports = "\t<section class=\"setting-wrap\">\n\t\t<div class=\"wrapper\">\n\t\t\t<h2>Настройки аккаунта</h2>\n\t\t\t<ul class=\"setting-tabs\">\n\t\t\t\t<li class=\"active\"><a href=\"#\">Личные данные и пароль</a></li>\n\t\t\t\t<!--<li><a href=\"#\">Настройка уведомлений</a></li>-->\n\t\t\t</ul>\n\t\t\t<div class=\"setting-content\">\n\t\t\t\t<div class=\"left\">\n\t\t\t\t\t<form (ngSubmit)=\"onUpdate(update)\" #update=\"ngForm\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Электронная почта для уведомлений</label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.email\" name=\"email\"  required email>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Аккаунт telegram (для уведомлений)</label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.telegram\"  name=\"telegram\" >\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Никнейм </label>\n\t\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"user.name\"  name=\"name\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button type=\"submit\">Сохранить</button>\n            <p *ngIf=\"submitted\">Изменения успешно сохранены</p>\n\t\t\t\t\t</form>\n\t\t\t\t\t<form (ngSubmit)=\"onUpdatePass(updatePass)\" #updatePass=\"ngForm\">\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Ваш старый пароль</label>\n\t\t\t\t\t\t\t<input type=\"password\" ngModel name=\"oldpassword\" required>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<label>Новый пароль</label>\n\t\t\t\t\t\t\t<input type=\"password\" ngModel name=\"password\"  required>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"input-wrap\">\n\t\t\t\t\t\t\t<div >\n\t\t\t\t\t\t\t\t<label>Повторите Ваш новый пароль</label>\n\t\t\t\t\t\t\t\t<input type=\"password\" name=\"password_repeat\"  ngModel required>\n\t\t\t\t\t\t\t\t<!-- <p><img src=\"img/close-password.png\" alt=\"\">Пароли не совпадают</p> -->\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<button type=\"submit\" >Изменить</button>\n            <p *ngIf=\"submittedPass\">Пароль успешно изменен</p>\n            <p *ngIf=\"error !=''\">{{error}}</p>\n\n\t\t\t\t\t</form>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"right\">\n          <div class=\"img-wrap\"><img src=\"{{user.photo ? user.photo.file : 'http://aiyd.org/wp-content/uploads/2016/09/no-image-icon-hi.png'}}\" alt=\"\"></div>\n          <form class=\"upload\">\n            <div class=\"input-wrap\">\n              <input type=\"file\" id=\"file\" #fileInput name=\"file\" class=\"input-file ng-pristine ng-valid ng-touched\" files-model=\"\" ng-model=\"project.fileList\" (change)=\"handleFileInput($event.target.files)\">\n              <label for=\"file\">\n                <span class=\"add-image\">\n                Выбрать и загрузить фото\n                </span>\n                <output id=\"list\"></output>\n              </label>\n            </div>\n            <a (click)=\"deletePhoto()\"><img src=\"img/basket-icon.png\" alt=\"\">Удалить фото</a>\n          </form>\n        </div>\n\t\t\t</div>\n\t\t</div>\n\t</section>"
 
 /***/ }),
 
@@ -3649,6 +3649,19 @@ var EditProfileComponent = (function () {
             });
         }, function (error) {
             console.log(error);
+        });
+    };
+    EditProfileComponent.prototype.deletePhoto = function () {
+        var _this = this;
+        var pathUrl = '/profile/deletephoto';
+        this.http
+            .get(pathUrl).subscribe(function () {
+            _this.auth
+                .getUser()
+                .subscribe(function (response) {
+                _this.user = response;
+                _this.auth.setUser(_this.user);
+            });
         });
     };
     EditProfileComponent.prototype.onUpdate = function (form) {

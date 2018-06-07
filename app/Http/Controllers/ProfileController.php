@@ -175,4 +175,14 @@ class ProfileController extends Controller
             ];
         }
     }
+
+    public function deletePhoto(Request $request)
+    {
+        $user = Auth::user();
+        $user->photo_id = 0;
+        $user->save();
+       return [
+                'status'=> 'success'
+            ];
+    }
 }

@@ -173,7 +173,7 @@ checkAuth() {
     results = undefined;
   }
   ngOnInit() {
-      this.cryptoData=Observable.interval(3000).concatMap(()=>
+      this.cryptoData=Observable.interval(5000).concatMap(()=>
           this.stockService.getCrypto())
           .subscribe(result => {
               this.stockService.setBit(result)

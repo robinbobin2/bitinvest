@@ -84,6 +84,22 @@ handleFileInput() {
         console.log(error);
       });
 }
+
+deletePhoto() {
+
+    let pathUrl = '/profile/deletephoto';
+    this.http
+        .get<any>(pathUrl).subscribe(()=>{
+        this.auth
+            .getUser()
+            .subscribe(
+                (response) => {
+                    this.user = response;
+                    this.auth.setUser(this.user);
+                }
+            );
+    })
+}
 onUpdate(form) {
 	this.newData={
 		email: form.value.email,
