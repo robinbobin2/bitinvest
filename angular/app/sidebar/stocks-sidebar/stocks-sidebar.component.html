@@ -42,7 +42,7 @@
                     <li *ngFor="let item of dataUsd | orderBy: 'percentWeek':reverse:'case-insensitive'; let i = index">
                         <a *ngIf="i < 5" href="" class="name">{{item?.sym}}</a>
                         <span *ngIf="i < 5" class="price"> ${{item?.marketCapUsd| number: '1.0-0'}}</span>
-                        <span *ngIf="i < 5" class="percent">{{ item?.percentWeek | number: '1.0-2'}}%</span>
+                        <span *ngIf="i < 5" [ngClass]="item?.percentWeek > 0 ? 'percent percent-green' : 'percent percent-red'">{{ item?.percentWeek | number: '1.0-2'}}%</span>
                     </li>
 
                 </ul>
@@ -52,7 +52,7 @@
                     <li *ngFor="let item of dataUsd | orderBy: 'percentMonth':reverse:'case-insensitive'; let i = index">
                         <a *ngIf="i < 5" href="" class="name">{{item?.sym}}</a>
                         <span *ngIf="i < 5" class="price"> ${{item?.marketCapUsd| number: '1.0-0'}}</span>
-                        <span *ngIf="i < 5" class="percent">{{ item?.percentMonth | number: '1.0-2'}}%</span>
+                        <span *ngIf="i < 5" class="percent"[ngClass]="item?.percentMonth > 0 ? 'percent percent-green' : 'percent percent-red'">{{ item?.percentMonth | number: '1.0-2'}}%</span>
                     </li>
 
                 </ul>
