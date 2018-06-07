@@ -101,7 +101,10 @@
         <input type="text" name="email" ngModel placeholder="Напишите свой email" email required >
         <input type="password" name="password" ngModel placeholder="Придумайте себе пароль" required minlength='6'>
         <input type="password" name="password_repeat" ngModel placeholder="Повторите пароль" required minlength='6' validateEqual="password">
-        <input [disabled]="!signup.valid" type="submit" value="Зарегистрироваться" >
+        <input *ngIf="load == false" [disabled]="!signup.valid" type="submit" value="Зарегистрироваться" >
+        <div *ngIf="load == true"  style="width: 30px; height: 30px; margin: 20px auto;">
+          <img src="/img/load.gif" *ngIf="load == true" style=" width: 30px; height: 30px; text-align: center">
+        </div>
       </form>
     </div>
     <div class="popup-footer">

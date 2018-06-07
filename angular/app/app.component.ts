@@ -61,6 +61,7 @@ export class AppComponent implements OnInit {
   lostPassSuccess = false;
    errorLostPass = '';
   results: Object;
+  load = false;
   searchTerm$ = new Subject<string>();
   search = '';
   searchAll = '';
@@ -148,9 +149,7 @@ checkAuth() {
         window.location.replace("/profile/portfolio"),
         (error) => console.log(error)
       );
-    // console.log
-    console.log(this.registration);
-      form.reset();
+  	this.load = true;
   }
   onRestore(form: NgForm) {
   	this.lostPass = {

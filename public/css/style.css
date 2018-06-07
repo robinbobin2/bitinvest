@@ -9132,8 +9132,8 @@ table tbody tr td .difference .buttons a {
 }
 
 .percent-red {
-  color: #f00
+  color: #f00 !important;
 }
 .percent-green {
-  color: #76bf40
+  color: #76bf40 !important;
 }
