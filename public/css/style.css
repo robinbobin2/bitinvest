@@ -9130,3 +9130,10 @@ table tbody tr td .difference .buttons a {
 .select-content .select-body {
   display: block !important;
 }
+
+.percent-red {
+  color: #f00
+}
+.percent-green {
+  color: #76bf40
+}

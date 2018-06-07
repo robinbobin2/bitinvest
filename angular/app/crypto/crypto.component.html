@@ -82,7 +82,7 @@
                       <th width="10%"><span>Стоимость</span></th>
                       <th width="10%"><span>Спрос</span></th>
                       <th width="13%"><span>Предложение</span></th>
-                      <th width="13%"><span>Объем за 24ч. (BTC)</span></th>
+                      <th width="13%"><span>Объем за 24ч. ({{data?.symbol}})</span></th>
                       <th width="13%"><span>Объем за 24ч. </span></th>
                       <th width="11%"><span>Изм. за 24 ч.</span></th>
                       <th width="14%"><span>Обновлено</span></th>
@@ -92,7 +92,7 @@
 
                     <tr *ngFor="let stock of stocks; let i = index">
                       <td>
-                        <a href="#">
+                        <a  >
                           <!-- <span class="img-wrap"><img src="img/bitfinex-icon.png" alt=""></span> -->
                           <span class="text">{{stock.name}}</span>
                         </a>

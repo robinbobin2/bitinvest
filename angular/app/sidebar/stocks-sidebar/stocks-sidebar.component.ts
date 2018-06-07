@@ -89,10 +89,10 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
                                       this.diff[index] = this.resp[symbol + '/USD']['now'] - this.dataUsd[index].now;
                                       if (this.dataUsd[index].now > this.resp[symbol + '/USD']['now']) {
                                           this.animtype[index] = '';
-                                          this.animtype[index] = 'redbg';
+                                          this.animtype[index] = 'redcolor';
                                       } else {
                                           this.animtype[index] = '';
-                                          this.animtype[index] = 'greenbg';
+                                          this.animtype[index] = 'greencolor';
 
                                       }
                                   }

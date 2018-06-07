@@ -32,7 +32,7 @@
                     <li *ngFor="let item of dataUsd | orderBy: order:reverse:'case-insensitive'; let i = index">
                         <a *ngIf="i < 5" href="" class="name">{{item?.sym}}</a>
                         <span *ngIf="i < 5" class="price"> ${{item?.marketCapUsd| number: '1.0-0'}}</span>
-                        <span *ngIf="i < 5" class="percent">{{ item?.percentDay | number: '1.0-2'}}%</span>
+                        <span *ngIf="i < 5" [ngClass]="item?.percentDay > 0 ? 'percent percent-green' : 'percent percent-red'">{{ item?.percentDay | number: '1.0-2'}}%</span>
                     </li>
 
                 </ul>
