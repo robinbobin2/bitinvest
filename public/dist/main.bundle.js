@@ -5529,7 +5529,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// import { interval } from 'rxjs/Observable/interval';
 
 
 var IcoProjectComponent = (function () {
@@ -6568,11 +6567,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var NewsComponent = (function () {
     function NewsComponent(http) {
-        var _this = this;
         this.http = http;
         this.categories = [];
+    }
+    NewsComponent.prototype.ngOnInit = function () {
+        var _this = this;
         var path = "/categoriesraw/1";
-        var info = http.get(path);
+        var info = this.http.get(path);
         info.subscribe(function (response) {
             for (var _i = 0, _a = response['cats']; _i < _a.length; _i++) {
                 var item = _a[_i];
@@ -6584,10 +6585,7 @@ var NewsComponent = (function () {
                     });
                 }
             }
-            console.log(_this.categories);
         });
-    }
-    NewsComponent.prototype.ngOnInit = function () {
     };
     return NewsComponent;
 }());

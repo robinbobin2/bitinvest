@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { OnChanges } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-// import { interval } from 'rxjs/Observable/interval';
 import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
