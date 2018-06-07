@@ -78,8 +78,18 @@ class ProfileController extends Controller
         if($request->request->get("email")){
             $user->email = $request->request->get("email");
         }
-        if($request->request->get("name")){
-            $user->name = $request->request->get("name");
+        if($request->request->get("name")) {
+            $name = User::where('name', $request->request->get("name"));
+            if (!$name) {
+                $user->name = $request->request->get("name");
+            } else {
+                $returnData = array(
+                    'status' => 'error',
+                    'message' => 'Такое имя уже занято'
+                );
+                return response()->json($returnData, 500);
+            }
+            
         }
         if($request->request->get("telegram")){
             $user->telegram = $request->request->get("telegram");
