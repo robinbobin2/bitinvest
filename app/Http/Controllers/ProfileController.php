@@ -83,11 +83,12 @@ class ProfileController extends Controller
             if (!$name) {
                 $user->name = $request->request->get("name");
             } else {
-                $returnData = array(
-                    'status' => 'error',
-                    'message' => 'Такое имя уже занято'
-                );
-                return response()->json($returnData, 500);
+                if($name->id != $user->id) {
+                    return [
+                        'error' => 'Такое имя уже занято';
+                    ];
+                }
+                
             }
             
         }
