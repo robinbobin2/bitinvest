@@ -3668,6 +3668,7 @@ var EditProfileComponent = (function () {
     };
     EditProfileComponent.prototype.onUpdate = function (form) {
         var _this = this;
+        this.msg = '';
         this.newData = {
             email: form.value.email,
             telegram: form.value.telegram,
@@ -3677,6 +3678,10 @@ var EditProfileComponent = (function () {
             if (response['error']) {
                 _this.msg = response['error'];
                 _this.error_msg = true;
+            }
+            else if (response['success']) {
+                _this.msg = 'Данные успешно изменены';
+                _this.error_msg = false;
             }
         }, function (error) { return console.log(error); });
         this.auth

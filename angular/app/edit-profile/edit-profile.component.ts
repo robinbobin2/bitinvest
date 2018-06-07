@@ -103,7 +103,8 @@ deletePhoto() {
     })
 }
 onUpdate(form) {
-	this.newData={
+    this.msg = ''
+    this.newData={
 		email: form.value.email,
 		telegram: form.value.telegram,
 		name: form.value.name
@@ -113,7 +114,11 @@ onUpdate(form) {
             if (response['error']) {
                 this.msg = response['error'];
                 this.error_msg = true;
+            } else if(response['success']) {
+                this.msg = 'Данные успешно изменены';
+                this.error_msg = false;
             }
+
         },
         (error) => console.log(error)
       );
