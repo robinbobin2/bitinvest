@@ -114,7 +114,7 @@ onUpdate(form) {
             if (response['error']) {
                 this.msg = response['error'];
                 this.error_msg = true;
-            } else if(response['success']) {
+            } else if(response['status']) {
                 this.msg = 'Данные успешно изменены';
                 this.error_msg = false;
             }

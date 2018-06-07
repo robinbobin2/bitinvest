@@ -3679,7 +3679,7 @@ var EditProfileComponent = (function () {
                 _this.msg = response['error'];
                 _this.error_msg = true;
             }
-            else if (response['success']) {
+            else if (response['status']) {
                 _this.msg = 'Данные успешно изменены';
                 _this.error_msg = false;
             }
