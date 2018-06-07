@@ -43,6 +43,8 @@ export class EditProfileComponent implements OnInit {
   submitted = false;
   submittedPass = false;
   fileToUpload: File;
+  msg = '';
+  error_msg = false;
   constructor(public auth: AuthService, private http:HttpClient, private _http:Http) { }
 @ViewChild('fileInput') fileInput
   ngOnInit() {
@@ -107,10 +109,14 @@ onUpdate(form) {
 		name: form.value.name
 	} 
     this.http.patch('/users/'+this.user.id+'/update', this.newData, {headers: headers}).subscribe(
-        (response) => console.log(response),
+        (response) => {
+            if (response['error']) {
+                this.msg = response['error'];
+                this.error_msg = true;
+            }
+        },
         (error) => console.log(error)
       );
-    this.submitted = true;
     this.auth
       .getUser()
       .subscribe(
