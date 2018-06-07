@@ -3671,7 +3671,7 @@ var EditProfileComponent = (function () {
             telegram: form.value.telegram,
             name: form.value.name
         };
-        this.http.patch('/users/' + this.user.id + '/update', this.newData, { headers: headers }).subscribe(function (response) { return response; }, function (error) { return console.log(error); });
+        this.http.patch('/users/' + this.user.id + '/update', this.newData, { headers: headers }).subscribe(function (response) { return console.log(response); }, function (error) { return console.log(error); });
         this.submitted = true;
         this.auth
             .getUser()
