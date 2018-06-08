@@ -77,7 +77,7 @@
       <form class="subscribe">
         <p *ngIf="email_added">{{email_added}}</p>
         <input type="text" [(ngModel)]='email' placeholder="Укажите свой e-mail и получайте новости на почту" email>
-        <button type="button" class="subscribe-btn" (click)="onAddEmail(email)">Подписаться</button>
+        <button type="button" class="subscribe-btn" (click)="onAddEmail()" >Подписаться</button>
       </form>
       <div class="social-block">
         <h3>Мы в соц. сетях</h3>

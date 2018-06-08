@@ -194,9 +194,10 @@ checkAuth() {
 
   	// this.user = this.auth.getUser();
   }
-  onAddEmail(email) {
-	    if (email) {
-            this.auth.addEmail(email).subscribe((response) => {
+  onAddEmail() {
+	    console.log(this.email);
+	    if (this.email) {
+            this.auth.addEmail(this.email).subscribe((response) => {
                 console.log(response);
                 if (response['status'] == 'email added') {
                     this.email_added = 'Email успешно добавлен';
