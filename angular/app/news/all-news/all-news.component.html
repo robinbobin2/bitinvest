@@ -14,7 +14,10 @@
           <div class="news-tab-content active">
             <div class="main-news">
               <div  *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.workplace ? 'news trust' : 'news'">
-                <div class="img" [ngStyle]="{'background': 'rgba(0,0,0,.3) url('+item.photos[0].file+')'}">
+                <div class="img" [ngStyle]="{'background': 'linear-gradient(
+                                              rgba(0, 0, 0, 0.35),
+                                              rgba(0, 0, 0, 0.35)
+                                            ), url('+item.photos[0].file+')'}">
                   <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
                   <a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
                   <div class="info">
