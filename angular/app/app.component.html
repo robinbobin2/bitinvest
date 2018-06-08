@@ -75,8 +75,9 @@
         Это помощник и проводник по рынку крипто-валют, в первую очередь это набор бесплатных инструментов для анализа рынка крипто-валюты: <br> Всегда актуальные новости о крипто-валютах, биржах и новых сервисах в мире криптовалют. Новости собираются автоматически с огромного количества новостных, <br> русскоязычных и англоязычных тематических сайтов с круглосуточным обновлением. <a href="#">Полный текст</a>
       </p>
       <form class="subscribe">
-        <input type="text" placeholder="Укажите свой e-mail и получайте новости на почту">
-        <button type="button" class="subscribe-btn">Подписаться</button>
+        <p *ngIf="email_added">{{email_added}}</p>
+        <input type="text" [value]='email' placeholder="Укажите свой e-mail и получайте новости на почту">
+        <button type="button" class="subscribe-btn" (click)="onAddEmail(email)">Подписаться</button>
       </form>
       <div class="social-block">
         <h3>Мы в соц. сетях</h3>
