@@ -127,6 +127,8 @@ class Updater extends \Illuminate\Console\Command
         CcexProvider::class,
         CexProvider::class,
         CoinnestProvider::class,
+        CoinRoomProvider::class,
+        FargoBaseProvider::class,
     ];
 
     private $suppliers = [
@@ -144,8 +146,6 @@ class Updater extends \Illuminate\Console\Command
         CoinexProvider::class,
         CoinexChangeProvider::class,
         ExmoProvider::class,
-        CoinRoomProvider::class,
-        FargoBaseProvider::class,
         AllCoinProvider::class,
         ExxProvider::class,
         CoinMarketCapProvider::class,
