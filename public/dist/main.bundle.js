@@ -3156,7 +3156,7 @@ var CryptoComponent = (function () {
         this.auth = auth;
         this.commentService = commentService;
         this.comments = [];
-        this.now = new Date();
+        this.now = Date.now();
         this.load = true;
         this.user = {
             id: 0,

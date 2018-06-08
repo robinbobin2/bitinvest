@@ -59,7 +59,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
   comments: CommentRaw[] = [];
   dataUsd: CryptoData;
   data: PositionData;
-  now: Date = new Date();
+  now = Date.now()
   load:boolean=true;
   user: User = {
     id:0,
