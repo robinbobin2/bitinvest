@@ -339,11 +339,6 @@ $('.select-wrap select').select2({
 	  else{
 	   $("#select-age .select-items").removeClass("open");
 	   $("#select-age .select").removeClass("open")
-	   $(document).click(function (event) {
-		$("#select-age .select-items").removeClass("open");
-	   $("#select-age .select").removeClass("open")
-			
-	  });
 	  }
 	 });
 	 $("#select-country").on("click", function(e){
@@ -355,11 +350,6 @@ $('.select-wrap select').select2({
 	  else{
 	   $("#select-country .select-items").removeClass("open");
 	   $("#select-country .select").removeClass("open")
-	   $(document).click(function (event) {
-			$("#select-country .select-items").removeClass("open");
-	   $("#select-country .select").removeClass("open")
-			
-	  });
 	  }
 	 });
 	 $("#select-algo").on("click", function(e){
@@ -372,11 +362,6 @@ $('.select-wrap select').select2({
 	  else{
 	   $("#select-algo .select-items").removeClass("open");
 	   $("#select-algo .select").removeClass("open")
-	   $(document).click(function (event) {
-	   $("#select-algo .select-items").removeClass("open");
-			$("#select-algo .select").removeClass("open")
-			
-	  });
 	  }
 	 });
 	 $(".select-wrapper").on("click", function(e){
@@ -388,9 +373,16 @@ $('.select-wrap select').select2({
 	  else{
 	   $(".select-items").removeClass("open");
 	   $(".select").removeClass("open");
-	   $(document).click(function (event) {
-			$(".select-items").removeClass("open");
 
-	  });
-	}
+	  }
+	 });
+
+	 $(document).click(function(){
+		  $(".select-items").removeClass("open");
+	   $(".select").removeClass("open");
+	   $("#select-country .select-items").removeClass("open");
+	   $("#select-country .select").removeClass("open")
+$("#select-age .select-items").removeClass("open");
+	   $("#select-age .select").removeClass("open")
+		});
 });

@@ -50,20 +50,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/app.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="90" column="84" selection-start-line="90" selection-start-column="84" selection-end-line="90" selection-end-column="84" />
-              <folding>
-                <element signature="n#style#0;n#p#1;n#div#0;n#footer#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="edit-profile.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/edit-profile/edit-profile.component.ts">
           <provider selected="true" editor-type-id="text-editor">
@@ -101,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crypto-all.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="crypto-all.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="48" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="48" />
+            <state relative-caret-position="341">
+              <caret line="25" column="79" selection-start-line="25" selection-start-column="79" selection-end-line="25" selection-end-column="79" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -123,7 +109,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>simil</find>
       <find>pair.</find>
       <find>let symbol = this.route.snapshot.params['sym'];</find>
       <find>pai</find>
@@ -152,6 +137,7 @@
       <find>#f</find>
       <find>удалить</find>
       <find>email</find>
+      <find>[app</find>
       <find>email_added</find>
     </findStrings>
     <replaceStrings>
@@ -200,7 +186,6 @@
         <option value="$PROJECT_DIR$/app/interview/interview-details/interview-details.component.ts" />
         <option value="$PROJECT_DIR$/app/interview/interview-details/interview-details.component.html" />
         <option value="$PROJECT_DIR$/app/app.module.ts" />
-        <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.html" />
         <option value="$PROJECT_DIR$/app/crypto/crypto.component.html" />
         <option value="$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts" />
         <option value="$PROJECT_DIR$/app/ico-project/ico-project-categories/ico-project-categories.component.html" />
@@ -215,6 +200,7 @@
         <option value="$PROJECT_DIR$/app/auth.service.ts" />
         <option value="$PROJECT_DIR$/app/app.component.ts" />
         <option value="$PROJECT_DIR$/app/app.component.html" />
+        <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.html" />
       </list>
     </option>
   </component>
@@ -535,12 +521,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="56945000" />
+      <workItem from="1527928097804" duration="57235000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214117000" />
+    <option name="totallyTimeSpent" value="214407000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -981,22 +967,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="48" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="48" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
@@ -1036,6 +1006,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="48" />
+          <folding>
+            <element signature="n#style#0;n#p#1;n#div#0;n#footer#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/app.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="640">
@@ -1046,14 +1028,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.component.html">
+    <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="90" column="84" selection-start-line="90" selection-start-column="84" selection-end-line="90" selection-end-column="84" />
+        <state relative-caret-position="341">
+          <caret line="25" column="79" selection-start-line="25" selection-start-column="79" selection-end-line="25" selection-end-column="79" />
           <folding>
-            <element signature="n#style#0;n#p#1;n#div#0;n#footer#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#section#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
