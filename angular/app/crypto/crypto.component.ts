@@ -5,7 +5,6 @@ import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import {AuthService} from '../auth.service';
 import {StocksService} from '../stocks.service';
-import {NewsRaw} from "../cloud-mining/all-cloud-mining/all-cloud-mining.component";
 import {CommentsService} from "../comments.service";
 
 
@@ -60,6 +59,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
   comments: CommentRaw[] = [];
   dataUsd: CryptoData;
   data: PositionData;
+  now: Date = new Date();
   load:boolean=true;
   user: User = {
     id:0,
@@ -106,7 +106,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     private router:Router, private route:ActivatedRoute, 
     public auth: AuthService,
                 private commentService: CommentsService) {
-
+    console.log(this.now);
   }
 
   ngOnInit() {

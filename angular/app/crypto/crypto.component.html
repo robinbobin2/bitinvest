@@ -119,7 +119,8 @@
                         <span class="growth-green" [ngStyle]="{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s', 'color': 'black'}">{{stock.percent | number:'1.0-3'}}%</span>
                       </td>
                       <td>
-                        <span class="updated">{{stock.time * 1000  | date:'HH:mm:ss d MMMM'}}</span>
+                        <span class="updated" *ngIf="now - stock.time >= 86000">{{stock.time | date:'HH:mm:ss d.M'}}</span>
+                        <span class="updated" *ngIf="now - stock.time < 86000">{{stock.time | date:'HH:mm:ss'}}</span>
                       </td>
                     </tr>
                     
