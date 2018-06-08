@@ -42,10 +42,12 @@
           <input type="submit">
         </form>
         <ul class="login"  *ngIf="!checkUser()">
+          <li><a href="#" class="search-btn"><img src="/img/search-icon-white.png" alt=""></a></li>
           <li class="login-link"><a href="#login-popup" class="popup-link log-in" data-effect="mfp-zoom-in"><span>Вход</span></a></li>
           <li><a href="#check-popup" class="popup-link sign-up" data-effect="mfp-zoom-in"><span>Регистрация</span></a></li>
         </ul>
         <div class="setting-top-block" *ngIf="checkUser()">
+          <li><a href="#" class="search-btn"><img src="/img/search-icon-white.png" alt=""></a></li>
           <a routerLink="/profile/edit"><img src="/img/settings-icon.png" alt=""></a>
           <a routerLink="/profile/portfolio"><div class="img-wrap" style="overflow: hidden"><img style="width: 100%; height: 100%;"
             src="{{user.photo ? user.photo.file : 'http://aiyd.org/wp-content/uploads/2016/09/no-image-icon-hi.png'}}" alt=""></div></a>

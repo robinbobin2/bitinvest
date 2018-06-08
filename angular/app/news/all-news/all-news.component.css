@@ -1,6 +1,4 @@
-.news-content {
-width: 880px !important;
-}
+
 .main-news .news:nth-child(even) {
 	max-width: 424px;
 }
