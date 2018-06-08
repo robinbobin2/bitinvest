@@ -154,9 +154,8 @@ Route::get('/angular/search', "AngularController@search");
 Route::get('/angular/bannersbyfrontid/{id}', "BannerController@bannersByFront");
 Route::post('/angular/vote', "AngularController@vote");
 Route::post('/angular/incrementView', "AngularController@viewCount");
-
+Route::post('/angular/addemail', "AngularController@addEmail");
 Route::get('/angular/similarnews', "NewsViewController@similarNews");
-// Route::get('/crypto', "AngularController@serve");
 
 Route::get('/crypto/{symbol}', "AngularController@crypto");
 Route::get('/crypto/{symbol}/news', "AngularController@crypto");

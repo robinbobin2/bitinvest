@@ -15,6 +15,7 @@ class CreateEmailListsTable extends Migration
     {
         Schema::create('email_lists', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('email')
             $table->timestamps();
         });
     }

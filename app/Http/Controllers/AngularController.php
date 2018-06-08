@@ -6,6 +6,7 @@ use App\Analytics;
 use App\CloudMining;
 use App\CommentRating;
 use App\CryptoStat;
+use App\EmailList;
 use App\IcoPercent;
 use App\IcoProject;
 use App\Interview;
@@ -273,5 +274,15 @@ JOIN exchangeRatesInfo exi on exi.exchangeId = ex.id and exi.currency = 'BTC/USD
         }
 
         return false;
+    }
+
+    public function addEmail(Request $request) {
+        if ($request->email) { 
+            EmailList::create($request->all());
+            return ['status'=>'email added'];
+            # code...
+        } else {
+            return abort(401);
+        }
     }
 }

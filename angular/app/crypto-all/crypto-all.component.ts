@@ -52,6 +52,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
     show = false;
     portfolioInfo: any;
     getUserPortfolio = [];
+    algorithm = ''
+    age = ''
 
     /**
      * Example: Use Order pipe in the component

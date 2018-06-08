@@ -565,6 +565,7 @@ var AppComponent = (function () {
         this.load = false;
         this.searchTerm$ = new __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__["b" /* Subject */]();
         this.search = '';
+        this.email_added = false;
         this.searchAll = '';
         this.router.events
             .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* NavigationEnd */]; })
@@ -672,6 +673,14 @@ var AppComponent = (function () {
             _this.auth.setUser(_this.user);
         });
         // this.user = this.auth.getUser();
+    };
+    AppComponent.prototype.onAddEmail = function (email) {
+        var _this = this;
+        this.auth.addEmail(email).subscribe(function (response) {
+            if (response['status'] == 'email added') {
+                _this.email_added = true;
+            }
+        });
     };
     return AppComponent;
 }());
@@ -1114,6 +1123,10 @@ var AuthService = (function () {
     };
     AuthService.prototype.setUser = function (user) {
         this.user = user;
+    };
+    AuthService.prototype.addEmail = function (email) {
+        var path = '/angular/addemail';
+        return this.http.post(path, { 'email': email });
     };
     AuthService.prototype.getUserInfo = function () {
         if (this.user.id != undefined) {
@@ -2501,6 +2514,8 @@ var CryptoAllComponent = (function () {
         this.portfoliosInfo = [];
         this.show = false;
         this.getUserPortfolio = [];
+        this.algorithm = '';
+        this.age = '';
     }
     CryptoAllComponent.prototype.removePortfolio = function (id) {
         var _this = this;

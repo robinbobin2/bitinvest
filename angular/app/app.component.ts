@@ -64,6 +64,7 @@ export class AppComponent implements OnInit {
   load = false;
   searchTerm$ = new Subject<string>();
   search = '';
+    email_added = false;
   searchAll = '';
 	constructor(public auth: AuthService, private http:HttpClient, 
     private router:Router, private activatedRoute: ActivatedRoute,
@@ -191,5 +192,12 @@ checkAuth() {
 
 
   	// this.user = this.auth.getUser();
+  }
+  onAddEmail(email) {
+      this.auth.addEmail(email).subscribe((response)=>{
+          if (response['status']=='email added') {
+              this.email_added = true;
+          }
+      })
   }
 }
