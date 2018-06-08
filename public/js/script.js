@@ -216,6 +216,10 @@ $(document).ready(function () {
 		$(".top-menu-wrap").addClass("opened");
 		$("html, body").addClass("overflow");
 	});
+	$(".top-menu-wrap a").on("click", function (e) {
+		$(".top-menu-wrap").removeClass("opened");
+		$("html, body").removeClass("overflow");
+	});
 
 	$(".top-menu-wrap .menu-close").on("click", function (e) {
 		e.preventDefault();
