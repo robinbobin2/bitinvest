@@ -339,6 +339,10 @@ $('.select-wrap select').select2({
 	  else{
 	   $("#select-age .select-items").removeClass("open");
 	   $("#select-age .select").removeClass("open")
+	   $(document).click(function (event) {
+	   	$("#select-age .select-items").removeClass("open");
+	   $("#select-age .select").removeClass("open")
+	   });
 	  }
 	 });
 	 $("#select-country").on("click", function(e){
