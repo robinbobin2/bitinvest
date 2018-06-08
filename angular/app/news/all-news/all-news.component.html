@@ -13,6 +13,7 @@
           </div>
           <div class="news-tab-content active">
             <div class="main-news">
+              <div class="main-news-slider">
               <div  *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.workplace ? 'news trust' : 'news'">
                 <div class="img" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
@@ -30,6 +31,7 @@
                   <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p> 
                 </div>
               </div>
+                </div>
             </div>
             <div class="news-mobile">
               <a href="#" class="trust trust-big">
@@ -40,7 +42,7 @@
               </a>
               <ul class="news-list-mobile">
                 <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'">
-                  <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"  [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" style="width:130px; height: 86px;">
+                  <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"  [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
                     <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
                   </a>
                   <div *ngIf="!item.name_credits" class="text">
