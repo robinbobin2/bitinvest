@@ -332,6 +332,7 @@ $('.select-wrap select').select2({
 	});
 	 $("#select-age").on("click", function(e){
 	  e.preventDefault();
+	  e.stopPropagation(); 
 	  if(!$("#select-age .select-items").hasClass("open")){
 	     $("#select-age .select-items").addClass("open");
 	   $("#select-age .select").addClass("open");
@@ -342,7 +343,10 @@ $('.select-wrap select').select2({
 
 	  }
 	 });
-	 
+	 $(document).click(function (event) {
+	   	$("#select-age .select-items").removeClass("open");
+	   $("#select-age .select").removeClass("open")
+	   });
 	 $("#select-country").on("click", function(e){
 	  e.preventDefault();
 	  if(!$("#select-country .select-items").hasClass("open")){
