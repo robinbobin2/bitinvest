@@ -40,7 +40,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crypto.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="crypto.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="258">
@@ -66,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="273">
-              <caret line="122" column="100" selection-start-line="122" selection-start-column="100" selection-end-line="122" selection-end-column="100" />
+              <caret line="122" column="121" selection-start-line="122" selection-start-column="121" selection-end-line="122" selection-end-column="121" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -174,8 +174,8 @@
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.css" />
         <option value="$PROJECT_DIR$/app/app.component.html" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.html" />
-        <option value="$PROJECT_DIR$/app/crypto/crypto.component.html" />
         <option value="$PROJECT_DIR$/app/crypto/crypto.component.ts" />
+        <option value="$PROJECT_DIR$/app/crypto/crypto.component.html" />
       </list>
     </option>
   </component>
@@ -504,12 +504,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="60691000" />
+      <workItem from="1527928097804" duration="60819000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="217863000" />
+    <option name="totallyTimeSpent" value="217991000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1004,24 +1004,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="122" column="100" selection-start-line="122" selection-start-column="100" selection-end-line="122" selection-end-column="100" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
           <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="122" column="121" selection-start-line="122" selection-start-column="121" selection-end-line="122" selection-end-column="121" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
