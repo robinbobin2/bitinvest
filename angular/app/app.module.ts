@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {Routes, RouterModule} from "@angular/router";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import { LOCALE_ID } from '@angular/core';
 
 import { CryptoComponent } from './crypto/crypto.component';
 import { CmcComponent } from './cmc/cmc.component';
@@ -284,7 +284,7 @@ const appRoutes: Routes = [
     OrderPipe,
       InfiniteScrollModule
   ],
-  providers: [HttpClientModule, OrderPipe, SidebarResolverService, CommentsService, NewsResolverService, InfiniteScrollModule],
+  providers: [HttpClientModule, OrderPipe, SidebarResolverService, CommentsService, NewsResolverService, InfiniteScrollModule, { provide: LOCALE_ID, useValue: "ru-RU" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
