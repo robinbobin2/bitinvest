@@ -40,7 +40,7 @@
               </a>
               <ul class="news-list-mobile">
                 <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'">
-                  <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"  [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
+                  <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"  [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" style="width:130px; height: 86px;">
                     <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
                   </a>
                   <div *ngIf="!item.name_credits" class="text">
