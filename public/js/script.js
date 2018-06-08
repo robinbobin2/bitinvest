@@ -376,13 +376,4 @@ $('.select-wrap select').select2({
 
 	  }
 	 });
-
-	 $(document).click(function(){
-		  $(".select-items").removeClass("open");
-	   $(".select").removeClass("open");
-	   $("#select-country .select-items").removeClass("open");
-	   $("#select-country .select").removeClass("open")
-$("#select-age .select-items").removeClass("open");
-	   $("#select-age .select").removeClass("open")
-		});
 });
