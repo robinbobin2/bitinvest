@@ -1,6 +1,11 @@
  <header>
     <div class="top-head">
       <div class="wrapper">
+        <button type="button" class="menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <div class="logo-block">
           <a routerLink="/posts/all" class="logo"><img src="img/logo.png" alt=""><span>ВСЕ О РЫНКЕ КРИПТОВАЛЮТ</span></a>
         </div>
@@ -52,6 +57,11 @@
     </div>
     <div class="top-menu-wrap">
       <div class="wrapper">
+        <a href="#" class="menu-close">×</a>
+        <ul class="login">
+          <li class="login-link"><a href="#login-popup" class="popup-link log-in" data-effect="mfp-zoom-in"><span>Вход</span></a></li>
+          <li><a href="#check-popup" class="popup-link sign-up" data-effect="mfp-zoom-in"><span>Регистрация</span></a></li>
+        </ul>
         <ul class="top-menu">
           <li routerLinkActive="active" [ngClass]="rla.isActive?'active':''" #rla="routerLinkActive"><a [routerLink]="['/posts/all']" >Новости</a></li>
           <li routerLinkActive="active"><a [routerLink]="['/review/all']">Обзоры</a></li>
@@ -64,6 +74,13 @@
           <!--<li><a>Фонды и хайпы</a></li>-->
           <li routerLinkActive="active"  [routerLinkActiveOptions]="{exact: false}"><a routerLink="/exchanges">Биржи</a></li>
           <!--<li><a >Пулы</a></li>-->
+        </ul>
+        <ul class="bottom-menu">
+          <li><a href="#">О сервисе</a></li>
+          <li><a href="#">Контактная информация</a></li>
+          <li><a href="#">Реклама</a></li>
+          <li><a href="#">Пользовательское соглашение</a></li>
+          <li><a href="#">Политика конфедициальности</a></li>
         </ul>
       </div>
     </div>
