@@ -346,8 +346,15 @@ $('.select-wrap select').select2({
 	 $(document).click(function (event) {
 	   	$("#select-age .select-items").removeClass("open");
 	   $("#select-age .select").removeClass("open")
+	   $("#select-country .select-items").removeClass("open");
+	   $("#select-country .select").removeClass("open")
+	   $("#select-algo .select-items").removeClass("open");
+	   $("#select-algo .select").removeClass("open")
+	   $(".select-items").removeClass("open");
+	   $(".select").removeClass("open");
 	   });
 	 $("#select-country").on("click", function(e){
+	  e.stopPropagation(); 
 	  e.preventDefault();
 	  if(!$("#select-country .select-items").hasClass("open")){
 	     $("#select-country .select-items").addClass("open");
@@ -359,7 +366,7 @@ $('.select-wrap select').select2({
 	  }
 	 });
 	 $("#select-algo").on("click", function(e){
-	 	console.log('123123123123123');
+	  e.stopPropagation(); 
 	  e.preventDefault();
 	  if(!$("#select-algo .select-items").hasClass("open")){
 	     $("#select-algo .select-items").addClass("open");
@@ -371,6 +378,7 @@ $('.select-wrap select').select2({
 	  }
 	 });
 	 $(".select-wrapper").on("click", function(e){
+	  e.stopPropagation(); 
 	  e.preventDefault();
 	  if(!$(".select-items").hasClass("open")){
 	     $(".select-items").addClass("open");
