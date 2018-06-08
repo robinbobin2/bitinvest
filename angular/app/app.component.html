@@ -74,8 +74,9 @@
       <p class="footer-text">
         Это помощник и проводник по рынку крипто-валют, в первую очередь это набор бесплатных инструментов для анализа рынка крипто-валюты: <br> Всегда актуальные новости о крипто-валютах, биржах и новых сервисах в мире криптовалют. Новости собираются автоматически с огромного количества новостных, <br> русскоязычных и англоязычных тематических сайтов с круглосуточным обновлением. <a href="#">Полный текст</a>
       </p>
+      <p *ngIf="email_added" class="footer-text" style="font-size:14px; font-weight: bold;" [ngStyle]="{'color': error_email ? 'red' : '#396c19'}">{{email_added}}</p>
       <form class="subscribe" #emailList="ngForm" novalidate>
-        <p *ngIf="email_added">{{email_added}}</p>
+
         <input type="text" [(ngModel)]='email' placeholder="Укажите свой e-mail и получайте новости на почту" email name="email" required >
         <button type="button" class="subscribe-btn" [disabled]="emailList.invalid" (click)="onAddEmail()" >Подписаться</button>
       </form>

@@ -67,6 +67,7 @@ export class AppComponent implements OnInit {
   searchAll = '';
   email = '';
   email_added = '';
+    error_email = false;
 	constructor(public auth: AuthService, private http:HttpClient, 
     private router:Router, private activatedRoute: ActivatedRoute,
     private searchService: SearchService,
@@ -195,16 +196,17 @@ checkAuth() {
   	// this.user = this.auth.getUser();
   }
   onAddEmail() {
-	    console.log(this.email);
+      this.email_added=""
 	    if (this.email) {
             this.auth.addEmail(this.email).subscribe((response) => {
-                console.log(response);
                 if (response['status'] == 'email added') {
+                    this.error_email = false;
                     this.email_added = 'Email успешно добавлен';
                 }
             })
         } else {
-	        this.email_added = 'Введите email'
+	        this.email_added = 'Введите email';
+	        this.error_email = true;
         }
   }
 }
