@@ -196,11 +196,11 @@
                   <div class="img-wrap">
                     <img src="/images/{{item.logo}}" style="width: 100%; height: 100%;" alt="">
                   </div>
-                  <span>{{item.name}}</span>
+                  <span style="font-size: 14px;">{{item.name}}</span>
                 </a>
               </td>
               <td>
-                <span class="amount-bold" *ngIf="exchange_volumes[item.name] != undefined">{{exchange_volumes[item.name].usd | number:'1.0-3'}}</span>
+                <span class="amount-bold" *ngIf="exchange_volumes[item.name] != undefined">${{exchange_volumes[item.name].usd | number:'1.0-0'}}</span>
               </td>
               <td>
                 <span class="amount-bold">{{pairs_count[item.name]}}</span>
@@ -210,7 +210,7 @@
             </tr>
           </tbody>
         </table>
-        <a href="#" class="show-exchanges">Показать еще биржи</a>
+        <!--<a href="#" class="show-exchanges">Показать еще биржи</a>-->
       </div>
     </div>
   </section>
