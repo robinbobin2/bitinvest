@@ -53,24 +53,28 @@
                 </div>
                 </ng-template>
               </div>
-              <div class="news news-slider-wrap">
+              <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
+              <div class="news news-slider-wrap" *ngIf="i > 0">
                 <div class="news-slider news-slider-1">
-                  <div  *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive'" class="slide" [ngStyle]="{'background': 'linear-gradient(-->
-                                              <!--rgba(0, 0, 0, 0.35),-->
-                                              <!--rgba(0, 0, 0, 0.35)-->
-                                            <!--), url('+item.photos[0].file+')'}"></div>
+                  <div  class="slide" [ngStyle]="{'background': 'linear-gradient(
+                                              rgba(0, 0, 0, 0.35),
+                                              rgba(0, 0, 0, 0.35)
+                                            ), url('+item.photos[0].file+')'}"></div>
                 </div>
                 <div class="news-slider-info">
-                  <a href="#" class="news-btn">Bitcoin</a>
-                  <a href="#" class="title-link">Sunday TIMEs Issue #15</a>
+                  <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
+                  <a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
                   <div class="info">
-                    <span class="date">26 Окт 2017 в 11:39</span>
+                    <span class="date">{{item.created_at}}</span>
+                    <span class="views" *ngIf="item.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item.view_count}}</span>
+                    <a  [routerLink]="['/posts/post', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>
                   </div>
                 </div>
                 <div class="text">
-                  <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br><a href="#">Подробнее</a></p>
+                  <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
                 </div>
               </div>
+              </ng-template>
             </div>
             <div class="news-mobile">
               <a href="#" class="trust trust-big">
