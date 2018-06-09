@@ -105,7 +105,8 @@
 
           <tbody *ngIf="load == false">
 
-            <tr *ngFor="let item of exchanges | orderBy: order:reverse:'case-insensitive' | filterNameActive:language:'languages'| filterNameActive:year:'year'| filterNameActive:country:'country'; let i = index">
+            <tr *ngFor="let item of exchanges | orderBy: order:reverse:'case-insensitive' |
+            filterNameActive:language:'languages'| filterNameActive:year:'year'| filterNameActive:country:'country'; let i = index">
               <td>
                 <span>{{i+1}}</span>
               </td>
@@ -171,7 +172,7 @@
           <img src="/img/load.gif" *ngIf="load == true" style=" width: 50px; height: 50px; text-align: center">
         </div>
       </div>
-     <!--  <div class="table-wrap-mobile">
+      <div class="table-wrap-mobile">
         <table class="table">
           <thead>
             <th width="43%">
@@ -185,12 +186,32 @@
             </th>
           </thead>
           <tbody>
-            
+            <tr
+                    *ngFor="let item of exchanges | orderBy: order:reverse:'case-insensitive' |
+                    filterNameActive:language:'languages'| filterNameActive:year:'year'|
+                    filterNameActive:country:'country'; let i = index">
+
+              <td>
+                <a  [routerLink]="['/exchange', item.name]">
+                  <div class="img-wrap">
+                    <img src="/images/{{item.logo}}" style="width: 100%; height: 100%;" alt="">
+                  </div>
+                  <span>{{item.name}}</span>
+                </a>
+              </td>
+              <td>
+                <span class="amount-bold" *ngIf="exchange_volumes[item.name] != undefined">{{exchange_volumes[item.name].usd | number:'1.0-3'}}</span>
+              </td>
+              <td>
+                <span class="amount-bold">{{pairs_count[item.name]}}</span>
+
+              </td>
+
+            </tr>
           </tbody>
         </table>
         <a href="#" class="show-exchanges">Показать еще биржи</a>
       </div>
-      <a href="#" class="show-more">Показать еще</a> -->
     </div>
   </section>
 
