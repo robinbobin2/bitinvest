@@ -82,7 +82,7 @@ class RabbitTestHandler
             if ($key == $rep->get('correlation_id')) {
 //                $this->test[$rep->get('correlation_id')]->provider->save(unserialize($rep->body));
                 $this->response = array_merge($this->response, unserialize($rep->body));
-                if((time() - $this->time) > 2){
+                if((time() - $this->time) > 1){
                     $this->time = time();
                     if(!empty($this->response)){
                         $query = "INSERT INTO `bit`.`exchangeRates` (`currency`, `value`, `createTime`, `exchangeId`, `volume`, `bid`, `ask`) VALUES ";

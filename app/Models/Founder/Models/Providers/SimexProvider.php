@@ -46,9 +46,6 @@ class SimexProvider extends FounderProvider
         }
 
         foreach ($response->data as $value) {
-            if(!$this->validate($value->base->name . "/" . $value->quote->name)){
-                continue;
-            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->buy_price);
             $ticker->setBid($value->sell_price);
