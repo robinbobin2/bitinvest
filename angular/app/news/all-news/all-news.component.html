@@ -34,7 +34,7 @@
             <div class="main-news">
               <div class="main-news-slider">
                 <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                <div class="news"  [ngClass]="i > 0 ? 'hidden' : ''">
+                <div class="news" *ngIf="i <=0">
                   <div class="img" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
