@@ -5473,7 +5473,7 @@ margin-bottom: 15px;
 }
 @media (max-width: 600px) {
   .mobile-mining-content ul li > a:first-child {
-    display: none;
+    /*display: none;*/
   }
 }
 
@@ -8664,7 +8664,7 @@ outline: none !important;
 }
 @media (max-width: 600px) {
   .mobile-mining-content ul li > a:first-child {
-    display: none;
+    /*display: none;*/
   }
 }
 
