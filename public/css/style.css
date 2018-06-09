@@ -1045,7 +1045,7 @@ header .top-head .wrapper .top-search {
     max-width: 100%;
     width: 100%;
     margin-right: 0;
-    position: absolute;
+    position: absolute !important;
     margin: 0 -14px;
     padding: 0 12px;
     display: none;

@@ -206,6 +206,44 @@ width="18.3%">
             <img src="/img/load.gif" *ngIf="load == true" style=" width: 50px; height: 50px; text-align: center">
         </div>
 </div>
+            <div class="table-wrap-mobile">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th width="31%">
+                            <span>Название</span>
+                        </th>
+                        <th width="29%">
+                            <span>Цена</span>
+                        </th>
+                        <th width="40%">
+                            <span>Изм. за 24ч.</span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let data of dataUsd  | orderBy: order:reverse:'case-insensitive' |
+                    filterName:filteredName:'sym' | filterNameActive:age:'year' |
+                    filterNameActive:algorithm:'algo'; let i = index">
+                        <td>
+                            <a [routerLink]="['/crypto', data?.sym]"class="amount-bold">{{data?.sym}}/USD</a>
+                        </td>
+                        <td>
+                            <a [routerLink]="['/crypto', data?.sym]">
+                                <span class="amount-bold">${{data?.now | number: '1.0-3'}}</span>
+                            </a>
+                        </td>
+                        <td>
+                            <a [routerLink]="['/crypto', data?.sym]">
+                                <span *ngIf="data?.now" [ngClass]="isNegativePercent(data?.now, data?.day)==true ? 'change-red' : 'change-green'">{{ countPercent(data?.now, data?.day) | number: '1.2'}}%</span>
+
+                            </a>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
 <!-- <a href="#" class="show-more">Показать еще</a> -->
 </div>
 </section>
