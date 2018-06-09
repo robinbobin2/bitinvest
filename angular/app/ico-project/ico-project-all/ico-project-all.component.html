@@ -66,7 +66,9 @@
 					<li *ngFor="let item of news | filterNameActive:status:'status' |
 					filterName:filteredName:'name' |
 					orderBy: order:reverse:'case-insensitive'">
+						<a routerLink="/ico/item/{{item.id}}">
 							<a routerLink="/ico/item/{{item.id}}">{{item.name}}</a>
+
 							<div class="info">
 								<div class="progres-bar">
 									<div class="progres">
@@ -79,6 +81,7 @@
 									<span [ngClass]="item.status==1 ? 'active-status' : 'inactive-status'">{{item.status == 1? 'Активен': 'Завершен'}}</span>
 								</div>
 							</div>
+						</a>
 					</li>
 				</ul>
 			</div>
