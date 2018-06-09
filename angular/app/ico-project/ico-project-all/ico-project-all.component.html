@@ -66,8 +66,7 @@
 					<li *ngFor="let item of news | filterNameActive:status:'status' |
 					filterName:filteredName:'name' |
 					orderBy: order:reverse:'case-insensitive'">
-						<a href="balant-mining-card.html">
-							<a href="ico-card.html">Genesis (Дженезис) Mining</a>
+							<a routerLink="/ico/item/{{item.id}}">{{item.name}}</a>
 							<div class="info">
 								<div class="progres-bar">
 									<div class="progres">
