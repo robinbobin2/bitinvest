@@ -5,12 +5,12 @@
             margin: 10px auto; width: 25px; height: 25px;">
               <ng-template ngFor let-item [ngForOf]="dataUsd" let-i="index">
             <li *ngIf="i < 5">
-              <a *ngIf="i < 5" routerLink="/crypto/{{item.sym}}">
-                <span *ngIf="i < 5" class="crypto" >{{item.sym}}</span>
-                <span *ngIf="i < 5" class="usd" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">${{item.now | number:'1.0-1'}}</span>
-                <span *ngIf="i < 5" class="rub" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">₽{{item.now*60 | number:'1.0-1'}}</span>
-                  <span *ngIf="i < 5 && item.diff" class="change" [ngClass]="item?.diff > 0 ? 'change-green' : 'change-red'" style="">{{item.diff | number:'1.1-3'}}</span>
-                  <span *ngIf="i < 5 && !item.diff" class="change" [ngClass]="item.now-item.last > 0 ? 'change-green' : 'change-red'" style="">{{item.now-item.last | number:'1.1-3'}}</span>
+              <a *ngIf="i < 5" routerLink="/crypto/{{item?.sym}}">
+                <span *ngIf="i < 5" class="crypto" >{{item?.sym}}</span>
+                <span *ngIf="i < 5" class="usd" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">${{item?.now | number:'1.0-3'}}</span>
+                <!--<span *ngIf="i < 5" class="rub" [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">₽{{item.now*60 | number:'1.0-1'}}</span>-->
+                  <span *ngIf="i < 5 && diff[i]" class="change" [ngClass]="diff[i] > 0 ? 'change-green' : 'change-red'" style="">{{diff[i] | number: '1.2-3'}}</span>
+                  <span *ngIf="i < 5 && !diff[i]" class="change" [ngClass]="item.now-item.last > 0 ? 'change-green' : 'change-red'" style="">{{item?.now-item?.last | number:'1.2-3'}}</span>
               </a>
             </li>
               </ng-template>
@@ -30,9 +30,9 @@
             <div class="tab-content active">
                 <ul>
                     <li *ngFor="let item of dataUsd | orderBy: order:reverse:'case-insensitive'; let i = index">
-                        <a *ngIf="i < 5" href="" class="name">{{item.sym}}</a>
-                        <span *ngIf="i < 5" class="price"> ${{item.marketCapUsd| number: '1.0-0'}}</span>
-                        <span *ngIf="i < 5" class="percent">{{ item.percentDay | number: '1.0-2'}}%</span>
+                        <a *ngIf="i < 5" href="" class="name">{{item?.sym}}</a>
+                        <span *ngIf="i < 5" class="price"> ${{item?.marketCapUsd| number: '1.0-0'}}</span>
+                        <span *ngIf="i < 5" [ngClass]="item?.percentDay > 0 ? 'percent percent-green' : 'percent percent-red'">{{ item?.percentDay | number: '1.0-2'}}%</span>
                     </li>
 
                 </ul>
@@ -40,9 +40,9 @@
             <div class="tab-content">
                 <ul>
                     <li *ngFor="let item of dataUsd | orderBy: 'percentWeek':reverse:'case-insensitive'; let i = index">
-                        <a *ngIf="i < 5" href="" class="name">{{item.sym}}</a>
-                        <span *ngIf="i < 5" class="price"> ${{item.marketCapUsd| number: '1.0-0'}}</span>
-                        <span *ngIf="i < 5" class="percent">{{ item.percentWeek | number: '1.0-2'}}%</span>
+                        <a *ngIf="i < 5" href="" class="name">{{item?.sym}}</a>
+                        <span *ngIf="i < 5" class="price"> ${{item?.marketCapUsd| number: '1.0-0'}}</span>
+                        <span *ngIf="i < 5" [ngClass]="item?.percentWeek > 0 ? 'percent percent-green' : 'percent percent-red'">{{ item?.percentWeek | number: '1.0-2'}}%</span>
                     </li>
 
                 </ul>
@@ -50,9 +50,9 @@
             <div class="tab-content">
                 <ul>
                     <li *ngFor="let item of dataUsd | orderBy: 'percentMonth':reverse:'case-insensitive'; let i = index">
-                        <a *ngIf="i < 5" href="" class="name">{{item.sym}}</a>
-                        <span *ngIf="i < 5" class="price"> ${{item.marketCapUsd| number: '1.0-0'}}</span>
-                        <span *ngIf="i < 5" class="percent">{{ item.percentMonth | number: '1.0-2'}}%</span>
+                        <a *ngIf="i < 5" href="" class="name">{{item?.sym}}</a>
+                        <span *ngIf="i < 5" class="price"> ${{item?.marketCapUsd| number: '1.0-0'}}</span>
+                        <span *ngIf="i < 5" class="percent"[ngClass]="item?.percentMonth > 0 ? 'percent percent-green' : 'percent percent-red'">{{ item?.percentMonth | number: '1.0-2'}}%</span>
                     </li>
 
                 </ul>

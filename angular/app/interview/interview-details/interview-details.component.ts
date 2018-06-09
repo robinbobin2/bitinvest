@@ -4,6 +4,7 @@ import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {CommentsService} from "../../comments.service";
 import {CloudMiningService} from "../../cloud-mining.service";
+import {SimilarPostsService} from "../../similar-posts.service";
 
 export class News {
   id: number;
@@ -14,6 +15,8 @@ export class News {
   name_credits: string;
   comments_count: number;
   view_count: number;
+    category: string;
+    cat_id:number
 
 }
 export class CommentRaw {
@@ -39,7 +42,7 @@ export class User {
   selector: 'app-interview-details',
   templateUrl: './interview-details.component.html',
   styleUrls: ['./interview-details.component.scss'],
-    providers: [CommentsService, CloudMiningService]
+    providers: [CommentsService, CloudMiningService, SimilarPostsService]
 })
 export class InterviewDetailsComponent implements OnInit, AfterViewInit {
 news: News;
@@ -48,9 +51,10 @@ photos: Photos[] = [];
 commentcount = 0;
 id = 0;
 user: User;
+similar_posts:any;
     rating_count: any[]=[];
   constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute,
-              private commentService: CommentsService, private viewService: CloudMiningService) {
+              private commentService: CommentsService, private viewService: CloudMiningService, private similarPosts: SimilarPostsService) {
       this.id = this.route.snapshot.params['id'];
 }
  ngAfterViewInit() {
@@ -72,6 +76,8 @@ user: User;
              workplace: response['news'][0]['workplace'],
              created_at:response['news'][0]['created_at'],
              comments_count: response['comments_count'],
+             category: response['category']['name'],
+             cat_id: response['news'][0]['cat_id']
          }
          this.commentcount = response['comments_count'];
          this.comments.push(...response['news'][0]['comments']);
@@ -87,8 +93,12 @@ user: User;
              // }
          }
          this.photos.push(...response['photos'])
-         console.log('photos')
-         console.log(this.photos)
+
+         this.similarPosts.getSimilarPosts(this.news.cat_id, 'interviewsbycat').subscribe(resp => {
+             this.similar_posts = resp['news'];
+             this.similar_posts.push(...resp['main_news']);
+             this.similar_posts = this.similar_posts.slice(0, 5);
+         })
 
      });
  }

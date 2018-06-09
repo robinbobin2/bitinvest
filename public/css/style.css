@@ -8983,7 +8983,6 @@ outline: none !important;
 
 app-news-detail {
   width: 100%;
-  margin-top: -20px;
 }
 app-all-news {
 width: 100%;
@@ -9129,4 +9128,11 @@ table tbody tr td .difference .buttons a {
 
 .select-content .select-body {
   display: block !important;
+}
+
+.percent-red {
+  color: #f00 !important;
+}
+.percent-green {
+  color: #76bf40 !important;
 }

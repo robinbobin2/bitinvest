@@ -154,9 +154,8 @@ Route::get('/angular/search', "AngularController@search");
 Route::get('/angular/bannersbyfrontid/{id}', "BannerController@bannersByFront");
 Route::post('/angular/vote', "AngularController@vote");
 Route::post('/angular/incrementView', "AngularController@viewCount");
-
+Route::post('/angular/addemail', "AngularController@addEmail");
 Route::get('/angular/similarnews', "NewsViewController@similarNews");
-// Route::get('/crypto', "AngularController@serve");
 
 Route::get('/crypto/{symbol}', "AngularController@crypto");
 Route::get('/crypto/{symbol}/news', "AngularController@crypto");
@@ -179,6 +178,7 @@ Route::get('/profile/delete/{id}', "ProfileController@delete");
 Route::post('/profile/login', "ProfileController@login");
 Route::post('/profile/restorepass', "ProfileController@lostPassword");
 Route::post('/profile/updatephoto', "ProfileController@updatePhoto");
+Route::get('/profile/deletephoto', "ProfileController@deletePhoto");
 Route::get('/profile/edit/{id}', "ProfileController@edit");
 
 // Route::get('/crypto/XRP', "AngularController@serve");

@@ -8,6 +8,7 @@
 			<div class="setting-content">
 				<div class="left">
 					<form (ngSubmit)="onUpdate(update)" #update="ngForm">
+						<div class="input-wrap"><p style="font-size:14px; font-weight: bold;" [ngStyle]="{'color': error_msg ? 'red' : '#396c19'}" *ngIf="msg">{{msg}}</p></div>
 						<div class="input-wrap">
 							<label>Электронная почта для уведомлений</label>
 							<input type="text" [(ngModel)]="user.email" name="email"  required email>
@@ -21,7 +22,7 @@
 							<input type="text" [(ngModel)]="user.name"  name="name">
 						</div>
 						<button type="submit">Сохранить</button>
-            <p *ngIf="submitted">Изменения успешно сохранены</p>
+
 					</form>
 					<form (ngSubmit)="onUpdatePass(updatePass)" #updatePass="ngForm">
 						<div class="input-wrap">
@@ -57,7 +58,7 @@
                 <output id="list"></output>
               </label>
             </div>
-            <a href="#"><img src="img/basket-icon.png" alt="">Удалить фото</a>
+            <a (click)="deletePhoto()"><img src="img/basket-icon.png" alt="">Удалить фото</a>
           </form>
         </div>
 			</div>

@@ -76,10 +76,33 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         if($request->request->get("email")){
-            $user->email = $request->request->get("email");
+            $email = User::where('email', '=' ,$request->request->get("email"))->first();
+            if ($email) {
+                if($email->id != $user->id) {
+                    return [
+                        'error' => 'Такой email уже занят'
+                    ];
+                }
+            } else {
+                
+                $user->email = $request->request->get("email");
+                
+            }
         }
-        if($request->request->get("name")){
-            $user->name = $request->request->get("name");
+        if($request->request->get("name")) {
+            $name = User::where('name', '=' ,$request->request->get("name"))->first();
+            if ($name) {
+                if($name->id != $user->id) {
+                    return [
+                        'error' => 'Такое имя уже занято'
+                    ];
+                }
+            } else {
+                
+                $user->name = $request->request->get("name");
+                
+            }
+            
         }
         if($request->request->get("telegram")){
             $user->telegram = $request->request->get("telegram");
@@ -174,5 +197,15 @@ class ProfileController extends Controller
                 'status'=> 'success'
             ];
         }
+    }
+
+    public function deletePhoto(Request $request)
+    {
+        $user = Auth::user();
+        $user->photo_id = 0;
+        $user->save();
+       return [
+                'status'=> 'success'
+            ];
     }
 }

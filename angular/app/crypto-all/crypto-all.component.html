@@ -118,20 +118,20 @@ width="18.3%">
     <span>{{i+1}}</span>
   </td>
   <td>
-    <div class="img-wrap" [routerLink]="['/crypto', data.sym]">
-      <img *ngIf="data.logo" [src]="'images/'+data.logo" style="max-width: 40px;" alt="">
+    <div class="img-wrap" [routerLink]="['/crypto', data?.sym]">
+      <img *ngIf="data?.logo" [src]="'images/'+data?.logo" style="max-width: 40px;" alt="">
    </div>
-   <span [routerLink]="['/crypto', data.sym]">{{data.sym}}</span>
+   <span [routerLink]="['/crypto', data?.sym]">{{data?.sym}}</span>
  </td>
  <td [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }">
-  <span class="price">${{data.now | number: '1.2'}}</span>
-  <span *ngIf="diff[i] >0 || diff[i] < 0" [ngClass]="isNegative(diff[i])==true ? 'change-red' : 'change'">(${{diff[i] | number: '1.2'}})</span>
+  <span class="price">${{data?.now | number: '1.0-3'}}</span>
+  <span *ngIf="diff[i] >0 || diff[i] < 0" [ngClass]="isNegative(diff[i])==true ? 'change-red' : 'change'">(${{diff[i] | number: '1.2-3'}})</span>
 </td>
 <td>
-  <span class="capitalization">${{data.marketCapUsd| number: '1.0-3'}}</span>
+  <span class="capitalization">${{data?.marketCapUsd| number: '1.0-3'}}</span>
 </td>
 <td>
-  <span class="bargaining">{{data.currencyVol | number: '1.3'}}</span>
+  <span class="bargaining">{{data?.currencyVol | number: '1.3'}}</span>
 </td>
 <td>
   <span class="algorithm">{{data?.algo}}</span>
@@ -140,18 +140,18 @@ width="18.3%">
   <span class="year">{{data?.year}}</span>
 </td>
 <td>
-  <span [ngClass]="isNegativePercent(data.now, data.day)==true ? 'change-red' : 'change-green'">{{ countPercent(data.now, data.day) | number: '1.2'}}%</span>
+  <span *ngIf="data?.now" [ngClass]="isNegativePercent(data?.now, data?.day)==true ? 'change-red' : 'change-green'">{{ countPercent(data?.now, data?.day) | number: '1.2'}}%</span>
 
 </td>
 <td>
   <div class="difference">
-   <span [ngClass]="isNegativePercent(data.now, data.week)==true ? 'change-red' : 'change-green'">{{ countPercent(data.now, data.week) | number: '1.2'}}%</span>
+   <span [ngClass]="isNegativePercent(data?.now, data?.week)==true ? 'change-red' : 'change-green'">{{ countPercent(data?.now, data?.week) | number: '1.2'}}%</span>
    <div class="buttons">
-    <button class="right" [routerLink]="['/crypto', data.sym]">></button>
+    <button class="right" [routerLink]="['/crypto', data?.sym]">></button>
        <a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow plus" data-effect="mfp-zoom-in" data-effect="mfp-zoom-in">+</a>
-       <a href="#follow-popup" *ngIf="!checkInPortfolio(data.id) && checkAuth()" (click)="selectedItem = data" class="plus popup-link follow" data-effect="mfp-zoom-in">+</a>
+       <a href="#follow-popup" *ngIf="!checkInPortfolio(data?.id) && checkAuth()&& data?.id" (click)="selectedItem = data" class="plus popup-link follow" data-effect="mfp-zoom-in">+</a>
 
-       <button  *ngIf="checkInPortfolio(data.id) && checkAuth()"  (click)="removePortfolio(data.id)" class="minus" data-effect="mfp-zoom-in"><img src="img/minus.png" alt=""></button>
+       <button  *ngIf="checkInPortfolio(data?.id) && checkAuth()&& data?.id"  (click)="removePortfolio(data?.id)" class="minus" data-effect="mfp-zoom-in"><img src="img/minus.png" alt=""></button>
 
    </div>
 </div>

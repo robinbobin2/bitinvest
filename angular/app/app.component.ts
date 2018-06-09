@@ -61,9 +61,13 @@ export class AppComponent implements OnInit {
   lostPassSuccess = false;
    errorLostPass = '';
   results: Object;
+  load = false;
   searchTerm$ = new Subject<string>();
   search = '';
   searchAll = '';
+  email = '';
+  email_added = '';
+    error_email = false;
 	constructor(public auth: AuthService, private http:HttpClient, 
     private router:Router, private activatedRoute: ActivatedRoute,
     private searchService: SearchService,
@@ -148,9 +152,7 @@ checkAuth() {
         window.location.replace("/profile/portfolio"),
         (error) => console.log(error)
       );
-    // console.log
-    console.log(this.registration);
-      form.reset();
+  	this.load = true;
   }
   onRestore(form: NgForm) {
   	this.lostPass = {
@@ -174,16 +176,13 @@ checkAuth() {
     results = undefined;
   }
   ngOnInit() {
-      this.cryptoData=Observable.interval(3000).concatMap(()=>
+      this.cryptoData=Observable.interval(5000).concatMap(()=>
           this.stockService.getCrypto())
           .subscribe(result => {
               this.stockService.setBit(result)
 
           })
-      this.stockService.bit$.subscribe(n => {
-          this.bitres = n;
 
-      });
   	this.auth
       .getUser()
       .subscribe(
@@ -195,5 +194,19 @@ checkAuth() {
 
 
   	// this.user = this.auth.getUser();
+  }
+  onAddEmail() {
+      this.email_added=""
+	    if (this.email) {
+            this.auth.addEmail(this.email).subscribe((response) => {
+                if (response['status'] == 'email added') {
+                    this.error_email = false;
+                    this.email_added = 'Email успешно добавлен';
+                }
+            })
+        } else {
+	        this.email_added = 'Введите email';
+	        this.error_email = true;
+        }
   }
 }

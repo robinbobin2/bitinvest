@@ -43,6 +43,8 @@ export class EditProfileComponent implements OnInit {
   submitted = false;
   submittedPass = false;
   fileToUpload: File;
+  msg = '';
+  error_msg = false;
   constructor(public auth: AuthService, private http:HttpClient, private _http:Http) { }
 @ViewChild('fileInput') fileInput
   ngOnInit() {
@@ -84,17 +86,42 @@ handleFileInput() {
         console.log(error);
       });
 }
+
+deletePhoto() {
+
+    let pathUrl = '/profile/deletephoto';
+    this.http
+        .get<any>(pathUrl).subscribe(()=>{
+        this.auth
+            .getUser()
+            .subscribe(
+                (response) => {
+                    this.user = response;
+                    this.auth.setUser(this.user);
+                }
+            );
+    })
+}
 onUpdate(form) {
-	this.newData={
+    this.msg = ''
+    this.newData={
 		email: form.value.email,
 		telegram: form.value.telegram,
 		name: form.value.name
 	} 
     this.http.patch('/users/'+this.user.id+'/update', this.newData, {headers: headers}).subscribe(
-        (response) => response,
+        (response) => {
+            if (response['error']) {
+                this.msg = response['error'];
+                this.error_msg = true;
+            } else if(response['status']) {
+                this.msg = 'Данные успешно изменены';
+                this.error_msg = false;
+            }
+
+        },
         (error) => console.log(error)
       );
-    this.submitted = true;
     this.auth
       .getUser()
       .subscribe(

@@ -55,6 +55,10 @@ info;
   public setUser(user) {
   this.user = user;
   }
+  public addEmail(email) {
+      let path = '/angular/addemail';
+      return this.http.post(path, {'email': email});
+  }
   public getUserInfo() {
  if(this.user.id != undefined) {
    return true;
