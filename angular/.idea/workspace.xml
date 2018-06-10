@@ -47,8 +47,8 @@
       <file leaf-file-name="crypto.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="270" column="4" selection-start-line="270" selection-start-column="4" selection-end-line="270" selection-end-column="4" />
+            <state relative-caret-position="670">
+              <caret line="488" column="5" selection-start-line="488" selection-start-column="5" selection-end-line="488" selection-end-column="5" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -492,12 +492,12 @@
       <workItem from="1526372392373" duration="24042000" />
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
-      <workItem from="1527928097804" duration="71037000" />
+      <workItem from="1527928097804" duration="71312000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228209000" />
+    <option name="totallyTimeSpent" value="228484000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -990,8 +990,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="270" column="4" selection-start-line="270" selection-start-column="4" selection-end-line="270" selection-end-column="4" />
+        <state relative-caret-position="670">
+          <caret line="488" column="5" selection-start-line="488" selection-start-column="5" selection-end-line="488" selection-end-column="5" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>

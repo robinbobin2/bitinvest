@@ -3511,7 +3511,9 @@ var CryptoComponent = (function () {
     CryptoComponent.prototype.ngOnDestroy = function () {
         this.cryptoData.unsubscribe();
         this.stocksData.unsubscribe();
-        this.cryptoFirst.unsubscribe();
+        if (this.cryptoFirst) {
+            this.cryptoFirst.unsubscribe();
+        }
     };
     return CryptoComponent;
 }());

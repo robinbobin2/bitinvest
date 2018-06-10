@@ -268,7 +268,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
         this.min_value = Math.min.apply(null, this.min);
         this.max_value = Math.max.apply(null, this.max);
     }).subscribe();
-    
+
 
     this.cryptoData=Observable.interval(1000).take(700).concatMap(
         ()=>
@@ -484,6 +484,8 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
     this.cryptoData.unsubscribe();
     this.stocksData.unsubscribe();
-    this.cryptoFirst.unsubscribe();
+    if (this.cryptoFirst) {
+        this.cryptoFirst.unsubscribe();
+    }
   }
 }
