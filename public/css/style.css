@@ -9139,3 +9139,17 @@ table tbody tr td .difference .buttons a {
 .percent-green {
   color: #76bf40 !important;
 }
+.mobile-only {
+  display: none;
+}
+@media (max-width: 600px) {
+  .mobile-mining-content {
+    display: block;
+  }
+  .mobile-only {
+  display: inherit;
+}
+.no-mobile {
+  display: none;
+}
+}
