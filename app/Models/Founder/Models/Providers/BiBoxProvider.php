@@ -10,6 +10,7 @@ namespace App\Models\Founder\Models\Providers;
 
 
 use App\Models\Founder\Models\Connectors\BiBoxConnector;
+use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
@@ -17,8 +18,28 @@ class BiBoxProvider extends FounderProvider
 {
     public function search(Request $request)
     {
-        $response = $this->getConnector()->fetch_tickers();
-        return $response;
+        $response = $this->getConnector()->search();
+        $result = [];
+        if (!$response) {
+            return $result;
+        }
+
+        foreach ($response->data as $currency => $value) {
+            if(!isset($value->result)){
+                continue;
+            }
+            $value = $value->result;
+            $ticker = new TickerEntity();
+            $ticker->setAsk($value->buy);
+            $ticker->setBid($value->sell);
+            $ticker->setVolume($value->vol);
+            $ticker->setValue($value->last);
+            $ticker->setExchangeId($this->getExchangeId());
+            $ticker->setCurrency(str_replace("_", "/", $currency));
+            $result[] = $ticker;
+        }
+
+        return $result;
     }
 
     public function getExchangeId()

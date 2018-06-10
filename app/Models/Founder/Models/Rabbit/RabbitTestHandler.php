@@ -9,6 +9,7 @@
 namespace App\Models\Founder\Models\Rabbit;
 
 
+use App\Models\Entity\ExchangeRate;
 use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\Requests\Request;
 use Illuminate\Support\Facades\DB;
@@ -80,8 +81,16 @@ class RabbitTestHandler
     {
         foreach ($this->test as $key => $job) {
             if ($key == $rep->get('correlation_id')) {
-//                $this->test[$rep->get('correlation_id')]->provider->save(unserialize($rep->body));
-                $this->response = array_merge($this->response, unserialize($rep->body));
+                $response = unserialize($rep->body);
+                if(count($response) > 500){
+                    $arrays = array_chunk($response, 300);
+                    foreach ($arrays as $array){
+                        $this->insert($array);
+                    }
+                    $response = [];
+                    echo "clear big" . PHP_EOL;
+                }
+                $this->response = array_merge($this->response, $response);
                 if((time() - $this->time) > 1){
                     $this->time = time();
                     if(!empty($this->response)){
@@ -91,7 +100,13 @@ class RabbitTestHandler
                             $inserts[] = "('".$item->getCurrency()."','".$item->getValue()."','".time()."','".$item->getExchangeId()."','".$item->getVolume()."','".$item->getBid()."','".$item->getAsk()."')";
                         }
                         $query .= implode(", ", $inserts);
-                        DB::statement($query);
+                        try{
+                            DB::statement($query);
+
+                        }
+                        catch (\Exception $e){
+                            echo $e->getMessage() . PHP_EOL;
+                        }
                     }
 
                     $this->response = [];
@@ -108,6 +123,26 @@ class RabbitTestHandler
         }
     }
 
+    /**
+     * @param TickerEntity[] $array
+     */
+    public function insert($array)
+    {
+        $query = "INSERT INTO `bit`.`exchangeRates` (`currency`, `value`, `createTime`, `exchangeId`, `volume`, `bid`, `ask`) VALUES ";
+        $inserts = [];
+        foreach ($array as $item){
+            $inserts[] = "('".$item->getCurrency()."','".$item->getValue()."','".time()."','".$item->getExchangeId()."','".$item->getVolume()."','".$item->getBid()."','".$item->getAsk()."')";
+        }
+        $query .= implode(", ", $inserts);
+        try{
+            DB::statement($query);
+
+        }
+        catch (\Exception $e){
+            echo $e->getMessage() . PHP_EOL;
+        }
+    }
+
     public function initConnection()
     {
         $this->connection = new AMQPStreamConnection(
@@ -119,7 +154,7 @@ class RabbitTestHandler
     {
         $this->channel = $this->connection->channel();
         list($this->queue, ,) = $this->channel->queue_declare(
-            "", false, false, true, false);
+            "", false, false, true, true);
         $this->channel->basic_consume(
             $this->queue, '', false, false, false, false,
             [$this, 'onResponse']);

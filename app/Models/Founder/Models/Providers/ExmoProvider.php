@@ -10,17 +10,12 @@ namespace App\Models\Founder\Models\Providers;
 
 
 use App\Models\Founder\Models\Connectors\ExmoConnector;
+use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
 class ExmoProvider extends FounderProvider
 {
-    public function search(Request $request)
-    {
-        $response = $this->getConnector()->fetch_tickers();
-        return $response;
-    }
-
     public function getExchangeId()
     {
         return 29;
@@ -44,5 +39,27 @@ class ExmoProvider extends FounderProvider
     public function isCrypto()
     {
         return true;
+    }
+
+    public function search(Request $request)
+    {
+        $response = $this->getConnector()->search();
+        $result = [];
+        if (!$response) {
+            return $result;
+        }
+
+        foreach ($response as $currency => $value) {
+            $ticker = new TickerEntity();
+            $ticker->setAsk($value->buy_price);
+            $ticker->setBid($value->sell_price);
+            $ticker->setVolume($value->vol);
+            $ticker->setValue($value->last_trade);
+            $ticker->setExchangeId($this->getExchangeId());
+            $ticker->setCurrency(str_replace("_", "/", $currency));
+            $result[] = $ticker;
+        }
+
+        return $result;
     }
 }
