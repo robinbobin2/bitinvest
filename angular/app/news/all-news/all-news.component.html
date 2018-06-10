@@ -34,7 +34,7 @@
             <div class="main-news">
               <div class="main-news-slider">
                 <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                <div class="news"  [ngClass]="i > 0 ? 'hidden' : ''">
+                <div class="news" *ngIf="i <=0">
                   <div class="img" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
@@ -85,7 +85,8 @@
               </a>
               <ul class="news-list-mobile">
                 <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'">
-                  <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"  [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" style="width:130px; height: 86px;">
+                  <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
+                     [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
                     <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
                   </a>
                   <div *ngIf="!item.name_credits" class="text">

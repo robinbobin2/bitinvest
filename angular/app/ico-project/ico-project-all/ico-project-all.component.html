@@ -61,6 +61,30 @@
 
 				</div>
 				<!-- <a href="#" class="show-more">Показать еще</a> -->
+			<div class="mobile-mining-content">
+				<ul>
+					<li *ngFor="let item of news | filterNameActive:status:'status' |
+					filterName:filteredName:'name' |
+					orderBy: order:reverse:'case-insensitive'">
+						<a routerLink="/ico/item/{{item.id}}">
+							<a routerLink="/ico/item/{{item.id}}">{{item.name}}</a>
+
+							<div class="info">
+								<div class="progres-bar">
+									<div class="progres">
+										<span [ngStyle]="{'width': item.current_money/(item.money / 100)+'%' }"></span>
+										<p>${{item.current_money}} из {{item.money}}</p>
+									</div>
+								</div>
+								<div class="status">
+									<span>Статус</span>
+									<span [ngClass]="item.status==1 ? 'active-status' : 'inactive-status'">{{item.status == 1? 'Активен': 'Завершен'}}</span>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
 			</div>
 <div id="follow-popup" class="popup mfp-with-anim mfp-hide" *ngIf="!hide">
     <div class="popup-body">
