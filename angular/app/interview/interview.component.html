@@ -3,7 +3,8 @@
 <router-outlet></router-outlet>
   <aside class="sidebar">
         <ul class="tag-list">
-          
+            <li> <a
+                    [routerLink]="['/interview/all']" routerLinkActive="active">Все интервью</a></li>
 <li><a *ngFor="let category of categories"
  [routerLink]="['category', category.id]" routerLinkActive="active">{{category.name}}({{category.count}})</a></li>
         </ul>
