@@ -20,7 +20,7 @@ class BiBoxProvider extends FounderProvider
     {
         $response = $this->getConnector()->search();
         $result = [];
-        if (!$response) {
+        if (!$response || !isset($response->data)) {
             return $result;
         }
 

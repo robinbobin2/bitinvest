@@ -45,7 +45,6 @@ class Rabbit extends Command
      */
     public function handle()
     {
-        ini_set('memory_limit', '1G');
         $channel = $this->getConnection()->channel();
         $channel->queue_declare('rpc_queue', false, false, false, false);
         echo " [x] Awaiting RPC requests\n";

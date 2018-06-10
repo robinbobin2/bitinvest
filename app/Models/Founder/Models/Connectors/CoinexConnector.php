@@ -14,7 +14,10 @@ use App\Models\Founder\Models\FounderConnector;
 
 class CoinexConnector extends FounderConnector
 {
-
+    public function search()
+    {
+        return $this->sendRequest();
+    }
 
     public function sendRequest()
     {

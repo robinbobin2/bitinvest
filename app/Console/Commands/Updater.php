@@ -121,10 +121,10 @@ class Updater extends \Illuminate\Console\Command
         VebitcoinProvider::class,
 //        CryptopiaProvider::class,
         DSXProvider::class,
-        HitBTCProvider::class,
+//        HitBTCProvider::class,
         BitzProvider::class,
         BraziliexProvider::class,
-        CcexProvider::class,
+//        CcexProvider::class,
         CexProvider::class,
         CoinnestProvider::class,
         CoinRoomProvider::class,
@@ -137,14 +137,17 @@ class Updater extends \Illuminate\Console\Command
         LunoProvider::class,
         KunaProvider::class,
         BitHumbProvider::class,
-        ZbProvider::class,
+//        ZbProvider::class,
         IndependentReserveProvider::class,
-        BiBoxProvider::class,
+//        BiBoxProvider::class,
         BxinthProvider::class,
-        CoinexProvider::class,
+//        CoinexProvider::class,
         ExmoProvider::class,
         GateCoinProvider::class,
     ];
+
+    private $exchanges = [];
+
 
     private $suppliers = [
         BinanceProvider::class,
