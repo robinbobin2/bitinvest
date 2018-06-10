@@ -4,7 +4,7 @@
 <aside class="sidebar">
   <!--<h2 class="categories-ico-title">Категории</h2>-->
         <ul class="tag-list">
-          <li routerLinkActive="active"><a routerLink="/cloud-mining/all" >Все</a></li>
+          <li ><a routerLinkActive="active" routerLink="/cloud-mining/all" >Все проекты</a></li>
           <li *ngFor="let category of categories">
           <a routerLinkActive="active"
            [routerLink]="['/cloud-mining/category', category.id]" >{{category.name}}({{category.count}})</a>
