@@ -9,6 +9,8 @@
 namespace App\Models\Founder\Models\Entity;
 
 
+use App\Models\Founder\Models\FounderProvider;
+
 class TickerEntity
 {
     private $value;
@@ -22,6 +24,8 @@ class TickerEntity
     private $currency;
 
     private $exchangeId;
+
+    private $type = FounderProvider::DEFAULT_RATE;
 
     /**
      * @return mixed
@@ -117,5 +121,21 @@ class TickerEntity
     public function setExchangeId($exchangeId): void
     {
         $this->exchangeId = $exchangeId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type): void
+    {
+        $this->type = $type;
     }
 }

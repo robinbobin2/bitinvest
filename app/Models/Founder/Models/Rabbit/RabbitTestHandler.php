@@ -12,6 +12,7 @@ namespace App\Models\Founder\Models\Rabbit;
 use App\Models\Entity\ExchangeRate;
 use App\Models\Founder\Models\Custom\SupplierLog;
 use App\Models\Founder\Models\Entity\TickerEntity;
+use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 use Illuminate\Support\Facades\DB;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
@@ -64,6 +65,11 @@ class RabbitTestHandler
      */
     private $response = [];
 
+    /**
+     * @var TickerEntity[]
+     */
+    private $rapidResponse = [];
+
     private $time;
 
     /**
@@ -80,34 +86,53 @@ class RabbitTestHandler
      */
     public function onResponse($rep)
     {
-        $time = time();
-
         foreach ($this->test as $key => $job) {
             if ($key == $rep->get('correlation_id')) {
                 $response = unserialize($rep->body);
-                if (count($response) > 500) {
-                    $arrays = array_chunk($response, 300);
-                    foreach ($arrays as $array) {
-                        $this->insert($array);
+//                if (count($response) > 500) {
+//                    $arrays = array_chunk($response, 300);
+//                    foreach ($arrays as $array) {
+//                        $this->insert($array);
+//                    }
+//                    $response = [];
+//                    echo "clear big" . PHP_EOL;
+//                }
+                if(!empty($response)){
+                    if(current($response)->getType() == FounderProvider::DEFAULT_RATE){
+                        $this->response = array_merge($this->response, $response);
+                    } else {
+                        $this->rapidResponse = array_merge($this->rapidResponse, $response);
                     }
-                    $response = [];
-                    echo "clear big" . PHP_EOL;
                 }
-                $this->response = array_merge($this->response, $response);
+
                 if ((time() - $this->time) > 1) {
                     if (!empty($this->response)) {
-
                         $this->time = time();
                         $query = "INSERT INTO `bit`.`exchangeRates` (`currency`, `value`, `createTime`, `exchangeId`, `volume`, `bid`, `ask`) VALUES ";
                         $inserts = [];
                         foreach ($this->response as $item) {
-                            $inserts[] = "('" . $item->getCurrency() . "','" . $item->getValue() . "','" . time() . "','" . $item->getExchangeId() . "','" . $item->getVolume() . "','" . $item->getBid() . "','" . $item->getAsk() . "')";
+                            $inserts[] = '("' . $item->getCurrency() . '","' . $item->getValue() . '","' . time() . '","' . $item->getExchangeId() . '","' . $item->getVolume() . '","' . $item->getBid() . '","' . $item->getAsk() . '")';
                         }
                         $query .= implode(", ", $inserts);
-                        DB::statement($query);
+                        shell_exec('php /var/www/bit/artisan load:query \'' . $query . '\' &');
+//                        DB::statement($query);
 
                         $this->response = [];
                         echo "clear" . PHP_EOL;
+                    }
+                    if (!empty($this->rapidResponse)) {
+                        $this->time = time();
+                        $query = "INSERT INTO `bit`.`exchangeRapidRates` (`currency`, `value`, `createTime`, `exchangeId`, `volume`, `bid`, `ask`) VALUES ";
+                        $inserts = [];
+                        foreach ($this->rapidResponse as $item) {
+                            $inserts[] = '("' . $item->getCurrency() . '","' . $item->getValue() . '","' . time() . '","' . $item->getExchangeId() . '","' . $item->getVolume() . '","' . $item->getBid() . '","' . $item->getAsk() . '")';
+                        }
+                        $query .= implode(", ", $inserts);
+                        shell_exec('php /var/www/bit/artisan load:query \'' . $query . '\' &');
+//                        DB::statement($query);
+
+                        $this->rapidResponse = [];
+                        echo "rapid clear" . PHP_EOL;
                     }
                 }
                 $msg = new AMQPMessage(
@@ -119,9 +144,6 @@ class RabbitTestHandler
                 $this->channel->basic_publish($msg, '', 'rpc_queue');
             }
         }
-        SupplierLog::log("statement", json_encode([
-            "time" => time() - $time,
-        ]), -1);
     }
 
     /**
@@ -132,7 +154,7 @@ class RabbitTestHandler
         $query = "INSERT INTO `bit`.`exchangeRates` (`currency`, `value`, `createTime`, `exchangeId`, `volume`, `bid`, `ask`) VALUES ";
         $inserts = [];
         foreach ($array as $item) {
-            $inserts[] = "('" . $item->getCurrency() . "','" . $item->getValue() . "','" . time() . "','" . $item->getExchangeId() . "','" . $item->getVolume() . "','" . $item->getBid() . "','" . $item->getAsk() . "')";
+            $inserts[] = "('" . $item->getCurrency() . '","' . $item->getValue() . '","' . time() . '","' . $item->getExchangeId() . '","' . $item->getVolume() . '","' . $item->getBid() . '","' . $item->getAsk() . '")';
         }
         $query .= implode(", ", $inserts);
         DB::statement($query);
@@ -151,7 +173,7 @@ class RabbitTestHandler
         list($this->queue, ,) = $this->channel->queue_declare(
             "", false, false, true, false);
         $this->channel->basic_consume(
-            $this->queue, '', false, false, false, false,
+            $this->queue, '', false, true, false, false,
             [$this, 'onResponse']);
     }
 

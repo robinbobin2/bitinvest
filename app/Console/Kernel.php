@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\Rabbit::class,
-        Commands\Updater::class
+        Commands\Updater::class,
+        Commands\Loader::class
     ];
 
     /**

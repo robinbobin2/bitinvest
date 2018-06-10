@@ -77,9 +77,15 @@ class BTCBoxProvider extends FounderProvider
             $ticker->setValue($supplierTicker->last/100);
             $ticker->setExchangeId($this->getExchangeId());
             $ticker->setCurrency(strtoupper($currency) . "/USD");
+            $ticker->setType($this->getType());
             $response[] = $ticker;
         }
 
         return $response;
+    }
+
+    public function getType()
+    {
+        return self::RAPID_RATE;
     }
 }

@@ -117,14 +117,15 @@ class Updater extends \Illuminate\Console\Command
         BitSOProvider::class,
         KoineksProvider::class,
         BitBnsProvider::class,
+
+
+
+
         RightBTCProvider::class,
         VebitcoinProvider::class,
-//        CryptopiaProvider::class,
         DSXProvider::class,
-//        HitBTCProvider::class,
         BitzProvider::class,
         BraziliexProvider::class,
-//        CcexProvider::class,
         CexProvider::class,
         CoinnestProvider::class,
         CoinRoomProvider::class,
@@ -137,13 +138,19 @@ class Updater extends \Illuminate\Console\Command
         LunoProvider::class,
         KunaProvider::class,
         BitHumbProvider::class,
-//        ZbProvider::class,
         IndependentReserveProvider::class,
-//        BiBoxProvider::class,
         BxinthProvider::class,
-//        CoinexProvider::class,
         ExmoProvider::class,
         GateCoinProvider::class,
+
+
+//        CoinexProvider::class,
+//        BiBoxProvider::class,
+//        ZbProvider::class,
+//        CcexProvider::class,
+//        HitBTCProvider::class,
+//        CryptopiaProvider::class,
+
     ];
 
     private $exchanges = [];
@@ -208,12 +215,11 @@ class Updater extends \Illuminate\Console\Command
             $newRequest->setProvider($supplier);
             $this->handler->call($newRequest);
         }
-        try{
+        try {
             while (count($this->handler->test)) {
                 $this->handler->getChannel()->wait();
             }
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             echo $e->getMessage();
         }
 
