@@ -118,9 +118,6 @@ class Updater extends \Illuminate\Console\Command
         KoineksProvider::class,
         BitBnsProvider::class,
 
-
-
-
         RightBTCProvider::class,
         VebitcoinProvider::class,
         DSXProvider::class,
@@ -143,18 +140,13 @@ class Updater extends \Illuminate\Console\Command
         ExmoProvider::class,
         GateCoinProvider::class,
 
-
-//        CoinexProvider::class,
-//        BiBoxProvider::class,
-//        ZbProvider::class,
-//        CcexProvider::class,
-//        HitBTCProvider::class,
-//        CryptopiaProvider::class,
-
+        CoinexProvider::class,
+        BiBoxProvider::class,
+        ZbProvider::class,
+        CcexProvider::class,
+        HitBTCProvider::class,
+        CryptopiaProvider::class,
     ];
-
-    private $exchanges = [];
-
 
     private $suppliers = [
         BinanceProvider::class,
