@@ -61,7 +61,7 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
       alldata.subscribe(response => {
           let admin = response;
           this.StockService.getCryptoVol().debounceTime(10000).subscribe(volumes => {
-              this.cryptoData = Observable.interval(5000).concatMap(() => this.StockService.bit$)
+              this.cryptoData = Observable.interval(1000).concatMap(() => this.StockService.bit$)
                   .subscribe(resp => {
 
                       this.resp = resp;

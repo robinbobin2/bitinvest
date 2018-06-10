@@ -268,57 +268,11 @@ export class CryptoComponent implements OnInit, OnDestroy {
         this.min_value = Math.min.apply(null, this.min);
         this.max_value = Math.max.apply(null, this.max);
     }).subscribe();
+    
 
-
-
-
-    this.cryptoFirst = this.stocksService.getCrypto()
-    .map((response)=>{
-      this.dataUsd = response[symbol+'/USD'];
-      this.diff = this.dataUsd.now-this.dataUsd.last;
-      this.prev = this.dataUsd.last;
-      localStorage.removeItem(symbol);
-      localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
-    }).subscribe();
-    let infoCryptoPath = "/allcrypto/"+symbol;
-    this.infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
-    this.infoCrypto.subscribe(response => {
-      this.data = response;
-      for(let item of response['comments']) {
-        this.comments.push({
-          id: item.id,
-          author: item.author,
-          body: item.body,
-          email: item.email,
-          commentable_id:item.commentable_id,
-          photo:item.photo
-
-        });
-          this.rating_count[item['id']] = 0;
-          for (let rating_item of item.rating) {
-              if (rating_item.positive == 1) {
-                  this.rating_count[item['id']] +=1;
-              } else {
-                  this.rating_count[item['id']] -=1;
-              }
-          }
-      }
-      this.commentcount = response['comments_count'];
-
-      let newsUrl = "/postsbycat/"+this.data.cat_id_news;
-      let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
-      newsInfo.subscribe(response => {
-        this.main_news = response['main_news'];
-        this.news = response['news'];
-        this.news_container = this.news.slice(0,3);
-        console.log(this.news);
-        console.log(this.main_news);
-      });
-    });
-
-    this.cryptoData=Observable.interval(2000).take(700).concatMap(
+    this.cryptoData=Observable.interval(1000).take(700).concatMap(
         ()=>
-            this.stocksService.getCrypto())
+            this.stocksService.bit$)
     .map((response)=>{
       this.animtype = '';
 

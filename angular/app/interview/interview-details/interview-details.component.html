@@ -22,7 +22,7 @@
                   </div>
                   <div class="right-block">
                     <a href="#" class="comments" *ngIf="commentcount > 0"><img src="img/comment.svg" alt="">{{commentcount}}</a>
-                    <span class="views" *ngIf="news?.view_count > 0"><img src="img/eye.svg" alt="">{{news?.view_count}}</span>
+                    <span class="views" *ngIf="news?.view_count+1 > 0"><img src="img/eye.svg" alt="">{{news?.view_count+1}}</span>
                   </div>
                 </div>
                 <div class="text-wrap" [innerHTML]='news?.desc | safeHtml'>
@@ -85,6 +85,10 @@
                         </ul>
                         <a *ngIf="commentcount > 10 && !hide" class="show-comments">Показать все комментарии ({{commentcount}})</a>
                 </div>
+                  <div class="comment-block">
+                      <div class="comment-top" *ngIf="user?.id == undefined">
+                          <h3>Похожие интервью</h3>
+                          </div>
                   <div class="interview-body">
                       <div class="interview-tab-content active">
                           <div class="interview-comments">
@@ -116,5 +120,6 @@
                       </div>
 
                   </div>
+                      </div>
               </div>
                 

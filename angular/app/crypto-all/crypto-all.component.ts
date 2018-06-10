@@ -170,7 +170,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
             alldata.subscribe(response => {
                 let admin = response;
                 this.StockService.getCryptoVol().debounceTime(10000).subscribe(volumes => {
-                this.cryptoData = Observable.interval(5000).concatMap(() => this.StockService.bit$)
+                this.cryptoData = Observable.interval(1000).concatMap(() => this.StockService.bit$)
                     .subscribe(resp => {
 
                         this.resp = resp;
