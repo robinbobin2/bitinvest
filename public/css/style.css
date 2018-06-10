@@ -9027,6 +9027,9 @@ app-analytics-categories {
 app-all-interview {
   width: 100%
 }
+app-cloud-mining-detail {
+  width: 100%;
+}
 .select-content {
   min-width: 190px;
 }
@@ -9142,6 +9145,7 @@ table tbody tr td .difference .buttons a {
 .mobile-only {
   display: none;
 }
+
 @media (max-width: 600px) {
   .mobile-mining-content {
     display: block;
@@ -9150,6 +9154,6 @@ table tbody tr td .difference .buttons a {
   display: inherit;
 }
 .no-mobile {
-  display: none;
+  display: none !important;
 }
 }
