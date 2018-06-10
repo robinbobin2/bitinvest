@@ -46,6 +46,9 @@ class NegocieProvider extends FounderProvider
         }
 
         foreach ($response as $currency => $value) {
+            if(!isset($value->buy)){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->buy);
             $ticker->setBid($value->sell);

@@ -23,6 +23,9 @@ class ZbProvider extends FounderProvider
         $result = $this->getConnector()->search();
 
         foreach ($result as $currency => $supplierTicker) {
+            if(!isset($supplierTicker->ticker)){
+                continue;
+            }
             $supplierTicker = $supplierTicker->ticker;
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->sell);
