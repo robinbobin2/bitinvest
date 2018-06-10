@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\DB;
 
 abstract class FounderProvider
 {
+    const DEFAULT_RATE = 1,
+        RAPID_RATE = 2;
     private $connections = [
         "mysql",
         "mysql2",
@@ -141,5 +143,10 @@ abstract class FounderProvider
     public function getCooldownTime()
     {
         return 0;
+    }
+
+    public function getType()
+    {
+        return self::DEFAULT_RATE;
     }
 }
