@@ -398,7 +398,7 @@ var _a, _b, _c, _d;
 /***/ "./angular/app/analytics/analytics.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n        <router-outlet></router-outlet>\n        <aside class=\"sidebar\">\n            <ul class=\"tag-list\">\n                <li> <a\n                        [routerLink]=\"['/analytics/all']\" routerLinkActive=\"active\">Вся аналитика</a></li>\n                <li *ngFor=\"let category of categories\">\n                    <a\n                            [routerLink]=\"['/analytics/category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n                </li>\n            </ul>\n            <app-sidebar></app-sidebar>\n        </aside>\n    </div>\n</section>"
+module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n        <router-outlet></router-outlet>\n        <aside class=\"sidebar\">\n            <ul class=\"tag-list\">\n                <li> <a\n                        [routerLink]=\"['/analytics/all']\" routerLinkActive=\"active\">Вся аналитика</a></li>\n                <li *ngFor=\"let category of categories\">\n                    <a\n                            [routerLink]=\"['/analytics/category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n                </li>\n            </ul>\n            <app-sidebar [pageId]=\"5\"></app-sidebar>\n        </aside>\n    </div>\n</section>"
 
 /***/ }),
 
@@ -2181,7 +2181,7 @@ var _a, _b, _c, _d, _e, _f, _g;
 /***/ "./angular/app/cloud-mining/cloud-mining.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <section class=\"mining-wrapper\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n  <!--<h2 class=\"categories-ico-title\">Категории</h2>-->\n        <ul class=\"tag-list\">\n          <li ><a routerLinkActive=\"active\" routerLink=\"/cloud-mining/all\" >Все проекты</a></li>\n          <li *ngFor=\"let category of categories\">\n          <a routerLinkActive=\"active\"\n           [routerLink]=\"['/cloud-mining/category', category.id]\" >{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n    <app-stocks-sidebar>Загрузка</app-stocks-sidebar>\n\n    <a *ngFor=\"let item of banner?.banners\" href=\"#\" class=\"banner-black\"><img src=\"{{item.file}}\" alt=\"\" style=\"max-width: 100%;\"></a>\n    <app-cloud-mining-top></app-cloud-mining-top>\n    <div class=\"social\">\n        <h5 class=\"titles\">Мы в соц.сетях</h5>\n        <ul>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n        </ul>\n    </div>\n    <app-top-ico></app-top-ico>\n      </aside>\n      </div>\n  </section>"
+module.exports = "  <section class=\"mining-wrapper\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n  <!--<h2 class=\"categories-ico-title\">Категории</h2>-->\n        <ul class=\"tag-list\">\n          <li ><a routerLinkActive=\"active\" routerLink=\"/cloud-mining/all\" >Все проекты</a></li>\n          <li *ngFor=\"let category of categories\">\n          <a routerLinkActive=\"active\"\n           [routerLink]=\"['/cloud-mining/category', category.id]\" >{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n    <app-sidebar [pageId]=\"1\"></app-sidebar>\n      </aside>\n      </div>\n  </section>"
 
 /***/ }),
 
@@ -6073,7 +6073,7 @@ var _a, _b, _c, _d, _e, _f;
 /***/ "./angular/app/interview/interview.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"interview-wrap\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n  <aside class=\"sidebar\">\n        <ul class=\"tag-list\">\n            <li> <a\n                    [routerLink]=\"['/interview/all']\" routerLinkActive=\"active\">Все интервью</a></li>\n<li><a *ngFor=\"let category of categories\"\n [routerLink]=\"['category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a></li>\n        </ul>\n        <app-sidebar></app-sidebar>\n      </aside>\n    </div>\n  </section>"
+module.exports = "<section class=\"interview-wrap\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n  <aside class=\"sidebar\">\n        <ul class=\"tag-list\">\n            <li> <a\n                    [routerLink]=\"['/interview/all']\" routerLinkActive=\"active\">Все интервью</a></li>\n<li><a *ngFor=\"let category of categories\"\n [routerLink]=\"['category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a></li>\n        </ul>\n        <app-sidebar [pageId]=\"3\"></app-sidebar>\n      </aside>\n    </div>\n  </section>"
 
 /***/ }),
 
@@ -6556,7 +6556,7 @@ module.exports = ".tag-list li  a.active {\n    color: #fff;\n    background: #3
 /***/ "./angular/app/news/news.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n        <ul class=\"tag-list\">\n          <li> <a\n           routerLink=\"/posts/all\" routerLinkActive=\"active\">Все новости</a></li>\n          <li *ngFor=\"let category of categories\">\n            <a\n           [routerLink]=\"['/posts/category', category.id]\" [routerLinkActive]=\"['active']\">{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n        <app-sidebar></app-sidebar>\n      </aside>\n    </div>\n  </section>"
+module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n        <ul class=\"tag-list\">\n          <li> <a\n           routerLink=\"/posts/all\" routerLinkActive=\"active\">Все новости</a></li>\n          <li *ngFor=\"let category of categories\">\n            <a\n           [routerLink]=\"['/posts/category', category.id]\" [routerLinkActive]=\"['active']\">{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n        <app-sidebar [pageId]=\"6\"></app-sidebar>\n      </aside>\n    </div>\n  </section>"
 
 /***/ }),
 
@@ -7587,7 +7587,7 @@ var _a, _b, _c, _d;
 /***/ "./angular/app/review/review.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n        <router-outlet></router-outlet>\n        <aside class=\"sidebar\">\n            <ul class=\"tag-list\">\n                <li> <a\n                        [routerLink]=\"['/review/all']\" routerLinkActive=\"active\">Все обзоры</a></li>\n                <li *ngFor=\"let category of categories\">\n                    <a\n                            [routerLink]=\"['/review/category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n                </li>\n            </ul>\n            <app-sidebar></app-sidebar>\n        </aside>\n    </div>\n</section>"
+module.exports = "<section class=\"news-wrap\">\n    <div class=\"wrapper\">\n        <router-outlet></router-outlet>\n        <aside class=\"sidebar\">\n            <ul class=\"tag-list\">\n                <li> <a\n                        [routerLink]=\"['/review/all']\" routerLinkActive=\"active\">Все обзоры</a></li>\n                <li *ngFor=\"let category of categories\">\n                    <a\n                            [routerLink]=\"['/review/category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n                </li>\n            </ul>\n            <app-sidebar [pageId]=\"4\"></app-sidebar>\n        </aside>\n    </div>\n</section>"
 
 /***/ }),
 
