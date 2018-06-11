@@ -183,8 +183,8 @@ Route::get('/profile/edit/{id}', "ProfileController@edit");
 
 // Route::get('/crypto/XRP', "AngularController@serve");
 Route::get('/read', function() {
-	 $return_banner = Banner::findOrFail(5);
-	 return $return_banner->frontends;
+	 $return_banner = CryptoStat::findOrFail(1);
+	 return $return_banner->categories;
 });
 
 // ENDANGULAR
