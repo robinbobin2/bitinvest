@@ -98,7 +98,7 @@
             </div>
             <div class="news-list">
               <div *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.name_credits ? 'trust news' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
-                <div *ngIf="item.name_credits" class="img-wrap"><img src="images/{{photos[0].file}}" alt=""></div>
+                <div *ngIf="item.name_credits" class="img-wrap"><img src="images/{{photos[0]?.file}}" alt=""></div>
                 <h4 *ngIf="item.name_credits">{{item.title}}</h4>
                 <p *ngIf="item.name_credits" class="name">{{item.name_credits}}</p>
                 <span *ngIf="item.name_credits">{{item.workplace}}</span>
