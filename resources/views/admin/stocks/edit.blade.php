@@ -163,7 +163,11 @@
                         @foreach($categories as $cat)
                         <li>
                             <label>
-                                <input type="checkbox" name="categories[]" value="{{$cat->id}}">
+                                <input type="checkbox" name="categories[]" value="{{$cat->id}}"
+                                @if( count($stock->categories->where('id', $cat->id)) )
+                                    checked="checked"
+                               @endif
+                               >
                                 {{$cat->name}}
                             </label>
                         </li>
