@@ -56,6 +56,11 @@ class BannerController extends Controller
                 
 
         }
-        return $banners[array_rand($banners)];
+        if (count($banners)) {
+            return $banners[array_rand($banners)];
+        } else {
+            return $banners;
+        }
+        
     }
 }
