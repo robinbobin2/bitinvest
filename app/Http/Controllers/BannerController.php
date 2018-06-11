@@ -53,14 +53,19 @@ class BannerController extends Controller
             if (($timestamp_start < $now)&&($timestamp_end > $now)) {
                 $banners[] = $banner;
             }
+            echo $timestamp_start;
+            echo "<br>";
+            echo $timestamp_end;
+            echo "<br>";
+            echo $now;
                 
 
         }
-        if (count($banners)) {
-            return $banners[array_rand($banners)];
-        } else {
-            return $banners;
-        }
+        // if (count($banners)) {
+        //     return $banners[array_rand($banners)];
+        // } else {
+        //     return $banners;
+        // }
         
     }
 }
