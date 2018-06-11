@@ -8181,7 +8181,7 @@ var StocksSidebarComponent = (function () {
                                     percentDay: 0,
                                     percentWeek: 0,
                                     currencyVol: 0,
-                                    prev: 0
+                                    prev: _this.resp[symbol + '/USD']['last']
                                 };
                             }
                         }

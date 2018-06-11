@@ -130,7 +130,7 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
                                       percentDay: 0,
                                       percentWeek: 0,
                                       currencyVol: 0,
-                                      prev: 0
+                                      prev: this.resp[symbol + '/USD']['last']
                                   }
                               }
                           }

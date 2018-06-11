@@ -27,7 +27,7 @@ export class StocksService {
 
   public getCrypto() {
   	return this.returnPath = this.http.get<any>(this.bitPath).publishReplay(1).refCount().map((res)=>{
-        this.setBit(res)
+        this.setBit(res);
   	    return res;
     })
   }
