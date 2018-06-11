@@ -127,7 +127,10 @@
                         @foreach($coins as $coin)
                         <li>
                             <label>
-                                <input type="checkbox" name="coins[]" value="{{$coin->id}}">
+                                <input type="checkbox" name="coins[]" value="{{$coin->id}}" 
+                                @if( count($stock->coins->where('coin_id', $coin->id)) )
+                                    checked="1"
+                               @endif />>
                                 {{$coin->name}}
                             </label>
                         </li>
