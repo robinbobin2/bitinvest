@@ -50,7 +50,9 @@ class BannerController extends Controller
         foreach ($frontend['banners'] as $banner) {
             $timestamp_start = strtotime($banner['start_date']);
             $timestamp_end = strtotime($banner['end_date']);
+            if (($banner['start_date'] < $now)&&($banner['end_date'] > $now)) {
                 $banners[] = $banner;
+            }
             // echo "start";
             // echo $timestamp_start;
             // echo "<br>";
@@ -61,7 +63,8 @@ class BannerController extends Controller
             // echo "now";
             // echo "<br>";
             // echo $now;
-            print_r($banners);
+            echo "<pre>";
+            print_r($banners)
                 
 
         }
