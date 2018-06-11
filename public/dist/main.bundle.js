@@ -2586,7 +2586,7 @@ var CryptoAllComponent = (function () {
         var _this = this;
         this.route.queryParams.subscribe(function (params) {
             _this.algorithm = params['algo'];
-            _this.age = params['age'];
+            _this.age = params['year'];
         });
         this.router.events
             .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* NavigationEnd */]; })
