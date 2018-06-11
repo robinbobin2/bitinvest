@@ -92,8 +92,21 @@ class StocksController extends Controller
     public function update(Request $request, $id)
     {
         $stock = Stock::findOrFail($id);
+        $input = $request->except('logo');
+        if ($file = $request->file('logo')) {
+            
+            $name = time() . $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+            $input['logo'] = $name;
+
+        }
+        $stock->update($input);
+        if ($request->coins) {
+            $stock->coins()->sync($request->coins);
+        }
         
-        $stock->coins()->sync($request->coins);
         return redirect('admin/exchanges')
         ->with('message', 'Операция прошла успешно');
     }
