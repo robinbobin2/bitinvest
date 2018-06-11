@@ -86,14 +86,11 @@
                         <a *ngIf="commentcount > 10 && !hide" class="show-comments">Показать все комментарии ({{commentcount}})</a>
                 </div>
                   <div class="comment-block">
-
+                      <div class="comment-top">
+                          <h3>Похожие интервью</h3>
+                          </div>
                   <div class="interview-body">
                       <div class="interview-tab-content active">
-                          <div class="comment-top" *ngIf="user?.id == undefined">
-                              <h3 style="font-size: 24px;
-color: #000;
-margin-bottom: 10px;">Похожие интервью</h3>
-                          </div>
                           <div class="interview-comments">
                               <div class="comment" *ngFor="let item of similar_posts">
                                   <div class="img-wrap">
