@@ -124,7 +124,10 @@
                     </div>
                     
                     <ul>
-                        @foreach($coins as $coin)
+                        @foreach($stock->coins as $c) 
+                        <li>{{$c->name}}</li>
+                        @endforeach
+                        {{-- @foreach($coins as $coin)
                         <li>
                             <label>
                                 <input type="checkbox" name="coins[]" value="{{$coin->id}}" 
@@ -134,7 +137,7 @@
                                 {{$coin->name}}
                             </label>
                         </li>
-                        @endforeach
+                        @endforeach --}}
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
