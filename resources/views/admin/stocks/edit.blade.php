@@ -129,8 +129,8 @@
                             <label>
                                 <input type="checkbox" name="coins[]" value="{{$coin->id}}" 
                                 @if( count($stock->coins->where('coin_id', $coin->id)) )
-                                    checked="1"
-                               @endif />>
+                                    checked="checked"
+                               @endif />
                                 {{$coin->name}}
                             </label>
                         </li>
