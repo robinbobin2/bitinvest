@@ -19,20 +19,16 @@
                             <label for="name" class="col-md-4 control-label">Название</label>
 
                             <div class="col-md-12">
-                                <input id="name" type="text" class="form-control" name="name" required autofocus>
+                                <input value="{{$stock->name}}" id="name" type="text" class="form-control" name="name" autofocus>
 
-                                @if ($errors->has('title'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('title') }}</strong>
-                                </span>
-                                @endif
+                               
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="website" class="col-md-4 control-label">Сайт</label>
 
                             <div class="col-md-12">
-                                <input id="website" type="text" value="{{$stock->website}}" class="form-control" name="website" required autofocus>
+                                <input id="website" type="text" value="{{$stock->website}}" class="form-control" name="website" autofocus>
 
                               
                             </div>
@@ -41,7 +37,7 @@
                             <label for="country" class="col-md-4 control-label">Страна</label>
 
                             <div class="col-md-12">
-                                <input id="country" type="text" value="{{$stock->counry}}" class="form-control" name="country" required autofocus>
+                                <input id="country" type="text" value="{{$stock->country}}" class="form-control" name="country" autofocus>
 
                               
                             </div>
@@ -51,7 +47,7 @@
                             <label for="year" class="col-md-4 control-label">Год</label>
 
                             <div class="col-md-12">
-                                <input id="year" type="text" value="{{$stock->year}}" class="form-control" name="year" required autofocus>
+                                <input id="year" type="text" value="{{$stock->year}}" class="form-control" name="year" autofocus>
 
                               
                             </div>
@@ -60,7 +56,7 @@
                             <label for="exchange" class="col-md-4 control-label">Способы вывода</label>
 
                             <div class="col-md-12">
-                                <input id="exchange" value="{{$stock->exchanges}}" type="text" class="form-control" name="exchange" required autofocus>
+                                <input id="exchange" value="{{$stock->exchange}}" type="text" class="form-control" name="exchange" autofocus>
 
                               
                             </div>
@@ -69,7 +65,7 @@
                             <label for="languages" class="col-md-4 control-label">Языки</label>
 
                             <div class="col-md-12">
-                                <input id="languages" type="text" value="{{$stock->languages}}" class="form-control" name="languages" required autofocus>
+                                <input id="languages" type="text" value="{{$stock->languages}}" class="form-control" name="languages" autofocus>
 
                               
                             </div>
@@ -78,7 +74,7 @@
                             <label for="logo" class="col-md-4 control-label">Лого</label>
 
                             <div class="col-md-12">
-                                <input id="logo" type="file" class="form-control" name="logo" required autofocus>
+                                <input id="logo" type="file" class="form-control" name="logo" autofocus>
 
                               
                             </div>
@@ -87,7 +83,7 @@
                             <label for="ref" class="col-md-4 control-label">Реферальная программа</label>
 
                             <div class="col-md-12">
-                                <input id="ref" type="text" value="{{$stock->ref}}" class="form-control" name="ref" required autofocus>
+                                <input id="ref" type="text" value="{{$stock->ref}}" class="form-control" name="ref" autofocus>
 
                               
                             </div>
