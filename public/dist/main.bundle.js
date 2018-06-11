@@ -2584,7 +2584,9 @@ var CryptoAllComponent = (function () {
     };
     CryptoAllComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log(this.route.queryParams.subscribe());
+        this.route.queryParams.subscribe(function (params) {
+            console.log(params);
+        });
         this.router.events
             .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* NavigationEnd */]; })
             .map(function () { return _this.route; })
