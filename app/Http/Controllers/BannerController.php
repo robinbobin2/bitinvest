@@ -46,7 +46,7 @@ class BannerController extends Controller
     public function bannersByFront($id) {
         $banners = [];
         $now = strtotime("now");
-        $frontend = FrontEnd::findOrFail($id)->load('banners');
+        $frontend = FrontEnd::findOrFail($id)->load('banners')->toArray();
         foreach ($frontend as $banner) {
             $timestamp_start = strtotime($banner->start_date);
             $timestamp_end = strtotime($banner->end_date);
