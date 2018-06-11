@@ -17,7 +17,7 @@
 </div>
 <div class="form-group col-lg-12">
 <label for="start_date">Дата начала</label> 
-<input type="date" name="start_date" value="{{date('dd.mm.yy')}}" id="start_date" class="form-control">
+<input type="date" name="start_date" value="{{date('d.m.y')}}" id="start_date" class="form-control">
 </div>
 <hr>
 <div class="form-group col-lg-12">
