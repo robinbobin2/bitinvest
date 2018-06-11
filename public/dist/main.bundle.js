@@ -779,12 +779,14 @@ var _a, _b, _c, _d, _e, _f;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__crypto_chart2_chart2_component__ = __webpack_require__("./angular/app/crypto/chart2/chart2.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__crypto_chart3_chart3_component__ = __webpack_require__("./angular/app/crypto/chart3/chart3.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__news_news_resolver_service__ = __webpack_require__("./angular/app/news/news-resolver.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__sidebar_banner_banner_component__ = __webpack_require__("./angular/app/sidebar/banner/banner.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -1042,7 +1044,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_59__sidebar_top_ico_top_ico_component__["a" /* TopIcoComponent */],
             __WEBPACK_IMPORTED_MODULE_61__click_outside_directive__["a" /* ClickOutsideDirective */],
             __WEBPACK_IMPORTED_MODULE_62__crypto_chart2_chart2_component__["a" /* Chart2Component */],
-            __WEBPACK_IMPORTED_MODULE_63__crypto_chart3_chart3_component__["a" /* Chart3Component */]
+            __WEBPACK_IMPORTED_MODULE_63__crypto_chart3_chart3_component__["a" /* Chart3Component */],
+            __WEBPACK_IMPORTED_MODULE_65__sidebar_banner_banner_component__["a" /* BannerComponent */]
         ],
         imports: [
             // BrowserAnimationsModule,
@@ -2237,11 +2240,8 @@ var CloudMiningComponent = (function () {
     }
     CloudMiningComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log('asdasd');
         this.bannerService.getBannersById(2).subscribe(function (res) {
             _this.banner = res;
-            console.log(_this.banner);
-            console.log(res);
         });
     };
     CloudMiningComponent.prototype.loadCat = function (id) {
@@ -5506,7 +5506,7 @@ var _a, _b, _c, _d, _e, _f, _g;
 /***/ "./angular/app/ico-project/ico-project.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"ico-wrapper\">\n    <div class=\"wrapper\">\n    \t<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n\t\t\t\t<!--<h2 class=\"categories-ico-title\">Категории </h2>-->\n\t\t\t\t<ul class=\"tag-list\">\n\t\t\t\t\t<li><a routerLink=\"/ico/all\" routerLinkActive=\"active\" >Все проекты</a></li>\n          \n\t\t\t\t\t<li *ngFor=\"let category of categories\">\n\t\t\t\t\t<a\n\t\t\t\t\t [routerLink]=\"['/ico/category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t\t<app-sidebar></app-sidebar>\n\t\t\t</aside>\n\t\t</div>\n\t</section>"
+module.exports = "<section class=\"ico-wrapper\">\n    <div class=\"wrapper\">\n    \t<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n\t\t\t\t<!--<h2 class=\"categories-ico-title\">Категории </h2>-->\n\t\t\t\t<ul class=\"tag-list\">\n\t\t\t\t\t<li><a routerLink=\"/ico/all\" routerLinkActive=\"active\" >Все проекты</a></li>\n          \n\t\t\t\t\t<li *ngFor=\"let category of categories\">\n\t\t\t\t\t<a\n\t\t\t\t\t [routerLink]=\"['/ico/category', category.id]\" routerLinkActive=\"active\">{{category.name}}({{category.count}})</a>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t\t<app-sidebar [pageId]=\"1\"></app-sidebar>\n\t\t\t</aside>\n\t\t</div>\n\t</section>"
 
 /***/ }),
 
@@ -5525,6 +5525,7 @@ module.exports = ".tag-list li a.active {\n  color: #fff;\n  background: #383c46
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__banner_service__ = __webpack_require__("./angular/app/banner.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5537,15 +5538,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var IcoProjectComponent = (function () {
-    function IcoProjectComponent(http, router, route) {
+    function IcoProjectComponent(http, router, route, bannerService) {
         this.http = http;
         this.router = router;
         this.route = route;
+        this.bannerService = bannerService;
         this.categories = [];
     }
     IcoProjectComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.bannerService.getBannersById(1).subscribe(function (res) {
+            _this.banner = res;
+        });
         var path = "/categoriesraw/5";
         var info = this.http.get(path);
         info.subscribe(function (response) {
@@ -5574,12 +5580,13 @@ IcoProjectComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-ico-project',
         template: __webpack_require__("./angular/app/ico-project/ico-project.component.html"),
-        styles: [__webpack_require__("./angular/app/ico-project/ico-project.component.scss")]
+        styles: [__webpack_require__("./angular/app/ico-project/ico-project.component.scss")],
+        providers: [__WEBPACK_IMPORTED_MODULE_3__banner_service__["a" /* BannerService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__banner_service__["a" /* BannerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__banner_service__["a" /* BannerService */]) === "function" && _d || Object])
 ], IcoProjectComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=ico-project.component.js.map
 
 /***/ }),
@@ -7904,6 +7911,69 @@ var _a;
 
 /***/ }),
 
+/***/ "./angular/app/sidebar/banner/banner.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<a *ngFor=\"let item of banner?.banners\" href=\"#\" class=\"banner-black\"><img src=\"{{item.file}}\" alt=\"\" style=\"max-width: 100%;\"></a>"
+
+/***/ }),
+
+/***/ "./angular/app/sidebar/banner/banner.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./angular/app/sidebar/banner/banner.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BannerComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__banner_service__ = __webpack_require__("./angular/app/banner.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var BannerComponent = (function () {
+    function BannerComponent(bannerService) {
+        this.bannerService = bannerService;
+    }
+    BannerComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.bannerService.getBannersById(2).subscribe(function (res) {
+            _this.banner = res;
+        });
+    };
+    return BannerComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Number)
+], BannerComponent.prototype, "pageId", void 0);
+BannerComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-banner',
+        template: __webpack_require__("./angular/app/sidebar/banner/banner.component.html"),
+        styles: [__webpack_require__("./angular/app/sidebar/banner/banner.component.scss")],
+        providers: [__WEBPACK_IMPORTED_MODULE_1__banner_service__["a" /* BannerService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__banner_service__["a" /* BannerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__banner_service__["a" /* BannerService */]) === "function" && _a || Object])
+], BannerComponent);
+
+var _a;
+//# sourceMappingURL=banner.component.js.map
+
+/***/ }),
+
 /***/ "./angular/app/sidebar/cloud-mining-top/cloud-mining-top.component.html":
 /***/ (function(module, exports) {
 
@@ -7965,7 +8035,7 @@ var _a;
 /***/ "./angular/app/sidebar/sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "      <app-stocks-sidebar>Загрузка</app-stocks-sidebar>\n\n        <a href=\"#\" class=\"banner-black\"><img src=\"img/banner-black.jpg\" alt=\"\"></a>\n        <app-cloud-mining-top></app-cloud-mining-top>\n        <div class=\"social\">\n          <h5 class=\"titles\">Мы в соц.сетях</h5>\n          <ul>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n          </ul>\n        </div>\n        <app-top-ico></app-top-ico>"
+module.exports = "      <app-stocks-sidebar>Загрузка</app-stocks-sidebar>\n\n        <app-banner [pageId]=\"pageId\"></app-banner>\n        <app-cloud-mining-top></app-cloud-mining-top>\n        <div class=\"social\">\n          <h5 class=\"titles\">Мы в соц.сетях</h5>\n          <ul>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-twitter\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-instagram\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-vk\" aria-hidden=\"true\"></i></a></li>\n            <li><a href=\"#\"><i class=\"fa fa-facebook\" aria-hidden=\"true\"></i></a></li>\n          </ul>\n        </div>\n        <app-top-ico></app-top-ico>"
 
 /***/ }),
 
@@ -7999,6 +8069,10 @@ var SidebarComponent = (function () {
     };
     return SidebarComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Number)
+], SidebarComponent.prototype, "pageId", void 0);
 SidebarComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-sidebar',

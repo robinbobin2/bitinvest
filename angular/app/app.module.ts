@@ -66,6 +66,7 @@ import { ClickOutsideDirective } from './click-outside.directive';
 import { Chart2Component } from './crypto/chart2/chart2.component';
 import { Chart3Component } from './crypto/chart3/chart3.component';
 import {NewsResolverService} from "./news/news-resolver.service";
+import { BannerComponent } from './sidebar/banner/banner.component';
 
 
 const appRoutes: Routes = [
@@ -262,7 +263,8 @@ const appRoutes: Routes = [
     TopIcoComponent,
     ClickOutsideDirective,
     Chart2Component,
-    Chart3Component
+    Chart3Component,
+    BannerComponent
   ],
   imports: [
     // BrowserAnimationsModule,
