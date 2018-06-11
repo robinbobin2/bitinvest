@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {StocksService} from '../stocks.service';
 import {OrderPipe} from '../order-pipe/ngx-order.pipe';
@@ -18,7 +18,7 @@ export class Cripto {
     algo: string;
     logo: string
 }
-
+declare var $:any;
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
 declare var $:any;
@@ -137,7 +137,15 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        console.log('etet');
+        this.router.events
+            .filter(event => event instanceof NavigationEnd)
+            .map(() => this.route)
+            .subscribe((event) => {
+                setTimeout(()=> {
+                    $.getScript('/js/script.js');
+                }, 300)
+
+            });
         let portfolioUrl = '/angular/userportfolio';
         this.portfolioInfo = this.http.get<any>(portfolioUrl);
         this.portfolioInfo.subscribe(

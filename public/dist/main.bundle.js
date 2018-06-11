@@ -2584,7 +2584,14 @@ var CryptoAllComponent = (function () {
     };
     CryptoAllComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log('etet');
+        this.router.events
+            .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* NavigationEnd */]; })
+            .map(function () { return _this.route; })
+            .subscribe(function (event) {
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 300);
+        });
         var portfolioUrl = '/angular/userportfolio';
         this.portfolioInfo = this.http.get(portfolioUrl);
         this.portfolioInfo.subscribe(function (response) {
