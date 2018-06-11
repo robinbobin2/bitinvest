@@ -51,7 +51,8 @@ class BannerController extends Controller
             $timestamp_start = strtotime($banner['start_date']);
             $timestamp_end = strtotime($banner['end_date']);
             if (($timestamp_start < $now) AND ($timestamp_end > $now)) {
-                $banners[] = $banner;
+                echo 'yes';
+                echo "<br>";
             }
             // echo "start";
             // echo $timestamp_start;
