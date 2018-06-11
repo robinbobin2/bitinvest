@@ -53,17 +53,26 @@ class BannerController extends Controller
             if (($timestamp_start < $now) AND ($timestamp_end > $now)) {
                 echo 'yes';
                 echo "<br>";
+            } else {
+                echo "no";
             }
-            // echo "start";
-            // echo $timestamp_start;
-            // echo "<br>";
-            // echo "end";
-            // echo "<br>";
-            // echo $timestamp_end;
-            // echo "<br>";
-            // echo "now";
-            // echo "<br>";
-            // echo $now;
+            echo "start";
+            echo $timestamp_start;
+            echo "<br>";
+            echo "end";
+            echo "<br>";
+            echo $timestamp_end;
+            echo "<br>";
+            echo "now";
+            echo "<br>";
+            echo $now;
+            echo "<br>";
+            echo "math";
+            echo $timestamp_start-$now;
+            echo "<br>";
+            echo $timestamp_end-$now;
+            echo "<br>";
+            
             echo "<pre>";
             print_r($banners);
                 
