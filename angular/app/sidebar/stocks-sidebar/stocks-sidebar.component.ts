@@ -99,6 +99,7 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
                                   this.dataUsd[index].sym = symbol;
                                   this.dataUsd[index].algo = algo;
                                   this.dataUsd[index].year = year;
+                                  this.dataUsd[index].prev = this.dataUsd[index].now;
                                   this.dataUsd[index].last = this.resp[symbol + '/USD']['last'];
                                   this.dataUsd[index].now = this.resp[symbol + '/USD']['now'];
                                   this.dataUsd[index].min = this.resp[symbol + '/USD']['min'];
@@ -128,7 +129,8 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
                                       marketCapUsd: this.resp[symbol + "/USD"]['marketCapUsd'],
                                       percentDay: 0,
                                       percentWeek: 0,
-                                      currencyVol: 0
+                                      currencyVol: 0,
+                                      prev: 0
                                   }
                               }
                           }
@@ -159,7 +161,7 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
       this.dataUsd = JSON.parse(localStorage.getItem('data'));
     }
   }
-  countPercent(now, last) {
+    countPercent(now, last) {
         return (now-last) / (now+last) * 100;
     }
   ngOnDestroy() {
