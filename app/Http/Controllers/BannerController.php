@@ -45,7 +45,7 @@ class BannerController extends Controller
     }
     public function bannersByFront($id) {
         $banners = [];
-        $now = strtotime("now");
+        $now = strtotime(date('d.m.y'));
         $frontend = FrontEnd::findOrFail($id)->load('banners')->toArray();
         foreach ($frontend['banners'] as $banner) {
             $timestamp_start = strtotime($banner['start_date']);
@@ -72,7 +72,7 @@ class BannerController extends Controller
             echo "<br>";
             echo $timestamp_end-$now;
             echo "<br>";
-            
+
             echo "<pre>";
             print_r($banners);
                 
