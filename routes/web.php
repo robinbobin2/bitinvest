@@ -1,6 +1,7 @@
 <?php
 
 use App\Banner;
+use App\CryptoStat;
 use App\FrontEnd;
 use App\Stock;
 use App\User;
