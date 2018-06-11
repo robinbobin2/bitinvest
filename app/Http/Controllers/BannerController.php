@@ -47,15 +47,15 @@ class BannerController extends Controller
         $banners = [];
         $now = strtotime("now");
         $frontend = FrontEnd::findOrFail($id)->load('banners')->toArray();
-        // foreach ($frontend as $banner) {
-        //     $timestamp_start = strtotime($banner['start_date']);
-        //     $timestamp_end = strtotime($banner['end_date']);
-        //     if (($timestamp_start < $now)&&($timestamp_end > $now)) {
-        //         $banners[] = $banner;
-        //     }
+        foreach ($frontend['banners'] as $banner) {
+            $timestamp_start = strtotime($banner['start_date']);
+            $timestamp_end = strtotime($banner['end_date']);
+            if (($timestamp_start < $now)&&($timestamp_end > $now)) {
+                $banners[] = $banner;
+            }
                 
 
-        // }
-        return $frontend;
+        }
+        return $banners[array_rand($banners)];
     }
 }
