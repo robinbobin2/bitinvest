@@ -2784,7 +2784,7 @@ var _a, _b, _c, _d, _e, _f, _g;
 /***/ "./angular/app/crypto-filter/crypto-filter.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"mining-filter\">\n  <div class=\"filter-top\">\n    <h2>Настройка фильтров</h2>\n    <a href=\"blatant-mining.html\" class=\"close\">×</a>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Алгоритм валюты</h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of algoFilter\"><a href=\"\">{{data}}</a> </li>\n    </ul>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Год</h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of yearFilter\"><a href=\"\">{{data}}</a> </li>\n    </ul>\n  </div>\n  <div class=\"sorting\">\n    <!--<h2>Сортировка</h2>-->\n    <!--<form>-->\n      <!--<p>-->\n        <!--<input type=\"radio\" id=\"test1\" name=\"radio-group\" checked>-->\n        <!--<label for=\"test1\">По алфавиту (от А до Я)</label>-->\n      <!--</p>-->\n      <!--<p>-->\n        <!--<input type=\"radio\" id=\"test2\" name=\"radio-group\">-->\n        <!--<label for=\"test2\">По размеру депозита</label>-->\n      <!--</p>-->\n      <!--<p>-->\n        <!--<input type=\"radio\" id=\"test3\" name=\"radio-group\">-->\n        <!--<label for=\"test3\">По рейтингу</label>-->\n      <!--</p>-->\n      <!--<input type=\"submit\" value=\"Сохранить\">-->\n    <!--</form>-->\n    <a href=\"#\" class=\"claer\">X Очистить параметры фильтрации </a>\n  </div>\n</section>"
+module.exports = "<section class=\"mining-filter\">\n  <div class=\"filter-top\">\n    <h2>Настройка фильтров</h2>\n    <a href=\"blatant-mining.html\" class=\"close\">×</a>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Алгоритм валюты</h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of algoFilter\"><a (click)=\"algorithm=data\" [ngClass]=\"algorithm==data ? 'active' : '' \">{{data}}</a> </li>\n    </ul>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Год</h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of yearFilter\"><a  (click)=\"age=data\" [ngClass]=\"age==data ? 'active' : '' \">{{data}}</a> </li>\n    </ul>\n  </div>\n  <div class=\"sorting\">\n    <!--<h2>Сортировка</h2>-->\n    <!--<form>-->\n      <!--<p>-->\n        <!--<input type=\"radio\" id=\"test1\" name=\"radio-group\" checked>-->\n        <!--<label for=\"test1\">По алфавиту (от А до Я)</label>-->\n      <!--</p>-->\n      <!--<p>-->\n        <!--<input type=\"radio\" id=\"test2\" name=\"radio-group\">-->\n        <!--<label for=\"test2\">По размеру депозита</label>-->\n      <!--</p>-->\n      <!--<p>-->\n        <!--<input type=\"radio\" id=\"test3\" name=\"radio-group\">-->\n        <!--<label for=\"test3\">По рейтингу</label>-->\n      <!--</p>-->\n      <input [routerLink]=\"['/cryptocurrency/all']\" [queryParams]=\"{algo: algorithm, year: age}\" value=\"Сохранить\">\n    <!--</form>-->\n    <a href=\"#\" class=\"claer\">X Очистить параметры фильтрации </a>\n  </div>\n</section>"
 
 /***/ }),
 
@@ -2817,7 +2817,7 @@ var CryptoFilterComponent = (function () {
     function CryptoFilterComponent(http) {
         this.http = http;
         this.algorithm = '';
-        this.year = '';
+        this.age = '';
         this.algoFilter = [];
         this.yearFilter = [];
     }

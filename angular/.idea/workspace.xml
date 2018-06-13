@@ -29,8 +29,8 @@
       <file leaf-file-name="crypto-filter.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/crypto-filter/crypto-filter.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+            <state relative-caret-position="165">
+              <caret line="11" column="10" lean-forward="true" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -41,8 +41,8 @@
       <file leaf-file-name="crypto-all.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="22" column="91" selection-start-line="22" selection-start-column="86" selection-end-line="22" selection-end-column="91" />
+            <state relative-caret-position="194">
+              <caret line="26" column="112" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="112" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -59,8 +59,8 @@
       <file leaf-file-name="crypto-filter.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto-filter/crypto-filter.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="4" selection-start-line="18" selection-start-column="8" selection-end-line="33" selection-end-column="15" />
+            <state relative-caret-position="480">
+              <caret line="32" column="83" selection-start-line="32" selection-start-column="83" selection-end-line="32" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -488,12 +488,12 @@
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
-      <workItem from="1528871430902" duration="5032000" />
+      <workItem from="1528871430902" duration="5414000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246230000" />
+    <option name="totallyTimeSpent" value="246612000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -920,8 +920,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto-filter/crypto-filter.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+        <state relative-caret-position="165">
+          <caret line="11" column="10" lean-forward="true" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
@@ -930,8 +930,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="22" column="91" selection-start-line="22" selection-start-column="86" selection-end-line="22" selection-end-column="91" />
+        <state relative-caret-position="194">
+          <caret line="26" column="112" selection-start-line="26" selection-start-column="75" selection-end-line="26" selection-end-column="112" />
           <folding>
             <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -946,8 +946,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto-filter/crypto-filter.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="8" selection-end-line="33" selection-end-column="15" />
+        <state relative-caret-position="480">
+          <caret line="32" column="83" selection-start-line="32" selection-start-column="83" selection-end-line="32" selection-end-column="83" />
         </state>
       </provider>
     </entry>

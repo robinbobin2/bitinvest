@@ -6,13 +6,13 @@
   <div class="categories-block">
     <h2>Алгоритм валюты</h2>
     <ul class="tag-list">
-      <li *ngFor="let data of algoFilter"><a href="">{{data}}</a> </li>
+      <li *ngFor="let data of algoFilter"><a (click)="algorithm=data" [ngClass]="algorithm==data ? 'active' : '' ">{{data}}</a> </li>
     </ul>
   </div>
   <div class="categories-block">
     <h2>Год</h2>
     <ul class="tag-list">
-      <li *ngFor="let data of yearFilter"><a href="">{{data}}</a> </li>
+      <li *ngFor="let data of yearFilter"><a  (click)="age=data" [ngClass]="age==data ? 'active' : '' ">{{data}}</a> </li>
     </ul>
   </div>
   <div class="sorting">
@@ -30,7 +30,7 @@
         <!--<input type="radio" id="test3" name="radio-group">-->
         <!--<label for="test3">По рейтингу</label>-->
       <!--</p>-->
-      <!--<input type="submit" value="Сохранить">-->
+      <input [routerLink]="['/cryptocurrency/all']" [queryParams]="{algo: algorithm, year: age}" value="Сохранить">
     <!--</form>-->
     <a href="#" class="claer">X Очистить параметры фильтрации </a>
   </div>
