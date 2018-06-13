@@ -67,6 +67,7 @@ import { Chart2Component } from './crypto/chart2/chart2.component';
 import { Chart3Component } from './crypto/chart3/chart3.component';
 import {NewsResolverService} from "./news/news-resolver.service";
 import { BannerComponent } from './sidebar/banner/banner.component';
+import { CryptoFilterComponent } from './crypto-filter/crypto-filter.component';
 
 
 const appRoutes: Routes = [
@@ -207,6 +208,9 @@ const appRoutes: Routes = [
   {
       path:'exchange/:name', component:ExchangeComponent
   },
+    {
+        path: 'filter', component: CryptoRootComponent
+    }
     
 ];
 @NgModule({
@@ -264,7 +268,8 @@ const appRoutes: Routes = [
     ClickOutsideDirective,
     Chart2Component,
     Chart3Component,
-    BannerComponent
+    BannerComponent,
+    CryptoFilterComponent
   ],
   imports: [
     // BrowserAnimationsModule,

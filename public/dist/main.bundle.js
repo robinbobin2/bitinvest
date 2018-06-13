@@ -780,12 +780,14 @@ var _a, _b, _c, _d, _e, _f;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__crypto_chart3_chart3_component__ = __webpack_require__("./angular/app/crypto/chart3/chart3.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__news_news_resolver_service__ = __webpack_require__("./angular/app/news/news-resolver.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__sidebar_banner_banner_component__ = __webpack_require__("./angular/app/sidebar/banner/banner.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_66__crypto_filter_crypto_filter_component__ = __webpack_require__("./angular/app/crypto-filter/crypto-filter.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -983,6 +985,9 @@ var appRoutes = [
     {
         path: 'exchange/:name', component: __WEBPACK_IMPORTED_MODULE_58__exchange_exchange_component__["a" /* ExchangeComponent */]
     },
+    {
+        path: 'filter', component: __WEBPACK_IMPORTED_MODULE_34__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */]
+    }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -1045,7 +1050,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_61__click_outside_directive__["a" /* ClickOutsideDirective */],
             __WEBPACK_IMPORTED_MODULE_62__crypto_chart2_chart2_component__["a" /* Chart2Component */],
             __WEBPACK_IMPORTED_MODULE_63__crypto_chart3_chart3_component__["a" /* Chart3Component */],
-            __WEBPACK_IMPORTED_MODULE_65__sidebar_banner_banner_component__["a" /* BannerComponent */]
+            __WEBPACK_IMPORTED_MODULE_65__sidebar_banner_banner_component__["a" /* BannerComponent */],
+            __WEBPACK_IMPORTED_MODULE_66__crypto_filter_crypto_filter_component__["a" /* CryptoFilterComponent */]
         ],
         imports: [
             // BrowserAnimationsModule,
@@ -2766,6 +2772,56 @@ CryptoAllComponent = __decorate([
 
 var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=crypto-all.component.js.map
+
+/***/ }),
+
+/***/ "./angular/app/crypto-filter/crypto-filter.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<section class=\"mining-filter\">\n  <div class=\"filter-top\">\n    <h2>Настройка фильтров</h2>\n    <a href=\"blatant-mining.html\" class=\"close\">×</a>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Выберите категорию</h2>\n    <ul class=\"tag-list\">\n      <li><a href=\"#\">Новости (2)</a></li>\n      <li><a href=\"#\">Технологии (15)</a></li>\n      <li><a href=\"#\">Социальные сети (21)</a></li>\n      <li><a href=\"#\">Спорт (198)</a></li>\n      <li><a href=\"#\">Технологии (15) </a></li>\n      <li><a href=\"#\">Социальные сети (21)</a></li>\n    </ul>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Статус проекта</h2>\n    <ul class=\"tag-list\">\n      <li><a href=\"#\">Все (25)</a></li>\n      <li><a href=\"#\">Платит/Ожидание (24)</a></li>\n      <li><a href=\"#\">Не платит (1)</a></li>\n    </ul>\n  </div>\n  <div class=\"sorting\">\n    <h2>Сортировка</h2>\n    <form>\n      <p>\n        <input type=\"radio\" id=\"test1\" name=\"radio-group\" checked>\n        <label for=\"test1\">По алфавиту (от А до Я)</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test2\" name=\"radio-group\">\n        <label for=\"test2\">По размеру депозита</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test3\" name=\"radio-group\">\n        <label for=\"test3\">По рейтингу</label>\n      </p>\n      <input type=\"submit\" value=\"Сохранить\">\n    </form>\n    <a href=\"#\" class=\"claer\">X Очистить параметры фильтрации </a>\n  </div>\n</section>"
+
+/***/ }),
+
+/***/ "./angular/app/crypto-filter/crypto-filter.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./angular/app/crypto-filter/crypto-filter.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CryptoFilterComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CryptoFilterComponent = (function () {
+    function CryptoFilterComponent() {
+    }
+    CryptoFilterComponent.prototype.ngOnInit = function () {
+    };
+    return CryptoFilterComponent;
+}());
+CryptoFilterComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-crypto-filter',
+        template: __webpack_require__("./angular/app/crypto-filter/crypto-filter.component.html"),
+        styles: [__webpack_require__("./angular/app/crypto-filter/crypto-filter.component.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], CryptoFilterComponent);
+
+//# sourceMappingURL=crypto-filter.component.js.map
 
 /***/ }),
 
