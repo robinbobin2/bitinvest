@@ -6334,6 +6334,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var MiningFilterComponent = (function () {
     function MiningFilterComponent(http) {
         this.http = http;
+        this.categories = [];
         this.cat_id = 0;
     }
     MiningFilterComponent.prototype.ngOnInit = function () {

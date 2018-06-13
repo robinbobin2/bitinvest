@@ -10,7 +10,7 @@ export class MiningFilterComponent implements OnInit {
     status:any;
     order:any;
     reverse:any;
-    categories: any;
+    categories=[];
     cat_id: any = 0;
   constructor(private http:HttpClient) { }
 
