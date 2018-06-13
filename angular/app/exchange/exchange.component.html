@@ -111,7 +111,7 @@
                   <span class="price" >{{pair.currency}}</span>
                 </td>
                 <td>
-                  <span [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }"> {{pair.bid | number:'1.1-6'}}</span>
+                  <span [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }"> {{pair.value | number:'1.1-6'}}</span>
                 </td>
                 <td>
                   <span [ngStyle]="{ 'animation': animtype[i]+' 2s', '-webkit-animation': animtype[i]+' 2s'  }" >{{pair.percent | number:'1.2-8'}}%</span>

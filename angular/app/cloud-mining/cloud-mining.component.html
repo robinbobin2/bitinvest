@@ -10,22 +10,7 @@
            [routerLink]="['/cloud-mining/category', category.id]" >{{category.name}}({{category.count}})</a>
           </li>
         </ul>
-    <app-stocks-sidebar>Загрузка</app-stocks-sidebar>
-
-    <a *ngFor="let item of banner?.banners" href="#" class="banner-black"><img src="{{item.file}}" alt="" style="max-width: 100%;"></a>
-    <app-cloud-mining-top></app-cloud-mining-top>
-    <div class="social">
-        <h5 class="titles">Мы в соц.сетях</h5>
-        <ul>
-            <li><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-        </ul>
-    </div>
-    <app-top-ico></app-top-ico>
+    <app-sidebar [pageId]="1"></app-sidebar>
       </aside>
       </div>
   </section>

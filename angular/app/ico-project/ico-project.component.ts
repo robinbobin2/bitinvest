@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import {BannerService} from "../banner.service";
 
 interface Categories {
   id: number;
@@ -12,16 +13,20 @@ interface Categories {
 @Component({
   selector: 'app-ico-project',
   templateUrl: './ico-project.component.html',
-  styleUrls: ['./ico-project.component.scss']
+  styleUrls: ['./ico-project.component.scss'],
+    providers: [BannerService]
 })
 export class IcoProjectComponent implements OnInit {
-
+    banner: any;
  categories: Categories[] = [];
-  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute) { 
+  constructor(private http:HttpClient, private router:Router, private route:ActivatedRoute, private bannerService:BannerService) {
 
 }
 
   ngOnInit() {
+      this.bannerService.getBannersById(1).subscribe(res => {
+          this.banner = res
+      })
     let path = "/categoriesraw/5";
     const info = this.http.get(path);
       info.subscribe(response => {

@@ -24,8 +24,8 @@
                                 <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
                             </div>
                             <ul class="select-items">
-                                <li (click)="algorithm=''"> <a >Алгоритм: Все</a></li>
-                                <li *ngFor="let data of algoFilter" (click)="algorithm=data"><a >Алгоритм: {{data}}</a></li>
+                                <li (click)="algorithm=''" routerLink="./" [queryParams]="{algo: '', year: age}"> <a >Алгоритм: Все</a></li>
+                                <li *ngFor="let data of algoFilter" (click)="algorithm=data" routerLink="./" [queryParams]="{algo: data, year: age}"><a>Алгоритм: {{data}}</a></li>
                                 <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
                             </ul>
                         </div>
@@ -35,8 +35,8 @@
                                 <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
                             </div>
                             <ul class="select-items">
-                                <li (click)="age=''"> <a>Год: Все</a></li>
-                                <li *ngFor="let data of dataUsd" (click)="age=data?.year"><a >Год: {{data?.year}}</a></li>
+                                <li (click)="age=''" routerLink="./" [queryParams]="{algo: algorithm, year: ''}"> <a>Год: Все</a></li>
+                                <li *ngFor="let data of dataUsd" (click)="age=data?.year" routerLink="./" [queryParams]="{algo: algorithm, year: data?.year}"><a >Год: {{data?.year}}</a></li>
                                 <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
                             </ul>
                         </div>
@@ -71,14 +71,14 @@
             [class.active]="order === 'marketCapUsd'"
             (click)="setOrder('marketCapUsd')"
 
-    width="15%">
+    width="14%">
     <span>Капитализация</span>
     <img src="img/arr-top-table.png" alt="">
   </th>
 <th [class.active]="order === 'value'"
 (click)="setOrder('value')"
 
-width="12.4%">
+width="15.4%">
 <span>Объем в $ (за 24 ч.)</span>
 <img src="img/arr-top-table.png" alt="">
 </th>
@@ -105,7 +105,7 @@ width="11%">
 <th
         [class.active]="order === 'percentWeek'"
         (click)="setOrder('percentWeek')"
-width="18.3%">
+width="16.3%">
 <span>Изм. за 7д</span>
 <img src="img/arr-top-table.png" alt="">
 </th>

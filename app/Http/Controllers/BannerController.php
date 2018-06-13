@@ -44,7 +44,23 @@ class BannerController extends Controller
         return $banners;
     }
     public function bannersByFront($id) {
-        $frontend = FrontEnd::findOrFail($id)->load('banners');
-        return $frontend;
+        $banners = [];
+        $now = strtotime(date('d.m.y'));
+        $frontend = FrontEnd::findOrFail($id)->load('banners')->toArray();
+        foreach ($frontend['banners'] as $banner) {
+            $timestamp_start = strtotime($banner['start_date']);
+            $timestamp_end = strtotime($banner['end_date']);
+            if (($timestamp_start < $now)&&($timestamp_end > $now)) {
+                $banners[] = $banner;
+            }
+                
+
+        }
+        if (count($banners)) {
+            return $banners[array_rand($banners)];
+        } else {
+            return $banners;
+        }
+        
     }
 }

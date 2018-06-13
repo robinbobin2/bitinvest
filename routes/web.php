@@ -1,6 +1,7 @@
 <?php
 
 use App\Banner;
+use App\CryptoStat;
 use App\FrontEnd;
 use App\Stock;
 use App\User;
@@ -134,6 +135,7 @@ Route::get('/cryptocurrency/all', "AngularController@serve");
 Route::get('/exchanges', "AngularController@serve");
 Route::get('/exchange/{name}', "AngularController@serve");
 Route::get('/ico/all', "AngularController@serve");
+Route::get('/mobile-filter', "AngularController@serve");
 Route::get('/ico/item/{post}', "AngularController@serve");
 Route::get('/ico/category/{category}', "AngularController@serve");
 Route::get('/profile/edit', ['as' => 'profile.edit', 'uses' => "AngularController@serve"]);
@@ -183,8 +185,8 @@ Route::get('/profile/edit/{id}', "ProfileController@edit");
 
 // Route::get('/crypto/XRP', "AngularController@serve");
 Route::get('/read', function() {
-	 $return_banner = Banner::findOrFail(5);
-	 return $return_banner->frontends;
+	 $return_banner = CryptoStat::findOrFail(1);
+	 return $return_banner->categories;
 });
 
 // ENDANGULAR

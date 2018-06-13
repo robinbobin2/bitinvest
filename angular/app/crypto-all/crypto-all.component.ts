@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {StocksService} from '../stocks.service';
 import {OrderPipe} from '../order-pipe/ngx-order.pipe';
@@ -18,7 +18,7 @@ export class Cripto {
     algo: string;
     logo: string
 }
-
+declare var $:any;
 
 const headers = new HttpHeaders({'Content-type': 'Application/json '});
 declare var $:any;
@@ -137,7 +137,19 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        console.log('etet');
+        this.route.queryParams.subscribe(params => {
+            this.algorithm = params['algo'];
+            this.age = params['year'];
+        });
+        this.router.events
+            .filter(event => event instanceof NavigationEnd)
+            .map(() => this.route)
+            .subscribe((event) => {
+                setTimeout(()=> {
+                    $.getScript('/js/script.js');
+                }, 300)
+
+            });
         let portfolioUrl = '/angular/userportfolio';
         this.portfolioInfo = this.http.get<any>(portfolioUrl);
         this.portfolioInfo.subscribe(
@@ -170,7 +182,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
             alldata.subscribe(response => {
                 let admin = response;
                 this.StockService.getCryptoVol().debounceTime(10000).subscribe(volumes => {
-                this.cryptoData = Observable.interval(5000).concatMap(() => this.StockService.bit$)
+                this.cryptoData = Observable.interval(1000).concatMap(() => this.StockService.bit$)
                     .subscribe(resp => {
 
                         this.resp = resp;
@@ -193,8 +205,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
 
                                 setTimeout(()=>this.diff[index] = 0, 2000)
 
-
-                                if (this.resp[symbol + '/USD']) {
                                     if (this.dataUsd[index]) {
                                         if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
                                             this.first_time = false;
@@ -243,26 +253,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                             currencyVol: 0
                                         }
                                     }
-                                } else {
-                                    this.dataUsd[index] = {
-                                        id: id,
-                                        name: name,
-                                        sym: symbol,
-                                        last: 0,
-                                        now: 0,
-                                        min: 0,
-                                        max: 0,
-                                        volume: 0,
-                                        year: year,
-                                        algo: algo,
-                                        week: 0,
-                                        day: 0,
-                                        marketCapUsd: 0,
-                                        percentDay: 0,
-                                        percentWeek: 0,
-                                        currencyVol: 0
-                                    }
-                                }
+
                                 this.load = false;
                                 localStorage.removeItem('data');
                                 localStorage.setItem('data', JSON.stringify(this.dataUsd))

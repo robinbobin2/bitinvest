@@ -279,6 +279,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       this.prev = this.dataUsd.last;
       localStorage.removeItem(symbol);
       localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
+
     }).subscribe();
     let infoCryptoPath = "/allcrypto/"+symbol;
     this.infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
@@ -303,6 +304,17 @@ export class CryptoComponent implements OnInit, OnDestroy {
               }
           }
       }
+        for(let item of response['categories']) {
+            let newsUrl = "/postsbycat/"+item.id;
+            let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
+            newsInfo.subscribe(response => {
+                for(let news_item of response['news']) {
+                    this.news.push(news_item)
+                }
+                this.main_news.push(...response['main_news'])
+                console.log(this.news);
+            });
+        }
       this.commentcount = response['comments_count'];
 
       let newsUrl = "/postsbycat/"+this.data.cat_id_news;
@@ -316,9 +328,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.cryptoData=Observable.interval(2000).take(700).concatMap(
+    this.cryptoData=Observable.interval(1000).take(700).concatMap(
         ()=>
-            this.stocksService.getCrypto())
+            this.stocksService.bit$)
     .map((response)=>{
       this.animtype = '';
 

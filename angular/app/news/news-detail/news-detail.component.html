@@ -1,7 +1,7 @@
 <section class="news-card-wrap">
     <div class="wrapper">
         <div class="news-card-block">
-            <div class="news-big news-big2">
+            <div class="news-big news-big2" style="padding-top:0px !important;">
                 <a routerLink="/posts/all" class="return"><span>&#60;</span>Вернуться к списку новостей</a>
                 <h2>{{news?.title}}</h2>
                 <div class="info info-top">
@@ -11,7 +11,7 @@
                     </div>
                     <div class="right-block">
                         <a href="#" class="comments" *ngIf="commentcount > 0"><img src="img/comment.svg" alt="">{{commentcount}}</a>
-                        <span class="views" *ngIf="news?.view_count !=undefined"><img src="img/eye.svg" alt="">{{news?.view_count}}</span>
+                        <span class="views" *ngIf="news?.view_count !=undefined"><img src="img/eye.svg" alt="">{{news?.view_count+1}}</span>
                     </div>
                 </div>
             </div>
