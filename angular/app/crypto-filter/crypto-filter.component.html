@@ -30,8 +30,8 @@
         <!--<input type="radio" id="test3" name="radio-group">-->
         <!--<label for="test3">По рейтингу</label>-->
       <!--</p>-->
-      <input [routerLink]="['/cryptocurrency/all']" [queryParams]="{algo: algorithm, year: age}" value="Сохранить">
+    <a [routerLink]="['/cryptocurrency/all']" [queryParams]="{algo: algorithm, year: age}" >Сохранить</a>
     <!--</form>-->
-    <a href="#" class="claer">X Очистить параметры фильтрации </a>
+    <a href="#" class="claer" (click)="algorithm = ''; age = ''">X Очистить параметры фильтрации </a>
   </div>
 </section>
