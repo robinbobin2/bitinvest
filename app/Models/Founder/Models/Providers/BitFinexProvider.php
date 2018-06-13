@@ -11,6 +11,7 @@ namespace App\Models\Founder\Models\Providers;
 
 use App\Models\Entity\Exchange;
 use App\Models\Founder\Models\Connectors\BitFinexConnector;
+use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 use App\Models\Founder\Models\Test\BitFinex;
@@ -30,7 +31,23 @@ class BitFinexProvider extends FounderProvider
 
     public function search(Request $request)
     {
-        $response = $this->getConnector()->fetch_tickers();
+        $response = [];
+        $result = $this->getConnector()->search();
+
+        foreach ($result as $currency => $supplierTicker) {
+            if(!isset($supplierTicker->ask)){
+                continue;
+            }
+            $ticker = new TickerEntity();
+            $ticker->setAsk($supplierTicker->ask);
+            $ticker->setBid($supplierTicker->bid);
+            $ticker->setVolume($supplierTicker->volume);
+            $ticker->setValue($supplierTicker->last_price);
+            $ticker->setExchangeId($this->getExchangeId());
+            $ticker->setCurrency($this->getCurrency($currency));
+            $response[] = $ticker;
+        }
+
         return $response;
     }
 
@@ -50,5 +67,10 @@ class BitFinexProvider extends FounderProvider
     public function getCooldownTime()
     {
         return 5;
+    }
+
+    public function getCurrency($currency)
+    {
+        return strtoupper(substr($currency, 0,3) . "/" . substr($currency, 3));
     }
 }

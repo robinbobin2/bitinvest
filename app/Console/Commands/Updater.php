@@ -146,6 +146,13 @@ class Updater extends \Illuminate\Console\Command
         CcexProvider::class,
         HitBTCProvider::class,
         CryptopiaProvider::class,
+
+        ZaifProvider::class,
+        BitFinexProvider::class,
+        TheRockProvider::class,
+        OneBTCXEProvider::class,
+        BCexProvider::class,
+        OTCBTCProvider::class,
     ];
 
     private $suppliers = [
@@ -154,7 +161,6 @@ class Updater extends \Illuminate\Console\Command
         Bit2CProvider::class,
         BitMarketProvider::class,
         BitMexProvider::class,
-        BitFinexProvider::class,
         BitTrexProvider::class,
         CoinEggProvider::class,
         CobinhoodProvider::class,
@@ -180,17 +186,19 @@ class Updater extends \Illuminate\Console\Command
         LykkeProvider::class,
         OkCoinProvider::class,
         QryptosProvider::class,
-        OkexProvider::class,
-        OTCBTCProvider::class,
-        BCexProvider::class,
-//        NovaProvider::class,
+
+
+
+
+
+        NovaProvider::class,
         OneBrokerProvider::class,
-        OneBTCXEProvider::class,
-        TheRockProvider::class,
+
+
+        OkexProvider::class,
         TideBitProvider::class,
         VaultoroProvider::class,
         VirWoxProvider::class,
-        ZaifProvider::class,
     ];
 
     /**

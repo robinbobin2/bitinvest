@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Founder\FounderEngine;
+use App\Models\Founder\Models\Providers\BraziliexProvider;
 use App\Models\Founder\Models\Providers\BTCBoxProvider;
 use App\Models\Founder\Models\Providers\HitBTCProvider;
 use App\Models\Founder\Models\Providers\PoloniexProvider;
@@ -103,7 +104,10 @@ class BitController extends Controller
 
     public function t()
     {
-        phpinfo();
+        $provider = new BraziliexProvider();
+        $request = new Request();
+        $result = $provider->getConnector()->search($request);
+        echo json_encode($result);
     }
 
     public function currencyVolumes()
