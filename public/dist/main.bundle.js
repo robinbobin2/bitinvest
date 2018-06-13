@@ -2592,7 +2592,13 @@ var CryptoAllComponent = (function () {
         var _this = this;
         this.route.queryParams.subscribe(function (params) {
             _this.algorithm = params['algo'];
+            if (_this.algorithm == undefined) {
+                _this.algorithm = '';
+            }
             _this.age = params['year'];
+            if (_this.age == undefined) {
+                _this.age = '';
+            }
         });
         this.router.events
             .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* NavigationEnd */]; })
