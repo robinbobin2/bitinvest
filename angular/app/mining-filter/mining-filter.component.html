@@ -16,20 +16,20 @@
     </ul>
   </div>
   <div class="sorting">
-    <!--<h2>Сортировка</h2>-->
-    <!--<form>-->
-      <!--<p>-->
-        <!--<input type="radio" id="test1" name="radio-group" checked>-->
-        <!--<label for="test1">По алфавиту (от А до Я)</label>-->
-      <!--</p>-->
-      <!--<p>-->
-        <!--<input type="radio" id="test2" name="radio-group">-->
-        <!--<label for="test2">По размеру депозита</label>-->
-      <!--</p>-->
-      <!--<p>-->
-        <!--<input type="radio" id="test3" name="radio-group">-->
-        <!--<label for="test3">По рейтингу</label>-->
-      <!--</p>-->
+    <h2>Сортировка</h2>
+    <form>
+    <p>
+    <input type="radio" id="test1" name="radio-group" checked>
+    <label for="test1">По алфавиту (от А до Я)</label>
+    </p>
+    <p>
+    <input type="radio" id="test2" name="radio-group">
+    <label for="test2">По размеру депозита</label>
+    </p>
+    <p>
+    <input type="radio" id="test3" name="radio-group">
+    <label for="test3">По рейтингу</label>
+    </p>
     <a [routerLink]="['/cryptocurrency/all']" [queryParams]="{algo: algorithm, year: age}" class="saveinput" >Сохранить</a>
     <!--</form>-->
     <a href="#" class="claer" (click)="algorithm = ''; age = ''">X Очистить параметры фильтрации </a>

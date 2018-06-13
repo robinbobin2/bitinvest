@@ -68,6 +68,7 @@ import { Chart3Component } from './crypto/chart3/chart3.component';
 import {NewsResolverService} from "./news/news-resolver.service";
 import { BannerComponent } from './sidebar/banner/banner.component';
 import { CryptoFilterComponent } from './crypto-filter/crypto-filter.component';
+import { MiningFilterComponent } from './mining-filter/mining-filter.component';
 
 
 const appRoutes: Routes = [
@@ -274,7 +275,8 @@ const appRoutes: Routes = [
     Chart2Component,
     Chart3Component,
     BannerComponent,
-    CryptoFilterComponent
+    CryptoFilterComponent,
+    MiningFilterComponent
   ],
   imports: [
     // BrowserAnimationsModule,

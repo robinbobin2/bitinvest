@@ -9168,3 +9168,15 @@ header .top-head .wrapper .setting-top-block li a.search-btn {
   color: #fff;
   background: #383c46;
 }
+a.saveinput {
+  width: 180px;
+height: 57px;
+background: #f58c1b;
+margin: 15px auto 18px;
+font-size: 18px;
+font-weight: bold;
+color: #fff;
+border: none;
+cursor: pointer;
+display: inherit;
+}

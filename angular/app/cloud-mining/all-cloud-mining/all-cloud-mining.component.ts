@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 import { AuthService } from '../../auth.service';
@@ -127,6 +127,18 @@ order: string = 'name';
    }
 
   ngOnInit() {
+      this.route.queryParams.subscribe(params => {
+          this.order = params['order'];
+          if (this.order == undefined) {
+              this.order = 'id'
+          }
+          // this.age = params['year'];
+          // if (this.age == undefined) {
+          //     this.age = ''
+          // }
+      });
+
+
    this.authService.getUser().subscribe(
      response => {
          for(let item of response['portfolio']) {
