@@ -52,7 +52,7 @@
         <entry file="file://$PROJECT_DIR$/app/mining-filter/mining-filter.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
-              <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+              <caret line="27" column="59" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -500,12 +500,12 @@
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
-      <workItem from="1528871430902" duration="9280000" />
+      <workItem from="1528871430902" duration="9328000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="250478000" />
+    <option name="totallyTimeSpent" value="250526000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -968,7 +968,7 @@
     <entry file="file://$PROJECT_DIR$/app/mining-filter/mining-filter.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
-          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+          <caret line="27" column="59" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="59" />
         </state>
       </provider>
     </entry>
