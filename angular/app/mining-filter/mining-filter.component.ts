@@ -13,5 +13,9 @@ export class MiningFilterComponent implements OnInit {
 
   ngOnInit() {
   }
+  setOrder(ord, rev) {
+    this.order=ord;
+    this.reverse=rev;
+  }
 
 }
