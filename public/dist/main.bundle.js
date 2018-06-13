@@ -6285,7 +6285,7 @@ var _a, _b, _c;
 /***/ "./angular/app/mining-filter/mining-filter.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"mining-filter\">\n  <div class=\"filter-top\">\n    <h2>Настройка фильтров</h2>\n    <a href=\"blatant-mining.html\" class=\"close\">×</a>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Алгоритм валюты</h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of algoFilter\"><a (click)=\"algorithm=data\" [ngClass]=\"algorithm==data ? 'active' : '' \">{{data}}</a> </li>\n    </ul>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Статус проекта</h2>\n    <ul class=\"tag-list\">\n      <li ><a [ngClass]=\"status=='both' ? 'active':''\" (click)=\"status='both'\" >Платит/Ожидание</a> </li>\n      <li ><a [ngClass]=\"status=='2' ? 'active':''\" (click)=\"status='2'\">Не платит</a> </li>\n    </ul>\n  </div>\n  <div class=\"sorting\">\n    <h2>Сортировка</h2>\n    <form>\n      <p>\n        <input type=\"radio\" id=\"test1\" name=\"radio-group\" checked>\n        <label for=\"test1\" (click)=\"setOrder('name', false)\">По алфавиту (от А до Я)</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test2\" name=\"radio-group\" checked>\n        <label for=\"test2\" (click)=\"setOrder('name', false)\">По алфавиту (от Я до А)</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test3\" name=\"radio-group\" checked>\n        <label for=\"test3\" (click)=\"setOrder('proc', false)\">Доход на уменьшение</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test4\" name=\"radio-group\" checked>\n        <label for=\"test4\" (click)=\"setOrder('proc', true)\">Доход на увеличение</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test5\" name=\"radio-group\" checked>\n        <label for=\"test5\" (click)=\"setOrder('depo', true)\">Депозит на уменьшение</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test6\" name=\"radio-group\" checked>\n        <label for=\"test6\" (click)=\"setOrder('depo', false)\">Депозит на увеличение</label>\n      </p>\n\n    <a [routerLink]=\"['/cloud-mining/all']\" [queryParams]=\"{order: order, reverse: reverse, status:status }\" class=\"saveinput\" >Сохранить</a>\n    </form>\n    <a href=\"#\" class=\"claer\" (click)=\"algorithm = ''\">X Очистить параметры фильтрации </a>\n\n  </div>\n</section>"
+module.exports = "<section class=\"mining-filter\">\n  <div class=\"filter-top\">\n    <h2>Настройка фильтров</h2>\n    <a href=\"blatant-mining.html\" class=\"close\">×</a>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Категории </h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of categories\"><a (click)=\"cat_id=data.id\" [ngClass]=\"cat_id=data.id ? 'active' : '' \">{{data.name}}</a> </li>\n    </ul>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Статус проекта</h2>\n    <ul class=\"tag-list\">\n      <li ><a [ngClass]=\"status=='both' ? 'active':''\" (click)=\"status='both'\" >Платит/Ожидание</a> </li>\n      <li ><a [ngClass]=\"status=='2' ? 'active':''\" (click)=\"status='2'\">Не платит</a> </li>\n    </ul>\n  </div>\n  <div class=\"sorting\">\n    <h2>Сортировка</h2>\n    <form>\n      <p>\n        <input type=\"radio\" id=\"test1\" name=\"radio-group\" checked>\n        <label for=\"test1\" (click)=\"setOrder('name', false)\">По алфавиту (от А до Я)</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test2\" name=\"radio-group\" checked>\n        <label for=\"test2\" (click)=\"setOrder('name', false)\">По алфавиту (от Я до А)</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test3\" name=\"radio-group\" checked>\n        <label for=\"test3\" (click)=\"setOrder('proc', false)\">Доход на уменьшение</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test4\" name=\"radio-group\" checked>\n        <label for=\"test4\" (click)=\"setOrder('proc', true)\">Доход на увеличение</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test5\" name=\"radio-group\" checked>\n        <label for=\"test5\" (click)=\"setOrder('depo', true)\">Депозит на уменьшение</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test6\" name=\"radio-group\" checked>\n        <label for=\"test6\" (click)=\"setOrder('depo', false)\">Депозит на увеличение</label>\n      </p>\n\n      <a *ngIf=\"cat_id == 0\" [routerLink]=\"['/cloud-mining/all']\" [queryParams]=\"{order: order, reverse: reverse, status:status }\" class=\"saveinput\" >Сохранить</a>\n      <a *ngIf=\"cat_id != 0\" [routerLink]=\"['/cloud-mining/category/', cat_id]\" [queryParams]=\"{order: order, reverse: reverse, status:status }\" class=\"saveinput\" >Сохранить</a>\n    </form>\n    <a href=\"#\" class=\"claer\" (click)=\"algorithm = ''\">X Очистить параметры фильтрации </a>\n\n  </div>\n</section>"
 
 /***/ }),
 
@@ -6302,6 +6302,7 @@ module.exports = ""
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MiningFilterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6312,10 +6313,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var MiningFilterComponent = (function () {
-    function MiningFilterComponent() {
+    function MiningFilterComponent(http) {
+        this.http = http;
+        this.cat_id = 0;
     }
     MiningFilterComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var path = "/categoriesraw/6";
+        var info = this.http.get(path);
+        info.subscribe(function (response) {
+            for (var _i = 0, _a = response['cats']; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (item['count'] > 0) {
+                    _this.categories.push({
+                        id: item['id'],
+                        name: item['name'],
+                        count: item['count']
+                    });
+                }
+            }
+        });
     };
     MiningFilterComponent.prototype.setOrder = function (ord, rev) {
         this.order = ord;
@@ -6329,9 +6348,10 @@ MiningFilterComponent = __decorate([
         template: __webpack_require__("./angular/app/mining-filter/mining-filter.component.html"),
         styles: [__webpack_require__("./angular/app/mining-filter/mining-filter.component.scss")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
 ], MiningFilterComponent);
 
+var _a;
 //# sourceMappingURL=mining-filter.component.js.map
 
 /***/ }),
