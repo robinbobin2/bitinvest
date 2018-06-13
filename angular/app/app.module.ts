@@ -71,9 +71,7 @@ import { CryptoFilterComponent } from './crypto-filter/crypto-filter.component';
 
 
 const appRoutes: Routes = [
-    {
-        path: 'filter', component: CryptoFilterComponent
-    },
+
   {
 
     path:'crypto/:sym', component: CryptoComponent, children: [
@@ -95,6 +93,10 @@ const appRoutes: Routes = [
      }
     ]
   },
+
+    {
+        path: 'mobile-filter', component: CryptoFilterComponent
+    },
 
   {
       path:'posts', component:NewsComponent, children: [
