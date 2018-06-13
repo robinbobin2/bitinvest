@@ -14,8 +14,7 @@ use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class
-OneBTCXEProvider extends FounderProvider
+class OneBTCXEProvider extends FounderProvider
 {
     public function search(Request $request)
     {
