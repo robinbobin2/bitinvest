@@ -24,7 +24,7 @@ class TheRockProvider extends FounderProvider
             return $result;
         }
 
-        foreach ($response->tickers as $value) {
+        foreach ($response as $value) {
             if(!isset($value->ask)){
                 continue;
             }
