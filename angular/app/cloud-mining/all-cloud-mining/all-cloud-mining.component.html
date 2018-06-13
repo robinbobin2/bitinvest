@@ -11,8 +11,8 @@
         </div>
         <div class="select-content" (click) = "showCaret = !showCaret" (appClickOutside)="showCaret=false">
           <div class="select-head">
-            <p *ngIf="order=='name' && !reverse">По алфавиту A-Я</p>
-            <p *ngIf="order=='name' && reverse">По алфавиту Я-А</p>
+            <p *ngIf="order=='name' && !reverse">По алфавиту (от А до Я)</p>
+            <p *ngIf="order=='name' && reverse">По алфавиту (от Я до А)</p>
             <p *ngIf="order=='proc' && reverse">Доход на уменьшение</p>
             <p *ngIf="order=='proc' && !reverse">Доход на увеличение</p>
             <p *ngIf="order=='depo' && reverse">Депозит на уменьшение</p>
@@ -20,8 +20,8 @@
             <span class="curret"></span>
           </div>
           <ul *ngIf="showCaret==true" class="select-body" >
-            <li><a (click)="setOrder('name', false); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: false}" >По алфавиту А-Я</a></li>
-            <li><a (click)="setOrder('name', true); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: true}" >По алфавиту Я-А</a></li>
+            <li><a (click)="setOrder('name', false); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: false}" >По алфавиту (от А до Я)</a></li>
+            <li><a (click)="setOrder('name', true); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: true}" >По алфавиту (от Я до А)</a></li>
             <li><a (click)="setOrder('proc', true); showCaret=false"  routerLink="./" [queryParams]="{order: 'proc', reverse: true}">Доход на уменьшение</a></li>
             <li><a (click)="setOrder('proc', false); showCaret=false" routerLink="./" [queryParams]="{order: 'proc', reverse: false}">Доход на увеличение</a></li>
             <li><a (click)="setOrder('depo', true); showCaret=false" routerLink="./" [queryParams]="{order: 'depo', reverse: true}">Депозит на уменьшение</a></li>

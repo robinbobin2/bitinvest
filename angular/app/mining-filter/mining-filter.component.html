@@ -10,27 +10,41 @@
     </ul>
   </div>
   <div class="categories-block">
-    <h2>Год</h2>
+    <h2>Статус проекта</h2>
     <ul class="tag-list">
-      <li *ngFor="let data of yearFilter"><a  (click)="age=data" [ngClass]="age==data ? 'active' : '' ">{{data}}</a> </li>
+      <li *ngFor="let data of yearFilter"><a [ngClass]="status=='both' ? 'active':''" (click)="status='both'" >Платит/Ожидание</a> </li>
+      <li *ngFor="let data of yearFilter"><a [ngClass]="status=='2' ? 'active':''" (click)="status='2'">Не платит</a> </li>
     </ul>
   </div>
   <div class="sorting">
     <h2>Сортировка</h2>
     <form>
-    <p>
-    <input type="radio" id="test1" name="radio-group" checked>
-    <label for="test1">По алфавиту (от А до Я)</label>
-    </p>
-    <p>
-    <input type="radio" id="test2" name="radio-group">
-    <label for="test2">По размеру депозита</label>
-    </p>
-    <p>
-    <input type="radio" id="test3" name="radio-group">
-    <label for="test3">По рейтингу</label>
-    </p>
-    <a [routerLink]="['/cryptocurrency/all']" [queryParams]="{algo: algorithm, year: age}" class="saveinput" >Сохранить</a>
+      <p>
+        <input type="radio" id="test1" name="radio-group" checked>
+        <label for="test1" (click)="order='name'; reverse=false">По алфавиту (от А до Я)</label>
+      </p>
+      <p>
+        <input type="radio" id="test2" name="radio-group" checked>
+        <label for="test2" (click)="order='name'; reverse=true">По алфавиту (от Я до А)</label>
+      </p>
+      <p>
+        <input type="radio" id="test3" name="radio-group" checked>
+        <label for="test3" (click)="order='proc'; reverse=false">Доход на уменьшение</label>
+      </p>
+      <p>
+        <input type="radio" id="test4" name="radio-group" checked>
+        <label for="test4" (click)="order='proc'; reverse=true">Доход на увеличение</label>
+      </p>
+      <p>
+        <input type="radio" id="test5" name="radio-group" checked>
+        <label for="test5" (click)="order='depo'; reverse=true">Депозит на уменьшение</label>
+      </p>
+      <p>
+        <input type="radio" id="test6" name="radio-group" checked>
+        <label for="test6" (click)="order='depo'; reverse=false">Депозит на увеличение</label>
+      </p>
+
+    <a [routerLink]="['/cloud-mining/all']" [queryParams]="{order: order, reverse: reverse, status:status }" class="saveinput" >Сохранить</a>
     </form>
     <a href="#" class="claer" (click)="algorithm = ''">X Очистить параметры фильтрации </a>
 

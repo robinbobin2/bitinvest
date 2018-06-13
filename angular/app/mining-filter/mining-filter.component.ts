@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mining-filter.component.scss']
 })
 export class MiningFilterComponent implements OnInit {
-
+    status:any;
+    order:any;
+    reverse:any;
   constructor() { }
 
   ngOnInit() {
