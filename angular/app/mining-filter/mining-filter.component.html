@@ -12,8 +12,8 @@
   <div class="categories-block">
     <h2>Статус проекта</h2>
     <ul class="tag-list">
-      <li *ngFor="let data of yearFilter"><a [ngClass]="status=='both' ? 'active':''" (click)="status='both'" >Платит/Ожидание</a> </li>
-      <li *ngFor="let data of yearFilter"><a [ngClass]="status=='2' ? 'active':''" (click)="status='2'">Не платит</a> </li>
+      <li ><a [ngClass]="status=='both' ? 'active':''" (click)="status='both'" >Платит/Ожидание</a> </li>
+      <li ><a [ngClass]="status=='2' ? 'active':''" (click)="status='2'">Не платит</a> </li>
     </ul>
   </div>
   <div class="sorting">
