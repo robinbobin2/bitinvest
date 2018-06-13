@@ -1,7 +1,7 @@
 <section class="mining-filter">
   <div class="filter-top">
     <h2>Настройка фильтров</h2>
-    <a routerLink="/ico-project/all" class="close">×</a>
+    <a routerLink="/ico/all" class="close">×</a>
   </div>
   <div class="categories-block">
     <h2>Категории </h2>
@@ -25,7 +25,7 @@
       </p>
       <p>
         <input type="radio" id="test2" name="radio-group" >
-        <label for="test2" (click)="setOrder('name', false)">По алфавиту (от Я до А)</label>
+        <label for="test2" (click)="setOrder('name', true)">По алфавиту (от Я до А)</label>
       </p>
       <p>
         <input type="radio" id="test3" name="radio-group" >
@@ -36,8 +36,8 @@
         <label for="test4" (click)="setOrder('percentage', true)">По сумме собранных средств увеличение</label>
       </p>
 
-      <a *ngIf="cat_id == 0" [routerLink]="['/ico-project/all']" [queryParams]="{order: order, reverse: reverse, status:status }" class="saveinput" >Сохранить</a>
-      <a *ngIf="cat_id != 0" [routerLink]="['/ico-project/category/', cat_id]" [queryParams]="{order: order, reverse: reverse, status:status }" class="saveinput" >Сохранить</a>
+      <a *ngIf="cat_id == 0" [routerLink]="['/ico/all']" [queryParams]="{order: order, reverse: reverse, status:status }" class="saveinput" >Сохранить</a>
+      <a *ngIf="cat_id != 0" [routerLink]="['/ico/category/', cat_id]" [queryParams]="{order: order, reverse: reverse, status:status }" class="saveinput" >Сохранить</a>
     </form>
     <a href="#" class="claer" (click)="status = 0; order=name; reverse=false">X Очистить параметры фильтрации </a>
 
