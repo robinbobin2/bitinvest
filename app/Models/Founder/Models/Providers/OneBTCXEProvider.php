@@ -14,7 +14,8 @@ use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class OneBTCXEProvider extends FounderProvider
+class
+OneBTCXEProvider extends FounderProvider
 {
     public function search(Request $request)
     {
@@ -28,7 +29,7 @@ class OneBTCXEProvider extends FounderProvider
         $ticker = new TickerEntity();
         $ticker->setAsk((float)$response->ask);
         $ticker->setBid((float)$response->bid);
-        $ticker->setVolume((float)$response->volume);
+        $ticker->setVolume((float)$response->trade_volume);
         $ticker->setValue((float)$response->last_price);
         $ticker->setExchangeId($this->getExchangeId());
         $ticker->setCurrency("BTC/USD");
