@@ -104,6 +104,10 @@ const appRoutes: Routes = [
     },
 
     {
+        path: 'ico-filter', component: IcoFilterComponent
+    },
+
+    {
       path:'posts', component:NewsComponent, children: [
       
       {

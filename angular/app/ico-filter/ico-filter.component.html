@@ -1,3 +1,45 @@
-<p>
-  ico-filter works!
-</p>
+<section class="mining-filter">
+  <div class="filter-top">
+    <h2>Настройка фильтров</h2>
+    <a routerLink="/ico-project/all" class="close">×</a>
+  </div>
+  <div class="categories-block">
+    <h2>Категории </h2>
+    <ul class="tag-list">
+      <li *ngFor="let data of categories"><a (click)="cat_id=data.id" [ngClass]="cat_id==data.id ? 'active' : '' ">{{data.name}}</a> </li>
+    </ul>
+  </div>
+  <div class="categories-block">
+    <h2>Статус проекта</h2>
+    <ul class="tag-list">
+      <li ><a [ngClass]="status==1 ? 'active':''" (click)="status=1" >Активные</a> </li>
+      <li ><a [ngClass]="status==2 ? 'active':''" (click)="status=2">Завершенные</a> </li>
+    </ul>
+  </div>
+  <div class="sorting">
+    <h2>Сортировка</h2>
+    <form>
+      <p>
+        <input type="radio" id="test1" name="radio-group" checked>
+        <label for="test1" (click)="setOrder('name', false)">По алфавиту (от А до Я)</label>
+      </p>
+      <p>
+        <input type="radio" id="test2" name="radio-group" >
+        <label for="test2" (click)="setOrder('name', false)">По алфавиту (от Я до А)</label>
+      </p>
+      <p>
+        <input type="radio" id="test3" name="radio-group" >
+        <label for="test3" (click)="setOrder('percentage', false)">По сумме собранных средств увеличение</label>
+      </p>
+      <p>
+        <input type="radio" id="test4" name="radio-group" >
+        <label for="test4" (click)="setOrder('percentage', true)">По сумме собранных средств увеличение</label>
+      </p>
+
+      <a *ngIf="cat_id == 0" [routerLink]="['/ico-project/all']" [queryParams]="{order: order, reverse: reverse, status:status }" class="saveinput" >Сохранить</a>
+      <a *ngIf="cat_id != 0" [routerLink]="['/ico-project/category/', cat_id]" [queryParams]="{order: order, reverse: reverse, status:status }" class="saveinput" >Сохранить</a>
+    </form>
+    <a href="#" class="claer" (click)="status = 0; order=name; reverse=false">X Очистить параметры фильтрации </a>
+
+  </div>
+</section>

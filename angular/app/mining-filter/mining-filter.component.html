@@ -1,7 +1,7 @@
 <section class="mining-filter">
   <div class="filter-top">
     <h2>Настройка фильтров</h2>
-    <a href="blatant-mining.html" class="close">×</a>
+    <a routerLink="/cloud-mining/all" class="close">×</a>
   </div>
   <div class="categories-block">
     <h2>Категории </h2>
@@ -24,23 +24,23 @@
         <label for="test1" (click)="setOrder('name', false)">По алфавиту (от А до Я)</label>
       </p>
       <p>
-        <input type="radio" id="test2" name="radio-group" checked>
+        <input type="radio" id="test2" name="radio-group"  >
         <label for="test2" (click)="setOrder('name', false)">По алфавиту (от Я до А)</label>
       </p>
       <p>
-        <input type="radio" id="test3" name="radio-group" checked>
+        <input type="radio" id="test3" name="radio-group"  >
         <label for="test3" (click)="setOrder('proc', false)">Доход на уменьшение</label>
       </p>
       <p>
-        <input type="radio" id="test4" name="radio-group" checked>
+        <input type="radio" id="test4" name="radio-group"  >
         <label for="test4" (click)="setOrder('proc', true)">Доход на увеличение</label>
       </p>
       <p>
-        <input type="radio" id="test5" name="radio-group" checked>
+        <input type="radio" id="test5" name="radio-group"  >
         <label for="test5" (click)="setOrder('depo', true)">Депозит на уменьшение</label>
       </p>
       <p>
-        <input type="radio" id="test6" name="radio-group" checked>
+        <input type="radio" id="test6" name="radio-group"  >
         <label for="test6" (click)="setOrder('depo', false)">Депозит на увеличение</label>
       </p>
 
