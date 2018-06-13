@@ -1,22 +1,33 @@
 <div class="ico-content">
       <div class="ico-head">
         <h1>ICO<span>{{icoCount}}</span><a href="/"><img src="img/mining-icon.png" alt=""></a></h1>
-        <ul class="ico-tabs">
-          <li class="active"><label for="filter1"><input type="radio" id="filter1" value="1" [(ngModel)]="status" name="status"><a>Активные ({{activeCount}})</a></label></li>
-          <li><input type="radio" id="filter2" value="2" [(ngModel)]="status" name="status"><a>Завершенные ({{inactiveCount}})</a></li>
-        </ul>
-        <form>
-          <input type="text" placeholder="Поиск по названию">
-        </form>
+          <ul class="ico-tabs">
+              <li [ngClass]="status==1 ? 'active':''"><label for="filter1"><input type="radio" id="filter1" value="1" [(ngModel)]="status" name="status">
+                  <a (click)="status=1"
+                     routerLink="./" [queryParams]="{order: order, reverse: reverse, status: 1}">
+                      Активные ({{activeCount}})</a></label></li>
+              <li [ngClass]="status==2 ? 'active':''"><input type="radio" id="filter2" value="2" [(ngModel)]="status" name="status">
+                  <a (click)="status=2"
+                     routerLink="./" [queryParams]="{order: order, reverse: reverse, status: 2}"
+                  >Завершенные ({{inactiveCount}})</a></li>
+          </ul>
+          <form>
+              <input type="text" placeholder="Поиск по названию" [(ngModel)]="filteredName" name="filteredName">
+          </form>
       </div>
     <div class="select-content" (click) = "showCaret = !showCaret"  (appClickOutside)="showCaret=false">
         <div class="select-head">
-            <p>По алфавиту</p>
+            <p *ngIf="order=='name' && !reverse">По алфавиту (от А до Я)</p>
+            <p *ngIf="order=='name' && reverse">По алфавиту (от Я до А)</p>
+            <p *ngIf="order=='percentage' && reverse">По сумме собранных средств увеличение</p>
+            <p *ngIf="order=='percentage' && !reverse">>По сумме собранных средств уменьшение</p>
             <span class="curret"></span>
         </div>
         <ul class="select-body" *ngIf="showCaret==true" >
-            <li><a (click)="setOrder('percentage')">По сумме собранных средств увеличение</a></li>
-            <li><a (click)="setOrder('percentage')">По сумме собранных средств уменьшение</a></li>
+            <li><a (click)="setOrder('name',false); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: false, status: status}">По алфавиту (от А до Я)</a></li>
+            <li><a (click)="setOrder('name',true); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: true, status: status}">По алфавиту (от Я до А)</a></li>
+            <li><a (click)="setOrder('percentage',false); showCaret=false" routerLink="./" [queryParams]="{order: 'percentage', reverse: false, status: status}">По сумме собранных средств увеличение</a></li>
+            <li><a (click)="setOrder('percentage', true); showCaret=false" routerLink="./" [queryParams]="{order: 'percentage', reverse: true, status: status}">По сумме собранных средств уменьшение</a></li>
         </ul>
     </div>
 				<div class="project-wrapper active">

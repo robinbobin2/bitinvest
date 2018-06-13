@@ -29,5 +29,9 @@ export class IcoFilterComponent implements OnInit {
           }
       });
   }
+    setOrder(ord, rev) {
+        this.order=ord;
+        this.reverse=rev;
+    }
 
 }

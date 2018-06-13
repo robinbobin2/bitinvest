@@ -50,7 +50,8 @@ export class IcoProjectCategoriesComponent implements OnInit {
   activeCount = 0;
   inactiveCount = 0;
   icoCount = 0;
-    showCaret = false
+    showCaret = false;
+    status='1';
   news_raw: any[];
 	news: Array<NewsRaw> = [];
 
@@ -119,12 +120,14 @@ export class IcoProjectCategoriesComponent implements OnInit {
       );
 }
 
-    setOrder(value: string) {
+    setOrder(value: string, reverse) {
         if (this.order === value) {
             this.reverse = !this.reverse;
         }
         this.order = value;
-        console.log(this.order);
+        if (reverse != 'none') {
+            this.reverse = reverse;
+        }
     }
     checkAuth() {
         if(this.authService.getUserInfo()) {
