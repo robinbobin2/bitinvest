@@ -2801,6 +2801,7 @@ module.exports = ""
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CryptoFilterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2811,10 +2812,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var CryptoFilterComponent = (function () {
-    function CryptoFilterComponent() {
+    function CryptoFilterComponent(http) {
+        this.http = http;
+        this.algorithm = '';
+        this.year = '';
+        this.algoFilter = [];
+        this.yearFilter = [];
     }
     CryptoFilterComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var alldata = this.http.get('/allcrypto');
+        alldata.subscribe(function (response) {
+            _this.algoFilter = Array.from(new Set(response.map(function (item) { return item.algo; }))).slice();
+            _this.yearFilter = Array.from(new Set(response.map(function (item) { return item.year; }))).slice();
+            console.log(_this.algoFilter);
+            console.log(_this.yearFilter);
+        });
     };
     return CryptoFilterComponent;
 }());
@@ -2824,9 +2839,10 @@ CryptoFilterComponent = __decorate([
         template: __webpack_require__("./angular/app/crypto-filter/crypto-filter.component.html"),
         styles: [__webpack_require__("./angular/app/crypto-filter/crypto-filter.component.scss")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
 ], CryptoFilterComponent);
 
+var _a;
 //# sourceMappingURL=crypto-filter.component.js.map
 
 /***/ }),
