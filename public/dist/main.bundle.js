@@ -857,6 +857,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var appRoutes = [
     {
+        path: 'filter', component: __WEBPACK_IMPORTED_MODULE_66__crypto_filter_crypto_filter_component__["a" /* CryptoFilterComponent */]
+    },
+    {
         path: 'crypto/:sym', component: __WEBPACK_IMPORTED_MODULE_7__crypto_crypto_component__["a" /* CryptoComponent */], children: [
             {
                 path: 'news', component: __WEBPACK_IMPORTED_MODULE_7__crypto_crypto_component__["a" /* CryptoComponent */]
@@ -985,9 +988,6 @@ var appRoutes = [
     {
         path: 'exchange/:name', component: __WEBPACK_IMPORTED_MODULE_58__exchange_exchange_component__["a" /* ExchangeComponent */]
     },
-    {
-        path: 'filter', component: __WEBPACK_IMPORTED_MODULE_66__crypto_filter_crypto_filter_component__["a" /* CryptoFilterComponent */]
-    }
 ];
 var AppModule = (function () {
     function AppModule() {

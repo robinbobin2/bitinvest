@@ -71,9 +71,13 @@ import { CryptoFilterComponent } from './crypto-filter/crypto-filter.component';
 
 
 const appRoutes: Routes = [
+    {
+        path: 'filter', component: CryptoFilterComponent
+    },
   {
+
     path:'crypto/:sym', component: CryptoComponent, children: [
-      
+
       {
       path:'news', component:CryptoComponent
      },
@@ -91,6 +95,7 @@ const appRoutes: Routes = [
      }
     ]
   },
+
   {
       path:'posts', component:NewsComponent, children: [
       
@@ -208,9 +213,7 @@ const appRoutes: Routes = [
   {
       path:'exchange/:name', component:ExchangeComponent
   },
-    {
-        path: 'filter', component: CryptoFilterComponent
-    }
+
     
 ];
 @NgModule({
