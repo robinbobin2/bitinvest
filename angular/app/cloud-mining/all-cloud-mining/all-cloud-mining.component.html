@@ -11,7 +11,7 @@
         </div>
         <div class="select-content" (click) = "showCaret = !showCaret" (appClickOutside)="showCaret=false">
           <div class="select-head">
-            <p *ngIf="order=='name'">По алфавиту A-Я</p>
+            <p *ngIf="order=='name' && reverse==false">По алфавиту A-Я</p>
             <p *ngIf="order=='name' && reverse==true">По алфавиту Я-А</p>
             <p *ngIf="order=='proc' && reverse==true">Доход на уменьшение</p>
             <p *ngIf="order=='proc' && reverse==false">Доход на увеличение</p>

@@ -141,7 +141,8 @@ order: string = 'name';
           if (this.reverse == undefined) {
               this.reverse = false
           }
-
+          console.log('reverse')
+          console.log(this.reverse)
           // this.age = params['year'];
           // if (this.age == undefined) {
           //     this.age = ''
