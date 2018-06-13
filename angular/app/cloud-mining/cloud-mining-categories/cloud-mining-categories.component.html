@@ -2,27 +2,32 @@
         <div class="mining-head">
           <h1>Облачный майнинг<span>{{allCount}}</span><a href="balant-mining-filter.html"><img src="img/mining-icon.png" alt=""></a></h1>
           <ul class="mining-tabs">
-            <li class="active"><a href="#">Платит/Ожидание ({{active}})</a></li>
-            <li><a href="#">Не платит ({{inactive}})</a></li>
+            <li [ngClass]="status=='both' ? 'active':''"><a routerLink="./" (click)="status='both'" routerLink="./" [queryParams]="{order: order, reverse: reverse, status: 'both'}">Платит/Ожидание ({{active}})</a></li>
+            <li [ngClass]="status==2 ? 'active':''"><a routerLink="./" (click)="status=2" [queryParams]="{order: order, reverse: reverse, status: '2'}">Не платит ({{inactive}})</a></li>
           </ul>
           <form>
-            <input type="text" placeholder="Поиск по названию">
+            <input type="text" placeholder="Поиск по названию" [(ngModel)]="filteredName" name="filteredName">
           </form>
         </div>
-        <div class="select-content" (click) = "showCaret = true" (appClickOutside)="showCaret=false">
-          <div class="select-head">
-            <p>По алфавиту</p>
-            <span class="curret"></span>
-          </div>
-          <ul *ngIf="showCaret==true"  class="select-body">
-            <li><a href="#" (click)="setOrder('name', false)" >По алфавиту</a></li>
-
-            <li><a href="#" (click)="setOrder('proc', true)" >Доход на уменьшение</a></li>
-            <li><a href="#" (click)="setOrder('proc', false)">Доход на увеличение</a></li>
-            <li><a href="#" (click)="setOrder('depo', true)">Депозит на уменьшение</a></li>
-            <li><a href="#" (click)="setOrder('depo', false)">Депозит на увеличение</a></li>
-          </ul>
-        </div>
+  <div class="select-content" (click) = "showCaret = !showCaret" (appClickOutside)="showCaret=false">
+    <div class="select-head">
+      <p *ngIf="order=='name' && !reverse">По алфавиту (от А до Я)</p>
+      <p *ngIf="order=='name' && reverse">По алфавиту (от Я до А)</p>
+      <p *ngIf="order=='proc' && reverse">Доход на уменьшение</p>
+      <p *ngIf="order=='proc' && !reverse">Доход на увеличение</p>
+      <p *ngIf="order=='depo' && reverse">Депозит на уменьшение</p>
+      <p *ngIf="order=='depo' && !reverse">Депозит на увеличение</p>
+      <span class="curret"></span>
+    </div>
+    <ul *ngIf="showCaret==true" class="select-body" >
+      <li><a (click)="setOrder('name', false); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: false}" >По алфавиту (от А до Я)</a></li>
+      <li><a (click)="setOrder('name', true); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: true}" >По алфавиту (от Я до А)</a></li>
+      <li><a (click)="setOrder('proc', true); showCaret=false"  routerLink="./" [queryParams]="{order: 'proc', reverse: true}">Доход на уменьшение</a></li>
+      <li><a (click)="setOrder('proc', false); showCaret=false" routerLink="./" [queryParams]="{order: 'proc', reverse: false}">Доход на увеличение</a></li>
+      <li><a (click)="setOrder('depo', true); showCaret=false" routerLink="./" [queryParams]="{order: 'depo', reverse: true}">Депозит на уменьшение</a></li>
+      <li><a (click)="setOrder('depo', false); showCaret=false" routerLink="./" [queryParams]="{order: 'depo', reverse: false}">Депозит на увеличение</a></li>
+    </ul>
+  </div>
         <div class="project-wrapper active">
           <div class="project-block" *ngFor="let item of news | filterNameActive:status:'status' | filterName:filteredName:'name' | orderBy: order:reverse:'case-insensitive'">
             <div class="img-wrap">

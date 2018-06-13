@@ -6,7 +6,7 @@
   <div class="categories-block">
     <h2>Категории </h2>
     <ul class="tag-list">
-      <li *ngFor="let data of categories"><a (click)="cat_id=data.id" [ngClass]="cat_id=data.id ? 'active' : '' ">{{data.name}}</a> </li>
+      <li *ngFor="let data of categories"><a (click)="cat_id=data.id" [ngClass]="cat_id==data.id ? 'active' : '' ">{{data.name}}</a> </li>
     </ul>
   </div>
   <div class="categories-block">

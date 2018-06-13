@@ -17,11 +17,35 @@
       <file leaf-file-name="all-cloud-mining.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="56" />
+            <state relative-caret-position="389">
+              <caret line="29" column="14" lean-forward="true" selection-start-line="3" selection-start-column="10" selection-end-line="29" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#span#2;n#div#3;n#div#0;n#a#0;n#li#0;n#ul#0;n#div#3;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#3;n#div#3;n#div#0;n#a#0;n#li#0;n#ul#0;n#div#3;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cloud-mining-categories.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-354">
+              <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="all-cloud-mining.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="130" column="6" lean-forward="true" selection-start-line="130" selection-start-column="6" selection-end-line="147" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,8 +72,8 @@
       <file leaf-file-name="mining-filter.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/mining-filter/mining-filter.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="47" column="77" selection-start-line="47" selection-start-column="77" selection-end-line="47" selection-end-column="77" />
+            <state relative-caret-position="120">
+              <caret line="8" column="90" selection-start-line="8" selection-start-column="90" selection-end-line="8" selection-end-column="90" />
             </state>
           </provider>
         </entry>
@@ -82,8 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&lt;ng</find>
-      <find>quotes quotes-top</find>
       <find>input-c</find>
       <find>mob</find>
       <find>mobi</find>
@@ -109,9 +131,11 @@
       <find>algor</find>
       <find>mobil</find>
       <find>onini</find>
-      <find>status</find>
       <find>reverse</find>
       <find>que</find>
+      <find>show</find>
+      <find>status</find>
+      <find>ngClass</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -123,8 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/ico-project/ico-project-categories/ico-project-categories.component.html" />
-        <option value="$PROJECT_DIR$/app/edit-profile/edit-profile.component.html" />
         <option value="$PROJECT_DIR$/app/edit-profile/edit-profile.component.ts" />
         <option value="$PROJECT_DIR$/app/news/news.component.ts" />
         <option value="$PROJECT_DIR$/app/auth.service.ts" />
@@ -170,9 +192,11 @@
         <option value="$PROJECT_DIR$/app/crypto-filter/crypto-filter.component.ts" />
         <option value="$PROJECT_DIR$/app/crypto-filter/crypto-filter.component.html" />
         <option value="$PROJECT_DIR$/app/app.module.ts" />
-        <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts" />
         <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html" />
         <option value="$PROJECT_DIR$/app/mining-filter/mining-filter.component.ts" />
+        <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.html" />
+        <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts" />
+        <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.ts" />
         <option value="$PROJECT_DIR$/app/mining-filter/mining-filter.component.html" />
       </list>
     </option>
@@ -500,12 +524,12 @@
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
-      <workItem from="1528871430902" duration="10010000" />
+      <workItem from="1528871430902" duration="11088000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="251208000" />
+    <option name="totallyTimeSpent" value="252286000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -538,20 +562,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/interview/interview.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/interview/interview.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/review/review.component.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -570,16 +580,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="919" column="81" lean-forward="true" selection-start-line="918" selection-start-column="28" selection-end-line="919" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="84" selection-start-line="6" selection-start-column="84" selection-end-line="6" selection-end-column="84" />
-          <folding>
-            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -795,7 +795,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-115" />
+        <state relative-caret-position="-115">
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/app.component.html">
@@ -929,34 +933,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="56" />
-          <folding>
-            <element signature="n#style#0;n#span#2;n#div#3;n#div#0;n#a#0;n#li#0;n#ul#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#3;n#div#3;n#div#0;n#a#0;n#li#0;n#ul#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto-filter/crypto-filter.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -974,10 +950,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="84" selection-start-line="6" selection-start-column="84" selection-end-line="6" selection-end-column="84" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="29" column="14" lean-forward="true" selection-start-line="3" selection-start-column="10" selection-end-line="29" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#span#2;n#div#3;n#div#0;n#a#0;n#li#0;n#ul#0;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#3;n#div#3;n#div#0;n#a#0;n#li#0;n#ul#0;n#div#3;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="130" column="6" lean-forward="true" selection-start-line="130" selection-start-column="6" selection-end-line="147" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-354">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/mining-filter/mining-filter.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="47" column="77" selection-start-line="47" selection-start-column="77" selection-end-line="47" selection-end-column="77" />
+        <state relative-caret-position="120">
+          <caret line="8" column="90" selection-start-line="8" selection-start-column="90" selection-end-line="8" selection-end-column="90" />
         </state>
       </provider>
     </entry>
