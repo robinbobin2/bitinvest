@@ -22,7 +22,7 @@ class TheRockConnector extends FounderConnector
     public function sendRequest()
     {
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "https://api.hitbtc.com/api/2/public/ticker");
+        curl_setopt($curl, CURLOPT_URL, "https://api.therocktrading.com/v1/funds/tickers");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($curl);
         SupplierLog::log("search", $result, 56);
