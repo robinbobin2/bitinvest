@@ -47,6 +47,7 @@ class BraziliexConnector extends FounderConnector
 
         // send request
         $res = curl_exec($ch);
+        $res = json_decode($res);
         return $res;
     }
 
