@@ -209,7 +209,6 @@ setOrder(value: string, reverse) {
         this.reverse = reverse;
     }
     this.order = value;
-    console.log(this.order);
 }
   portfolio = { 
       'id': '',

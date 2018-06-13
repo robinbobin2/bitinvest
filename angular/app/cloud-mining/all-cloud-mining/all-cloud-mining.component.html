@@ -20,12 +20,12 @@
             <span class="curret"></span>
           </div>
           <ul *ngIf="showCaret==true" class="select-body" >
-            <li><a (click)="setOrder('name', false); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: false}" >По алфавиту (от А до Я)</a></li>
-            <li><a (click)="setOrder('name', true); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: true}" >По алфавиту (от Я до А)</a></li>
-            <li><a (click)="setOrder('proc', true); showCaret=false"  routerLink="./" [queryParams]="{order: 'proc', reverse: true}">Доход на уменьшение</a></li>
-            <li><a (click)="setOrder('proc', false); showCaret=false" routerLink="./" [queryParams]="{order: 'proc', reverse: false}">Доход на увеличение</a></li>
-            <li><a (click)="setOrder('depo', true); showCaret=false" routerLink="./" [queryParams]="{order: 'depo', reverse: true}">Депозит на уменьшение</a></li>
-            <li><a (click)="setOrder('depo', false); showCaret=false" routerLink="./" [queryParams]="{order: 'depo', reverse: false}">Депозит на увеличение</a></li>
+            <li><a (click)="setOrder('name', false); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: false, status: status}" >По алфавиту (от А до Я)</a></li>
+            <li><a (click)="setOrder('name', true); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: true, status: status}" >По алфавиту (от Я до А)</a></li>
+            <li><a (click)="setOrder('proc', true); showCaret=false"  routerLink="./" [queryParams]="{order: 'proc', reverse: true, status: status}">Доход на уменьшение</a></li>
+            <li><a (click)="setOrder('proc', false); showCaret=false" routerLink="./" [queryParams]="{order: 'proc', reverse: false, status: status}">Доход на увеличение</a></li>
+            <li><a (click)="setOrder('depo', true); showCaret=false" routerLink="./" [queryParams]="{order: 'depo', reverse: true, status: status}">Депозит на уменьшение</a></li>
+            <li><a (click)="setOrder('depo', false); showCaret=false" routerLink="./" [queryParams]="{order: 'depo', reverse: false, status: status}">Депозит на увеличение</a></li>
           </ul>
         </div>
         <div class="project-wrapper active">

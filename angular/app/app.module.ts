@@ -69,6 +69,7 @@ import {NewsResolverService} from "./news/news-resolver.service";
 import { BannerComponent } from './sidebar/banner/banner.component';
 import { CryptoFilterComponent } from './crypto-filter/crypto-filter.component';
 import { MiningFilterComponent } from './mining-filter/mining-filter.component';
+import { IcoFilterComponent } from './ico-filter/ico-filter.component';
 
 
 const appRoutes: Routes = [
@@ -279,7 +280,8 @@ const appRoutes: Routes = [
     Chart3Component,
     BannerComponent,
     CryptoFilterComponent,
-    MiningFilterComponent
+    MiningFilterComponent,
+    IcoFilterComponent
   ],
   imports: [
     // BrowserAnimationsModule,
