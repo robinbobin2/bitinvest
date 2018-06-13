@@ -2,8 +2,8 @@
         <div class="mining-head">
           <h1>Облачный майнинг<span>{{allCount}}</span><a href="balant-mining-filter.html"><img src="/img/mining-icon.png" alt=""></a></h1>
           <ul class="mining-tabs">
-            <li class="active"><a href="#" (click)="status='both'">Платит/Ожидание ({{active}})</a></li>
-            <li><a href="#" (click)="status=2">Не платит ({{inactive}})</a></li>
+            <li [ngClass]="status=='both' ? 'active':''"><a href="#" (click)="status='both'" routerLink="./" [queryParams]="{order: order, reverse: reverse, status: 'both'}">Платит/Ожидание ({{active}})</a></li>
+            <li [ngClass]="status==2 ? 'active':''"><a href="#" (click)="status=2" [queryParams]="{order: order, reverse: reverse, status: '2'}">Не платит ({{inactive}})</a></li>
           </ul>
           <form>
             <input type="text" placeholder="Поиск по названию" [(ngModel)]="filteredName" name="filteredName">
@@ -20,7 +20,8 @@
             <span class="curret"></span>
           </div>
           <ul *ngIf="showCaret==true" class="select-body" >
-            <li><a (click)="setOrder('name', false); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: false}" >По алфавиту</a></li>
+            <li><a (click)="setOrder('name', false); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: false}" >По алфавиту А-Я</a></li>
+            <li><a (click)="setOrder('name', true); showCaret=false" routerLink="./" [queryParams]="{order: 'name', reverse: true}" >По алфавиту Я-А</a></li>
             <li><a (click)="setOrder('proc', true); showCaret=false"  routerLink="./" [queryParams]="{order: 'proc', reverse: true}">Доход на уменьшение</a></li>
             <li><a (click)="setOrder('proc', false); showCaret=false" routerLink="./" [queryParams]="{order: 'proc', reverse: false}">Доход на увеличение</a></li>
             <li><a (click)="setOrder('depo', true); showCaret=false" routerLink="./" [queryParams]="{order: 'depo', reverse: true}">Депозит на уменьшение</a></li>

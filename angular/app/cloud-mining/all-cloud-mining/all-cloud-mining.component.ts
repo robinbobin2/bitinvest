@@ -65,6 +65,7 @@ order: string = 'name';
   show = false;
   portfolioInfo:any;
   showCaret = false;
+  status = 'both'
    constructor(private authService: AuthService, 
      private orderPipe: OrderPipe, 
      private http:HttpClient, 
@@ -129,9 +130,18 @@ order: string = 'name';
   ngOnInit() {
       this.route.queryParams.subscribe(params => {
           this.order = params['order'];
+          this.reverse = params['reverse'];
+          this.status = params['status'];
+          if (this.status == undefined) {
+              this.status = ''
+          }
           if (this.order == undefined) {
               this.order = 'id'
           }
+          if (this.reverse == undefined) {
+              this.reverse = false
+          }
+
           // this.age = params['year'];
           // if (this.age == undefined) {
           //     this.age = ''
