@@ -70,6 +70,7 @@ import { BannerComponent } from './sidebar/banner/banner.component';
 import { CryptoFilterComponent } from './crypto-filter/crypto-filter.component';
 import { MiningFilterComponent } from './mining-filter/mining-filter.component';
 import { IcoFilterComponent } from './ico-filter/ico-filter.component';
+import { ExchangeFilterComponent } from './exchange-filter/exchange-filter.component';
 
 
 const appRoutes: Routes = [
@@ -105,6 +106,10 @@ const appRoutes: Routes = [
 
     {
         path: 'ico-filter', component: IcoFilterComponent
+    },
+
+    {
+        path: 'exchange-filter', component: ExchangeFilterComponent
     },
 
     {
@@ -285,7 +290,8 @@ const appRoutes: Routes = [
     BannerComponent,
     CryptoFilterComponent,
     MiningFilterComponent,
-    IcoFilterComponent
+    IcoFilterComponent,
+    ExchangeFilterComponent
   ],
   imports: [
     // BrowserAnimationsModule,
