@@ -139,7 +139,13 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.route.queryParams.subscribe(params => {
             this.algorithm = params['algo'];
+            if (this.algorithm == undefined) {
+                this.algorithm = ''
+            }
             this.age = params['year'];
+            if (this.age == undefined) {
+                this.age = ''
+            }
         });
         this.router.events
             .filter(event => event instanceof NavigationEnd)
