@@ -209,7 +209,7 @@ const appRoutes: Routes = [
       path:'exchange/:name', component:ExchangeComponent
   },
     {
-        path: 'filter', component: CryptoRootComponent
+        path: 'filter', component: CryptoFilterComponent
     }
     
 ];

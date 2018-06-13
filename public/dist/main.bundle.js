@@ -986,7 +986,7 @@ var appRoutes = [
         path: 'exchange/:name', component: __WEBPACK_IMPORTED_MODULE_58__exchange_exchange_component__["a" /* ExchangeComponent */]
     },
     {
-        path: 'filter', component: __WEBPACK_IMPORTED_MODULE_34__crypto_root_crypto_root_component__["a" /* CryptoRootComponent */]
+        path: 'filter', component: __WEBPACK_IMPORTED_MODULE_66__crypto_filter_crypto_filter_component__["a" /* CryptoFilterComponent */]
     }
 ];
 var AppModule = (function () {
