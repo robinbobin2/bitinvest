@@ -57,7 +57,7 @@ class BraziliexProvider extends FounderProvider
     /**
      * @return BraziliexConnector
      */
-    protected function getConnector()
+    public function getConnector()
     {
         /** @var BraziliexConnector $connector */
         $connector = parent::getConnector();
