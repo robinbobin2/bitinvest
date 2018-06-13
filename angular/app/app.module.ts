@@ -96,10 +96,13 @@ const appRoutes: Routes = [
   },
 
     {
-        path: 'mobile-filter', component: CryptoFilterComponent
+        path: 'crypto-filter', component: CryptoFilterComponent
+    },
+    {
+        path: 'mining-filter', component: MiningFilterComponent
     },
 
-  {
+    {
       path:'posts', component:NewsComponent, children: [
       
       {
