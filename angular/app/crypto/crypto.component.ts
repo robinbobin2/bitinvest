@@ -212,7 +212,6 @@ export class CryptoComponent implements OnInit, OnDestroy {
     this.stocksData = Observable.interval(2000).take(700).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USD'))
     .map(response => {
-    console.log(response);
       for (var _i = 0; _i < this.stocks.length; ++_i) {
         this.time.push(this.stocks[_i].time);
         this.animstock[_i] = '';
@@ -305,7 +304,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
               }
           }
       }
-        for(let item of response['categories']) {
+        for(let item of response['category_news']) {
             let newsUrl = "/postsbycat/"+item.id;
             let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
             newsInfo.subscribe(response => {

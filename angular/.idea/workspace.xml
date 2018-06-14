@@ -57,8 +57,8 @@
       <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="274" selection-start-line="274" selection-end-line="274" />
+            <state relative-caret-position="62">
+              <caret line="191" column="36" selection-start-line="191" selection-start-column="36" selection-end-line="191" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -66,8 +66,8 @@
       <file leaf-file-name="crypto.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="287" column="27" selection-start-line="287" selection-start-column="27" selection-end-line="287" selection-end-column="27" />
+            <state relative-caret-position="420">
+              <caret line="306" column="47" selection-start-line="306" selection-start-column="47" selection-end-line="306" selection-end-column="47" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -79,8 +79,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>algorithm</find>
-      <find>admin</find>
       <find>allda</find>
       <find>alldata.subscribe(response =&gt; {</find>
       <find>query</find>
@@ -109,6 +107,8 @@
       <find>/posts</find>
       <find>review</find>
       <find>photos</find>
+      <find>allc</find>
+      <find>.name</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -558,12 +558,12 @@
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
-      <workItem from="1528871430902" duration="22624000" />
+      <workItem from="1528871430902" duration="22840000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263822000" />
+    <option name="totallyTimeSpent" value="264038000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1002,13 +1002,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/bitinvest 7/interview.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-321">
-          <caret line="87" column="27" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/interview/all-interview/all-interview.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1036,15 +1029,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="274" selection-start-line="274" selection-end-line="274" />
+        <state relative-caret-position="62">
+          <caret line="191" column="36" selection-start-line="191" selection-start-column="36" selection-end-line="191" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/bitinvest 7/interview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-321">
+          <caret line="87" column="27" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="287" column="27" selection-start-line="287" selection-start-column="27" selection-end-line="287" selection-end-column="27" />
+        <state relative-caret-position="420">
+          <caret line="306" column="47" selection-start-line="306" selection-start-column="47" selection-end-line="306" selection-end-column="47" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>

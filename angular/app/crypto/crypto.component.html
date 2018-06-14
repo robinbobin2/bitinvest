@@ -189,7 +189,7 @@
             </div>
             <div class="news-body">
               <div class="news-tab-content active">
-                <h3>Новости #{{data.name}}</h3>
+                <h3>Новости #{{data?.name}}</h3>
                 <div class="main-news-slider">
                   <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
                     <div class="news" *ngIf="i <=0">
