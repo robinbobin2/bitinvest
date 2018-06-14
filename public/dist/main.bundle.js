@@ -3473,8 +3473,8 @@ var CryptoComponent = (function () {
         if (localStorage.getItem('bit')) {
             this.dataAll = JSON.parse(localStorage.getItem('bit'));
             console.log('this.dataAll');
-            console.log(this.dataAll);
             this.dataUsd = this.dataAll[symbol + '/USD'];
+            console.log(this.dataUsd);
             this.diff = this.dataUsd.now - this.dataUsd.last;
             this.prev = this.dataUsd.last;
         }
