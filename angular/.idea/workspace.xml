@@ -39,8 +39,8 @@
       <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="233" column="36" lean-forward="true" selection-start-line="212" selection-start-column="22" selection-end-line="233" selection-end-column="36" />
+            <state relative-caret-position="3503">
+              <caret line="400" column="18" selection-start-line="400" selection-start-column="18" selection-end-line="400" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -48,8 +48,21 @@
       <file leaf-file-name="crypto.component.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="285" lean-forward="true" selection-start-line="285" selection-end-line="285" />
+            <state relative-caret-position="159">
+              <caret line="266" column="16" lean-forward="true" selection-start-line="266" selection-start-column="16" selection-end-line="266" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="crypto-single.html" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Downloads/bitinvest 7/crypto-single.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="11509">
+              <caret line="949" column="48" selection-start-line="949" selection-start-column="44" selection-end-line="949" selection-end-column="48" />
+              <caret line="950" column="52" selection-start-line="950" selection-start-column="48" selection-end-line="950" selection-end-column="52" />
+              <caret line="1256" column="44" selection-start-line="1256" selection-start-column="40" selection-end-line="1256" selection-end-column="44" />
+              <caret line="1702" column="48" selection-start-line="1702" selection-start-column="44" selection-end-line="1702" selection-end-column="48" />
+              <caret line="1703" column="52" selection-start-line="1703" selection-start-column="48" selection-end-line="1703" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -96,8 +109,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ngClass</find>
-      <find>mobil</find>
       <find>setor</find>
       <find>status</find>
       <find>que</find>
@@ -126,6 +137,8 @@
       <find>вход</find>
       <find>response[symbol+'/USD'].now</find>
       <find>&lt;app</find>
+      <find>news</find>
+      <find>main</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -575,12 +588,12 @@
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
-      <workItem from="1528871430902" duration="25266000" />
+      <workItem from="1528871430902" duration="25630000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="266464000" />
+    <option name="totallyTimeSpent" value="266828000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -613,13 +626,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/exchange-filter/exchange-filter.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="53" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-all/ico-project-all.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="473">
@@ -1040,15 +1046,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="285" lean-forward="true" selection-start-line="285" selection-end-line="285" />
+        <state relative-caret-position="159">
+          <caret line="266" column="16" lean-forward="true" selection-start-line="266" selection-start-column="16" selection-end-line="266" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/bitinvest 7/crypto-single.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11509">
+          <caret line="949" column="48" selection-start-line="949" selection-start-column="44" selection-end-line="949" selection-end-column="48" />
+          <caret line="950" column="52" selection-start-line="950" selection-start-column="48" selection-end-line="950" selection-end-column="52" />
+          <caret line="1256" column="44" selection-start-line="1256" selection-start-column="40" selection-end-line="1256" selection-end-column="44" />
+          <caret line="1702" column="48" selection-start-line="1702" selection-start-column="44" selection-end-line="1702" selection-end-column="48" />
+          <caret line="1703" column="52" selection-start-line="1703" selection-start-column="48" selection-end-line="1703" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="233" column="36" lean-forward="true" selection-start-line="212" selection-start-column="22" selection-end-line="233" selection-end-column="36" />
+        <state relative-caret-position="3503">
+          <caret line="400" column="18" selection-start-line="400" selection-start-column="18" selection-end-line="400" selection-end-column="18" />
         </state>
       </provider>
     </entry>

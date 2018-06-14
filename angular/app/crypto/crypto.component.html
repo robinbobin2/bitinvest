@@ -190,51 +190,176 @@
             <div class="news-body">
               <div class="news-tab-content active">
                 <h3>Новости #{{data?.name}}</h3>
-                <div class="main-news-slider">
-                  <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                    <div class="news" *ngIf="i <=1">
-                      <div class="img" [ngStyle]="{'background': 'linear-gradient(
-                                              rgba(0, 0, 0, 0.35),
-                                              rgba(0, 0, 0, 0.35)
-                                            ), url('+item.photos[0].file+')'}">
-                        <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
-                        <a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
+                <div class="main-news">
+                  <div class="main-news-slider">
+                    <div class="news">
+                      <div class="img" style="background-image: url(img/news-big-img1.jpg)">
+                        <a href="#" class="news-btn">Bitcoin</a>
+                        <a href="news-card.html" class="title-link">Платформа для управления <br> криптовалютными активами <br> MyWish с интегрированной</a>
                         <div class="info">
-                          <span class="date">{{item.created_at}}</span>
-                          <span class="views" *ngIf="item.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item.view_count}}</span>
-                          <a  [routerLink]="['/posts/post', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>
+                          <span class="date">26 Окт 2017 в 11:39</span>
+                          <p class="views"><img src="img/eye.svg" alt="">1280</p>
+                          <a href="#comments-block" class="comments"><img src="img/comment.svg" alt="">5</a>
                         </div>
                       </div>
                       <div class="text">
-                        <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
+                        <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br> Система предназначена для интеграции высоких технологий <br> в реальный сектор, использующий... <a href="#">Подробнее</a></p>
                       </div>
                     </div>
-                  </ng-template>
-                  <!--<ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">-->
-                    <!--<div class="news news-slider-wrap" *ngIf="i > 0">-->
-                      <!--<div class="news-slider news-slider-1">-->
-                        <!--<div  class="slide" [ngStyle]="{'background': 'linear-gradient(-->
-                                              <!--rgba(0, 0, 0, 0.35),-->
-                                              <!--rgba(0, 0, 0, 0.35)-->
-                                            <!--), url('+item.photos[0].file+')'}"></div>-->
-                      <!--</div>-->
-                      <!--<div class="news-slider-info">-->
-                        <!--<a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>-->
-                        <!--<a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>-->
-                        <!--<div class="info">-->
-                          <!--<span class="date">{{item.created_at}}</span>-->
-                          <!--<span class="views" *ngIf="item.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item.view_count}}</span>-->
-                          <!--<a  [routerLink]="['/posts/post', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>-->
-                        <!--</div>-->
-                      <!--</div>-->
-                      <!--<div class="text">-->
-                        <!--<p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                  <!--</ng-template>-->
+                    <div class="news hidden">
+                      <div class="img" style="background-image: url(img/news-big-img1.jpg)">
+                        <a href="#" class="news-btn">Bitcoin</a>
+                        <a href="news-card.html" class="title-link">Платформа для управления <br> криптовалютными активами <br> MyWish с интегрированной</a>
+                        <div class="info">
+                          <span class="date">26 Окт 2017 в 11:39</span>
+                          <div class="info-wrap">
+                            <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>1280</span>
+                            <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text">
+                        <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br> Система предназначена для интеграции высоких технологий <br> в реальный сектор, использующий... <a href="#">Подробнее</a></p>
+                      </div>
+                    </div>
+                    <div class="news hidden">
+                      <div class="img" style="background-image: url(img/news-big-img1.jpg)">
+                        <a href="#" class="news-btn">Bitcoin</a>
+                        <a href="#" class="title-link">Платформа для управления <br> криптовалютными активами <br> MyWish с интегрированной</a>
+                        <div class="info">
+                          <span class="date">26 Окт 2017 в 11:39</span>
+                          <div class="info-wrap">
+                            <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>1280</span>
+                            <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text">
+                        <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br> Система предназначена для интеграции высоких технологий <br> в реальный сектор, использующий... <a href="#">Подробнее</a></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="news news-slider-wrap">
+                    <div class="news-slider news-slider-1">
+                      <div class="slide" style="background-image: url(img/news-big-img1.jpg)"></div>
+                      <div class="slide" style="background-image: url(img/news-big-img2.jpg)"></div>
+                      <div class="slide" style="background-image: url(img/news-big-img1.jpg)"></div>
+                    </div>
+                    <div class="news-slider-info">
+                      <a href="#" class="news-btn">Bitcoin</a>
+                      <a href="#" class="title-link">Sunday TIMEs Issue #15</a>
+                      <div class="info">
+                        <span class="date">26 Окт 2017 в 11:39</span>
+                      </div>
+                    </div>
+                    <div class="text">
+                      <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br><a href="#">Подробнее</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="news-mobile">
+                  <a href="#" class="trust trust-big">
+                    <div class="img-wrap"><img src="img/trust.png" alt=""></div>
+                    <h4>Как вложиться <br>в криптовалюту?</h4>
+                    <p class="name">Александр Александров</p>
+                    <span>SEO ICOTrust</span>
+                  </a>
+                  <ul class="news-list-mobile">
+                    <li>
+                      <a href="news-card.html" class="img" style="background-image: url(img/list-img1.jpg)">
+                        <button type="button" class="news-btn">Bitcoin</button>
+                      </a>
+                      <div class="text">
+                        <a href="#" class="title">Платформа для управления криптовалютными...</a>
+                        <span class="date">Сегодня в 11:39</span>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="news-card.html" class="img" style="background-image: url(img/list-img1.jpg)">
+                        <button type="button" class="news-btn">Bitcoin</button>
+                      </a>
+                      <div class="text">
+                        <a href="#" class="title">Платформа для управления криптовалютными...</a>
+                        <span class="date">26 Окт 2017 в 11:39</span>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="news-card.html" class="img" style="background-image: url(img/list-img1.jpg)">
+                        <button type="button" class="news-btn">Bitcoin</button>
+                      </a>
+                      <div class="text">
+                        <a href="#" class="title">Платформа для управления криптовалютными...</a>
+                        <span class="date">26 Окт 2017 в 11:39</span>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="news-card.html" class="img" style="background-image: url(img/list-img1.jpg)">
+                        <button type="button" class="news-btn">Bitcoin</button>
+                      </a>
+                      <div class="text">
+                        <a href="#" class="title">Платформа для управления криптовалютными...</a>
+                        <span class="date">26 Окт 2017 в 11:39</span>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="news-card.html" class="img" style="background-image: url(img/list-img1.jpg)">
+                        <button type="button" class="news-btn">Bitcoin</button>
+                      </a>
+                      <div class="text">
+                        <a href="#" class="title">Платформа для управления криптовалютными...</a>
+                        <span class="date">26 Окт 2017 в 11:39</span>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="news-card.html" class="img" style="background-image: url(img/list-img1.jpg)">
+                        <button type="button" class="news-btn">Bitcoin</button>
+                      </a>
+                      <div class="text">
+                        <a href="#" class="title">Платформа для управления криптовалютными...</a>
+                        <span class="date">26 Окт 2017 в 11:39</span>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="news-card.html" class="img" style="background-image: url(img/list-img1.jpg)">
+                        <button type="button" class="news-btn">Bitcoin</button>
+                      </a>
+                      <div class="text">
+                        <a href="#" class="title">Платформа для управления криптовалютными...</a>
+                        <span class="date">26 Окт 2017 в 11:39</span>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="news-card.html" class="img" style="background-image: url(img/list-img1.jpg)">
+                        <button type="button" class="news-btn">Bitcoin</button>
+                      </a>
+                      <div class="text">
+                        <a href="#" class="title">Платформа для управления криптовалютными...</a>
+                        <span class="date">26 Окт 2017 в 11:39</span>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="news-card.html" class="img" style="background-image: url(img/list-img1.jpg)">
+                        <button type="button" class="news-btn">Bitcoin</button>
+                      </a>
+                      <div class="text">
+                        <a href="#" class="title">Платформа для управления криптовалютными...</a>
+                        <span class="date">26 Окт 2017 в 11:39</span>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="news-card.html" class="img" style="background-image: url(img/list-img1.jpg)">
+                        <button type="button" class="news-btn">Bitcoin</button>
+                      </a>
+                      <div class="text">
+                        <a href="#" class="title">Платформа для управления криптовалютными...</a>
+                        <span class="date">26 Окт 2017 в 11:39</span>
+                      </div>
+                    </li>
+                  </ul>
+                  <a href="#" class="show-news">Показать больше новостей</a>
                 </div>
 
-              </div>
+
               <div class="news-mobile">
                 <ul class="news-list-mobile">
                   <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'">
@@ -273,7 +398,7 @@
                 </div>
 
               </div>
-
+              </div>
             </div>
           </div>
 
