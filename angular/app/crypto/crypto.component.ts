@@ -299,7 +299,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
                           }
                       }
                   }
-                  this.dataUsd = this.resp[symbol + '/USD'];
+                  this.dataUsd = response[symbol + '/USD'];
 
                   localStorage.removeItem(symbol);
 
