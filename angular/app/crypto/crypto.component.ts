@@ -342,32 +342,40 @@ export class CryptoComponent implements OnInit, OnDestroy {
           this.stocksService.getCryptoVol().debounceTime(10000).subscribe(volumes => {
               this.cryptoData = Observable.interval(1000).concatMap(() => this.stocksService.bit$)
                   .subscribe(resp => {
+
                       this.resp = resp;
-                      console.log('asasas')
-                      console.log(this.resp)
-                      this.animtype = '';
-                      if (this.dataUsd) {
-                          if (this.dataUsd.now != this.resp[symbol + '/USD'].now) {
+console.log(this.resp)
+                      for (var _i = 0; _i < admin.length; ++_i) {
 
-                              this.diff = this.resp[symbol + '/USD'].now - this.dataUsd.now;
-                              this.prev = this.dataUsd.now;
-                              if (this.dataUsd.now > this.resp[symbol + '/USD'].now) {
+                          // console.log(this.admin[i].symbol);
+                          let index = _i;
 
-                                  this.animtype = 'redcolor';
-                              } else {
-                                  this.animtype = 'greencolor';
+
+                          let symbol = admin[index].symbol;
+                          let year = admin[index].year;
+                          let algo = admin[index].algo;
+                          let logo = admin[index].logo;
+                          let id = admin[index].id;
+
+
+                          this.load = false;
+                          localStorage.removeItem('data');
+                          localStorage.setItem('data', JSON.stringify(this.dataUsd))
+
+
+                          for (let it of volumes) {
+                              if (it.currency == symbol + '/USD') {
+                                  this.dataUsd[index].currencyVol = it.volume
                               }
                           }
+
+
                       }
-                      this.dataUsd = this.resp[symbol + '/USD'];
+                  })
 
-                      localStorage.removeItem(symbol);
+          });
 
-                      localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
-
-                  });
-          })
-      })
+      });
 
 
     this.auth
