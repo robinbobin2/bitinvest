@@ -2833,7 +2833,7 @@ var CryptoAllComponent = (function () {
                 _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.StockService.bit$; })
                     .subscribe(function (resp) {
                     console.log(resp);
-                    if (resp.length > 0) {
+                    if (resp) {
                         _this.resp = resp;
                         console.log(_this.resp);
                         _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();

@@ -193,8 +193,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
 
 
 
-                        console.log(resp)
-                        if (resp.length > 0) {
+                        if (resp) {
                             this.resp=resp
                             console.log(this.resp)
                             this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
