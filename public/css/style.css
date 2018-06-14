@@ -9170,6 +9170,12 @@ header .top-head .wrapper .setting-top-block li a.search-btn {
   color: #fff;
   background: #383c46;
 }
+.tradingview-widget-copyright {
+  max-width: 100% !important;
+}
+iframe {
+  max-width: 100% !important;
+}
 a.saveinput {
   width: 180px;
 height: 57px;
