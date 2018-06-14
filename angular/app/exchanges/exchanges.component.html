@@ -28,7 +28,7 @@
           </div>
           <div class="select-wrapper1" id="select-age" style="width: 334px;">
             <div class="select" style="padding-top: 11px">
-              <span class="text"><span style="padding-top: 12px;">{{year !=undefined ? year : 'Год: Все'}}</span></span>
+              <span class="text"><span style="padding-top: 12px;">{{year !='' ? year : 'Год: Все'}}</span></span>
               <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
             </div>
             <ul class="select-items">
@@ -44,8 +44,8 @@
               <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
             </div>
             <ul class="select-items">
-              <li (click)="country=''"> <a  routerLink="./" [queryParams]="{lang: language, year: age, country: ''}">Страна: Все</a></li>
-              <li *ngFor="let item of countryFilterArray" (click)="country=item"  routerLink="./" [queryParams]="{lang: item?.languages, year: age, country: country}">
+              <li (click)="country=''" routerLink="./" [queryParams]="{lang: language, year: age, country: ''}"> <a >Страна: Все</a></li>
+              <li *ngFor="let item of countryFilterArray" (click)="country=item"  routerLink="./" [queryParams]="{lang: language, year: age, country: country}">
                 <a>{{item}}</a></li>
               <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
             </ul>
