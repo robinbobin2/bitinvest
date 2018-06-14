@@ -4976,12 +4976,12 @@ margin-bottom: 15px;
   margin-left: auto;
   display: inline-block;
 }
-.mining-wrapper .wrapper .mining-content .mining-head h1 a img, .news-head h1 a img{
+.mining-wrapper .wrapper .mining-content .mining-head h1 a img, .news-head h1 a img, .interview-head h1 a img{
   margin-right: 16px;
   display: none;
 }
 @media (max-width: 600px) {
-  .mining-wrapper .wrapper .mining-content .mining-head h1 a img, .news-head h1 a img {
+  .mining-wrapper .wrapper .mining-content .mining-head h1 a img, .news-head h1 a img, .interview-head h1 a img{
     display: block;
   }
 }
@@ -9165,7 +9165,6 @@ header .top-head .wrapper .setting-top-block li a.search-btn {
   margin-top: 6px;
   display: none;
 }
-
 
 .tag-list li a.active {
   color: #fff;
