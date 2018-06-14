@@ -3109,7 +3109,7 @@ module.exports = "\n<!-- TradingView Widget BEGIN -->\n<div class=\"tradingview-
 /***/ "./angular/app/crypto/chart/chart.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".tradingview-widget-copyright {\n  max-width: 100% !important; }\n\niframe {\n  max-width: 100% !important; }\n"
 
 /***/ }),
 
@@ -3195,7 +3195,7 @@ module.exports = "<!-- TradingView Widget BEGIN -->\n<div class=\"tradingview-wi
 /***/ "./angular/app/crypto/chart2/chart2.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".tradingview-widget-copyright {\n  max-width: 100% !important; }\n\niframe {\n  max-width: 100% !important; }\n"
 
 /***/ }),
 
@@ -3277,7 +3277,7 @@ module.exports = "\n<!-- TradingView Widget BEGIN -->\n<div class=\"tradingview-
 /***/ "./angular/app/crypto/chart3/chart3.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".tradingview-widget-copyright {\n  max-width: 100% !important; }\n\niframe {\n  max-width: 100% !important; }\n"
 
 /***/ }),
 
