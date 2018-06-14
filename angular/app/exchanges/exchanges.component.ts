@@ -39,6 +39,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     getUserPortfolio = [];
     yearFilterArray: any;
     languageFilterArray: any;
+    countryFilterArray: any;
 
 
   constructor(private http:HttpClient,
@@ -84,8 +85,9 @@ export class ExchangesComponent implements OnInit, OnDestroy {
 
       this.count = this.exchanges.length;
       console.log(this.exchanges)
-        // this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
-        // this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
+        this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
+        this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
+        this.countryFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.country)))]
 
     });
 
