@@ -2834,7 +2834,7 @@ var CryptoAllComponent = (function () {
                     .subscribe(function (resp) {
                     _this.resp = resp;
                     console.log(_this.resp);
-                    if (_this.resp) {
+                    if (resp != undefined) {
                         _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
                         _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
                         var _loop_1 = function () {
