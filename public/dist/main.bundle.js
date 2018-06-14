@@ -9026,7 +9026,6 @@ var StocksSidebarComponent = (function () {
             }
             var admin = response;
             for (var _i = 0; _i < admin.length; ++_i) {
-                _this.diff[_i] = _this.dataUsd[_i].now - _this.dataUsd[_i].last;
                 _this.dataUsd[_i].prev = _this.dataUsd[_i].last;
             }
             _this.StockService.getCryptoVol().debounceTime(10000).subscribe(function (volumes) {

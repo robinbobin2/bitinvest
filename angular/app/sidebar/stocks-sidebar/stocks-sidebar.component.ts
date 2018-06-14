@@ -68,7 +68,6 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
           }
           let admin = response;
           for (var _i = 0; _i < admin.length; ++_i) {
-              this.diff[_i] = this.dataUsd[_i].now - this.dataUsd[_i].last
               this.dataUsd[_i].prev = this.dataUsd[_i].last;
           }
           this.StockService.getCryptoVol().debounceTime(10000).subscribe(volumes => {
