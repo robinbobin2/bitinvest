@@ -271,18 +271,18 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
 
 
-      Observable.interval(1).take(1).concatMap(() => this.stocksService.bit$)
-          .subscribe(response => {
-
-        console.log('first')
-        console.log(response)
-      this.dataUsd = response[symbol+'/USD'];
-      this.diff = this.dataUsd.now-this.dataUsd.last;
-      this.prev = this.dataUsd.last;
-      localStorage.removeItem(symbol);
-      localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
-
-    });
+    //   Observable.interval(1).take(1).concatMap(() => this.stocksService.bit$)
+    //       .subscribe(response => {
+    //
+    //     console.log('first')
+    //     console.log(response)
+    //   this.dataUsd = response[symbol+'/USD'];
+    //   this.diff = this.dataUsd.now-this.dataUsd.last;
+    //   this.prev = this.dataUsd.last;
+    //   localStorage.removeItem(symbol);
+    //   localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
+    //
+    // });
     let infoCryptoPath = "/allcrypto/"+symbol;
     this.infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
     this.infoCrypto.subscribe(response => {
@@ -331,7 +331,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.cryptoData=Observable.interval(1000).take(700).concatMap(
+    this.cryptoData=Observable.interval(1).take(700).concatMap(
         ()=>
             this.stocksService.bit$)
     .map((response)=>{
