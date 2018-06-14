@@ -139,7 +139,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
         console.log('this.dataAll');
 
       this.dataUsd = this.dataAll[symbol+'/USD'];
-        console.log(this.dataUsd);
+        console.log(this.dataUsd.now);
       this.diff = this.dataUsd.now - this.dataUsd.last;
       this.prev = this.dataUsd.last;
       
@@ -277,7 +277,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
 
 
-      Observable.interval(1000).take(2).concatMap(() => this.stocksService.bit$)
+      this.cryptoFirst = Observable.interval(1000).take(3).concatMap(() => this.stocksService.bit$)
           .subscribe(response => {
 
         console.log('first')
@@ -568,6 +568,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
 
     this.cryptoData.unsubscribe();
-    this.stocksData.unsubscribe();
+      this.stocksData.unsubscribe();
+      this.cryptoFirst.unsubscribe();
   }
 }
