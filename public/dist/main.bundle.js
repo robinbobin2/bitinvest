@@ -3664,25 +3664,24 @@ var CryptoComponent = (function () {
                 _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).concatMap(function () { return _this.stocksService.bit$; })
                     .subscribe(function (resp) {
                     _this.resp = resp;
+                    console.log('asasas');
                     console.log(_this.resp);
-                    for (var _i = 0; _i < admin.length; ++_i) {
-                        // console.log(this.admin[i].symbol);
-                        var index = _i;
-                        var symbol_1 = admin[index].symbol;
-                        var year = admin[index].year;
-                        var algo = admin[index].algo;
-                        var logo = admin[index].logo;
-                        var id = admin[index].id;
-                        _this.load = false;
-                        localStorage.removeItem('data');
-                        localStorage.setItem('data', JSON.stringify(_this.dataUsd));
-                        for (var _a = 0, volumes_1 = volumes; _a < volumes_1.length; _a++) {
-                            var it = volumes_1[_a];
-                            if (it.currency == symbol_1 + '/USD') {
-                                _this.dataUsd[index].currencyVol = it.volume;
+                    _this.animtype = '';
+                    if (_this.dataUsd) {
+                        if (_this.dataUsd.now != _this.resp[symbol + '/USD'].now) {
+                            _this.diff = _this.resp[symbol + '/USD'].now - _this.dataUsd.now;
+                            _this.prev = _this.dataUsd.now;
+                            if (_this.dataUsd.now > _this.resp[symbol + '/USD'].now) {
+                                _this.animtype = 'redcolor';
+                            }
+                            else {
+                                _this.animtype = 'greencolor';
                             }
                         }
                     }
+                    _this.dataUsd = _this.resp[symbol + '/USD'];
+                    localStorage.removeItem(symbol);
+                    localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
                 });
             });
         });
