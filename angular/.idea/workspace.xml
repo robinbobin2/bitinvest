@@ -43,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="203">
-              <caret line="84" column="6" selection-start-line="84" selection-start-column="2" selection-end-line="84" selection-end-column="6" />
+              <caret line="292" column="35" selection-start-line="292" selection-start-column="31" selection-end-line="292" selection-end-column="35" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -72,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stocks-sidebar.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="stocks-sidebar.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="97" column="58" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="58" />
+            <state relative-caret-position="310">
+              <caret line="71" column="29" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
               <folding>
                 <element signature="e#0#76#0" expanded="true" />
               </folding>
@@ -84,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stocks-sidebar.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="stocks-sidebar.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+            <state relative-caret-position="150">
+              <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -114,7 +114,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>/posts</find>
       <find>review</find>
       <find>photos</find>
       <find>allc</find>
@@ -143,6 +142,7 @@
       <find>.sub</find>
       <find>cryptoda</find>
       <find>diff</find>
+      <find>getI</find>
       <find>prev</find>
     </findStrings>
     <replaceStrings>
@@ -205,12 +205,12 @@
         <option value="$PROJECT_DIR$/app/crypto/chart/chart.component.scss" />
         <option value="$PROJECT_DIR$/app/app.component.html" />
         <option value="$PROJECT_DIR$/app/crypto/crypto.component.css" />
-        <option value="$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts" />
         <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts" />
         <option value="$PROJECT_DIR$/app/stocks.service.ts" />
         <option value="$PROJECT_DIR$/app/crypto/crypto.component.html" />
         <option value="$PROJECT_DIR$/app/crypto/crypto.component.ts" />
         <option value="$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.html" />
+        <option value="$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts" />
       </list>
     </option>
   </component>
@@ -593,12 +593,12 @@
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
-      <workItem from="1528871430902" duration="32839000" />
+      <workItem from="1528871430902" duration="33594000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="274037000" />
+    <option name="totallyTimeSpent" value="274792000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1030,13 +1030,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto-all/crypto-all.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
@@ -1047,10 +1040,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
-          <caret line="84" column="6" selection-start-line="84" selection-start-column="2" selection-end-line="84" selection-end-column="6" />
+          <caret line="292" column="35" selection-start-line="292" selection-start-column="31" selection-end-line="292" selection-end-column="35" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>
@@ -1059,18 +1066,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="97" column="58" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="58" />
+        <state relative-caret-position="310">
+          <caret line="71" column="29" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
           <folding>
             <element signature="e#0#76#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
         </state>
       </provider>
     </entry>
