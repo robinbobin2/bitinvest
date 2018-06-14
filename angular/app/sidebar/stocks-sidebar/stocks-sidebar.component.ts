@@ -66,10 +66,6 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
 
                       this.resp = resp;
 
-                      // console.log(this.resp)
-                      this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
-                      this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
-
                       for (var _i = 0; _i < admin.length; ++_i) {
 
                           // console.log(this.admin[i].symbol);

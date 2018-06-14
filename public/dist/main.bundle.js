@@ -3590,7 +3590,7 @@ var CryptoComponent = (function () {
             _this.min_value = Math.min.apply(null, _this.min);
             _this.max_value = Math.max.apply(null, _this.max);
         }).subscribe();
-        this.cryptoFirst = this.stocksService.bit$
+        this.cryptoFirst = this.stocksService.getCrypto()
             .map(function (response) {
             _this.dataUsd = response[symbol + '/USD'];
             _this.diff = _this.dataUsd.now - _this.dataUsd.last;
@@ -9027,9 +9027,6 @@ var StocksSidebarComponent = (function () {
                 _this.cryptoData = __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["a" /* Observable */].interval(1000).concatMap(function () { return _this.StockService.bit$; })
                     .subscribe(function (resp) {
                     _this.resp = resp;
-                    // console.log(this.resp)
-                    _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
-                    _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
                     for (var _i = 0; _i < admin.length; ++_i) {
                         // console.log(this.admin[i].symbol);
                         var index = _i;
