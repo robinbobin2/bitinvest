@@ -62,6 +62,10 @@ export class ExchangesComponent implements OnInit, OnDestroy {
           if (this.language == undefined) {
               this.language = ''
           }
+          this.country = params['country'];
+          if (this.country == undefined) {
+              this.country = ''
+          }
       });
       let portfolioUrl = '/angular/userportfolio';
       this.portfolioInfo = this.http.get<any>(portfolioUrl);
@@ -98,7 +102,6 @@ export class ExchangesComponent implements OnInit, OnDestroy {
       this.exchanges = res;
 
       this.count = this.exchanges.length;
-      console.log(this.exchanges)
         this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
         this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
         this.countryFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.country)))]

@@ -1,10 +1,10 @@
 <section class="mining-filter">
   <div class="filter-top">
     <h2>Настройка фильтров</h2>
-    <a href="blatant-mining.html" class="close">×</a>
+    <a routerLink="cryptocurrency/all" class="close">×</a>
   </div>
   <div class="categories-block">
-    <h2>Алгоритм валюты</h2>
+    <h2>Язык биржи</h2>
     <ul class="tag-list">
       <li *ngFor="let data of algoFilter"><a (click)="algorithm=data" [ngClass]="algorithm==data ? 'active' : '' ">{{data}}</a> </li>
     </ul>

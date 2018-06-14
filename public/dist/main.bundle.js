@@ -2839,7 +2839,7 @@ var _a, _b, _c, _d, _e, _f, _g;
 /***/ "./angular/app/crypto-filter/crypto-filter.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"mining-filter\">\n  <div class=\"filter-top\">\n    <h2>Настройка фильтров</h2>\n    <a href=\"blatant-mining.html\" class=\"close\">×</a>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Алгоритм валюты</h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of algoFilter\"><a (click)=\"algorithm=data\" [ngClass]=\"algorithm==data ? 'active' : '' \">{{data}}</a> </li>\n    </ul>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Год</h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of yearFilter\"><a  (click)=\"age=data\" [ngClass]=\"age==data ? 'active' : '' \">{{data}}</a> </li>\n    </ul>\n  </div>\n  <div class=\"sorting\">\n    <!--<h2>Сортировка</h2>-->\n    <!--<form>-->\n      <!--<p>-->\n        <!--<input type=\"radio\" id=\"test1\" name=\"radio-group\" checked>-->\n        <!--<label for=\"test1\">По алфавиту (от А до Я)</label>-->\n      <!--</p>-->\n      <!--<p>-->\n        <!--<input type=\"radio\" id=\"test2\" name=\"radio-group\">-->\n        <!--<label for=\"test2\">По размеру депозита</label>-->\n      <!--</p>-->\n      <!--<p>-->\n        <!--<input type=\"radio\" id=\"test3\" name=\"radio-group\">-->\n        <!--<label for=\"test3\">По рейтингу</label>-->\n      <!--</p>-->\n    <a [routerLink]=\"['/cryptocurrency/all']\" [queryParams]=\"{algo: algorithm, year: age}\" class=\"saveinput\" >Сохранить</a>\n    <!--</form>-->\n    <a href=\"#\" class=\"claer\" (click)=\"algorithm = ''\">X Очистить параметры фильтрации </a>\n  </div>\n</section>"
+module.exports = "<section class=\"mining-filter\">\n  <div class=\"filter-top\">\n    <h2>Настройка фильтров</h2>\n    <a routerLink=\"cryptocurrency/all\" class=\"close\">×</a>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Язык биржи</h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of algoFilter\"><a (click)=\"algorithm=data\" [ngClass]=\"algorithm==data ? 'active' : '' \">{{data}}</a> </li>\n    </ul>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Год</h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of yearFilter\"><a  (click)=\"age=data\" [ngClass]=\"age==data ? 'active' : '' \">{{data}}</a> </li>\n    </ul>\n  </div>\n  <div class=\"sorting\">\n    <!--<h2>Сортировка</h2>-->\n    <!--<form>-->\n      <!--<p>-->\n        <!--<input type=\"radio\" id=\"test1\" name=\"radio-group\" checked>-->\n        <!--<label for=\"test1\">По алфавиту (от А до Я)</label>-->\n      <!--</p>-->\n      <!--<p>-->\n        <!--<input type=\"radio\" id=\"test2\" name=\"radio-group\">-->\n        <!--<label for=\"test2\">По размеру депозита</label>-->\n      <!--</p>-->\n      <!--<p>-->\n        <!--<input type=\"radio\" id=\"test3\" name=\"radio-group\">-->\n        <!--<label for=\"test3\">По рейтингу</label>-->\n      <!--</p>-->\n    <a [routerLink]=\"['/cryptocurrency/all']\" [queryParams]=\"{algo: algorithm, year: age}\" class=\"saveinput\" >Сохранить</a>\n    <!--</form>-->\n    <a href=\"#\" class=\"claer\" (click)=\"algorithm = ''\">X Очистить параметры фильтрации </a>\n  </div>\n</section>"
 
 /***/ }),
 
@@ -3927,7 +3927,7 @@ ExcerptPipe = __decorate([
 /***/ "./angular/app/exchange-filter/exchange-filter.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  exchange-filter works!\n</p>\n"
+module.exports = "<section class=\"mining-filter\">\n  <div class=\"filter-top\">\n    <h2>Настройка фильтров</h2>\n    <a href=\"blatant-mining.html\" class=\"close\">×</a>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Год основания</h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of yearFilterArray\"><a (click)=\"year=data\" [ngClass]=\"year==data ? 'active' : '' \">{{data}}</a> </li>\n    </ul>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Язык биржи</h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of languageFilterArray\"><a  (click)=\"language=data\" [ngClass]=\"language==data ? 'active' : '' \">{{data}}</a> </li>\n    </ul>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Страна биржи</h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of countryFilterArray\"><a  (click)=\"country=data\" [ngClass]=\"country==data ? 'active' : '' \">{{data}}</a> </li>\n    </ul>\n  </div>\n  <div class=\"sorting\">\n    <!--<h2>Сортировка</h2>-->\n    <!--<form>-->\n    <!--<p>-->\n    <!--<input type=\"radio\" id=\"test1\" name=\"radio-group\" checked>-->\n    <!--<label for=\"test1\">По алфавиту (от А до Я)</label>-->\n    <!--</p>-->\n    <!--<p>-->\n    <!--<input type=\"radio\" id=\"test2\" name=\"radio-group\">-->\n    <!--<label for=\"test2\">По размеру депозита</label>-->\n    <!--</p>-->\n    <!--<p>-->\n    <!--<input type=\"radio\" id=\"test3\" name=\"radio-group\">-->\n    <!--<label for=\"test3\">По рейтингу</label>-->\n    <!--</p>-->\n    <a routerLink=\"./\" [queryParams]=\"{lang: language, year: year, country: country}\" class=\"saveinput\" >Сохранить</a>\n    <!--</form>-->\n    <a href=\"#\" class=\"claer\" (click)=\"lang = ''\">X Очистить параметры фильтрации </a>\n  </div>\n</section>"
 
 /***/ }),
 
@@ -3944,6 +3944,7 @@ module.exports = ""
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExchangeFilterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__stocks_service__ = __webpack_require__("./angular/app/stocks.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3954,10 +3955,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var ExchangeFilterComponent = (function () {
-    function ExchangeFilterComponent() {
+    function ExchangeFilterComponent(stockService) {
+        this.stockService = stockService;
+        this.exchanges = [];
+        this.country = '';
+        this.age = '';
+        this.language = '';
     }
     ExchangeFilterComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.stockService.getExchanges().subscribe(function (res) {
+            _this.exchanges = res;
+            _this.yearFilterArray = Array.from(new Set(_this.exchanges.map(function (item) { return item.year; }))).slice();
+            _this.languageFilterArray = Array.from(new Set(_this.exchanges.map(function (item) { return item.languages; }))).slice();
+            _this.countryFilterArray = Array.from(new Set(_this.exchanges.map(function (item) { return item.country; }))).slice();
+        });
     };
     return ExchangeFilterComponent;
 }());
@@ -3965,11 +3979,13 @@ ExchangeFilterComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-exchange-filter',
         template: __webpack_require__("./angular/app/exchange-filter/exchange-filter.component.html"),
-        styles: [__webpack_require__("./angular/app/exchange-filter/exchange-filter.component.scss")]
+        styles: [__webpack_require__("./angular/app/exchange-filter/exchange-filter.component.scss")],
+        providers: [__WEBPACK_IMPORTED_MODULE_1__stocks_service__["a" /* StocksService */]]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__stocks_service__["a" /* StocksService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__stocks_service__["a" /* StocksService */]) === "function" && _a || Object])
 ], ExchangeFilterComponent);
 
+var _a;
 //# sourceMappingURL=exchange-filter.component.js.map
 
 /***/ }),
@@ -4321,6 +4337,10 @@ var ExchangesComponent = (function () {
             if (_this.language == undefined) {
                 _this.language = '';
             }
+            _this.country = params['country'];
+            if (_this.country == undefined) {
+                _this.country = '';
+            }
         });
         var portfolioUrl = '/angular/userportfolio';
         this.portfolioInfo = this.http.get(portfolioUrl);
@@ -4353,7 +4373,6 @@ var ExchangesComponent = (function () {
         this.stockService.getExchanges().subscribe(function (res) {
             _this.exchanges = res;
             _this.count = _this.exchanges.length;
-            console.log(_this.exchanges);
             _this.yearFilterArray = Array.from(new Set(_this.exchanges.map(function (item) { return item.year; }))).slice();
             _this.languageFilterArray = Array.from(new Set(_this.exchanges.map(function (item) { return item.languages; }))).slice();
             _this.countryFilterArray = Array.from(new Set(_this.exchanges.map(function (item) { return item.country; }))).slice();
