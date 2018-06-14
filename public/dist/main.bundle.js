@@ -3590,18 +3590,18 @@ var CryptoComponent = (function () {
             _this.min_value = Math.min.apply(null, _this.min);
             _this.max_value = Math.max.apply(null, _this.max);
         }).subscribe();
-        //   Observable.interval(1).take(1).concatMap(() => this.stocksService.bit$)
-        //       .subscribe(response => {
-        //
-        //     console.log('first')
-        //     console.log(response)
-        //   this.dataUsd = response[symbol+'/USD'];
-        //   this.diff = this.dataUsd.now-this.dataUsd.last;
-        //   this.prev = this.dataUsd.last;
-        //   localStorage.removeItem(symbol);
-        //   localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
-        //
-        // });
+        __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).take(2).concatMap(function () { return _this.stocksService.bit$; })
+            .subscribe(function (response) {
+            console.log('first');
+            console.log(response);
+            if (response) {
+                _this.dataUsd = response[symbol + '/USD'];
+                _this.diff = _this.dataUsd.now - _this.dataUsd.last;
+                _this.prev = _this.dataUsd.last;
+                localStorage.removeItem(symbol);
+                localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
+            }
+        });
         var infoCryptoPath = "/allcrypto/" + symbol;
         this.infoCrypto = this.http.get(infoCryptoPath).publishReplay(1).refCount();
         this.infoCrypto.subscribe(function (response) {
