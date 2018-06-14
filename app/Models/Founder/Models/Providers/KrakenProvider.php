@@ -33,6 +33,8 @@ class KrakenProvider extends FounderProvider
             if(!isset($supplierTicker->result)){
                 continue;
             }
+
+            $supplierTicker = $supplierTicker->result;
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->a[0]);
             $ticker->setBid($supplierTicker->b[0]);
