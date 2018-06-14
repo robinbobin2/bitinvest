@@ -192,7 +192,7 @@
                 <h3>Новости #{{data?.name}}</h3>
                 <div class="main-news-slider">
                   <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                    <div class="news" *ngIf="i <=0">
+                    <div class="news" *ngIf="i <=1">
                       <div class="img" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
@@ -210,28 +210,28 @@
                       </div>
                     </div>
                   </ng-template>
-                  <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                    <div class="news news-slider-wrap" *ngIf="i > 0">
-                      <div class="news-slider news-slider-1">
-                        <div  class="slide" [ngStyle]="{'background': 'linear-gradient(
-                                              rgba(0, 0, 0, 0.35),
-                                              rgba(0, 0, 0, 0.35)
-                                            ), url('+item.photos[0].file+')'}"></div>
-                      </div>
-                      <div class="news-slider-info">
-                        <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
-                        <a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
-                        <div class="info">
-                          <span class="date">{{item.created_at}}</span>
-                          <span class="views" *ngIf="item.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item.view_count}}</span>
-                          <a  [routerLink]="['/posts/post', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>
-                        </div>
-                      </div>
-                      <div class="text">
-                        <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
-                      </div>
-                    </div>
-                  </ng-template>
+                  <!--<ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">-->
+                    <!--<div class="news news-slider-wrap" *ngIf="i > 0">-->
+                      <!--<div class="news-slider news-slider-1">-->
+                        <!--<div  class="slide" [ngStyle]="{'background': 'linear-gradient(-->
+                                              <!--rgba(0, 0, 0, 0.35),-->
+                                              <!--rgba(0, 0, 0, 0.35)-->
+                                            <!--), url('+item.photos[0].file+')'}"></div>-->
+                      <!--</div>-->
+                      <!--<div class="news-slider-info">-->
+                        <!--<a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>-->
+                        <!--<a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>-->
+                        <!--<div class="info">-->
+                          <!--<span class="date">{{item.created_at}}</span>-->
+                          <!--<span class="views" *ngIf="item.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item.view_count}}</span>-->
+                          <!--<a  [routerLink]="['/posts/post', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>-->
+                        <!--</div>-->
+                      <!--</div>-->
+                      <!--<div class="text">-->
+                        <!--<p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</ng-template>-->
                 </div>
 
               </div>
