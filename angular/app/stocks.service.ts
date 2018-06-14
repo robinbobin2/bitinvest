@@ -28,6 +28,8 @@ export class StocksService {
   public getCrypto() {
   	return this.returnPath = this.http.get<any>(this.bitPath).publishReplay(1).refCount().map((res)=>{
         this.setBit(res);
+        localStorage.removeItem('bit');
+        localStorage.setItem('bit', JSON.stringify(res));
   	    return res;
     })
   }

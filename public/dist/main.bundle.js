@@ -9286,6 +9286,8 @@ var StocksService = (function () {
         var _this = this;
         return this.returnPath = this.http.get(this.bitPath).publishReplay(1).refCount().map(function (res) {
             _this.setBit(res);
+            localStorage.removeItem('bit');
+            localStorage.setItem('bit', JSON.stringify(res));
             return res;
         });
     };
