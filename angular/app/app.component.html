@@ -61,7 +61,7 @@
     <div class="top-menu-wrap">
       <div class="wrapper">
         <a href="#" class="menu-close">×</a>
-        <ul class="login">
+        <ul class="login" *ngIf="!checkUser()">
           <li class="login-link"><a href="#login-popup" class="popup-link log-in" data-effect="mfp-zoom-in"><span>Вход</span></a></li>
           <li><a href="#check-popup" class="popup-link sign-up" data-effect="mfp-zoom-in"><span>Регистрация</span></a></li>
         </ul>
