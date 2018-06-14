@@ -71,6 +71,7 @@ import { CryptoFilterComponent } from './crypto-filter/crypto-filter.component';
 import { MiningFilterComponent } from './mining-filter/mining-filter.component';
 import { IcoFilterComponent } from './ico-filter/ico-filter.component';
 import { ExchangeFilterComponent } from './exchange-filter/exchange-filter.component';
+import { NewsFilterComponent } from './news-filter/news-filter.component';
 
 
 const appRoutes: Routes = [
@@ -110,6 +111,9 @@ const appRoutes: Routes = [
 
     {
         path: 'exchange-filter', component: ExchangeFilterComponent
+    },
+    {
+        path: 'news-filter', component: NewsFilterComponent
     },
 
     {
@@ -291,7 +295,8 @@ const appRoutes: Routes = [
     CryptoFilterComponent,
     MiningFilterComponent,
     IcoFilterComponent,
-    ExchangeFilterComponent
+    ExchangeFilterComponent,
+    NewsFilterComponent
   ],
   imports: [
     // BrowserAnimationsModule,

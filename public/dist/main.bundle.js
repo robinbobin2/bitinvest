@@ -784,12 +784,14 @@ var _a, _b, _c, _d, _e, _f;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_67__mining_filter_mining_filter_component__ = __webpack_require__("./angular/app/mining-filter/mining-filter.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_68__ico_filter_ico_filter_component__ = __webpack_require__("./angular/app/ico-filter/ico-filter.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_69__exchange_filter_exchange_filter_component__ = __webpack_require__("./angular/app/exchange-filter/exchange-filter.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_70__news_filter_news_filter_component__ = __webpack_require__("./angular/app/news-filter/news-filter.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -892,6 +894,9 @@ var appRoutes = [
     },
     {
         path: 'exchange-filter', component: __WEBPACK_IMPORTED_MODULE_69__exchange_filter_exchange_filter_component__["a" /* ExchangeFilterComponent */]
+    },
+    {
+        path: 'news-filter', component: __WEBPACK_IMPORTED_MODULE_70__news_filter_news_filter_component__["a" /* NewsFilterComponent */]
     },
     {
         path: 'posts', component: __WEBPACK_IMPORTED_MODULE_13__news_news_component__["a" /* NewsComponent */], children: [
@@ -1069,7 +1074,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_66__crypto_filter_crypto_filter_component__["a" /* CryptoFilterComponent */],
             __WEBPACK_IMPORTED_MODULE_67__mining_filter_mining_filter_component__["a" /* MiningFilterComponent */],
             __WEBPACK_IMPORTED_MODULE_68__ico_filter_ico_filter_component__["a" /* IcoFilterComponent */],
-            __WEBPACK_IMPORTED_MODULE_69__exchange_filter_exchange_filter_component__["a" /* ExchangeFilterComponent */]
+            __WEBPACK_IMPORTED_MODULE_69__exchange_filter_exchange_filter_component__["a" /* ExchangeFilterComponent */],
+            __WEBPACK_IMPORTED_MODULE_70__news_filter_news_filter_component__["a" /* NewsFilterComponent */]
         ],
         imports: [
             // BrowserAnimationsModule,
@@ -1232,7 +1238,7 @@ var _a;
 /***/ "./angular/app/categories/categories.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"news-content\">\n        <div class=\"news-head\">\n          <h1>Новости<span>{{countAll}}</span></h1>\n          <ul class=\"news-tabs\">\n            <li class=\"active\"><a (click)=\"setOrder('id')\">Новое за сегодня</a></li>\n            <li><a (click)=\"setOrder('views_count')\">Самое популярное</a></li>\n            <li><a  (click)=\"setOrder('comments_count')\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n        <div class=\"news-body\">\n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div class=\"news\" *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')'}\">\n                  <a routerLink=\"/posts/category/{{item.cat_id}}\" class=\"news-btn\">{{item.category}}</a>\n                  <a routerLink=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                    <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml |excerpt:80}}  <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div class=\"news\" *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')' }\">\n                  <a routerLink=\"/posts/category/{{item.cat_id}}\" class=\"news-btn\">{{item.category}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <h3>\n                    <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                  </h3>\n                </div>\n                <div class=\"text2\">\n                  <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n            </div>\n          </div>\n          \n            </div>\n          </div>\n\n"
+module.exports = "<div class=\"news-content\">\n        <div class=\"news-head\">\n          <h1>Новости<span>{{countAll}}</span></h1>\n          <ul class=\"news-tabs\">\n            <li class=\"active\"><a (click)=\"setOrder('id')\" routerLink=\"./\" [queryParams]=\"{order: order, reverse: reverse}\">Новое за сегодня</a></li>\n            <li><a (click)=\"setOrder('views_count')\" routerLink=\"./\" [queryParams]=\"{order: order, reverse: reverse}\">Самое популярное</a></li>\n            <li><a  (click)=\"setOrder('comments_count')\" routerLink=\"./\" [queryParams]=\"{order: order, reverse: reverse}\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n  <div class=\"news-body\">    \n          <div class=\"news-tab-content active\">\n            <div class=\"main-news\">\n              <div class=\"news\" *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')'}\">\n                  <a routerLink=\"/posts/category/{{item.cat_id}}\" class=\"news-btn\">{{item.category}}</a>\n                  <a routerLink=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>0</span>\n                    <a href=\"/posts/post/{{item.id}}#comment-block\" class=\"comments\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml |excerpt:80}}  <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n              </div>\n            </div>\n            <div class=\"news-list\">\n              <div class=\"news\" *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\">\n                <div class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photo+')' }\">\n                  <a routerLink=\"/posts/category/{{item.cat_id}}\" class=\"news-btn\">{{item.category}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <h3>\n                    <a routerLink=\"/posts/post/{{item.id}}\">{{item.title}}</a>\n                  </h3>\n                </div>\n                <div class=\"text2\">\n                  <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n            </div>\n          </div>\n          \n            </div>\n          </div>\n\n"
 
 /***/ }),
 
@@ -6577,6 +6583,83 @@ var _a;
 
 /***/ }),
 
+/***/ "./angular/app/news-filter/news-filter.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<section class=\"mining-filter\">\n  <div class=\"filter-top\">\n    <h2>Настройка фильтров</h2>\n    <a routerLink=\"/posts/all\" class=\"close\">×</a>\n  </div>\n  <div class=\"categories-block\">\n    <h2>Категории </h2>\n    <ul class=\"tag-list\">\n      <li *ngFor=\"let data of categories\"><a (click)=\"cat_id=data.id\" [ngClass]=\"cat_id==data.id ? 'active' : '' \">{{data.name}}</a> </li>\n    </ul>\n  </div>\n  <!--<div class=\"categories-block\">-->\n    <!--<h2>Статус проекта</h2>-->\n    <!--<ul class=\"tag-list\">-->\n      <!--<li ><a [ngClass]=\"status==1 ? 'active':''\" (click)=\"status=1\" >Активные</a> </li>-->\n      <!--<li ><a [ngClass]=\"status==2 ? 'active':''\" (click)=\"status=2\">Завершенные</a> </li>-->\n    <!--</ul>-->\n  <!--</div>-->\n  <div class=\"sorting\">\n    <h2>Сортировка</h2>\n    <form>\n      <p>\n        <input type=\"radio\" id=\"test1\" name=\"radio-group\" checked>\n        <label for=\"test1\" (click)=\"setOrder('id', false)\">Новое за сегодня</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test2\" name=\"radio-group\" >\n        <label for=\"test2\" (click)=\"setOrder('views_count', true)\">Самое популярное</label>\n      </p>\n      <p>\n        <input type=\"radio\" id=\"test3\" name=\"radio-group\" >\n        <label for=\"test3\" (click)=\"setOrder('comments_count', false)\">Самое обсуждаемое</label>\n      </p>\n\n\n      <a *ngIf=\"cat_id == 0\" [routerLink]=\"['/posts/all']\" [queryParams]=\"{order: order, reverse: reverse }\" class=\"saveinput\" >Сохранить</a>\n      <a *ngIf=\"cat_id != 0\" [routerLink]=\"['/posts/category/', cat_id]\" [queryParams]=\"{order: order, reverse: reverse }\" class=\"saveinput\" >Сохранить</a>\n    </form>\n    <a href=\"#\" class=\"claer\" (click)=\"order='position'; reverse=false\">X Очистить параметры фильтрации </a>\n\n  </div>\n</section>"
+
+/***/ }),
+
+/***/ "./angular/app/news-filter/news-filter.component.scss":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./angular/app/news-filter/news-filter.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewsFilterComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var NewsFilterComponent = (function () {
+    function NewsFilterComponent(http) {
+        this.http = http;
+        this.categories = [];
+        this.cat_id = 0;
+        this.order = '';
+        this.reverse = '';
+    }
+    NewsFilterComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var path = "/categoriesraw/1";
+        var info = this.http.get(path);
+        info.subscribe(function (response) {
+            for (var _i = 0, _a = response['cats']; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (item['count'] > 0) {
+                    _this.categories.push({
+                        id: item['id'],
+                        name: item['name'],
+                        count: item['count']
+                    });
+                }
+            }
+        });
+    };
+    NewsFilterComponent.prototype.setOrder = function (ord, rev) {
+        this.order = ord;
+        this.reverse = rev;
+    };
+    return NewsFilterComponent;
+}());
+NewsFilterComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-news-filter',
+        template: __webpack_require__("./angular/app/news-filter/news-filter.component.html"),
+        styles: [__webpack_require__("./angular/app/news-filter/news-filter.component.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+], NewsFilterComponent);
+
+var _a;
+//# sourceMappingURL=news-filter.component.js.map
+
+/***/ }),
+
 /***/ "./angular/app/news/all-news/all-news.component.css":
 /***/ (function(module, exports) {
 
@@ -6587,7 +6670,7 @@ module.exports = "\n.main-news .news:nth-child(even) {\n\tmax-width: 424px;\n}"
 /***/ "./angular/app/news/all-news/all-news.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"news-content\">\n        <div class=\"news-head\">\n          <h1>Новости<span *ngIf=\"countAll\">{{countAll}}</span></h1>\n          <ul class=\"news-tabs\">\n            <li class=\"active\"><a (click)=\"setOrder('id')\" routerLink=\"./\" [queryParams]=\"{order: order, reverse: reverse}\">Новое за сегодня</a></li>\n            <li><a (click)=\"setOrder('views_count')\" routerLink=\"./\" [queryParams]=\"{order: order, reverse: reverse}\">Самое популярное</a></li>\n            <li><a  (click)=\"setOrder('comments_count')\" routerLink=\"./\" [queryParams]=\"{order: order, reverse: reverse}\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n        <div class=\"news-body\">\n          <div style=\"width: 50px; height: 50px; margin: 40px auto;\" *ngIf=\"load == true\" >\n            <img src=\"/img/load.gif\" *ngIf=\"load == true\" style=\" width: 50px; height: 50px; text-align: center\">\n          </div>\n          <div class=\"news-tab-content active\">\n            <!--<div class=\"main-news\">-->\n              <!--<div  *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.workplace ? 'news trust' : 'news'\">-->\n                <!--<div class=\"img\" [ngStyle]=\"{'background': 'linear-gradient(-->\n                                              <!--rgba(0, 0, 0, 0.35),-->\n                                              <!--rgba(0, 0, 0, 0.35)-->\n                                            <!--), url('+item.photos[0].file+')'}\">-->\n                  <!--<a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>-->\n                  <!--<a routerLink=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>-->\n                  <!--<div class=\"info\">-->\n                    <!--<span class=\"date\">{{item.created_at}}</span>-->\n                    <!--<span class=\"views\" *ngIf=\"item.view_count > 0\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>{{item.view_count}}</span>-->\n                    <!--<a  [routerLink]=\"['/posts/post', item.id]\" fragment=\"comment-block\" class=\"comments\" *ngIf=\"item.comments_count > 0\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>-->\n                  <!--</div>-->\n                <!--</div>-->\n                <!--<div class=\"text\">-->\n                  <!--<p>{{item.desc | striphtml | excerpt:140}} <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p> -->\n                <!--</div>-->\n              <!--</div>-->\n            <!--</div>-->\n            <div class=\"main-news\">\n              <div class=\"main-news-slider\">\n                <ng-template ngFor let-item [ngForOf]=\"main_news | orderBy: order:reverse:'case-insensitive'\" let-i=\"index\">\n                <div class=\"news\" *ngIf=\"i <=0\">\n                  <div class=\"img\" [ngStyle]=\"{'background': 'linear-gradient(\n                                              rgba(0, 0, 0, 0.35),\n                                              rgba(0, 0, 0, 0.35)\n                                            ), url('+item.photos[0].file+')'}\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a routerLink=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\" *ngIf=\"item.view_count > 0\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>{{item.view_count}}</span>\n                    <a  [routerLink]=\"['/posts/post', item.id]\" fragment=\"comment-block\" class=\"comments\" *ngIf=\"item.comments_count > 0\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml | excerpt:140}} <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n                </div>\n                </ng-template>\n              </div>\n              <ng-template ngFor let-item [ngForOf]=\"main_news | orderBy: order:reverse:'case-insensitive'\" let-i=\"index\">\n              <div class=\"news news-slider-wrap\" *ngIf=\"i > 0\">\n                <div class=\"news-slider news-slider-1\">\n                  <div  class=\"slide\" [ngStyle]=\"{'background': 'linear-gradient(\n                                              rgba(0, 0, 0, 0.35),\n                                              rgba(0, 0, 0, 0.35)\n                                            ), url('+item.photos[0].file+')'}\"></div>\n                </div>\n                <div class=\"news-slider-info\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a routerLink=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\" *ngIf=\"item.view_count > 0\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>{{item.view_count}}</span>\n                    <a  [routerLink]=\"['/posts/post', item.id]\" fragment=\"comment-block\" class=\"comments\" *ngIf=\"item.comments_count > 0\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml | excerpt:140}} <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n              </div>\n              </ng-template>\n            </div>\n            <div class=\"news-mobile\">\n              <a href=\"#\" class=\"trust trust-big\">\n                <div class=\"img-wrap\"><img src=\"img/trust.png\" alt=\"\"></div>\n                <h4>Как вложиться <br>в криптовалюту?</h4>\n                <p class=\"name\">Александр Александров</p>\n                <span>SEO ICOTrust</span>\n              </a>\n              <ul class=\"news-list-mobile\">\n                <li  *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\">\n                  <a *ngIf=\"!item.name_credits\" [routerLink]=\"['/posts/post', item.id]\" class=\"img\"\n                     [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\" >\n                    <button *ngIf=\"!item.name_credits\" type=\"button\" class=\"news-btn\" [routerLink]=\"['/posts/category', item.cat_id]\" >{{item.category.name}}</button>\n                  </a>\n                  <div *ngIf=\"!item.name_credits\" class=\"text\">\n                    <a [routerLink]=\"['/posts/post', item.id]\" class=\"title\">{{item.title}}</a>\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </li>\n              </ul>\n            </div>\n            <div class=\"news-list\">\n              <div *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.name_credits ? 'trust news' : 'news'\" [routerLink]=\"item.name_credits ? ['/interview/item', item.id] : null\">\n                <div *ngIf=\"item.name_credits\" class=\"img-wrap\"><img src=\"images/{{item.photos[0].file}}\" alt=\"\"></div>\n                <h4 *ngIf=\"item.name_credits\">{{item.title}}</h4>\n                <p *ngIf=\"item.name_credits\" class=\"name\">{{item.name_credits}}</p>\n                <span *ngIf=\"item.name_credits\">{{item.workplace}}</span>\n                <div *ngIf=\"!item.name_credits\" class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div *ngIf=\"!item.name_credits\" class=\"text\">\n                  <h3>\n                    <a [routerLink]=\"['/posts/post', item.id]\">{{item.title}}</a>\n                  </h3>\n                </div>\n\n                <div *ngIf=\"!item.name_credits\" class=\"text2\">\n                  <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n              \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n          \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n\n"
+module.exports = "<div class=\"news-content\">\n        <div class=\"news-head\">\n          <h1>Новости<span *ngIf=\"countAll\">{{countAll}}</span></h1>\n          <ul class=\"news-tabs\">\n            <li [ngClass]=\"order=='id' ? 'active':''\"><a (click)=\"setOrder('id')\" routerLink=\"./\" [queryParams]=\"{order: order, reverse: reverse}\">Новое за сегодня</a></li>\n            <li [ngClass]=\"order=='views_count' ? 'active':''\"><a (click)=\"setOrder('views_count')\" routerLink=\"./\" [queryParams]=\"{order: order, reverse: reverse}\">Самое популярное</a></li>\n            <li [ngClass]=\"order=='comments_count' ? 'active':''\"><a  (click)=\"setOrder('comments_count')\" routerLink=\"./\" [queryParams]=\"{order: order, reverse: reverse}\">Самое обсуждаемое</a></li>\n          </ul>\n        </div>\n        <div class=\"news-body\">\n          <div style=\"width: 50px; height: 50px; margin: 40px auto;\" *ngIf=\"load == true\" >\n            <img src=\"/img/load.gif\" *ngIf=\"load == true\" style=\" width: 50px; height: 50px; text-align: center\">\n          </div>\n          <div class=\"news-tab-content active\">\n            <!--<div class=\"main-news\">-->\n              <!--<div  *ngFor=\"let item of main_news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.workplace ? 'news trust' : 'news'\">-->\n                <!--<div class=\"img\" [ngStyle]=\"{'background': 'linear-gradient(-->\n                                              <!--rgba(0, 0, 0, 0.35),-->\n                                              <!--rgba(0, 0, 0, 0.35)-->\n                                            <!--), url('+item.photos[0].file+')'}\">-->\n                  <!--<a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>-->\n                  <!--<a routerLink=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>-->\n                  <!--<div class=\"info\">-->\n                    <!--<span class=\"date\">{{item.created_at}}</span>-->\n                    <!--<span class=\"views\" *ngIf=\"item.view_count > 0\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>{{item.view_count}}</span>-->\n                    <!--<a  [routerLink]=\"['/posts/post', item.id]\" fragment=\"comment-block\" class=\"comments\" *ngIf=\"item.comments_count > 0\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>-->\n                  <!--</div>-->\n                <!--</div>-->\n                <!--<div class=\"text\">-->\n                  <!--<p>{{item.desc | striphtml | excerpt:140}} <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p> -->\n                <!--</div>-->\n              <!--</div>-->\n            <!--</div>-->\n            <div class=\"main-news\">\n              <div class=\"main-news-slider\">\n                <ng-template ngFor let-item [ngForOf]=\"main_news | orderBy: order:reverse:'case-insensitive'\" let-i=\"index\">\n                <div class=\"news\" *ngIf=\"i <=0\">\n                  <div class=\"img\" [ngStyle]=\"{'background': 'linear-gradient(\n                                              rgba(0, 0, 0, 0.35),\n                                              rgba(0, 0, 0, 0.35)\n                                            ), url('+item.photos[0].file+')'}\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a routerLink=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\" *ngIf=\"item.view_count > 0\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>{{item.view_count}}</span>\n                    <a  [routerLink]=\"['/posts/post', item.id]\" fragment=\"comment-block\" class=\"comments\" *ngIf=\"item.comments_count > 0\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml | excerpt:140}} <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n                </div>\n                </ng-template>\n              </div>\n              <ng-template ngFor let-item [ngForOf]=\"main_news | orderBy: order:reverse:'case-insensitive'\" let-i=\"index\">\n              <div class=\"news news-slider-wrap\" *ngIf=\"i > 0\">\n                <div class=\"news-slider news-slider-1\">\n                  <div  class=\"slide\" [ngStyle]=\"{'background': 'linear-gradient(\n                                              rgba(0, 0, 0, 0.35),\n                                              rgba(0, 0, 0, 0.35)\n                                            ), url('+item.photos[0].file+')'}\"></div>\n                </div>\n                <div class=\"news-slider-info\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <a routerLink=\"/posts/post/{{item.id}}\" class=\"title-link\">{{item.title}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                    <span class=\"views\" *ngIf=\"item.view_count > 0\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i>{{item.view_count}}</span>\n                    <a  [routerLink]=\"['/posts/post', item.id]\" fragment=\"comment-block\" class=\"comments\" *ngIf=\"item.comments_count > 0\"><i class=\"fa fa-comment\" aria-hidden=\"true\"></i>{{item.comments_count}}</a>\n                  </div>\n                </div>\n                <div class=\"text\">\n                  <p>{{item.desc | striphtml | excerpt:140}} <a routerLink=\"/posts/post/{{item.id}}\">Подробнее</a></p>\n                </div>\n              </div>\n              </ng-template>\n            </div>\n            <div class=\"news-mobile\">\n              <a href=\"#\" class=\"trust trust-big\">\n                <div class=\"img-wrap\"><img src=\"img/trust.png\" alt=\"\"></div>\n                <h4>Как вложиться <br>в криптовалюту?</h4>\n                <p class=\"name\">Александр Александров</p>\n                <span>SEO ICOTrust</span>\n              </a>\n              <ul class=\"news-list-mobile\">\n                <li  *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\">\n                  <a *ngIf=\"!item.name_credits\" [routerLink]=\"['/posts/post', item.id]\" class=\"img\"\n                     [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\" >\n                    <button *ngIf=\"!item.name_credits\" type=\"button\" class=\"news-btn\" [routerLink]=\"['/posts/category', item.cat_id]\" >{{item.category.name}}</button>\n                  </a>\n                  <div *ngIf=\"!item.name_credits\" class=\"text\">\n                    <a [routerLink]=\"['/posts/post', item.id]\" class=\"title\">{{item.title}}</a>\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </li>\n              </ul>\n            </div>\n            <div class=\"news-list\">\n              <div *ngFor=\"let item of news | orderBy: order:reverse:'case-insensitive'\" [ngClass]=\"item.name_credits ? 'trust news' : 'news'\" [routerLink]=\"item.name_credits ? ['/interview/item', item.id] : null\">\n                <div *ngIf=\"item.name_credits\" class=\"img-wrap\"><img src=\"images/{{item.photos[0].file}}\" alt=\"\"></div>\n                <h4 *ngIf=\"item.name_credits\">{{item.title}}</h4>\n                <p *ngIf=\"item.name_credits\" class=\"name\">{{item.name_credits}}</p>\n                <span *ngIf=\"item.name_credits\">{{item.workplace}}</span>\n                <div *ngIf=\"!item.name_credits\" class=\"img\" [ngStyle]=\"{'background-image':'url('+item.photos[0].file+')' }\">\n                  <a [routerLink]=\"['/posts/category', item.cat_id]\" class=\"news-btn\">{{item.category.name}}</a>\n                  <div class=\"info\">\n                    <span class=\"date\">{{item.created_at}}</span>\n                  </div>\n                </div>\n                <div *ngIf=\"!item.name_credits\" class=\"text\">\n                  <h3>\n                    <a [routerLink]=\"['/posts/post', item.id]\">{{item.title}}</a>\n                  </h3>\n                </div>\n\n                <div *ngIf=\"!item.name_credits\" class=\"text2\">\n                  <p>{{item.desc | striphtml |excerpt:80}}</p>\n                </div>\n              </div>\n              \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n          \n            </div>\n            <!-- <a href=\"#\" class=\"show-more\">Показать еще</a> -->\n          </div>\n\n"
 
 /***/ }),
 
@@ -6618,6 +6701,7 @@ var AllNewsComponent = (function () {
      * @param {OrderPipe}
      */
     function AllNewsComponent(orderPipe, http, router, route) {
+        var _this = this;
         this.orderPipe = orderPipe;
         this.http = http;
         this.router = router;
@@ -6630,6 +6714,20 @@ var AllNewsComponent = (function () {
         this.load = true;
         var path = "/newsraw";
         this.info = http.get(path);
+        this.route.queryParams.subscribe(function (params) {
+            _this.order = params['order'];
+            _this.reverse = params['reverse'];
+            if (_this.order == undefined) {
+                _this.order = 'position';
+            }
+            if (_this.reverse == undefined) {
+                _this.reverse = false;
+            }
+            // this.age = params['year'];
+            // if (this.age == undefined) {
+            //     this.age = ''
+            // }
+        });
     }
     AllNewsComponent.prototype.ngAfterContentInit = function () {
         var _this = this;

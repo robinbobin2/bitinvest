@@ -29,7 +29,20 @@ export class AllNewsComponent implements AfterContentInit {
 
       let path = "/newsraw"
       this.info = http.get(path)
-
+      this.route.queryParams.subscribe(params => {
+          this.order = params['order'];
+          this.reverse = params['reverse'];
+          if (this.order == undefined) {
+              this.order = 'position'
+          }
+          if (this.reverse == undefined) {
+              this.reverse = false
+          }
+          // this.age = params['year'];
+          // if (this.age == undefined) {
+          //     this.age = ''
+          // }
+      });
    }
     ngAfterContentInit() {
       this.info.map(response => {
