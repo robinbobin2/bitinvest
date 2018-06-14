@@ -38,10 +38,6 @@ export class AllAnalyticsComponent implements OnInit {
             if (this.reverse == undefined) {
                 this.reverse = false
             }
-            // this.age = params['year'];
-            // if (this.age == undefined) {
-            //     this.age = ''
-            // }
         });
         this.info.map(response => {
             this.news = response['news'];

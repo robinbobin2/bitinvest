@@ -74,6 +74,7 @@ import { ExchangeFilterComponent } from './exchange-filter/exchange-filter.compo
 import { NewsFilterComponent } from './news-filter/news-filter.component';
 import { AnalyticsFilterComponent } from './analytics-filter/analytics-filter.component';
 import { ReviewFilterComponent } from './review-filter/review-filter.component';
+import { InterviewFilterComponent } from './interview-filter/interview-filter.component';
 
 
 const appRoutes: Routes = [
@@ -124,6 +125,10 @@ const appRoutes: Routes = [
 
     {
         path: 'review-filter', component: ReviewFilterComponent
+    },
+
+    {
+        path: 'interview-filter', component: ReviewFilterComponent
     },
 
     {
@@ -308,7 +313,8 @@ const appRoutes: Routes = [
     ExchangeFilterComponent,
     NewsFilterComponent,
     AnalyticsFilterComponent,
-    ReviewFilterComponent
+    ReviewFilterComponent,
+    InterviewFilterComponent
   ],
   imports: [
     // BrowserAnimationsModule,

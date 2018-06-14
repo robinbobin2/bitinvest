@@ -1,13 +1,13 @@
           <div class="interview-content">
         <div class="interview-head">
           <h1>Интервью<span>{{allCount}}</span></h1>
-          <ul class="interview-tabs">
-            <li class="active"><a (click)="setOrder('id')">Новое за сегодня</a></li>
-            <li><a (click)="setOrder('views_count')">Самое популярное</a></li>
-            <li><a  (click)="setOrder('comments_count')">Самое обсуждаемое</a></li>
+          <ul class="news-tabs">
+            <li [ngClass]="order=='id' ? 'active':''"><a (click)="setOrder('id')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Новое за сегодня</a></li>
+            <li [ngClass]="order=='views_count' ? 'active':''"><a (click)="setOrder('views_count')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Самое популярное</a></li>
+            <li [ngClass]="order=='comments_count' ? 'active':''"><a  (click)="setOrder('comments_count')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Самое обсуждаемое</a></li>
           </ul>
         </div>
-        <div class="interview-body">
+            <div class="news-body">
           <div class="interview-tab-content active">
             <div class="interview-blocks">
               <div class="interview-item" *ngFor="let main_item of main_news | orderBy: order:reverse:'case-insensitive'">
