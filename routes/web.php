@@ -138,6 +138,7 @@ Route::get('/ico/all', "AngularController@serve");
 Route::get('/crypto-filter', "AngularController@serve");
 Route::get('/mining-filter', "AngularController@serve");
 Route::get('/ico-filter', "AngularController@serve");
+Route::get('/exchange-filter', "AngularController@serve");
 Route::get('/ico/item/{post}', "AngularController@serve");
 Route::get('/ico/category/{category}', "AngularController@serve");
 Route::get('/profile/edit', ['as' => 'profile.edit', 'uses' => "AngularController@serve"]);
