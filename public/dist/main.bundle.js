@@ -2829,7 +2829,7 @@ var CryptoAllComponent = (function () {
         }
         alldata.subscribe(function (response) {
             var admin = response;
-            _this.StockService.getCryptoVol().debounceTime(10000).subscribe(function (volumes) {
+            _this.StockService.getCryptoVol().subscribe(function (volumes) {
                 _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).concatMap(function () { return _this.StockService.bit$; })
                     .subscribe(function (resp) {
                     _this.resp = resp;
