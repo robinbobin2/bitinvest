@@ -42,8 +42,8 @@
       <file leaf-file-name="crypto.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="334" column="30" selection-start-line="334" selection-start-column="30" selection-end-line="334" selection-end-column="30" />
+            <state relative-caret-position="631">
+              <caret line="369" column="8" selection-start-line="369" selection-start-column="8" selection-end-line="369" selection-end-column="8" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -65,8 +65,8 @@
       <file leaf-file-name="stocks-sidebar.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="149" column="9" lean-forward="true" selection-start-line="55" selection-start-column="6" selection-end-line="149" selection-end-column="9" />
+            <state relative-caret-position="134">
+              <caret line="55" column="6" lean-forward="true" selection-start-line="55" selection-start-column="6" selection-end-line="64" selection-end-column="38" />
               <folding>
                 <element signature="e#0#76#0" expanded="true" />
               </folding>
@@ -123,8 +123,8 @@
       <find>this.stocksService.bi</find>
       <find>bit</find>
       <find>.sub</find>
-      <find>bit$</find>
       <find>this.resp</find>
+      <find>bit$</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -574,12 +574,12 @@
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
-      <workItem from="1528871430902" duration="29114000" />
+      <workItem from="1528871430902" duration="29492000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270312000" />
+    <option name="totallyTimeSpent" value="270690000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1039,8 +1039,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="149" column="9" lean-forward="true" selection-start-line="55" selection-start-column="6" selection-end-line="149" selection-end-column="9" />
+        <state relative-caret-position="134">
+          <caret line="55" column="6" lean-forward="true" selection-start-line="55" selection-start-column="6" selection-end-line="64" selection-end-column="38" />
           <folding>
             <element signature="e#0#76#0" expanded="true" />
           </folding>
@@ -1049,8 +1049,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="334" column="30" selection-start-line="334" selection-start-column="30" selection-end-line="334" selection-end-column="30" />
+        <state relative-caret-position="631">
+          <caret line="369" column="8" selection-start-line="369" selection-start-column="8" selection-end-line="369" selection-end-column="8" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>

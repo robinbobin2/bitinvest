@@ -6,6 +6,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import {AuthService} from '../auth.service';
 import {StocksService} from '../stocks.service';
 import {CommentsService} from "../comments.service";
+import {Cripto} from "../sidebar/stocks-sidebar/stocks-sidebar.component";
 
 
 declare var $: any;
@@ -331,32 +332,42 @@ export class CryptoComponent implements OnInit, OnDestroy {
       });
     });
 
-      this.cryptoData = Observable.interval(1000).concatMap(() => this.stocksService.bit$)
-          .subscribe(resp => {
-        this.resp = resp;
-        console.log('asasas')
-        console.log(this.resp)
-      this.animtype = '';
-      if (this.dataUsd) {
-          if (this.dataUsd.now != this.resp[symbol + '/USD'].now) {
-
-              this.diff = this.resp[symbol + '/USD'].now - this.dataUsd.now;
-              this.prev = this.dataUsd.now;
-              if (this.dataUsd.now > this.resp[symbol + '/USD'].now) {
-
-                  this.animtype = 'redcolor';
-              } else {
-                  this.animtype = 'greencolor';
-              }
-          }
+      const alldata = this.http.get<Array<Cripto>>('/allcrypto');
+      if (localStorage.getItem('data')) {
+          this.dataUsd = JSON.parse(localStorage.getItem('data'));
+          this.load = false;
       }
-      this.dataUsd = this.resp[symbol+'/USD'];
+      alldata.subscribe(response => {
+          let admin = response;
+          this.stocksService.getCryptoVol().debounceTime(10000).subscribe(volumes => {
+              this.cryptoData = Observable.interval(1000).concatMap(() => this.stocksService.bit$)
+                  .subscribe(resp => {
+                      this.resp = resp;
+                      console.log('asasas')
+                      console.log(this.resp)
+                      this.animtype = '';
+                      if (this.dataUsd) {
+                          if (this.dataUsd.now != this.resp[symbol + '/USD'].now) {
 
-      localStorage.removeItem(symbol);
+                              this.diff = this.resp[symbol + '/USD'].now - this.dataUsd.now;
+                              this.prev = this.dataUsd.now;
+                              if (this.dataUsd.now > this.resp[symbol + '/USD'].now) {
 
-      localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
+                                  this.animtype = 'redcolor';
+                              } else {
+                                  this.animtype = 'greencolor';
+                              }
+                          }
+                      }
+                      this.dataUsd = this.resp[symbol + '/USD'];
 
-    });
+                      localStorage.removeItem(symbol);
+
+                      localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
+
+                  });
+          })
+      })
 
 
     this.auth

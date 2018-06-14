@@ -3653,27 +3653,37 @@ var CryptoComponent = (function () {
                 console.log(_this.main_news);
             });
         });
-        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).concatMap(function () { return _this.stocksService.bit$; })
-            .subscribe(function (resp) {
-            _this.resp = resp;
-            console.log('asasas');
-            console.log(_this.resp);
-            _this.animtype = '';
-            if (_this.dataUsd) {
-                if (_this.dataUsd.now != _this.resp[symbol + '/USD'].now) {
-                    _this.diff = _this.resp[symbol + '/USD'].now - _this.dataUsd.now;
-                    _this.prev = _this.dataUsd.now;
-                    if (_this.dataUsd.now > _this.resp[symbol + '/USD'].now) {
-                        _this.animtype = 'redcolor';
+        var alldata = this.http.get('/allcrypto');
+        if (localStorage.getItem('data')) {
+            this.dataUsd = JSON.parse(localStorage.getItem('data'));
+            this.load = false;
+        }
+        alldata.subscribe(function (response) {
+            var admin = response;
+            _this.stocksService.getCryptoVol().debounceTime(10000).subscribe(function (volumes) {
+                _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).concatMap(function () { return _this.stocksService.bit$; })
+                    .subscribe(function (resp) {
+                    _this.resp = resp;
+                    console.log('asasas');
+                    console.log(_this.resp);
+                    _this.animtype = '';
+                    if (_this.dataUsd) {
+                        if (_this.dataUsd.now != _this.resp[symbol + '/USD'].now) {
+                            _this.diff = _this.resp[symbol + '/USD'].now - _this.dataUsd.now;
+                            _this.prev = _this.dataUsd.now;
+                            if (_this.dataUsd.now > _this.resp[symbol + '/USD'].now) {
+                                _this.animtype = 'redcolor';
+                            }
+                            else {
+                                _this.animtype = 'greencolor';
+                            }
+                        }
                     }
-                    else {
-                        _this.animtype = 'greencolor';
-                    }
-                }
-            }
-            _this.dataUsd = _this.resp[symbol + '/USD'];
-            localStorage.removeItem(symbol);
-            localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
+                    _this.dataUsd = _this.resp[symbol + '/USD'];
+                    localStorage.removeItem(symbol);
+                    localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
+                });
+            });
         });
         this.auth
             .getUser()
