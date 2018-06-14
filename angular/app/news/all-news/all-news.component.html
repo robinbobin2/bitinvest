@@ -1,6 +1,6 @@
 <div class="news-content">
         <div class="news-head">
-          <h1>Новости<span *ngIf="countAll">{{countAll}}</span></h1>
+          <h1>Новости<span *ngIf="countAll">{{countAll}}</span><a routerLink="/news-filter"><img src="img/mining-icon.png" alt=""></a></h1>
           <ul class="news-tabs">
             <li [ngClass]="order=='id' ? 'active':''"><a (click)="setOrder('id')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Новое за сегодня</a></li>
             <li [ngClass]="order=='views_count' ? 'active':''"><a (click)="setOrder('views_count')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Самое популярное</a></li>
