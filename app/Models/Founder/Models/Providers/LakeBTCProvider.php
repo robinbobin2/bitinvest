@@ -10,14 +10,36 @@ namespace App\Models\Founder\Models\Providers;
 
 
 use App\Models\Founder\Models\Connectors\LakeBTCConnector;
+use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
 class LakeBTCProvider extends FounderProvider
 {
+    /**
+     * @param Request $request
+     * @return TickerEntity[]
+     */
     public function search(Request $request)
     {
-        $response = $this->getConnector()->fetch_tickers();
+        $response = [];
+        $result = $this->getConnector()->search();
+
+        if (!$result) {
+            return $response;
+        }
+
+        foreach ($result as $currency => $supplierTicker) {
+            $ticker = new TickerEntity();
+            $ticker->setAsk($supplierTicker->ask);
+            $ticker->setBid($supplierTicker->bid);
+            $ticker->setVolume($supplierTicker->volume);
+            $ticker->setValue($supplierTicker->last);
+            $ticker->setExchangeId($this->getExchangeId());
+            $ticker->setCurrency($this->getCurrency($currency));
+            $response[] = $ticker;
+        }
+
         return $response;
     }
 
@@ -39,5 +61,10 @@ class LakeBTCProvider extends FounderProvider
         /** @var LakeBTCConnector $connector */
         $connector = parent::getConnector();
         return $connector;
+    }
+
+    public function getCurrency($currency)
+    {
+        return strtoupper(substr($currency, 0,3) . "/" . substr($currency, 3));
     }
 }

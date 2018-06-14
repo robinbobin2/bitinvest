@@ -153,6 +153,15 @@ class Updater extends \Illuminate\Console\Command
         OneBTCXEProvider::class,
         BCexProvider::class,
         OTCBTCProvider::class,
+        QryptosProvider::class,
+
+        KuCoinProvider::class,
+        SouthXChangeProvider::class,
+        LuquiProvider::class,
+        LiveCoinProvider::class,
+        LakeBTCProvider::class,
+        KrakenProvider::class,
+        GateIOProvider::class,
     ];
 
     private $suppliers = [
@@ -169,25 +178,16 @@ class Updater extends \Illuminate\Console\Command
         ExxProvider::class,
         CoinMarketCapProvider::class,
         CoinTigerProvider::class,
-        GateIOProvider::class,
-        FlowBTCProvider::class,
-        IBankProvider::class,
-        GDaxProvider::class,
-        KrakenProvider::class,
-        GeminiProvider::class,
-        LakeBTCProvider::class,
-        HuobiProProvider::class,
-        LiveCoinProvider::class,
-        Ice3XProvider::class,
-        LuquiProvider::class,
-        SouthXChangeProvider::class,
+
+
         JubiProvider::class,
-        KuCoinProvider::class,
         LykkeProvider::class,
         OkCoinProvider::class,
-        QryptosProvider::class,
-
-
+        Ice3XProvider::class,
+        HuobiProProvider::class,
+        GeminiProvider::class,
+        GDaxProvider::class,
+        FlowBTCProvider::class,
 
 
 
@@ -199,6 +199,8 @@ class Updater extends \Illuminate\Console\Command
         TideBitProvider::class,
         VaultoroProvider::class,
         VirWoxProvider::class,
+        IBankProvider::class,
+
     ];
 
     /**
