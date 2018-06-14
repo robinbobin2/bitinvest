@@ -3590,7 +3590,7 @@ var CryptoComponent = (function () {
             _this.min_value = Math.min.apply(null, _this.min);
             _this.max_value = Math.max.apply(null, _this.max);
         }).subscribe();
-        this.cryptoFirst = this.stocksService.getCrypto()
+        this.cryptoFirst = this.stocksService.bit$
             .map(function (response) {
             _this.dataUsd = response[symbol + '/USD'];
             _this.diff = _this.dataUsd.now - _this.dataUsd.last;
