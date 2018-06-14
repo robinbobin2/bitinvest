@@ -2832,7 +2832,6 @@ var CryptoAllComponent = (function () {
             _this.StockService.getCryptoVol().subscribe(function (volumes) {
                 _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.StockService.bit$; })
                     .subscribe(function (resp) {
-                    console.log(resp);
                     if (resp) {
                         _this.resp = resp;
                         console.log(_this.resp);
@@ -2847,7 +2846,7 @@ var CryptoAllComponent = (function () {
                             var logo = admin[index].logo;
                             var id = admin[index].id;
                             setTimeout(function () { return _this.diff[index] = 0; }, 2000);
-                            if (_this.dataUsd[index]) {
+                            if (_this.dataUsd[index] && _this.resp[symbol + '/USD']) {
                                 if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
                                     _this.first_time = false;
                                     _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
