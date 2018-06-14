@@ -143,6 +143,7 @@ Route::get('/news-filter', "AngularController@serve");
 Route::get('/interview-filter', "AngularController@serve");
 Route::get('/review-filter', "AngularController@serve");
 Route::get('/analytics-filter', "AngularController@serve");
+Route::get('/review-filter', "AngularController@serve");
 Route::get('/ico/item/{post}', "AngularController@serve");
 Route::get('/ico/category/{category}', "AngularController@serve");
 Route::get('/profile/edit', ['as' => 'profile.edit', 'uses' => "AngularController@serve"]);

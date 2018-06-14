@@ -2,12 +2,12 @@
     <div class="news-head">
         <h1>Аналитика<span>{{countAll}}</span></h1>
         <ul class="news-tabs">
-            <li class="active"><a (click)="setOrder('id')">Новое за сегодня</a></li>
-            <li><a (click)="setOrder('views_count')">Самое популярное</a></li>
-            <li><a  (click)="setOrder('comments_count')">Самое обсуждаемое</a></li>
+            <li [ngClass]="order=='id' ? 'active':''"><a (click)="setOrder('id')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Новое за сегодня</a></li>
+            <li [ngClass]="order=='views_count' ? 'active':''"><a (click)="setOrder('views_count')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Самое популярное</a></li>
+            <li [ngClass]="order=='comments_count' ? 'active':''"><a  (click)="setOrder('comments_count')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Самое обсуждаемое</a></li>
         </ul>
     </div>
-    <div class="news-body">
+    <div class="news-body">        
         <div class="news-tab-content active">
             <div class="main-news">
                 <div  *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.workplace ? 'news trust' : 'news'">

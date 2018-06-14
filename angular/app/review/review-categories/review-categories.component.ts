@@ -44,6 +44,16 @@ export class ReviewCategoriesComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.route.queryParams.subscribe(params => {
+            this.order = params['order'];
+            this.reverse = params['reverse'];
+            if (this.order == undefined) {
+                this.order = 'position'
+            }
+            if (this.reverse == undefined) {
+                this.reverse = false
+            }
+        });
         this.route.params.subscribe(
             (params: Params) => {
                 this.id = params['id'];

@@ -1,0 +1,42 @@
+<section class="mining-filter">
+  <div class="filter-top">
+    <h2>Настройка фильтров</h2>
+    <a routerLink="/review/all" class="close">×</a>
+  </div>
+  <div class="categories-block">
+    <h2>Категории </h2>
+    <ul class="tag-list">
+      <li *ngFor="let data of categories"><a (click)="cat_id=data.id" [ngClass]="cat_id==data.id ? 'active' : '' ">{{data.name}}</a> </li>
+    </ul>
+  </div>
+  <!--<div class="categories-block">-->
+  <!--<h2>Статус проекта</h2>-->
+  <!--<ul class="tag-list">-->
+  <!--<li ><a [ngClass]="status==1 ? 'active':''" (click)="status=1" >Активные</a> </li>-->
+  <!--<li ><a [ngClass]="status==2 ? 'active':''" (click)="status=2">Завершенные</a> </li>-->
+  <!--</ul>-->
+  <!--</div>-->
+  <div class="sorting">
+    <h2>Сортировка</h2>
+    <form>
+      <p>
+        <input type="radio" id="test1" name="radio-group" checked>
+        <label for="test1" (click)="setOrder('id', false)">Новое за сегодня</label>
+      </p>
+      <p>
+        <input type="radio" id="test2" name="radio-group" >
+        <label for="test2" (click)="setOrder('views_count', true)">Самое популярное</label>
+      </p>
+      <p>
+        <input type="radio" id="test3" name="radio-group" >
+        <label for="test3" (click)="setOrder('comments_count', false)">Самое обсуждаемое</label>
+      </p>
+
+
+      <a *ngIf="cat_id == 0" [routerLink]="['/review/all']" [queryParams]="{order: order, reverse: reverse }" class="saveinput" >Сохранить</a>
+      <a *ngIf="cat_id != 0" [routerLink]="['/review/category/', cat_id]" [queryParams]="{order: order, reverse: reverse }" class="saveinput" >Сохранить</a>
+    </form>
+    <a href="#" class="claer" (click)="order='position'; reverse=false; cat_id=0">X Очистить параметры фильтрации </a>
+
+  </div>
+</section>

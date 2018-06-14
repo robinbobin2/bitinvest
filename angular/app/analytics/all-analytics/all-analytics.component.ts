@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
 
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 
@@ -19,7 +20,7 @@ export class AllAnalyticsComponent implements OnInit {
     /**
      * @param {OrderPipe}
      */
-    constructor(private orderPipe: OrderPipe, private http:HttpClient) {
+    constructor(private orderPipe: OrderPipe, private http:HttpClient, private route:ActivatedRoute) {
         let path = "/analyticsraw";
         this.info = http.get(path);
 
@@ -28,7 +29,20 @@ export class AllAnalyticsComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        this.route.queryParams.subscribe(params => {
+            this.order = params['order'];
+            this.reverse = params['reverse'];
+            if (this.order == undefined) {
+                this.order = 'position'
+            }
+            if (this.reverse == undefined) {
+                this.reverse = false
+            }
+            // this.age = params['year'];
+            // if (this.age == undefined) {
+            //     this.age = ''
+            // }
+        });
         this.info.map(response => {
             this.news = response['news'];
             this.main_news = response['main_news'];
