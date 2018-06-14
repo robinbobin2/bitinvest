@@ -100,6 +100,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     addPortfolio: any;
     checkPortfolio = false;
     rating:any;
+    resp: any;
     rating_count = [];
     constructor(private http:HttpClient,private stocksService:StocksService,
     private router:Router, private route:ActivatedRoute, 
@@ -334,15 +335,16 @@ export class CryptoComponent implements OnInit, OnDestroy {
         ()=>
             this.stocksService.bit$)
     .subscribe((resp)=>{
+        this.resp = resp;
         console.log('asasas')
-        console.log(resp)
+        console.log(this.resp)
       this.animtype = '';
       if (this.dataUsd) {
-          if (this.dataUsd.now != resp[symbol + '/USD'].now) {
+          if (this.dataUsd.now != this.resp[symbol + '/USD'].now) {
 
-              this.diff = resp[symbol + '/USD'].now - this.dataUsd.now;
+              this.diff = this.resp[symbol + '/USD'].now - this.dataUsd.now;
               this.prev = this.dataUsd.now;
-              if (this.dataUsd.now > resp[symbol + '/USD'].now) {
+              if (this.dataUsd.now > this.resp[symbol + '/USD'].now) {
 
                   this.animtype = 'redcolor';
               } else {
@@ -350,7 +352,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
               }
           }
       }
-      this.dataUsd = resp[symbol+'/USD'];
+      this.dataUsd = this.resp[symbol+'/USD'];
 
       localStorage.removeItem(symbol);
 

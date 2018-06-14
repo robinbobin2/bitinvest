@@ -3657,14 +3657,15 @@ var CryptoComponent = (function () {
             return _this.stocksService.bit$;
         })
             .subscribe(function (resp) {
+            _this.resp = resp;
             console.log('asasas');
-            console.log(resp);
+            console.log(_this.resp);
             _this.animtype = '';
             if (_this.dataUsd) {
-                if (_this.dataUsd.now != resp[symbol + '/USD'].now) {
-                    _this.diff = resp[symbol + '/USD'].now - _this.dataUsd.now;
+                if (_this.dataUsd.now != _this.resp[symbol + '/USD'].now) {
+                    _this.diff = _this.resp[symbol + '/USD'].now - _this.dataUsd.now;
                     _this.prev = _this.dataUsd.now;
-                    if (_this.dataUsd.now > resp[symbol + '/USD'].now) {
+                    if (_this.dataUsd.now > _this.resp[symbol + '/USD'].now) {
                         _this.animtype = 'redcolor';
                     }
                     else {
@@ -3672,7 +3673,7 @@ var CryptoComponent = (function () {
                     }
                 }
             }
-            _this.dataUsd = resp[symbol + '/USD'];
+            _this.dataUsd = _this.resp[symbol + '/USD'];
             localStorage.removeItem(symbol);
             localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
         });
