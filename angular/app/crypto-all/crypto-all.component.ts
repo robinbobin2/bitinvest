@@ -191,10 +191,11 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                 this.cryptoData = Observable.interval(5000).concatMap(() => this.StockService.bit$)
                     .subscribe(resp => {
 
-                        this.resp = resp;
+
 
                         console.log(this.resp)
                         if (resp) {
+                            this.resp = resp;
                             this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
                             this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
 

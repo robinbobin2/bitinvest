@@ -2832,9 +2832,9 @@ var CryptoAllComponent = (function () {
             _this.StockService.getCryptoVol().subscribe(function (volumes) {
                 _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.StockService.bit$; })
                     .subscribe(function (resp) {
-                    _this.resp = resp;
                     console.log(_this.resp);
                     if (resp) {
+                        _this.resp = resp;
                         _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
                         _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
                         var _loop_1 = function () {
