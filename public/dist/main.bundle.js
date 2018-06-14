@@ -3590,14 +3590,16 @@ var CryptoComponent = (function () {
             _this.min_value = Math.min.apply(null, _this.min);
             _this.max_value = Math.max.apply(null, _this.max);
         }).subscribe();
-        this.cryptoFirst = this.stocksService.getCrypto()
-            .map(function (response) {
+        this.cryptoFirst = this.stocksService.bit$
+            .subscribe(function (response) {
+            console.log('first');
+            console.log(response);
             _this.dataUsd = response[symbol + '/USD'];
             _this.diff = _this.dataUsd.now - _this.dataUsd.last;
             _this.prev = _this.dataUsd.last;
             localStorage.removeItem(symbol);
             localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
-        }).subscribe();
+        });
         var infoCryptoPath = "/allcrypto/" + symbol;
         this.infoCrypto = this.http.get(infoCryptoPath).publishReplay(1).refCount();
         this.infoCrypto.subscribe(function (response) {

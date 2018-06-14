@@ -271,15 +271,17 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
 
 
-    this.cryptoFirst = this.stocksService.getCrypto()
-    .map((response)=>{
+    this.cryptoFirst = this.stocksService.bit$
+    .subscribe((response)=>{
+        console.log('first')
+        console.log(response)
       this.dataUsd = response[symbol+'/USD'];
       this.diff = this.dataUsd.now-this.dataUsd.last;
       this.prev = this.dataUsd.last;
       localStorage.removeItem(symbol);
       localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
 
-    }).subscribe();
+    });
     let infoCryptoPath = "/allcrypto/"+symbol;
     this.infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
     this.infoCrypto.subscribe(response => {
