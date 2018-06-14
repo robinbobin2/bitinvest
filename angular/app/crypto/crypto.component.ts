@@ -285,6 +285,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     this.infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
     this.infoCrypto.subscribe(response => {
       this.data = response;
+      console.log(this.data)
       for(let item of response['comments']) {
         this.comments.push({
           id: item.id,
