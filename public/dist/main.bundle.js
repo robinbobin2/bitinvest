@@ -3658,7 +3658,7 @@ var CryptoComponent = (function () {
         })
             .subscribe(function (resp) {
             console.log('asasas');
-            console.log('response');
+            console.log(resp);
             _this.animtype = '';
             if (_this.dataUsd) {
                 if (_this.dataUsd.now != resp[symbol + '/USD'].now) {

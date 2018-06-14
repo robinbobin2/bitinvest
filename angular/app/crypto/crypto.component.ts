@@ -336,7 +336,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
             this.stocksService.bit$)
     .subscribe((resp)=>{
         console.log('asasas')
-        console.log('response')
+        console.log(resp)
       this.animtype = '';
       if (this.dataUsd) {
           if (this.dataUsd.now != resp[symbol + '/USD'].now) {
