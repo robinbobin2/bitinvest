@@ -26,8 +26,8 @@
       <div class="price-block">
         <div class="last-update">
           <div class="prices-wrap">
-
-            <span class="price" style="color: #000;" [ngStyle]="{ 'animation': animtype+' 2s', '-webkit-animation': animtype+' 2s'  }">{{dataUsd}}</span>
+            
+            <span class="price" style="color: #000;" [ngStyle]="{ 'animation': animtype+' 2s', '-webkit-animation': animtype+' 2s'  }">${{dataUsd.now | number:'1.0-1'}}</span>
             <span *ngIf="diff != 0" class="no-mobile" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.0-5'}}</span>
             <span *ngIf="diff != 0" class="mobile-only" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.0-2'}}</span>
             <span *ngIf="diff ==0" class="no-mobile" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{dataUsd.now-dataUsd.last | number:'1.0-5'}}</span>
