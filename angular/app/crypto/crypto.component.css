@@ -282,3 +282,9 @@
   font-weight: bold;
 }
 
+@media (max-width: 600px) {
+
+  .news.news-slider-wrap {
+    display: none;
+  }
+}

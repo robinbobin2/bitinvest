@@ -9191,6 +9191,7 @@ display: inherit;
 }
 @media (max-width: 600px) {
   #second_graph {
-    display: none !important;
+    display: none
   }
+
 }
