@@ -2834,77 +2834,79 @@ var CryptoAllComponent = (function () {
                     .subscribe(function (resp) {
                     _this.resp = resp;
                     console.log(_this.resp);
-                    _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
-                    _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
-                    var _loop_1 = function () {
-                        // console.log(this.admin[i].symbol);
-                        var index = _i;
-                        var symbol = admin[index].symbol;
-                        var year = admin[index].year;
-                        var algo = admin[index].algo;
-                        var logo = admin[index].logo;
-                        var id = admin[index].id;
-                        setTimeout(function () { return _this.diff[index] = 0; }, 2000);
-                        if (_this.dataUsd[index]) {
-                            if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
-                                _this.first_time = false;
-                                _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
-                                if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
-                                    _this.animtype[index] = '';
-                                    _this.animtype[index] = 'redbg';
+                    if (_this.resp) {
+                        _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
+                        _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
+                        var _loop_1 = function () {
+                            // console.log(this.admin[i].symbol);
+                            var index = _i;
+                            var symbol = admin[index].symbol;
+                            var year = admin[index].year;
+                            var algo = admin[index].algo;
+                            var logo = admin[index].logo;
+                            var id = admin[index].id;
+                            setTimeout(function () { return _this.diff[index] = 0; }, 2000);
+                            if (_this.dataUsd[index]) {
+                                if (_this.dataUsd[index].now != _this.resp[symbol + '/USD']['now']) {
+                                    _this.first_time = false;
+                                    _this.diff[index] = _this.resp[symbol + '/USD']['now'] - _this.dataUsd[index].now;
+                                    if (_this.dataUsd[index].now > _this.resp[symbol + '/USD']['now']) {
+                                        _this.animtype[index] = '';
+                                        _this.animtype[index] = 'redbg';
+                                    }
+                                    else {
+                                        _this.animtype[index] = '';
+                                        _this.animtype[index] = 'greenbg';
+                                    }
                                 }
-                                else {
-                                    _this.animtype[index] = '';
-                                    _this.animtype[index] = 'greenbg';
+                                _this.dataUsd[index].sym = symbol;
+                                _this.dataUsd[index].algo = algo;
+                                _this.dataUsd[index].year = year;
+                                _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
+                                _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
+                                _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
+                                _this.dataUsd[index].max = _this.resp[symbol + '/USD']['max'];
+                                _this.dataUsd[index].volume = _this.resp[symbol + '/USD']['volume'];
+                                _this.dataUsd[index].day = _this.resp[symbol + "/USD"]['day'];
+                                _this.dataUsd[index].week = _this.resp[symbol + "/USD"]['week'];
+                                _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
+                                _this.dataUsd[index].logo = logo;
+                                _this.dataUsd[index].percentDay = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day);
+                                _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
+                            }
+                            else {
+                                _this.dataUsd[index] = {
+                                    id: id,
+                                    name: name,
+                                    sym: symbol,
+                                    last: _this.resp[symbol + '/USD']['last'],
+                                    now: _this.resp[symbol + '/USD']['now'],
+                                    min: _this.resp[symbol + '/USD']['min'],
+                                    max: _this.resp[symbol + '/USD']['max'],
+                                    volume: _this.resp[symbol + '/USD']['volume'],
+                                    year: year,
+                                    algo: algo,
+                                    week: _this.resp[symbol + "/USD"]['week'],
+                                    day: _this.resp[symbol + "/USD"]['day'],
+                                    marketCapUsd: _this.resp[symbol + "/USD"]['marketCapUsd'],
+                                    percentDay: 0,
+                                    percentWeek: 0,
+                                    currencyVol: 0
+                                };
+                            }
+                            _this.load = false;
+                            localStorage.removeItem('data');
+                            localStorage.setItem('data', JSON.stringify(_this.dataUsd));
+                            for (var _a = 0, volumes_1 = volumes; _a < volumes_1.length; _a++) {
+                                var it = volumes_1[_a];
+                                if (it.currency == symbol + '/USD') {
+                                    _this.dataUsd[index].currencyVol = it.volume;
                                 }
                             }
-                            _this.dataUsd[index].sym = symbol;
-                            _this.dataUsd[index].algo = algo;
-                            _this.dataUsd[index].year = year;
-                            _this.dataUsd[index].last = _this.resp[symbol + '/USD']['last'];
-                            _this.dataUsd[index].now = _this.resp[symbol + '/USD']['now'];
-                            _this.dataUsd[index].min = _this.resp[symbol + '/USD']['min'];
-                            _this.dataUsd[index].max = _this.resp[symbol + '/USD']['max'];
-                            _this.dataUsd[index].volume = _this.resp[symbol + '/USD']['volume'];
-                            _this.dataUsd[index].day = _this.resp[symbol + "/USD"]['day'];
-                            _this.dataUsd[index].week = _this.resp[symbol + "/USD"]['week'];
-                            _this.dataUsd[index].marketCapUsd = _this.resp[symbol + "/USD"]['marketCapUsd'];
-                            _this.dataUsd[index].logo = logo;
-                            _this.dataUsd[index].percentDay = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].day);
-                            _this.dataUsd[index].percentWeek = _this.countPercent(_this.dataUsd[index].now, _this.dataUsd[index].week);
+                        };
+                        for (var _i = 0; _i < admin.length; ++_i) {
+                            _loop_1();
                         }
-                        else {
-                            _this.dataUsd[index] = {
-                                id: id,
-                                name: name,
-                                sym: symbol,
-                                last: _this.resp[symbol + '/USD']['last'],
-                                now: _this.resp[symbol + '/USD']['now'],
-                                min: _this.resp[symbol + '/USD']['min'],
-                                max: _this.resp[symbol + '/USD']['max'],
-                                volume: _this.resp[symbol + '/USD']['volume'],
-                                year: year,
-                                algo: algo,
-                                week: _this.resp[symbol + "/USD"]['week'],
-                                day: _this.resp[symbol + "/USD"]['day'],
-                                marketCapUsd: _this.resp[symbol + "/USD"]['marketCapUsd'],
-                                percentDay: 0,
-                                percentWeek: 0,
-                                currencyVol: 0
-                            };
-                        }
-                        _this.load = false;
-                        localStorage.removeItem('data');
-                        localStorage.setItem('data', JSON.stringify(_this.dataUsd));
-                        for (var _a = 0, volumes_1 = volumes; _a < volumes_1.length; _a++) {
-                            var it = volumes_1[_a];
-                            if (it.currency == symbol + '/USD') {
-                                _this.dataUsd[index].currencyVol = it.volume;
-                            }
-                        }
-                    };
-                    for (var _i = 0; _i < admin.length; ++_i) {
-                        _loop_1();
                     }
                 });
             });
