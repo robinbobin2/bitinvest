@@ -9143,15 +9143,17 @@ table tbody tr td .difference .buttons a {
   color: #76bf40 !important;
 }
 .mobile-only {
-  display: none;
+  display: none !important;
 }
-
+.no-mobile {
+  display: inherit !important; 
+}
 @media (max-width: 600px) {
   .mobile-mining-content {
     display: block;
   }
   .mobile-only {
-  display: inherit;
+  display: inherit !important;
 }
 .no-mobile {
   display: none !important;

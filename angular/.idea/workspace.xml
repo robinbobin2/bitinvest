@@ -14,6 +14,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="all-news.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="99" selection-end-column="16" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="interview.html" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Downloads/bitinvest 7/interview.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -32,11 +45,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="interview-categories.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="interview-categories.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/interview/interview-categories/interview-categories.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
+            <state relative-caret-position="1170">
               <caret line="78" column="16" selection-start-line="78" selection-start-column="16" selection-end-line="78" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="580">
+              <caret line="275" column="18" selection-start-line="275" selection-start-column="18" selection-end-line="275" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -45,7 +67,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>$</find>
       <find>algorithm</find>
       <find>admin</find>
       <find>allda</find>
@@ -75,6 +96,7 @@
       <find>mobi</find>
       <find>/posts</find>
       <find>review</find>
+      <find>photos</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -91,7 +113,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/news/news.component.html" />
         <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining.component.html" />
         <option value="$PROJECT_DIR$/app/sidebar/banner/banner.component.html" />
         <option value="$PROJECT_DIR$/app/exchange/exchange.component.ts" />
@@ -142,6 +163,7 @@
         <option value="$PROJECT_DIR$/app/ico-project/ico-project-categories/ico-project-categories.component.html" />
         <option value="$PROJECT_DIR$/app/interview/all-interview/all-interview.component.html" />
         <option value="$PROJECT_DIR$/app/interview/interview-categories/interview-categories.component.html" />
+        <option value="$PROJECT_DIR$/app/crypto/crypto.component.html" />
       </list>
     </option>
   </component>
@@ -524,12 +546,12 @@
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
-      <workItem from="1528871430902" duration="21660000" />
+      <workItem from="1528871430902" duration="22280000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="262858000" />
+    <option name="totallyTimeSpent" value="263478000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -562,16 +584,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="210" column="23" selection-start-line="210" selection-start-column="23" selection-end-line="210" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -974,17 +986,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="103" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/review/review-categories/review-categories.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -1012,8 +1013,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/interview/interview-categories/interview-categories.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
+        <state relative-caret-position="1170">
           <caret line="78" column="16" selection-start-line="78" selection-start-column="16" selection-end-line="78" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="99" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="275" column="18" selection-start-line="275" selection-start-column="18" selection-end-line="275" selection-end-column="18" />
         </state>
       </provider>
     </entry>
