@@ -4319,6 +4319,14 @@ var ExchangesComponent = (function () {
                 console.log(_this.portfoliosInfo);
             }
         });
+        this.router.events
+            .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */]; })
+            .map(function () { return _this.route; })
+            .subscribe(function (event) {
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 300);
+        });
         this.authService.getUser().subscribe(function (response) {
             for (var _i = 0, _a = response['portfolio']; _i < _a.length; _i++) {
                 var item = _a[_i];

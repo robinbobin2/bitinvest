@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import {StocksService} from '../stocks.service';
@@ -60,6 +60,15 @@ export class ExchangesComponent implements OnInit, OnDestroy {
               }
           },
       );
+      this.router.events
+          .filter(event => event instanceof NavigationEnd)
+          .map(() => this.route)
+          .subscribe((event) => {
+              setTimeout(()=> {
+                  $.getScript('/js/script.js');
+              }, 300)
+
+          });
       this.authService.getUser().subscribe(
           response => {
               for(let item of response['portfolio']) {
