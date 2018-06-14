@@ -98,6 +98,7 @@ body,
 html {
   font-family: "PT Sans";
 }
+
 @media (min-width: 600px) {
   body,
   html {
@@ -9187,4 +9188,9 @@ color: #fff;
 border: none;
 cursor: pointer;
 display: inherit;
+}
+@media (min-width: 600px) {
+  .overview-block.overview-block-2 {
+    display: none !important;
+  }
 }
