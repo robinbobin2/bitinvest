@@ -3653,9 +3653,7 @@ var CryptoComponent = (function () {
                 console.log(_this.main_news);
             });
         });
-        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1).take(700).concatMap(function () {
-            return _this.stocksService.bit$;
-        })
+        this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).concatMap(function () { return _this.stocksService.bit$; })
             .subscribe(function (resp) {
             _this.resp = resp;
             console.log('asasas');

@@ -331,10 +331,8 @@ export class CryptoComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.cryptoData=Observable.interval(1).take(700).concatMap(
-        ()=>
-            this.stocksService.bit$)
-    .subscribe((resp)=>{
+      this.cryptoData = Observable.interval(1000).concatMap(() => this.stocksService.bit$)
+          .subscribe(resp => {
         this.resp = resp;
         console.log('asasas')
         console.log(this.resp)
