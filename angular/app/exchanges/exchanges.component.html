@@ -32,7 +32,7 @@
               <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
             </div>
             <ul class="select-items">
-              <li (click)="year=0"> <a routerLink="./" [queryParams]="{lang: item?.languages, year: '', country: country}">Год: Все</a></li>
+              <li (click)="year=''" routerLink="./" [queryParams]="{lang: item?.languages, year: '', country: country}"> <a >Год: Все</a></li>
               <li *ngFor="let item of yearFilterArray" (click)="year=item" routerLink="./" [queryParams]="{lang: language, year: item, country: country}">
                 <a >{{item}}</a></li>
               <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
@@ -44,9 +44,9 @@
               <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
             </div>
             <ul class="select-items">
-              <li (click)="country=''"> <a  routerLink="./" [queryParams]="{lang: item?.languages, year: age, country: country}">Страна: Все</a></li>
-              <li *ngFor="let item of languageFilterArray" (click)="country=item">
-                <a  routerLink="./" [queryParams]="{lang: item?.languages, year: age, country: country}">{{item}}</a></li>
+              <li (click)="country=''"> <a  routerLink="./" [queryParams]="{lang: language, year: age, country: ''}">Страна: Все</a></li>
+              <li *ngFor="let item of countryFilterArray" (click)="country=item"  routerLink="./" [queryParams]="{lang: item?.languages, year: age, country: country}">
+                <a>{{item}}</a></li>
               <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->
             </ul>
           </div>
