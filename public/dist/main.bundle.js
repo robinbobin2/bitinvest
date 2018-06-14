@@ -3654,14 +3654,16 @@ var CryptoComponent = (function () {
         })
             .map(function (response) {
             _this.animtype = '';
-            if (_this.dataUsd.now != response[symbol + '/USD'].now) {
-                _this.diff = response[symbol + '/USD'].now - _this.dataUsd.now;
-                _this.prev = _this.dataUsd.now;
-                if (_this.dataUsd.now > response[symbol + '/USD'].now) {
-                    _this.animtype = 'redcolor';
-                }
-                else {
-                    _this.animtype = 'greencolor';
+            if (_this.dataUsd.now) {
+                if (_this.dataUsd.now != response[symbol + '/USD'].now) {
+                    _this.diff = response[symbol + '/USD'].now - _this.dataUsd.now;
+                    _this.prev = _this.dataUsd.now;
+                    if (_this.dataUsd.now > response[symbol + '/USD'].now) {
+                        _this.animtype = 'redcolor';
+                    }
+                    else {
+                        _this.animtype = 'greencolor';
+                    }
                 }
             }
             _this.dataUsd = response[symbol + '/USD'];

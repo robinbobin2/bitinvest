@@ -333,16 +333,17 @@ export class CryptoComponent implements OnInit, OnDestroy {
             this.stocksService.bit$)
     .map((response)=>{
       this.animtype = '';
+      if (this.dataUsd.now) {
+          if (this.dataUsd.now != response[symbol + '/USD'].now) {
 
-      if(this.dataUsd.now != response[symbol+'/USD'].now) {
+              this.diff = response[symbol + '/USD'].now - this.dataUsd.now;
+              this.prev = this.dataUsd.now;
+              if (this.dataUsd.now > response[symbol + '/USD'].now) {
 
-        this.diff = response[symbol+'/USD'].now-this.dataUsd.now;
-        this.prev = this.dataUsd.now;
-        if(this.dataUsd.now > response[symbol+'/USD'].now) {
-
-            this.animtype = 'redcolor';
-          } else {
-            this.animtype = 'greencolor';
+                  this.animtype = 'redcolor';
+              } else {
+                  this.animtype = 'greencolor';
+              }
           }
       }
       this.dataUsd = response[symbol+'/USD'];
