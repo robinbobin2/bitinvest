@@ -3109,7 +3109,7 @@ module.exports = "\n<!-- TradingView Widget BEGIN -->\n<div class=\"tradingview-
 /***/ "./angular/app/crypto/chart/chart.component.scss":
 /***/ (function(module, exports) {
 
-module.exports = ".tradingview-widget-copyright {\n  max-width: 100% !important; }\n\niframe {\n  max-width: 100% !important; }\n\n#tradingview_785bf {\n  max-width: 100% !important; }\n\n#tradingview_49b32 {\n  max-width: 100% !important; }\n\n#tradingview_04a59 {\n  max-width: 100% !important; }\n"
+module.exports = ".tradingview-widget-copyright {\n  max-width: 100% !important; }\n\niframe {\n  max-width: 100% !important; }\n\n#tradingview_785bf {\n  max-width: 100% !important; }\n\n#tradingview_49b32 {\n  max-width: 100% !important; }\n\n#tradingview_04a59 {\n  max-width: 100% !important; }\n\n#tradingview_1d41c {\n  max-width: 100% !important; }\n"
 
 /***/ }),
 
