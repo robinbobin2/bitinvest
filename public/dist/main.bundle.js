@@ -3657,6 +3657,7 @@ var CryptoComponent = (function () {
             return _this.stocksService.bit$;
         })
             .subscribe(function (response) {
+            console.log('asasas');
             _this.animtype = '';
             if (_this.dataUsd.now) {
                 if (_this.dataUsd.now != response[symbol + '/USD'].now) {
