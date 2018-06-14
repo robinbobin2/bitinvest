@@ -1,6 +1,6 @@
 <div class="news-content">
         <div class="news-head">
-          <h1>Новости<span>{{countAll}}</span></h1>
+          <h1>Новости<span>{{countAll}}</span><a routerLink="/news-filter"><img src="img/mining-icon.png" alt=""></a></h1>
           <ul class="news-tabs">
             <li class="active"><a (click)="setOrder('id')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Новое за сегодня</a></li>
             <li><a (click)="setOrder('views_count')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Самое популярное</a></li>
@@ -17,7 +17,7 @@
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
                                             ), url('+item.photo+')'}">
-                    <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
+                    <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category}}</a>
                     <a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
                     <div class="info">
                       <span class="date">{{item.created_at}}</span>
@@ -40,7 +40,7 @@
                                             ), url('+item.photo+')'}"></div>
                 </div>
                 <div class="news-slider-info">
-                  <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
+                  <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category}}</a>
                   <a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
                   <div class="info">
                     <span class="date">{{item.created_at}}</span>
@@ -59,7 +59,7 @@
         <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'">
           <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
              [ngStyle]="{'background-image':'url('+item.photo+')' }" >
-            <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
+            <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category}}</button>
           </a>
           <div *ngIf="!item.name_credits" class="text">
             <a [routerLink]="['/posts/post', item.id]" class="title">{{item.title}}</a>
@@ -75,7 +75,7 @@
         <p *ngIf="item.name_credits" class="name">{{item.name_credits}}</p>
         <span *ngIf="item.name_credits">{{item.workplace}}</span>
         <div *ngIf="!item.name_credits" class="img" [ngStyle]="{'background-image':'url('+item.photo+')' }">
-          <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
+          <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category}}</a>
           <div class="info">
             <span class="date">{{item.created_at}}</span>
           </div>

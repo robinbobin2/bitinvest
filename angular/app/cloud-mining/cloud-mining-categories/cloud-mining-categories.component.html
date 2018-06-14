@@ -1,6 +1,6 @@
 <div class="mining-content">
         <div class="mining-head">
-          <h1>Облачный майнинг<span>{{allCount}}</span><a href="balant-mining-filter.html"><img src="img/mining-icon.png" alt=""></a></h1>
+          <h1>Облачный майнинг<span>{{allCount}}</span><a routerLink="/mining-filter"><img src="/img/mining-icon.png" alt=""></a></h1>
           <ul class="mining-tabs">
             <li [ngClass]="status=='both' ? 'active':''"><a routerLink="./" (click)="status='both'" routerLink="./" [queryParams]="{order: order, reverse: reverse, status: 'both'}">Платит/Ожидание ({{active}})</a></li>
             <li [ngClass]="status==2 ? 'active':''"><a routerLink="./" (click)="status=2" [queryParams]="{order: order, reverse: reverse, status: '2'}">Не платит ({{inactive}})</a></li>
@@ -70,6 +70,37 @@
           
         <!-- <a href="#" class="show-more">Показать еще</a> -->
       </div>
+  <div class="mobile-mining-content">
+    <ul>
+      <li *ngFor="let item of news | filterNameActive:status:'status' |
+              filterName:filteredName:'name' |
+              orderBy: order:reverse:'case-insensitive'">
+        <a routerLink="/cloud-mining/item/{{item.id}}">
+          <a routerLink="/cloud-mining/item/{{item.id}}">{{item.name}}</a>
+          <div class="info">
+            <div class="profitability">
+              <span>Доходность</span>
+              <span class="year">{{item.proc}}% / год</span>
+            </div>
+            <div class="deposit">
+              <span>Депозит</span>
+              <span class="usd">${{item.depo}}</span>
+            </div>
+            <div class="received">
+              <span>Получено</span>
+              <span class="persent">{{item.percentage}}%</span>
+            </div>
+            <div class="status">
+              <span>Статус</span>
+              <span *ngIf="item.status == 1" class="bold active">Платит</span>
+              <span *ngIf="item.status == 2" class="bold " style="color: #f00;">Не платит</span>
+              <span *ngIf="item.status == 3" class="bold " style="color: #ff9b00;">Ожидание выплаты</span>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
     </div>
     <div id="follow-popup" class="popup mfp-with-anim mfp-hide">
     <div class="popup-body">
