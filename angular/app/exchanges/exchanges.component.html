@@ -32,7 +32,7 @@
               <a href="#"><img src="/img/select-drop-icon.png" alt=""></a>
             </div>
             <ul class="select-items">
-              <li (click)="year=''" routerLink="./" [queryParams]="{lang: item?.languages, year: '', country: country}"> <a >Год: Все</a></li>
+              <li (click)="year=''" routerLink="./" [queryParams]="{lang: language, year: '', country: country}"> <a >Год: Все</a></li>
               <li *ngFor="let item of yearFilterArray" (click)="year=item" routerLink="./" [queryParams]="{lang: language, year: item, country: country}">
                 <a >{{item}}</a></li>
               <!-- <li (click)="setOrder('percentage')"><a >Фильтрация: По сумме собранных средств</a></li> -->

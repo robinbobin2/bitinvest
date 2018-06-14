@@ -22,7 +22,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
   volumes = []
   exchange_volumes = [];
     language = '';
-    year: number = undefined;
+    year: any = '';
     country = '';
     age = ''
   reverse: boolean = true;
@@ -49,6 +49,20 @@ export class ExchangesComponent implements OnInit, OnDestroy {
               private authService: AuthService) { }
 
   ngOnInit() {
+      this.route.queryParams.subscribe(params => {
+          this.year = params['year'];
+          if (this.year == undefined) {
+              this.year = ''
+          }
+          this.age = params['year'];
+          if (this.age == undefined) {
+              this.age = ''
+          }
+          this.language = params['language'];
+          if (this.language == undefined) {
+              this.language = ''
+          }
+      });
       let portfolioUrl = '/angular/userportfolio';
       this.portfolioInfo = this.http.get<any>(portfolioUrl);
       this.portfolioInfo.subscribe(
