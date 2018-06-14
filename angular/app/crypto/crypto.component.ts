@@ -334,15 +334,16 @@ export class CryptoComponent implements OnInit, OnDestroy {
     this.cryptoData=Observable.interval(1).take(700).concatMap(
         ()=>
             this.stocksService.bit$)
-    .subscribe((response)=>{
+    .subscribe((resp)=>{
         console.log('asasas')
+        console.log('response')
       this.animtype = '';
       if (this.dataUsd) {
-          if (this.dataUsd.now != response[symbol + '/USD'].now) {
+          if (this.dataUsd.now != resp[symbol + '/USD'].now) {
 
-              this.diff = response[symbol + '/USD'].now - this.dataUsd.now;
+              this.diff = resp[symbol + '/USD'].now - this.dataUsd.now;
               this.prev = this.dataUsd.now;
-              if (this.dataUsd.now > response[symbol + '/USD'].now) {
+              if (this.dataUsd.now > resp[symbol + '/USD'].now) {
 
                   this.animtype = 'redcolor';
               } else {
@@ -350,7 +351,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
               }
           }
       }
-      this.dataUsd = response[symbol+'/USD'];
+      this.dataUsd = resp[symbol+'/USD'];
 
       localStorage.removeItem(symbol);
 
