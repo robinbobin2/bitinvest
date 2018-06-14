@@ -541,7 +541,6 @@ export class CryptoComponent implements OnInit, OnDestroy {
     }
   ngOnDestroy() {
 
-    this.cryptoData.unsubscribe();
       this.stocksData.unsubscribe();
       this.cryptoFirst.unsubscribe();
   }
