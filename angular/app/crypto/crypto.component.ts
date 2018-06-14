@@ -346,8 +346,29 @@ export class CryptoComponent implements OnInit, OnDestroy {
                       this.resp = resp;
                       console.log('asasas')
                       console.log(this.resp)
-                      
+                      if (this.resp) {
+                          this.animtype = '';
+                          if (this.dataUsd) {
+                              if (this.dataUsd.now != this.resp[symbol + '/USD'].now) {
+
+                                  this.diff = this.resp[symbol + '/USD'].now - this.dataUsd.now;
+                                  this.prev = this.dataUsd.now;
+                                  if (this.dataUsd.now > this.resp[symbol + '/USD'].now) {
+
+                                      this.animtype = 'redcolor';
+                                  } else {
+                                      this.animtype = 'greencolor';
+                                  }
+                              }
+                          }
+                          this.dataUsd = this.resp[symbol + '/USD'];
+
+                          localStorage.removeItem(symbol);
+
+                          localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
+                      }
                   })
+
 
           });
 
