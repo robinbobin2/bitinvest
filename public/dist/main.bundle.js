@@ -3471,7 +3471,7 @@ var CryptoComponent = (function () {
         });
         var symbol = this.route.snapshot.params['sym'];
         if (localStorage.getItem('data')) {
-            this.dataAll = JSON.parse(localStorage.getItem('data'));
+            this.dataAll = JSON.parse(localStorage.getItem('bit'));
             console.log('this.dataAll');
             console.log(this.dataAll);
             this.dataUsd = this.dataAll[symbol + '/USD'];
