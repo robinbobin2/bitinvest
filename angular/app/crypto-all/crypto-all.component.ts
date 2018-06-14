@@ -193,7 +193,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
 
 
 
-
+                        console.log(resp)
                         if (resp.length > 0) {
                             this.resp=resp
                             console.log(this.resp)

@@ -2832,6 +2832,7 @@ var CryptoAllComponent = (function () {
             _this.StockService.getCryptoVol().subscribe(function (volumes) {
                 _this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(5000).concatMap(function () { return _this.StockService.bit$; })
                     .subscribe(function (resp) {
+                    console.log(resp);
                     if (resp.length > 0) {
                         _this.resp = resp;
                         console.log(_this.resp);
