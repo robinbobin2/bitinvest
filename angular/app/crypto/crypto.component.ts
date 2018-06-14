@@ -334,7 +334,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     this.cryptoData=Observable.interval(1).take(700).concatMap(
         ()=>
             this.stocksService.bit$)
-    .map((response)=>{
+    .subscribe((response)=>{
       this.animtype = '';
       if (this.dataUsd.now) {
           if (this.dataUsd.now != response[symbol + '/USD'].now) {
@@ -355,7 +355,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
       localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
 
-    }).subscribe();
+    });
 
 
     this.auth
@@ -546,6 +546,5 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
     this.cryptoData.unsubscribe();
     this.stocksData.unsubscribe();
-    this.cryptoFirst.unsubscribe();
   }
 }

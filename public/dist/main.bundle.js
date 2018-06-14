@@ -3656,7 +3656,7 @@ var CryptoComponent = (function () {
         this.cryptoData = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1).take(700).concatMap(function () {
             return _this.stocksService.bit$;
         })
-            .map(function (response) {
+            .subscribe(function (response) {
             _this.animtype = '';
             if (_this.dataUsd.now) {
                 if (_this.dataUsd.now != response[symbol + '/USD'].now) {
@@ -3673,7 +3673,7 @@ var CryptoComponent = (function () {
             _this.dataUsd = response[symbol + '/USD'];
             localStorage.removeItem(symbol);
             localStorage.setItem(symbol, JSON.stringify(_this.dataUsd));
-        }).subscribe();
+        });
         this.auth
             .getUser()
             .subscribe(function (response) {
@@ -3838,7 +3838,6 @@ var CryptoComponent = (function () {
     CryptoComponent.prototype.ngOnDestroy = function () {
         this.cryptoData.unsubscribe();
         this.stocksData.unsubscribe();
-        this.cryptoFirst.unsubscribe();
     };
     return CryptoComponent;
 }());
