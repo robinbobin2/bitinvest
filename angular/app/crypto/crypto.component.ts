@@ -52,8 +52,7 @@ export class CommentRaw {
 @Component({
   selector: 'app-crypto',
   templateUrl: './crypto.component.html',
-  styleUrls: ['./crypto.component.css'],
-  providers: [StocksService]
+  styleUrls: ['./crypto.component.css']
 })
 export class CryptoComponent implements OnInit, OnDestroy {
   comments: CommentRaw[] = [];
