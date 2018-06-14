@@ -24,6 +24,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     language = '';
     year: number = undefined;
     country = '';
+    age = ''
   reverse: boolean = true;
   order = 'id';
   pairs_count = [];

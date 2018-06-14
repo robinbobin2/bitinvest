@@ -4295,6 +4295,7 @@ var ExchangesComponent = (function () {
         this.language = '';
         this.year = undefined;
         this.country = '';
+        this.age = '';
         this.reverse = true;
         this.order = 'id';
         this.pairs_count = [];
