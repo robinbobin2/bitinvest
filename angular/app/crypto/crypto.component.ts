@@ -92,6 +92,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
   max = [];
   time = [];
   time_value = 0;
+  dataAll;
   news_container: any;
   selectedItem: PositionData;
     portfolioInfo:any;
@@ -133,8 +134,11 @@ export class CryptoComponent implements OnInit, OnDestroy {
           },
       );
     let symbol = this.route.snapshot.params['sym'];
-    if(localStorage.getItem(symbol)) {
-      this.dataUsd = JSON.parse(localStorage.getItem(symbol));
+    if(localStorage.getItem('data')) {
+      this.dataAll = JSON.parse(localStorage.getItem('data'));
+        console.log('this.dataAll');
+      console.log(this.dataAll);
+      this.dataUsd = this.dataAll[symbol+'/USD'];
       this.diff = this.dataUsd.now - this.dataUsd.last;
       this.prev = this.dataUsd.last;
       
