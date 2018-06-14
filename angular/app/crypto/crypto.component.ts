@@ -271,8 +271,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
 
 
-    this.cryptoFirst = this.stocksService.bit$
-    .subscribe((response)=>{
+      Observable.interval(1).take(1).concatMap(() => this.stocksService.bit$)
+          .subscribe(response => {
+
         console.log('first')
         console.log(response)
       this.dataUsd = response[symbol+'/USD'];

@@ -3590,7 +3590,7 @@ var CryptoComponent = (function () {
             _this.min_value = Math.min.apply(null, _this.min);
             _this.max_value = Math.max.apply(null, _this.max);
         }).subscribe();
-        this.cryptoFirst = this.stocksService.bit$
+        __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1).take(1).concatMap(function () { return _this.stocksService.bit$; })
             .subscribe(function (response) {
             console.log('first');
             console.log(response);
