@@ -12,25 +12,7 @@
             <img src="/img/load.gif" *ngIf="load == true" style=" width: 50px; height: 50px; text-align: center">
           </div>
           <div class="news-tab-content active">
-            <!--<div class="main-news">-->
-              <!--<div  *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.workplace ? 'news trust' : 'news'">-->
-                <!--<div class="img" [ngStyle]="{'background': 'linear-gradient(-->
-                                              <!--rgba(0, 0, 0, 0.35),-->
-                                              <!--rgba(0, 0, 0, 0.35)-->
-                                            <!--), url('+item.photos[0].file+')'}">-->
-                  <!--<a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>-->
-                  <!--<a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>-->
-                  <!--<div class="info">-->
-                    <!--<span class="date">{{item.created_at}}</span>-->
-                    <!--<span class="views" *ngIf="item.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item.view_count}}</span>-->
-                    <!--<a  [routerLink]="['/posts/post', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>-->
-                  <!--</div>-->
-                <!--</div>-->
-                <!--<div class="text">-->
-                  <!--<p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p> -->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
+
             <div class="main-news">
               <div class="main-news-slider">
                 <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
@@ -77,12 +59,6 @@
               </ng-template>
             </div>
             <div class="news-mobile">
-              <a href="#" class="trust trust-big">
-                <div class="img-wrap"><img src="img/trust.png" alt=""></div>
-                <h4>Как вложиться <br>в криптовалюту?</h4>
-                <p class="name">Александр Александров</p>
-                <span>SEO ICOTrust</span>
-              </a>
               <ul class="news-list-mobile">
                 <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'">
                   <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"

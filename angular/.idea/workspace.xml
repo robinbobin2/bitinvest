@@ -17,8 +17,8 @@
       <file leaf-file-name="all-news.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1905">
-              <caret line="127" column="16" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="127" selection-end-column="16" />
+            <state relative-caret-position="135">
+              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="103" selection-end-column="16" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -30,8 +30,21 @@
       <file leaf-file-name="all-analytics.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/analytics/all-analytics/all-analytics.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1885">
-              <caret line="127" column="6" selection-start-line="127" selection-start-column="6" selection-end-line="127" selection-end-column="6" />
+            <state relative-caret-position="343">
+              <caret line="78" column="53" selection-start-line="78" selection-start-column="53" selection-end-line="78" selection-end-column="53" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="all-review.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/review/all-review/all-review.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="716">
+              <caret line="107" column="54" selection-start-line="107" selection-start-column="54" selection-end-line="107" selection-end-column="54" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -43,8 +56,25 @@
       <file leaf-file-name="analytics-categories.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/analytics-categories/analytics-categories.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="13" column="85" selection-start-line="13" selection-start-column="75" selection-end-line="13" selection-end-column="85" />
+            <state relative-caret-position="135">
+              <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="123" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="review-categories.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/review/review-categories/review-categories.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="896">
+              <caret line="122" column="6" lean-forward="true" selection-start-line="122" selection-start-column="6" selection-end-line="122" selection-end-column="6" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,8 +83,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>params</find>
-      <find>rout</find>
       <find>http</find>
       <find>submit</find>
       <find>$</find>
@@ -79,18 +107,22 @@
       <find>add</find>
       <find>init</find>
       <find>&lt;img</find>
-      <find>item.category.name</find>
       <find>mobile</find>
       <find>item.photo</find>
       <find>item.photos[0].file</find>
+      <find>/analytics</find>
+      <find>item.category.name</find>
+      <find>/posts</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
       <replace>commentcount</replace>
       <replace>&lt;!--&lt;a href=&quot;#&quot; class=&quot;settings&quot;&gt;&lt;img src=&quot;img/settings.svg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;--&gt;</replace>
       <replace>reviews</replace>
-      <replace>item.category</replace>
       <replace>item.photo</replace>
+      <replace>item.category</replace>
+      <replace>/review</replace>
+      <replace>/analytics</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -122,10 +154,7 @@
         <option value="$PROJECT_DIR$/app/news-filter/news-filter.component.ts" />
         <option value="$PROJECT_DIR$/app/news-filter/news-filter.component.html" />
         <option value="$PROJECT_DIR$/app/categories/categories.component.ts" />
-        <option value="$PROJECT_DIR$/app/analytics-categories/analytics-categories.component.html" />
         <option value="$PROJECT_DIR$/app/analytics-filter/analytics-filter.component.ts" />
-        <option value="$PROJECT_DIR$/app/review/all-review/all-review.component.html" />
-        <option value="$PROJECT_DIR$/app/review/review-categories/review-categories.component.html" />
         <option value="$PROJECT_DIR$/app/analytics-filter/analytics-filter.component.html" />
         <option value="$PROJECT_DIR$/app/review/review-categories/review-categories.component.ts" />
         <option value="$PROJECT_DIR$/app/analytics-categories/analytics-categories.component.ts" />
@@ -143,9 +172,12 @@
         <option value="$PROJECT_DIR$/app/exchanges/exchanges.component.html" />
         <option value="$PROJECT_DIR$/app/ico-project/ico-project-all/ico-project-all.component.html" />
         <option value="$PROJECT_DIR$/app/interview/all-interview/all-interview.component.html" />
-        <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.html" />
         <option value="$PROJECT_DIR$/app/categories/categories.component.html" />
         <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.html" />
+        <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.html" />
+        <option value="$PROJECT_DIR$/app/analytics-categories/analytics-categories.component.html" />
+        <option value="$PROJECT_DIR$/app/review/review-categories/review-categories.component.html" />
+        <option value="$PROJECT_DIR$/app/review/all-review/all-review.component.html" />
         <option value="$PROJECT_DIR$/app/analytics/all-analytics/all-analytics.component.html" />
       </list>
     </option>
@@ -522,12 +554,12 @@
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
-      <workItem from="1528871430902" duration="20127000" />
+      <workItem from="1528871430902" duration="20482000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="261325000" />
+    <option name="totallyTimeSpent" value="261680000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -767,20 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/review/all-review/all-review.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/review/review-categories/review-categories.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/review/review-categories/review-categories.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
@@ -980,17 +998,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/analytics-categories/analytics-categories.component.html">
+    <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="13" column="85" selection-start-line="13" selection-start-column="75" selection-end-line="13" selection-end-column="85" />
+        <state relative-caret-position="135">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="103" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.html">
+    <entry file="file://$PROJECT_DIR$/app/review/review-categories/review-categories.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1905">
-          <caret line="127" column="16" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="127" selection-end-column="16" />
+        <state relative-caret-position="896">
+          <caret line="122" column="6" lean-forward="true" selection-start-line="122" selection-start-column="6" selection-end-line="122" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/review/all-review/all-review.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="716">
+          <caret line="107" column="54" selection-start-line="107" selection-start-column="54" selection-end-line="107" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/analytics-categories/analytics-categories.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="123" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -1000,8 +1044,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/analytics/all-analytics/all-analytics.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1885">
-          <caret line="127" column="6" selection-start-line="127" selection-start-column="6" selection-end-line="127" selection-end-column="6" />
+        <state relative-caret-position="343">
+          <caret line="78" column="53" selection-start-line="78" selection-start-column="53" selection-end-line="78" selection-end-column="53" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
