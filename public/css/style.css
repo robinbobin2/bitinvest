@@ -9189,8 +9189,8 @@ border: none;
 cursor: pointer;
 display: inherit;
 }
-@media (min-width: 600px) {
-  .overview-block.overview-block-2 {
+@media (max-width: 600px) {
+  #second_graph {
     display: none !important;
   }
 }
