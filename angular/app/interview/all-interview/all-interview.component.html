@@ -28,6 +28,25 @@
                 </div>
               </div>
             </div>
+            <div class="interview-slider">
+              <div class="interview-item" *ngFor="let main_item of main_news | orderBy: order:reverse:'case-insensitive'">
+                <div class="info">
+                  <span class="views" *ngIf="main_item?.view_count"><i class="fa fa-eye" aria-hidden="true"></i>{{main_item?.view_count}}</span>
+                  <a *ngIf="main_item?.comments_count > 0" [routerLink]="['/interview/item', main_item.id]" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{main_item?.comments_count}}</a>
+                </div>
+                <div class="img-wrap">
+                  <a [routerLink]="['/interview/item', main_item.id]">
+                    <img src="{{main_item.photo}}" alt="">
+                  </a>
+                </div>
+                <h2><a [routerLink]="['/interview/item', main_item.id]">{{main_item.title}}</a></h2>
+                <p class="name"><a [routerLink]="['/interview/item', main_item.id]">{{main_item.name_credits}}</a></p>
+                <p class="seo">{{main_item.workplace}}</p>
+                <div class="orange-wrap">
+                  <p class="orange">{{main_item.category}}</p>
+                </div>
+              </div>
+            </div>
             <div class="interview-comments">
               <div class="comment" *ngFor="let item of news">
                 <div class="img-wrap">
