@@ -59,6 +59,7 @@ export class IcoProjectAllComponent implements OnInit {
   hide = false;
   portfolioInfo:any;
   showCaret = false;
+  status='1';
   /**
    * @param {OrderPipe} 
    */
@@ -75,6 +76,24 @@ export class IcoProjectAllComponent implements OnInit {
    }
 
   ngOnInit() {
+      this.route.queryParams.subscribe(params => {
+          this.order = params['order'];
+          this.reverse = params['reverse'];
+          this.status = params['status'];
+          if (this.status == undefined) {
+              this.status = ''
+          }
+          if (this.order == undefined) {
+              this.order = 'name'
+          }
+          if (this.reverse == undefined) {
+              this.reverse = false
+          }
+          // this.age = params['year'];
+          // if (this.age == undefined) {
+          //     this.age = ''
+          // }
+      });
     let path = "/icoraw";
      const info = this.http.get(path);
      info.subscribe(response => {
@@ -174,12 +193,14 @@ this.authService.getUser().subscribe(
           )
       }
   }
-setOrder(value: string) {
+setOrder(value: string, reverse) {
      if (this.order === value) {
        this.reverse = !this.reverse;
     }
     this.order = value;
-    console.log(this.order);
+    if (reverse != 'none') {
+        this.reverse = reverse;
+    }
 }
   loadMore(id) {
     this.router.navigate(['/ico/item', id]);

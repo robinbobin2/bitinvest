@@ -281,4 +281,15 @@
   border: none;
   font-weight: bold;
 }
+/*.main-news-slider {*/
+  /*max-width: 100% !important;*/
+/*}*/
+/*.main-news-slider .news {*/
+  /*width:430px;*/
+/*}*/
+@media (max-width: 600px) {
 
+  .news.news-slider-wrap {
+    display: none;
+  }
+}

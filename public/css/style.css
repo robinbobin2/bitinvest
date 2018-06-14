@@ -98,6 +98,7 @@ body,
 html {
   font-family: "PT Sans";
 }
+
 @media (min-width: 600px) {
   body,
   html {
@@ -4975,12 +4976,12 @@ margin-bottom: 15px;
   margin-left: auto;
   display: inline-block;
 }
-.mining-wrapper .wrapper .mining-content .mining-head h1 a img {
+.mining-wrapper .wrapper .mining-content .mining-head h1 a img, .news-head h1 a img{
   margin-right: 16px;
   display: none;
 }
 @media (max-width: 600px) {
-  .mining-wrapper .wrapper .mining-content .mining-head h1 a img {
+  .mining-wrapper .wrapper .mining-content .mining-head h1 a img, .news-head h1 a img {
     display: block;
   }
 }
@@ -7312,11 +7313,11 @@ td.no-border .bold {
 }
 
 .interview-slider {
-  display: none;
+  display: none !important;
 }
 @media (max-width: 600px) {
   .interview-slider {
-    display: block;
+    display: block !important;
   }
 }
 .interview-slider .slick-dots {
@@ -9143,15 +9144,17 @@ table tbody tr td .difference .buttons a {
   color: #76bf40 !important;
 }
 .mobile-only {
-  display: none;
+  display: none !important;
 }
-
+.no-mobile {
+  display: inherit !important; 
+}
 @media (max-width: 600px) {
   .mobile-mining-content {
     display: block;
   }
   .mobile-only {
-  display: inherit;
+  display: inherit !important;
 }
 .no-mobile {
   display: none !important;
@@ -9161,4 +9164,34 @@ header .top-head .wrapper .setting-top-block li a.search-btn {
   margin-right: 10px;
   margin-top: 6px;
   display: none;
+}
+
+
+.tag-list li a.active {
+  color: #fff;
+  background: #383c46;
+}
+.tradingview-widget-copyright {
+  max-width: 100% !important;
+}
+iframe {
+  max-width: 100% !important;
+}
+a.saveinput {
+  width: 180px;
+height: 57px;
+background: #f58c1b;
+margin: 15px auto 18px;
+font-size: 18px;
+font-weight: bold;
+color: #fff;
+border: none;
+cursor: pointer;
+display: inherit;
+}
+@media (max-width: 600px) {
+  #second_graph {
+    display: none
+  }
+
 }

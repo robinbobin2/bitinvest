@@ -68,6 +68,13 @@ import { Chart3Component } from './crypto/chart3/chart3.component';
 import {NewsResolverService} from "./news/news-resolver.service";
 import { BannerComponent } from './sidebar/banner/banner.component';
 import { CryptoFilterComponent } from './crypto-filter/crypto-filter.component';
+import { MiningFilterComponent } from './mining-filter/mining-filter.component';
+import { IcoFilterComponent } from './ico-filter/ico-filter.component';
+import { ExchangeFilterComponent } from './exchange-filter/exchange-filter.component';
+import { NewsFilterComponent } from './news-filter/news-filter.component';
+import { AnalyticsFilterComponent } from './analytics-filter/analytics-filter.component';
+import { ReviewFilterComponent } from './review-filter/review-filter.component';
+import { InterviewFilterComponent } from './interview-filter/interview-filter.component';
 
 
 const appRoutes: Routes = [
@@ -95,10 +102,36 @@ const appRoutes: Routes = [
   },
 
     {
-        path: 'mobile-filter', component: CryptoFilterComponent
+        path: 'crypto-filter', component: CryptoFilterComponent
+    },
+    {
+        path: 'mining-filter', component: MiningFilterComponent
     },
 
-  {
+    {
+        path: 'ico-filter', component: IcoFilterComponent
+    },
+
+    {
+        path: 'exchange-filter', component: ExchangeFilterComponent
+    },
+    {
+        path: 'news-filter', component: NewsFilterComponent
+    },
+
+    {
+        path: 'analytics-filter', component: AnalyticsFilterComponent
+    },
+
+    {
+        path: 'review-filter', component: ReviewFilterComponent
+    },
+
+    {
+        path: 'interview-filter', component: ReviewFilterComponent
+    },
+
+    {
       path:'posts', component:NewsComponent, children: [
       
       {
@@ -274,7 +307,14 @@ const appRoutes: Routes = [
     Chart2Component,
     Chart3Component,
     BannerComponent,
-    CryptoFilterComponent
+    CryptoFilterComponent,
+    MiningFilterComponent,
+    IcoFilterComponent,
+    ExchangeFilterComponent,
+    NewsFilterComponent,
+    AnalyticsFilterComponent,
+    ReviewFilterComponent,
+    InterviewFilterComponent
   ],
   imports: [
     // BrowserAnimationsModule,

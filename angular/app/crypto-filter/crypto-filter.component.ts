@@ -9,7 +9,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class CryptoFilterComponent implements OnInit {
   algorithm = '';
-  year = ''
+  age = ''
     algoFilter = [];
     yearFilter = [];
   constructor(private http: HttpClient) { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
 import { AuthService } from '../../auth.service';
@@ -65,6 +65,7 @@ order: string = 'name';
   show = false;
   portfolioInfo:any;
   showCaret = false;
+  status = 'both'
    constructor(private authService: AuthService, 
      private orderPipe: OrderPipe, 
      private http:HttpClient, 
@@ -127,6 +128,26 @@ order: string = 'name';
    }
 
   ngOnInit() {
+      this.route.queryParams.subscribe(params => {
+          this.order = params['order'];
+          this.reverse = params['reverse'];
+          this.status = params['status'];
+          if (this.status == undefined) {
+              this.status = ''
+          }
+          if (this.order == undefined) {
+              this.order = 'id'
+          }
+          if (this.reverse == undefined) {
+              this.reverse = false
+          }
+          // this.age = params['year'];
+          // if (this.age == undefined) {
+          //     this.age = ''
+          // }
+      });
+
+
    this.authService.getUser().subscribe(
      response => {
          for(let item of response['portfolio']) {
@@ -188,7 +209,6 @@ setOrder(value: string, reverse) {
         this.reverse = reverse;
     }
     this.order = value;
-    console.log(this.order);
 }
   portfolio = { 
       'id': '',

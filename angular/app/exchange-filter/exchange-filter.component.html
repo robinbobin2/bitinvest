@@ -1,0 +1,43 @@
+<section class="mining-filter">
+  <div class="filter-top">
+    <h2>Настройка фильтров</h2>
+    <a href="blatant-mining.html" class="close">×</a>
+  </div>
+  <div class="categories-block">
+    <h2>Год основания</h2>
+    <ul class="tag-list">
+      <li *ngFor="let data of yearFilterArray"><a (click)="year=data" [ngClass]="year==data ? 'active' : '' ">{{data}}</a> </li>
+    </ul>
+  </div>
+  <div class="categories-block">
+    <h2>Язык биржи</h2>
+    <ul class="tag-list">
+      <li *ngFor="let data of languageFilterArray"><a  (click)="language=data" [ngClass]="language==data ? 'active' : '' ">{{data}}</a> </li>
+    </ul>
+  </div>
+  <div class="categories-block">
+    <h2>Страна биржи</h2>
+    <ul class="tag-list">
+      <li *ngFor="let data of countryFilterArray"><a  (click)="country=data" [ngClass]="country==data ? 'active' : '' ">{{data}}</a> </li>
+    </ul>
+  </div>
+  <div class="sorting">
+    <!--<h2>Сортировка</h2>-->
+    <!--<form>-->
+    <!--<p>-->
+    <!--<input type="radio" id="test1" name="radio-group" checked>-->
+    <!--<label for="test1">По алфавиту (от А до Я)</label>-->
+    <!--</p>-->
+    <!--<p>-->
+    <!--<input type="radio" id="test2" name="radio-group">-->
+    <!--<label for="test2">По размеру депозита</label>-->
+    <!--</p>-->
+    <!--<p>-->
+    <!--<input type="radio" id="test3" name="radio-group">-->
+    <!--<label for="test3">По рейтингу</label>-->
+    <!--</p>-->
+    <a routerLink="./" [queryParams]="{lang: language, year: year, country: country}" class="saveinput" >Сохранить</a>
+    <!--</form>-->
+    <a href="#" class="claer" (click)="lang = ''">X Очистить параметры фильтрации </a>
+  </div>
+</section>

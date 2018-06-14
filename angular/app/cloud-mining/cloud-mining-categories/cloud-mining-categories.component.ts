@@ -14,8 +14,8 @@ export class NewsRaw {
     name:string;
     depo: number;
     proc: number;
-    status: number;
     recieved: string;
+    status:number;
     logo: string;
     desc: string;
     depo_date: number;
@@ -39,6 +39,9 @@ export class NewsRaw {
 export class CloudMiningCategoriesComponent implements OnInit {
     order: string = 'proc';
     reverse: boolean = false;
+
+    showCaret = false;
+    status = 'both'
     /**
      * @param {OrderPipe}
      */
@@ -58,7 +61,6 @@ export class CloudMiningCategoriesComponent implements OnInit {
     show = false;
     portfolioInfo:any;
 	news: Array<NewsRaw> = [];
-	showCaret = false;
    constructor(private http:HttpClient,private orderPipe: OrderPipe,  private router:Router, private route:ActivatedRoute, private authService: AuthService, private portfolioService: PortfolioService) {
 
 
@@ -66,6 +68,24 @@ export class CloudMiningCategoriesComponent implements OnInit {
    }
 
   ngOnInit() {
+      this.route.queryParams.subscribe(params => {
+          this.order = params['order'];
+          this.reverse = params['reverse'];
+          this.status = params['status'];
+          if (this.status == undefined) {
+              this.status = ''
+          }
+          if (this.order == undefined) {
+              this.order = 'id'
+          }
+          if (this.reverse == undefined) {
+              this.reverse = false
+          }
+          // this.age = params['year'];
+          // if (this.age == undefined) {
+          //     this.age = ''
+          // }
+      });
       this.authService.getUser().subscribe(
           response => {
               for(let item of response['portfolio']) {

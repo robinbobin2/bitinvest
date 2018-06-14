@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrderPipe } from '../order-pipe/ngx-order.pipe';
 import {StocksService} from '../stocks.service';
@@ -22,8 +22,9 @@ export class ExchangesComponent implements OnInit, OnDestroy {
   volumes = []
   exchange_volumes = [];
     language = '';
-    year: number = undefined;
+    year: any = '';
     country = '';
+    age = ''
   reverse: boolean = true;
   order = 'id';
   pairs_count = [];
@@ -38,6 +39,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     getUserPortfolio = [];
     yearFilterArray: any;
     languageFilterArray: any;
+    countryFilterArray: any;
 
 
   constructor(private http:HttpClient,
@@ -47,6 +49,24 @@ export class ExchangesComponent implements OnInit, OnDestroy {
               private authService: AuthService) { }
 
   ngOnInit() {
+      this.route.queryParams.subscribe(params => {
+          this.year = params['year'];
+          if (this.year == undefined) {
+              this.year = ''
+          }
+          this.age = params['year'];
+          if (this.age == undefined) {
+              this.age = ''
+          }
+          this.language = params['language'];
+          if (this.language == undefined) {
+              this.language = ''
+          }
+          this.country = params['country'];
+          if (this.country == undefined) {
+              this.country = ''
+          }
+      });
       let portfolioUrl = '/angular/userportfolio';
       this.portfolioInfo = this.http.get<any>(portfolioUrl);
       this.portfolioInfo.subscribe(
@@ -59,6 +79,15 @@ export class ExchangesComponent implements OnInit, OnDestroy {
               }
           },
       );
+      this.router.events
+          .filter(event => event instanceof NavigationEnd)
+          .map(() => this.route)
+          .subscribe((event) => {
+              setTimeout(()=> {
+                  $.getScript('/js/script.js');
+              }, 300)
+
+          });
       this.authService.getUser().subscribe(
           response => {
               for(let item of response['portfolio']) {
@@ -73,9 +102,9 @@ export class ExchangesComponent implements OnInit, OnDestroy {
       this.exchanges = res;
 
       this.count = this.exchanges.length;
-      console.log(this.exchanges)
-        // this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
-        // this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
+        this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
+        this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
+        this.countryFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.country)))]
 
     });
 

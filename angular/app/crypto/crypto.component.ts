@@ -52,8 +52,7 @@ export class CommentRaw {
 @Component({
   selector: 'app-crypto',
   templateUrl: './crypto.component.html',
-  styleUrls: ['./crypto.component.css'],
-  providers: [StocksService]
+  styleUrls: ['./crypto.component.css']
 })
 export class CryptoComponent implements OnInit, OnDestroy {
   comments: CommentRaw[] = [];
@@ -212,7 +211,6 @@ export class CryptoComponent implements OnInit, OnDestroy {
     this.stocksData = Observable.interval(2000).take(700).concatMap(()=>
       this.stocksService.getStocks(symbol+'/USD'))
     .map(response => {
-    console.log(response);
       for (var _i = 0; _i < this.stocks.length; ++_i) {
         this.time.push(this.stocks[_i].time);
         this.animstock[_i] = '';
@@ -272,19 +270,23 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
 
 
-    this.cryptoFirst = this.stocksService.getCrypto()
-    .map((response)=>{
-      this.dataUsd = response[symbol+'/USD'];
-      this.diff = this.dataUsd.now-this.dataUsd.last;
-      this.prev = this.dataUsd.last;
-      localStorage.removeItem(symbol);
-      localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
-
-    }).subscribe();
+    //   Observable.interval(1).take(1).concatMap(() => this.stocksService.bit$)
+    //       .subscribe(response => {
+    //
+    //     console.log('first')
+    //     console.log(response)
+    //   this.dataUsd = response[symbol+'/USD'];
+    //   this.diff = this.dataUsd.now-this.dataUsd.last;
+    //   this.prev = this.dataUsd.last;
+    //   localStorage.removeItem(symbol);
+    //   localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
+    //
+    // });
     let infoCryptoPath = "/allcrypto/"+symbol;
     this.infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
     this.infoCrypto.subscribe(response => {
       this.data = response;
+      console.log(this.data)
       for(let item of response['comments']) {
         this.comments.push({
           id: item.id,
@@ -304,7 +306,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
               }
           }
       }
-        for(let item of response['categories']) {
+        for(let item of response['category_news']) {
             let newsUrl = "/postsbycat/"+item.id;
             let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
             newsInfo.subscribe(response => {
@@ -328,30 +330,33 @@ export class CryptoComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.cryptoData=Observable.interval(1000).take(700).concatMap(
+    this.cryptoData=Observable.interval(1).take(700).concatMap(
         ()=>
             this.stocksService.bit$)
-    .map((response)=>{
+    .subscribe((resp)=>{
+        console.log('asasas')
+        console.log(resp)
       this.animtype = '';
+      if (this.dataUsd) {
+          if (this.dataUsd.now != resp[symbol + '/USD'].now) {
 
-      if(this.dataUsd.now != response[symbol+'/USD'].now) {
+              this.diff = resp[symbol + '/USD'].now - this.dataUsd.now;
+              this.prev = this.dataUsd.now;
+              if (this.dataUsd.now > resp[symbol + '/USD'].now) {
 
-        this.diff = response[symbol+'/USD'].now-this.dataUsd.now;
-        this.prev = this.dataUsd.now;
-        if(this.dataUsd.now > response[symbol+'/USD'].now) {
-
-            this.animtype = 'redcolor';
-          } else {
-            this.animtype = 'greencolor';
+                  this.animtype = 'redcolor';
+              } else {
+                  this.animtype = 'greencolor';
+              }
           }
       }
-      this.dataUsd = response[symbol+'/USD'];
+      this.dataUsd = resp[symbol+'/USD'];
 
       localStorage.removeItem(symbol);
 
       localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
 
-    }).subscribe();
+    });
 
 
     this.auth
@@ -542,6 +547,5 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
     this.cryptoData.unsubscribe();
     this.stocksData.unsubscribe();
-    this.cryptoFirst.unsubscribe();
   }
 }

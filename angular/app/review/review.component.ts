@@ -31,8 +31,6 @@ export class ReviewComponent implements OnInit {
 
             }
 
-            console.log(this.categories);
-
         });
     }
 

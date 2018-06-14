@@ -1,44 +1,37 @@
 <section class="mining-filter">
   <div class="filter-top">
     <h2>Настройка фильтров</h2>
-    <a href="blatant-mining.html" class="close">×</a>
+    <a routerLink="cryptocurrency/all" class="close">×</a>
   </div>
   <div class="categories-block">
-    <h2>Выберите категорию</h2>
+    <h2>Язык биржи</h2>
     <ul class="tag-list">
-      <li><a href="#">Новости (2)</a></li>
-      <li><a href="#">Технологии (15)</a></li>
-      <li><a href="#">Социальные сети (21)</a></li>
-      <li><a href="#">Спорт (198)</a></li>
-      <li><a href="#">Технологии (15) </a></li>
-      <li><a href="#">Социальные сети (21)</a></li>
+      <li *ngFor="let data of algoFilter"><a (click)="algorithm=data" [ngClass]="algorithm==data ? 'active' : '' ">{{data}}</a> </li>
     </ul>
   </div>
   <div class="categories-block">
-    <h2>Статус проекта</h2>
+    <h2>Год</h2>
     <ul class="tag-list">
-      <li><a href="#">Все (25)</a></li>
-      <li><a href="#">Платит/Ожидание (24)</a></li>
-      <li><a href="#">Не платит (1)</a></li>
+      <li *ngFor="let data of yearFilter"><a  (click)="age=data" [ngClass]="age==data ? 'active' : '' ">{{data}}</a> </li>
     </ul>
   </div>
   <div class="sorting">
-    <h2>Сортировка</h2>
-    <form>
-      <p>
-        <input type="radio" id="test1" name="radio-group" checked>
-        <label for="test1">По алфавиту (от А до Я)</label>
-      </p>
-      <p>
-        <input type="radio" id="test2" name="radio-group">
-        <label for="test2">По размеру депозита</label>
-      </p>
-      <p>
-        <input type="radio" id="test3" name="radio-group">
-        <label for="test3">По рейтингу</label>
-      </p>
-      <input type="submit" value="Сохранить">
-    </form>
-    <a href="#" class="claer">X Очистить параметры фильтрации </a>
+    <!--<h2>Сортировка</h2>-->
+    <!--<form>-->
+      <!--<p>-->
+        <!--<input type="radio" id="test1" name="radio-group" checked>-->
+        <!--<label for="test1">По алфавиту (от А до Я)</label>-->
+      <!--</p>-->
+      <!--<p>-->
+        <!--<input type="radio" id="test2" name="radio-group">-->
+        <!--<label for="test2">По размеру депозита</label>-->
+      <!--</p>-->
+      <!--<p>-->
+        <!--<input type="radio" id="test3" name="radio-group">-->
+        <!--<label for="test3">По рейтингу</label>-->
+      <!--</p>-->
+    <a [routerLink]="['/cryptocurrency/all']" [queryParams]="{algo: algorithm, year: age}" class="saveinput" >Сохранить</a>
+    <!--</form>-->
+    <a href="#" class="claer" (click)="algorithm = ''">X Очистить параметры фильтрации </a>
   </div>
 </section>
