@@ -37,6 +37,7 @@ loadAPI: Promise<any>;
                       "underLineColor": "rgba(242, 242, 242, 0.19)",
                       "trendLineColor": "rgba(255, 152, 0, 1)",
                       "width": "881px",
+                      "max-width": "100%",
                       "height": "361px",
                       "locale": "ru",
                       "chartOnly": true

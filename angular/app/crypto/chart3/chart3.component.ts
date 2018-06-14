@@ -38,6 +38,7 @@ export class Chart3Component implements OnInit {
                         "trendLineColor": "rgba(255, 152, 0, 1)",
                         "width": "881px",
                         "height": "361px",
+                        "max-width": "100%",
                         "locale": "ru",
                         "chartOnly": true
                     }
