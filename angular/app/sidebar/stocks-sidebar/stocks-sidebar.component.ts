@@ -38,8 +38,7 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
     animtype = [];
     algoFilter = [];
     yearFilter = [];
-    diff: Array<number> = [];
-    prev: Array<number> = [];
+    diff= [];
     selectedItem = [];
     active = 0;
     inactive = 0;
@@ -61,15 +60,15 @@ export class StocksSidebarComponent implements OnInit, AfterViewInit, OnDestroy 
       }
 
       alldata.subscribe(response => {
-          if(localStorage.getItem('bit')) {
-
-              this.dataUsd = JSON.parse(localStorage.getItem('bit'));
-
-          }
+          // if(localStorage.getItem('bit')) {
+          //
+          //     this.dataUsd = JSON.parse(localStorage.getItem('bit'));
+          //
+          // }
           let admin = response;
-          for (var _i = 0; _i < admin.length; ++_i) {
-              this.dataUsd[_i].prev = this.dataUsd[_i].last;
-          }
+          // for (var _i = 0; _i < admin.length; ++_i) {
+          //     this.dataUsd[_i].prev = this.dataUsd[_i].last;
+          // }
           this.StockService.getCryptoVol().debounceTime(10000).subscribe(volumes => {
               this.cryptoData = Observable.interval(1000).concatMap(() => this.StockService.bit$)
                   .subscribe(resp => {
