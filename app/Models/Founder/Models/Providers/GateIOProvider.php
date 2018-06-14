@@ -10,14 +10,39 @@ namespace App\Models\Founder\Models\Providers;
 
 
 use App\Models\Founder\Models\Connectors\GateIOConnector;
+use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
 class GateIOProvider extends FounderProvider
 {
+    /**
+     * @param Request $request
+     * @return TickerEntity[]
+     */
     public function search(Request $request)
     {
-        $response = $this->getConnector()->fetch_tickers();
+        $response = [];
+        $result = $this->getConnector()->search();
+
+        if (!$result) {
+            return $response;
+        }
+
+        foreach ($result as $currency => $supplierTicker) {
+            if(!isset($supplierTicker->result)){
+                $supplierTicker = $supplierTicker->result;
+            }
+            $ticker = new TickerEntity();
+            $ticker->setAsk($supplierTicker->lowestAsk);
+            $ticker->setBid($supplierTicker->highestBid);
+            $ticker->setVolume($supplierTicker->quoteVolume);
+            $ticker->setValue($supplierTicker->last);
+            $ticker->setExchangeId($this->getExchangeId());
+            $ticker->setCurrency(strtoupper(str_replace("_", "/", $currency)));
+            $response[] = $ticker;
+        }
+
         return $response;
     }
 
