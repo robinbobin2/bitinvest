@@ -279,14 +279,30 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
       this.cryptoFirst = Observable.interval(1000).take(3).concatMap(() => this.stocksService.bit$)
           .subscribe(response => {
-
-        console.log('first')
-        console.log(response)
               if(response) {
                   this.dataUsd = response[symbol + '/USD'];
                   this.diff = this.dataUsd.now - this.dataUsd.last;
                   this.prev = this.dataUsd.last;
                   localStorage.removeItem(symbol);
+                  localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
+                  this.animtype = '';
+                  if (this.dataUsd) {
+                      if (this.dataUsd.now != response[symbol + '/USD'].now) {
+
+                          this.diff = response[symbol + '/USD'].now - this.dataUsd.now;
+                          this.prev = this.dataUsd.now;
+                          if (this.dataUsd.now > response[symbol + '/USD'].now) {
+
+                              this.animtype = 'redcolor';
+                          } else {
+                              this.animtype = 'greencolor';
+                          }
+                      }
+                  }
+                  this.dataUsd = this.resp[symbol + '/USD'];
+
+                  localStorage.removeItem(symbol);
+
                   localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
               }
     });
@@ -337,48 +353,6 @@ export class CryptoComponent implements OnInit, OnDestroy {
         console.log(this.main_news);
       });
     });
-
-      const alldata = this.http.get<Array<Cripto>>('/allcrypto');
-      if (localStorage.getItem('data')) {
-          this.dataUsd = JSON.parse(localStorage.getItem('data'));
-          this.load = false;
-      }
-      alldata.subscribe(response => {
-          let admin = response;
-          this.stocksService.getCryptoVol().debounceTime(10000).subscribe(volumes => {
-              this.cryptoData = Observable.interval(1000).concatMap(() => this.stocksService.bit$)
-                  .subscribe(resp => {
-
-                      this.resp = resp;
-                      console.log('asasas')
-                      console.log(this.resp)
-                      if (this.resp) {
-                          this.animtype = '';
-                          if (this.dataUsd) {
-                              if (this.dataUsd.now != this.resp[symbol + '/USD'].now) {
-
-                                  this.diff = this.resp[symbol + '/USD'].now - this.dataUsd.now;
-                                  this.prev = this.dataUsd.now;
-                                  if (this.dataUsd.now > this.resp[symbol + '/USD'].now) {
-
-                                      this.animtype = 'redcolor';
-                                  } else {
-                                      this.animtype = 'greencolor';
-                                  }
-                              }
-                          }
-                          this.dataUsd = this.resp[symbol + '/USD'];
-
-                          localStorage.removeItem(symbol);
-
-                          localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
-                      }
-                  })
-
-
-          });
-
-      });
 
 
     this.auth
