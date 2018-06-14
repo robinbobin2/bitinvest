@@ -2809,7 +2809,6 @@ var CryptoAllComponent = (function () {
             }
             else {
                 _this.portfoliosInfo = response['crypto'];
-                console.log(_this.portfoliosInfo);
             }
         });
         this.authService.getUser().subscribe(function (response) {
@@ -2834,11 +2833,9 @@ var CryptoAllComponent = (function () {
                     .subscribe(function (resp) {
                     if (resp) {
                         _this.resp = resp;
-                        console.log(_this.resp);
                         _this.algoFilter = Array.from(new Set(admin.map(function (item) { return item.algo; }))).slice();
                         _this.yearFilter = Array.from(new Set(admin.map(function (item) { return item.year; }))).slice();
                         var _loop_1 = function () {
-                            // console.log(this.admin[i].symbol);
                             var index = _i;
                             var symbol = admin[index].symbol;
                             var year = admin[index].year;

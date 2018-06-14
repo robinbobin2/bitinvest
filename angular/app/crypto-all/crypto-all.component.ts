@@ -164,7 +164,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                     // code...
                 } else {
                     this.portfoliosInfo = response['crypto'];
-                    console.log(this.portfoliosInfo);
                 }
             },
         );
@@ -195,13 +194,10 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
 
                         if (resp) {
                             this.resp=resp
-                            console.log(this.resp)
                             this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
                             this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
 
                             for (var _i = 0; _i < admin.length; ++_i) {
-
-                                // console.log(this.admin[i].symbol);
                                 let index = _i;
 
 
