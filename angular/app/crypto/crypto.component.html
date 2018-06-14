@@ -27,12 +27,12 @@
         <div class="last-update">
           <div class="prices-wrap">
             <span class="price" style="color: #000;" [ngStyle]="{ 'animation': animtype+' 2s', '-webkit-animation': animtype+' 2s'  }">${{dataUsd?.now | number:'1.0-1'}}</span>
-            <span *ngIf="diff" class="no-mobile" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">1{{diff | number:'1.0-5'}}</span>
-            <span *ngIf="diff" class="mobile-only" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">1{{diff | number:'1.0-2'}}</span>
-            <span *ngIf="!diff" class="no-mobile" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">2{{dataUsd.now-dataUsd.last | number:'1.0-5'}}</span>
-            <span *ngIf="!diff" class="mobile-only" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">2{{dataUsd.now-dataUsd.last | number:'1.0-2'}}</span>
-            <span *ngIf="prev" [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">1{{countPercent(dataUsd.now, prev) | number:'1.2-3'}}%</span>
-            <span *ngIf="!prev" [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">2{{countPercent(dataUsd.now, dataUsd.last) | number:'1.2-3'}}%</span>
+            <span *ngIf="diff > 0" class="no-mobile" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">1{{diff | number:'1.0-5'}}</span>
+            <span *ngIf="diff > 0" class="mobile-only" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">1{{diff | number:'1.0-2'}}</span>
+            <span *ngIf="diff ==0" class="no-mobile" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">2{{dataUsd.now-dataUsd.last | number:'1.0-5'}}</span>
+            <span *ngIf="diff == 0" class="mobile-only" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">2{{dataUsd.now-dataUsd.last | number:'1.0-2'}}</span>
+            <span *ngIf="prev == 0" [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">1{{countPercent(dataUsd.now, prev) | number:'1.2-3'}}%</span>
+            <span *ngIf="prev > 0" [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">2{{countPercent(dataUsd.now, dataUsd.last) | number:'1.2-3'}}%</span>
           </div>
           <p *ngIf="time_value">Последнее обновление {{time_value*1000 | date:'HH:mm:ss'}}</p>
         </div>
