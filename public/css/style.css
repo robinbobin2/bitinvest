@@ -7312,11 +7312,11 @@ td.no-border .bold {
 }
 
 .interview-slider {
-  display: none;
+  display: none !important;
 }
 @media (max-width: 600px) {
   .interview-slider {
-    display: block;
+    display: block !important;
   }
 }
 .interview-slider .slick-dots {

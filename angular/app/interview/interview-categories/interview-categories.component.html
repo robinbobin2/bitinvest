@@ -7,116 +7,73 @@
             <li><a href="#">Самое обсуждаемое</a></li>
           </ul>
         </div>
-        <div class="interview-body">
-          <div class="interview-tab-content active">
-            <div class="interview-blocks">
-              <div class="interview-item" *ngFor="let main_item of main_news">
-                <div class="info">
-                  <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>0</span>
-                  <a [routerLink]="['/interview/item', main_item.id]" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{main_item.comments_count}}</a>
-                </div>
-                <div class="img-wrap">
-                  <a [routerLink]="['/interview/item', main_item.id]">
-                    <img src="{{main_item.photo}}" alt="">
-                  </a>
-                </div>
-                <h2><a [routerLink]="['/interview/item', main_item.id]">{{main_item.title}}</a></h2>
-                <p class="name"><a [routerLink]="['/interview/item', main_item.id]">{{main_item.name_credits}}</a></p>
-                <p class="seo">{{main_item.workplace}}</p>
-                <div class="orange-wrap">
-                  <p class="orange">{{main_item.category}}</p>
-                </div>
-              </div>
-            </div>
-            <div class="interview-comments">
-              <div class="comment" *ngFor="let item of news">
-                <div class="img-wrap">
-                  <a [routerLink]="['/interview/item', item.id]"><img src="{{item.photo}}" alt=""></a>
-                </div>
-                <div class="text-wrap">
-                  <a [routerLink]="['/interview/item', item.id]" class="title">{{item.title}}</a>
-                  <p [innerHTML]='item.desc'>
-                    
-                  </p>
-                  <div class="comment-footer">
-                    <a href="interview-card.html" class="name">{{item.name_credits}}</a>
-                    <div class="date-wrap">
-                      <span>{{item.workplace}}</span>
-                      <div class="info">
-                        <span class="date">{{item.created_at}}</span>
-                        <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>0</span>
-                        <a href="interview-card.html" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{item?.comments_count}}</a>
-                      </div>
+            <div class="news-body">
+              <div class="interview-tab-content active">
+                <div class="interview-blocks">
+                  <div class="interview-item" *ngFor="let main_item of main_news | orderBy: order:reverse:'case-insensitive'">
+                    <div class="info">
+                      <span class="views" *ngIf="main_item?.view_count"><i class="fa fa-eye" aria-hidden="true"></i>{{main_item?.view_count}}</span>
+                      <a *ngIf="main_item?.comments_count > 0" [routerLink]="['/interview/item', main_item.id]" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{main_item?.comments_count}}</a>
+                    </div>
+                    <div class="img-wrap">
+                      <a [routerLink]="['/interview/item', main_item.id]">
+                        <img src="{{main_item.photo}}" alt="">
+                      </a>
+                    </div>
+                    <h2><a [routerLink]="['/interview/item', main_item.id]">{{main_item.title}}</a></h2>
+                    <p class="name"><a [routerLink]="['/interview/item', main_item.id]">{{main_item.name_credits}}</a></p>
+                    <p class="seo">{{main_item.workplace}}</p>
+                    <div class="orange-wrap">
+                      <p class="orange">{{main_item.category}}</p>
                     </div>
                   </div>
                 </div>
+                <div class="interview-slider">
+                  <div class="interview-item" *ngFor="let main_item of main_news | orderBy: order:reverse:'case-insensitive'">
+                    <div class="info">
+                      <span class="views" *ngIf="main_item?.view_count"><i class="fa fa-eye" aria-hidden="true"></i>{{main_item?.view_count}}</span>
+                      <a *ngIf="main_item?.comments_count > 0" [routerLink]="['/interview/item', main_item.id]" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{main_item?.comments_count}}</a>
+                    </div>
+                    <div class="img-wrap">
+                      <a [routerLink]="['/interview/item', main_item.id]">
+                        <img src="{{main_item.photo}}" alt="">
+                      </a>
+                    </div>
+                    <h2><a [routerLink]="['/interview/item', main_item.id]">{{main_item.title}}</a></h2>
+                    <p class="name"><a [routerLink]="['/interview/item', main_item.id]">{{main_item.name_credits}}</a></p>
+                    <p class="seo">{{main_item.workplace}}</p>
+                    <div class="orange-wrap">
+                      <p class="orange">{{main_item.category}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="interview-comments">
+                  <div class="comment" *ngFor="let item of news">
+                    <div class="img-wrap">
+                      <a [routerLink]="['/interview/item', item.id]"><img src="{{item.photo}}" alt=""></a>
+                    </div>
+                    <div class="text-wrap">
+                      <a [routerLink]="['/interview/item', item.id]" class="title">{{item.title}}</a>
+                      <p>
+                        {{item.desc  | striphtml | excerpt:140}}
+                      </p>
+                      <div class="comment-footer">
+                        <a href="interview-card.html" class="name">{{item.name_credits}}</a>
+                        <div class="date-wrap">
+                          <span>{{item.workplace}}</span>
+                          <div class="info">
+                            <span class="date">{{item.created_at}}</span>
+                            <span class="views" *ngIf="item?.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item?.view_count}}</span>
+                            <a *ngIf="item?.comments_count > 0" href="interview-card.html" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>{{item?.comments_count}}</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!--<a href="#" class="show-more">Показать еще</a>-->
               </div>
-              
-            </div>
-            <a href="#" class="show-more">Показать еще</a>
-          </div>
-          
-        </div>
-      </div><!-- 
 
-<div class="row">
-        <div class="col-md-4" style="padding-left:20px;">
-        <h3 style="float:left;">Интервью</h3>
-  <h6 style="color:#9b9b9b;margin-top:10px;float:left;width:10%;text-align:center">228</h6>
-      </div>
-    
-
-    
-      <div class="col-md-8">
-        <ul class="tags">
-          <li><a routerLinkActive="active"  routerLink="/interview/all">Новое за сегодня</a></li>
-          <li><a routerLinkActive="active" href="#">Самое популярное</a></li>
-          <li><a routerLinkActive="active" href="#">Самое обсуждаемое</a></li>
-        </ul>
-      </div>
- </div>
-
- <div class="main-block" style="width: 48%;float:left;margin:1%;" *ngFor="let main_item of main_news">
-        <div class="block" style="background-size: cover; width: 100%; height: 240px; box-sizing: border-box;">
-          <div style="position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;"></div>
-          <img style="z-index: 1; position: absolute; top: 0; left: 0; right: 0;
-          bottom: 0;" src="{{main_item.photo}}">
-          <div class="block-content">
-            <span class="tag"><a href="#">{{main_item.category}}</a></span>
-            <table style="height: 140px;"><tr><td valign="bottom">
-            
-            <h2 style="position: relative; z-index: 999"><a (click)="loadMore(main_item.id)">{{main_item.title}}</a></h2>
-          </td></tr></table>
-
-            <div class="meta" style="z-index: 99">
-              <span class="date">{{main_item.created_at}}</span>
-              <span class="spy">0</span>
-              <span class="chat">0</span>
             </div>
           </div>
-        </div>
-        <p>{{main_item.desc}} <a (click)="loadMore(main_item.id)">Подробнее</a></p>
-      </div>
-
-<masonry [options]="myOptions" class="masonry" style="float:left; transition: none !important;">
-        
-  
-    
-            <masonry-brick style="transition: none !important;" class="masonry-item" *ngFor="let item of news">
-        <div class="grid-item-bg" style=" position: relative; background-size: cover; box-sizing: border-box;">
-          <div style="position: absolute; z-index: 2; background: rgba(0,0,0,.5); top: 0; right: 0; left: 0; bottom: 0;"></div>
-          <img style="z-index: 1; position: absolute; top: 0; left: 0; right: 0;
-          bottom: 0;" src="{{item.photo}}">
-          <div class="block-content" style="z-index: 99">
-            <span class="tag"><a href="#">{{item.category}}</a></span>
-            
-            <div class="meta" style="z-index: 99">
-              <span class="date">{{item.created_at}}</span>
-            </div>
-          </div>
-        </div>
-        <h3><a  (click)="loadMore(item.id)" >{{item.title}}</a></h3>
-      </masonry-brick>
-      
-    
-      </masonry> -->
