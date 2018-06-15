@@ -333,7 +333,6 @@ export class CryptoComponent implements OnInit, OnDestroy {
           }
       }
         for(let item of response['categories']) {
-          console.log(item);
 
             if (item['type'] == 1) {
                 let newsUrl = "/postsbycat/" + item.id;
@@ -353,6 +352,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
                 let newsUrl = "/postsbycat/" + item.id;
                 let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
                 newsInfo.subscribe(response => {
+                    console.log(response)
                     if (response['news']) {
                         for (let news_item of response['news']) {
                             this.analytics.push(news_item)
@@ -366,15 +366,6 @@ export class CryptoComponent implements OnInit, OnDestroy {
         }
       this.commentcount = response['comments_count'];
 
-      let newsUrl = "/postsbycat/"+this.data.cat_id_news;
-      let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
-      newsInfo.subscribe(response => {
-        this.main_news = response['main_news'];
-        this.news = response['news'];
-        this.news_container = this.news.slice(0,3);
-        console.log(this.news);
-        console.log(this.main_news);
-      });
     });
 
 

@@ -217,7 +217,7 @@
                     </ng-template>
                   </div>
                   <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                  <div class="news news-slider-wrap" *ngIf="i >0">
+                  <div class="news news-slider-wrap" *ngIf="i >0 && i<=1">
                     <div class="news-slider news-slider-1">
                       <div class="slide" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
@@ -320,7 +320,7 @@
                     </ng-template>
                   </div>
                   <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                    <div class="news news-slider-wrap" *ngIf="i >0">
+                    <div class="news news-slider-wrap" *ngIf="i >0 && i<=1">
                       <div class="news-slider news-slider-1">
                         <div class="slide" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
@@ -459,7 +459,7 @@
                   </ng-template>
                 </div>
                 <ng-template ngFor let-item [ngForOf]="main_analytics | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                  <div class="news news-slider-wrap" *ngIf="i >0">
+                  <div class="news news-slider-wrap" *ngIf="i >0 && i<=1">
                     <div class="news-slider news-slider-1">
                       <div class="slide" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
