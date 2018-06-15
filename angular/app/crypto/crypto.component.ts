@@ -339,17 +339,25 @@ export class CryptoComponent implements OnInit, OnDestroy {
             if (item.type == 1) {
 
                 newsInfo.subscribe(response => {
-                    for (let news_item of response['news']) {
-                        this.news.push(news_item)
+                    if (response['news']) {
+                        for (let news_item of response['news']) {
+                            this.news.push(news_item)
+                        }
                     }
-                    this.main_news.push(...response['main_news'])
+                    if (response['main_news']) {
+                        this.main_news.push(...response['main_news'])
+                    }
                 });
             } else if (item.type == 3) {
                 newsInfo.subscribe(response => {
-                    for (let news_item of response['news']) {
-                        this.analytics.push(news_item)
+                    if (response['news']) {
+                        for (let news_item of response['news']) {
+                            this.analytics.push(news_item)
+                        }
                     }
-                    this.main_analytics.push(...response['main_news'])
+                    if (response['main_news']) {
+                        this.main_analytics.push(...response['main_news'])
+                    }
                 });
             }
         }

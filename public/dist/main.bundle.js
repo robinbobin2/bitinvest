@@ -3655,21 +3655,29 @@ var CryptoComponent = (function () {
                 var newsInfo_1 = _this.http.get(newsUrl_1).publishReplay(1).refCount();
                 if (item.type == 1) {
                     newsInfo_1.subscribe(function (response) {
-                        for (var _a = 0, _b = response['news']; _a < _b.length; _a++) {
-                            var news_item = _b[_a];
-                            _this.news.push(news_item);
+                        if (response['news']) {
+                            for (var _a = 0, _b = response['news']; _a < _b.length; _a++) {
+                                var news_item = _b[_a];
+                                _this.news.push(news_item);
+                            }
                         }
-                        (_c = _this.main_news).push.apply(_c, response['main_news']);
+                        if (response['main_news']) {
+                            (_c = _this.main_news).push.apply(_c, response['main_news']);
+                        }
                         var _c;
                     });
                 }
                 else if (item.type == 3) {
                     newsInfo_1.subscribe(function (response) {
-                        for (var _a = 0, _b = response['news']; _a < _b.length; _a++) {
-                            var news_item = _b[_a];
-                            _this.analytics.push(news_item);
+                        if (response['news']) {
+                            for (var _a = 0, _b = response['news']; _a < _b.length; _a++) {
+                                var news_item = _b[_a];
+                                _this.analytics.push(news_item);
+                            }
                         }
-                        (_c = _this.main_analytics).push.apply(_c, response['main_news']);
+                        if (response['main_news']) {
+                            (_c = _this.main_analytics).push.apply(_c, response['main_news']);
+                        }
                         var _c;
                     });
                 }
