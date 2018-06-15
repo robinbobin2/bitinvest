@@ -3653,9 +3653,9 @@ var CryptoComponent = (function () {
             for (var _e = 0, _f = response['categories']; _e < _f.length; _e++) {
                 var item = _f[_e];
                 console.log(item);
-                var newsUrl_1 = "/postsbycat/" + item.id;
-                var newsInfo_1 = _this.http.get(newsUrl_1).publishReplay(1).refCount();
-                if (item.type == 1) {
+                if (item['type'] == 1) {
+                    var newsUrl_1 = "/postsbycat/" + item.id;
+                    var newsInfo_1 = _this.http.get(newsUrl_1).publishReplay(1).refCount();
                     newsInfo_1.subscribe(function (response) {
                         if (response['news']) {
                             for (var _a = 0, _b = response['news']; _a < _b.length; _a++) {
@@ -3669,8 +3669,10 @@ var CryptoComponent = (function () {
                         var _c;
                     });
                 }
-                else if (item.type == 3) {
-                    newsInfo_1.subscribe(function (response) {
+                if (item['type'] == 3) {
+                    var newsUrl_2 = "/postsbycat/" + item.id;
+                    var newsInfo_2 = _this.http.get(newsUrl_2).publishReplay(1).refCount();
+                    newsInfo_2.subscribe(function (response) {
                         if (response['news']) {
                             for (var _a = 0, _b = response['news']; _a < _b.length; _a++) {
                                 var news_item = _b[_a];
