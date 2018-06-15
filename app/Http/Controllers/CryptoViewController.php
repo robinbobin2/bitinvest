@@ -14,7 +14,7 @@ class CryptoViewController extends Controller
         );
 	}
 	public function viewCrypto($symbol) {
-		$crypto = CryptoStat::where('symbol', $symbol)->with('comments.rating')->withCount('comments')->with('category_news')->with('category_analytics')->first();
+		$crypto = CryptoStat::where('symbol', $symbol)->with('comments.rating')->withCount('comments')->with('category_news')->with('category_analytics')->with('categories')->first();
 		return response()->json(
             $crypto
         );
