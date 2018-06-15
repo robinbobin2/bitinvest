@@ -333,6 +333,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
           }
       }
         for(let item of response['categories']) {
+          console.log(item);
             let newsUrl = "/postsbycat/" + item.id;
             let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
             if (item.type == 1) {
