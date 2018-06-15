@@ -67,8 +67,8 @@
       <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="382" column="79" selection-start-line="382" selection-start-column="79" selection-end-line="382" selection-end-column="79" />
+            <state relative-caret-position="433">
+              <caret line="542" column="9" selection-start-line="542" selection-start-column="9" selection-end-line="542" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -596,12 +596,12 @@
       <workItem from="1526573759271" duration="11054000" />
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
-      <workItem from="1528871430902" duration="36307000" />
+      <workItem from="1528871430902" duration="36576000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="277505000" />
+    <option name="totallyTimeSpent" value="277774000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1075,8 +1075,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="382" column="79" selection-start-line="382" selection-start-column="79" selection-end-line="382" selection-end-column="79" />
+        <state relative-caret-position="433">
+          <caret line="542" column="9" selection-start-line="542" selection-start-column="9" selection-end-line="542" selection-end-column="9" />
         </state>
       </provider>
     </entry>
