@@ -3432,6 +3432,8 @@ var CryptoComponent = (function () {
         };
         this.commentcount = 0;
         this.stocks = [];
+        this.main_news = [];
+        this.news = [];
         this.bid_ask = { bid: 0, ask: 0 };
         this.animtype = '';
         this.diff = 0;

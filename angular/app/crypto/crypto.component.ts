@@ -73,8 +73,8 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
   commentcount = 0;
   stocks=[];
-  main_news: any;
-  news: any;
+  main_news: any = [];
+  news: any = [];
   info: any;
   infoCrypto: any;
   stocksData: any;
