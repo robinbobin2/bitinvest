@@ -3669,7 +3669,7 @@ var CryptoComponent = (function () {
                     });
                 }
                 if (item['type'] == 3) {
-                    var newsUrl = "/postsbycat/" + item.id;
+                    var newsUrl = "/analyticsbycat/" + item.id;
                     var newsInfo = _this.http.get(newsUrl).publishReplay(1).refCount();
                     newsInfo.subscribe(function (response) {
                         console.log(response);
