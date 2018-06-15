@@ -438,7 +438,7 @@
             <div class="news-body">
               <div class="main-news">
                 <div class="main-news-slider">
-                  <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
+                  <ng-template ngFor let-item [ngForOf]="main_analytics | orderBy: order:reverse:'case-insensitive'" let-i="index">
                     <div class="news" *ngIf="i <=0">
                       <div class="img" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
@@ -458,7 +458,7 @@
                     </div>
                   </ng-template>
                 </div>
-                <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
+                <ng-template ngFor let-item [ngForOf]="main_analytics | orderBy: order:reverse:'case-insensitive'" let-i="index">
                   <div class="news news-slider-wrap" *ngIf="i >0">
                     <div class="news-slider news-slider-1">
                       <div class="slide" [ngStyle]="{'background': 'linear-gradient(
@@ -484,7 +484,7 @@
               </div>
               <div class="news-mobile">
                 <ul class="news-list-mobile">
-                  <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'">
+                  <li  *ngFor="let item of analytics | orderBy: order:reverse:'case-insensitive'">
                     <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
                        [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
                       <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
@@ -498,7 +498,7 @@
                 <a routerLink="/posts/all" class="show-news">Показать больше новостей</a>
               </div>
               <div class="news-list">
-                <div *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.name_credits ? 'trust news' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
+                <div *ngFor="let item of analytics | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.name_credits ? 'trust news' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
                   <div *ngIf="item.name_credits" class="img-wrap"><img src="images/{{item.photos[0].file}}" alt=""></div>
                   <h4 *ngIf="item.name_credits">{{item.title}}</h4>
                   <p *ngIf="item.name_credits" class="name">{{item.name_credits}}</p>
@@ -521,7 +521,7 @@
                 </div>
 
               </div>
-                <a routerLink="/posts/all" class="show-more">Показать ещё</a>
+                <a routerLink="/analytics/all" class="show-more">Показать ещё</a>
               </div>
             </div>
           </div>

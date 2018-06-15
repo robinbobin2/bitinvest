@@ -93,6 +93,8 @@ export class CryptoComponent implements OnInit, OnDestroy {
   time = [];
   time_value = 0;
   dataAll;
+    main_analytics = [];
+    analytics = [];
   news_container: any;
   selectedItem: PositionData;
     portfolioInfo:any;
@@ -330,16 +332,25 @@ export class CryptoComponent implements OnInit, OnDestroy {
               }
           }
       }
-        for(let item of response['category_news']) {
-            let newsUrl = "/postsbycat/"+item.id;
+        for(let item of response['categories']) {
+            let newsUrl = "/postsbycat/" + item.id;
             let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
-            newsInfo.subscribe(response => {
-                for(let news_item of response['news']) {
-                    this.news.push(news_item)
-                }
-                this.main_news.push(...response['main_news'])
-                console.log(this.news);
-            });
+            if (item.type == 1) {
+
+                newsInfo.subscribe(response => {
+                    for (let news_item of response['news']) {
+                        this.news.push(news_item)
+                    }
+                    this.main_news.push(...response['main_news'])
+                });
+            } else if (item.type == 3) {
+                newsInfo.subscribe(response => {
+                    for (let news_item of response['news']) {
+                        this.analytics.push(news_item)
+                    }
+                    this.main_analytics.push(...response['main_news'])
+                });
+            }
         }
       this.commentcount = response['comments_count'];
 
