@@ -41,7 +41,7 @@ class BinanceProvider extends FounderProvider
             return $response;
         }
 
-        foreach ($result->result->tickers as $currency => $supplierTicker) {
+        foreach ($result as $currency => $supplierTicker) {
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->askPrice);
             $ticker->setBid($supplierTicker->bidPrice);
