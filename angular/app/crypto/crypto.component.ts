@@ -6,6 +6,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import {AuthService} from '../auth.service';
 import {StocksService} from '../stocks.service';
 import {CommentsService} from "../comments.service";
+import {Cripto} from "../sidebar/stocks-sidebar/stocks-sidebar.component";
 
 
 declare var $: any;
@@ -72,8 +73,8 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
   commentcount = 0;
   stocks=[];
-  main_news: any;
-  news: any;
+  main_news: any = [];
+  news: any = [];
   info: any;
   infoCrypto: any;
   stocksData: any;
@@ -91,6 +92,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
   max = [];
   time = [];
   time_value = 0;
+  dataAll;
+    main_analytics = [];
+    analytics = [];
   news_container: any;
   selectedItem: PositionData;
     portfolioInfo:any;
@@ -132,8 +136,12 @@ export class CryptoComponent implements OnInit, OnDestroy {
           },
       );
     let symbol = this.route.snapshot.params['sym'];
-    if(localStorage.getItem(symbol)) {
-      this.dataUsd = JSON.parse(localStorage.getItem(symbol));
+    if(localStorage.getItem('bit')) {
+      this.dataAll = JSON.parse(localStorage.getItem('bit'));
+        console.log('this.dataAll');
+
+      this.dataUsd = this.dataAll[symbol+'/USD'];
+        console.log(this.dataUsd.now);
       this.diff = this.dataUsd.now - this.dataUsd.last;
       this.prev = this.dataUsd.last;
       
@@ -271,18 +279,35 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
 
 
-    //   Observable.interval(1).take(1).concatMap(() => this.stocksService.bit$)
-    //       .subscribe(response => {
-    //
-    //     console.log('first')
-    //     console.log(response)
-    //   this.dataUsd = response[symbol+'/USD'];
-    //   this.diff = this.dataUsd.now-this.dataUsd.last;
-    //   this.prev = this.dataUsd.last;
-    //   localStorage.removeItem(symbol);
-    //   localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
-    //
-    // });
+      this.cryptoFirst = Observable.interval(1000).take(3).concatMap(() => this.stocksService.bit$)
+          .subscribe(response => {
+              if(response) {
+                  this.dataUsd = response[symbol + '/USD'];
+                  this.diff = this.dataUsd.now - this.dataUsd.last;
+                  this.prev = this.dataUsd.last;
+                  localStorage.removeItem(symbol);
+                  localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
+                  this.animtype = '';
+                  if (this.dataUsd) {
+                      if (this.dataUsd.now != response[symbol + '/USD'].now) {
+
+                          this.diff = response[symbol + '/USD'].now - this.dataUsd.now;
+                          this.prev = this.dataUsd.now;
+                          if (this.dataUsd.now > response[symbol + '/USD'].now) {
+
+                              this.animtype = 'redcolor';
+                          } else {
+                              this.animtype = 'greencolor';
+                          }
+                      }
+                  }
+                  this.dataUsd = response[symbol + '/USD'];
+
+                  localStorage.removeItem(symbol);
+
+                  localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
+              }
+    });
     let infoCryptoPath = "/allcrypto/"+symbol;
     this.infoCrypto = this.http.get<PositionData>(infoCryptoPath).publishReplay(1).refCount();
     this.infoCrypto.subscribe(response => {
@@ -307,54 +332,39 @@ export class CryptoComponent implements OnInit, OnDestroy {
               }
           }
       }
-        for(let item of response['category_news']) {
-            let newsUrl = "/postsbycat/"+item.id;
-            let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
-            newsInfo.subscribe(response => {
-                for(let news_item of response['news']) {
-                    this.news.push(news_item)
-                }
-                this.main_news.push(...response['main_news'])
-                console.log(this.news);
-            });
+        for(let item of response['categories']) {
+
+            if (item['type'] == 1) {
+                let newsUrl = "/postsbycat/" + item.id;
+                let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
+                newsInfo.subscribe(response => {
+                    if (response['news']) {
+                        for (let news_item of response['news']) {
+                            this.news.push(news_item)
+                        }
+                    }
+                    if (response['main_news']) {
+                        this.main_news.push(...response['main_news'])
+                    }
+                });
+            }
+            if (item['type'] == 3) {
+                let newsUrl = "/analyticsbycat/" + item.id;
+                let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
+                newsInfo.subscribe(response => {
+                    console.log(response)
+                    if (response['news']) {
+                        for (let news_item of response['news']) {
+                            this.analytics.push(news_item)
+                        }
+                    }
+                    if (response['main_news']) {
+                        this.main_analytics.push(...response['main_news'])
+                    }
+                });
+            }
         }
       this.commentcount = response['comments_count'];
-
-      let newsUrl = "/postsbycat/"+this.data.cat_id_news;
-      let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
-      newsInfo.subscribe(response => {
-        this.main_news = response['main_news'];
-        this.news = response['news'];
-        this.news_container = this.news.slice(0,3);
-        console.log(this.news);
-        console.log(this.main_news);
-      });
-    });
-
-      this.cryptoData = Observable.interval(1000).concatMap(() => this.stocksService.bit$)
-          .subscribe(resp => {
-        this.resp = resp;
-        console.log('asasas')
-        console.log(this.resp)
-      this.animtype = '';
-      if (this.dataUsd) {
-          if (this.dataUsd.now != this.resp[symbol + '/USD'].now) {
-
-              this.diff = this.resp[symbol + '/USD'].now - this.dataUsd.now;
-              this.prev = this.dataUsd.now;
-              if (this.dataUsd.now > this.resp[symbol + '/USD'].now) {
-
-                  this.animtype = 'redcolor';
-              } else {
-                  this.animtype = 'greencolor';
-              }
-          }
-      }
-      this.dataUsd = this.resp[symbol+'/USD'];
-
-      localStorage.removeItem(symbol);
-
-      localStorage.setItem(symbol, JSON.stringify(this.dataUsd));
 
     });
 
@@ -545,7 +555,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
     }
   ngOnDestroy() {
 
-    this.cryptoData.unsubscribe();
-    this.stocksData.unsubscribe();
+      this.stocksData.unsubscribe();
+      this.cryptoFirst.unsubscribe();
   }
 }

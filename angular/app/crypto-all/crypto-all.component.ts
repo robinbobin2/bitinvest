@@ -164,7 +164,6 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                     // code...
                 } else {
                     this.portfoliosInfo = response['crypto'];
-                    console.log(this.portfoliosInfo);
                 }
             },
         );
@@ -187,19 +186,18 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
             }
             alldata.subscribe(response => {
                 let admin = response;
-                this.StockService.getCryptoVol().debounceTime(10000).subscribe(volumes => {
-                this.cryptoData = Observable.interval(1000).concatMap(() => this.StockService.bit$)
+                this.StockService.getCryptoVol().subscribe(volumes => {
+                this.cryptoData = Observable.interval(5000).concatMap(() => this.StockService.bit$)
                     .subscribe(resp => {
 
-                        this.resp = resp;
 
-                        console.log(this.resp)
-                        this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
-                        this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
+
+                        if (resp) {
+                            this.resp=resp
+                            this.algoFilter = [...Array.from(new Set(admin.map(item => item.algo)))]
+                            this.yearFilter = [...Array.from(new Set(admin.map(item => item.year)))]
 
                             for (var _i = 0; _i < admin.length; ++_i) {
-
-                                // console.log(this.admin[i].symbol);
                                 let index = _i;
 
 
@@ -209,8 +207,8 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                 let logo = admin[index].logo;
                                 let id = admin[index].id;
 
-                                setTimeout(()=>this.diff[index] = 0, 2000)
-
+                                setTimeout(() => this.diff[index] = 0, 2000)
+                                if(this.resp[symbol + '/USD']) {
                                     if (this.dataUsd[index]) {
                                         if (this.dataUsd[index].now != this.resp[symbol + '/USD']['now']) {
                                             this.first_time = false;
@@ -259,6 +257,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
                                             currencyVol: 0
                                         }
                                     }
+                                }
 
                                 this.load = false;
                                 localStorage.removeItem('data');
@@ -273,6 +272,7 @@ export class CryptoAllComponent implements OnInit, OnDestroy {
 
 
                             }
+                        }
                         })
 
                     });
