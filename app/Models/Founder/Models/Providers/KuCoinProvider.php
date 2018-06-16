@@ -30,6 +30,9 @@ class KuCoinProvider extends FounderProvider
         }
 
         foreach ($result->data as $supplierTicker) {
+            if(!isset($supplierTicker->buy)){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->sell);
             $ticker->setBid($supplierTicker->buy);

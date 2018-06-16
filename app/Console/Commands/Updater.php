@@ -162,22 +162,18 @@ class Updater extends \Illuminate\Console\Command
         LakeBTCProvider::class,
         KrakenProvider::class,
         GateIOProvider::class,
+
+        ExxProvider::class,
+        CobinhoodProvider::class,
+        CoinEggProvider::class,
+        BinanceProvider::class,
+        BitTrexProvider::class,
+
     ];
 
     private $suppliers = [
-        BinanceProvider::class,
         PoloniexProvider::class,
-        Bit2CProvider::class,
-        BitMarketProvider::class,
-        BitMexProvider::class,
-        BitTrexProvider::class,
-        CoinEggProvider::class,
-        CobinhoodProvider::class,
         CoinexChangeProvider::class,
-        AllCoinProvider::class,
-        ExxProvider::class,
-        CoinMarketCapProvider::class,
-        CoinTigerProvider::class,
 
 
         JubiProvider::class,
@@ -188,6 +184,11 @@ class Updater extends \Illuminate\Console\Command
         GeminiProvider::class,
         GDaxProvider::class,
         FlowBTCProvider::class,
+        AllCoinProvider::class,
+        CoinTigerProvider::class,
+        BitMexProvider::class,
+        BitMarketProvider::class,
+        Bit2CProvider::class,
 
 
 
@@ -200,6 +201,12 @@ class Updater extends \Illuminate\Console\Command
         VaultoroProvider::class,
         VirWoxProvider::class,
         IBankProvider::class,
+
+
+
+
+
+        CoinMarketCapProvider::class,
 
     ];
 

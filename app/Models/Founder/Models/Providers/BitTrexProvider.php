@@ -10,14 +10,36 @@ namespace App\Models\Founder\Models\Providers;
 
 
 use App\Models\Founder\Models\Connectors\BitTrexConnector;
+use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
 class BitTrexProvider extends FounderProvider
 {
+    /**
+     * @param Request $request
+     * @return TickerEntity[]
+     */
     public function search(Request $request)
     {
-        $response = $this->getConnector()->fetch_tickers();
+        $response = [];
+        $result = $this->getConnector()->search();
+
+        if (!$result) {
+            return $response;
+        }
+
+        foreach ($result->result as $currency => $supplierTicker) {
+            $ticker = new TickerEntity();
+            $ticker->setAsk($supplierTicker->Ask);
+            $ticker->setBid($supplierTicker->Bid);
+            $ticker->setVolume($supplierTicker->Volume);
+            $ticker->setValue($supplierTicker->Last);
+            $ticker->setExchangeId($this->getExchangeId());
+            $ticker->setCurrency(str_replace("-", "/", $supplierTicker->MarketName));
+            $response[] = $ticker;
+        }
+
         return $response;
     }
 
