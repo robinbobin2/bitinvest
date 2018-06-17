@@ -19,28 +19,6 @@ use App\Models\Founder\Models\Requests\Request;
 class C2CXProvider extends FounderProvider
 {
     /**
-     * @param TickerEntity[] $response
-     */
-    public function save($response)
-    {
-        foreach ($response as $ticker) {
-            $exchange = new ExchangeRate();
-            $exchange->value = $ticker->getValue();
-            $exchange->volume = $ticker->getVolume();
-            $exchange->bid = $ticker->getBid();
-            $exchange->ask = $ticker->getAsk();
-            $exchange->currency = $ticker->getCurrency();
-            $exchange->exchangeId = $this->getExchangeId();
-            $exchange->createTime = time();
-            try {
-                $exchange->save();
-            } catch (\Exception $e) {
-
-            }
-        }
-    }
-
-    /**
      * @param Request $request
      * @return TickerEntity[]
      */

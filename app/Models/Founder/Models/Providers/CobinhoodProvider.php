@@ -56,13 +56,24 @@ class CobinhoodProvider extends FounderProvider
         }
 
         foreach ($result->result->tickers as $currency => $supplierTicker) {
+            $currency = strtoupper(str_replace("-", "/", $supplierTicker->trading_pair_id));
+            if(strpos($currency, "USDT") !== false){
+                $ticker = new TickerEntity();
+                $ticker->setAsk((float)$supplierTicker->lowest_ask);
+                $ticker->setBid((float)$supplierTicker->highest_bid);
+                $ticker->setVolume((float)$supplierTicker->{"24h_volume"});
+                $ticker->setValue((float)$supplierTicker->last_trade_price);
+                $ticker->setExchangeId($this->getExchangeId());
+                $ticker->setCurrency(str_replace("USDT", "USD", $currency));
+                $result[] = $ticker;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->lowest_ask);
             $ticker->setBid($supplierTicker->highest_bid);
             $ticker->setVolume($supplierTicker->{"24h_volume"});
             $ticker->setValue($supplierTicker->last_trade_price);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(strtoupper(str_replace("-", "/", $supplierTicker->trading_pair_id)));
+            $ticker->setCurrency($currency);
             $response[] = $ticker;
         }
 

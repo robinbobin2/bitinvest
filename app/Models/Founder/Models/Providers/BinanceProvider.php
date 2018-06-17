@@ -42,6 +42,16 @@ class BinanceProvider extends FounderProvider
         }
 
         foreach ($result as $currency => $supplierTicker) {
+            if(strpos($supplierTicker->symbol, "USDT") !== false){
+                $ticker = new TickerEntity();
+                $ticker->setAsk((float)$supplierTicker->askPrice);
+                $ticker->setBid((float)$supplierTicker->bidPrice);
+                $ticker->setVolume((float)$supplierTicker->volume);
+                $ticker->setValue((float)$supplierTicker->lastPrice);
+                $ticker->setExchangeId($this->getExchangeId());
+                $ticker->setCurrency(str_replace("USDT", "USD", $supplierTicker->symbol));
+                $result[] = $ticker;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->askPrice);
             $ticker->setBid($supplierTicker->bidPrice);

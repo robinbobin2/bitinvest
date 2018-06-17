@@ -28,14 +28,26 @@ class BiBoxProvider extends FounderProvider
             if(!isset($value->result)){
                 continue;
             }
+
             $value = $value->result;
+            $currency = str_replace("_", "/", $currency);
+            if(strpos($currency, "USDT") !== false){
+                $ticker = new TickerEntity();
+                $ticker->setAsk((float)$value->buy);
+                $ticker->setBid((float)$value->sell);
+                $ticker->setVolume((float)$value->vol);
+                $ticker->setValue((float)$value->last);
+                $ticker->setExchangeId($this->getExchangeId());
+                $ticker->setCurrency(str_replace("USDT", "USD", $currency));
+                $result[] = $ticker;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->buy);
             $ticker->setBid($value->sell);
             $ticker->setVolume($value->vol);
             $ticker->setValue($value->last);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(str_replace("_", "/", $currency));
+            $ticker->setCurrency($currency);
             $result[] = $ticker;
         }
 

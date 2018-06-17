@@ -29,7 +29,18 @@ class BitTrexProvider extends FounderProvider
             return $response;
         }
 
-        foreach ($result->result as $currency => $supplierTicker) {
+        foreach ($result->result as $supplierTicker) {
+            $currency = str_replace("-", "/", $supplierTicker->MarketName);
+            if(strpos($currency, "USDT") !== false){
+                $ticker = new TickerEntity();
+                $ticker->setAsk((float)$supplierTicker->Ask);
+                $ticker->setBid((float)$supplierTicker->Bid);
+                $ticker->setVolume((float)$supplierTicker->Volume);
+                $ticker->setValue((float)$supplierTicker->Last);
+                $ticker->setExchangeId($this->getExchangeId());
+                $ticker->setCurrency(str_replace("USDT", "USD", $currency));
+                $result[] = $ticker;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->Ask);
             $ticker->setBid($supplierTicker->Bid);

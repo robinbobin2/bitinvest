@@ -27,13 +27,24 @@ class ZbProvider extends FounderProvider
                 continue;
             }
             $supplierTicker = $supplierTicker->ticker;
+            $currency = strtoupper(str_replace("_", "/", $currency));
+            if(strpos($currency, "USDT") !== false){
+                $ticker = new TickerEntity();
+                $ticker->setAsk((float)$supplierTicker->sell);
+                $ticker->setBid((float)$supplierTicker->buy);
+                $ticker->setVolume((float)$supplierTicker->vol);
+                $ticker->setValue((float)$supplierTicker->last);
+                $ticker->setExchangeId($this->getExchangeId());
+                $ticker->setCurrency(str_replace("USDT", "USD", $currency));
+                $result[] = $ticker;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->sell);
             $ticker->setBid($supplierTicker->buy);
             $ticker->setVolume($supplierTicker->vol);
             $ticker->setValue($supplierTicker->last);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(strtoupper(str_replace("_", "/", $currency)));
+            $ticker->setCurrency($currency);
             $response[] = $ticker;
         }
 
