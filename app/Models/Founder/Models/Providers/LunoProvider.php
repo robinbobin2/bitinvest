@@ -79,4 +79,9 @@ class LunoProvider extends FounderProvider
 
         return $result;
     }
+
+    public function getType()
+    {
+        return self::RAPID_RATE;
+    }
 }

@@ -110,4 +110,9 @@ class KunaProvider extends FounderProvider
 
         return $response;
     }
+
+    public function getType()
+    {
+        return self::RAPID_RATE;
+    }
 }

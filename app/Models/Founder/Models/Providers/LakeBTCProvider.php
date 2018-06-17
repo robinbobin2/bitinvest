@@ -67,4 +67,9 @@ class LakeBTCProvider extends FounderProvider
     {
         return strtoupper(substr($currency, 0,3) . "/" . substr($currency, 3));
     }
+
+    public function getType()
+    {
+        return self::RAPID_RATE;
+    }
 }

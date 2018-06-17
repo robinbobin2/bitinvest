@@ -83,4 +83,9 @@ class CoinoneProvider extends FounderProvider
         $connector = parent::getConnector();
         return $connector;
     }
+
+    public function getType()
+    {
+        return self::RAPID_RATE;
+    }
 }

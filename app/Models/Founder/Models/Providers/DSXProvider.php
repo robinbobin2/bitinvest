@@ -85,4 +85,9 @@ class DSXProvider extends FounderProvider
             }
         }
     }
+
+    public function getType()
+    {
+        return self::RAPID_RATE;
+    }
 }
