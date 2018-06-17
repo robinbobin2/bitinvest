@@ -11,6 +11,7 @@ namespace App\Models\Founder\Models\Rabbit;
 
 use App\Models\Entity\ExchangeRate;
 use App\Models\Founder\Models\Custom\SupplierLog;
+use App\Models\Founder\Models\Entity\ResponseContainer;
 use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
@@ -98,12 +99,10 @@ class RabbitTestHandler
                     }
                 }
 
+                $container = new ResponseContainer();
+                $this->response = $container->getResponse($this->response, $this->cacheResponse);
 
-                if(!empty($this->cacheResponse)){
-                    $this->response = array_merge($this->response, array_shift($this->cacheResponse));
-                }
                 if (!empty($this->response)) {
-                    shuffle($this->response);
 
                     $this->time = time();
                     $query = "INSERT INTO `bit`.`exchangeRates` (`currency`, `value`, `createTime`, `exchangeId`, `volume`, `bid`, `ask`) VALUES ";
@@ -113,24 +112,10 @@ class RabbitTestHandler
                     }
                     $query .= implode(", ", $inserts);
                     shell_exec('php /var/www/bit/artisan load:query \'' . $query . '\' &');
-//                        DB::statement($query);
 
                     $this->response = [];
                     echo "clear" . PHP_EOL;
                 }
-//                    if (!empty($this->rapidResponse)) {
-//                        $this->time = time();
-//                        $query = "INSERT INTO `bit`.`exchangeRapidRates` (`currency`, `value`, `createTime`, `exchangeId`, `volume`, `bid`, `ask`) VALUES ";
-//                        $inserts = [];
-//                        foreach ($this->rapidResponse as $item) {
-//                            $inserts[] = '("' . $item->getCurrency() . '","' . $item->getValue() . '","' . time() . '","' . $item->getExchangeId() . '","' . $item->getVolume() . '","' . $item->getBid() . '","' . $item->getAsk() . '")';
-//                        }
-//                        $query .= implode(", ", $inserts);
-//                        shell_exec('php /var/www/bit/artisan load:query \'' . $query . '\' &');
-////                        DB::statement($query);
-//
-//                        $this->rapidResponse = [];
-//                        echo "rapid clear" . PHP_EOL;
                 $msg = new AMQPMessage(
                     serialize($this->test[$rep->get('correlation_id')]), [
                         'correlation_id' => $rep->get('correlation_id'),

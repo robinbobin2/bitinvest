@@ -46,13 +46,24 @@ class CryptopiaProvider extends FounderProvider
         }
 
         foreach ($response->Data as $value) {
+            $currency = $value->Label;
+            if(strpos($currency, "USDT") !== false){
+                $ticker = new TickerEntity();
+                $ticker->setAsk((float)$value->AskPrice);
+                $ticker->setBid((float)$value->BidPrice);
+                $ticker->setVolume((float)$value->Volume);
+                $ticker->setValue((float)$value->LastPrice);
+                $ticker->setExchangeId($this->getExchangeId());
+                $ticker->setCurrency(str_replace("USDT", "USD", $currency));
+                $result[] = $ticker;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->AskPrice);
             $ticker->setBid($value->BidPrice);
             $ticker->setVolume($value->Volume);
             $ticker->setValue($value->LastPrice);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency($value->Label);
+            $ticker->setCurrency($currency);
             $result[] = $ticker;
         }
 

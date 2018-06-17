@@ -50,13 +50,24 @@ class ExmoProvider extends FounderProvider
         }
 
         foreach ($response as $currency => $value) {
+            $currency = str_replace("_", "/", $currency);
+            if(strpos($currency, "USDT") !== false){
+                $ticker = new TickerEntity();
+                $ticker->setAsk((float)$value->buy_price);
+                $ticker->setBid((float)$value->sell_price);
+                $ticker->setVolume((float)$value->vol);
+                $ticker->setValue((float)$value->last_trade);
+                $ticker->setExchangeId($this->getExchangeId());
+                $ticker->setCurrency(str_replace("USDT", "USD", $currency));
+                $result[] = $ticker;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->buy_price);
             $ticker->setBid($value->sell_price);
             $ticker->setVolume($value->vol);
             $ticker->setValue($value->last_trade);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(str_replace("_", "/", $currency));
+            $ticker->setCurrency($currency);
             $result[] = $ticker;
         }
 

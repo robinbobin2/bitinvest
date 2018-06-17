@@ -46,28 +46,6 @@ class HitBTCProvider extends FounderProvider
         return true;
     }
 
-    /**
-     * @param TickerEntity[] $response
-     */
-    public function save($response)
-    {
-        foreach ($response as $ticker) {
-            $exchange = new ExchangeRate();
-            $exchange->value = $ticker->getValue();
-            $exchange->volume = $ticker->getVolume();
-            $exchange->bid = $ticker->getBid();
-            $exchange->ask = $ticker->getAsk();
-            $exchange->currency = $ticker->getCurrency();
-            $exchange->exchangeId = $this->getExchangeId();
-            $exchange->createTime = time();
-            try {
-                $exchange->save();
-            } catch (\Exception $e) {
-
-            }
-        }
-    }
-
     public function search(Request $request)
     {
         $response = $this->getConnector()->search();
@@ -80,13 +58,24 @@ class HitBTCProvider extends FounderProvider
             if (!isset($this->pairs[$value->symbol])) {
                 continue;
             }
+            $currency = $this->pairs[$value->symbol];
+            if(strpos($currency, "USDT") !== false){
+                $ticker = new TickerEntity();
+                $ticker->setAsk((float)$value->ask);
+                $ticker->setBid((float)$value->bid);
+                $ticker->setVolume((float)$value->volume);
+                $ticker->setValue((float)$value->last);
+                $ticker->setExchangeId($this->getExchangeId());
+                $ticker->setCurrency(str_replace("USDT", "USD", $currency));
+                $result[] = $ticker;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk((float)$value->ask);
             $ticker->setBid((float)$value->bid);
             $ticker->setVolume((float)$value->volume);
             $ticker->setValue((float)$value->last);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency($this->pairs[$value->symbol]);
+            $ticker->setCurrency($currency);
             $result[] = $ticker;
         }
 

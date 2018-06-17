@@ -30,13 +30,24 @@ class LuquiProvider extends FounderProvider
         }
 
         foreach ($result as $currency => $supplierTicker) {
+            $currency = strtoupper(str_replace("_", "/", $currency));
+            if(strpos($currency, "USDT") !== false){
+                $ticker = new TickerEntity();
+                $ticker->setAsk((float)$supplierTicker->buy);
+                $ticker->setBid((float)$supplierTicker->sell);
+                $ticker->setVolume((float)$supplierTicker->vol);
+                $ticker->setValue((float)$supplierTicker->last);
+                $ticker->setExchangeId($this->getExchangeId());
+                $ticker->setCurrency(str_replace("USDT", "USD", $currency));
+                $result[] = $ticker;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->buy);
             $ticker->setBid($supplierTicker->sell);
             $ticker->setVolume($supplierTicker->vol);
             $ticker->setValue($supplierTicker->last);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency(strtoupper(str_replace("_", "/", $currency)));
+            $ticker->setCurrency($currency);
             $response[] = $ticker;
         }
 

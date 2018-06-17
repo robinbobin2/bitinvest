@@ -30,13 +30,27 @@ class KuCoinProvider extends FounderProvider
         }
 
         foreach ($result->data as $supplierTicker) {
+            if(!isset($supplierTicker->buy)){
+                continue;
+            }
+            $currency = $supplierTicker->coinType . "/" . $supplierTicker->coinTypePair;
+            if(strpos($currency, "USDT") !== false){
+                $ticker = new TickerEntity();
+                $ticker->setAsk((float)$supplierTicker->sell);
+                $ticker->setBid((float)$supplierTicker->buy);
+                $ticker->setVolume((float)$supplierTicker->vol);
+                $ticker->setValue((float)$supplierTicker->lastDealPrice);
+                $ticker->setExchangeId($this->getExchangeId());
+                $ticker->setCurrency(str_replace("USDT", "USD", $currency));
+                $result[] = $ticker;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->sell);
             $ticker->setBid($supplierTicker->buy);
             $ticker->setVolume($supplierTicker->vol);
             $ticker->setValue($supplierTicker->lastDealPrice);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency($supplierTicker->coinType . "/" . $supplierTicker->coinTypePair);
+            $ticker->setCurrency($currency);
             $response[] = $ticker;
         }
 

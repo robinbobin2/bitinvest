@@ -90,4 +90,8 @@ class QuadrigacxProvider extends FounderProvider
         return strtoupper($array[0] . "/" . $array[1]);
     }
 
+    public function getType()
+    {
+        return self::RAPID_RATE;
+    }
 }
