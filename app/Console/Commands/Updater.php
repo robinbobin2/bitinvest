@@ -117,7 +117,6 @@ class Updater extends \Illuminate\Console\Command
         BitSOProvider::class,
         KoineksProvider::class,
         BitBnsProvider::class,
-
         RightBTCProvider::class,
         VebitcoinProvider::class,
         DSXProvider::class,
@@ -139,14 +138,12 @@ class Updater extends \Illuminate\Console\Command
         BxinthProvider::class,
         ExmoProvider::class,
         GateCoinProvider::class,
-
         CoinexProvider::class,
         BiBoxProvider::class,
         ZbProvider::class,
         CcexProvider::class,
         HitBTCProvider::class,
         CryptopiaProvider::class,
-
         ZaifProvider::class,
         BitFinexProvider::class,
         TheRockProvider::class,
@@ -154,7 +151,6 @@ class Updater extends \Illuminate\Console\Command
         BCexProvider::class,
         OTCBTCProvider::class,
         QryptosProvider::class,
-
         KuCoinProvider::class,
         SouthXChangeProvider::class,
         LuquiProvider::class,
@@ -162,39 +158,34 @@ class Updater extends \Illuminate\Console\Command
         LakeBTCProvider::class,
         KrakenProvider::class,
         GateIOProvider::class,
-
         ExxProvider::class,
         CobinhoodProvider::class,
         CoinEggProvider::class,
         BinanceProvider::class,
         BitTrexProvider::class,
 
+        LykkeProvider::class,
+        GeminiProvider::class,
+        GDaxProvider::class,
+        Bit2CProvider::class,
+        OkCoinProvider::class,
     ];
 
     private $suppliers = [
         PoloniexProvider::class,
         CoinexChangeProvider::class,
 
-
         JubiProvider::class,
-        LykkeProvider::class,
-        OkCoinProvider::class,
         Ice3XProvider::class,
         HuobiProProvider::class,
-        GeminiProvider::class,
-        GDaxProvider::class,
         FlowBTCProvider::class,
         AllCoinProvider::class,
         CoinTigerProvider::class,
         BitMexProvider::class,
         BitMarketProvider::class,
-        Bit2CProvider::class,
-
-
 
         NovaProvider::class,
         OneBrokerProvider::class,
-
 
         OkexProvider::class,
         TideBitProvider::class,
@@ -202,12 +193,7 @@ class Updater extends \Illuminate\Console\Command
         VirWoxProvider::class,
         IBankProvider::class,
 
-
-
-
-
         CoinMarketCapProvider::class,
-
     ];
 
     /**
