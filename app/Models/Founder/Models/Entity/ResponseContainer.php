@@ -59,6 +59,9 @@ class ResponseContainer
             }
         }
         $other = array_splice($cache, 0, (50 - count($return)));
+        if(count($cache) > 5 * 50){
+            $cache = [];
+        }
         if ($other == 50) {
             if ($this->rapidMode) {
                 if ($this->resetCount) {
