@@ -39,7 +39,7 @@ class ExxProvider extends FounderProvider
                 $ticker->setValue((float)$supplierTicker->last);
                 $ticker->setExchangeId($this->getExchangeId());
                 $ticker->setCurrency(str_replace("USDT", "USD", $currency));
-                $result[] = $ticker;
+                $response[] = $ticker;
             }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->sell);

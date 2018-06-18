@@ -33,18 +33,17 @@ class GateIOProvider extends FounderProvider
             if(!isset($supplierTicker->result)){
                 continue;
             }
-            $supplierTicker = $supplierTicker->result;
 
             $currency = strtoupper(str_replace("_", "/", $currency));
             if(strpos($currency, "USDT") !== false){
                 $ticker = new TickerEntity();
-                $ticker->setAsk((float)$supplierTicker->lowestAsk);
-                $ticker->setBid((float)$supplierTicker->highestBid);
-                $ticker->setVolume((float)$supplierTicker->quoteVolume);
-                $ticker->setValue((float)$supplierTicker->last);
+                $ticker->setAsk($supplierTicker->lowestAsk);
+                $ticker->setBid($supplierTicker->highestBid);
+                $ticker->setVolume($supplierTicker->quoteVolume);
+                $ticker->setValue($supplierTicker->last);
                 $ticker->setExchangeId($this->getExchangeId());
                 $ticker->setCurrency(str_replace("USDT", "USD", $currency));
-                $result[] = $ticker;
+                $response[] = $ticker;
             }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->lowestAsk);

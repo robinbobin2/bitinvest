@@ -25,6 +25,10 @@ class ResponseContainer
         "BCC/USD",
         "TRX/USD"];
 
+    private $rapidMode = false;
+
+    private $resetCount = 0;
+
     private $response;
 
     public function getResponse($response, &$cacheResponse)
@@ -36,22 +40,49 @@ class ResponseContainer
         }
 
         $count = 0;
+        /** @var TickerEntity $value */
         foreach ($cache as $item => $value) {
-            if($count > 30){
-                if($count == 50){
-                    $cacheResponse = array_chunk($cache, 50);
+            if ($count > 30) {
+                if ($count == 50) {
+
                     break;
                 }
                 $return[] = $value;
                 unset($cache[$item]);
+                $count++;
                 continue;
             }
-            if (in_array($value, self::CURRENCIES)) {
+            if (in_array($value->getCurrency(), self::CURRENCIES)) {
                 $return[] = $value;
                 unset($cache[$item]);
                 $count++;
             }
         }
+        $other = array_splice($cache, 0, (50 - count($return)));
+        if ($other == 50) {
+            if ($this->rapidMode) {
+                if ($this->resetCount) {
+                    $this->resetCount--;
+                } else {
+                    $this->rapidMode = false;
+                }
+                $other = [];
+            } else {
+                $this->resetCount++;
+                if ($this->resetCount < 3) {
+                    $this->resetCount++;
+                } else {
+                    shuffle($cache);
+                    array_splice($cache, 0, 500);
+                    $this->rapidMode = true;
+                }
+            }
+        }
+
+
+        $return = array_merge($return, $other);
+        $cacheResponse = array_chunk($cache, 50);
+        echo "OTHER: " . count($other) . PHP_EOL;
         $return = array_merge($return, $response);
         return $return;
     }

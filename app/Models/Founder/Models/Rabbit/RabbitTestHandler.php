@@ -98,10 +98,12 @@ class RabbitTestHandler
                         $this->cacheResponse = array_merge($this->cacheResponse, array_chunk($response, 50));
                     }
                 }
+                echo "ECHO Cache " . count($this->cacheResponse) . PHP_EOL;
+                echo "ECHO " . count($this->response) . PHP_EOL;
 
                 $container = new ResponseContainer();
                 $this->response = $container->getResponse($this->response, $this->cacheResponse);
-
+                echo count($this->response) . PHP_EOL;
                 if (!empty($this->response)) {
 
                     $this->time = time();

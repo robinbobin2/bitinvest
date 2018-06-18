@@ -65,7 +65,7 @@ class CobinhoodProvider extends FounderProvider
                 $ticker->setValue((float)$supplierTicker->last_trade_price);
                 $ticker->setExchangeId($this->getExchangeId());
                 $ticker->setCurrency(str_replace("USDT", "USD", $currency));
-                $result[] = $ticker;
+                $response[] = $ticker;
             }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->lowest_ask);
