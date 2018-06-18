@@ -136,7 +136,7 @@ order: string = 'name';
               this.status = ''
           }
           if (this.order == undefined) {
-              this.order = 'id'
+              this.order = 'name'
           }
           if (this.reverse == undefined) {
               this.reverse = false

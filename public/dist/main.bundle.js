@@ -1743,7 +1743,7 @@ var AllCloudMiningComponent = (function () {
                 _this.status = '';
             }
             if (_this.order == undefined) {
-                _this.order = 'id';
+                _this.order = 'name';
             }
             if (_this.reverse == undefined) {
                 _this.reverse = false;
