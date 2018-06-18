@@ -72,8 +72,7 @@ class ResponseContainer
                 if ($this->resetCount < 3) {
                     $this->resetCount++;
                 } else {
-                    shuffle($cache);
-                    array_splice($cache, 0, 500);
+                    $cache = [];
                     $this->rapidMode = true;
                 }
             }
