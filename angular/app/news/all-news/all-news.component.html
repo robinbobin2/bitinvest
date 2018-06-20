@@ -15,8 +15,7 @@
 
             <div class="main-news">
               <div class="main-news-slider">
-                <ng-template class="main-news-slider" ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                <div class="news" [ngClass]="i >0 ? 'hidden' : '' ">
+                <div *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive'; let i = index" class="news" >
                   <div class="img" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
@@ -33,8 +32,7 @@
                   <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
                 </div>
                 </div>
-                </ng-template>
-              </div>
+                </div>
               <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
               <div class="news news-slider-wrap" *ngIf="i > 0">
                 <div class="news-slider news-slider-1">
