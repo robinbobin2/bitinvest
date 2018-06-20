@@ -32,52 +32,7 @@
                   <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
                 </div>
                 </div>
-                <div class="news">
-                  <div class="img" style="">
-                    <a href="#" class="news-btn">Bitcoin</a>
-                    <a href="news-card.html" class="title-link">Платформа для управления <br> криптовалютными активами <br> MyWish с интегрированной</a>
-                    <div class="info">
-                      <span class="date">26 Окт 2017 в 11:39</span>
-                      <p class="views"><img src="img/eye.svg" alt="">1280</p>
-                      <a href="#comments-block" class="comments"><img src="img/comment.svg" alt="">5</a>
-                    </div>
-                  </div>
-                  <div class="text">
-                    <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br> Система предназначена для интеграции высоких технологий <br> в реальный сектор, использующий... <a href="#">Подробнее</a></p>
-                  </div>
-                </div>
-                <div class="news hidden">
-                  <div class="img" style="">
-                    <a href="#" class="news-btn">Bitcoin</a>
-                    <a href="news-card.html" class="title-link">Платформа для управления <br> криптовалютными активами <br> MyWish с интегрированной</a>
-                    <div class="info">
-                      <span class="date">26 Окт 2017 в 11:39</span>
-                      <div class="info-wrap">
-                        <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>1280</span>
-                        <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="text">
-                    <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br> Система предназначена для интеграции высоких технологий <br> в реальный сектор, использующий... <a href="#">Подробнее</a></p>
-                  </div>
-                </div>
-                <div class="news hidden">
-                  <div class="img" style="">
-                    <a href="#" class="news-btn">Bitcoin</a>
-                    <a href="#" class="title-link">Платформа для управления <br> криптовалютными активами <br> MyWish с интегрированной</a>
-                    <div class="info">
-                      <span class="date">26 Окт 2017 в 11:39</span>
-                      <div class="info-wrap">
-                        <span class="views"><i class="fa fa-eye" aria-hidden="true"></i>1280</span>
-                        <a href="#" class="comments"><i class="fa fa-comment" aria-hidden="true"></i>5</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="text">
-                    <p>Спонсорский материал 25 октября начался токенсейл <br> MyWish.io — рабочей платформы для решений по <br> управлению активами на основе смарт контрактов. <br> Система предназначена для интеграции высоких технологий <br> в реальный сектор, использующий... <a href="#">Подробнее</a></p>
-                  </div>
-                </div>
+
                 </div>
               <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
               <div class="news news-slider-wrap" *ngIf="i > 0">

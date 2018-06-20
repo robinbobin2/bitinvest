@@ -394,4 +394,5 @@ $('.select-wrap select').select2({
 
 	  }
 	 });
+	 $('.main-news-slider .news').next().addClass("hidden");
 });
