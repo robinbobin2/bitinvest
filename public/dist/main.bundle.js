@@ -6994,14 +6994,9 @@ var AllNewsComponent = (function () {
                 }, 800);
             }
         }).subscribe();
-        this.router.events
-            .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */]; })
-            .map(function () { return _this.route; })
-            .subscribe(function (event) {
-            setTimeout(function () {
-                $.getScript('/js/script.js');
-            }, 800);
-        });
+        setTimeout(function () {
+            $.getScript('/js/script.js');
+        }, 800);
     };
     AllNewsComponent.prototype.setOrder = function (value) {
         if (this.order === value) {
