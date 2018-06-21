@@ -36,7 +36,7 @@
       <a *ngIf="cat_id == 0" [routerLink]="['/analytics/all']" [queryParams]="{order: order, reverse: reverse }" class="saveinput" >Сохранить</a>
       <a *ngIf="cat_id != 0" [routerLink]="['/analytics/category/', cat_id]" [queryParams]="{order: order, reverse: reverse }" class="saveinput" >Сохранить</a>
     </form>
-    <a href="#" class="claer" (click)="order='position'; reverse=false; cat_id=0">X Очистить параметры фильтрации </a>
+    <a class="claer" (click)="order='position'; reverse=false; cat_id=0">X Очистить параметры фильтрации </a>
 
   </div>
 </section>

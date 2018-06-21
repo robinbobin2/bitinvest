@@ -9186,6 +9186,8 @@ font-weight: bold;
 color: #fff;
 border: none;
 cursor: pointer;
+padding-top: 18px;
+    padding-left: 45px;
 display: inherit;
 }
 @media (max-width: 600px) {
@@ -9193,7 +9195,18 @@ display: inherit;
     display: none
   }
 
+  .crypto-single-content .main-news-slider .slick-track {
+  width: 292px !important;
+}
+
 }
 .news-list {
   overflow: hidden
+}
+.show-more {
+  clear: both;
+}
+.news-list-mobile li .img {
+  max-width: 119px;
+  min-width: 119px;
 }

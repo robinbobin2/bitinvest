@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {AuthService} from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
@@ -40,7 +40,7 @@ const headers = new HttpHeaders({'Content-type': 'Application/json '});
   providers: [AuthService,SearchService, StocksService]
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   loadAPI: Promise<any>;
   login: Login;
     bitres: any;
@@ -72,29 +72,16 @@ export class AppComponent implements OnInit {
     private router:Router, private activatedRoute: ActivatedRoute,
     private searchService: SearchService,
                 public stockService:StocksService) {
-        this.router.events
-            .filter(event => event instanceof NavigationEnd)
-            .map(() => this.activatedRoute)
-            .subscribe((event) => {
-                setTimeout(()=> {
-                    $.getScript('/js/script.js');
-                }, 300)
 
-            });
     this.searchService.mainSearch(this.searchTerm$)
       .subscribe(results => {
           if (results['error']) {
               this.results = undefined;
           } else {
               this.results = results;
-              console.log(results);
           }
 
-        console.log(results);
       });
-	
-	console.log(this.user);
-	console.log('user');
 	// auth.getUser();
 }
 checkAuth() {
@@ -115,9 +102,7 @@ checkAuth() {
     , {headers: headers}).subscribe(
         (response) => 
         {
-          console.log(response);
           if(response['status'] == 'denied') {
-            console.log(response);
             this.loginError = 'Неправильные логин или пароль';
           } else if(response['status'] == 'success') {
             this.auth
@@ -126,7 +111,6 @@ checkAuth() {
               (response) => {
                 this.user = response;
                 this.auth.setUser(this.user);
-                console.log(this.user);
               }
             );
           this.router.navigate(['/profile/edit']);
@@ -135,7 +119,6 @@ checkAuth() {
         },
         (error) => console.log(error)
       );
-    // console.log
       form.reset();
 
       
@@ -176,6 +159,7 @@ checkAuth() {
     results = undefined;
   }
   ngOnInit() {
+
       this.cryptoData=Observable.interval(5000).concatMap(()=>
           this.stockService.getCrypto())
           .subscribe(result => {
@@ -208,5 +192,16 @@ checkAuth() {
 	        this.email_added = 'Введите email';
 	        this.error_email = true;
         }
+  }
+  ngAfterViewInit() {
+      this.router.events
+          .filter(event => event instanceof NavigationEnd)
+          .map(() => this.activatedRoute)
+          .subscribe((event) => {
+              setTimeout(()=> {
+                  $.getScript('/js/script.js');
+              }, 400)
+
+          });
   }
 }

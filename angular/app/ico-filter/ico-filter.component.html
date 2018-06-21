@@ -39,7 +39,7 @@
       <a *ngIf="cat_id == 0" [routerLink]="['/ico/all']" [queryParams]="{order: order, reverse: reverse, status:status }" class="saveinput" >Сохранить</a>
       <a *ngIf="cat_id != 0" [routerLink]="['/ico/category/', cat_id]" [queryParams]="{order: order, reverse: reverse, status:status }" class="saveinput" >Сохранить</a>
     </form>
-    <a href="#" class="claer" (click)="status = 0; order=name; reverse=false">X Очистить параметры фильтрации </a>
+    <a class="claer" (click)="status = 0; order=name; reverse=false">X Очистить параметры фильтрации </a>
 
   </div>
 </section>

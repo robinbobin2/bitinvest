@@ -9,6 +9,13 @@
   color: #000;
   margin-bottom: 10px;
 }
+@media (max-width: 600px) {
+  .comment-block .comment-top h3 {
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 10px;
+  }
+}
 .comment-block .comment-top p {
   font-size: 14px;
   font-weight: bold;

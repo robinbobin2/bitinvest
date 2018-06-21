@@ -4,7 +4,7 @@
     <a routerLink="cryptocurrency/all" class="close">×</a>
   </div>
   <div class="categories-block">
-    <h2>Язык биржи</h2>
+    <h2>Алгоритм криптовалюты</h2>
     <ul class="tag-list">
       <li *ngFor="let data of algoFilter"><a (click)="algorithm=data" [ngClass]="algorithm==data ? 'active' : '' ">{{data}}</a> </li>
     </ul>
@@ -32,6 +32,6 @@
       <!--</p>-->
     <a [routerLink]="['/cryptocurrency/all']" [queryParams]="{algo: algorithm, year: age}" class="saveinput" >Сохранить</a>
     <!--</form>-->
-    <a href="#" class="claer" (click)="algorithm = ''">X Очистить параметры фильтрации </a>
+    <a class="claer" (click)="algorithm = ''; age=0">X Очистить параметры фильтрации </a>
   </div>
 </section>

@@ -136,6 +136,41 @@
                 </div>
                 <!-- <a href="#" class="show-exchange">Показать все биржи (105)</a> -->
               </div>
+              <div class="table-wrap-mobile">
+                <h3>Котировки BTC/USD на биржах</h3>
+                <table class="table">
+                  <thead>
+                  <th width="45%">
+                    <span>Название биржи</span>
+                  </th>
+                  <th width="25%">
+                    <span>Стоимость</span>
+                  </th>
+                  <th width="30%" class="last-th">
+                    <span>Объем за 24ч.</span>
+                  </th>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let stock of stocks; let i = index">
+                    <td>
+                      <a href="exchanges-card.html">
+                        <div class="img-wrap">
+                          <img src="images/{{stock.logo}}" alt="">
+                        </div>
+                        <span>{{stock.name}}</span>
+                      </a>
+                    </td>
+                    <td>
+                      <span class="amount-bold" [ngStyle]="{ 'animation': animstock[i]+' 2s', '-webkit-animation': animstock[i]+' 2s'}">${{stock.value | number:'1.0-1'}}</span>
+                    </td>
+                    <td class="last-td">
+                      <span class="amount-bold" style="font-size: 12px;">${{stock.volumeCommon | number:'1.0-0'}}</span>
+                    </td>
+                  </tr>
+
+                  </tbody>
+                </table>
+              </div>
               <div class="desc-wrap">
                 <div class="description">
                   <h5>Описание {{data?.symbol}} ({{data?.name}})</h5>
@@ -242,7 +277,7 @@
                 </div>
                 <div class="news-mobile">
                   <ul class="news-list-mobile">
-                    <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'">
+                    <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive' | slice:0:show">
                       <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
                          [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
                         <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
@@ -253,10 +288,10 @@
                       </div>
                     </li>
                   </ul>
-                  <a routerLink="/posts/all" class="show-news">Показать больше новостей</a>
+                  <a *ngIf="show <= news.length" (click)="show = show+3" class="show-more">Показать ещё</a>
                 </div>
               <div class="news-list">
-                <div *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.name_credits ? 'trust news' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
+                <div *ngFor="let item of news | orderBy: order:reverse:'case-insensitive' | slice:0:show" [ngClass]="item.name_credits ? 'trust news' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
                   <div *ngIf="item.name_credits" class="img-wrap"><img src="images/{{item.photos[0].file}}" alt=""></div>
                   <h4 *ngIf="item.name_credits">{{item.title}}</h4>
                   <p *ngIf="item.name_credits" class="name">{{item.name_credits}}</p>
@@ -277,7 +312,7 @@
                     <p>{{item.desc | striphtml |excerpt:80}}</p>
                   </div>
                 </div>
-
+                <a *ngIf="show <= news.length" (click)="show = show+3" class="show-more">Показать ещё</a>
               </div>
               </div>
             </div>
@@ -291,6 +326,13 @@
             <div class="overview-block overview-block-2" id="second_graph">
               <h3>Интерактивный график {{data?.symbol}}/USD</h3>
               <app-chart2></app-chart2>
+            </div>
+            <div class="desc-wrap">
+              <div class="description">
+                <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
+                <p>{{data.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
+              </div>
+              <a href="#" class="banner-black banner-black-top"><img src="img/banner-black-small.jpg" alt=""></a>
             </div>
           </div>
 
@@ -345,7 +387,7 @@
                 </div>
                 <div class="news-mobile">
                   <ul class="news-list-mobile">
-                    <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'">
+                    <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive' | slice:0:show">
                       <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
                          [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
                         <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
@@ -356,10 +398,10 @@
                       </div>
                     </li>
                   </ul>
-                  <a routerLink="/posts/all" class="show-news">Показать больше новостей</a>
+                  <a *ngIf="show <= news.length" (click)="show = show+3" class="show-more">Показать ещё</a>
                 </div>
                 <div class="news-list">
-                  <div *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.name_credits ? 'trust news' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
+                  <div *ngFor="let item of news | orderBy: order:reverse:'case-insensitive' | slice:0:show" [ngClass]="item.name_credits ? 'trust news' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
                     <div *ngIf="item.name_credits" class="img-wrap"><img src="images/{{item.photos[0].file}}" alt=""></div>
                     <h4 *ngIf="item.name_credits">{{item.title}}</h4>
                     <p *ngIf="item.name_credits" class="name">{{item.name_credits}}</p>
@@ -380,9 +422,16 @@
                       <p>{{item.desc | striphtml |excerpt:80}}</p>
                     </div>
                   </div>
-                  <a routerLink="/posts/all" class="show-more">Показать ещё</a>
+                  <a *ngIf="show <= news.length" (click)="show = show+3" class="show-more">Показать ещё</a>
                 </div>
               </div>
+            </div>
+            <div class="desc-wrap">
+              <div class="description">
+                <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
+                <p>{{data.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
+              </div>
+              <a href="#" class="banner-black banner-black-top"><img src="img/banner-black-small.jpg" alt=""></a>
             </div>
           </div>
 
@@ -431,7 +480,13 @@
 
               </ul>
             </div>
-
+            <div class="desc-wrap">
+              <div class="description">
+                <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
+                <p>{{data.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
+              </div>
+              <a href="#" class="banner-black banner-black-top"><img src="img/banner-black-small.jpg" alt=""></a>
+            </div>
           </div>
 
           <div class="tab-content news-wrapper"  [ngClass]="getRoute('analytics') ? 'active' : ''">
@@ -484,7 +539,7 @@
               </div>
               <div class="news-mobile">
                 <ul class="news-list-mobile">
-                  <li  *ngFor="let item of analytics | orderBy: order:reverse:'case-insensitive'">
+                  <li  *ngFor="let item of analytics | orderBy: order:reverse:'case-insensitive' | slice:0:show_an">
                     <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
                        [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
                       <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
@@ -495,10 +550,10 @@
                     </div>
                   </li>
                 </ul>
-                <a routerLink="/posts/all" class="show-news">Показать больше новостей</a>
+                <a *ngIf="show <= analytics.length" (click)="show_an = show_an+3" class="show-more">Показать ещё</a>
               </div>
               <div class="news-list">
-                <div *ngFor="let item of analytics | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.name_credits ? 'trust news' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
+                <div *ngFor="let item of analytics | orderBy: order:reverse:'case-insensitive' | slice:0:show_an" [ngClass]="item.name_credits ? 'trust news' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
                   <div *ngIf="item.name_credits" class="img-wrap"><img src="images/{{item.photos[0].file}}" alt=""></div>
                   <h4 *ngIf="item.name_credits">{{item.title}}</h4>
                   <p *ngIf="item.name_credits" class="name">{{item.name_credits}}</p>
@@ -521,8 +576,16 @@
                 </div>
 
               </div>
-                <a routerLink="/analytics/all" class="show-more">Показать ещё</a>
+              <a *ngIf="show <= analytics.length" (click)="show_an = show_an+3" class="show-more">Показать ещё</a>
+
+            </div>
+            <div class="desc-wrap">
+              <div class="description">
+                <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
+                <p>{{data.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
               </div>
+              <a href="#" class="banner-black banner-black-top"><img src="img/banner-black-small.jpg" alt=""></a>
+            </div>
             </div>
           </div>
 
