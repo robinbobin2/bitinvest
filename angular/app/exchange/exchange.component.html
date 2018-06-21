@@ -79,7 +79,7 @@
 
           <ul *ngIf="exchange.coins" >
             <li *ngFor="let coin of exchange.coins">
-              <div class="img-wrap"><img *ngIf="coin.logo" src="'images/'+coin.logo" alt=""></div><span>{{coin?.name}} ({{coin?.symbol}})</span></li>
+              <div class="img-wrap"><img *ngIf="coin.logo" src="images/{{coin.logo}}" alt=""></div><span>{{coin?.name}} ({{coin?.symbol}})</span></li>
 
           </ul>
         </div>
@@ -93,7 +93,7 @@
         <h3 style="padding-right: 15px" class="ico-title">Доступные пары ({{count_pairs}})</h3>
 
             <form><input type="text" placeholder="Введите монету, например: BTC" [(ngModel)]="filteredName" name="filteredName"></form>
-            <span>Обновлено: 10.11.2017 в 12:45</span>
+            <span>Обновлено: </span>
           </div>
           <table>
             <thead>
