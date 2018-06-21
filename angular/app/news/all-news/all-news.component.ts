@@ -62,15 +62,7 @@ export class AllNewsComponent implements AfterContentInit {
 
       }).subscribe()
 
-        this.router.events
-            .filter(event => event instanceof NavigationEnd)
-            .map(() => this.route)
-            .subscribe((event) => {
-                setTimeout(()=> {
-                    $.getScript('/js/script.js');
-                }, 800)
 
-            });
     
   }
 setOrder(value: string) {
