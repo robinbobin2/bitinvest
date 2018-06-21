@@ -1,7 +1,9 @@
 import { Component, AfterContentInit } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
+
+declare var $:any;
 
 @Component({
   selector: 'app-all-news',
@@ -51,6 +53,15 @@ export class AllNewsComponent implements AfterContentInit {
           this.main_news = response['main_news'];
           this.countAll = this.news.length+this.main_news.length;
           this.load = false;
+          this.router.events
+              .filter(event => event instanceof NavigationEnd)
+              .map(() => this.route)
+              .subscribe((event) => {
+                  setTimeout(()=> {
+                      $.getScript('/js/script.js');
+                  }, 100)
+
+              });
 
       }).subscribe()
     
