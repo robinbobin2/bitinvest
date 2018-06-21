@@ -6994,7 +6994,7 @@ var AllNewsComponent = (function () {
                 .subscribe(function (event) {
                 setTimeout(function () {
                     $.getScript('/js/script.js');
-                }, 100);
+                }, 500);
             });
         }).subscribe();
     };
