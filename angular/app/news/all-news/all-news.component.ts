@@ -55,12 +55,12 @@ export class AllNewsComponent implements AfterContentInit, OnInit {
           this.countAll = this.news.length+this.main_news.length;
           this.load = false;
           if (this.load == false)  {
-              $.getScript('/js/script.js');
+              setTimeout(()=> {
+                  $.getScript('/js/script.js');
+                  console.log('test')
+              }, 1100)
           }
-              // setTimeout(()=> {
-              //     $.getScript('/js/script.js');
-              //     console.log('test')
-              // }, 1100)
+
 
 
       }).subscribe()
@@ -69,7 +69,7 @@ export class AllNewsComponent implements AfterContentInit, OnInit {
     
   }
   ngOnInit() {
-      $.getScript('/js/script.js');
+
   }
 setOrder(value: string) {
      if (this.order === value) {
