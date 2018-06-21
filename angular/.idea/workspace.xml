@@ -42,8 +42,8 @@
       <file leaf-file-name="crypto-single.html" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Downloads/bitinvest 7/crypto-single.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="2041" column="30" selection-start-line="2034" selection-start-column="24" selection-end-line="2041" selection-end-column="30" />
+            <state relative-caret-position="308">
+              <caret line="2032" column="56" selection-start-line="2032" selection-start-column="47" selection-end-line="2032" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -60,8 +60,8 @@
       <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="591" column="44" selection-start-line="591" selection-start-column="44" selection-end-line="591" selection-end-column="44" />
+            <state relative-caret-position="4153">
+              <caret line="578" column="110" selection-start-line="578" selection-start-column="110" selection-end-line="578" selection-end-column="110" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
               </folding>
@@ -555,12 +555,12 @@
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
       <workItem from="1528871430902" duration="39861000" />
-      <workItem from="1529295323982" duration="8592000" />
+      <workItem from="1529295323982" duration="8917000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="289651000" />
+    <option name="totallyTimeSpent" value="289976000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -992,15 +992,15 @@
     </entry>
     <entry file="file://$USER_HOME$/Downloads/bitinvest 7/crypto-single.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="2041" column="30" selection-start-line="2034" selection-start-column="24" selection-end-line="2041" selection-end-column="30" />
+        <state relative-caret-position="308">
+          <caret line="2032" column="56" selection-start-line="2032" selection-start-column="47" selection-end-line="2032" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="591" column="44" selection-start-line="591" selection-start-column="44" selection-end-line="591" selection-end-column="44" />
+        <state relative-caret-position="4153">
+          <caret line="578" column="110" selection-start-line="578" selection-start-column="110" selection-end-line="578" selection-end-column="110" />
           <folding>
             <element signature="n#style#0;n#span#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
           </folding>

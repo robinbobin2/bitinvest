@@ -312,7 +312,7 @@
                     <p>{{item.desc | striphtml |excerpt:80}}</p>
                   </div>
                 </div>
-                <a *ngIf="show <= news.length" (click)="show = show+3" class="show-comments btn-style">Показать ещё</a>
+                <a *ngIf="show <= news.length" (click)="show = show+3" class="show-more">Показать ещё</a>
               </div>
               </div>
             </div>
@@ -422,7 +422,7 @@
                       <p>{{item.desc | striphtml |excerpt:80}}</p>
                     </div>
                   </div>
-                  <a *ngIf="show <= news.length" (click)="show = show+3" class="show-comments btn-style">Показать ещё</a>
+                  <a *ngIf="show <= news.length" (click)="show = show+3" class="show-more">Показать ещё</a>
                 </div>
               </div>
             </div>
@@ -576,7 +576,7 @@
                 </div>
 
               </div>
-              <a *ngIf="show <= analytics.length" (click)="show_an = show_an+3" class="show-comments btn-style">Показать ещё</a>
+              <a *ngIf="show <= analytics.length" (click)="show_an = show_an+3" class="show-more">Показать ещё</a>
 
             </div>
             <div class="desc-wrap">
