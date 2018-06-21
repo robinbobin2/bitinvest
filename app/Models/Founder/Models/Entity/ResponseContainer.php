@@ -59,7 +59,7 @@ class ResponseContainer
             }
         }
         $other = array_splice($cache, 0, (50 - count($return)));
-        if(count($cache) > 5 * 50){
+        if(count($cache) > 15 * 50){
             $cache = array_splice($cache, 0, 100);
         }
         if ($other == 50) {
