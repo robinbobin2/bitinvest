@@ -77,8 +77,8 @@
       <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="417" column="115" selection-start-line="417" selection-start-column="105" selection-end-line="417" selection-end-column="115" />
+            <state relative-caret-position="-50">
+              <caret line="556" lean-forward="true" selection-start-line="556" selection-end-line="556" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
               </folding>
@@ -90,7 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getI</find>
       <find>diff</find>
       <find>\</find>
       <find>user.id</find>
@@ -120,6 +119,7 @@
       <find>pairs</find>
       <find>показать</find>
       <find>показать е</find>
+      <find>&lt;/ul</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -572,12 +572,12 @@
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
       <workItem from="1528871430902" duration="39861000" />
-      <workItem from="1529295323982" duration="6570000" />
+      <workItem from="1529295323982" duration="7076000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="287629000" />
+    <option name="totallyTimeSpent" value="288135000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1012,8 +1012,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="417" column="115" selection-start-line="417" selection-start-column="105" selection-end-line="417" selection-end-column="115" />
+        <state relative-caret-position="-50">
+          <caret line="556" lean-forward="true" selection-start-line="556" selection-end-line="556" />
           <folding>
             <element signature="n#style#0;n#span#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
           </folding>
