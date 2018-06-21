@@ -49,9 +49,6 @@ class VebitcoinProvider extends FounderProvider
             if(!isset($value->Ask)){
                 continue;
             }
-            if(!$this->validate(substr($value->Code, 0,3) . "/TRY")){
-                continue;
-            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->Ask);
             $ticker->setBid($value->Bid);
