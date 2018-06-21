@@ -3232,7 +3232,6 @@ var Chart2Component = (function () {
                 new TradingView.widget({
                     "width": 881,
                     "height": 393,
-                    "autosize": true,
                     "symbol": _this.data.exchange + ":" + symbol + "USD",
                     "interval": "D",
                     "timezone": "Etc/UTC",
