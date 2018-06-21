@@ -1,4 +1,4 @@
-import { Component, AfterContentInit } from '@angular/core';
+import { Component, AfterContentInit, OnInit } from '@angular/core';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { OrderPipe } from '../../order-pipe/ngx-order.pipe';
@@ -10,7 +10,7 @@ declare var $:any;
   templateUrl: './all-news.component.html',
   styleUrls: ['./all-news.component.css']
 })
-export class AllNewsComponent implements AfterContentInit {
+export class AllNewsComponent implements AfterContentInit, OnInit {
 
     news_raw: any[];
     news= [];
@@ -67,6 +67,9 @@ export class AllNewsComponent implements AfterContentInit {
 
 
     
+  }
+  ngOnInit() {
+      $.getScript('/js/script.js');
   }
 setOrder(value: string) {
      if (this.order === value) {
