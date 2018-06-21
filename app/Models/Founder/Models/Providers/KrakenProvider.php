@@ -30,11 +30,11 @@ class KrakenProvider extends FounderProvider
         }
 
         foreach ($result as $currency => $supplierTicker) {
-            if(!isset($supplierTicker->result)){
+            if(!isset($supplierTicker->result) || empty($supplierTicker->result)){
                 continue;
             }
 
-            $supplierTicker = $supplierTicker->result;
+            $supplierTicker = $supplierTicker->result->{str_replace("/", "",$currency)};
 
             if(!isset($supplierTicker->a[0])){
                 continue;

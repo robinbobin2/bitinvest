@@ -89,6 +89,8 @@ class RabbitTestHandler
     {
         foreach ($this->test as $key => $job) {
             if ($key == $rep->get('correlation_id')) {
+
+                /** @var TickerEntity[] $response */
                 $response = unserialize($rep->body);
 
                 if(!empty($response)){
@@ -97,6 +99,7 @@ class RabbitTestHandler
                     } else {
                         $this->cacheResponse = array_merge($this->cacheResponse, array_chunk($response, 50));
                     }
+                    echo "Exchange " . current($response)->getExchangeId() . PHP_EOL;
                 }
                 echo "ECHO Cache " . count($this->cacheResponse) . PHP_EOL;
                 echo "ECHO " . count($this->response) . PHP_EOL;

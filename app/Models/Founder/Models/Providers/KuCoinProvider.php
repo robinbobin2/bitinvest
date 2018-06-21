@@ -30,7 +30,7 @@ class KuCoinProvider extends FounderProvider
         }
 
         foreach ($result->data as $supplierTicker) {
-            if(!isset($supplierTicker->buy)){
+            if(!isset($supplierTicker->buy) || !isset($supplierTicker->sell) || !isset($supplierTicker->lastDealPrice)){
                 continue;
             }
             $currency = $supplierTicker->coinType . "/" . $supplierTicker->coinTypePair;
