@@ -784,7 +784,7 @@ var AppComponent = (function () {
             .subscribe(function (event) {
             setTimeout(function () {
                 $.getScript('/js/script.js');
-            }, 400);
+            }, 800);
         });
     };
     return AppComponent;
@@ -6988,14 +6988,15 @@ var AllNewsComponent = (function () {
             _this.main_news = response['main_news'];
             _this.countAll = _this.news.length + _this.main_news.length;
             _this.load = false;
-            if (response['main_news']) {
-                $.getScript('/js/script.js');
+            if (_this.load == false) {
+                setTimeout(function () {
+                    $.getScript('/js/script.js');
+                    console.log('test');
+                }, 1100);
             }
-            // setTimeout(()=> {
-            //     $.getScript('/js/script.js');
-            //     console.log('test')
-            // }, 1100)
         }).subscribe();
+    };
+    AllNewsComponent.prototype.ngOnInit = function () {
     };
     AllNewsComponent.prototype.setOrder = function (value) {
         if (this.order === value) {
