@@ -9212,6 +9212,8 @@ display: inherit;
 .news-list-mobile li .img {
   max-width: 119px;
   min-width: 119px;
+  max-height: 98px;
+  min-height: 98px;
 }
 .setting-top-block li {
   list-style: none;

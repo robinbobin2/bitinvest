@@ -2,3 +2,8 @@
   color: #fff;
   background: #383c46;
 }
+@media (max-width:600px) {
+                      .news-btn.ico-btn {
+                        display: none;
+                      }
+}
