@@ -173,6 +173,7 @@ checkAuth() {
           .map(() => this.activatedRoute)
           .subscribe((event) => {
               setTimeout(()=> {
+                  console.log('script')
                   $.getScript('/js/script.js');
               }, 400)
 

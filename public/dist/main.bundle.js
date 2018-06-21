@@ -759,6 +759,7 @@ var AppComponent = (function () {
             .map(function () { return _this.activatedRoute; })
             .subscribe(function (event) {
             setTimeout(function () {
+                console.log('script');
                 $.getScript('/js/script.js');
             }, 400);
         });
