@@ -255,16 +255,14 @@ $(document).ready(function () {
 		}
 	});
 
-	if ($(window).width() <= 600) {
 		$('.main-news-slider').slick({
-			infinite: true,
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			dots: true,
-			arrows: false,
-		});
+				infinite: true,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				dots: true,
+				arrows: false,
+			});
 
-	}
 
 
 	$('.interview-slider').slick({
@@ -394,5 +392,4 @@ $('.select-wrap select').select2({
 
 	  }
 	 });
-	 $('.main-news-slider .news').addClass("hidden");
 });
