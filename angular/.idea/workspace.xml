@@ -48,18 +48,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/app.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="196" column="6" selection-start-line="196" selection-start-column="6" selection-end-line="204" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#65#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="all-news.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.ts">
           <provider selected="true" editor-type-id="text-editor">
@@ -75,8 +63,8 @@
       <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="325" column="73" selection-start-line="325" selection-start-column="61" selection-end-line="325" selection-end-column="73" />
+            <state relative-caret-position="203">
+              <caret line="175" column="36" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -88,14 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chart2.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/crypto/chart2/chart2.component.ts">
+      <file leaf-file-name="crypto.component.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="27" column="34" lean-forward="true" selection-start-line="27" selection-start-column="34" selection-end-line="28" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="328">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -103,17 +88,26 @@
       <file leaf-file-name="cloud-mining-detail.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="153" selection-start-line="153" selection-end-line="153" />
+            <state relative-caret-position="194">
+              <caret line="28" column="94" selection-start-line="28" selection-start-column="78" selection-end-line="28" selection-end-column="94" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cloud-mining.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cloud-mining.component.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining.component.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cloud-mining.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="43" selection-start-column="43" selection-end-column="43" />
+              <caret column="43" selection-start-column="18" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -122,8 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>котиро</find>
-      <find>news-tab-content</find>
       <find>slick</find>
       <find>-news-slider</find>
       <find>600</find>
@@ -150,8 +142,10 @@
       <find>pairs</find>
       <find>load</find>
       <find>mobile</find>
-      <find>&lt;app-</find>
       <find>&lt;/sec</find>
+      <find>&lt;app-</find>
+      <find>news-btn ico-btn</find>
+      <find>h5</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -171,7 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/review/review.component.ts" />
         <option value="$PROJECT_DIR$/app/review-filter/review-filter.component.ts" />
         <option value="$PROJECT_DIR$/app/interview-filter/interview-filter.component.ts" />
         <option value="$PROJECT_DIR$/app/analytics/all-analytics/all-analytics.component.ts" />
@@ -194,7 +187,6 @@
         <option value="$PROJECT_DIR$/app/crypto/chart2/chart2.component.scss" />
         <option value="$PROJECT_DIR$/app/crypto/chart/chart.component.scss" />
         <option value="$PROJECT_DIR$/app/app.component.html" />
-        <option value="$PROJECT_DIR$/app/crypto/crypto.component.css" />
         <option value="$PROJECT_DIR$/app/stocks.service.ts" />
         <option value="$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts" />
         <option value="$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.html" />
@@ -213,7 +205,6 @@
         <option value="$PROJECT_DIR$/app/crypto-all/crypto-all.component.html" />
         <option value="$PROJECT_DIR$/app/news/news-detail/news-detail.component.scss" />
         <option value="$PROJECT_DIR$/app/crypto/crypto.component.ts" />
-        <option value="$PROJECT_DIR$/app/crypto/crypto.component.html" />
         <option value="$PROJECT_DIR$/app/crypto-filter/crypto-filter.component.html" />
         <option value="$PROJECT_DIR$/app/exchange/exchange.component.ts" />
         <option value="$PROJECT_DIR$/app/exchange/exchange.component.html" />
@@ -222,6 +213,9 @@
         <option value="$PROJECT_DIR$/app/crypto/chart2/chart2.component.ts" />
         <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.html" />
         <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining.component.html" />
+        <option value="$PROJECT_DIR$/app/cloud-mining/cloud-mining.component.scss" />
+        <option value="$PROJECT_DIR$/app/crypto/crypto.component.html" />
+        <option value="$PROJECT_DIR$/app/crypto/crypto.component.css" />
       </list>
     </option>
   </component>
@@ -559,6 +553,12 @@
             <path>
               <item name="angular" type="b2602c69:ProjectViewProjectNode" />
               <item name="angular" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="app.component.scss" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="angular" type="b2602c69:ProjectViewProjectNode" />
+              <item name="angular" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -605,19 +605,19 @@
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
       <workItem from="1528871430902" duration="39861000" />
-      <workItem from="1529295323982" duration="13461000" />
+      <workItem from="1529295323982" duration="14417000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="294520000" />
+    <option name="totallyTimeSpent" value="295476000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="11" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23680556" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23680556" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.10208333" side_tool="true" weight="0.16863208" />
@@ -625,7 +625,7 @@
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.8979167" visible="true" weight="0.19457547" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.8979167" visible="true" weight="0.19457547" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -643,31 +643,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="85" selection-start-line="3" selection-start-column="85" selection-end-line="3" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining-categories/cloud-mining-categories.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="102" column="8" selection-start-line="102" selection-start-column="8" selection-end-line="102" selection-end-column="8" />
-          <folding>
-            <element signature="n#style#0;n#span#2;n#div#3;n#div#0;n#a#0;n#li#0;n#ul#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#3;n#div#3;n#div#0;n#a#0;n#li#0;n#ul#0;n#div#3;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-categories/ico-project-categories.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="806">
-          <caret line="118" column="10" selection-start-line="118" selection-start-column="10" selection-end-line="118" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/ico-project/ico-project-all/ico-project-all.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
@@ -748,13 +723,6 @@
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="266" column="16" lean-forward="true" selection-start-line="266" selection-start-column="16" selection-end-line="266" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1026,20 +994,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="325" column="73" selection-start-line="325" selection-start-column="61" selection-end-line="325" selection-end-column="73" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/chart2/chart2.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
@@ -1050,17 +1004,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="153" selection-start-line="153" selection-end-line="153" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="43" selection-start-column="43" selection-end-column="43" />
+          <caret column="43" selection-start-column="18" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining-detail/cloud-mining-detail.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="28" column="94" selection-start-line="28" selection-start-column="78" selection-end-line="28" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/cloud-mining/cloud-mining.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.component.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="175" column="36" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
