@@ -53,15 +53,12 @@ export class AllNewsComponent implements AfterContentInit {
           this.main_news = response['main_news'];
           this.countAll = this.news.length+this.main_news.length;
           this.load = false;
-          this.router.events
-              .filter(event => event instanceof NavigationEnd)
-              .map(() => this.route)
-              .subscribe((event) => {
-                  setTimeout(()=> {
-                      $.getScript('/js/script.js');
-                  }, 800)
+          if (this.load = false) {
+              setTimeout(()=> {
+                  $.getScript('/js/script.js');
+              }, 800)
+          }
 
-              });
 
       }).subscribe()
     
