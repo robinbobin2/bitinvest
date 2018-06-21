@@ -9206,3 +9206,7 @@ display: inherit;
 .show-more {
   clear: both;
 }
+.news-list-mobile li .img {
+  max-width: 119px;
+  min-width: 119px;
+}

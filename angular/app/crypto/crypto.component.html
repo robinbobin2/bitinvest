@@ -327,6 +327,13 @@
               <h3>Интерактивный график {{data?.symbol}}/USD</h3>
               <app-chart2></app-chart2>
             </div>
+            <div class="desc-wrap">
+              <div class="description">
+                <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
+                <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
+              </div>
+              <a href="#" class="banner-black banner-black-top"><img src="img/banner-black-small.jpg" alt=""></a>
+            </div>
           </div>
 
           <div class="tab-content news-wrapper"  [ngClass]="getRoute('news') ? 'active' : ''">
@@ -419,6 +426,13 @@
                 </div>
               </div>
             </div>
+            <div class="desc-wrap">
+              <div class="description">
+                <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
+                <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
+              </div>
+              <a href="#" class="banner-black banner-black-top"><img src="img/banner-black-small.jpg" alt=""></a>
+            </div>
           </div>
 
           <div class="tab-content comment-wrap"  [ngClass]="getRoute('comments') ? 'active' : ''">
@@ -466,7 +480,13 @@
 
               </ul>
             </div>
-
+            <div class="desc-wrap">
+              <div class="description">
+                <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
+                <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
+              </div>
+              <a href="#" class="banner-black banner-black-top"><img src="img/banner-black-small.jpg" alt=""></a>
+            </div>
           </div>
 
           <div class="tab-content news-wrapper"  [ngClass]="getRoute('analytics') ? 'active' : ''">
@@ -558,6 +578,13 @@
               </div>
               <a *ngIf="show <= analytics.length" (click)="show_an = show_an+3" class="show-comments btn-style">Показать ещё</a>
 
+            </div>
+            <div class="desc-wrap">
+              <div class="description">
+                <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
+                <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
+              </div>
+              <a href="#" class="banner-black banner-black-top"><img src="img/banner-black-small.jpg" alt=""></a>
             </div>
             </div>
           </div>
