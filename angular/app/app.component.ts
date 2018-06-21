@@ -200,7 +200,7 @@ checkAuth() {
           .subscribe((event) => {
               setTimeout(()=> {
                   $.getScript('/js/script.js');
-              }, 400)
+              }, 800)
 
           });
   }
