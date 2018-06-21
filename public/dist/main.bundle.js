@@ -6990,7 +6990,7 @@ var AllNewsComponent = (function () {
             _this.load = false;
             setTimeout(function () {
                 $.getScript('/js/script.js');
-            }, 800);
+            }, 1100);
         }).subscribe();
     };
     AllNewsComponent.prototype.setOrder = function (value) {
