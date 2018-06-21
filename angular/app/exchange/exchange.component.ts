@@ -136,6 +136,9 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 
 
 			}
+			for(let item of this.pairs) {
+				console.log(item.createTime);
+			}
 			this.pairs = res;
 			this.count_pairs = this.pairs.length;
 		}).subscribe();
