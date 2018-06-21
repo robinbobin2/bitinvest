@@ -754,15 +754,6 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.router.events
-            .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* NavigationEnd */]; })
-            .map(function () { return _this.activatedRoute; })
-            .subscribe(function (event) {
-            setTimeout(function () {
-                console.log('script');
-                $.getScript('/js/script.js');
-            }, 400);
-        });
         this.cryptoData = __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["a" /* Observable */].interval(5000).concatMap(function () {
             return _this.stockService.getCrypto();
         })
@@ -792,6 +783,18 @@ var AppComponent = (function () {
             this.email_added = 'Введите email';
             this.error_email = true;
         }
+    };
+    AppComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        this.router.events
+            .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* NavigationEnd */]; })
+            .map(function () { return _this.activatedRoute; })
+            .subscribe(function (event) {
+            setTimeout(function () {
+                console.log('script');
+                $.getScript('/js/script.js');
+            }, 400);
+        });
     };
     return AppComponent;
 }());

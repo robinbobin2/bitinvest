@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {AuthService} from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
@@ -40,7 +40,7 @@ const headers = new HttpHeaders({'Content-type': 'Application/json '});
   providers: [AuthService,SearchService, StocksService]
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   loadAPI: Promise<any>;
   login: Login;
     bitres: any;
@@ -168,16 +168,7 @@ checkAuth() {
     results = undefined;
   }
   ngOnInit() {
-      this.router.events
-          .filter(event => event instanceof NavigationEnd)
-          .map(() => this.activatedRoute)
-          .subscribe((event) => {
-              setTimeout(()=> {
-                  console.log('script')
-                  $.getScript('/js/script.js');
-              }, 400)
 
-          });
       this.cryptoData=Observable.interval(5000).concatMap(()=>
           this.stockService.getCrypto())
           .subscribe(result => {
@@ -210,5 +201,17 @@ checkAuth() {
 	        this.email_added = 'Введите email';
 	        this.error_email = true;
         }
+  }
+  ngAfterViewInit() {
+      this.router.events
+          .filter(event => event instanceof NavigationEnd)
+          .map(() => this.activatedRoute)
+          .subscribe((event) => {
+              setTimeout(()=> {
+                  console.log('script')
+                  $.getScript('/js/script.js');
+              }, 400)
+
+          });
   }
 }
