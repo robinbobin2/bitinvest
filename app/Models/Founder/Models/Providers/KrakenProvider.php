@@ -34,19 +34,20 @@ class KrakenProvider extends FounderProvider
                 continue;
             }
 
-            $supplierTicker = $supplierTicker->result->{str_replace("/", "",$currency)};
-
-            if(!isset($supplierTicker->a[0])){
-                continue;
+            foreach($supplierTicker as $tick){
+                if(!isset($tick->a[0])){
+                    continue;
+                }
+                $ticker = new TickerEntity();
+                $ticker->setAsk($tick->a[0]);
+                $ticker->setBid($tick->b[0]);
+                $ticker->setVolume($tick->v[0]);
+                $ticker->setValue($tick->p[0]);
+                $ticker->setExchangeId($this->getExchangeId());
+                $ticker->setCurrency($currency);
+                $response[] = $ticker;
             }
-            $ticker = new TickerEntity();
-            $ticker->setAsk($supplierTicker->a[0]);
-            $ticker->setBid($supplierTicker->b[0]);
-            $ticker->setVolume($supplierTicker->v[0]);
-            $ticker->setValue($supplierTicker->p[0]);
-            $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency($currency);
-            $response[] = $ticker;
+
         }
 
         return $response;
