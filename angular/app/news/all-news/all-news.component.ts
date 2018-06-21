@@ -59,7 +59,7 @@ export class AllNewsComponent implements AfterContentInit {
               .subscribe((event) => {
                   setTimeout(()=> {
                       $.getScript('/js/script.js');
-                  }, 500)
+                  }, 800)
 
               });
 
