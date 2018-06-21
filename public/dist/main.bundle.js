@@ -2375,7 +2375,7 @@ var _a, _b, _c, _d, _e, _f, _g;
 /***/ "./angular/app/cloud-mining/cloud-mining.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <section class=\"mining-wrapper\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n  <!--<h2 class=\"categories-ico-title\">Категории</h2>-->\n        <ul class=\"tag-list\">\n          <li ><a routerLinkActive=\"active\" routerLink=\"/cloud-mining/all\" >Все проекты</a></li>\n          <li *ngFor=\"let category of categories\">\n          <a routerLinkActive=\"active\"\n           [routerLink]=\"['/cloud-mining/category', category.id]\" >{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n    <app-sidebar [pageId]=\"1\"></app-sidebar>\n      </aside>\n      </div>\n  </section>"
+module.exports = "  <section class=\"ico-card-content mining-card-content\">\n    <div class=\"wrapper\">\n<router-outlet></router-outlet>\n<aside class=\"sidebar\">\n  <!--<h2 class=\"categories-ico-title\">Категории</h2>-->\n        <ul class=\"tag-list\">\n          <li ><a routerLinkActive=\"active\" routerLink=\"/cloud-mining/all\" >Все проекты</a></li>\n          <li *ngFor=\"let category of categories\">\n          <a routerLinkActive=\"active\"\n           [routerLink]=\"['/cloud-mining/category', category.id]\" >{{category.name}}({{category.count}})</a>\n          </li>\n        </ul>\n    <app-sidebar [pageId]=\"1\"></app-sidebar>\n      </aside>\n      </div>\n  </section>"
 
 /***/ }),
 
