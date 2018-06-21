@@ -33,7 +33,7 @@ class KrakenProvider extends FounderProvider
             if(!isset($supplierTicker->result) || empty($supplierTicker->result)){
                 continue;
             }
-
+            $supplierTicker = $supplierTicker->result;
             foreach($supplierTicker as $tick){
                 if(!isset($tick->a[0])){
                     continue;
