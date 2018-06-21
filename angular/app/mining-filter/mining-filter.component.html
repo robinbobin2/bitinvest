@@ -47,7 +47,7 @@
       <a *ngIf="cat_id == 0" [routerLink]="['/cloud-mining/all']" [queryParams]="{order: order, reverse: reverse, status:status }" class="saveinput" >Сохранить</a>
       <a *ngIf="cat_id != 0" [routerLink]="['/cloud-mining/category/', cat_id]" [queryParams]="{order: order, reverse: reverse, status:status }" class="saveinput" >Сохранить</a>
     </form>
-    <a href="#" class="claer" (click)="algorithm = ''">X Очистить параметры фильтрации </a>
+    <a class="claer" (click)="algorithm = ''">X Очистить параметры фильтрации </a>
 
   </div>
 </section>

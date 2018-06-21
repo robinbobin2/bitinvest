@@ -79,14 +79,9 @@ export class AppComponent implements OnInit, AfterViewInit {
               this.results = undefined;
           } else {
               this.results = results;
-              console.log(results);
           }
 
-        console.log(results);
       });
-	
-	console.log(this.user);
-	console.log('user');
 	// auth.getUser();
 }
 checkAuth() {
@@ -107,9 +102,7 @@ checkAuth() {
     , {headers: headers}).subscribe(
         (response) => 
         {
-          console.log(response);
           if(response['status'] == 'denied') {
-            console.log(response);
             this.loginError = 'Неправильные логин или пароль';
           } else if(response['status'] == 'success') {
             this.auth
@@ -118,7 +111,6 @@ checkAuth() {
               (response) => {
                 this.user = response;
                 this.auth.setUser(this.user);
-                console.log(this.user);
               }
             );
           this.router.navigate(['/profile/edit']);
@@ -127,7 +119,6 @@ checkAuth() {
         },
         (error) => console.log(error)
       );
-    // console.log
       form.reset();
 
       
@@ -208,7 +199,6 @@ checkAuth() {
           .map(() => this.activatedRoute)
           .subscribe((event) => {
               setTimeout(()=> {
-                  console.log('script')
                   $.getScript('/js/script.js');
               }, 400)
 
