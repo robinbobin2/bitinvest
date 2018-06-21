@@ -23,17 +23,6 @@
   text-decoration: underline;
 }
 
-.comment-block .comment-items li {
-  padding: 20px 0;
-  border-bottom: 1px solid #a4a4a4 !important;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
 .comment-block .comment-items li:last-child {
   border: none;
 }
