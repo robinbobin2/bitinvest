@@ -6997,6 +6997,9 @@ var AllNewsComponent = (function () {
             // }, 1100)
         }).subscribe();
     };
+    AllNewsComponent.prototype.ngOnInit = function () {
+        $.getScript('/js/script.js');
+    };
     AllNewsComponent.prototype.setOrder = function (value) {
         if (this.order === value) {
             this.reverse = !this.reverse;
