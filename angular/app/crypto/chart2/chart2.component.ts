@@ -26,7 +26,6 @@ export class Chart2Component implements OnInit {
                 {
                     "width": 881,
                     "height": 393,
-                    "autosize": true,
                     "symbol": this.data.exchange+":"+symbol+"USD",
                     "interval": "D",
                     "timezone": "Etc/UTC",
