@@ -9191,12 +9191,15 @@ padding-top: 18px;
 display: inherit;
 }
 @media (max-width: 600px) {
-  #second_graph {
+  /*#second_graph {
     display: none
-  }
+  }*/
 
   .crypto-single-content .main-news-slider .slick-track {
   width: 292px !important;
+}
+.top-menu {
+  margin-left: 0;
 }
 
 }
@@ -9209,4 +9212,7 @@ display: inherit;
 .news-list-mobile li .img {
   max-width: 119px;
   min-width: 119px;
+}
+.setting-top-block li {
+  list-style: none;
 }
