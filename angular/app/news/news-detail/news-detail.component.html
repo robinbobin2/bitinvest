@@ -1,5 +1,5 @@
 <section class="news-card-wrap">
-    <div class="wrapper">
+    <div class="wrapper" style="margin: 0; padding: 0;">
         <div class="news-card-block">
             <div class="news-big news-big2" style="padding-top:0px !important;">
                 <a routerLink="/posts/all" class="return"><span>&#60;</span>Вернуться к списку новостей</a>
@@ -77,16 +77,13 @@
                 <a *ngIf="commentcount > 10 && !hide" class="show-comments">Показать все комментарии
                     ({{commentcount}})</a>
             </div>
-            <div class="news-body ">
-                <div class="news-tab-content active comment-block">
-                    <h3 style="font-size: 24px;
-color: #000;
-margin-bottom: 10px;">Похожие новости</h3>
-                    <div class="news-list" style="height: 90%">
+            <div class="news-block">
+                <h3>Похожие новости</h3>
+                <div class="news-wrap">
                         <ng-template ngFor let-item [ngForOf]="relatedNews" let-i="index">
                             <div class="news">
                                 <div class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
-                                    <a href="#" class="news-btn">{{item.category.name}}</a>
+                                    <a [routerLink]="['/news/category', item?.cat_id]" class="news-btn">{{item.category.name}}</a>
                                     <div class="info">
                                         <span class="date">{{item.created_at}}</span>
                                     </div>
@@ -102,8 +99,25 @@ margin-bottom: 10px;">Похожие новости</h3>
                             </div>
                         </ng-template>
                     </div>
-                </div>
             </div>
+            <div class="news-list-mobile-wrap">
+                <h3>Похожие ноовсти</h3>
+                <ul class="news-list-mobile">
+                    <ng-template ngFor let-item [ngForOf]="relatedNews" let-i="index">
+                    <li>
+                        <a href="news-card.html" class="img" [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }">
+                            <button type="button" [routerLink]="['/news/category', item?.cat_id]" class="news-btn">{{item.category.name}}</button>
+                        </a>
+                        <div class="text">
+                            <a class="title"routerLink="/posts/post/{{item.id}}">{{item.title}}</a>
+                            <span class="date">{{item.created_at}}</span>
+                        </div>
+                    </li>
+                    </ng-template>
+
+                </ul>
+            </div>
+
         </div>
     </div>
 </section>
