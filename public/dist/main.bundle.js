@@ -669,14 +669,6 @@ var AppComponent = (function () {
         this.email = '';
         this.email_added = '';
         this.error_email = false;
-        this.router.events
-            .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* NavigationEnd */]; })
-            .map(function () { return _this.activatedRoute; })
-            .subscribe(function (event) {
-            setTimeout(function () {
-                $.getScript('/js/script.js');
-            }, 300);
-        });
         this.searchService.mainSearch(this.searchTerm$)
             .subscribe(function (results) {
             if (results['error']) {
@@ -762,6 +754,14 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.router.events
+            .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* NavigationEnd */]; })
+            .map(function () { return _this.activatedRoute; })
+            .subscribe(function (event) {
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 400);
+        });
         this.cryptoData = __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["a" /* Observable */].interval(5000).concatMap(function () {
             return _this.stockService.getCrypto();
         })

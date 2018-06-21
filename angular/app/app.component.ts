@@ -72,15 +72,7 @@ export class AppComponent implements OnInit {
     private router:Router, private activatedRoute: ActivatedRoute,
     private searchService: SearchService,
                 public stockService:StocksService) {
-        this.router.events
-            .filter(event => event instanceof NavigationEnd)
-            .map(() => this.activatedRoute)
-            .subscribe((event) => {
-                setTimeout(()=> {
-                    $.getScript('/js/script.js');
-                }, 300)
 
-            });
     this.searchService.mainSearch(this.searchTerm$)
       .subscribe(results => {
           if (results['error']) {
@@ -176,6 +168,15 @@ checkAuth() {
     results = undefined;
   }
   ngOnInit() {
+      this.router.events
+          .filter(event => event instanceof NavigationEnd)
+          .map(() => this.activatedRoute)
+          .subscribe((event) => {
+              setTimeout(()=> {
+                  $.getScript('/js/script.js');
+              }, 400)
+
+          });
       this.cryptoData=Observable.interval(5000).concatMap(()=>
           this.stockService.getCrypto())
           .subscribe(result => {
