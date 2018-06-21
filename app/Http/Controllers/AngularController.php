@@ -196,9 +196,9 @@ class AngularController extends Controller
 
     public function exchanges()
     {
-        $stocks = DB::select("select ex.id, ex.name, s.languages, s.year, s.country  from stocks s
+        $stocks = DB::select("select ex.id, ex.name, s.languages, s.year, s.country, ex.pairCount  from stocks s
 JOIN exchanges ex on ex.id = s.id
-JOIN exchangeRatesInfo exi on exi.exchangeId = ex.id and exi.currency = 'BTC/USD' WHERE exi.volume != 0 ");
+LEFT JOIN exchangeRatesInfo exi on exi.exchangeId = ex.id GROUP BY ex.id");
 
         return $stocks;
     }
