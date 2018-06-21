@@ -54,7 +54,7 @@ export class AllNewsComponent implements AfterContentInit {
 
           this.countAll = this.news.length+this.main_news.length;
           this.load = false;
-          if (response['main_news'])  {
+          if (this.load == false)  {
               $.getScript('/js/script.js');
           }
               // setTimeout(()=> {
