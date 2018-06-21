@@ -288,7 +288,7 @@
                       </div>
                     </li>
                   </ul>
-                  <a *ngIf="show <= news.length" (click)="show = show+3" class="show-news">Показать ещё</a>
+                  <a *ngIf="show <= news.length" (click)="show = show+3" class="show-more">Показать ещё</a>
                 </div>
               <div class="news-list">
                 <div *ngFor="let item of news | orderBy: order:reverse:'case-insensitive' | slice:0:show" [ngClass]="item.name_credits ? 'trust news' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
@@ -312,7 +312,7 @@
                     <p>{{item.desc | striphtml |excerpt:80}}</p>
                   </div>
                 </div>
-                <a *ngIf="show <= news.length" (click)="show = show+3" class="show-news">Показать ещё</a>
+                <a *ngIf="show <= news.length" (click)="show = show+3" class="show-comments btn-style">Показать ещё</a>
               </div>
               </div>
             </div>
@@ -391,7 +391,7 @@
                       </div>
                     </li>
                   </ul>
-                  <a *ngIf="show <= news.length" (click)="show = show+3" class="show-news">Показать ещё</a>
+                  <a *ngIf="show <= news.length" (click)="show = show+3" class="show-more">Показать ещё</a>
                 </div>
                 <div class="news-list">
                   <div *ngFor="let item of news | orderBy: order:reverse:'case-insensitive' | slice:0:show" [ngClass]="item.name_credits ? 'trust news' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
@@ -415,7 +415,7 @@
                       <p>{{item.desc | striphtml |excerpt:80}}</p>
                     </div>
                   </div>
-                  <a *ngIf="show <= news.length" (click)="show = show+3" class="show-news">Показать ещё</a>
+                  <a *ngIf="show <= news.length" (click)="show = show+3" class="show-comments btn-style">Показать ещё</a>
                 </div>
               </div>
             </div>
@@ -530,7 +530,7 @@
                     </div>
                   </li>
                 </ul>
-                <a *ngIf="show <= analytics.length" (click)="show_an = show_an+3" class="show-news">Показать ещё</a>
+                <a *ngIf="show <= analytics.length" (click)="show_an = show_an+3" class="show-more">Показать ещё</a>
               </div>
               <div class="news-list">
                 <div *ngFor="let item of analytics | orderBy: order:reverse:'case-insensitive' | slice:0:show_an" [ngClass]="item.name_credits ? 'trust news' : 'news'" [routerLink]="item.name_credits ? ['/interview/item', item.id] : null">
@@ -556,7 +556,7 @@
                 </div>
 
               </div>
-              <a *ngIf="show <= analytics.length" (click)="show_an = show_an+3" class="show-news">Показать ещё</a>
+              <a *ngIf="show <= analytics.length" (click)="show_an = show_an+3" class="show-comments btn-style">Показать ещё</a>
 
             </div>
             </div>

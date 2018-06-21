@@ -9199,3 +9199,6 @@ display: inherit;
 .news-list {
   overflow: hidden
 }
+.show-more {
+  clear: both;
+}
