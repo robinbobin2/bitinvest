@@ -93,7 +93,7 @@
         <h3 style="padding-right: 15px" class="ico-title">Доступные пары ({{count_pairs}})</h3>
 
             <form><input type="text" placeholder="Введите монету, например: BTC" [(ngModel)]="filteredName" name="filteredName"></form>
-            <span>Обновлено: </span>
+            <span *ngIf="time > 0">Обновлено: {{time *1000 | date:'HH:mm:ss'}}</span>
           </div>
           <table>
             <thead>

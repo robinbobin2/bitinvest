@@ -44,6 +44,7 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
     checkPortfolio = false;
 	private fragment: string;
     show = 10;
+    time = 0;
 	constructor(private http:HttpClient, 
 		private stockService:StocksService, 
 		private router:Router, 
@@ -122,7 +123,9 @@ export class ExchangeComponent implements OnInit, AfterViewInit {
 			for (var _i = 0; _i < this.pairs.length; ++_i) {
 
 				this.animtype[_i] = '';
-
+				if (this.pairs[_i].createTime > this.time) {
+					this.time = this.pairs[_i].createTime
+				}
 				if(this.pairs[_i].value > res[_i]['value']) {
 
 
