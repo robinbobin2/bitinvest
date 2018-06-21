@@ -6988,14 +6988,11 @@ var AllNewsComponent = (function () {
             _this.main_news = response['main_news'];
             _this.countAll = _this.news.length + _this.main_news.length;
             _this.load = false;
-            _this.router.events
-                .filter(function (event) { return event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */]; })
-                .map(function () { return _this.route; })
-                .subscribe(function (event) {
+            if (_this.load == false) {
                 setTimeout(function () {
                     $.getScript('/js/script.js');
                 }, 800);
-            });
+            }
         }).subscribe();
     };
     AllNewsComponent.prototype.setOrder = function (value) {
