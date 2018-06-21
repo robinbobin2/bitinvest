@@ -9191,9 +9191,9 @@ padding-top: 18px;
 display: inherit;
 }
 @media (max-width: 600px) {
-  #second_graph {
+  /*#second_graph {
     display: none
-  }
+  }*/
 
   .crypto-single-content .main-news-slider .slick-track {
   width: 292px !important;
