@@ -51,8 +51,8 @@
       <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/app.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="71" column="27" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="65" />
+            <state relative-caret-position="501">
+              <caret line="196" column="6" selection-start-line="196" selection-start-column="6" selection-end-line="204" selection-end-column="13" />
               <folding>
                 <element signature="e#0#65#0" expanded="true" />
               </folding>
@@ -63,8 +63,8 @@
       <file leaf-file-name="all-news.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="550">
+              <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
               <folding>
                 <element signature="e#0#60#0" expanded="true" />
               </folding>
@@ -160,7 +160,6 @@
         <option value="$PROJECT_DIR$/app/review/review-detail/review-detail.component.html" />
         <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.html" />
-        <option value="$PROJECT_DIR$/app/app.component.ts" />
         <option value="$PROJECT_DIR$/app/analytics-filter/analytics-filter.component.html" />
         <option value="$PROJECT_DIR$/app/ico-filter/ico-filter.component.html" />
         <option value="$PROJECT_DIR$/app/interview-filter/interview-filter.component.html" />
@@ -175,6 +174,7 @@
         <option value="$PROJECT_DIR$/app/crypto-filter/crypto-filter.component.html" />
         <option value="$PROJECT_DIR$/app/exchange/exchange.component.ts" />
         <option value="$PROJECT_DIR$/app/exchange/exchange.component.html" />
+        <option value="$PROJECT_DIR$/app/app.component.ts" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.ts" />
       </list>
     </option>
@@ -559,12 +559,12 @@
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
       <workItem from="1528871430902" duration="39861000" />
-      <workItem from="1529295323982" duration="11483000" />
+      <workItem from="1529295323982" duration="11690000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="292542000" />
+    <option name="totallyTimeSpent" value="292749000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1000,8 +1000,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/app.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="71" column="27" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="65" />
+        <state relative-caret-position="501">
+          <caret line="196" column="6" selection-start-line="196" selection-start-column="6" selection-end-line="204" selection-end-column="13" />
           <folding>
             <element signature="e#0#65#0" expanded="true" />
           </folding>
@@ -1010,8 +1010,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+        <state relative-caret-position="550">
+          <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
           <folding>
             <element signature="e#0#60#0" expanded="true" />
           </folding>
