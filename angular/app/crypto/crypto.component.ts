@@ -89,6 +89,8 @@ export class CryptoComponent implements OnInit, OnDestroy {
   min = [];
   min_value = 0;
   max_value = 0;
+    show = 3;
+    show_an = 3;
   max = [];
   time = [];
   time_value = 0;
