@@ -29,7 +29,7 @@ class LykkeProvider extends FounderProvider
             return $response;
         }
 
-        foreach ($result->result as $supplierTicker) {
+        foreach ($result as $supplierTicker) {
             if(!isset($supplierTicker->assetPair) || strlen($supplierTicker->assetPair) != 6){
                 continue;
             }
