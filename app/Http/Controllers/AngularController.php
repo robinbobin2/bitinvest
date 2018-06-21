@@ -198,7 +198,7 @@ class AngularController extends Controller
     {
         $stocks = DB::select("select ex.id, ex.name, s.languages, s.year, s.country, ex.pairCount  from stocks s
 JOIN exchanges ex on ex.id = s.id
-LEFT JOIN exchangeRatesInfo exi on exi.exchangeId = ex.id GROUP BY ex.id");
+LEFT JOIN exchangeRatesInfo exi on exi.exchangeId = ex.id WHERE ex.pairCount != 0 GROUP BY ex.id");
 
         return $stocks;
     }

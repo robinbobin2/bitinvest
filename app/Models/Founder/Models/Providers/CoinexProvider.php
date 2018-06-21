@@ -77,6 +77,9 @@ class CoinexProvider extends FounderProvider
             return $result;
         }
 
+        if(!isset($response->data->ticker)){
+            return $result;
+        }
         foreach ($response->data->ticker as $supplierCurrency => $value) {
             if(!isset($this->coins[$supplierCurrency])){
                 continue;
