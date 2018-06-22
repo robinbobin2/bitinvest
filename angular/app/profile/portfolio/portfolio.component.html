@@ -7,6 +7,172 @@
         <p>Отслеживайте все важные изменения по монетам, биржам, майнингу, ico проектам и др. Вся информация в одном месте! <br>
 Настраивайте индивидуальные уведомления...</p>
       </div>
+      <div class="table-wrap-mobile" *ngFor="let item of portfolioNames; let i = index">
+        <div class="table-title">
+          <h3>{{item.name}}</h3>
+          <div class="buttons">
+            <!--<a href="#" class="settings"><img src="img/settings.svg" alt=""></a>-->
+            <a (click)="onDelete(item.id, i)"  class="basket"><img src="img/garbage.svg" alt=""></a>
+          </div>
+        </div>
+        <table class="table">
+          <thead *ngIf="item.user_portfolio_type_id == 1">
+          <th width="50%">
+            <span>Название</span>
+          </th>
+          <th width="28%">
+            <span>Статус</span>
+          </th>
+          <th width="22%">
+            <span></span>
+          </th>
+          </thead>
+          <thead *ngIf="item.user_portfolio_type_id == 2">
+          <th width="50%">
+            <span>Название</span>
+          </th>
+          <th width="28%">
+            <span>Статус</span>
+          </th>
+          <th width="22%">
+            <span></span>
+          </th>
+          </thead>
+          <thead *ngIf="item.user_portfolio_type_id == 3">
+          <th width="25%">
+            <span>Название</span>
+          </th>
+          <th width="30%">
+            <span>Цена</span>
+          </th>
+          <th width="25%">
+            <span>Изм. за 24ч.</span>
+          </th>
+          <th width="20%">
+            <span></span>
+          </th>
+          </thead>
+          <thead *ngIf="item.user_portfolio_type_id == 4">
+          <th width="45%">
+            <span>Название</span>
+          </th>
+          <th width="33%">
+            <span>Объем $</span>
+          </th>
+          <th width="22%">
+            <span></span>
+          </th>
+          </thead>
+          <tbody>
+          <ng-template [ngIf]="item.user_portfolio_type_id == 1">
+            <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
+              <td>
+
+                <span>{{portfolioItem.name}}</span>
+              </td>
+              <td>
+                <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span>
+              </td>
+              <td>
+                <div class="difference">
+                  <div class="buttons">
+                    <!--<a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>-->
+                    <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\CloudMining')" class="minus"><img src="/img/minus.png" alt=""></a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template [ngIf]="item.user_portfolio_type_id == 2">
+            <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
+              <td>
+
+                <span>{{portfolioItem.name}}</span>
+              </td>
+              <td>
+                <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Активен' : 'Завершен'}}</span>
+              </td>
+              <td>
+                <div class="difference">
+                  <div class="buttons">
+                    <!--<a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>-->
+                    <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\IcoProject')" class="minus"><img src="/img/minus.png" alt=""></a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template [ngIf]="item.user_portfolio_type_id == 3">
+            <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
+              <td>
+
+                <span [routerLink]="['/crypto', portfolioItem.symbol]">{{portfolioItem.name}} ({{portfolioItem.symbol}})</span>
+              </td>
+              <td>
+                <span>{{portfolioItem.now}}</span>
+              </td>
+              <td><span [ngClass]="isNegativePercent(portfolioItem.now, portfolioItem.day)==true ? 'change-red' : 'change-green'">{{ countPercent(portfolioItem.now, portfolioItem.day) | number: '1.2'}}%</span>
+              </td>
+              <td>
+                <div class="difference">
+                  <div class="buttons">
+                    <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\CryptoStat')" class="minus"><img src="/img/minus.png" alt=""></a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+
+          <ng-template [ngIf]="item.user_portfolio_type_id == 4">
+            <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
+              <td>
+
+                <span [routerLink]="['/exchange', portfolioItem.name]">{{portfolioItem.name}} </span>
+              </td>
+              <td>
+                <span class="amount-bold">${{volumes[portfolioItem.name]?.usd | number:'1.0-5'}}</span>
+              </td>
+
+              <td>
+                <div class="difference">
+                  <div class="buttons">
+                    <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\Stock')" class="minus"><img src="/img/minus.png" alt=""></a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+          <tr>
+            <td>
+              <a href="crypto-single.html">
+                <span>Genesis (Дженезис) Mining</span>
+              </a>
+            </td>
+            <td>
+              <span class="green">Платит</span>
+            </td>
+            <td>
+              <div class="difference">
+                <div class="buttons">
+                  <a href="#" class="settings"><img src="img/settings.svg" alt=""></a>
+                  <a href="#" class="minus"><img src="img/minus.png" alt=""></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <!--<tr class="no-bg">-->
+            <!--<td colspan="4" class="no-border">-->
+              <!--<a href="#" class="add">+Добавить проект</a>-->
+              <!--<form>-->
+                <!--<input type="text" placeholder="Введите название...">-->
+                <!--<button type="submit">Добавить</button>-->
+              <!--</form>-->
+            <!--</td>-->
+          <!--</tr>-->
+          </tbody>
+        </table>
+      </div>
       <div class="table-wrap img-table" *ngFor="let item of portfolioNames; let i = index">
         <div class="table-title">
           <h3>{{item.name}}</h3>
@@ -146,7 +312,7 @@
           <ng-template [ngIf]="item.user_portfolio_type_id == 1">
             <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
               <td>
-                <a href="crypto-single.html">
+                <a >
                   <div class="img-wrap">
                     <img src="{{portfolioItem.logo}}" alt="">
                   </div>
