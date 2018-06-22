@@ -22,6 +22,7 @@ use App\Models\Founder\Models\Providers\BitHumbProvider;
 use App\Models\Founder\Models\Providers\BitMarketProvider;
 use App\Models\Founder\Models\Providers\BitMexProvider;
 use App\Models\Founder\Models\Providers\BitSOProvider;
+use App\Models\Founder\Models\Providers\BitStampProvider;
 use App\Models\Founder\Models\Providers\BitTrexProvider;
 use App\Models\Founder\Models\Providers\BitzProvider;
 use App\Models\Founder\Models\Providers\BraziliexProvider;
@@ -53,6 +54,7 @@ use App\Models\Founder\Models\Providers\GDaxProvider;
 use App\Models\Founder\Models\Providers\GeminiProvider;
 use App\Models\Founder\Models\Providers\HitBTCProvider;
 use App\Models\Founder\Models\Providers\HuobiProProvider;
+use App\Models\Founder\Models\Providers\HuobiProvider;
 use App\Models\Founder\Models\Providers\IBankProvider;
 use App\Models\Founder\Models\Providers\Ice3XProvider;
 use App\Models\Founder\Models\Providers\IndependentReserveProvider;
@@ -169,6 +171,9 @@ class Updater extends \Illuminate\Console\Command
         GDaxProvider::class,
         Bit2CProvider::class,
         OkCoinProvider::class,
+
+        HuobiProvider::class,
+        BitStampProvider::class
     ];
 
     private $suppliers = [

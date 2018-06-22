@@ -61,7 +61,6 @@ class LunoProvider extends FounderProvider
 
     public function search(Request $request)
     {
-        sleep(1);
         $response = $this->getConnector()->search();
         $result = [];
         if (!$response) {
