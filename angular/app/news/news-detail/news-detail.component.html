@@ -18,7 +18,7 @@
             <div class="innertext" [innerHTML]='news?.desc | safeHtml'>
             </div>
             <div class="comment-block" id="comment-block">
-                <div class="comment-top" *ngIf="user.id != 0" style="padding-top:0 !important;">
+                <div class="comment-top" *ngIf="user.id != 0" >
                     <h3>Добавить новый комментарий</h3>
                     <form (ngSubmit)="submitComment(f, news.id, 'App\\News')" #f="ngForm">
                         <input type="hidden" ngModel name="post_id" value="{{news?.id}}">
@@ -78,10 +78,11 @@
                     ({{commentcount}})</a>
             </div>
             <div class="news-body no-mobile">
-                <div class="news-tab-content active comment-block">
-                    <h3 style="font-size: 24px;
-color: #000;
-margin-bottom: 10px;">Похожие новости</h3>
+                <div class="news-tab-content active comment-block" style="border: none;">
+                    <h3 style="font-weight: bold;
+    color: #000;
+    font-size: 18px;
+    margin: 0 0 20px;">Похожие новости</h3>
                     <div class="news-list" style="height: 90%">
                         <ng-template ngFor let-item [ngForOf]="relatedNews" let-i="index">
                             <div class="news">
