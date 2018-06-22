@@ -129,6 +129,7 @@ relatedNews = [];
             role_id: response.role_id
 
         };
+         console.log(this.user.id)
    });
   }
   comment = { 
@@ -185,6 +186,7 @@ relatedNews = [];
   }
 
   ngAfterViewInit() {
+
       this.viewService.incrementView('news', this.id).subscribe()
       try {
           document.querySelector('#' + this.fragment).scrollIntoView();
