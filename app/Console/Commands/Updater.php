@@ -18,6 +18,7 @@ use App\Models\Founder\Models\Providers\Bit2CProvider;
 use App\Models\Founder\Models\Providers\BitBayProvider;
 use App\Models\Founder\Models\Providers\BitBnsProvider;
 use App\Models\Founder\Models\Providers\BitFinexProvider;
+use App\Models\Founder\Models\Providers\BitFlyerProvider;
 use App\Models\Founder\Models\Providers\BitHumbProvider;
 use App\Models\Founder\Models\Providers\BitMarketProvider;
 use App\Models\Founder\Models\Providers\BitMexProvider;
@@ -173,7 +174,8 @@ class Updater extends \Illuminate\Console\Command
         OkCoinProvider::class,
 
         HuobiProvider::class,
-        BitStampProvider::class
+        BitStampProvider::class,
+        BitFlyerProvider::class
     ];
 
     private $suppliers = [
