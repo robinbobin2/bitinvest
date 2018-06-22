@@ -76,7 +76,7 @@ class CcexProvider extends FounderProvider
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->Ask);
             $ticker->setBid($supplierTicker->Bid);
-            $ticker->setVolume($supplierTicker->BaseVolume);
+            $ticker->setVolume($supplierTicker->Volume);
             $ticker->setValue($supplierTicker->Last);
             $ticker->setExchangeId($this->getExchangeId());
             $ticker->setCurrency(strtoupper(str_replace("-", "/", $supplierTicker->MarketName)));

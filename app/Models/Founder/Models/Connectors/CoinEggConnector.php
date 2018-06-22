@@ -14,7 +14,7 @@ use App\Models\Founder\Models\FounderConnector;
 class CoinEggConnector extends FounderConnector
 {
     private $currenciesArray = [
-        "usdt", "eth", "usc"
+        "usdt", "eth", "usc", "btc"
         ];
 
     public function search()
