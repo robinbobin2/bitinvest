@@ -117,7 +117,7 @@
                 <span [routerLink]="['/crypto', portfolioItem.symbol]">{{portfolioItem.name}} ({{portfolioItem.symbol}})</span>
               </td>
               <td>
-                <span>{{portfolioItem.now}}</span>
+                <span>{{portfolioItem.now | number: '1.0-2'}}</span>
               </td>
               <td><span [ngClass]="isNegativePercent(portfolioItem.now, portfolioItem.day)==true ? 'change-red' : 'change-green'">{{ countPercent(portfolioItem.now, portfolioItem.day) | number: '1.2'}}%</span>
               </td>
