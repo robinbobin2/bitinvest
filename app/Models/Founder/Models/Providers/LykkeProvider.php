@@ -30,7 +30,6 @@ class LykkeProvider extends FounderProvider
         }
 
         foreach ($result as $supplierTicker) {
-            sleep(1);
             if(!isset($supplierTicker->assetPair) || strlen($supplierTicker->assetPair) != 6 || !$supplierTicker->lastPrice){
                 continue;
             }
