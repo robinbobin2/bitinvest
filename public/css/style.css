@@ -9240,3 +9240,9 @@ display: inherit;
     padding: 13px 14px;
     padding-left: 16px !important;
   }
+
+  .table-wrap-mobile .table td {
+  padding-left: 16px !important;
+  padding-right: 0 !important;
+  border: none !important;
+}
