@@ -9233,3 +9233,10 @@ display: inherit;
     padding-top: 22px;
   }
 }
+.table thead tr th:first-child {
+  padding-left: 16px;
+}
+.crypto-active .table-wrap-mobile .table td {
+    padding: 13px 14px;
+    padding-left: 16px !important;
+  }
