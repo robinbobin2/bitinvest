@@ -35,7 +35,7 @@ class BitTrexProvider extends FounderProvider
                 $ticker = new TickerEntity();
                 $ticker->setAsk((float)$supplierTicker->Ask);
                 $ticker->setBid((float)$supplierTicker->Bid);
-                $ticker->setVolume((float)$supplierTicker->Volume);
+                $ticker->setVolume((float)$supplierTicker->BaseVolume);
                 $ticker->setValue((float)$supplierTicker->Last);
                 $ticker->setExchangeId($this->getExchangeId());
                 $ticker->setCurrency(str_replace("USDT", "USD", $currency));
@@ -44,7 +44,7 @@ class BitTrexProvider extends FounderProvider
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->Ask);
             $ticker->setBid($supplierTicker->Bid);
-            $ticker->setVolume($supplierTicker->Volume);
+            $ticker->setVolume($supplierTicker->BaseVolume);
             $ticker->setValue($supplierTicker->Last);
             $ticker->setExchangeId($this->getExchangeId());
             $ticker->setCurrency(str_replace("-", "/", $supplierTicker->MarketName));
