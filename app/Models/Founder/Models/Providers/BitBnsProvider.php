@@ -46,6 +46,9 @@ class BitBnsProvider extends FounderProvider
         }
 
         foreach ($response as $currency => $value) {
+            if(!isset($value->highest_buy_bid)){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($value->highest_buy_bid);
             $ticker->setBid($value->lowest_sell_bid);
