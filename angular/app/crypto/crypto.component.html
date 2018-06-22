@@ -28,10 +28,8 @@
           <div class="prices-wrap">
 
             <span class="price" style="color: #000;" [ngStyle]="{ 'animation': animtype+' 2s', '-webkit-animation': animtype+' 2s'  }">${{dataUsd.now | number:'1.0-1'}}</span>
-            <span *ngIf="diff != 0" class="no-mobile" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.0-5'}}</span>
-            <span *ngIf="diff != 0" class="mobile-only" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.0-2'}}</span>
-            <span *ngIf="diff ==0" class="no-mobile" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{dataUsd.now-dataUsd.last | number:'1.0-5'}}</span>
-            <span *ngIf="diff == 0" class="mobile-only" [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{dataUsd.now-dataUsd.last | number:'1.0-2'}}</span>
+            <span *ngIf="diff != 0" class=" " [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{diff | number:'1.0-5'}}</span>
+            <span *ngIf="diff ==0" class=" " [ngClass]="diff > 0 ? 'green-price' : 'red-price'">{{dataUsd.now-dataUsd.last | number:'1.0-5'}}</span>
             <span *ngIf="prev == 0" [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">{{countPercent(dataUsd.now, prev) | number:'1.2-3'}}%</span>
             <span *ngIf="prev != 0" [ngClass]="diff > 0 ? 'bg-price-green' : 'bg-price'">{{countPercent(dataUsd.now, dataUsd.last) | number:'1.2-3'}}%</span>
           </div>
@@ -140,15 +138,17 @@
                 <h3>Котировки BTC/USD на биржах</h3>
                 <table class="table">
                   <thead>
-                  <th width="45%">
-                    <span>Название биржи</span>
-                  </th>
-                  <th width="25%">
-                    <span>Стоимость</span>
-                  </th>
-                  <th width="30%" class="last-th">
-                    <span>Объем за 24ч.</span>
-                  </th>
+                  <tr>
+                    <th width="45%">
+                      <span>Название биржи</span>
+                    </th>
+                    <th width="25%">
+                      <span>Стоимость</span>
+                    </th>
+                    <th width="30%" class="last-th">
+                      <span>Объем за 24ч.</span>
+                    </th>
+                  </tr>
                   </thead>
                   <tbody>
                   <tr *ngFor="let stock of stocks; let i = index">

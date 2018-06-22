@@ -788,7 +788,7 @@ select:focus {
   transition: .3s;
 }
 .table thead tr th:first-child {
-  padding-left: 14px;
+  padding-left: 16px;
 }
 .table thead tr th:hover {
   background: #383c46;
@@ -9194,9 +9194,8 @@ display: inherit;
   /*#second_graph {
     display: none
   }*/
-
-  .crypto-single-content .main-news-slider .slick-track {
-  width: 292px !important;
+.news.slick-slide.slick-current.slick-active, .crypto-single-content .main-news-slider .slick-track {
+  width: 100% !important;
 }
 .top-menu {
   margin-left: 0;
@@ -9217,4 +9216,32 @@ display: inherit;
 }
 .setting-top-block li {
   list-style: none;
+}
+@media (max-width: 600px) {
+  .comment-block {
+    border: none;
+    background: none !important;
+    width: calc(100% + 28px);
+    margin-left: -14px;
+    padding: 0 14px;
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 600px) {
+  .ico-wrap {
+    padding-top: 22px;
+  }
+}
+.table thead tr th:first-child {
+  padding-left: 16px;
+}
+.crypto-active .table-wrap-mobile .table td {
+    padding: 13px 14px;
+    padding-left: 16px !important;
+  }
+
+  .table-wrap-mobile .table td {
+  padding-left: 16px !important;
+  padding-right: 0 !important;
+  border: none !important;
 }

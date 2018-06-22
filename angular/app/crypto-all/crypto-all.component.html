@@ -157,49 +157,7 @@ width="16.3%">
 </div>
 </td>
 </tr>
-<tr class="hidden">
- <td>
-  <span>122</span>
-</td>
-<td>
-  <div class="img-wrap">
-   <img src="img/bitcoin-icon.png" alt="">
- </div>
- <span>Bitcoin (BTC)</span>
-</td>
-<td>
-  <span class="price">$9,200</span>
 
-</td>
-<td>
-  <span class="capitalization">$95,113,177,098</span>
-</td>
-<td>
-  ><span class="total">21 000 000 000</span>
-  <span class="received">890 910</span>
-</td>
-<td>
-  <span class="bargaining">$95,113,177</span>
-</td>
-<td>
-  <span class="algorithm">SHA-256</span>
-</td>
-<td>
-  <span class="year">2009</span>
-</td>
-<td>
-  <span class="change-green">+ 3,5% (+200,09)</span>
-
-</td>
-<td>
-  <div class="difference">
-   <span class="change-red">-2,3% (-201,11)</span>
-   <div class="buttons">
-
-  </div>
-</div>
-</td>
-</tr>
 </tbody>
 </table>
         <div style="width: 50px; height: 50px; margin: 40px auto;" *ngIf="load == true">
@@ -210,13 +168,13 @@ width="16.3%">
                 <table class="table">
                     <thead>
                     <tr>
-                        <th width="31%">
+                        <th width="31%" (click)="setOrder('sym')">
                             <span>Название</span>
                         </th>
-                        <th width="29%">
+                        <th width="29%" (click)="setOrder('now')">
                             <span>Цена</span>
                         </th>
-                        <th width="40%">
+                        <th width="40%" (click)="setOrder('percentDay')">
                             <span>Изм. за 24ч.</span>
                         </th>
                     </tr>
