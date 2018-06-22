@@ -63,7 +63,7 @@
                                     <span *ngIf="rating_count[item.id] > 0" class="number-green">{{rating_count[item.id]}}</span>
                                     <span *ngIf="rating_count[item.id] < 0"
                                           class="number-red">{{rating_count[item.id]}}</span>
-                                    <span *ngIf="rating_count[item.id] == 0"
+                                    <span
                                           class="number">{{rating_count[item.id]}}</span>
                                     <div class="buttons">
                                         <a (click)="onVote(item.id, 1)" class="plus">+</a>
