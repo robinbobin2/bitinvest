@@ -129,7 +129,6 @@ relatedNews = [];
             role_id: response.role_id
 
         };
-         console.log(this.user.id)
    });
   }
   comment = { 

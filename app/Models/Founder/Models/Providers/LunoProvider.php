@@ -61,16 +61,20 @@ class LunoProvider extends FounderProvider
 
     public function search(Request $request)
     {
+        sleep(1);
         $response = $this->getConnector()->search();
         $result = [];
         if (!$response) {
             return $result;
         }
         foreach ($response->tickers as $supplierTicker){
+            if(!$supplierTicker->last_trade){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->ask);
             $ticker->setBid($supplierTicker->bid);
-            $ticker->setVolume($supplierTicker->rolling_24_hour_volume);
+            $ticker->setVolume($supplierTicker->rolling_24_hour_volume / $supplierTicker->last_trade);
             $ticker->setValue($supplierTicker->last_trade);
             $ticker->setExchangeId($this->getExchangeId());
             $ticker->setCurrency(strtoupper(substr($supplierTicker->pair, 0,3) . "/" . substr($supplierTicker->pair, 3)));

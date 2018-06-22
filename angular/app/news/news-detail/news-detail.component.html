@@ -18,7 +18,7 @@
             <div class="innertext" [innerHTML]='news?.desc | safeHtml'>
             </div>
             <div class="comment-block" id="comment-block">
-                <div class="comment-top" *ngIf="user.id != 0" >
+                <div class="comment-top" *ngIf="user.id != undefined" >
                     <h3>Добавить новый комментарий</h3>
                     <form (ngSubmit)="submitComment(f, news.id, 'App\\News')" #f="ngForm">
                         <input type="hidden" ngModel name="post_id" value="{{news?.id}}">
@@ -27,14 +27,14 @@
                         <button type="submit">Добавить</button>
                     </form>
                 </div>
-                <div class="comment-top" *ngIf="user.id == 0">
+                <div class="comment-top" *ngIf="user.id == undefined">
                     <h3>Комментарии ({{commentcount}})</h3>
                     <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup"
                                                                                     class="popup-link">авторизоваться</a>
                         или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p>
                 </div>
 
-                <div *ngIf="user?.id != 0 && commentcount > 0"
+                <div *ngIf="user?.id != undefined && commentcount > 0"
                      style="background: none !important; border: none !important" class="comment-top">
                     <h3>Комментарии ({{commentcount}})</h3>
                     <!-- <p>Для того чтобы добавить свой комментарий - Вам необходимо <a href="#login-popup" class="popup-link">авторизоваться</a> или <a href="#check-popup" class="popup-link">пройти регистрацию.</a></p> -->

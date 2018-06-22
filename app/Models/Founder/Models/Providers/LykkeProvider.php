@@ -30,13 +30,14 @@ class LykkeProvider extends FounderProvider
         }
 
         foreach ($result as $supplierTicker) {
-            if(!isset($supplierTicker->assetPair) || strlen($supplierTicker->assetPair) != 6){
+            sleep(1);
+            if(!isset($supplierTicker->assetPair) || strlen($supplierTicker->assetPair) != 6 || !$supplierTicker->lastPrice){
                 continue;
             }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->ask);
             $ticker->setBid($supplierTicker->bid);
-            $ticker->setVolume($supplierTicker->volume24H);
+            $ticker->setVolume($supplierTicker->volume24H / $supplierTicker->lastPrice);
             $ticker->setValue($supplierTicker->lastPrice);
             $ticker->setExchangeId($this->getExchangeId());
             $ticker->setCurrency($this->getCurrency($supplierTicker->assetPair));

@@ -48,6 +48,7 @@ class HitBTCProvider extends FounderProvider
 
     public function search(Request $request)
     {
+        sleep(1);
         $response = $this->getConnector()->search();
         $result = [];
         if (!$response) {
@@ -60,14 +61,7 @@ class HitBTCProvider extends FounderProvider
             }
             $currency = $this->pairs[$value->symbol];
             if(strpos($currency, "USDT") !== false){
-                $ticker = new TickerEntity();
-                $ticker->setAsk((float)$value->ask);
-                $ticker->setBid((float)$value->bid);
-                $ticker->setVolume((float)$value->volume);
-                $ticker->setValue((float)$value->last);
-                $ticker->setExchangeId($this->getExchangeId());
-                $ticker->setCurrency(str_replace("USDT", "USD", $currency));
-                $result[] = $ticker;
+                $currency = str_replace("USDT", "USD", $currency);
             }
             $ticker = new TickerEntity();
             $ticker->setAsk((float)$value->ask);

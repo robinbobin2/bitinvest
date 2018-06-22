@@ -35,6 +35,7 @@ class BinanceProvider extends FounderProvider
      */
     public function search(Request $request)
     {
+        sleep(1);
         $response = [];
         $result = $this->getConnector()->search();
 

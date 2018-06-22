@@ -31,7 +31,7 @@ class TheRockProvider extends FounderProvider
             $ticker = new TickerEntity();
             $ticker->setAsk($value->ask);
             $ticker->setBid($value->bid);
-            $ticker->setVolume($value->volume);
+            $ticker->setVolume($value->volume / $value->last);
             $ticker->setValue($value->last);
             $ticker->setExchangeId($this->getExchangeId());
             $ticker->setCurrency($this->getCurrency($value->fund_id));
