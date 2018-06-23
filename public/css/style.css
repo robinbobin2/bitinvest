@@ -4730,6 +4730,14 @@ margin-bottom: 15px;
   display: -ms-flexbox;
   display: flex;
 }
+.info-block {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
 @media (max-width: 600px) {
   .ico-wrapper .wrapper .ico-content .ico-head .ico-tabs {
     display: none;
