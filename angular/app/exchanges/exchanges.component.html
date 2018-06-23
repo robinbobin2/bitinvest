@@ -107,7 +107,8 @@
 
           <tbody *ngIf="load == false">
 
-            <tr *ngFor="let item of exchanges | orderBy: order:reverse:'case-insensitive' |
+            <tr *ngFor="let item of exchanges |
+                    filterName:filteredName:'name' | orderBy: order:reverse:'case-insensitive' |
             filterNameActive:language:'languages'| filterNameActive:year:'year'| filterNameActive:country:'country'; let i = index">
               <td>
                 <span>{{i+1}}</span>
