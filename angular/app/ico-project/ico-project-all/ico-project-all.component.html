@@ -79,19 +79,13 @@
 					orderBy: order:reverse:'case-insensitive'">
 						<a routerLink="/ico/item/{{item.id}}">
 							<a routerLink="/ico/item/{{item.id}}">{{item.name}}</a>
-
-							<div class="info">
-								<div class="progres-bar">
-									<div class="progres">
-										<span [ngStyle]="{'width': item.current_money/(item.money / 100)+'%' }"></span>
-										<p>${{item.current_money}} из {{item.money}}</p>
-									</div>
+							<span class="info-block">
+								<a routerLink="/ico/item/{{item.id}}"><img [src]="item.logo" style="max-width: 97px; max-height: 97px" alt=""></a>
+								<div class="info">
+									<p class="status" [ngClass]="item.status==1 ? 'active-status' : 'inactive-status'">Статус: <span>{{item.status == 1? 'Активен': 'Завершен'}}</span></p>
+									<p class="year">от {{item.money_start}} до {{item.money_end}}</p>
 								</div>
-								<div class="status">
-									<span>Статус</span>
-									<span [ngClass]="item.status==1 ? 'active-status' : 'inactive-status'">{{item.status == 1? 'Активен': 'Завершен'}}</span>
-								</div>
-							</div>
+							</span>
 						</a>
 					</li>
 				</ul>
