@@ -3312,7 +3312,7 @@ var Chart3Component = (function () {
             _this.data = response;
             setTimeout(function () {
                 new TradingView.MediumWidget({
-                    "container_id": "tv-medium-widget",
+                    "container_id": "tv-medium-widget-3",
                     "symbols": [
                         [
                             symbol,

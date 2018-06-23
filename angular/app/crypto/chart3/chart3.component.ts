@@ -24,7 +24,7 @@ export class Chart3Component implements OnInit {
             setTimeout(()=>{
                 new TradingView.MediumWidget(
                     {
-                        "container_id": "tv-medium-widget",
+                        "container_id": "tv-medium-widget-3",
                         "symbols": [
                             [
                                 symbol,
