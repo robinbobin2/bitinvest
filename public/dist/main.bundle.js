@@ -9361,7 +9361,12 @@ var StriphtmlPipe = (function () {
     function StriphtmlPipe() {
     }
     StriphtmlPipe.prototype.transform = function (value) {
-        return value.replace(/<.*?>/g, ''); // replace tags
+        if (value != null) {
+            return value.replace(/<.*?>/g, ''); // replace tags
+        }
+        else {
+            return value;
+        }
     };
     return StriphtmlPipe;
 }());
