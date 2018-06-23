@@ -54,11 +54,7 @@ export class AllNewsComponent implements AfterContentInit, OnInit {
 
           this.countAll = this.news.length+this.main_news.length;
           this.load = false;
-          if (this.load == false)  {
-              setTimeout(()=> {
-                  $.getScript('/js/script.js');
-              }, 1100)
-          }
+
 
 
 
@@ -70,6 +66,9 @@ export class AllNewsComponent implements AfterContentInit, OnInit {
   ngOnInit() {
 
   }
+    loadSlider() {
+        $.getScript('/js/script.js');
+    }
 setOrder(value: string) {
      if (this.order === value) {
        this.reverse = !this.reverse;
