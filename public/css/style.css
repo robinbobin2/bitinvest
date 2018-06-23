@@ -9247,6 +9247,6 @@ display: inherit;
 }
 
 .slick-track {
-  height: 245px !important;
+  max-height: 245px !important;
   overflow: hidden !important;
 }
