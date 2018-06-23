@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Админ
- * Date: 29.04.2018
- * Time: 21:19
+ * User: xeror
+ * Date: 23.06.2018
+ * Time: 1:28
  */
 
 namespace App\Models\Founder\Models\Connectors;
@@ -11,11 +11,11 @@ namespace App\Models\Founder\Models\Connectors;
 
 use App\Models\Founder\Models\FounderConnector;
 
-class CoinEggConnector extends FounderConnector
+class BitFlyerConnector extends FounderConnector
 {
-    private $currenciesArray = [
-        "usdt", "eth", "usc", "btc"
-        ];
+    private $coins = [
+        "BTC_JPY", "ETH_BTC", "BCH_BTC"
+    ];
 
     public function search()
     {
@@ -23,9 +23,9 @@ class CoinEggConnector extends FounderConnector
         $result = [];
         $mh = curl_multi_init();
 
-        foreach ($this->currenciesArray as $currency) {
+        foreach ($this->coins as $currency) {
             $curly[$currency] = curl_init();
-            curl_setopt($curly[$currency], CURLOPT_URL, "https://api.coinegg.com/api/v1/ticker/region/usdt?coin=" . $currency);
+            curl_setopt($curly[$currency], CURLOPT_URL, "https://api.bitflyer.jp/v1/ticker?product_code=" . $currency);
             curl_setopt($curly[$currency], CURLOPT_HEADER, 0);
             curl_setopt($curly[$currency], CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($curly[$currency], CURLOPT_TIMEOUT, 30);
