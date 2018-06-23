@@ -21,6 +21,7 @@ export class AllNewsComponent implements AfterContentInit, OnInit {
   order: string = 'position';
   reverse: boolean = false;
   load = true;
+    stop = false
 
   resolved_data: any;
   /**
@@ -67,7 +68,11 @@ export class AllNewsComponent implements AfterContentInit, OnInit {
 
   }
     loadSlider() {
-        $.getScript('/js/script.js');
+       if (this.stop == false) {
+           $.getScript('/js/script.js');
+       }
+        this.stop = true;
+
     }
 setOrder(value: string) {
      if (this.order === value) {

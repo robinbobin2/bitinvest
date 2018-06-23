@@ -6964,6 +6964,7 @@ var AllNewsComponent = (function () {
         this.order = 'position';
         this.reverse = false;
         this.load = true;
+        this.stop = false;
         var path = "/newsraw";
         this.info = http.get(path);
         this.route.queryParams.subscribe(function (params) {
@@ -6993,7 +6994,10 @@ var AllNewsComponent = (function () {
     AllNewsComponent.prototype.ngOnInit = function () {
     };
     AllNewsComponent.prototype.loadSlider = function () {
-        $.getScript('/js/script.js');
+        if (this.stop == false) {
+            $.getScript('/js/script.js');
+        }
+        this.stop = true;
     };
     AllNewsComponent.prototype.setOrder = function (value) {
         if (this.order === value) {
