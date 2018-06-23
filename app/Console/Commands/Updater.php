@@ -60,8 +60,10 @@ use App\Models\Founder\Models\Providers\HuobiProvider;
 use App\Models\Founder\Models\Providers\IBankProvider;
 use App\Models\Founder\Models\Providers\Ice3XProvider;
 use App\Models\Founder\Models\Providers\IndependentReserveProvider;
+use App\Models\Founder\Models\Providers\ItBitProvider;
 use App\Models\Founder\Models\Providers\JubiProvider;
 use App\Models\Founder\Models\Providers\KoineksProvider;
+use App\Models\Founder\Models\Providers\KorbitProvider;
 use App\Models\Founder\Models\Providers\KrakenProvider;
 use App\Models\Founder\Models\Providers\KuCoinProvider;
 use App\Models\Founder\Models\Providers\KunaProvider;
@@ -71,6 +73,7 @@ use App\Models\Founder\Models\Providers\LunoProvider;
 use App\Models\Founder\Models\Providers\LuquiProvider;
 use App\Models\Founder\Models\Providers\LykkeProvider;
 use App\Models\Founder\Models\Providers\NegocieProvider;
+use App\Models\Founder\Models\Providers\NeraexProvider;
 use App\Models\Founder\Models\Providers\NovaProvider;
 use App\Models\Founder\Models\Providers\OkCoinProvider;
 use App\Models\Founder\Models\Providers\OkexProvider;
@@ -85,6 +88,7 @@ use App\Models\Founder\Models\Providers\SimexProvider;
 use App\Models\Founder\Models\Providers\SouthXChangeProvider;
 use App\Models\Founder\Models\Providers\TheRockProvider;
 use App\Models\Founder\Models\Providers\TideBitProvider;
+use App\Models\Founder\Models\Providers\TidexProvider;
 use App\Models\Founder\Models\Providers\VaultoroProvider;
 use App\Models\Founder\Models\Providers\VebitcoinProvider;
 use App\Models\Founder\Models\Providers\VirWoxProvider;
@@ -179,7 +183,11 @@ class Updater extends \Illuminate\Console\Command
         BitStampProvider::class,
         BitFlyerProvider::class,
         CoinbeneProvider::class,
-        WenzProvider::class
+        WenzProvider::class,
+        ItBitProvider::class,
+        KorbitProvider::class,
+        NeraexProvider::class,
+        TidexProvider::class
     ];
 
     private $suppliers = [
