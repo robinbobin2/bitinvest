@@ -4932,12 +4932,12 @@ margin-bottom: 15px;
   -ms-flex-align: center;
   align-items: center;
 }
-@media (max-width: 600px) {
+/*@media (max-width: 600px) {
   .mining-wrapper .wrapper .mining-content .mining-head {
     padding-bottom: 0;
     height: 70px;
   }
-}
+}*/
 .mining-wrapper .wrapper .mining-content .mining-head h1 {
   font-size: 36px;
   color: #1d1f24;
