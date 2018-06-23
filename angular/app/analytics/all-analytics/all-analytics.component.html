@@ -19,15 +19,15 @@
             <!--rgba(0, 0, 0, 0.35)-->
             <!--), url('+item.photos[0].file+')'}">-->
             <!--<a [routerLink]="['/analytics/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>-->
-            <!--<a routerLink="/analytics/post/{{item.id}}" class="title-link">{{item.title}}</a>-->
+            <!--<a routerLink="/analytics/item/{{item.id}}" class="title-link">{{item.title}}</a>-->
             <!--<div class="info">-->
             <!--<span class="date">{{item.created_at}}</span>-->
             <!--<span class="views" *ngIf="item.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item.view_count}}</span>-->
-            <!--<a  [routerLink]="['/analytics/post', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>-->
+            <!--<a  [routerLink]="['/analytics/item', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>-->
             <!--</div>-->
             <!--</div>-->
             <!--<div class="text">-->
-            <!--<p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/analytics/post/{{item.id}}">Подробнее</a></p> -->
+            <!--<p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/analytics/item/{{item.id}}">Подробнее</a></p> -->
             <!--</div>-->
             <!--</div>-->
             <!--</div>-->
@@ -40,15 +40,15 @@
                                               rgba(0, 0, 0, 0.35)
                                             ), url('+item.photos[0].file+')'}">
                                 <a [routerLink]="['/analytics/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
-                                <a routerLink="/analytics/post/{{item.id}}" class="title-link">{{item.title}}</a>
+                                <a routerLink="/analytics/item/{{item.id}}" class="title-link">{{item.title}}</a>
                                 <div class="info">
                                     <span class="date">{{item.created_at}}</span>
                                     <span class="views" *ngIf="item.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item.view_count}}</span>
-                                    <a  [routerLink]="['/analytics/post', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>
+                                    <a  [routerLink]="['/analytics/item', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>
                                 </div>
                             </div>
                             <div class="text">
-                                <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/analytics/post/{{item.id}}">Подробнее</a></p>
+                                <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/analytics/item/{{item.id}}">Подробнее</a></p>
                             </div>
                         </div>
                     </ng-template>
@@ -63,15 +63,15 @@
                         </div>
                         <div class="news-slider-info">
                             <a [routerLink]="['/analytics/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
-                            <a routerLink="/analytics/post/{{item.id}}" class="title-link">{{item.title}}</a>
+                            <a routerLink="/analytics/item/{{item.id}}" class="title-link">{{item.title}}</a>
                             <div class="info">
                                 <span class="date">{{item.created_at}}</span>
                                 <span class="views" *ngIf="item.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item.view_count}}</span>
-                                <a  [routerLink]="['/analytics/post', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>
+                                <a  [routerLink]="['/analytics/item', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>
                             </div>
                         </div>
                         <div class="text">
-                            <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/analytics/post/{{item.id}}">Подробнее</a></p>
+                            <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/analytics/item/{{item.id}}">Подробнее</a></p>
                         </div>
                     </div>
                 </ng-template>
@@ -79,12 +79,12 @@
             <div class="news-mobile">
                 <ul class="news-list-mobile">
                     <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive'">
-                        <a *ngIf="!item.name_credits" [routerLink]="['/analytics/post', item.id]" class="img"
+                        <a *ngIf="!item.name_credits" [routerLink]="['/analytics/item', item.id]" class="img"
                            [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
                             <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/analytics/category', item.cat_id]" >{{item.category.name}}</button>
                         </a>
                         <div *ngIf="!item.name_credits" class="text">
-                            <a [routerLink]="['/analytics/post', item.id]" class="title">{{item.title}}</a>
+                            <a [routerLink]="['/analytics/item', item.id]" class="title">{{item.title}}</a>
                             <span class="date">{{item.created_at}}</span>
                         </div>
                     </li>
@@ -104,7 +104,7 @@
                     </div>
                     <div *ngIf="!item.name_credits" class="text">
                         <h3>
-                            <a [routerLink]="['/analytics/post', item.id]">{{item.title}}</a>
+                            <a [routerLink]="['/analytics/item', item.id]">{{item.title}}</a>
                         </h3>
                     </div>
 

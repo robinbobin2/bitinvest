@@ -186,7 +186,7 @@
               </div>
               <div class="comment-top"   style="background: none; padding-left: 0;"  *ngIf="user.id">
                 <h3>Добавить новый комментарий</h3>
-                <form (ngSubmit)="submitComment(f,data.id, 'App\\CryptoStat')" #f="ngForm">
+                <form (ngSubmit)="submitComment(f,data?.id, 'App\\CryptoStat')" #f="ngForm">
                   <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
                   <input type="hidden" ngModel name="type" value="App\CryptoStat">
                   <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
@@ -330,7 +330,7 @@
             <div class="desc-wrap">
               <div class="description">
                 <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
-                <p>{{data.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
+                <p>{{data?.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
               </div>
               <a href="#" class="banner-black banner-black-top"><img src="img/banner-black-small.jpg" alt=""></a>
             </div>
@@ -429,7 +429,7 @@
             <div class="desc-wrap">
               <div class="description">
                 <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
-                <p>{{data.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
+                <p>{{data?.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
               </div>
               <a href="#" class="banner-black banner-black-top"><img src="img/banner-black-small.jpg" alt=""></a>
             </div>
@@ -443,7 +443,7 @@
               </div>
               <div class="comment-top"  *ngIf="user.id"  style="background: none; padding-left: 0;">
                 <h3>Добавить новый комментарий</h3>
-                <form (ngSubmit)="submitComment(f,data.id, 'App\\CryptoStat')" #f="ngForm">
+                <form (ngSubmit)="submitComment(f,data?.id, 'App\\CryptoStat')" #f="ngForm">
                   <input type="hidden" ngModel name="post_id" value="{{dataUsd?.id}}">
                   <input type="hidden" ngModel name="type" value="App\CryptoStat">
                   <textarea ngModel name="body" placeholder="Начните вводить комментарий..."></textarea>
@@ -483,7 +483,7 @@
             <div class="desc-wrap">
               <div class="description">
                 <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
-                <p>{{data.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
+                <p>{{data?.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
               </div>
               <a href="#" class="banner-black banner-black-top"><img src="img/banner-black-small.jpg" alt=""></a>
             </div>
@@ -582,7 +582,7 @@
             <div class="desc-wrap">
               <div class="description">
                 <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
-                <p>{{data.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
+                <p>{{data?.desc | striphtml | excerpt:140}} <a routerLink="about">Подробнее</a></p>
               </div>
               <a href="#" class="banner-black banner-black-top"><img src="img/banner-black-small.jpg" alt=""></a>
             </div>
