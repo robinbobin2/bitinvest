@@ -21,7 +21,7 @@
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
                                             ), url('+item.photos[0].file+')'}">
-                  <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
+                  <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{last ? loadSlider() : ''}} {{item.category.name}}</a>
                   <a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
                   <div class="info">
                     <span class="date">{{item.created_at}}</span>
@@ -30,7 +30,7 @@
                   </div>
                 </div>
                 <div class="text">
-                  <p>{{item.desc | striphtml | excerpt:140}} {{last ? loadSlider() : ''}}<a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
+                  <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
                 </div>
                 </div>
                 </ng-template>
