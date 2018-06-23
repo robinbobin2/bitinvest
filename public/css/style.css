@@ -9245,3 +9245,8 @@ display: inherit;
   padding-right: 0 !important;
   border: none !important;
 }
+
+.slick-track {
+  height: 245px !important;
+  overflow: hidden !important;
+}
