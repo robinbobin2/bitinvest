@@ -105,12 +105,12 @@ class BitController extends Controller
     public function t()
     {
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "https://api.binance.com/api/v1/ticker/24hr");
+        curl_setopt($curl, CURLOPT_URL, "http://api.coinbene.com/v1/market/ticker?symbol=all");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = json_decode(curl_exec($curl));
         $response = [];
         $fuck = [];
-        foreach ($result as $pair) {
+        foreach ($result->ticker as $pair) {
             if (strlen($pair->symbol) == 6) {
                 $response[$pair->symbol] = strtoupper(substr($pair->symbol, 0,3) . "/" . substr($pair->symbol, 3));
             } else {

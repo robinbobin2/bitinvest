@@ -34,6 +34,7 @@ use App\Models\Founder\Models\Providers\C2CXProvider;
 use App\Models\Founder\Models\Providers\CcexProvider;
 use App\Models\Founder\Models\Providers\CexProvider;
 use App\Models\Founder\Models\Providers\CobinhoodProvider;
+use App\Models\Founder\Models\Providers\CoinbeneProvider;
 use App\Models\Founder\Models\Providers\CoinEggProvider;
 use App\Models\Founder\Models\Providers\CoinexChangeProvider;
 use App\Models\Founder\Models\Providers\CoinexProvider;
@@ -87,6 +88,7 @@ use App\Models\Founder\Models\Providers\TideBitProvider;
 use App\Models\Founder\Models\Providers\VaultoroProvider;
 use App\Models\Founder\Models\Providers\VebitcoinProvider;
 use App\Models\Founder\Models\Providers\VirWoxProvider;
+use App\Models\Founder\Models\Providers\WenzProvider;
 use App\Models\Founder\Models\Providers\XBTCEProvider;
 use App\Models\Founder\Models\Providers\ZaifProvider;
 use App\Models\Founder\Models\Providers\ZbProvider;
@@ -175,7 +177,9 @@ class Updater extends \Illuminate\Console\Command
 
         HuobiProvider::class,
         BitStampProvider::class,
-        BitFlyerProvider::class
+        BitFlyerProvider::class,
+        CoinbeneProvider::class,
+        WenzProvider::class
     ];
 
     private $suppliers = [

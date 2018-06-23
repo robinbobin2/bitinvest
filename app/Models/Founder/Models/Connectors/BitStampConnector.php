@@ -25,7 +25,7 @@ class BitStampConnector extends FounderConnector
 
         foreach ($this->coins as $currency) {
             $curly[$currency] = curl_init();
-            curl_setopt($curly[$currency], CURLOPT_URL, "https://www.bitstamp.net/api/ticker/" . $currency);
+            curl_setopt($curly[$currency], CURLOPT_URL, "https://www.bitstamp.net/api/v2/ticker/" . $currency);
             curl_setopt($curly[$currency], CURLOPT_HEADER, 0);
             curl_setopt($curly[$currency], CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($curly[$currency], CURLOPT_TIMEOUT, 30);
