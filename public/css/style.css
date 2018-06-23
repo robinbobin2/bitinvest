@@ -9253,3 +9253,6 @@ display: inherit;
 .tab-content-wrap .comment-block h3 {
   font-size: 18px;
 }
+.checkbox-wrap input[type="radio"] {
+  display: none !important;
+}
