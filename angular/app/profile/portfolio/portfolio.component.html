@@ -11,7 +11,9 @@
         <div class="table-title">
           <h3>{{item.name}}</h3>
           <div class="buttons">
-            <!--<a href="#" class="settings"><img src="img/settings.svg" alt=""></a>-->
+            <a class="settings">
+              <!--<img src="img/settings.svg" alt="">-->
+            </a>
             <a (click)="onDelete(item.id, i)"  class="basket"><img src="img/garbage.svg" alt=""></a>
           </div>
         </div>
@@ -84,7 +86,9 @@
               <td>
                 <div class="difference">
                   <div class="buttons">
-                    <!--<a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>-->
+                    <a   class="setting">
+                      <!--<img src="/img/setting-icon-table.png" alt="">-->
+                    </a>
                     <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\CloudMining')" class="minus"><img src="/img/minus.png" alt=""></a>
                   </div>
                 </div>
