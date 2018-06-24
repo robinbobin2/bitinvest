@@ -40,6 +40,9 @@ class BitFlyerProvider extends FounderProvider
         }
 
         foreach ($result as $currency => $supplierTicker) {
+            if(!isset($supplierTicker->best_ask)){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->best_ask / $supplierTicker->ltp);
             $ticker->setBid($supplierTicker->best_bid / $supplierTicker->ltp);
