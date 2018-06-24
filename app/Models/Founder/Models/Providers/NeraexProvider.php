@@ -58,7 +58,7 @@ class NeraexProvider extends FounderProvider
 
     public function getExchangeId()
     {
-        return 82;
+        return 90;
     }
 
     protected function getConnectorClass()

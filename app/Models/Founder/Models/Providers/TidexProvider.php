@@ -40,6 +40,9 @@ class TidexProvider extends FounderProvider
         }
 
         foreach ($result as $currency => $supplierTicker) {
+            if(empty($supplierTicker)){
+                continue;
+            }
             foreach ($supplierTicker as $newTicker) {
                 $ticker = new TickerEntity();
                 $ticker->setAsk($newTicker->buy);
