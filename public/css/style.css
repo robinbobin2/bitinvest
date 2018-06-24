@@ -9255,7 +9255,7 @@ display: inherit;
 }
 
 .slick-track {
-  max-height: 245px !important;
+  max-height: 265px !important;
   overflow: hidden !important;
 }
 .tab-content-wrap .comment-block h3 {
@@ -9278,6 +9278,9 @@ display: inherit;
 
 @media (max-width: 600px) {
   .img {
-    width: 90% !important;
+    width: 80% !important;
+  }
+  .slick-track .text {
+    width: 80% !important;
   }
 }
