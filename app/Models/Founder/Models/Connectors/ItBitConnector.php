@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: xeror
  * Date: 23.06.2018
- * Time: 1:16
+ * Time: 22:42
  */
 
 namespace App\Models\Founder\Models\Connectors;
@@ -11,10 +11,11 @@ namespace App\Models\Founder\Models\Connectors;
 
 use App\Models\Founder\Models\FounderConnector;
 
-class BitStampConnector extends FounderConnector
+class ItBitConnector extends FounderConnector
 {
+
     private $coins = [
-        "btcusd", "btceur", "eurusd", "xrpusd", "xrpeur", "xrpbtc", "ltcusd", "ltceur", "ltcbtc", "ethusd", "etheur", "ethbtc", "bchusd", "bcheur", "bchbtc"
+        "XBTUSD", "XBTSGD", "XBTEUR"
     ];
 
     public function search()
@@ -25,7 +26,7 @@ class BitStampConnector extends FounderConnector
 
         foreach ($this->coins as $currency) {
             $curly[$currency] = curl_init();
-            curl_setopt($curly[$currency], CURLOPT_URL, "https://www.bitstamp.net/api/v2/ticker/" . $currency);
+            curl_setopt($curly[$currency], CURLOPT_URL, "https://api.itbit.com/v1/markets/" . $currency . "/ticker");
             curl_setopt($curly[$currency], CURLOPT_HEADER, 0);
             curl_setopt($curly[$currency], CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($curly[$currency], CURLOPT_TIMEOUT, 30);

@@ -3,25 +3,25 @@
  * Created by PhpStorm.
  * User: xeror
  * Date: 23.06.2018
- * Time: 1:19
+ * Time: 22:32
  */
 
 namespace App\Models\Founder\Models\Providers;
 
 
-use App\Models\Founder\Models\Connectors\BitStampConnector;
+use App\Models\Founder\Models\Connectors\WenzConnector;
 use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class BitStampProvider extends FounderProvider
+class WenzProvider extends FounderProvider
 {
     /**
-     * @return BitStampConnector
+     * @return WenzConnector
      */
     protected function getConnector()
     {
-        /** @var BitStampConnector $connector */
+        /** @var WenzConnector $connector */
         $connector = parent::getConnector();
         return $connector;
     }
@@ -40,16 +40,13 @@ class BitStampProvider extends FounderProvider
         }
 
         foreach ($result as $currency => $supplierTicker) {
-            if(!isset($supplierTicker->ask)){
-                continue;
-            }
             $ticker = new TickerEntity();
-            $ticker->setAsk($supplierTicker->ask);
-            $ticker->setBid($supplierTicker->bid);
-            $ticker->setVolume($supplierTicker->volume);
+            $ticker->setAsk($supplierTicker->buy);
+            $ticker->setBid($supplierTicker->sell);
+            $ticker->setVolume($supplierTicker->vol_cur);
             $ticker->setValue($supplierTicker->last);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency($this->getCurrency($currency));
+            $ticker->setCurrency(strtoupper(str_replace("_", "/", $currency)));
             $response[] = $ticker;
         }
         return $response;
@@ -57,12 +54,12 @@ class BitStampProvider extends FounderProvider
 
     public function getExchangeId()
     {
-        return 83;
+        return 87;
     }
 
     protected function getConnectorClass()
     {
-        return new BitStampConnector();
+        return new WenzConnector();
     }
 
     public function getCurrency($currency)

@@ -34,6 +34,7 @@ use App\Models\Founder\Models\Providers\C2CXProvider;
 use App\Models\Founder\Models\Providers\CcexProvider;
 use App\Models\Founder\Models\Providers\CexProvider;
 use App\Models\Founder\Models\Providers\CobinhoodProvider;
+use App\Models\Founder\Models\Providers\CoinbeneProvider;
 use App\Models\Founder\Models\Providers\CoinEggProvider;
 use App\Models\Founder\Models\Providers\CoinexChangeProvider;
 use App\Models\Founder\Models\Providers\CoinexProvider;
@@ -59,8 +60,10 @@ use App\Models\Founder\Models\Providers\HuobiProvider;
 use App\Models\Founder\Models\Providers\IBankProvider;
 use App\Models\Founder\Models\Providers\Ice3XProvider;
 use App\Models\Founder\Models\Providers\IndependentReserveProvider;
+use App\Models\Founder\Models\Providers\ItBitProvider;
 use App\Models\Founder\Models\Providers\JubiProvider;
 use App\Models\Founder\Models\Providers\KoineksProvider;
+use App\Models\Founder\Models\Providers\KorbitProvider;
 use App\Models\Founder\Models\Providers\KrakenProvider;
 use App\Models\Founder\Models\Providers\KuCoinProvider;
 use App\Models\Founder\Models\Providers\KunaProvider;
@@ -70,6 +73,7 @@ use App\Models\Founder\Models\Providers\LunoProvider;
 use App\Models\Founder\Models\Providers\LuquiProvider;
 use App\Models\Founder\Models\Providers\LykkeProvider;
 use App\Models\Founder\Models\Providers\NegocieProvider;
+use App\Models\Founder\Models\Providers\NeraexProvider;
 use App\Models\Founder\Models\Providers\NovaProvider;
 use App\Models\Founder\Models\Providers\OkCoinProvider;
 use App\Models\Founder\Models\Providers\OkexProvider;
@@ -84,9 +88,11 @@ use App\Models\Founder\Models\Providers\SimexProvider;
 use App\Models\Founder\Models\Providers\SouthXChangeProvider;
 use App\Models\Founder\Models\Providers\TheRockProvider;
 use App\Models\Founder\Models\Providers\TideBitProvider;
+use App\Models\Founder\Models\Providers\TidexProvider;
 use App\Models\Founder\Models\Providers\VaultoroProvider;
 use App\Models\Founder\Models\Providers\VebitcoinProvider;
 use App\Models\Founder\Models\Providers\VirWoxProvider;
+use App\Models\Founder\Models\Providers\WenzProvider;
 use App\Models\Founder\Models\Providers\XBTCEProvider;
 use App\Models\Founder\Models\Providers\ZaifProvider;
 use App\Models\Founder\Models\Providers\ZbProvider;
@@ -175,7 +181,13 @@ class Updater extends \Illuminate\Console\Command
 
         HuobiProvider::class,
         BitStampProvider::class,
-        BitFlyerProvider::class
+        BitFlyerProvider::class,
+        CoinbeneProvider::class,
+        WenzProvider::class,
+        ItBitProvider::class,
+        KorbitProvider::class,
+        NeraexProvider::class,
+        TidexProvider::class
     ];
 
     private $suppliers = [
