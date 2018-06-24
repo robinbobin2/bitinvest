@@ -2,26 +2,26 @@
 /**
  * Created by PhpStorm.
  * User: xeror
- * Date: 23.06.2018
- * Time: 22:45
+ * Date: 24.06.2018
+ * Time: 17:44
  */
 
 namespace App\Models\Founder\Models\Providers;
 
 
-use App\Models\Founder\Models\Connectors\ItBitConnector;
+use App\Models\Founder\Models\Connectors\FatBtcConnector;
 use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
-class ItBitProvider extends FounderProvider
+class FatBtcProvider extends FounderProvider
 {
     /**
-     * @return ItBitConnector
+     * @return FatBtcConnector
      */
     protected function getConnector()
     {
-        /** @var ItBitConnector $connector */
+        /** @var FatBtcConnector $connector */
         $connector = parent::getConnector();
         return $connector;
     }
@@ -39,17 +39,14 @@ class ItBitProvider extends FounderProvider
             return $response;
         }
 
-        foreach ($result as $currency => $supplierTicker) {
-            if(!isset($supplierTicker->ask)){
-                continue;
-            }
+        foreach ($result->data as $supplierTicker) {
             $ticker = new TickerEntity();
-            $ticker->setAsk($supplierTicker->ask);
-            $ticker->setBid($supplierTicker->bid);
-            $ticker->setVolume($supplierTicker->volumeToday);
-            $ticker->setValue($supplierTicker->lastPrice);
+            $ticker->setAsk($supplierTicker->bis1[1]);
+            $ticker->setBid($supplierTicker->ask1[1]);
+            $ticker->setVolume($supplierTicker->volume);
+            $ticker->setValue($supplierTicker->ask1[1]);
             $ticker->setExchangeId($this->getExchangeId());
-            $ticker->setCurrency($this->getCurrency($currency));
+            $ticker->setCurrency($supplierTicker->dspName);
             $response[] = $ticker;
         }
         return $response;
@@ -57,16 +54,11 @@ class ItBitProvider extends FounderProvider
 
     public function getExchangeId()
     {
-        return 88;
+        return 92;
     }
 
     protected function getConnectorClass()
     {
-        return new ItBitConnector();
-    }
-
-    public function getCurrency($currency)
-    {
-        return strtoupper(substr($currency, 0,3) . "/" . substr($currency, 3));
+        return new FatBtcConnector();
     }
 }

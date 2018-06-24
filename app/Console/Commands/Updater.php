@@ -49,6 +49,7 @@ use App\Models\Founder\Models\Providers\DSXProvider;
 use App\Models\Founder\Models\Providers\ExmoProvider;
 use App\Models\Founder\Models\Providers\ExxProvider;
 use App\Models\Founder\Models\Providers\FargoBaseProvider;
+use App\Models\Founder\Models\Providers\FatBtcProvider;
 use App\Models\Founder\Models\Providers\FlowBTCProvider;
 use App\Models\Founder\Models\Providers\GateCoinProvider;
 use App\Models\Founder\Models\Providers\GateIOProvider;
@@ -89,6 +90,7 @@ use App\Models\Founder\Models\Providers\SouthXChangeProvider;
 use App\Models\Founder\Models\Providers\TheRockProvider;
 use App\Models\Founder\Models\Providers\TideBitProvider;
 use App\Models\Founder\Models\Providers\TidexProvider;
+use App\Models\Founder\Models\Providers\UpBitProvider;
 use App\Models\Founder\Models\Providers\VaultoroProvider;
 use App\Models\Founder\Models\Providers\VebitcoinProvider;
 use App\Models\Founder\Models\Providers\VirWoxProvider;
@@ -184,10 +186,12 @@ class Updater extends \Illuminate\Console\Command
         BitFlyerProvider::class,
         CoinbeneProvider::class,
         WenzProvider::class,
+        UpBitProvider::class,
         ItBitProvider::class,
         KorbitProvider::class,
         NeraexProvider::class,
-        TidexProvider::class
+        TidexProvider::class,
+        FatBtcProvider::class
     ];
 
     private $suppliers = [
