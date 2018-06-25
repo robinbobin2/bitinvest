@@ -9090,6 +9090,8 @@ var BannerComponent = (function () {
         var _this = this;
         this.bannerService.getBannersById(2).subscribe(function (res) {
             _this.banner = res;
+            console.log('banner');
+            console.log(_this.banner);
         });
     };
     return BannerComponent;
