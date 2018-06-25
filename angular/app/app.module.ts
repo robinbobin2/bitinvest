@@ -76,6 +76,7 @@ import { AnalyticsFilterComponent } from './analytics-filter/analytics-filter.co
 import { ReviewFilterComponent } from './review-filter/review-filter.component';
 import { InterviewFilterComponent } from './interview-filter/interview-filter.component';
 import { Chart4Component } from './crypto/chart4/chart4.component';
+import { Chart5Component } from './crypto/chart5/chart5.component';
 
 const appRoutes: Routes = [
 
@@ -315,7 +316,8 @@ const appRoutes: Routes = [
     AnalyticsFilterComponent,
     ReviewFilterComponent,
     InterviewFilterComponent,
-    Chart4Component
+    Chart4Component,
+    Chart5Component
   ],
   imports: [
     // BrowserAnimationsModule,
