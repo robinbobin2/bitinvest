@@ -106,10 +106,10 @@
           </thead>
 
           <tbody *ngIf="load == false">
-
-            <tr *ngFor="let item of exchanges |
+          <ng-template *ngFor="let item of exchanges |
                     filterName:filteredName:'name' | orderBy: order:reverse:'case-insensitive' |
             filterNameActive:language:'languages'| filterNameActive:year:'year'| filterNameActive:country:'country'; let i = index">
+            <tr *ngIf="i<5">
               <td>
                 <span>{{i+1}}</span>
               </td>
@@ -150,38 +150,119 @@
               </td>
               <td>
                 <div class="difference">
-                <span class="sity">{{item.country}}</span>
+                  <span class="sity">{{item.country}}</span>
 
-                <div class="buttons">
-                  <button class="right" [routerLink]="['/exchange', item.name]">></button>
-                  <a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow plus" data-effect="mfp-zoom-in" data-effect="mfp-zoom-in">+</a>
-                  <a href="#follow-popup" *ngIf="!checkInPortfolio(item.id) && checkAuth()" (click)="selectedItem = item" class="plus popup-link follow" data-effect="mfp-zoom-in">+</a>
+                  <div class="buttons">
+                    <button class="right" [routerLink]="['/exchange', item.name]">></button>
+                    <a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow plus" data-effect="mfp-zoom-in" data-effect="mfp-zoom-in">+</a>
+                    <a href="#follow-popup" *ngIf="!checkInPortfolio(item.id) && checkAuth()" (click)="selectedItem = item" class="plus popup-link follow" data-effect="mfp-zoom-in">+</a>
 
-                  <button  *ngIf="checkInPortfolio(item.id) && checkAuth()"  (click)="removePortfolio(item.id)" class="minus" data-effect="mfp-zoom-in"><img src="img/minus.png" alt=""></button>
+                    <button  *ngIf="checkInPortfolio(item.id) && checkAuth()"  (click)="removePortfolio(item.id)" class="minus" data-effect="mfp-zoom-in"><img src="img/minus.png" alt=""></button>
 
-                </div>
+                  </div>
                 </div>
               </td>
               <!--<td>-->
-                <!--<div class="difference">-->
-                  <!--&lt;!&ndash; <div class="stars-wrap">-->
-                    <!--<img src="img/stars.png" alt="">-->
-                    <!--<span>135</span>-->
-                  <!--</div> &ndash;&gt;-->
-                  <!--<p class="no-ratings">Оценок еще нет</p>-->
-                  <!--<div class="buttons">-->
-                    <!--<button class="right" [routerLink]="['/exchange', item.name]">></button>-->
-                    <!--<a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow plus" data-effect="mfp-zoom-in" data-effect="mfp-zoom-in">+</a>-->
-                    <!--<a href="#follow-popup" *ngIf="!checkInPortfolio(item.id) && checkAuth()" (click)="selectedItem = item" class="plus popup-link follow" data-effect="mfp-zoom-in">+</a>-->
+              <!--<div class="difference">-->
+              <!--&lt;!&ndash; <div class="stars-wrap">-->
+              <!--<img src="img/stars.png" alt="">-->
+              <!--<span>135</span>-->
+              <!--</div> &ndash;&gt;-->
+              <!--<p class="no-ratings">Оценок еще нет</p>-->
+              <!--<div class="buttons">-->
+              <!--<button class="right" [routerLink]="['/exchange', item.name]">></button>-->
+              <!--<a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow plus" data-effect="mfp-zoom-in" data-effect="mfp-zoom-in">+</a>-->
+              <!--<a href="#follow-popup" *ngIf="!checkInPortfolio(item.id) && checkAuth()" (click)="selectedItem = item" class="plus popup-link follow" data-effect="mfp-zoom-in">+</a>-->
 
-                    <!--<button  *ngIf="checkInPortfolio(item.id) && checkAuth()"  (click)="removePortfolio(item.id)" class="minus" data-effect="mfp-zoom-in"><img src="img/minus.png" alt=""></button>-->
+              <!--<button  *ngIf="checkInPortfolio(item.id) && checkAuth()"  (click)="removePortfolio(item.id)" class="minus" data-effect="mfp-zoom-in"><img src="img/minus.png" alt=""></button>-->
 
-                  <!--</div>-->
-                <!--</div>-->
+              <!--</div>-->
+              <!--</div>-->
               <!--</td>-->
-              <td *ngIf="i+1 == 5" colspan="9" class="divider"></td>
-            </tr>
 
+            </tr>
+          </ng-template>
+          <tr *ngFor="let item of exchanges |
+                    filterName:filteredName:'name' | orderBy: order:reverse:'case-insensitive' |
+            filterNameActive:language:'languages'| filterNameActive:year:'year'| filterNameActive:country:'country'; let i = index">
+          <td *ngIf="i+1 == 5" colspan="9" class="divider"></td>
+          </tr>
+          <ng-template *ngFor="let item of exchanges |
+                    filterName:filteredName:'name' | orderBy: order:reverse:'case-insensitive' |
+            filterNameActive:language:'languages'| filterNameActive:year:'year'| filterNameActive:country:'country'; let i = index">
+            <tr *ngIf="i>=5">
+              <td>
+                <span>{{i+1}}</span>
+              </td>
+              <td>
+                <a >
+                  <div class="img-wrap">
+                    <img src="/images/{{item.logo}}" style="width: 100%; height: 100%;" alt="">
+                  </div>
+                  <span>{{item.name}}</span>
+                </a>
+              </td>
+              <td>
+                <span class="amount-bold" *ngIf="exchange_volumes[item.name] != undefined">{{exchange_volumes[item.name].usd | number:'1.0-3'}}</span>
+              </td>
+              <td>
+                <span *ngIf="exchange_volumes[item.name] != undefined">{{exchange_volumes[item.name].btc | number:'1.0-3'}}</span>
+              </td>
+              <td>
+
+                <span>{{pairs_count[item.name]}}</span>
+              </td>
+              <td>
+                <div class="img-wrap-small">
+                  <!-- <img src="img/rus-icon.png" alt="">
+                  <img src="img/usa-icon.png" alt="">
+                  <img src="img/usa-icon.png" alt="">
+                  <img src="img/usa-icon.png" alt="">
+                  <img src="img/usa-icon.png" alt="">
+                  <span class="text">+5</span> -->
+                  <!--<ng-template  ngFor let-lang [ngForOf]="item.languages">-->
+                    <!--<span *ngIf="lang =='EN'; else plain"><img src="img/usa-icon.png" alt=""></span>-->
+                    <!--<ng-template #plain>{{lang}}</ng-template>-->
+                  <!--</ng-template>-->
+                </div>
+              </td>
+              <td>
+                <span class="year">{{item.year}}</span>
+              </td>
+              <td>
+                <div class="difference">
+                  <span class="sity">{{item.country}}</span>
+
+                  <div class="buttons">
+                    <button class="right" [routerLink]="['/exchange', item.name]">></button>
+                    <a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow plus" data-effect="mfp-zoom-in" data-effect="mfp-zoom-in">+</a>
+                    <a href="#follow-popup" *ngIf="!checkInPortfolio(item.id) && checkAuth()" (click)="selectedItem = item" class="plus popup-link follow" data-effect="mfp-zoom-in">+</a>
+
+                    <button  *ngIf="checkInPortfolio(item.id) && checkAuth()"  (click)="removePortfolio(item.id)" class="minus" data-effect="mfp-zoom-in"><img src="img/minus.png" alt=""></button>
+
+                  </div>
+                </div>
+              </td>
+              <!--<td>-->
+              <!--<div class="difference">-->
+              <!--&lt;!&ndash; <div class="stars-wrap">-->
+              <!--<img src="img/stars.png" alt="">-->
+              <!--<span>135</span>-->
+              <!--</div> &ndash;&gt;-->
+              <!--<p class="no-ratings">Оценок еще нет</p>-->
+              <!--<div class="buttons">-->
+              <!--<button class="right" [routerLink]="['/exchange', item.name]">></button>-->
+              <!--<a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow plus" data-effect="mfp-zoom-in" data-effect="mfp-zoom-in">+</a>-->
+              <!--<a href="#follow-popup" *ngIf="!checkInPortfolio(item.id) && checkAuth()" (click)="selectedItem = item" class="plus popup-link follow" data-effect="mfp-zoom-in">+</a>-->
+
+              <!--<button  *ngIf="checkInPortfolio(item.id) && checkAuth()"  (click)="removePortfolio(item.id)" class="minus" data-effect="mfp-zoom-in"><img src="img/minus.png" alt=""></button>-->
+
+              <!--</div>-->
+              <!--</div>-->
+              <!--</td>-->
+
+            </tr>
+          </ng-template>
           </tbody>
         </table>
         <div style="width: 50px; height: 50px; margin: 40px auto;">
