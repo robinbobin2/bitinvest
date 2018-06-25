@@ -9053,7 +9053,7 @@ var _a;
 /***/ "./angular/app/sidebar/banner/banner.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<a *ngFor=\"let item of banner\" href=\"#\" class=\"banner-black\"><img src=\"{{item.file}}\" alt=\"\" style=\"max-width: 100%;\"></a>"
+module.exports = "<a href=\"#\" class=\"banner-black\"><img src=\"{{banner.file}}\" alt=\"\" style=\"max-width: 100%;\"></a>"
 
 /***/ }),
 
