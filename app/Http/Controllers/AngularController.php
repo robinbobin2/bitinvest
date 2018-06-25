@@ -285,4 +285,9 @@ LEFT JOIN exchangeRatesInfo exi on exi.exchangeId = ex.id WHERE ex.pairCount != 
             return abort(401);
         }
     }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        return ['status' => 'success'];
+    }
 }
