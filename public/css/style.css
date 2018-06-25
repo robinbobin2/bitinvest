@@ -9379,3 +9379,6 @@ display: inherit;
 .comment-block {
   border: none !important;
 }
+.quotes ul li:nth-child(2n) {
+  background:#cfcfcf;
+}
