@@ -48,11 +48,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exchanges.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="exchanges.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="110" column="130" selection-start-line="110" selection-start-column="130" selection-end-line="110" selection-end-column="130" />
+            <state relative-caret-position="30">
+              <caret line="2" column="56" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="56" />
+              <folding>
+                <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exchanges.component.scss" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -82,7 +94,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>описа</find>
       <find>Описание</find>
       <find>show-comments btn-style</find>
       <find>pairs</find>
@@ -112,6 +123,7 @@
       <find>rat</find>
       <find>mobil</find>
       <find>let-</find>
+      <find>334</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -132,7 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/interview/all-interview/all-interview.component.html" />
         <option value="$PROJECT_DIR$/app/interview/interview-categories/interview-categories.component.html" />
         <option value="$PROJECT_DIR$/app/crypto/chart/chart.component.ts" />
         <option value="$PROJECT_DIR$/app/crypto/chart3/chart3.component.scss" />
@@ -183,6 +194,7 @@
         <option value="$PROJECT_DIR$/app/ico-project/ico-project-all/ico-project-all.component.html" />
         <option value="$USER_HOME$/Downloads/bitinvest 8/ico.html" />
         <option value="$PROJECT_DIR$/app/exchanges/exchanges.component.html" />
+        <option value="$PROJECT_DIR$/app/exchanges/exchanges.component.scss" />
       </list>
     </option>
   </component>
@@ -579,12 +591,12 @@
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
       <workItem from="1528871430902" duration="39861000" />
-      <workItem from="1529295323982" duration="31094000" />
+      <workItem from="1529295323982" duration="31620000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="312153000" />
+    <option name="totallyTimeSpent" value="312679000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -617,13 +629,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/exchange-filter/exchange-filter.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/bitinvest 7/news.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -1017,8 +1022,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="110" column="130" selection-start-line="110" selection-start-column="130" selection-end-line="110" selection-end-column="130" />
+        <state relative-caret-position="30">
+          <caret line="2" column="56" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
         </state>
       </provider>
     </entry>
