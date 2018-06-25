@@ -38,10 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="banner.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="banner.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/sidebar/banner/banner.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state>
+              <caret column="51" selection-start-column="51" selection-end-column="51" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#a#0;n#!!top" expanded="true" />
               </folding>
@@ -49,7 +50,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="banner.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="banner.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/sidebar/banner/banner.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
@@ -153,7 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/review/review-detail/review-detail.component.html" />
         <option value="$PROJECT_DIR$/app/cloud-mining/all-cloud-mining/all-cloud-mining.component.ts" />
         <option value="$PROJECT_DIR$/app/analytics-filter/analytics-filter.component.html" />
         <option value="$PROJECT_DIR$/app/ico-filter/ico-filter.component.html" />
@@ -204,6 +204,7 @@
         <option value="$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts" />
         <option value="$PROJECT_DIR$/app/app.component.html" />
         <option value="$PROJECT_DIR$/app/sidebar/banner/banner.component.ts" />
+        <option value="$PROJECT_DIR$/app/sidebar/banner/banner.component.html" />
       </list>
     </option>
   </component>
@@ -615,12 +616,12 @@
       <workItem from="1526711663196" duration="110838000" />
       <workItem from="1527928097804" duration="84026000" />
       <workItem from="1528871430902" duration="39861000" />
-      <workItem from="1529295323982" duration="39143000" />
+      <workItem from="1529295323982" duration="39258000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="320202000" />
+    <option name="totallyTimeSpent" value="320317000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1058,11 +1059,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/sidebar/banner/banner.component.html">
+    <entry file="file://$PROJECT_DIR$/app/sidebar/banner/banner.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="255">
+          <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="e#0#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1070,12 +1072,12 @@
     <entry file="file://$PROJECT_DIR$/app/sidebar/sidebar.component.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/sidebar/banner/banner.component.ts">
+    <entry file="file://$PROJECT_DIR$/app/sidebar/banner/banner.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
+        <state>
+          <caret column="51" selection-start-column="51" selection-end-column="51" />
           <folding>
-            <element signature="e#0#57#0" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
