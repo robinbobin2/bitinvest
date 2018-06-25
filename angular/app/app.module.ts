@@ -77,6 +77,7 @@ import { ReviewFilterComponent } from './review-filter/review-filter.component';
 import { InterviewFilterComponent } from './interview-filter/interview-filter.component';
 import { Chart4Component } from './crypto/chart4/chart4.component';
 import { Chart5Component } from './crypto/chart5/chart5.component';
+import { Chart6Component } from './crypto/chart6/chart6.component';
 
 const appRoutes: Routes = [
 
@@ -317,7 +318,8 @@ const appRoutes: Routes = [
     ReviewFilterComponent,
     InterviewFilterComponent,
     Chart4Component,
-    Chart5Component
+    Chart5Component,
+    Chart6Component
   ],
   imports: [
     // BrowserAnimationsModule,
