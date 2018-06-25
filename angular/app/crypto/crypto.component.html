@@ -72,7 +72,12 @@
               </ul>
               <div class="overview-block">
                 <h3>{{data?.symbol}}/USD График криптовалюты</h3>
-                <app-chart4></app-chart4>
+                <div class="no-mobile">
+                  <app-chart4></app-chart4>
+                </div>
+                <div class="mobile-only">
+                  <app-chart5></app-chart5>
+                </div>
               </div>
               <div class="overview-table-wrap">
                 <div class="overview-title-block">
