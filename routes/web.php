@@ -194,8 +194,8 @@ Route::get('/profile/edit/{id}', "ProfileController@edit");
 
 // Route::get('/crypto/XRP', "AngularController@serve");
 Route::get('/read', function() {
-	 $return_banner = CryptoStat::findOrFail(1);
-	 return $return_banner->categories;
+	 FrontEnd::whereIn('id', [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])->delete();
+	 echo "deleted";
 });
 
 // ENDANGULAR
