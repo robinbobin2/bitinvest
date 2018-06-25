@@ -9088,7 +9088,8 @@ var BannerComponent = (function () {
     }
     BannerComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.bannerService.getBannersById(1).subscribe(function (res) {
+        console.log(this.pageId);
+        this.bannerService.getBannersById(this.pageId).subscribe(function (res) {
             _this.banner = res;
             console.log('banner');
             console.log(_this.banner);
