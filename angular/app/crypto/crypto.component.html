@@ -70,14 +70,15 @@
           <li><span>Капитализация</span><span class="black">${{dataUsd.marketCapUsd| number:'1.0-2'}}</span></li>
           <li><span>Алгоритм</span><span class="black">{{data?.algo}}</span></li>
               </ul>
-              <div class="overview-block">
+              <div class="overview-block no-mobile">
                 <h3>{{data?.symbol}}/USD График криптовалюты</h3>
-                <div class="no-mobile">
                   <app-chart4></app-chart4>
-                </div>
-                <div class="mobile-only">
-                  <app-chart5></app-chart5>
-                </div>
+
+              </div>
+              <div class="overview-block mobile-only">
+                <h3>{{data?.symbol}}/USD График криптовалюты</h3>
+
+                <app-chart5></app-chart5>
               </div>
               <div class="overview-table-wrap">
                 <div class="overview-title-block">
