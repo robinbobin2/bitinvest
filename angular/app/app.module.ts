@@ -75,7 +75,7 @@ import { NewsFilterComponent } from './news-filter/news-filter.component';
 import { AnalyticsFilterComponent } from './analytics-filter/analytics-filter.component';
 import { ReviewFilterComponent } from './review-filter/review-filter.component';
 import { InterviewFilterComponent } from './interview-filter/interview-filter.component';
-
+import { Chart4Component } from './crypto/chart4/chart4.component';
 
 const appRoutes: Routes = [
 
@@ -314,7 +314,8 @@ const appRoutes: Routes = [
     NewsFilterComponent,
     AnalyticsFilterComponent,
     ReviewFilterComponent,
-    InterviewFilterComponent
+    InterviewFilterComponent,
+    Chart4Component
   ],
   imports: [
     // BrowserAnimationsModule,
