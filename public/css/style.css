@@ -9284,3 +9284,6 @@ display: inherit;
     width: 80% !important;
   }
 }
+.comment-block {
+  border: none !important;
+}
