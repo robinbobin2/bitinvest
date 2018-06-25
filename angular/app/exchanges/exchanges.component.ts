@@ -100,19 +100,21 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     // все биржи из админки
     this.stockService.getExchanges().subscribe((res: Array<any>) => {
       this.exchanges = res;
+      console.log(this.exchanges)
         this.stockService.getVolumes().subscribe(res => {
 
             this.volumes = res
+            console.log(this.volumes)
             for(let item of this.volumes) {
                 this.exchange_volumes[item.name] = {
                     'btc': item.btc,
                     'usd': item.usd
                 }
             }
-            for(let item of this.exchanges) {
-                item.btc = this.exchange_volumes[item.name].btc
-                item.usd = this.exchange_volumes[item.name].usd
-            }
+            // for(let item of this.exchanges) {
+            //     item.btc = this.exchange_volumes[item.name].btc
+            //     item.usd = this.exchange_volumes[item.name].usd
+            // }
         });
       this.count = this.exchanges.length;
         this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
@@ -128,7 +130,6 @@ export class ExchangesComponent implements OnInit, OnDestroy {
         for(let item of res) {
             this.pairs_count[item.name] = item['count(xt.id)'];
         }
-        console.log(this.pairs_count)
     });
 
 
