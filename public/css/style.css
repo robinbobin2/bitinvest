@@ -9276,7 +9276,19 @@ display: inherit;
     margin-right: 20px;
 }
 
+
+.comment-block .comment-top h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.interview-card-content .comment-top {
+  border: none;
+}
 @media (max-width: 600px) {
+  .comment-block .comment-top h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
   .img {
     width: 80% !important;
   }
