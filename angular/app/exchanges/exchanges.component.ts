@@ -26,7 +26,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     country = '';
     age = ''
   reverse: boolean = true;
-  order = 'id';
+  order = 'usd';
   pairs_count = [];
   volume_data: any;
   alive = true;
@@ -100,7 +100,20 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     // все биржи из админки
     this.stockService.getExchanges().subscribe((res: Array<any>) => {
       this.exchanges = res;
+        this.stockService.getVolumes().subscribe(res => {
 
+            this.volumes = res
+            for(let item of this.volumes) {
+                this.exchange_volumes[item.name] = {
+                    'btc': item.btc,
+                    'usd': item.usd
+                }
+            }
+            for(let item of this.exchanges) {
+                item.btc = this.exchange_volumes[item.name].btc
+                item.usd = this.exchange_volumes[item.name].usd
+            }
+        });
       this.count = this.exchanges.length;
         this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
         this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
@@ -109,16 +122,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     });
 
 
-  	this.stockService.getVolumes().subscribe(res => {
 
-      this.volumes = res
-      for(let item of this.volumes) {
-        this.exchange_volumes[item.name] = {
-          'btc': item.btc,
-          'usd': item.usd
-        }
-      }
-    });
   	this.stockService.getPairsCount().subscribe(res => {
         this.load=false;
         for(let item of res) {
@@ -127,16 +131,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
         console.log(this.pairs_count)
     });
 
-  	this.volume_data = Observable.interval(2000).concatMap(()=>this.stockService.getVolumes())
-          .map((response)=>{
-          }).subscribe( () => {
-              for(let item of this.volumes) {
-                  this.exchange_volumes[item.name] = {
-                      'btc': item.btc,
-                      'usd': item.usd
-                  }
-              }
-          } );
+
   }
   setOrder(value: string) {
      if (this.order === value) {
@@ -208,6 +203,5 @@ export class ExchangesComponent implements OnInit, OnDestroy {
 
  ngOnDestroy() {
       this.alive = false;
-   this.volume_data.unsubscribe();
  }
 }
