@@ -4534,10 +4534,8 @@ var ExchangesComponent = (function () {
         // все биржи из админки
         this.stockService.getExchanges().subscribe(function (res) {
             _this.exchanges = res;
-            console.log(_this.exchanges);
             _this.stockService.getVolumes().subscribe(function (res) {
                 _this.volumes = res;
-                console.log(_this.volumes);
                 for (var _i = 0, _a = _this.volumes; _i < _a.length; _i++) {
                     var item = _a[_i];
                     _this.exchange_volumes[item.name] = {
@@ -4545,10 +4543,13 @@ var ExchangesComponent = (function () {
                         'usd': item.usd
                     };
                 }
-                // for(let item of this.exchanges) {
-                //     item.btc = this.exchange_volumes[item.name].btc
-                //     item.usd = this.exchange_volumes[item.name].usd
-                // }
+                for (var _b = 0, _c = _this.exchanges; _b < _c.length; _b++) {
+                    var item = _c[_b];
+                    // item.btc = this.exchange_volumes[item.name].btc
+                    if (_this.exchange_volumes[item.name]) {
+                        item.usd = _this.exchange_volumes[item.name].usd;
+                    }
+                }
             });
             _this.count = _this.exchanges.length;
             _this.yearFilterArray = Array.from(new Set(_this.exchanges.map(function (item) { return item.year; }))).slice();
