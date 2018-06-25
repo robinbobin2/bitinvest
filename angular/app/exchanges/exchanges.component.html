@@ -106,9 +106,9 @@
           </thead>
 
           <tbody *ngIf="load == false">
-          <ng-template *ngFor="let item of exchanges |
+          <ng-template ngFor let-item [ngForOf]="exchanges |
                     filterName:filteredName:'name' | orderBy: order:reverse:'case-insensitive' |
-            filterNameActive:language:'languages'| filterNameActive:year:'year'| filterNameActive:country:'country'; let i = index">
+            filterNameActive:language:'languages'| filterNameActive:year:'year'| filterNameActive:country:'country'" let-i="index">
             <tr *ngIf="i<5">
               <td>
                 <span>{{i+1}}</span>
@@ -187,9 +187,9 @@
             filterNameActive:language:'languages'| filterNameActive:year:'year'| filterNameActive:country:'country'; let i = index">
           <td *ngIf="i+1 == 5" colspan="9" class="divider"></td>
           </tr>
-          <ng-template *ngFor="let item of exchanges |
+          <ng-template ngFor let-item [ngForOf]="exchanges |
                     filterName:filteredName:'name' | orderBy: order:reverse:'case-insensitive' |
-            filterNameActive:language:'languages'| filterNameActive:year:'year'| filterNameActive:country:'country'; let i = index">
+            filterNameActive:language:'languages'| filterNameActive:year:'year'| filterNameActive:country:'country'" let-i="index">
             <tr *ngIf="i>=5">
               <td>
                 <span>{{i+1}}</span>
