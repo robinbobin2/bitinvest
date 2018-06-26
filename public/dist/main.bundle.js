@@ -4818,6 +4818,9 @@ var ExchangesComponent = (function () {
                             item.usd = 0;
                         }
                     }
+                    else {
+                        item.usd = 0;
+                    }
                 }
             });
             _this.count = _this.exchanges.length;
