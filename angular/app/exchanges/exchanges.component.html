@@ -69,16 +69,16 @@
                 <span>Название</span>
                 <img src="img/arr-top-table.png" alt="">
               </th>
-              <th width="17.3%" [class.active]="order === 'usd'"
+              <th width="27.3%" [class.active]="order === 'usd'"
         (click)="setOrder('usd')">
                 <span>Объем ( $ за 24 ч.)</span>
                 <img src="img/arr-top-table.png" alt="">
               </th>
-              <th width="17.8%" [class.active]="order === 'btc'"
-        (click)="setOrder('btc')">
-                <span>Объем BTC (за 24ч.)</span>
-                <img src="img/arr-top-table.png" alt="">
-              </th>
+              <!--<th width="17.8%" [class.active]="order === 'btc'"-->
+        <!--(click)="setOrder('btc')">-->
+                <!--<span>Объем BTC (за 24ч.)</span>-->
+                <!--<img src="img/arr-top-table.png" alt="">-->
+              <!--</th>-->
               <th width="8.1%" >
                 <span>Кол-во пар</span>
                 <img src="img/arr-top-table.png" alt="">
@@ -93,7 +93,7 @@
                 <span>Год</span>
                 <img src="img/arr-top-table.png" alt="">
               </th>
-              <th width="20%" [class.active]="order === 'country'"
+              <th width="27.8%" [class.active]="order === 'country'"
         (click)="setOrder('country')">
                 <span>Страна</span>
                 <img src="img/arr-top-table.png" alt="">
@@ -124,9 +124,9 @@
               <td>
                 <span class="amount-bold" *ngIf="exchange_volumes[item.name] != undefined">{{item.usd | number:'1.0-3'}}</span>
               </td>
-              <td>
-                <span *ngIf="exchange_volumes[item.name] != undefined">{{item.btc | number:'1.0-3'}}</span>
-              </td>
+              <!--<td>-->
+                <!--<span *ngIf="exchange_volumes[item.name] != undefined">{{item.btc | number:'1.0-3'}}</span>-->
+              <!--</td>-->
               <td>
 
                 <span>{{pairs_count[item.name]}}</span>
@@ -205,9 +205,9 @@
               <td>
                 <span class="amount-bold" *ngIf="exchange_volumes[item.name] != undefined">{{item.usd | number:'1.0-3'}}</span>
               </td>
-              <td>
-                <span *ngIf="exchange_volumes[item.name] != undefined">{{item.btc | number:'1.0-3'}}</span>
-              </td>
+              <!--<td>-->
+                <!--<span *ngIf="exchange_volumes[item.name] != undefined">{{item.btc | number:'1.0-3'}}</span>-->
+              <!--</td>-->
               <td>
 
                 <span>{{pairs_count[item.name]}}</span>
