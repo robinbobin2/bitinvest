@@ -99,7 +99,7 @@
                   </thead>
                   <tbody *ngIf="load==false" style="position: relative; min-height: 65px;">
 
-                    <tr *ngFor="let stock of stocks | orderBy: 'volumeCommon':reverse:'case-insensitive'; let i = index">
+                    <tr *ngFor="let stock of stocks | orderBy: 'volumeCommon':true:'case-insensitive'; let i = index">
                       <td>
                         <a  >
                           <!-- <span class="img-wrap"><img src="img/bitfinex-icon.png" alt=""></span> -->
