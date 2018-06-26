@@ -4201,7 +4201,7 @@ var EditProfileComponent = (function () {
         this.submittedPass = false;
         this.msg = '';
         this.error_msg = false;
-        this.load = false;
+        this.loading = false;
     }
     EditProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -4216,7 +4216,7 @@ var EditProfileComponent = (function () {
     };
     EditProfileComponent.prototype.handleFileInput = function () {
         var _this = this;
-        this.load = true;
+        this.loading = true;
         var image = this.fileInput.nativeElement;
         console.log(image.files);
         var pathUrl = '/profile/updatephoto';
@@ -4234,7 +4234,7 @@ var EditProfileComponent = (function () {
                 .subscribe(function (response) {
                 _this.user = response;
                 _this.auth.setUser(_this.user);
-                _this.load = false;
+                _this.loading = false;
             });
         }, function (error) {
             console.log(error);
