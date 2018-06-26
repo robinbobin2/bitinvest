@@ -4811,7 +4811,7 @@ var ExchangesComponent = (function () {
                     var item = _c[_b];
                     // item.btc = this.exchange_volumes[item.name].btc
                     if (_this.exchange_volumes[item.name]) {
-                        if (_this.exchange_volumes[item.name].usd != '') {
+                        if (_this.exchange_volumes[item.name].usd > 0) {
                             item.usd = _this.exchange_volumes[item.name].usd;
                         }
                         else {
