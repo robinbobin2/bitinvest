@@ -99,7 +99,7 @@
                   </thead>
                   <tbody *ngIf="load==false" style="position: relative; min-height: 65px;">
 
-                    <tr *ngFor="let stock of stocks; let i = index">
+                    <tr *ngFor="let stock of stocks | orderBy: 'volumeCommon':reverse:'case-insensitive'; let i = index">
                       <td>
                         <a  >
                           <!-- <span class="img-wrap"><img src="img/bitfinex-icon.png" alt=""></span> -->
@@ -605,7 +605,7 @@
           </div>
 
         </div>
-      <aside class="sidebar">
+      <aside class="sidebar" style="background: none !important;">
         <div class="description" *ngIf="!getRoute('about')">
           <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
           <div [innerHTML]='data?.desc'></div>
