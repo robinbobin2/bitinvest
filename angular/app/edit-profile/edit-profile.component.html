@@ -47,7 +47,8 @@
 					</form>
 				</div>
 				<div class="right">
-          <div class="img-wrap"><img src="{{user.photo ? user.photo.file : 'http://aiyd.org/wp-content/uploads/2016/09/no-image-icon-hi.png'}}" alt=""></div>
+					<div class="img-wrap" *ngIf="loading == false"><img src="{{user.photo ? user.photo.file : '/img/no-img.png'}}" alt=""></div>
+					<div class="img-wrap" *ngIf="loading == true"><img src="/img/load.gif" alt=""></div>
           <form class="upload">
             <div class="input-wrap">
               <input type="file" id="file" #fileInput name="file" class="input-file ng-pristine ng-valid ng-touched" files-model="" ng-model="project.fileList" (change)="handleFileInput($event.target.files)">

@@ -45,6 +45,7 @@ export class EditProfileComponent implements OnInit {
   fileToUpload: File;
   msg = '';
   error_msg = false;
+  load = false;
   constructor(public auth: AuthService, private http:HttpClient, private _http:Http) { }
 @ViewChild('fileInput') fileInput
   ngOnInit() {
@@ -62,6 +63,7 @@ uploadFileToActivity(photo: File) {
     
 }
 handleFileInput() {
+    this.load = true;
   const image  = this.fileInput.nativeElement;
     console.log(image.files);
    let pathUrl = '/profile/updatephoto';
@@ -80,6 +82,7 @@ handleFileInput() {
         (response) => {
           this.user = response;
           this.auth.setUser(this.user);
+          this.load = false;
         }
       );
       }, error => {
