@@ -9382,3 +9382,13 @@ display: inherit;
 .quotes ul li:nth-child(2n) {
   background:#cfcfcf;
 }
+.sidebar {
+  padding-top: 24px !important;
+}
+@media (max-width: 600px) {
+  .sidebar {
+  background: none;
+  padding-top: 0;
+  padding-left: 0;
+}
+}
