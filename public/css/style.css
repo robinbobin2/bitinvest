@@ -9357,16 +9357,16 @@ display: inherit;
 }
 
 
-.comment-block .comment-top h3 {
-  font-size: 24px;
+.comment-block .comment-top h3, .tab-content-wrap .comment-block h3 {
+  font-size: 24px !important;
   margin-bottom: 20px;
 }
 .interview-card-content .comment-top {
   border: none;
 }
 @media (max-width: 600px) {
-  .comment-block .comment-top h3 {
-  font-size: 18px;
+  .comment-block .comment-top h3, .tab-content-wrap .comment-block h3 {
+  font-size: 18px !important;
   margin-bottom: 10px;
 }
   .img {
