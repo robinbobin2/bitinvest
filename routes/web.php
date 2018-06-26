@@ -37,7 +37,7 @@ Route::get('admin/banners/edit',  ['as' => 'banner.edit', 'uses' => 'BannerContr
 Route::get('angular/banners',  ['as' => 'banner.banners', 'uses' => 'BannerController@banners']);
 Route::patch('admin/banners/update',  ['as' => 'banner.update', 'uses' => 'BannerController@update']);
 Route::post('admin/banners/store',  ['as' => 'banner.store', 'uses' => 'BannerController@store']);
-Route::delete('admin/banners/delete',  ['as' => 'banner.destroy', 'uses' => 'BannerController@destroy']);
+Route::delete('admin/banners/delete/{id}',  ['as' => 'banner.destroy', 'uses' => 'BannerController@destroy']);
 // Route::get('profile/{user}',  ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 Route::get('users/raw', function() {
 	return User::all();
