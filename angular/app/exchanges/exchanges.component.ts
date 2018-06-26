@@ -112,7 +112,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
             for(let item of this.exchanges) {
                 // item.btc = this.exchange_volumes[item.name].btc
                 if (this.exchange_volumes[item.name]) {
-                    if (this.exchange_volumes[item.name].usd) {
+                    if (this.exchange_volumes[item.name].usd != '') {
                         item.usd = this.exchange_volumes[item.name].usd
 
                     } else {
