@@ -33,10 +33,10 @@ class BannerController extends Controller
             ->with('message', 'Banner Created Successfully');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        $banners = Banner::all();
-        return view('admin.banners.index', compact('banners'));
+        Banner::findOrFail($id)->delete();
+        return redirect('admin/banners');
     }
 
     public function banners() {

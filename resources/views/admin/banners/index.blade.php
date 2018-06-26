@@ -28,10 +28,11 @@
                               <td><img src="{{$n->file}}" width="100" /></td>
                               <td>
                                   <a href="{{route('banner.edit', $n->id)}}">Edit</a> | 
-                                  <a href="#" onclick="event.preventDefault();
-                                      document.getElementById('delete-news-{{$n->id}}').submit();">
-                                      Delete
-                                  </a>
+                                  <form method="post" action="{{route('banner.destroy', $n)}}"  enctype="multipart/form-data">
+    {{ csrf_field() }}
+    {{ method_field('delete') }}
+    <input type="submit" name="" value="Удалить" class="btn btn-danger pull-right col-sm-6">
+</form>
                                   <form id="delete-news-{{$n->id}}" action="{{route('banner.destroy', $n->id)}}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
