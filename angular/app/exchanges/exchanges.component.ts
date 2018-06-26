@@ -119,7 +119,10 @@ export class ExchangesComponent implements OnInit, OnDestroy {
                         item.usd = 0
 
                     }
+                } else {
+                    item.usd = 0
                 }
+
             }
         });
       this.count = this.exchanges.length;
