@@ -8047,6 +8047,7 @@ var PortfolioComponent = (function () {
                 if (item.user_portfolio_type_id == type_id) {
                     _this.portfolioService.getPortfolioById(item.id)
                         .subscribe(function (res) {
+                        console.log(res['crypto'].length);
                         if (res['crypto'].length == 0) {
                             _this.loading = false;
                         }
