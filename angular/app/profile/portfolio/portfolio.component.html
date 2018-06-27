@@ -7,7 +7,7 @@
         <p>Отслеживайте все важные изменения по монетам, биржам, майнингу, ico проектам и др. Вся информация в одном месте! <br>
 Настраивайте индивидуальные уведомления...</p>
       </div>
-      <div class="table-wrap-mobile" *ngFor="let item of portfolioNames; let i = index">
+      <div *ngIf="loading == false" class="table-wrap-mobile" *ngFor="let item of portfolioNames; let i = index">
         <div class="table-title">
           <h3>{{item.name}}</h3>
           <div class="buttons">
@@ -107,7 +107,9 @@
               <td>
                 <div class="difference">
                   <div class="buttons">
-                    <!--<a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>-->
+                    <a href="#" class="setting">
+                      <!--<img src="/img/setting-icon-table.png" alt="">-->
+                    </a>
                     <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\IcoProject')" class="minus"><img src="/img/minus.png" alt=""></a>
                   </div>
                 </div>
@@ -128,6 +130,9 @@
               <td>
                 <div class="difference">
                   <div class="buttons">
+                    <a class="setting">
+                      <!--<img src="img/settings.svg" alt="">-->
+                    </a>
                     <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\CryptoStat')" class="minus"><img src="/img/minus.png" alt=""></a>
                   </div>
                 </div>
@@ -148,6 +153,9 @@
               <td>
                 <div class="difference">
                   <div class="buttons">
+                    <a class="setting">
+                      <!--<img src="img/settings.svg" alt="">-->
+                    </a>
                     <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\Stock')" class="minus"><img src="/img/minus.png" alt=""></a>
                   </div>
                 </div>
@@ -168,11 +176,12 @@
           </tbody>
 
         </table>
-        <div style="width: 30px; height: 30px; margin: 20px auto;" *ngIf="loading == true">
-          <img src="/img/load.gif" *ngIf="loading == true" style=" width: 30px; height: 30px; text-align: center">
-        </div>
+
       </div>
-      <div class="table-wrap img-table" *ngFor="let item of portfolioNames; let i = index">
+      <div style="width: 30px; height: 30px; margin: 20px auto;" *ngIf="loading == true">
+        <img src="/img/load.gif" *ngIf="loading == true" style=" width: 30px; height: 30px; text-align: center">
+      </div>
+      <div *ngIf="loading == false" class="table-wrap img-table" *ngFor="let item of portfolioNames; let i = index">
         <div class="table-title">
           <h3>{{item.name}}</h3>
           <div class="buttons">
@@ -334,7 +343,9 @@
                 <div class="difference">
                   <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Платит' : 'Не платит'}}</span>
                   <div class="buttons">
-                    <!--<a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>-->
+                    <a class="setting">
+                      <!--<img src="img/settings.svg" alt="">-->
+                    </a>
                     <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\CloudMining')" class="minus"><img src="/img/minus.png" alt=""></a>
                   </div>
                 </div>
@@ -367,7 +378,9 @@
                 <div class="difference">
                   <span [ngClass]="portfolioItem.status == 1 ? 'green' : 'red'">{{portfolioItem.status == 1 ? 'Активен' : 'Закончен'}}</span>
                   <div class="buttons">
-                    <!--<a href="#" class="setting"><img src="/img/setting-icon-table.png" alt=""></a>-->
+                    <a href="#" class="setting">
+                      <!--<img src="/img/setting-icon-table.png" alt="">-->
+                    </a>
                     <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\IcoProject')" class="minus"><img src="/img/minus.png" alt=""></a>
                   </div>
                 </div>
@@ -394,7 +407,9 @@
                 <span>{{volumes[portfolioItem.name]?.btc | number:'1.0-5'}}</span>
                   </div>
                   <div class="buttons">
-                    <!--<a href="#" class="settings"><img src="img/settings.svg" alt=""></a>-->
+                    <a href="#" class="setting">
+                      <!--<img src="img/settings.svg" alt="">-->
+                    </a>
                     <a (click)="onRemove(item.id, portfolioItem.id, in, 'App\\Stock')" class="minus"><img src="/img/minus.png" alt=""></a>
                   </div>
                 </div>
@@ -433,7 +448,9 @@
                 <span class="red">{{ countPercent(data.now, data.month) | number: '1.2'}}%</span>
 
                 <div class="buttons">
-                  <!--<a href="#" class="settings"><img src="img/settings.svg" alt=""></a>-->
+                  <a href="#" class="setting">
+                    <!--<img src="img/settings.svg" alt="">-->
+                  </a>
                   <a (click)="onRemove(item.id, data.id, in, 'App\\CryptoStat')" class="minus"><img src="/img/minus.png" alt=""></a>
                 </div>
               </div>
@@ -518,9 +535,10 @@
             </p>
           </div>
         </table>
-        <div style="width: 30px; height: 30px; margin: 20px auto;" *ngIf="loading == true">
-          <img src="/img/load.gif" *ngIf="loading == true" style=" width: 30px; height: 30px; text-align: center">
-        </div>
+
+      </div>
+      <div style="width: 30px; height: 30px; margin: 20px auto;" *ngIf="loading == true">
+        <img src="/img/load.gif" *ngIf="loading == true" style=" width: 30px; height: 30px; text-align: center">
       </div>
     </div>
   </section>
