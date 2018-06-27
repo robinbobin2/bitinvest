@@ -8043,6 +8043,7 @@ var PortfolioComponent = (function () {
         var _this = this;
         this.portfolioService.getPortfolioNames().subscribe(function (res) {
             _this.portfolioNames = res['portfolio'];
+            console.log(_this.portfolioNames);
             var _loop_1 = function (item) {
                 if (item.user_portfolio_type_id == type_id) {
                     _this.portfolioService.getPortfolioById(item.id)
