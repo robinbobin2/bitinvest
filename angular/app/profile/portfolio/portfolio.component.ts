@@ -143,7 +143,7 @@ export class PortfolioComponent implements OnInit {
 
 
                                     } else {
-                                        if (!this.portfolios[item.id]) {
+                                        if (this.portfolios[item.id]) {
                                             console.log('1111122')
                                             this.loading = false
                                         }

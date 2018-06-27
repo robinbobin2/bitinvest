@@ -8106,7 +8106,7 @@ var PortfolioComponent = (function () {
                             }
                         }
                         else {
-                            if (!_this.portfolios[item.id]) {
+                            if (_this.portfolios[item.id]) {
                                 console.log('1111122');
                                 _this.loading = false;
                             }
