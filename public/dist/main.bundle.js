@@ -8065,7 +8065,9 @@ var PortfolioComponent = (function () {
                             }
                         }
                         if (item.user_portfolio_type_id == 3) {
-                            if (_this.stockService.getCrypto().subscribe(function (crypto) {
+                            console.log('1');
+                            _this.stockService.getCrypto().subscribe(function (crypto) {
+                                console.log('2');
                                 _this.dataUsd = crypto;
                                 if (_this.portfolios[item.id]) {
                                     var _loop_2 = function (portfolioItem) {
@@ -8095,11 +8097,11 @@ var PortfolioComponent = (function () {
                                 if (_this.portfolios[item.id][0].week) {
                                     _this.loading = false;
                                 }
-                            })) {
-                            }
-                            else {
-                                _this.loading = false;
-                            }
+                            });
+                            console.log('3');
+                        }
+                        else {
+                            console.log('else');
                         }
                         if (type_id == 1) {
                             if (item.length > 0) {
