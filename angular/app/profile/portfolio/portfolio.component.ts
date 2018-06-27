@@ -102,7 +102,7 @@ export class PortfolioComponent implements OnInit {
                                     }
 
                                     if (type_id == 3) {
-
+                                        console.log('3')
                                         this.stockService.getCrypto().subscribe(crypto => {
 
                                             this.dataUsd = crypto;
@@ -127,8 +127,9 @@ export class PortfolioComponent implements OnInit {
                                                 )
                                             }
 
-                                            this.loading = false;
+
                                         });
+
 
 
                                     }
