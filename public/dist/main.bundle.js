@@ -8081,8 +8081,6 @@ var PortfolioComponent = (function () {
                                     _this.diff[item.id] = portfolioItem.now - portfolioItem.last;
                                     _this.miningService.getCryptoId(portfolioItem.symbol).subscribe(function (res) {
                                         portfolioItem.id = res['id'];
-                                        _this.loading = false;
-                                        console.log('false');
                                     });
                                 };
                                 for (var _i = 0, _a = _this.portfolios[item.id]; _i < _a.length; _i++) {
@@ -8114,6 +8112,7 @@ var PortfolioComponent = (function () {
                                 _loop_4(portfolioItem);
                             }
                         }
+                        _this.loading = false;
                     });
                 }
             };
