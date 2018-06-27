@@ -31,7 +31,7 @@ export class PortfolioComponent implements OnInit {
     crypto_form = false;
     stock_form = false;
     type = 1;
-    loading = false;
+    loading = true;
 
     /**
      * Example: Use Order pipe in the component
@@ -76,9 +76,6 @@ export class PortfolioComponent implements OnInit {
                 this.portfolioNames = res['portfolio'];
                 for (let item of this.portfolioNames) {
                     if (item.user_portfolio_type_id == type_id) {
-                    if (item.user_portfolio_type_id == 3) {
-                        this.loading = true;
-                    }
 
                         this.portfolioService.getPortfolioById(item.id)
                             .subscribe(
@@ -103,30 +100,35 @@ export class PortfolioComponent implements OnInit {
                                     }
 
                                     if (item.user_portfolio_type_id == 3) {
+                                        console.log('1')
                                             this.stockService.getCrypto().subscribe(crypto => {
-
+                                                console.log('2')
                                                 this.dataUsd = crypto;
+                                                if(this.portfolios[item.id]) {
+                                                    for (let portfolioItem of this.portfolios[item.id]) {
+                                                        portfolioItem.last = crypto[portfolioItem['symbol'] + '/USD']['last'];
+                                                        portfolioItem.now = crypto[portfolioItem['symbol'] + '/USD']['now'];
+                                                        portfolioItem.min = crypto[portfolioItem['symbol'] + '/USD']['min'];
+                                                        portfolioItem.max = crypto[portfolioItem['symbol'] + '/USD']['max'];
+                                                        portfolioItem.volume = crypto[portfolioItem['symbol'] + '/USD']['volume'];
+                                                        portfolioItem.day = crypto[portfolioItem['symbol'] + "/USD"]['day'];
+                                                        portfolioItem.week = crypto[portfolioItem['symbol'] + "/USD"]['week'];
+                                                        portfolioItem.month = crypto[portfolioItem['symbol'] + "/USD"]['month'];
+                                                        portfolioItem.marketCapUsd = crypto[portfolioItem['symbol'] + "/USD"]['marketCapUsd'];
 
-                                                for (let portfolioItem of this.portfolios[item.id]) {
-                                                    portfolioItem.last = crypto[portfolioItem['symbol'] + '/USD']['last'];
-                                                    portfolioItem.now = crypto[portfolioItem['symbol'] + '/USD']['now'];
-                                                    portfolioItem.min = crypto[portfolioItem['symbol'] + '/USD']['min'];
-                                                    portfolioItem.max = crypto[portfolioItem['symbol'] + '/USD']['max'];
-                                                    portfolioItem.volume = crypto[portfolioItem['symbol'] + '/USD']['volume'];
-                                                    portfolioItem.day = crypto[portfolioItem['symbol'] + "/USD"]['day'];
-                                                    portfolioItem.week = crypto[portfolioItem['symbol'] + "/USD"]['week'];
-                                                    portfolioItem.month = crypto[portfolioItem['symbol'] + "/USD"]['month'];
-                                                    portfolioItem.marketCapUsd = crypto[portfolioItem['symbol'] + "/USD"]['marketCapUsd'];
+                                                        this.diff[item.id] = portfolioItem.now - portfolioItem.last;
 
-                                                    this.diff[item.id] = portfolioItem.now - portfolioItem.last;
+                                                        this.miningService.getCryptoId(portfolioItem.symbol).subscribe((res) => {
+                                                                portfolioItem.id = res['id'];
 
-                                                    this.miningService.getCryptoId(portfolioItem.symbol).subscribe((res) => {
-                                                            portfolioItem.id = res['id'];
-
-                                                        }
-                                                    )
+                                                            }
+                                                        )
+                                                    }
+                                                    this.loading = false;
+                                                } else {
+                                                    this.loading = false;
                                                 }
-                                                this.loading = false;
+
                                             });
                                     }
 
