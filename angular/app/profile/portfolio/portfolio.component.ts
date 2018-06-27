@@ -98,9 +98,9 @@ export class PortfolioComponent implements OnInit {
                                             });
                                         }
                                     }
-                                    if (!this.portfolios[item.id] && this.portfolios[item.id].symbol == undefined) {
-                                        this.loading = false
-                                    }
+                                    console.log(this.portfolios[item.id])
+                                    console.log(this.portfolios[item.id])
+
                                     if (type_id == 3 ) {
                                         console.log(this.portfolios[item.id])
                                             this.stockService.getCrypto().subscribe(crypto => {
@@ -258,10 +258,7 @@ export class PortfolioComponent implements OnInit {
 
     ngOnInit() {
 
-        this.getPorts('mining', 1);
-        this.getPorts('ico', 2);
         this.getPorts('crypto', 3);
-        this.getPorts('stocks', 4);
     }
 
 }
