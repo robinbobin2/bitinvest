@@ -8043,7 +8043,6 @@ var PortfolioComponent = (function () {
         var _this = this;
         this.portfolioService.getPortfolioNames().subscribe(function (res) {
             _this.portfolioNames = res['portfolio'];
-            console.log(_this.portfolioNames);
             for (var _i = 0, _a = _this.portfolioNames; _i < _a.length; _i++) {
                 var item = _a[_i];
                 if (item.user_portfolio_type_id == 3) {
@@ -8077,8 +8076,6 @@ var PortfolioComponent = (function () {
                             }
                         }
                         if (type_id == 3) {
-                            console.log('type_id = 3');
-                            console.log(_this.portfolios[item.id]);
                             _this.stockService.getCrypto().subscribe(function (crypto) {
                                 _this.dataUsd = crypto;
                                 if (_this.portfolios[item.id]) {
@@ -8101,7 +8098,6 @@ var PortfolioComponent = (function () {
                                         var portfolioItem = _a[_i];
                                         _loop_2(portfolioItem);
                                     }
-                                    console.log(_this.portfolios[item.id]);
                                 }
                                 else {
                                     _this.loading = false;
