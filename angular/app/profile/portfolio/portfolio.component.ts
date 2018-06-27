@@ -74,10 +74,11 @@ export class PortfolioComponent implements OnInit {
         this.portfolioService.getPortfolioNames().subscribe(
             res => {
                 this.portfolioNames = res['portfolio'];
-                console.log(this.portfolioNames);
                 for (let item of this.portfolioNames) {
                     if (item.user_portfolio_type_id == type_id) {
-
+                    if (item.user_portfolio_type_id == 3) {
+                        this.loading = true;
+                    }
 
                         this.portfolioService.getPortfolioById(item.id)
                             .subscribe(
@@ -96,13 +97,10 @@ export class PortfolioComponent implements OnInit {
                                                     'usd': resItem.usd
                                                 }
                                             }
-                                            console.log('pushed');
-                                            console.log(this.portfolios[item.id])
                                         });
                                     }
 
                                     if (type_id == 3) {
-                                        this.loading = true
                                         this.stockService.getCrypto().subscribe(crypto => {
 
                                             this.dataUsd = crypto;
@@ -126,8 +124,7 @@ export class PortfolioComponent implements OnInit {
                                                 }
                                                 )
                                             }
-                                            this.loading = false
-
+                                            this.loading = false;
                                         });
 
 
