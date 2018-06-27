@@ -100,12 +100,9 @@ export class PortfolioComponent implements OnInit {
                                     }
 
                                     if (item.user_portfolio_type_id == 3) {
-                                        console.log('1ss')
-                                        console.log(item.length)
-                                        if (item.length > 0) {
-                                            console.log('ss')
                                             this.stockService.getCrypto().subscribe(crypto => {
                                                 this.dataUsd = crypto;
+                                                console.log(this.dataUsd)
                                                 if (this.portfolios[item.id]) {
                                                     for (let portfolioItem of this.portfolios[item.id]) {
                                                         portfolioItem.last = crypto[portfolioItem['symbol'] + '/USD']['last'];
@@ -127,6 +124,7 @@ export class PortfolioComponent implements OnInit {
                                                             }
                                                         )
                                                     }
+                                                    console.log(this.portfolios[item.id])
                                                 } else {
                                                     this.loading = false
                                                 }
@@ -134,11 +132,7 @@ export class PortfolioComponent implements OnInit {
                                                     this.loading = false;
                                                 }
                                             });
-                                        } else {
-                                            this.loading = false
-                                        }
-                                    } else {
-                                        this.loading = false
+
                                     }
 
                                     if (type_id == 1) {
