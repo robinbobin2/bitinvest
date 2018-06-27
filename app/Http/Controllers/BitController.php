@@ -61,27 +61,13 @@ class BitController extends Controller
 
     public function info()
     {
-        $exchanges = DB::select("SELECT
-		ex2.volume, ex2.value as value, (ex1.value / ex2.value) - 1 as percent, ex2.bid, ex2.ask, ex1.currency, ex1.exchangeId, exName.`name`, ex2.createTime as time, (ex2.volume * ex2.value) as volumeCommon
-	FROM
-		(
-			SELECT
-				min(id) AS minId,
-				max(id) AS maxId,
-				ex.currency,
-				ex.exchangeId
-			FROM
-				exchangeRates ex
-			WHERE
-				from_unixtime(ex.createTime) > (now() + INTERVAL -(24) HOUR)
-				and currency = '" . $_GET['pair'] . "'
-			GROUP BY
-				ex.exchangeId
-		) a
-	JOIN exchangeRates ex1 ON ex1.id = a.minId and a.exchangeId = ex1.exchangeId
-	JOIN exchangeRates ex2 ON ex2.id = a.maxId and a.exchangeId = ex2.exchangeId
-	JOIN exchanges exName on ex1.exchangeId = exName.id
-	WHERE a.currency = '" . $_GET['pair'] . "'");
+        $exchanges = DB::select("SELECT  
+ex2.volume, f.currency, ex2.value as value, ROUND(((ex2.value - f.day) / (ex2.value + f.day) * 100), 6) as percent, ex2.bid, ex2.ask, ex2.exchangeId, ex.`name`,ROUND((f.volume / ex2.volume) - 1, 6) as percentVolume, ex2.createTime as time, (ex2.volume * ex2.value) as volumeCommon FROM
+
+exchangeRatesInfo f 
+JOIN exchangeRates ex2 on ex2.id = f.nowId
+JOIN exchanges ex on ex.id = f.exchangeId
+WHERE f.currency = '" . $_GET['pair'] . "'");
         return $exchanges;
     }
 

@@ -30,6 +30,9 @@ class LiveCoinProvider extends FounderProvider
         }
 
         foreach ($result as $supplierTicker) {
+            if(!isset($supplierTicker->best_ask)){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->best_ask);
             $ticker->setBid($supplierTicker->best_bid);

@@ -44,6 +44,9 @@ class UpBitProvider extends FounderProvider
                 continue;
             }
             $supplierTicker = current($supplierTicker);
+            if(!isset($supplierTicker->high_price)){
+                continue;
+            }
             $ticker = new TickerEntity();
             $ticker->setAsk($supplierTicker->high_price);
             $ticker->setBid($supplierTicker->low_price);

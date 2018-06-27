@@ -93,9 +93,13 @@ class KunaProvider extends FounderProvider
         $response = [];
         $result = $this->getConnector()->search();
 
+        if(!$result){
+            return $response;
+        }
+
         foreach ($result as $currency => $supplierTicker){
             $supplierTicker = $supplierTicker->ticker;
-            if(!isset($this->currencyMapping[$currency])){
+            if(!isset($this->currencyMapping[$currency]) || !isset($supplierTicker->buy)){
                 continue;
             }
             $ticker = new TickerEntity();
