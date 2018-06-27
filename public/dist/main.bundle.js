@@ -8106,8 +8106,10 @@ var PortfolioComponent = (function () {
                             }
                         }
                         else {
-                            console.log('else');
-                            _this.loading = false;
+                            if (!_this.portfolios[item.id]) {
+                                console.log('1111122');
+                                _this.loading = false;
+                            }
                         }
                         if (type_id == 1) {
                             if (item.length > 0) {
