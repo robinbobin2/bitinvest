@@ -8049,7 +8049,7 @@ var PortfolioComponent = (function () {
                         .subscribe(function (res) {
                         console.log(res);
                         if (type == 'crypto') {
-                            console.log(res)['crypto'];
+                            console.log(res);
                             if (res['crypto'] == []) {
                                 _this.loading = false;
                             }
