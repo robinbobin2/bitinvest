@@ -100,6 +100,7 @@ export class PortfolioComponent implements OnInit {
                                     }
 
                                     if (type_id == 3 ) {
+                                        console.log('type_id = 3')
                                         console.log(this.portfolios[item.id])
                                             this.stockService.getCrypto().subscribe(crypto => {
 
@@ -129,17 +130,13 @@ export class PortfolioComponent implements OnInit {
                                                 } else {
                                                     this.loading = false
                                                 }
-                                                if (this.portfolios[item.id][0].week) {
+                                                if (this.portfolios[item.id][0]) {
                                                     this.loading = false;
                                                 }
                                             });
 
 
 
-                                    } else {
-                                        if (type == 'crypto') {
-                                            this.loading = false
-                                        }
                                     }
 
                                     if (type_id == 1) {

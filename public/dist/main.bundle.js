@@ -8065,6 +8065,7 @@ var PortfolioComponent = (function () {
                             }
                         }
                         if (type_id == 3) {
+                            console.log('type_id = 3');
                             console.log(_this.portfolios[item.id]);
                             _this.stockService.getCrypto().subscribe(function (crypto) {
                                 _this.dataUsd = crypto;
@@ -8093,15 +8094,10 @@ var PortfolioComponent = (function () {
                                 else {
                                     _this.loading = false;
                                 }
-                                if (_this.portfolios[item.id][0].week) {
+                                if (_this.portfolios[item.id][0]) {
                                     _this.loading = false;
                                 }
                             });
-                        }
-                        else {
-                            if (type == 'crypto') {
-                                _this.loading = false;
-                            }
                         }
                         if (type_id == 1) {
                             if (item.length > 0) {
