@@ -8047,6 +8047,7 @@ var PortfolioComponent = (function () {
                 if (item.user_portfolio_type_id == type_id) {
                     _this.portfolioService.getPortfolioById(item.id)
                         .subscribe(function (res) {
+                        console.log(res);
                         if (res[type].length > 0) {
                             _this.portfolios[item.id] = res[type];
                             _this.portfolios[item.id].type = type;
@@ -8125,7 +8126,7 @@ var PortfolioComponent = (function () {
                                 }
                             }
                         }
-                    });
+                    }, function () { return _this.loading = false; });
                 }
             };
             for (var _i = 0, _a = _this.portfolioNames; _i < _a.length; _i++) {
