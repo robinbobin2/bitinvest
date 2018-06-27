@@ -8070,6 +8070,7 @@ var PortfolioComponent = (function () {
                                 console.log('2');
                                 _this.dataUsd = crypto;
                                 if (_this.portfolios[item.id]) {
+                                    console.log('if');
                                     var _loop_2 = function (portfolioItem) {
                                         portfolioItem.last = crypto[portfolioItem['symbol'] + '/USD']['last'];
                                         portfolioItem.now = crypto[portfolioItem['symbol'] + '/USD']['now'];
@@ -8092,6 +8093,7 @@ var PortfolioComponent = (function () {
                                     _this.loading = false;
                                 }
                                 else {
+                                    console.log('else');
                                     _this.loading = false;
                                 }
                             });
