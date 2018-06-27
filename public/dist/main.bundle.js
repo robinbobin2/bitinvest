@@ -8064,8 +8064,6 @@ var PortfolioComponent = (function () {
                                 });
                             }
                         }
-                        console.log(_this.portfolios[item.id]);
-                        console.log(_this.portfolios[item.id]);
                         if (type_id == 3) {
                             console.log(_this.portfolios[item.id]);
                             _this.stockService.getCrypto().subscribe(function (crypto) {
@@ -8099,6 +8097,11 @@ var PortfolioComponent = (function () {
                                     _this.loading = false;
                                 }
                             });
+                        }
+                        else {
+                            if (type == 'crypto') {
+                                _this.loading = false;
+                            }
                         }
                         if (type_id == 1) {
                             if (item.length > 0) {
@@ -8198,7 +8201,10 @@ var PortfolioComponent = (function () {
         return true;
     };
     PortfolioComponent.prototype.ngOnInit = function () {
+        this.getPorts('mining', 1);
+        this.getPorts('ico', 2);
         this.getPorts('crypto', 3);
+        this.getPorts('stocks', 4);
     };
     return PortfolioComponent;
 }());

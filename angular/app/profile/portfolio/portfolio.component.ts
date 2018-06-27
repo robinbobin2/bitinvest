@@ -98,8 +98,6 @@ export class PortfolioComponent implements OnInit {
                                             });
                                         }
                                     }
-                                    console.log(this.portfolios[item.id])
-                                    console.log(this.portfolios[item.id])
 
                                     if (type_id == 3 ) {
                                         console.log(this.portfolios[item.id])
@@ -138,6 +136,10 @@ export class PortfolioComponent implements OnInit {
 
 
 
+                                    } else {
+                                        if (type == 'crypto') {
+                                            this.loading = false
+                                        }
                                     }
 
                                     if (type_id == 1) {
@@ -258,7 +260,10 @@ export class PortfolioComponent implements OnInit {
 
     ngOnInit() {
 
+        this.getPorts('mining', 1);
+        this.getPorts('ico', 2);
         this.getPorts('crypto', 3);
+        this.getPorts('stocks', 4);
     }
 
 }
