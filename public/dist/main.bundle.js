@@ -8065,12 +8065,9 @@ var PortfolioComponent = (function () {
                             }
                         }
                         if (item.user_portfolio_type_id == 3) {
-                            console.log('1');
                             _this.stockService.getCrypto().subscribe(function (crypto) {
-                                console.log('2');
                                 _this.dataUsd = crypto;
                                 if (_this.portfolios[item.id]) {
-                                    console.log('if');
                                     var _loop_2 = function (portfolioItem) {
                                         portfolioItem.last = crypto[portfolioItem['symbol'] + '/USD']['last'];
                                         portfolioItem.now = crypto[portfolioItem['symbol'] + '/USD']['now'];
@@ -8084,16 +8081,15 @@ var PortfolioComponent = (function () {
                                         _this.diff[item.id] = portfolioItem.now - portfolioItem.last;
                                         _this.miningService.getCryptoId(portfolioItem.symbol).subscribe(function (res) {
                                             portfolioItem.id = res['id'];
+                                            _this.loading = false;
                                         });
                                     };
                                     for (var _i = 0, _a = _this.portfolios[item.id]; _i < _a.length; _i++) {
                                         var portfolioItem = _a[_i];
                                         _loop_2(portfolioItem);
                                     }
-                                    _this.loading = false;
                                 }
                                 else {
-                                    console.log('else');
                                     _this.loading = false;
                                 }
                             });

@@ -100,12 +100,9 @@ export class PortfolioComponent implements OnInit {
                                     }
 
                                     if (item.user_portfolio_type_id == 3) {
-                                        console.log('1')
                                             this.stockService.getCrypto().subscribe(crypto => {
-                                                console.log('2')
                                                 this.dataUsd = crypto;
                                                 if(this.portfolios[item.id]) {
-                                                    console.log('if')
                                                     for (let portfolioItem of this.portfolios[item.id]) {
                                                         portfolioItem.last = crypto[portfolioItem['symbol'] + '/USD']['last'];
                                                         portfolioItem.now = crypto[portfolioItem['symbol'] + '/USD']['now'];
@@ -122,12 +119,12 @@ export class PortfolioComponent implements OnInit {
                                                         this.miningService.getCryptoId(portfolioItem.symbol).subscribe((res) => {
                                                                 portfolioItem.id = res['id'];
 
+                                                            this.loading = false;
+
                                                             }
                                                         )
                                                     }
-                                                    this.loading = false;
                                                 } else {
-                                                    console.log('else')
 
                                                     this.loading = false;
                                                 }
