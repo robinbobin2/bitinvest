@@ -101,6 +101,7 @@ export class PortfolioComponent implements OnInit {
 
                                     if (item.user_portfolio_type_id == 3) {
                                         if (item.length > 0) {
+                                            console.log('ss')
                                             this.stockService.getCrypto().subscribe(crypto => {
                                                 this.dataUsd = crypto;
                                                 if (this.portfolios[item.id]) {

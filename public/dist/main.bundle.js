@@ -8066,6 +8066,7 @@ var PortfolioComponent = (function () {
                         }
                         if (item.user_portfolio_type_id == 3) {
                             if (item.length > 0) {
+                                console.log('ss');
                                 _this.stockService.getCrypto().subscribe(function (crypto) {
                                     _this.dataUsd = crypto;
                                     if (_this.portfolios[item.id]) {
