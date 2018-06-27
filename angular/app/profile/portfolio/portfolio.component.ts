@@ -80,7 +80,9 @@ export class PortfolioComponent implements OnInit {
                         this.portfolioService.getPortfolioById(item.id)
                             .subscribe(
                                 res => {
-                                    console.log(res)
+                                    if (res['crypto'].length == 0) {
+                                        this.loading = false;
+                                    }
 
                                     if (res[type].length > 0) {
                                         this.portfolios[item.id] = res[type];
