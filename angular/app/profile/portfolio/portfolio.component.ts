@@ -31,6 +31,7 @@ export class PortfolioComponent implements OnInit {
     crypto_form = false;
     stock_form = false;
     type = 1;
+    loading = true;
 
     /**
      * Example: Use Order pipe in the component
@@ -121,8 +122,7 @@ export class PortfolioComponent implements OnInit {
 
                                                 this.miningService.getCryptoId(portfolioItem.symbol).subscribe((res) => {
                                                     portfolioItem.id = res['id'];
-                                                    console.log(res);
-                                                    console.log(portfolioItem.id)
+                                                    this.loading = false
                                                 })
                                             }
 
@@ -130,6 +130,8 @@ export class PortfolioComponent implements OnInit {
                                         });
 
 
+                                    } else {
+                                        this.loading = false
                                     }
 
                                     if (type_id == 1) {
