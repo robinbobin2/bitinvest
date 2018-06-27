@@ -8081,13 +8081,13 @@ var PortfolioComponent = (function () {
                                     _this.diff[item.id] = portfolioItem.now - portfolioItem.last;
                                     _this.miningService.getCryptoId(portfolioItem.symbol).subscribe(function (res) {
                                         portfolioItem.id = res['id'];
-                                        _this.loading = false;
-                                    }, function () { return _this.loading = false; });
+                                    });
                                 };
                                 for (var _i = 0, _a = _this.portfolios[item.id]; _i < _a.length; _i++) {
                                     var portfolioItem = _a[_i];
                                     _loop_2(portfolioItem);
                                 }
+                                _this.loading = false;
                             });
                         }
                         if (type_id == 1) {
