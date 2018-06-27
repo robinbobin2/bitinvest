@@ -8090,8 +8090,10 @@ var PortfolioComponent = (function () {
                                         var portfolioItem = _a[_i];
                                         _loop_2(portfolioItem);
                                     }
-                                    _this.loading = false;
                                 });
+                            }
+                            else {
+                                _this.loading = false;
                             }
                         }
                         if (type_id == 1) {
