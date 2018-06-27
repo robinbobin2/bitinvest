@@ -31,6 +31,7 @@ export class PortfolioComponent implements OnInit {
     crypto_form = false;
     stock_form = false;
     type = 1;
+    loading = true;
 
     /**
      * Example: Use Order pipe in the component
@@ -73,14 +74,18 @@ export class PortfolioComponent implements OnInit {
         this.portfolioService.getPortfolioNames().subscribe(
             res => {
                 this.portfolioNames = res['portfolio'];
-                console.log(this.portfolioNames);
                 for (let item of this.portfolioNames) {
                     if (item.user_portfolio_type_id == type_id) {
-
 
                         this.portfolioService.getPortfolioById(item.id)
                             .subscribe(
                                 res => {
+                                    if (type == 'crypto') {
+                                        console.log(res['crypto'].length)
+                                        if (res['crypto'].length == 0) {
+                                            this.loading = false;
+                                        }
+                                    }
 
                                     if (res[type].length > 0) {
                                         this.portfolios[item.id] = res[type];
@@ -88,74 +93,87 @@ export class PortfolioComponent implements OnInit {
                                     }
 
                                     if (type_id == 4) {
-                                        this.stockService.getVolumes().subscribe(res => {
-                                            for (let resItem of res) {
-                                                this.volumes[resItem.name] = {
-                                                    'btc': resItem.btc,
-                                                    'usd': resItem.usd
+                                        if (item.length > 0) {
+                                            this.stockService.getVolumes().subscribe(res => {
+                                                for (let resItem of res) {
+                                                    this.volumes[resItem.name] = {
+                                                        'btc': resItem.btc,
+                                                        'usd': resItem.usd
+                                                    }
                                                 }
-                                            }
-                                            console.log('pushed');
-                                            console.log(this.portfolios[item.id])
-                                        });
+                                            });
+                                        }
                                     }
 
-                                    if (type_id == 3) {
+                                    if (type_id == 3 ) {
+                                        console.log('type_id = 3')
+                                        console.log(this.portfolios[item.id])
 
-                                        this.stockService.getCrypto().subscribe(crypto => {
+                                            this.stockService.getCrypto().subscribe(crypto => {
 
-                                            this.dataUsd = crypto;
+                                                this.dataUsd = crypto;
+                                                if (this.portfolios[item.id]) {
+                                                    for (let portfolioItem of this.portfolios[item.id]) {
+                                                        portfolioItem.last = crypto[portfolioItem['symbol'] + '/USD']['last'];
+                                                        portfolioItem.now = crypto[portfolioItem['symbol'] + '/USD']['now'];
+                                                        portfolioItem.min = crypto[portfolioItem['symbol'] + '/USD']['min'];
+                                                        portfolioItem.max = crypto[portfolioItem['symbol'] + '/USD']['max'];
+                                                        portfolioItem.volume = crypto[portfolioItem['symbol'] + '/USD']['volume'];
+                                                        portfolioItem.day = crypto[portfolioItem['symbol'] + "/USD"]['day'];
+                                                        portfolioItem.week = crypto[portfolioItem['symbol'] + "/USD"]['week'];
+                                                        portfolioItem.month = crypto[portfolioItem['symbol'] + "/USD"]['month'];
+                                                        portfolioItem.marketCapUsd = crypto[portfolioItem['symbol'] + "/USD"]['marketCapUsd'];
 
-                                            for (let portfolioItem of this.portfolios[item.id]) {
-                                                portfolioItem.last = crypto[portfolioItem['symbol'] + '/USD']['last'];
-                                                portfolioItem.now = crypto[portfolioItem['symbol'] + '/USD']['now'];
-                                                portfolioItem.min = crypto[portfolioItem['symbol'] + '/USD']['min'];
-                                                portfolioItem.max = crypto[portfolioItem['symbol'] + '/USD']['max'];
-                                                portfolioItem.volume = crypto[portfolioItem['symbol'] + '/USD']['volume'];
-                                                portfolioItem.day = crypto[portfolioItem['symbol'] + "/USD"]['day'];
-                                                portfolioItem.week = crypto[portfolioItem['symbol'] + "/USD"]['week'];
-                                                portfolioItem.month = crypto[portfolioItem['symbol'] + "/USD"]['month'];
-                                                portfolioItem.marketCapUsd = crypto[portfolioItem['symbol'] + "/USD"]['marketCapUsd'];
+                                                        this.diff[item.id] = portfolioItem.now - portfolioItem.last;
 
-                                                this.diff[item.id] = portfolioItem.now - portfolioItem.last;
-
-                                                this.miningService.getCryptoId(portfolioItem.symbol).subscribe((res) => {
-                                                    portfolioItem.id = res['id'];
-                                                    console.log(res);
-                                                    console.log(portfolioItem.id)
-                                                })
-                                            }
+                                                        this.miningService.getCryptoId(portfolioItem.symbol).subscribe((res) => {
+                                                                portfolioItem.id = res['id'];
 
 
-                                        });
+                                                            }
+                                                        )
+                                                    }
+                                                    console.log(this.portfolios[item.id])
+                                                } else {
+                                                    this.loading = false
+                                                }
+                                                if (this.portfolios[item.id][0]) {
+                                                    this.loading = false;
+                                                }
+                                            });
+
 
 
                                     }
 
                                     if (type_id == 1) {
-                                        for (let portfolioItem of this.portfolios[item.id]) {
-                                            this.miningService.getMiningId(portfolioItem.id).subscribe(
-                                                res => {
-                                                    portfolioItem['percentage'] = res['news']['percentage'];
-                                                }
-                                            )
+                                        if (item.length > 0) {
+                                            for (let portfolioItem of this.portfolios[item.id]) {
+                                                this.miningService.getMiningId(portfolioItem.id).subscribe(
+                                                    res => {
+                                                        portfolioItem['percentage'] = res['news']['percentage'];
+                                                    }
+                                                )
+                                            }
                                         }
-                                        console.log(this.portfolios[item.id]);
                                     }
                                     if (type_id == 2) {
-                                        for (let portfolioItem of this.portfolios[item.id]) {
-                                            this.miningService.getIcoId(portfolioItem.id).subscribe(
-                                                res => {
+                                        if (item.length > 0) {
+                                            for (let portfolioItem of this.portfolios[item.id]) {
+                                                this.miningService.getIcoId(portfolioItem.id).subscribe(
+                                                    res => {
 
-                                                    portfolioItem = res['news'];
+                                                        portfolioItem = res['news'];
 
-                                                }
-                                            )
+                                                    }
+                                                )
+                                            }
                                         }
                                     }
 
 
-                                }
+                                },
+                                ()=>this.loading = false
                             )
 
 

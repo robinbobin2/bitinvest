@@ -42,6 +42,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     countryFilterArray: any;
 
 
+
   constructor(private http:HttpClient,
               private router:Router,
               private route:ActivatedRoute,private stockService:StocksService, private orderPipe: OrderPipe,
