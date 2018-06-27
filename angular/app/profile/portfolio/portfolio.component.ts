@@ -98,12 +98,12 @@ export class PortfolioComponent implements OnInit {
                                             });
                                         }
                                     }
-                                    console.log(this.portfolios[item.id])
+                                    if (this.portfolios[item.id].type == 'crypto' && this.portfolios[item.id].symbol == undefined) {
+                                        this.loading = false
+                                    }
                                     if (type_id == 3 ) {
                                         console.log(this.portfolios[item.id])
-                                        if (this.portfolios[item.id].length > 0) {
                                             this.stockService.getCrypto().subscribe(crypto => {
-                                                console.log('2')
 
                                                 this.dataUsd = crypto;
                                                 if (this.portfolios[item.id]) {
@@ -135,9 +135,6 @@ export class PortfolioComponent implements OnInit {
                                                     this.loading = false;
                                                 }
                                             });
-                                        } else {
-                                            this.loading = false
-                                        }
 
 
 
