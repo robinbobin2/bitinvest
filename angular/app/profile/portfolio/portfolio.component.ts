@@ -99,8 +99,8 @@ export class PortfolioComponent implements OnInit {
                                         }
                                     }
 
-                                    if (item.user_portfolio_type_id == 3) {
-                                        console.log('1')
+                                    if (item.user_portfolio_type_id == 3 ) {
+                                        if (this.portfolios[item.id].length > 0) {
                                             this.stockService.getCrypto().subscribe(crypto => {
                                                 console.log('2')
 
@@ -134,11 +134,11 @@ export class PortfolioComponent implements OnInit {
                                                     this.loading = false;
                                                 }
                                             });
-                                        console.log('3')
+                                        } else {
+                                            this.loading = false
+                                        }
 
 
-                                    } else {
-                                        console.log('else')
 
                                     }
 
