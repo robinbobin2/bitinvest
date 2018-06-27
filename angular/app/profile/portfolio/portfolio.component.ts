@@ -128,7 +128,9 @@ export class PortfolioComponent implements OnInit {
 
                                                     this.loading = false;
                                                 }
-                                                this.loading = false;
+                                                if (this.portfolios[item.id][0].week) {
+                                                    this.loading = false;
+                                                }
                                             });
                                     } else {
                                         this.loading = false;
