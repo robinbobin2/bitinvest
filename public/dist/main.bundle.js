@@ -8065,9 +8065,8 @@ var PortfolioComponent = (function () {
                             }
                         }
                         if (item.user_portfolio_type_id == 3) {
-                            _this.stockService.getCrypto().subscribe(function (crypto) {
+                            if (_this.stockService.getCrypto().subscribe(function (crypto) {
                                 _this.dataUsd = crypto;
-                                console.log(_this.dataUsd);
                                 if (_this.portfolios[item.id]) {
                                     var _loop_2 = function (portfolioItem) {
                                         portfolioItem.last = crypto[portfolioItem['symbol'] + '/USD']['last'];
@@ -8096,10 +8095,11 @@ var PortfolioComponent = (function () {
                                 if (_this.portfolios[item.id][0].week) {
                                     _this.loading = false;
                                 }
-                            });
-                        }
-                        else {
-                            _this.loading = false;
+                            })) {
+                            }
+                            else {
+                                _this.loading = false;
+                            }
                         }
                         if (type_id == 1) {
                             if (item.length > 0) {
