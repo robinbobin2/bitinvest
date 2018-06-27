@@ -157,7 +157,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr *ngFor="let stock of stocks; let i = index">
+                  <tr *ngFor="let stock of stocks | orderBy: 'volumeCommon':true:'case-insensitive'; let i = index">
                     <td>
                       <a href="exchanges-card.html">
                         <div class="img-wrap">
