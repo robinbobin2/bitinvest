@@ -133,6 +133,8 @@ export class PortfolioComponent implements OnInit {
                                                 }
                                             });
 
+                                    } else {
+                                        this.loading = false;
                                     }
 
                                     if (type_id == 1) {

@@ -8098,6 +8098,9 @@ var PortfolioComponent = (function () {
                                 }
                             });
                         }
+                        else {
+                            _this.loading = false;
+                        }
                         if (type_id == 1) {
                             if (item.length > 0) {
                                 var _loop_3 = function (portfolioItem) {
