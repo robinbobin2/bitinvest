@@ -17,7 +17,7 @@
             <a (click)="onDelete(item.id, i)"  class="basket"><img src="img/garbage.svg" alt=""></a>
           </div>
         </div>
-        <table class="table">
+        <table class="table" *ngIf="loading == false">
           <thead *ngIf="item.user_portfolio_type_id == 1">
           <tr>
           <th width="50%">
@@ -73,7 +73,7 @@
           </th>
           </tr>
           </thead>
-          <tbody *ngIf="loading == false">
+          <tbody>
           <ng-template [ngIf]="item.user_portfolio_type_id == 1">
             <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
               <td>
@@ -166,10 +166,11 @@
             <!--</td>-->
           <!--</tr>-->
           </tbody>
-          <div style="width: 30px; height: 30px; margin: 20px auto;" *ngIf="loading == true">
-            <img src="/img/load.gif" *ngIf="loading == true" style=" width: 30px; height: 30px; text-align: center">
-          </div>
+
         </table>
+        <div style="width: 30px; height: 30px; margin: 20px auto;" *ngIf="loading == true">
+          <img src="/img/load.gif" *ngIf="loading == true" style=" width: 30px; height: 30px; text-align: center">
+        </div>
       </div>
       <div class="table-wrap img-table" *ngFor="let item of portfolioNames; let i = index">
         <div class="table-title">
@@ -179,7 +180,7 @@
             <a (click)="onDelete(item.id, i)" class="basket"><img src="/img/basket-white.png" alt=""></a>
           </div>
         </div>
-        <table class="table crypto-table" style="position:relative;">
+        <table class="table crypto-table" style="position:relative;" *ngIf="loading == false">
           <thead *ngIf="item.user_portfolio_type_id == 3">
           <tr>
             <th [class.active]="order === 'sym'"
@@ -305,7 +306,7 @@
             </th>
           </tr>
           </thead>
-          <tbody  *ngIf="loading == true">
+          <tbody>
 
           <ng-template [ngIf]="item.user_portfolio_type_id == 1">
             <tr *ngFor="let portfolioItem of portfolios[item.id] | orderBy: order:reverse:'case-insensitive'; let in = index">
@@ -502,9 +503,7 @@
               <!--&lt;!&ndash;</td>&ndash;&gt;-->
             <!--</tr>-->
           </tbody>
-          <div style="width: 30px; height: 30px; margin: 20px auto;" *ngIf="loading == false">
-            <img src="/img/load.gif" *ngIf="loading == false" style=" width: 30px; height: 30px; text-align: center">
-          </div>
+
           <div *ngIf="!portfolios[item.id]" style="width: 100%; text-align: center; position:absolute; top: 40px;"><p *ngIf="!portfolios[item.id] && item.user_portfolio_type_id == 1" style="font-size: 14px;
           font-weight: bold; color: #c0c0c0;">У Вас еще не добавлены проекты Облачного майнинга. Перейдите в <a style="color: #fa5252; text-decoration: underline;" routerLink="/cloud-mining/all">каталог</a> для добавления.
           </p>
@@ -519,6 +518,9 @@
             </p>
           </div>
         </table>
+        <div style="width: 30px; height: 30px; margin: 20px auto;" *ngIf="loading == true">
+          <img src="/img/load.gif" *ngIf="loading == true" style=" width: 30px; height: 30px; text-align: center">
+        </div>
       </div>
     </div>
   </section>
