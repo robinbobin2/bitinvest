@@ -105,6 +105,7 @@ export class PortfolioComponent implements OnInit {
                                                 console.log('2')
                                                 this.dataUsd = crypto;
                                                 if(this.portfolios[item.id]) {
+                                                    console.log('if')
                                                     for (let portfolioItem of this.portfolios[item.id]) {
                                                         portfolioItem.last = crypto[portfolioItem['symbol'] + '/USD']['last'];
                                                         portfolioItem.now = crypto[portfolioItem['symbol'] + '/USD']['now'];
@@ -126,6 +127,8 @@ export class PortfolioComponent implements OnInit {
                                                     }
                                                     this.loading = false;
                                                 } else {
+                                                    console.log('else')
+
                                                     this.loading = false;
                                                 }
 
