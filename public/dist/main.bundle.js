@@ -8043,9 +8043,11 @@ var PortfolioComponent = (function () {
         var _this = this;
         this.portfolioService.getPortfolioNames().subscribe(function (res) {
             _this.portfolioNames = res['portfolio'];
-            console.log(_this.portfolioNames);
             var _loop_1 = function (item) {
                 if (item.user_portfolio_type_id == type_id) {
+                    if (item.user_portfolio_type_id == 3) {
+                        _this.loading = true;
+                    }
                     _this.portfolioService.getPortfolioById(item.id)
                         .subscribe(function (res) {
                         if (res[type].length > 0) {
@@ -8061,12 +8063,9 @@ var PortfolioComponent = (function () {
                                         'usd': resItem.usd
                                     };
                                 }
-                                console.log('pushed');
-                                console.log(_this.portfolios[item.id]);
                             });
                         }
                         if (type_id == 3) {
-                            _this.loading = true;
                             _this.stockService.getCrypto().subscribe(function (crypto) {
                                 _this.dataUsd = crypto;
                                 var _loop_2 = function (portfolioItem) {
