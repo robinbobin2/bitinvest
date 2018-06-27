@@ -8055,15 +8055,17 @@ var PortfolioComponent = (function () {
                             _this.portfolios[item.id].type = type;
                         }
                         if (type_id == 4) {
-                            _this.stockService.getVolumes().subscribe(function (res) {
-                                for (var _i = 0, res_1 = res; _i < res_1.length; _i++) {
-                                    var resItem = res_1[_i];
-                                    _this.volumes[resItem.name] = {
-                                        'btc': resItem.btc,
-                                        'usd': resItem.usd
-                                    };
-                                }
-                            });
+                            if (item.length > 0) {
+                                _this.stockService.getVolumes().subscribe(function (res) {
+                                    for (var _i = 0, res_1 = res; _i < res_1.length; _i++) {
+                                        var resItem = res_1[_i];
+                                        _this.volumes[resItem.name] = {
+                                            'btc': resItem.btc,
+                                            'usd': resItem.usd
+                                        };
+                                    }
+                                });
+                            }
                         }
                         if (item.user_portfolio_type_id == 3) {
                             if (item.length > 0) {
@@ -8093,26 +8095,29 @@ var PortfolioComponent = (function () {
                             }
                         }
                         if (type_id == 1) {
-                            var _loop_3 = function (portfolioItem) {
-                                _this.miningService.getMiningId(portfolioItem.id).subscribe(function (res) {
-                                    portfolioItem['percentage'] = res['news']['percentage'];
-                                });
-                            };
-                            for (var _i = 0, _a = _this.portfolios[item.id]; _i < _a.length; _i++) {
-                                var portfolioItem = _a[_i];
-                                _loop_3(portfolioItem);
+                            if (item.length > 0) {
+                                var _loop_3 = function (portfolioItem) {
+                                    _this.miningService.getMiningId(portfolioItem.id).subscribe(function (res) {
+                                        portfolioItem['percentage'] = res['news']['percentage'];
+                                    });
+                                };
+                                for (var _i = 0, _a = _this.portfolios[item.id]; _i < _a.length; _i++) {
+                                    var portfolioItem = _a[_i];
+                                    _loop_3(portfolioItem);
+                                }
                             }
-                            console.log(_this.portfolios[item.id]);
                         }
                         if (type_id == 2) {
-                            var _loop_4 = function (portfolioItem) {
-                                _this.miningService.getIcoId(portfolioItem.id).subscribe(function (res) {
-                                    portfolioItem = res['news'];
-                                });
-                            };
-                            for (var _b = 0, _c = _this.portfolios[item.id]; _b < _c.length; _b++) {
-                                var portfolioItem = _c[_b];
-                                _loop_4(portfolioItem);
+                            if (item.length > 0) {
+                                var _loop_4 = function (portfolioItem) {
+                                    _this.miningService.getIcoId(portfolioItem.id).subscribe(function (res) {
+                                        portfolioItem = res['news'];
+                                    });
+                                };
+                                for (var _b = 0, _c = _this.portfolios[item.id]; _b < _c.length; _b++) {
+                                    var portfolioItem = _c[_b];
+                                    _loop_4(portfolioItem);
+                                }
                             }
                         }
                     });
