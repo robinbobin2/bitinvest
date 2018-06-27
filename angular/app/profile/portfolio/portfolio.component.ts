@@ -122,8 +122,7 @@ export class PortfolioComponent implements OnInit {
 
                                                 this.miningService.getCryptoId(portfolioItem.symbol).subscribe((res) => {
                                                     portfolioItem.id = res['id'];
-                                                    this.loading = false
-                                                    console.log('false')
+
                                                 })
                                             }
 
@@ -154,6 +153,7 @@ export class PortfolioComponent implements OnInit {
                                             )
                                         }
                                     }
+                                    this.loading = false;
 
 
                                 }
