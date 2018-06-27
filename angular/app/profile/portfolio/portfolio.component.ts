@@ -99,7 +99,7 @@ export class PortfolioComponent implements OnInit {
                                         }
                                     }
 
-                                    if (item.user_portfolio_type_id == 3 ) {
+                                    if (type_id == 3 ) {
                                         console.log('222')
                                         console.log(this.portfolios[item.id])
                                         if (this.portfolios[item.id].length > 0) {
