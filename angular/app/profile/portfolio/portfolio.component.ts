@@ -126,14 +126,12 @@ export class PortfolioComponent implements OnInit {
                                                     }
                                                 } else {
 
-                                                    this.loading = false;
                                                 }
                                                 if (this.portfolios[item.id][0].week) {
                                                     this.loading = false;
                                                 }
                                             });
                                     } else {
-                                        this.loading = false;
                                     }
 
                                     if (type_id == 1) {

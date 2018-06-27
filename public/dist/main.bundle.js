@@ -8089,7 +8089,6 @@ var PortfolioComponent = (function () {
                                     }
                                 }
                                 else {
-                                    _this.loading = false;
                                 }
                                 if (_this.portfolios[item.id][0].week) {
                                     _this.loading = false;
@@ -8097,7 +8096,6 @@ var PortfolioComponent = (function () {
                             });
                         }
                         else {
-                            _this.loading = false;
                         }
                         if (type_id == 1) {
                             if (item.length > 0) {
