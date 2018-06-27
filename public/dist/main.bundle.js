@@ -8015,7 +8015,7 @@ var PortfolioComponent = (function () {
         this.crypto_form = false;
         this.stock_form = false;
         this.type = 1;
-        this.loading = true;
+        this.loading = false;
     }
     PortfolioComponent.prototype.onSearch = function (type) {
         var _this = this;
@@ -8044,13 +8044,17 @@ var PortfolioComponent = (function () {
         this.portfolioService.getPortfolioNames().subscribe(function (res) {
             _this.portfolioNames = res['portfolio'];
             console.log(_this.portfolioNames);
+            for (var _i = 0, _a = _this.portfolioNames; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (item.user_portfolio_type_id == 3) {
+                    _this.loading = true;
+                }
+            }
             var _loop_1 = function (item) {
                 if (item.user_portfolio_type_id == type_id) {
                     _this.portfolioService.getPortfolioById(item.id)
                         .subscribe(function (res) {
-                        console.log(res);
                         if (type == 'crypto') {
-                            console.log(res);
                             if (res['crypto'] == []) {
                                 _this.loading = false;
                             }
@@ -8139,8 +8143,8 @@ var PortfolioComponent = (function () {
                     });
                 }
             };
-            for (var _i = 0, _a = _this.portfolioNames; _i < _a.length; _i++) {
-                var item = _a[_i];
+            for (var _b = 0, _c = _this.portfolioNames; _b < _c.length; _b++) {
+                var item = _c[_b];
                 _loop_1(item);
             }
         });
