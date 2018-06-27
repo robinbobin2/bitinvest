@@ -90,14 +90,16 @@ export class PortfolioComponent implements OnInit {
                                     }
 
                                     if (type_id == 4) {
-                                        this.stockService.getVolumes().subscribe(res => {
-                                            for (let resItem of res) {
-                                                this.volumes[resItem.name] = {
-                                                    'btc': resItem.btc,
-                                                    'usd': resItem.usd
+                                        if (item.length > 0) {
+                                            this.stockService.getVolumes().subscribe(res => {
+                                                for (let resItem of res) {
+                                                    this.volumes[resItem.name] = {
+                                                        'btc': resItem.btc,
+                                                        'usd': resItem.usd
+                                                    }
                                                 }
-                                            }
-                                        });
+                                            });
+                                        }
                                     }
 
                                     if (item.user_portfolio_type_id == 3) {
@@ -133,24 +135,27 @@ export class PortfolioComponent implements OnInit {
                                     }
 
                                     if (type_id == 1) {
-                                        for (let portfolioItem of this.portfolios[item.id]) {
-                                            this.miningService.getMiningId(portfolioItem.id).subscribe(
-                                                res => {
-                                                    portfolioItem['percentage'] = res['news']['percentage'];
-                                                }
-                                            )
+                                        if (item.length > 0) {
+                                            for (let portfolioItem of this.portfolios[item.id]) {
+                                                this.miningService.getMiningId(portfolioItem.id).subscribe(
+                                                    res => {
+                                                        portfolioItem['percentage'] = res['news']['percentage'];
+                                                    }
+                                                )
+                                            }
                                         }
-                                        console.log(this.portfolios[item.id]);
                                     }
                                     if (type_id == 2) {
-                                        for (let portfolioItem of this.portfolios[item.id]) {
-                                            this.miningService.getIcoId(portfolioItem.id).subscribe(
-                                                res => {
+                                        if (item.length > 0) {
+                                            for (let portfolioItem of this.portfolios[item.id]) {
+                                                this.miningService.getIcoId(portfolioItem.id).subscribe(
+                                                    res => {
 
-                                                    portfolioItem = res['news'];
+                                                        portfolioItem = res['news'];
 
-                                                }
-                                            )
+                                                    }
+                                                )
+                                            }
                                         }
                                     }
 
