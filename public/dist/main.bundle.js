@@ -8066,6 +8066,7 @@ var PortfolioComponent = (function () {
                             });
                         }
                         if (type_id == 3) {
+                            _this.loading = true;
                             _this.stockService.getCrypto().subscribe(function (crypto) {
                                 _this.dataUsd = crypto;
                                 var _loop_2 = function (portfolioItem) {
@@ -8081,6 +8082,7 @@ var PortfolioComponent = (function () {
                                     _this.diff[item.id] = portfolioItem.now - portfolioItem.last;
                                     _this.miningService.getCryptoId(portfolioItem.symbol).subscribe(function (res) {
                                         portfolioItem.id = res['id'];
+                                        _this.loading = false;
                                     });
                                 };
                                 for (var _i = 0, _a = _this.portfolios[item.id]; _i < _a.length; _i++) {
