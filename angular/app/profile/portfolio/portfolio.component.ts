@@ -100,9 +100,10 @@ export class PortfolioComponent implements OnInit {
                                     }
 
                                     if (item.user_portfolio_type_id == 3) {
+                                        if (item.length > 0) {
                                             this.stockService.getCrypto().subscribe(crypto => {
                                                 this.dataUsd = crypto;
-                                                if(this.portfolios[item.id]) {
+                                                if (this.portfolios[item.id]) {
                                                     for (let portfolioItem of this.portfolios[item.id]) {
                                                         portfolioItem.last = crypto[portfolioItem['symbol'] + '/USD']['last'];
                                                         portfolioItem.now = crypto[portfolioItem['symbol'] + '/USD']['now'];
@@ -120,7 +121,6 @@ export class PortfolioComponent implements OnInit {
                                                                 portfolioItem.id = res['id'];
 
 
-
                                                             }
                                                         )
                                                     }
@@ -131,6 +131,9 @@ export class PortfolioComponent implements OnInit {
                                                     this.loading = false;
                                                 }
                                             });
+                                        } else {
+                                            this.loading = false
+                                        }
                                     }
 
                                     if (type_id == 1) {
