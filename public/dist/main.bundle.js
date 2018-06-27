@@ -8064,8 +8064,8 @@ var PortfolioComponent = (function () {
                                 });
                             }
                         }
+                        console.log(_this.portfolios[item.id]);
                         if (type_id == 3) {
-                            console.log('222');
                             console.log(_this.portfolios[item.id]);
                             if (_this.portfolios[item.id].length > 0) {
                                 _this.stockService.getCrypto().subscribe(function (crypto) {
@@ -8102,12 +8102,6 @@ var PortfolioComponent = (function () {
                                 });
                             }
                             else {
-                                _this.loading = false;
-                            }
-                        }
-                        else {
-                            if (_this.portfolios[item.id]) {
-                                console.log('1111122');
                                 _this.loading = false;
                             }
                         }
