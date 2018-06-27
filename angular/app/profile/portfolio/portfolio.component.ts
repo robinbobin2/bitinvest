@@ -142,6 +142,9 @@ export class PortfolioComponent implements OnInit {
 
 
 
+                                    } else {
+                                        console.log('else')
+                                        this.loading = false
                                     }
 
                                     if (type_id == 1) {
