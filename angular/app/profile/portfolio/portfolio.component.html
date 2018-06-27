@@ -180,7 +180,7 @@
 
       </div>
       </ng-template>
-      <div style="width: 30px; height: 30px; margin: 20px auto;" *ngIf="loading == true">
+      <div class="mobile-only" style="width: 30px; height: 30px; margin: 20px auto;" *ngIf="loading == true">
         <img src="/img/load.gif" *ngIf="loading == true" style=" width: 30px; height: 30px; text-align: center">
       </div>
       <ng-template [ngIf]="loading == false">
@@ -188,7 +188,9 @@
         <div class="table-title">
           <h3>{{item.name}}</h3>
           <div class="buttons">
-            <!--<a href="#"><img src="/img/setting-icon-table.png" alt=""></a>-->
+            <a href="#">
+              <!--<img src="/img/setting-icon-table.png" alt="">-->
+            </a>
             <a (click)="onDelete(item.id, i)" class="basket"><img src="/img/basket-white.png" alt=""></a>
           </div>
         </div>
@@ -541,8 +543,8 @@
 
       </div>
       </ng-template>
-      <div style="width: 30px; height: 30px; margin: 20px auto;" *ngIf="loading == true">
-        <img src="/img/load.gif" *ngIf="loading == true" style=" width: 30px; height: 30px; text-align: center">
+      <div class="no-mobile" style="width: 40px; height: 40px; margin: 30px auto;" *ngIf="loading == true">
+        <img src="/img/load.gif" *ngIf="loading == true" style=" width: 40px; height: 40px; text-align: center">
       </div>
     </div>
   </section>
