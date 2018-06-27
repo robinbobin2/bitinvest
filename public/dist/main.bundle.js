@@ -8064,7 +8064,7 @@ var PortfolioComponent = (function () {
                                 });
                             }
                         }
-                        if (_this.portfolios[item.id].type == 'crypto' && _this.portfolios[item.id].symbol == undefined) {
+                        if (!_this.portfolios[item.id] && _this.portfolios[item.id].symbol == undefined) {
                             _this.loading = false;
                         }
                         if (type_id == 3) {

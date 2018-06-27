@@ -98,7 +98,7 @@ export class PortfolioComponent implements OnInit {
                                             });
                                         }
                                     }
-                                    if (this.portfolios[item.id].type == 'crypto' && this.portfolios[item.id].symbol == undefined) {
+                                    if (!this.portfolios[item.id] && this.portfolios[item.id].symbol == undefined) {
                                         this.loading = false
                                     }
                                     if (type_id == 3 ) {
