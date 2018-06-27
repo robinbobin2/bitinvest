@@ -8047,6 +8047,7 @@ var PortfolioComponent = (function () {
                 if (item.user_portfolio_type_id == type_id) {
                     _this.portfolioService.getPortfolioById(item.id)
                         .subscribe(function (res) {
+                        console.log(res);
                         if (type == 'crypto') {
                             console.log(res['crypto'].length);
                             if (res['crypto'].length == 0) {
@@ -8131,7 +8132,10 @@ var PortfolioComponent = (function () {
                                 }
                             }
                         }
-                    }, function () { return _this.loading = false; });
+                    }, function (err) {
+                        console.log(err);
+                        _this.loading = false;
+                    });
                 }
             };
             for (var _i = 0, _a = _this.portfolioNames; _i < _a.length; _i++) {

@@ -80,6 +80,7 @@ export class PortfolioComponent implements OnInit {
                         this.portfolioService.getPortfolioById(item.id)
                             .subscribe(
                                 res => {
+                                    console.log(res)
                                     if (type == 'crypto') {
                                         console.log(res['crypto'].length)
                                         if (res['crypto'].length == 0) {
@@ -173,7 +174,10 @@ export class PortfolioComponent implements OnInit {
 
 
                                 },
-                                ()=>this.loading = false
+                                (err)=>{
+                                    console.log(err);
+                                    this.loading = false
+                                }
                             )
 
 
