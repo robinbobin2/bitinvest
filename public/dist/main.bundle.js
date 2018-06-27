@@ -8066,29 +8066,31 @@ var PortfolioComponent = (function () {
                             });
                         }
                         if (item.user_portfolio_type_id == 3) {
-                            _this.stockService.getCrypto().subscribe(function (crypto) {
-                                _this.dataUsd = crypto;
-                                var _loop_2 = function (portfolioItem) {
-                                    portfolioItem.last = crypto[portfolioItem['symbol'] + '/USD']['last'];
-                                    portfolioItem.now = crypto[portfolioItem['symbol'] + '/USD']['now'];
-                                    portfolioItem.min = crypto[portfolioItem['symbol'] + '/USD']['min'];
-                                    portfolioItem.max = crypto[portfolioItem['symbol'] + '/USD']['max'];
-                                    portfolioItem.volume = crypto[portfolioItem['symbol'] + '/USD']['volume'];
-                                    portfolioItem.day = crypto[portfolioItem['symbol'] + "/USD"]['day'];
-                                    portfolioItem.week = crypto[portfolioItem['symbol'] + "/USD"]['week'];
-                                    portfolioItem.month = crypto[portfolioItem['symbol'] + "/USD"]['month'];
-                                    portfolioItem.marketCapUsd = crypto[portfolioItem['symbol'] + "/USD"]['marketCapUsd'];
-                                    _this.diff[item.id] = portfolioItem.now - portfolioItem.last;
-                                    _this.miningService.getCryptoId(portfolioItem.symbol).subscribe(function (res) {
-                                        portfolioItem.id = res['id'];
-                                    });
-                                };
-                                for (var _i = 0, _a = _this.portfolios[item.id]; _i < _a.length; _i++) {
-                                    var portfolioItem = _a[_i];
-                                    _loop_2(portfolioItem);
-                                }
-                                _this.loading = false;
-                            });
+                            if (item.length > 0) {
+                                _this.stockService.getCrypto().subscribe(function (crypto) {
+                                    _this.dataUsd = crypto;
+                                    var _loop_2 = function (portfolioItem) {
+                                        portfolioItem.last = crypto[portfolioItem['symbol'] + '/USD']['last'];
+                                        portfolioItem.now = crypto[portfolioItem['symbol'] + '/USD']['now'];
+                                        portfolioItem.min = crypto[portfolioItem['symbol'] + '/USD']['min'];
+                                        portfolioItem.max = crypto[portfolioItem['symbol'] + '/USD']['max'];
+                                        portfolioItem.volume = crypto[portfolioItem['symbol'] + '/USD']['volume'];
+                                        portfolioItem.day = crypto[portfolioItem['symbol'] + "/USD"]['day'];
+                                        portfolioItem.week = crypto[portfolioItem['symbol'] + "/USD"]['week'];
+                                        portfolioItem.month = crypto[portfolioItem['symbol'] + "/USD"]['month'];
+                                        portfolioItem.marketCapUsd = crypto[portfolioItem['symbol'] + "/USD"]['marketCapUsd'];
+                                        _this.diff[item.id] = portfolioItem.now - portfolioItem.last;
+                                        _this.miningService.getCryptoId(portfolioItem.symbol).subscribe(function (res) {
+                                            portfolioItem.id = res['id'];
+                                        });
+                                    };
+                                    for (var _i = 0, _a = _this.portfolios[item.id]; _i < _a.length; _i++) {
+                                        var portfolioItem = _a[_i];
+                                        _loop_2(portfolioItem);
+                                    }
+                                    _this.loading = false;
+                                });
+                            }
                         }
                         if (type_id == 1) {
                             var _loop_3 = function (portfolioItem) {
