@@ -8066,6 +8066,7 @@ var PortfolioComponent = (function () {
                             });
                         }
                         if (type_id == 3) {
+                            console.log('3');
                             _this.stockService.getCrypto().subscribe(function (crypto) {
                                 _this.dataUsd = crypto;
                                 var _loop_2 = function (portfolioItem) {
@@ -8087,7 +8088,6 @@ var PortfolioComponent = (function () {
                                     var portfolioItem = _a[_i];
                                     _loop_2(portfolioItem);
                                 }
-                                _this.loading = false;
                             });
                         }
                         if (type_id == 1) {
