@@ -82,8 +82,9 @@ export class PortfolioComponent implements OnInit {
                                 res => {
                                     console.log(res)
                                     if (type == 'crypto') {
-                                        console.log(res['crypto'].length)
-                                        if (res['crypto'].length == 0) {
+                                        console.log(res)
+                                            ['crypto']
+                                        if (res['crypto'] == []) {
                                             this.loading = false;
                                         }
                                     }
