@@ -102,6 +102,7 @@ export class PortfolioComponent implements OnInit {
                                     }
 
                                     if (type_id == 3) {
+                                        this.loading = true;
 
                                         this.stockService.getCrypto().subscribe(crypto => {
 
@@ -122,7 +123,7 @@ export class PortfolioComponent implements OnInit {
 
                                                 this.miningService.getCryptoId(portfolioItem.symbol).subscribe((res) => {
                                                     portfolioItem.id = res['id'];
-
+                                                    this.loading = false;
                                                 })
                                             }
 
