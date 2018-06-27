@@ -98,9 +98,8 @@ export class PortfolioComponent implements OnInit {
                                             });
                                         }
                                     }
-
+                                    console.log(this.portfolios[item.id])
                                     if (type_id == 3 ) {
-                                        console.log('222')
                                         console.log(this.portfolios[item.id])
                                         if (this.portfolios[item.id].length > 0) {
                                             this.stockService.getCrypto().subscribe(crypto => {
@@ -142,11 +141,6 @@ export class PortfolioComponent implements OnInit {
 
 
 
-                                    } else {
-                                        if (this.portfolios[item.id]) {
-                                            console.log('1111122')
-                                            this.loading = false
-                                        }
                                     }
 
                                     if (type_id == 1) {
