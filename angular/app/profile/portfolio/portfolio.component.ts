@@ -143,8 +143,10 @@ export class PortfolioComponent implements OnInit {
 
 
                                     } else {
-                                        console.log('else')
-                                        this.loading = false
+                                        if (!this.portfolios[item.id]) {
+                                            console.log('1111122')
+                                            this.loading = false
+                                        }
                                     }
 
                                     if (type_id == 1) {
