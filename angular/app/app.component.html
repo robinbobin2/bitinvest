@@ -49,11 +49,14 @@
         </ul>
         <div class="setting-top-block" *ngIf="checkUser()">
           <li><a href="#" class="search-btn"><img src="/img/search-icon-white.png" alt=""></a></li>
-          <a routerLink="/profile/edit"><img src="/img/settings-icon.png" alt=""></a>
+          <a routerLink="/profile/edit" style="margin-top: 2px;"><img src="/img/settings-icon.png" alt=""></a>
           <a routerLink="/profile/portfolio"><div class="img-wrap" style="overflow: hidden"><img style="width: 100%; height: 100%;"
             src="{{user.photo ? user.photo.file : 'http://aiyd.org/wp-content/uploads/2016/09/no-image-icon-hi.png'}}" alt=""></div></a>
           <a routerLink="/profile/portfolio">
-              <p style="margin-right: 0; color: #FFffff;" value="all">{{user.name}}</p>
+            <p style="margin-right: 0; color: #FFffff;" value="all">{{user.name}}</p>
+          </a>
+          <a (click)="logOut()" style="padding-top: 5px; margin: 0;">
+            <img src="/img/logout.png" alt="">
           </a>
         </div>
       </div>

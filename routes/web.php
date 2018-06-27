@@ -37,7 +37,7 @@ Route::get('admin/banners/edit',  ['as' => 'banner.edit', 'uses' => 'BannerContr
 Route::get('angular/banners',  ['as' => 'banner.banners', 'uses' => 'BannerController@banners']);
 Route::patch('admin/banners/update',  ['as' => 'banner.update', 'uses' => 'BannerController@update']);
 Route::post('admin/banners/store',  ['as' => 'banner.store', 'uses' => 'BannerController@store']);
-Route::delete('admin/banners/delete',  ['as' => 'banner.destroy', 'uses' => 'BannerController@destroy']);
+Route::delete('admin/banners/delete/{id}',  ['as' => 'banner.destroy', 'uses' => 'BannerController@destroy']);
 // Route::get('profile/{user}',  ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 Route::get('users/raw', function() {
 	return User::all();
@@ -165,6 +165,7 @@ Route::get('/angular/bannersbyfrontid/{id}', "BannerController@bannersByFront");
 Route::post('/angular/vote', "AngularController@vote");
 Route::post('/angular/incrementView', "AngularController@viewCount");
 Route::post('/angular/addemail', "AngularController@addEmail");
+Route::post('/angular/logout', "AngularController@logout");
 Route::get('/angular/similarnews', "NewsViewController@similarNews");
 
 Route::get('/crypto/{symbol}', "AngularController@crypto");
@@ -193,8 +194,8 @@ Route::get('/profile/edit/{id}', "ProfileController@edit");
 
 // Route::get('/crypto/XRP', "AngularController@serve");
 Route::get('/read', function() {
-	 $return_banner = CryptoStat::findOrFail(1);
-	 return $return_banner->categories;
+	 FrontEnd::whereIn('id', [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])->delete();
+	 echo "deleted";
 });
 
 // ENDANGULAR

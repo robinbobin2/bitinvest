@@ -179,6 +179,22 @@ checkAuth() {
 
   	// this.user = this.auth.getUser();
   }
+  logOut() {
+      this.http.post('/angular/logout', {}, {headers: headers}).subscribe(
+          () =>
+          {
+              this.auth
+                  .getUser()
+                  .subscribe(
+                      (response) => {
+                          this.user = response;
+                          this.auth.setUser(this.user);
+                      }
+                  );
+          },
+          (error) => console.log(error)
+      );
+  }
   onAddEmail() {
       this.email_added=""
 	    if (this.email) {

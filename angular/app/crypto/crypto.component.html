@@ -70,9 +70,15 @@
           <li><span>Капитализация</span><span class="black">${{dataUsd.marketCapUsd| number:'1.0-2'}}</span></li>
           <li><span>Алгоритм</span><span class="black">{{data?.algo}}</span></li>
               </ul>
-              <div class="overview-block">
+              <div class="overview-block no-mobile">
                 <h3>{{data?.symbol}}/USD График криптовалюты</h3>
-                <app-chart></app-chart>
+                  <app-chart4></app-chart4>
+
+              </div>
+              <div class="overview-block mobile-only">
+                <h3>{{data?.symbol}}/USD График криптовалюты</h3>
+
+                <app-chart6></app-chart6>
               </div>
               <div class="overview-table-wrap">
                 <div class="overview-title-block">
@@ -93,7 +99,7 @@
                   </thead>
                   <tbody *ngIf="load==false" style="position: relative; min-height: 65px;">
 
-                    <tr *ngFor="let stock of stocks; let i = index">
+                    <tr *ngFor="let stock of stocks | orderBy: 'volumeCommon':true:'case-insensitive'; let i = index">
                       <td>
                         <a  >
                           <!-- <span class="img-wrap"><img src="img/bitfinex-icon.png" alt=""></span> -->
@@ -210,7 +216,7 @@
                     <p class="comment-text">{{item.body}}</p>
                   </div>
                   <div class="right">
-                    <div class="img-wrap"></div>
+                    <!-- <div class="img-wrap"></div> -->
                     <div class="btn-block">
                       <span *ngIf="rating_count[item.id] > 0" class="number-green">{{rating_count[item.id]}}</span>
                       <span *ngIf="rating_count[item.id] < 0" class="number-red">{{rating_count[item.id]}}</span>
@@ -323,9 +329,13 @@
               <h3>Потоковый график {{data?.symbol}}/USD</h3>
               <app-chart3></app-chart3>
             </div>
-            <div class="overview-block overview-block-2" id="second_graph">
+            <div class="overview-block overview-block-2 mobile-only" id="second_graph">
               <h3>Интерактивный график {{data?.symbol}}/USD</h3>
               <app-chart2></app-chart2>
+            </div>
+            <div class="overview-block overview-block-2 no-mobile" >
+              <h3>Интерактивный график {{data?.symbol}}/USD</h3>
+              <app-chart5></app-chart5>
             </div>
             <div class="desc-wrap">
               <div class="description">
@@ -467,7 +477,7 @@
                     <p class="comment-text">{{item.body}}</p>
                   </div>
                   <div class="right">
-                    <div class="img-wrap"></div>
+                    <!-- <div class="img-wrap"></div> -->
                     <div class="btn-block">
                       <span class="number-green">{{rating_count[item.id]}}</span>
                       <div class="buttons">
@@ -595,13 +605,13 @@
           </div>
 
         </div>
-      <aside class="sidebar">
+      <aside class="sidebar" style="background: none !important;">
         <div class="description" *ngIf="!getRoute('about')">
           <h5 class="titles">Описание {{data?.symbol}} ({{data?.name}})</h5>
           <div [innerHTML]='data?.desc'></div>
           <br> <p><a class="more-sidebar"  routerLink="about">Подробнее</a><p>
           </div>
-          <app-sidebar></app-sidebar>
+          <app-sidebar ></app-sidebar>
         </aside>
       </div>
     </section>
