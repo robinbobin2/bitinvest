@@ -8049,8 +8049,8 @@ var PortfolioComponent = (function () {
                         .subscribe(function (res) {
                         console.log(res);
                         if (type == 'crypto') {
-                            console.log(res['crypto'].length);
-                            if (res['crypto'].length == 0) {
+                            console.log(res)['crypto'];
+                            if (res['crypto'] == []) {
                                 _this.loading = false;
                             }
                         }
