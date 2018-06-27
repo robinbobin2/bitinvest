@@ -100,7 +100,7 @@ export class PortfolioComponent implements OnInit {
                                         });
                                     }
 
-                                    if (type_id == 3) {
+                                    if (item.user_portfolio_type_id == 3) {
                                         this.stockService.getCrypto().subscribe(crypto => {
 
                                             this.dataUsd = crypto;
