@@ -8015,7 +8015,7 @@ var PortfolioComponent = (function () {
         this.crypto_form = false;
         this.stock_form = false;
         this.type = 1;
-        this.loading = true;
+        this.loading = false;
     }
     PortfolioComponent.prototype.onSearch = function (type) {
         var _this = this;
@@ -8066,7 +8066,7 @@ var PortfolioComponent = (function () {
                             });
                         }
                         if (type_id == 3) {
-                            console.log('3');
+                            _this.loading = true;
                             _this.stockService.getCrypto().subscribe(function (crypto) {
                                 _this.dataUsd = crypto;
                                 var _loop_2 = function (portfolioItem) {
@@ -8088,6 +8088,7 @@ var PortfolioComponent = (function () {
                                     var portfolioItem = _a[_i];
                                     _loop_2(portfolioItem);
                                 }
+                                _this.loading = false;
                             });
                         }
                         if (type_id == 1) {
