@@ -45,8 +45,8 @@ class NeraexProvider extends FounderProvider
             }
             $supplierTicker = $supplierTicker->ticker;
             $ticker = new TickerEntity();
-            $ticker->setAsk($supplierTicker->buy);
-            $ticker->setBid($supplierTicker->sell);
+            $ticker->setAsk($supplierTicker->high);
+            $ticker->setBid($supplierTicker->low);
             $ticker->setVolume($supplierTicker->vol);
             $ticker->setValue($supplierTicker->last);
             $ticker->setExchangeId($this->getExchangeId());
