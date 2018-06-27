@@ -31,7 +31,7 @@ export class PortfolioComponent implements OnInit {
     crypto_form = false;
     stock_form = false;
     type = 1;
-    loading = true;
+    loading = false;
 
     /**
      * Example: Use Order pipe in the component
@@ -75,6 +75,11 @@ export class PortfolioComponent implements OnInit {
             res => {
                 this.portfolioNames = res['portfolio'];
                 console.log(this.portfolioNames)
+                for(let item of this.portfolioNames) {
+                    if (item.user_portfolio_type_id == 3) {
+                        this.loading = true
+                    }
+                }
                 for (let item of this.portfolioNames) {
 
                     if (item.user_portfolio_type_id == type_id) {
@@ -82,9 +87,7 @@ export class PortfolioComponent implements OnInit {
                         this.portfolioService.getPortfolioById(item.id)
                             .subscribe(
                                 res => {
-                                    console.log(res)
                                     if (type == 'crypto') {
-                                        console.log(res)
                                         if (res['crypto'] == []) {
                                             this.loading = false;
                                         }
@@ -109,8 +112,6 @@ export class PortfolioComponent implements OnInit {
                                     }
 
                                     if (type_id == 3 ) {
-                                        console.log('type_id = 3')
-                                        console.log(this.portfolios[item.id])
 
                                             this.stockService.getCrypto().subscribe(crypto => {
 
@@ -136,7 +137,6 @@ export class PortfolioComponent implements OnInit {
                                                             }
                                                         )
                                                     }
-                                                    console.log(this.portfolios[item.id])
                                                 } else {
                                                     this.loading = false
                                                 }
