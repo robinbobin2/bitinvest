@@ -176,7 +176,7 @@ checkAuth() {
         }
       );
       this.auth.userD$.subscribe((res)=> {
-          console.log('Sibling2Component-received from sibling1: ' + res);
+          this.user = res
       })
 
 

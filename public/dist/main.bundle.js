@@ -759,7 +759,7 @@ var AppComponent = (function () {
             _this.auth.setUser(_this.user);
         });
         this.auth.userD$.subscribe(function (res) {
-            console.log('Sibling2Component-received from sibling1: ' + res);
+            _this.user = res;
         });
         // this.user = this.auth.getUser();
     };
