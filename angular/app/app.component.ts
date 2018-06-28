@@ -7,7 +7,6 @@ import { SearchService } from './search.service';
 import { Subject } from 'rxjs/Subject';
 import {StocksService} from "./stocks.service";
 import {Observable} from 'rxjs/Observable';
-import {EventEmitter} from '@angular/core';
 
 export class Login {
 	email: string;
@@ -69,7 +68,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   email = '';
   email_added = '';
     error_email = false;
-    numb: EventEmitter<number> = new EventEmitter();
 	constructor(public auth: AuthService, private http:HttpClient, 
     private router:Router, private activatedRoute: ActivatedRoute,
     private searchService: SearchService,
@@ -177,8 +175,10 @@ checkAuth() {
           this.auth.setUser(this.user);
         }
       );
-    this.auth.emitNavChangeEvent(2);
-    this.numb = this.auth.navchange;
+      this.auth.userD$.subscribe((res)=> {
+          console.log('Sibling2Component-received from sibling1: ' + res);
+      })
+
 
   	// this.user = this.auth.getUser();
   }
