@@ -113,6 +113,7 @@ deletePhoto() {
                 (response) => {
                     this.user = response;
                     this.auth.setUser(this.user);
+                    this.auth.publishData(this.user);
                 }
             );
     })

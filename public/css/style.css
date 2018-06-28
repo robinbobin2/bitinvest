@@ -8559,9 +8559,9 @@ body .mfp-zoom-in.mfp-ready.mfp-bg {
 }
 
 .img {
-  background-repeat: no-repeat;
+  /*background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: center center;*/
   width: 100%;
   padding: 25px 25px 20px 22px;
   display: -webkit-box;
