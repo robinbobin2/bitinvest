@@ -46,6 +46,7 @@ export class EditProfileComponent implements OnInit {
   msg = '';
   error_msg = false;
     loading = false;
+    error_load='';
   constructor(public auth: AuthService, private http:HttpClient, private _http:Http) { }
 @ViewChild('fileInput') fileInput
   ngOnInit() {
@@ -87,7 +88,17 @@ handleFileInput() {
         }
       );
       }, error => {
-        console.log(error);
+        this.loading = false;
+        this.error_load = "Слишком большое изображение";
+        this.auth
+            .getUser()
+            .subscribe(
+                (response) => {
+                    this.user = response;
+                    this.auth.setUser(this.user);
+                    this.auth.publishData(this.user);
+                }
+            );
       });
 
 }
