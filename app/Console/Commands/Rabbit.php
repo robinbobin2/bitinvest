@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Founder\Models\Entity\ResponseContainer;
+use App\Models\Founder\Models\Entity\TickerEntity;
+use App\Models\Founder\Models\FounderProvider;
 use Illuminate\Console\Command;
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
@@ -29,6 +32,20 @@ class Rabbit extends Command
     private $connection;
 
     /**
+     * @var TickerEntity[]
+     */
+    private $response = [];
+
+    /**
+     * @var TickerEntity[]
+     */
+    private $cacheResponse = [];
+
+    private $time;
+
+
+
+    /**
      * Create a new command instance.
      *
      * @return void
@@ -36,6 +53,7 @@ class Rabbit extends Command
     public function __construct()
     {
         $this->connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
+        $this->time = time();
         parent::__construct();
     }
 
@@ -48,8 +66,7 @@ class Rabbit extends Command
         $channel = $this->getConnection()->channel();
         $channel->queue_declare('rpc_queue', false, false, false, false);
         echo " [x] Awaiting RPC requests\n";
-        $channel->basic_qos(null, 1, null);
-        $channel->basic_consume('rpc_queue', '', false, false, false, false, [$this, 'callback']);
+        $channel->basic_consume('rpc_queue', '', false, true, false, false, [$this, 'callback']);
 
         while (count($channel->callbacks)) {
             $channel->wait();
@@ -67,15 +84,36 @@ class Rabbit extends Command
     {
         /* @var \App\Models\Founder\Models\Requests\Request $request */
         $request = unserialize($message->body);
-        $newMessage = new AMQPMessage(
-            serialize($request->provider->{$request->getFunction()}($request)),
-            ['correlation_id' => $message->get('correlation_id')]
-        );
+        $response = $request->provider->{$request->getFunction()}($request);
+        $log = [];
+        if(!empty($response)){
+            if(current($response)->getType() == FounderProvider::RAPID_RATE){
+                $this->response = array_merge($this->response, $response);
+            } else {
+                $this->cacheResponse = array_merge($this->cacheResponse, array_chunk($response, 50));
+            }
+            $log['exchangeId'] = current($response)->getExchangeId();
+        }
+        $log['cache'] = count($this->cacheResponse);
+        $log["response"] = count($this->response);
 
-        /** @var AMQPChannel $channel */
-        $channel = $message->delivery_info['channel'];
-        $channel->basic_publish($newMessage, '', $message->get('reply_to'));
-        $channel->basic_ack($message->delivery_info['delivery_tag']);
+        $container = new ResponseContainer();
+        $this->response = $container->getResponse($this->response, $this->cacheResponse);
+        $log["responseAfter"] = count($this->response);
+        echo json_encode($log) . PHP_EOL;
+        if (!empty($this->response)) {
+
+            $this->time = time();
+            $query = "INSERT INTO `bit`.`exchangeRates` (`currency`, `value`, `createTime`, `exchangeId`, `volume`, `bid`, `ask`) VALUES ";
+            $inserts = [];
+            foreach ($this->response as $item) {
+                $inserts[] = '("' . $item->getCurrency() . '","' . $item->getValue() . '","' . time() . '","' . $item->getExchangeId() . '","' . $item->getVolume() . '","' . $item->getBid() . '","' . $item->getAsk() . '")';
+            }
+            $query .= implode(", ", $inserts);
+            shell_exec('php /var/www/bit/artisan load:query \'' . $query . '\' &');
+
+            $this->response = [];
+        }
 
         return $message;
     }
