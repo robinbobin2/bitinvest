@@ -7217,7 +7217,7 @@ var _a;
 /***/ "./angular/app/news/all-news/all-news.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "\n.main-news .news:nth-child(even) {\n\tmax-width: 424px;\n}"
+module.exports = ""
 
 /***/ }),
 
@@ -7292,7 +7292,9 @@ var AllNewsComponent = (function () {
             _this.countAll = _this.news.length + _this.main_news.length;
             setTimeout(function () {
                 $.getScript('/js/script.js');
-                _this.load = false;
+                setTimeout(function () {
+                    _this.load = false;
+                }, 300);
             }, 800);
         }).subscribe();
     };
