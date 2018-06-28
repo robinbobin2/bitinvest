@@ -14,6 +14,7 @@ export class User {
   photo:any;
   error: string;
 }
+declare var $:any;
 @Injectable()
 
 export class AuthService {
@@ -84,5 +85,10 @@ info;
   } else {
     return true;
   }
+  }
+  loadScript() {
+      setTimeout(()=> {
+          $.getScript('/js/script.js');
+      }, 800)
   }
 }

@@ -9334,10 +9334,6 @@ display: inherit;
   border: none !important;
 }
 
-.slick-track {
-  max-height: 265px !important;
-  overflow: hidden !important;
-}
 .tab-content-wrap .comment-block h3 {
   font-size: 18px;
 }
@@ -9369,12 +9365,6 @@ display: inherit;
   font-size: 18px !important;
   margin-bottom: 10px;
 }
-  .img {
-    width: 80% !important;
-  }
-  .slick-track .text {
-    width: 80% !important;
-  }
 }
 .comment-block {
   border: none !important;
