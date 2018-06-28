@@ -9382,5 +9382,5 @@ display: inherit;
 }
 }
 .main-news-slider .img {
-  background-size: contain !important;
+  background-size: cover !important;
 }
