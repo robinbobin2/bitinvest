@@ -83,12 +83,13 @@ handleFileInput() {
           this.user = response;
           this.auth.setUser(this.user);
           this.loading = false;
+          this.auth.publishData(this.user);
         }
       );
       }, error => {
         console.log(error);
       });
-    this.auth.emitNavChangeEvent(1);
+
 }
 
 deletePhoto() {

@@ -614,7 +614,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var Login = (function () {
     function Login() {
     }
@@ -670,7 +669,6 @@ var AppComponent = (function () {
         this.email = '';
         this.email_added = '';
         this.error_email = false;
-        this.numb = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.searchService.mainSearch(this.searchTerm$)
             .subscribe(function (results) {
             if (results['error']) {
@@ -760,8 +758,9 @@ var AppComponent = (function () {
             _this.user = response;
             _this.auth.setUser(_this.user);
         });
-        this.auth.emitNavChangeEvent(2);
-        this.numb = this.auth.navchange;
+        this.auth.userD$.subscribe(function (res) {
+            console.log('Sibling2Component-received from sibling1: ' + res);
+        });
         // this.user = this.auth.getUser();
     };
     AppComponent.prototype.logOut = function () {
@@ -1251,6 +1250,7 @@ AppModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/@angular/common/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__("./node_modules/rxjs/_esm5/BehaviorSubject.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1272,8 +1272,18 @@ var User = (function () {
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
+        this.userD = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["a" /* BehaviorSubject */]({
+            id: 0,
+            name: '',
+            email: '',
+            photo_id: 0,
+            role_id: 0,
+            telegram: '',
+            photo: [],
+            error: '',
+        });
+        this.userD$ = this.userD.asObservable();
         this.error = '';
-        this.navchange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.user = {
             id: 0,
             name: '',
@@ -1285,8 +1295,8 @@ var AuthService = (function () {
             error: '',
         };
     }
-    AuthService.prototype.emitNavChangeEvent = function (number) {
-        this.navchange.emit(number);
+    AuthService.prototype.publishData = function (data) {
+        this.userD.next(data);
     };
     AuthService.prototype.uploadPhoto = function (photo) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
@@ -4244,11 +4254,11 @@ var EditProfileComponent = (function () {
                 _this.user = response;
                 _this.auth.setUser(_this.user);
                 _this.loading = false;
+                _this.auth.publishData(_this.user);
             });
         }, function (error) {
             console.log(error);
         });
-        this.auth.emitNavChangeEvent(1);
     };
     EditProfileComponent.prototype.deletePhoto = function () {
         var _this = this;

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import {EventEmitter} from '@angular/core';
+import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 export class User {
 	id:number;
@@ -16,11 +17,20 @@ export class User {
 @Injectable()
 
 export class AuthService {
-
+    userD:Subject<User> = new BehaviorSubject<User>({
+        id:0,
+        name: '',
+        email:'',
+        photo_id: 0,
+        role_id: 0,
+        telegram:'',
+        photo: [],
+        error: '',
+    });
+    userD$ = this.userD.asObservable();
 user: User;
 error = '';
 info;
-    navchange: EventEmitter<number> = new EventEmitter();
   constructor(private http:HttpClient ) {
     this.user = {
         id:0,
@@ -33,8 +43,8 @@ info;
         error: '',
     }
   }
-    emitNavChangeEvent(number) {
-        this.navchange.emit(number);
+    publishData(data: User) {
+        this.userD.next(data);
     }
   public uploadPhoto(photo) {
     var headers = new HttpHeaders();
