@@ -4837,6 +4837,7 @@ var ExchangesComponent = (function () {
         // все биржи из админки
         this.stockService.getExchanges().subscribe(function (res) {
             _this.exchanges = res;
+            console.log(_this.exchanges);
             // this.stockService.getVolumes().subscribe(res => {
             //
             //     this.volumes = res;
