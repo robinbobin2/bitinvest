@@ -17,7 +17,7 @@
               <div class="main-news-slider">
                 <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index" let-last="last">
                 <div class="news" [ngClass]="i >0 ? 'hidden' : '' ">
-                  <div class="img" [ngStyle]="{'background': 'linear-gradient(
+                  <div class="img" style="-webkit-background-size: cover;background-size: cover !important;" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
                                             ), url('+item.photos[0].file+')'}">
