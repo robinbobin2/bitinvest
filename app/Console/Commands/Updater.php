@@ -226,19 +226,16 @@ class Updater extends \Illuminate\Console\Command
      */
     public function handle()
     {
-        shuffle($this->newExchanges);
-        foreach ($this->newExchanges as $supplier) {
-            $supplier = new $supplier;
-            $newRequest = new Request();
-            $newRequest->setProvider($supplier);
-            $this->handler->call($newRequest);
-        }
-        try {
-            while (count($this->handler->test)) {
-                $this->handler->getChannel()->wait();
+
+        while (true) {
+            shuffle($this->newExchanges);
+            foreach ($this->newExchanges as $supplier) {
+                $supplier = new $supplier;
+                $newRequest = new Request();
+                $newRequest->setProvider($supplier);
+                $this->handler->call($newRequest);
             }
-        } catch (\Exception $e) {
-            echo $e->getMessage();
+            sleep(60);
         }
 
         return null;
