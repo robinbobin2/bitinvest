@@ -193,6 +193,7 @@ checkAuth() {
                           this.user = response;
                           this.auth.setUser(this.user);
                           this.auth.loadScript();
+                          this.router.navigate(['/posts/all']);
                       }
                   );
           },
