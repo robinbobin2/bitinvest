@@ -9381,3 +9381,6 @@ display: inherit;
   padding-left: 0;
 }
 }
+.main-news-slider .img {
+  background-size: cover !important;
+}
