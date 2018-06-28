@@ -1,6 +1,6 @@
 #!/bin/bash
 invoke-rc.d rabbitmq-server stop
-sleep 2;
+sleep 10;
 invoke-rc.d rabbitmq-server start
 sleep 2;
 screen -d -m -S rabbit_session php /var/www/bit/artisan rabbit:start
