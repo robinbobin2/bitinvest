@@ -175,6 +175,9 @@ checkAuth() {
           this.auth.setUser(this.user);
         }
       );
+      this.auth.userD$.subscribe((res)=> {
+          this.user = res
+      })
 
 
   	// this.user = this.auth.getUser();
@@ -189,6 +192,8 @@ checkAuth() {
                       (response) => {
                           this.user = response;
                           this.auth.setUser(this.user);
+                          this.auth.loadScript();
+                          this.router.navigate(['/posts/all']);
                       }
                   );
           },

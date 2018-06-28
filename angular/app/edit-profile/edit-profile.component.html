@@ -50,10 +50,11 @@
 					<div class="img-wrap" *ngIf="loading == false"><img src="{{user.photo ? user.photo.file : '/img/no-img.png'}}" alt=""></div>
 					<div class="img-wrap" *ngIf="loading == true"><img src="/img/load.gif" alt=""></div>
           <form class="upload">
+			  <div class="input-wrap"><p style="font-size:14px; font-weight: bold;" [ngStyle]="{'color': 'red'}" *ngIf="error_load">{{error_load}}</p></div>
             <div class="input-wrap">
               <input type="file" id="file" #fileInput name="file" class="input-file ng-pristine ng-valid ng-touched" files-model="" ng-model="project.fileList" (change)="handleFileInput($event.target.files)">
               <label for="file">
-                <span class="add-image">
+                <span class="add-image" (click)="this.error_load = ''">
                 Выбрать и загрузить фото
                 </span>
                 <output id="list"></output>

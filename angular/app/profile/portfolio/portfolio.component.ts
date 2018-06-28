@@ -31,7 +31,7 @@ export class PortfolioComponent implements OnInit {
     crypto_form = false;
     stock_form = false;
     type = 1;
-    loading = true;
+    loading = false;
 
     /**
      * Example: Use Order pipe in the component
@@ -74,15 +74,20 @@ export class PortfolioComponent implements OnInit {
         this.portfolioService.getPortfolioNames().subscribe(
             res => {
                 this.portfolioNames = res['portfolio'];
+                for(let item of this.portfolioNames) {
+                    if (item.user_portfolio_type_id == 3) {
+                        this.loading = true
+                    }
+                }
                 for (let item of this.portfolioNames) {
+
                     if (item.user_portfolio_type_id == type_id) {
 
                         this.portfolioService.getPortfolioById(item.id)
                             .subscribe(
                                 res => {
                                     if (type == 'crypto') {
-                                        console.log(res['crypto'].length)
-                                        if (res['crypto'].length == 0) {
+                                        if (res['crypto'] == []) {
                                             this.loading = false;
                                         }
                                     }
@@ -106,8 +111,6 @@ export class PortfolioComponent implements OnInit {
                                     }
 
                                     if (type_id == 3 ) {
-                                        console.log('type_id = 3')
-                                        console.log(this.portfolios[item.id])
 
                                             this.stockService.getCrypto().subscribe(crypto => {
 
@@ -133,7 +136,6 @@ export class PortfolioComponent implements OnInit {
                                                             }
                                                         )
                                                     }
-                                                    console.log(this.portfolios[item.id])
                                                 } else {
                                                     this.loading = false
                                                 }
@@ -173,7 +175,10 @@ export class PortfolioComponent implements OnInit {
 
 
                                 },
-                                ()=>this.loading = false
+                                (err)=>{
+                                    console.log(err);
+                                    this.loading = false
+                                }
                             )
 
 
