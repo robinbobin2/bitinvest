@@ -64,6 +64,7 @@ uploadFileToActivity(photo: File) {
     
 }
 handleFileInput() {
+    this.error_load = '';
     this.loading = true;
   const image  = this.fileInput.nativeElement;
     console.log(image.files);
@@ -72,8 +73,6 @@ handleFileInput() {
    console.log(this.fileToUpload);
     const formData: FormData = new FormData();
     formData.append('photo', this.fileToUpload, this.fileToUpload.name);
-    // console.log(formData.get('photo'));
-    // console.log(formData.get('photo'));
     const header = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     this.http.post(pathUrl, formData).subscribe(data => {
       console.log(data);

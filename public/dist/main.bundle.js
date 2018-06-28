@@ -4242,6 +4242,7 @@ var EditProfileComponent = (function () {
     };
     EditProfileComponent.prototype.handleFileInput = function () {
         var _this = this;
+        this.error_load = '';
         this.loading = true;
         var image = this.fileInput.nativeElement;
         console.log(image.files);
@@ -4250,8 +4251,6 @@ var EditProfileComponent = (function () {
         console.log(this.fileToUpload);
         var formData = new FormData();
         formData.append('photo', this.fileToUpload, this.fileToUpload.name);
-        // console.log(formData.get('photo'));
-        // console.log(formData.get('photo'));
         var header = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         this.http.post(pathUrl, formData).subscribe(function (data) {
             console.log(data);

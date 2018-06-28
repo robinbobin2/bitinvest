@@ -53,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="all-news.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="all-news.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+            <state relative-caret-position="315">
+              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -66,20 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="news.html" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/bitinvest 8/news.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-395">
-              <caret line="136" column="29" lean-forward="true" selection-start-line="136" selection-start-column="29" selection-end-line="136" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit-profile.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="edit-profile.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/edit-profile/edit-profile.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+            <state relative-caret-position="182">
+              <caret line="74" column="72" selection-start-line="74" selection-start-column="72" selection-end-line="74" selection-end-column="72" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -115,7 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>filteredName</find>
       <find>mobil</find>
       <find>let-</find>
       <find>334</find>
@@ -142,9 +132,10 @@
       <find>numb</find>
       <find>error</find>
       <find>handleFileInput</find>
+      <find>$</find>
       <find>main-news-slider</find>
       <find>stocks</find>
-      <find>$</find>
+      <find>error_load</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -208,7 +199,6 @@
         <option value="$PROJECT_DIR$/app/profile/portfolio/portfolio.component.html" />
         <option value="$PROJECT_DIR$/app/app.component.html" />
         <option value="$PROJECT_DIR$/app/profile/portfolio/portfolio.component.ts" />
-        <option value="$PROJECT_DIR$/app/edit-profile/edit-profile.component.ts" />
         <option value="$PROJECT_DIR$/app/edit-profile/edit-profile.component.html" />
         <option value="$PROJECT_DIR$/app/auth.service.ts" />
         <option value="$PROJECT_DIR$/app/app.component.ts" />
@@ -216,6 +206,7 @@
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.css" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.ts" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.html" />
+        <option value="$PROJECT_DIR$/app/edit-profile/edit-profile.component.ts" />
       </list>
     </option>
   </component>
@@ -635,16 +626,15 @@
       <workItem from="1527928097804" duration="84026000" />
       <workItem from="1528871430902" duration="39861000" />
       <workItem from="1529295323982" duration="41687000" />
-      <workItem from="1530020835088" duration="21659000" />
+      <workItem from="1530020835088" duration="22475000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="344405000" />
+    <option name="totallyTimeSpent" value="345221000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27291667" />
@@ -1063,16 +1053,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/edit-profile/edit-profile.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/auth.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
@@ -1080,13 +1060,6 @@
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/bitinvest 8/news.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-395">
-          <caret line="136" column="29" lean-forward="true" selection-start-line="136" selection-start-column="29" selection-end-line="136" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1103,13 +1076,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Downloads/bitinvest 8/news.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-395">
+          <caret line="136" column="29" lean-forward="true" selection-start-line="136" selection-start-column="29" selection-end-line="136" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+        <state relative-caret-position="315">
+          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/edit-profile/edit-profile.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="74" column="72" selection-start-line="74" selection-start-column="72" selection-end-line="74" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
