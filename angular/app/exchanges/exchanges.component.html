@@ -122,7 +122,7 @@
                 </a>
               </td>
               <td>
-                <span class="amount-bold" *ngIf="exchange_volumes[item.name] != undefined">{{item.usd | number:'1.0-3'}}</span>
+                <span class="amount-bold">{{item.usd | number:'1.0-3'}}</span>
               </td>
               <!--<td>-->
                 <!--<span *ngIf="exchange_volumes[item.name] != undefined">{{item.btc | number:'1.0-3'}}</span>-->
@@ -133,6 +133,7 @@
               </td>
               <td>
                 <div class="img-wrap-small">
+                  <span >{{item.languages}}</span>
                   <!-- <img src="img/rus-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
@@ -203,7 +204,7 @@
                 </a>
               </td>
               <td>
-                <span class="amount-bold" *ngIf="exchange_volumes[item.name] != undefined">{{item.usd | number:'1.0-3'}}</span>
+                <span class="amount-bold" >{{item.usd | number:'1.0-3'}}</span>
               </td>
               <!--<td>-->
                 <!--<span *ngIf="exchange_volumes[item.name] != undefined">{{item.btc | number:'1.0-3'}}</span>-->
@@ -214,6 +215,7 @@
               </td>
               <td>
                 <div class="img-wrap-small">
+                  <span >{{item.languages}}</span>
                   <!-- <img src="img/rus-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
                   <img src="img/usa-icon.png" alt="">
@@ -279,7 +281,7 @@
                 </a>
               </td>
               <td>
-                <span class="amount-bold" *ngIf="exchange_volumes[item.name] != undefined">${{item.usd | number:'1.0-0'}}</span>
+                <span class="amount-bold" >${{item.usd | number:'1.0-0'}}</span>
               </td>
               <td>
                 <span class="amount-bold">{{pairs_count[item.name]}}</span>
