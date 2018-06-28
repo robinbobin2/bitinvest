@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-
+import {EventEmitter} from '@angular/core';
 
 export class User {
 	id:number;
@@ -20,6 +20,7 @@ export class AuthService {
 user: User;
 error = '';
 info;
+    navchange: EventEmitter<number> = new EventEmitter();
   constructor(private http:HttpClient ) {
     this.user = {
         id:0,
@@ -32,7 +33,9 @@ info;
         error: '',
     }
   }
-  
+    emitNavChangeEvent(number) {
+        this.navchange.emit(number);
+    }
   public uploadPhoto(photo) {
     var headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
