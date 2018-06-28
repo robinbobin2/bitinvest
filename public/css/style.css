@@ -9177,9 +9177,9 @@ table tbody tr td .difference .buttons a {
   background: none;
 }
 
-.news {
+/*.news {
   height: 310px;
-}
+}*/
 
 .follow .minus {
   font-size: 24px;
@@ -9197,12 +9197,12 @@ table tbody tr td .difference .buttons a {
   background: #f8a3a3 !important;
 }
 
-.news-big.news-big2 {
+/*.news-big.news-big2 {
   margin-bottom: 0 !important;
-}
-.main-news .news {
+}*/
+/*.main-news .news {
   max-width: 430px !important;
-}
+}*/
 
 .select > a {
   float: right;
@@ -9282,14 +9282,13 @@ display: inherit;
   /*#second_graph {
     display: none
   }*/
-.news.slick-slide.slick-current.slick-active, .crypto-single-content .main-news-slider .slick-track {
-  width: 100% !important;
-}
+
 .top-menu {
   margin-left: 0;
 }
 
 }
+
 .news-list {
   overflow: hidden
 }
