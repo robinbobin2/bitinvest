@@ -192,6 +192,7 @@ checkAuth() {
                       (response) => {
                           this.user = response;
                           this.auth.setUser(this.user);
+                          this.auth.loadScript();
                       }
                   );
           },
