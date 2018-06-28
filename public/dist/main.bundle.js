@@ -7292,9 +7292,7 @@ var AllNewsComponent = (function () {
             _this.countAll = _this.news.length + _this.main_news.length;
             setTimeout(function () {
                 $.getScript('/js/script.js');
-                setTimeout(function () {
-                    _this.load = false;
-                }, 300);
+                _this.load = false;
             }, 800);
         }).subscribe();
     };

@@ -56,9 +56,7 @@ export class AllNewsComponent implements AfterContentInit, OnInit {
           this.countAll = this.news.length+this.main_news.length;
           setTimeout(()=> {
               $.getScript('/js/script.js');
-              setTimeout(()=> {
               this.load = false;
-              }, 300)
           }, 800)
 
 
