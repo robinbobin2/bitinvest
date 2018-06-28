@@ -26,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exchanges.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="exchanges.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="103" column="32" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="32" />
+            <state relative-caret-position="740">
+              <caret line="139" column="8" lean-forward="true" selection-start-line="139" selection-start-column="8" selection-end-line="139" selection-end-column="24" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -38,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exchanges.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="exchanges.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="267" column="8" lean-forward="true" selection-start-line="267" selection-start-column="8" selection-end-line="269" selection-end-column="14" />
+            <state relative-caret-position="278">
+              <caret line="129" column="18" lean-forward="true" selection-start-line="129" selection-start-column="18" selection-end-line="129" selection-end-column="18" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -58,9 +58,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mobi</find>
-      <find>chart2</find>
-      <find>app-cha</find>
       <find>bas</find>
       <find>righ</find>
       <find>rat</find>
@@ -73,7 +70,6 @@
       <find>&lt;tbo</find>
       <find>&quot;diffe</find>
       <find>*ngIf</find>
-      <find>load</find>
       <find>= fals</find>
       <find>numb</find>
       <find>handleFileInput</find>
@@ -88,6 +84,10 @@
       <find>navi</find>
       <find>exchangePath</find>
       <find>/exchanges</find>
+      <find>getExchanges</find>
+      <find>load</find>
+      <find>{{item.usd | number:'1.0-0'}}</find>
+      <find>{{item.usd</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -141,7 +141,6 @@
         <option value="$PROJECT_DIR$/app/sidebar/stocks-sidebar/stocks-sidebar.component.ts" />
         <option value="$PROJECT_DIR$/app/sidebar/banner/banner.component.ts" />
         <option value="$PROJECT_DIR$/app/sidebar/banner/banner.component.html" />
-        <option value="$PROJECT_DIR$/app/exchanges/exchanges.component.html" />
         <option value="$PROJECT_DIR$/app/exchange/exchange.component.html" />
         <option value="$PROJECT_DIR$/app/crypto/chart6/chart6.component.ts" />
         <option value="$PROJECT_DIR$/app/interview/all-interview/all-interview.component.html" />
@@ -161,6 +160,7 @@
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.html" />
         <option value="$PROJECT_DIR$/app/analytics/all-analytics/all-analytics.component.html" />
         <option value="$PROJECT_DIR$/app/exchanges/exchanges.component.ts" />
+        <option value="$PROJECT_DIR$/app/exchanges/exchanges.component.html" />
       </list>
     </option>
   </component>
@@ -580,12 +580,12 @@
       <workItem from="1527928097804" duration="84026000" />
       <workItem from="1528871430902" duration="39861000" />
       <workItem from="1529295323982" duration="41687000" />
-      <workItem from="1530020835088" duration="28335000" />
+      <workItem from="1530020835088" duration="28559000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="351081000" />
+    <option name="totallyTimeSpent" value="351305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1038,26 +1038,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="139" column="8" lean-forward="true" selection-start-line="139" selection-start-column="8" selection-end-line="139" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="267" column="8" lean-forward="true" selection-start-line="267" selection-start-column="8" selection-end-line="269" selection-end-column="14" />
+        <state relative-caret-position="278">
+          <caret line="129" column="18" lean-forward="true" selection-start-line="129" selection-start-column="18" selection-end-line="129" selection-end-column="18" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/exchanges/exchanges.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="103" column="32" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
           </folding>
         </state>
       </provider>

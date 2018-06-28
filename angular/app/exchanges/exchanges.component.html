@@ -243,24 +243,6 @@
                   </div>
                 </div>
               </td>
-              <!--<td>-->
-              <!--<div class="difference">-->
-              <!--&lt;!&ndash; <div class="stars-wrap">-->
-              <!--<img src="img/stars.png" alt="">-->
-              <!--<span>135</span>-->
-              <!--</div> &ndash;&gt;-->
-              <!--<p class="no-ratings">Оценок еще нет</p>-->
-              <!--<div class="buttons">-->
-              <!--<button class="right" [routerLink]="['/exchange', item.name]">></button>-->
-              <!--<a href="#login-popup" *ngIf="!checkAuth()" class="popup-link follow plus" data-effect="mfp-zoom-in" data-effect="mfp-zoom-in">+</a>-->
-              <!--<a href="#follow-popup" *ngIf="!checkInPortfolio(item.id) && checkAuth()" (click)="selectedItem = item" class="plus popup-link follow" data-effect="mfp-zoom-in">+</a>-->
-
-              <!--<button  *ngIf="checkInPortfolio(item.id) && checkAuth()"  (click)="removePortfolio(item.id)" class="minus" data-effect="mfp-zoom-in"><img src="img/minus.png" alt=""></button>-->
-
-              <!--</div>-->
-              <!--</div>-->
-              <!--</td>-->
-
             </tr>
           </ng-template>
           </tbody>
@@ -297,7 +279,7 @@
                 </a>
               </td>
               <td>
-                <span class="amount-bold" *ngIf="exchange_volumes[item.name] != undefined">${{exchange_volumes[item.name].usd | number:'1.0-0'}}</span>
+                <span class="amount-bold" *ngIf="exchange_volumes[item.name] != undefined">${{item.usd | number:'1.0-0'}}</span>
               </td>
               <td>
                 <span class="amount-bold">{{pairs_count[item.name]}}</span>
