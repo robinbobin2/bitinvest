@@ -74,7 +74,6 @@ export class PortfolioComponent implements OnInit {
         this.portfolioService.getPortfolioNames().subscribe(
             res => {
                 this.portfolioNames = res['portfolio'];
-                console.log(this.portfolioNames)
                 for(let item of this.portfolioNames) {
                     if (item.user_portfolio_type_id == 3) {
                         this.loading = true

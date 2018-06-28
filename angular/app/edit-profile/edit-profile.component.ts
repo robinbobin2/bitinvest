@@ -88,6 +88,7 @@ handleFileInput() {
       }, error => {
         console.log(error);
       });
+    this.auth.emitNavChangeEvent(1);
 }
 
 deletePhoto() {
