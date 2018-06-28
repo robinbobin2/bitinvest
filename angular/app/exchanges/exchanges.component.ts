@@ -101,31 +101,31 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     // все биржи из админки
     this.stockService.getExchanges().subscribe((res: Array<any>) => {
       this.exchanges = res;
-        this.stockService.getVolumes().subscribe(res => {
-
-            this.volumes = res;
-            for(let item of this.volumes) {
-                this.exchange_volumes[item.name] = {
-                    'btc': item.btc,
-                    'usd': item.usd
-                }
-            }
-            for(let item of this.exchanges) {
-                // item.btc = this.exchange_volumes[item.name].btc
-                if (this.exchange_volumes[item.name]) {
-                    if (this.exchange_volumes[item.name].usd > 0) {
-                        item.usd = this.exchange_volumes[item.name].usd
-
-                    } else {
-                        item.usd = 0
-
-                    }
-                } else {
-                    item.usd = 0
-                }
-
-            }
-        });
+        // this.stockService.getVolumes().subscribe(res => {
+        //
+        //     this.volumes = res;
+        //     for(let item of this.volumes) {
+        //         this.exchange_volumes[item.name] = {
+        //             'btc': item.btc,
+        //             'usd': item.usd
+        //         }
+        //     }
+        //     for(let item of this.exchanges) {
+        //         // item.btc = this.exchange_volumes[item.name].btc
+        //         if (this.exchange_volumes[item.name]) {
+        //             if (this.exchange_volumes[item.name].usd > 0) {
+        //                 item.usd = this.exchange_volumes[item.name].usd
+        //
+        //             } else {
+        //                 item.usd = 0
+        //
+        //             }
+        //         } else {
+        //             item.usd = 0
+        //         }
+        //
+        //     }
+        // });
       this.count = this.exchanges.length;
         this.yearFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.year)))]
         this.languageFilterArray = [...Array.from(new Set(this.exchanges.map(item => item.languages)))]
