@@ -13,7 +13,7 @@
           </div>
           <div class="news-tab-content active">
 
-            <div class="main-news" *ngIf="load == false">
+            <div class="main-news" >
               <div class="main-news-slider">
                 <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index" let-last="last">
                 <div class="news" [ngClass]="i >0 ? 'hidden' : '' ">
