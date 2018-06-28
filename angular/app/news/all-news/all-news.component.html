@@ -20,7 +20,7 @@
                   <div class="img"  [ngStyle]="{'background-size': 'cover', 'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
-                                            ), url('+item.photos[0].file+')'}">
+                                            ), url('+item.photos[0].file+')  no-repeat center / cover'}">
                   <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
                   <a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
                   <div class="info">
