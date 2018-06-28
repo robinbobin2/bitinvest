@@ -7217,7 +7217,7 @@ var _a;
 /***/ "./angular/app/news/all-news/all-news.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "\n.main-news .news:nth-child(even) {\n\tmax-width: 424px;\n}"
+module.exports = ""
 
 /***/ }),
 
