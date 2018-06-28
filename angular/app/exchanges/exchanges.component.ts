@@ -101,6 +101,7 @@ export class ExchangesComponent implements OnInit, OnDestroy {
     // все биржи из админки
     this.stockService.getExchanges().subscribe((res: Array<any>) => {
       this.exchanges = res;
+      console.log(this.exchanges)
         // this.stockService.getVolumes().subscribe(res => {
         //
         //     this.volumes = res;
