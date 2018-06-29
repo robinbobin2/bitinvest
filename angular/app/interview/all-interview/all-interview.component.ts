@@ -45,7 +45,7 @@ constructor(private orderPipe: OrderPipe, private http:HttpClient, private route
           this.order = params['order'];
           this.reverse = params['reverse'];
           if (this.order == undefined) {
-              this.order = 'position'
+              this.order = 'id'
           }
           if (this.reverse == undefined) {
               this.reverse = false
