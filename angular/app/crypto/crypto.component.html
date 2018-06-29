@@ -258,7 +258,7 @@
                     </ng-template>
                   </div>
                   <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                    <div class="news news-slider-wrap" *ngIf="i > 0">
+                    <div class="news news-slider-wrap" *ngIf="i > 0 && i <=1">
                       <div class="news-slider news-slider-1">
                         <div  class="slide" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
@@ -348,14 +348,14 @@
           <div class="tab-content news-wrapper"  [ngClass]="getRoute('news') ? 'active' : ''">
             <div class="news-body">
               <div class="news-tab-content active">
-                <div class="main-news">
+                <div class="main-news" >
                   <div class="main-news-slider">
-                    <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                      <div class="news" *ngIf="i <=0">
-                        <div class="img" [ngStyle]="{'background': 'linear-gradient(
+                    <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index" let-last="last">
+                      <div class="news" [ngClass]="i >0 ? 'hidden' : '' ">
+                        <div class="img"  [ngStyle]="{'background-size': 'cover', 'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
-                                            ), url('+item.photos[0].file+')'}">
+                                            ), url('+item.photos[0].file+')  no-repeat center / cover'}">
                           <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
                           <a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
                           <div class="info">
@@ -371,13 +371,12 @@
                     </ng-template>
                   </div>
                   <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                    <div class="news news-slider-wrap" *ngIf="i >0 && i<=1">
+                    <div class="news news-slider-wrap" *ngIf="i > 0 && i <=1">
                       <div class="news-slider news-slider-1">
-                        <div class="slide" [ngStyle]="{'background': 'linear-gradient(
+                        <div  class="slide" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
                                             ), url('+item.photos[0].file+')'}"></div>
-
                       </div>
                       <div class="news-slider-info">
                         <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
