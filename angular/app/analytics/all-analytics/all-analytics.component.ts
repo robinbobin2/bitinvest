@@ -46,5 +46,11 @@ export class AllAnalyticsComponent implements OnInit {
         }).subscribe()
     }
 
-
+    setOrder(value: string) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+        console.log(this.order);
+    }
 }
