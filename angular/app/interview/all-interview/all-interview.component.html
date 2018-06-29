@@ -2,9 +2,9 @@
         <div class="news-head">
           <h1>Интервью<span>{{allCount}}</span><a routerLink="/interview-filter"><img src="img/mining-icon.png" alt=""></a></h1>
           <ul class="news-tabs">
-            <li [ngClass]="order=='id' ? 'active':''"><a (click)="setOrder('id')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Новое за сегодня</a></li>
-            <li [ngClass]="order=='views_count' ? 'active':''"><a (click)="setOrder('views_count')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Самое популярное</a></li>
-            <li [ngClass]="order=='comments_count' ? 'active':''"><a  (click)="setOrder('comments_count')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Самое обсуждаемое</a></li>
+            <li [ngClass]="order=='id' ? 'active':''"><a (click)="setOrder('id')" routerLink="./" [queryParams]="{order: 'id', reverse: reverse}">Новое за сегодня</a></li>
+            <li [ngClass]="order=='views_count' ? 'active':''"><a (click)="setOrder('views_count')" routerLink="./" [queryParams]="{order: 'views_count', reverse: reverse}">Самое популярное</a></li>
+            <li [ngClass]="order=='comments_count' ? 'active':''"><a  (click)="setOrder('comments_count')" routerLink="./" [queryParams]="{order: 'comments_count', reverse: reverse}">Самое обсуждаемое</a></li>
           </ul>
         </div>
             <div class="news-body">
