@@ -347,6 +347,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
                     }
                     if (response['main_news']) {
                         this.main_news.push(...response['main_news'])
+                        setTimeout(() => {
+                            $.getScript('/js/script.js');
+                        }, 300)
                     }
                 });
             }
@@ -362,6 +365,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
                     }
                     if (response['main_news']) {
                         this.main_analytics.push(...response['main_news'])
+                        setTimeout(() => {
+                            $.getScript('/js/script.js');
+                        }, 300)
                     }
                 });
             }
