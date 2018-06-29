@@ -349,7 +349,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
                         this.main_news.push(...response['main_news'])
                         setTimeout(() => {
                             $.getScript('/js/script.js');
-                        }, 300)
+                        }, 800)
                     }
                 });
             }
@@ -367,7 +367,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
                         this.main_analytics.push(...response['main_news'])
                         setTimeout(() => {
                             $.getScript('/js/script.js');
-                        }, 300)
+                        }, 800)
                     }
                 });
             }
