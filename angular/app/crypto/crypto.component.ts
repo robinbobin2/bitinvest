@@ -370,6 +370,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
         }
       this.commentcount = response['comments_count'];
         setTimeout(() => {
+            console.log('11');
             $.getScript('/js/script.js');
         }, 800)
     });
