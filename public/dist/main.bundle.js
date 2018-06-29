@@ -297,6 +297,13 @@ var AllAnalyticsComponent = (function () {
             _this.countAll = _this.news.length + _this.main_news.length;
         }).subscribe();
     };
+    AllAnalyticsComponent.prototype.setOrder = function (value) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+        console.log(this.order);
+    };
     return AllAnalyticsComponent;
 }());
 AllAnalyticsComponent = __decorate([
@@ -6628,6 +6635,13 @@ var AllInterviewComponent = (function () {
             _this.allCount = _this.main_news.length + _this.news.length;
         });
     };
+    AllInterviewComponent.prototype.setOrder = function (value) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+        console.log(this.order);
+    };
     return AllInterviewComponent;
 }());
 AllInterviewComponent = __decorate([
@@ -8460,6 +8474,13 @@ var AllReviewComponent = (function () {
             _this.main_news = response['main_news'];
             _this.countAll = _this.news.length + _this.main_news.length;
         }).subscribe();
+    };
+    AllReviewComponent.prototype.setOrder = function (value) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+        console.log(this.order);
     };
     return AllReviewComponent;
 }());

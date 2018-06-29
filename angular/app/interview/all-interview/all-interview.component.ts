@@ -95,5 +95,11 @@ constructor(private orderPipe: OrderPipe, private http:HttpClient, private route
           this.allCount = this.main_news.length+this.news.length;
       });
   }
-
+    setOrder(value: string) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+        console.log(this.order);
+    }
 }
