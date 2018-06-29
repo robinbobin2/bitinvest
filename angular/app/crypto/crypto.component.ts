@@ -349,10 +349,6 @@ export class CryptoComponent implements OnInit, OnDestroy {
                         this.main_news.push(...response['main_news'])
 
                     }
-                    setTimeout(() => {
-                        console.log('mn')
-                        $.getScript('/js/script.js');
-                    }, 800)
                 });
             }
             if (item['type'] == 3) {
@@ -368,14 +364,14 @@ export class CryptoComponent implements OnInit, OnDestroy {
                         this.main_analytics.push(...response['main_news'])
 
                     }
-                    setTimeout(() => {
-                        $.getScript('/js/script.js');
-                    }, 800)
+
                 });
             }
         }
       this.commentcount = response['comments_count'];
-
+        setTimeout(() => {
+            $.getScript('/js/script.js');
+        }, 800)
     });
 
 

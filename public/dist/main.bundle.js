@@ -3959,10 +3959,6 @@ var CryptoComponent = (function () {
                         if (response['main_news']) {
                             (_c = _this.main_news).push.apply(_c, response['main_news']);
                         }
-                        setTimeout(function () {
-                            console.log('mn');
-                            $.getScript('/js/script.js');
-                        }, 800);
                         var _c;
                     });
                 }
@@ -3979,14 +3975,14 @@ var CryptoComponent = (function () {
                         if (response['main_news']) {
                             (_c = _this.main_analytics).push.apply(_c, response['main_news']);
                         }
-                        setTimeout(function () {
-                            $.getScript('/js/script.js');
-                        }, 800);
                         var _c;
                     });
                 }
             }
             _this.commentcount = response['comments_count'];
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 800);
         });
         this.auth
             .getUser()
