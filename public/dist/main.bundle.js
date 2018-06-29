@@ -3958,11 +3958,11 @@ var CryptoComponent = (function () {
                         }
                         if (response['main_news']) {
                             (_c = _this.main_news).push.apply(_c, response['main_news']);
-                            setTimeout(function () {
-                                console.log('mn');
-                                $.getScript('/js/script.js');
-                            }, 800);
                         }
+                        setTimeout(function () {
+                            console.log('mn');
+                            $.getScript('/js/script.js');
+                        }, 800);
                         var _c;
                     });
                 }
@@ -3970,7 +3970,6 @@ var CryptoComponent = (function () {
                     var newsUrl = "/analyticsbycat/" + item.id;
                     var newsInfo = _this.http.get(newsUrl).publishReplay(1).refCount();
                     newsInfo.subscribe(function (response) {
-                        console.log(response);
                         if (response['news']) {
                             for (var _a = 0, _b = response['news']; _a < _b.length; _a++) {
                                 var news_item = _b[_a];
@@ -3979,10 +3978,10 @@ var CryptoComponent = (function () {
                         }
                         if (response['main_news']) {
                             (_c = _this.main_analytics).push.apply(_c, response['main_news']);
-                            setTimeout(function () {
-                                $.getScript('/js/script.js');
-                            }, 800);
                         }
+                        setTimeout(function () {
+                            $.getScript('/js/script.js');
+                        }, 800);
                         var _c;
                     });
                 }
