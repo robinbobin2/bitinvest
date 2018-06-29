@@ -276,9 +276,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
         this.min_value = Math.min.apply(null, this.min);
         this.max_value = Math.max.apply(null, this.max);
-        setTimeout(()=> {
-            $.getScript('/js/script.js');
-        }, 10)
+
     }).subscribe();
 
 

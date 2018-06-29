@@ -235,7 +235,7 @@
             <div class="news-body">
               <div class="news-tab-content active">
                 <h3>Новости #{{data?.name}}</h3>
-                <div class="main-news" >
+                <div class="main-news no-mobile" >
                   <div class="main-news-slider">
                     <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index" let-last="last">
                       <div class="news" [ngClass]="i >0 ? 'hidden' : '' ">
@@ -282,6 +282,16 @@
                 </div>
                 <div class="news-mobile">
                   <ul class="news-list-mobile">
+                    <li  *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive' | slice:0:show">
+                      <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
+                         [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
+                        <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
+                      </a>
+                      <div *ngIf="!item.name_credits" class="text">
+                        <a [routerLink]="['/posts/post', item.id]" class="title">{{item.title}}</a>
+                        <span class="date">{{item.created_at}}</span>
+                      </div>
+                    </li>
                     <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive' | slice:0:show">
                       <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
                          [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
@@ -348,7 +358,7 @@
           <div class="tab-content news-wrapper"  [ngClass]="getRoute('news') ? 'active' : ''">
             <div class="news-body">
               <div class="news-tab-content active">
-                <div class="main-news" >
+                <div class="main-news no-mobile" >
                   <div class="main-news-slider">
                     <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index" let-last="last">
                       <div class="news" [ngClass]="i >0 ? 'hidden' : '' ">
@@ -395,6 +405,16 @@
                 </div>
                 <div class="news-mobile">
                   <ul class="news-list-mobile">
+                    <li  *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive' | slice:0:show">
+                      <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
+                         [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
+                        <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
+                      </a>
+                      <div *ngIf="!item.name_credits" class="text">
+                        <a [routerLink]="['/posts/post', item.id]" class="title">{{item.title}}</a>
+                        <span class="date">{{item.created_at}}</span>
+                      </div>
+                    </li>
                     <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive' | slice:0:show">
                       <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
                          [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
@@ -499,7 +519,7 @@
 
           <div class="tab-content news-wrapper"  [ngClass]="getRoute('analytics') ? 'active' : ''">
             <div class="news-body">
-              <div class="main-news">
+              <div class="main-news no-mobile">
                 <div class="main-news-slider">
                   <ng-template ngFor let-item [ngForOf]="main_analytics | orderBy: order:reverse:'case-insensitive'" let-i="index">
                     <div class="news" *ngIf="i <=0">
@@ -547,6 +567,16 @@
               </div>
               <div class="news-mobile">
                 <ul class="news-list-mobile">
+                  <li  *ngFor="let item of main_analytics | orderBy: order:reverse:'case-insensitive' | slice:0:show_an">
+                    <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
+                       [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
+                      <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
+                    </a>
+                    <div *ngIf="!item.name_credits" class="text">
+                      <a [routerLink]="['/posts/post', item.id]" class="title">{{item.title}}</a>
+                      <span class="date">{{item.created_at}}</span>
+                    </div>
+                  </li>
                   <li  *ngFor="let item of analytics | orderBy: order:reverse:'case-insensitive' | slice:0:show_an">
                     <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
                        [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
