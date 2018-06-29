@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterContentInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { NgForm } from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -55,7 +55,7 @@ export class CommentRaw {
   templateUrl: './crypto.component.html',
   styleUrls: ['./crypto.component.css']
 })
-export class CryptoComponent implements OnInit, OnDestroy {
+export class CryptoComponent implements OnInit, OnDestroy, AfterContentInit {
   comments: CommentRaw[] = [];
   dataUsd: CryptoData;
   data: PositionData;
@@ -369,10 +369,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
             }
         }
       this.commentcount = response['comments_count'];
-        setTimeout(() => {
-            console.log('11');
-            $.getScript('/js/script.js');
-        }, 1600)
+
     });
 
 
@@ -564,5 +561,11 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
       this.stocksData.unsubscribe();
       this.cryptoFirst.unsubscribe();
+  }
+  ngAfterContentInit() {
+      setTimeout(() => {
+          console.log('11');
+          $.getScript('/js/script.js');
+      }, 1600)
   }
 }

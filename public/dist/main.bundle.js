@@ -3980,10 +3980,6 @@ var CryptoComponent = (function () {
                 }
             }
             _this.commentcount = response['comments_count'];
-            setTimeout(function () {
-                console.log('11');
-                $.getScript('/js/script.js');
-            }, 1600);
         });
         this.auth
             .getUser()
@@ -4149,6 +4145,12 @@ var CryptoComponent = (function () {
     CryptoComponent.prototype.ngOnDestroy = function () {
         this.stocksData.unsubscribe();
         this.cryptoFirst.unsubscribe();
+    };
+    CryptoComponent.prototype.ngAfterContentInit = function () {
+        setTimeout(function () {
+            console.log('11');
+            $.getScript('/js/script.js');
+        }, 1600);
     };
     return CryptoComponent;
 }());
