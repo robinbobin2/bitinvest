@@ -3958,6 +3958,9 @@ var CryptoComponent = (function () {
                         }
                         if (response['main_news']) {
                             (_c = _this.main_news).push.apply(_c, response['main_news']);
+                            setTimeout(function () {
+                                $.getScript('/js/script.js');
+                            }, 300);
                         }
                         var _c;
                     });
@@ -3975,6 +3978,9 @@ var CryptoComponent = (function () {
                         }
                         if (response['main_news']) {
                             (_c = _this.main_analytics).push.apply(_c, response['main_news']);
+                            setTimeout(function () {
+                                $.getScript('/js/script.js');
+                            }, 300);
                         }
                         var _c;
                     });
