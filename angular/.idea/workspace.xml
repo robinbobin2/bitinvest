@@ -17,13 +17,14 @@
       <file leaf-file-name="crypto.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="260" column="96" selection-start-line="260" selection-start-column="96" selection-end-line="260" selection-end-column="96" />
+            <state relative-caret-position="251">
+              <caret line="383" column="97" selection-start-line="383" selection-start-column="97" selection-end-line="383" selection-end-column="97" />
               <folding>
                 <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#ng-template#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
@@ -94,7 +95,6 @@
       <find>= fals</find>
       <find>numb</find>
       <find>handleFileInput</find>
-      <find>main-news-slider</find>
       <find>posts/post</find>
       <find>error_load</find>
       <find>linear-gradient</find>
@@ -120,6 +120,7 @@
       <find>&lt;app=</find>
       <find>interv</find>
       <find>main-</find>
+      <find>main-news-slider</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -612,12 +613,12 @@
       <workItem from="1527928097804" duration="84026000" />
       <workItem from="1528871430902" duration="39861000" />
       <workItem from="1529295323982" duration="41687000" />
-      <workItem from="1530020835088" duration="35217000" />
+      <workItem from="1530020835088" duration="35366000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="357963000" />
+    <option name="totallyTimeSpent" value="358112000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1083,13 +1084,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="260" column="96" selection-start-line="260" selection-start-column="96" selection-end-line="260" selection-end-column="96" />
+        <state relative-caret-position="251">
+          <caret line="383" column="97" selection-start-line="383" selection-start-column="97" selection-end-line="383" selection-end-column="97" />
           <folding>
             <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#ng-template#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />

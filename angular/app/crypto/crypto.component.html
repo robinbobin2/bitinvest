@@ -359,7 +359,7 @@
             <div class="news-body">
               <div class="news-tab-content active">
                 <div class="main-news no-mobile" >
-                  <div class="main-news-slider">
+                  <div class="main-news-slider" style="float: left;">
                     <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index" let-last="last">
                       <div class="news" [ngClass]="i >0 ? 'hidden' : '' ">
                         <div class="img"  [ngStyle]="{'background-size': 'cover', 'background': 'linear-gradient(
@@ -381,7 +381,7 @@
                     </ng-template>
                   </div>
                   <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                    <div class="news news-slider-wrap" *ngIf="i > 0 && i <=1">
+                    <div class="news news-slider-wrap" *ngIf="i > 0 && i <=1" style="float: right;">
                       <div class="news-slider news-slider-1">
                         <div  class="slide" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
