@@ -372,7 +372,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
         setTimeout(() => {
             console.log('11');
             $.getScript('/js/script.js');
-        }, 800)
+        }, 1600)
     });
 
 
