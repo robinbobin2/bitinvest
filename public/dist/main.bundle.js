@@ -3891,6 +3891,9 @@ var CryptoComponent = (function () {
             }
             _this.min_value = Math.min.apply(null, _this.min);
             _this.max_value = Math.max.apply(null, _this.max);
+            setTimeout(function () {
+                $.getScript('/js/script.js');
+            }, 10);
         }).subscribe();
         this.cryptoFirst = __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["a" /* Observable */].interval(1000).take(3).concatMap(function () { return _this.stocksService.bit$; })
             .subscribe(function (response) {
@@ -4145,12 +4148,6 @@ var CryptoComponent = (function () {
     CryptoComponent.prototype.ngOnDestroy = function () {
         this.stocksData.unsubscribe();
         this.cryptoFirst.unsubscribe();
-    };
-    CryptoComponent.prototype.ngAfterContentInit = function () {
-        setTimeout(function () {
-            console.log('11');
-            $.getScript('/js/script.js');
-        }, 1600);
     };
     return CryptoComponent;
 }());
