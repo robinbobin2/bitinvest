@@ -3959,6 +3959,7 @@ var CryptoComponent = (function () {
                         if (response['main_news']) {
                             (_c = _this.main_news).push.apply(_c, response['main_news']);
                             setTimeout(function () {
+                                console.log('mn');
                                 $.getScript('/js/script.js');
                             }, 800);
                         }
@@ -7315,7 +7316,6 @@ var AllNewsComponent = (function () {
             setTimeout(function () {
                 $.getScript('/js/script.js');
                 _this.load = false;
-                console.log(_this.load);
             }, 800);
         }).subscribe();
     };

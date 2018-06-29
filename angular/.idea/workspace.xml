@@ -35,8 +35,8 @@
       <file leaf-file-name="crypto.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="351" column="28" selection-start-line="351" selection-start-column="28" selection-end-line="351" selection-end-column="28" />
+            <state relative-caret-position="262">
+              <caret line="350" column="43" selection-start-line="350" selection-start-column="43" selection-end-line="350" selection-end-column="43" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -47,8 +47,8 @@
       <file leaf-file-name="all-news.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="75" selection-start-line="75" selection-end-line="81" selection-end-column="1" />
+            <state relative-caret-position="374">
+              <caret line="58" column="32" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -116,8 +116,8 @@
       <find>&lt;div class=&quot;desc-wrap&quot;&gt;</find>
       <find>=&quot;i</find>
       <find>=&quot;i</find>
-      <find>main-</find>
       <find>main</find>
+      <find>main-</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -176,7 +176,6 @@
         <option value="$PROJECT_DIR$/app/auth.service.ts" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.scss" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.css" />
-        <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.ts" />
         <option value="$PROJECT_DIR$/app/edit-profile/edit-profile.component.html" />
         <option value="$PROJECT_DIR$/app/app.component.ts" />
         <option value="$PROJECT_DIR$/app/edit-profile/edit-profile.component.ts" />
@@ -190,6 +189,7 @@
         <option value="$PROJECT_DIR$/app/interview/all-interview/all-interview.component.ts" />
         <option value="$PROJECT_DIR$/app/review/all-review/all-review.component.html" />
         <option value="$PROJECT_DIR$/app/crypto/crypto.component.html" />
+        <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.ts" />
         <option value="$PROJECT_DIR$/app/crypto/crypto.component.ts" />
       </list>
     </option>
@@ -610,12 +610,12 @@
       <workItem from="1527928097804" duration="84026000" />
       <workItem from="1528871430902" duration="39861000" />
       <workItem from="1529295323982" duration="41687000" />
-      <workItem from="1530020835088" duration="33341000" />
+      <workItem from="1530020835088" duration="33639000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="356087000" />
+    <option name="totallyTimeSpent" value="356385000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1062,6 +1062,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="58" column="32" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -1078,17 +1085,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/news/all-news/all-news.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="75" selection-start-line="75" selection-end-line="81" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/crypto/crypto.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="351" column="28" selection-start-line="351" selection-start-column="28" selection-end-line="351" selection-end-column="28" />
+        <state relative-caret-position="262">
+          <caret line="350" column="43" selection-start-line="350" selection-start-column="43" selection-end-line="350" selection-end-column="43" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>

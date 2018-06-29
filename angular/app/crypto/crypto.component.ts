@@ -348,6 +348,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
                     if (response['main_news']) {
                         this.main_news.push(...response['main_news'])
                         setTimeout(() => {
+                            console.log('mn')
                             $.getScript('/js/script.js');
                         }, 800)
                     }
