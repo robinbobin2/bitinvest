@@ -3983,7 +3983,7 @@ var CryptoComponent = (function () {
             setTimeout(function () {
                 console.log('11');
                 $.getScript('/js/script.js');
-            }, 800);
+            }, 1600);
         });
         this.auth
             .getUser()
