@@ -49,7 +49,7 @@ class OkCoinProvider extends FounderProvider
 
     public function getExchangeId()
     {
-        return 49;
+        return 50;
     }
 
     protected function getConnectorClass()

@@ -91,35 +91,14 @@ WHERE f.currency = '" . $_GET['pair'] . "'");
     public function t()
     {
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "https://api.tidex.com/api/3/info");
+        curl_setopt($curl, CURLOPT_URL, "https://cryptottlivewebapi.xbtce.net/api/v1/public/ticker");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $result = json_decode(curl_exec($curl));
-        $response = [];
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($curl, CURLOPT_VERBOSE,true);
+        curl_setopt($curl, CURLOPT_PORT, 8443);
+        $result = curl_exec($curl);
+        echo $result;
 
-        foreach($result->pairs as $currency => $value){
-            $response[] = $currency;
-        }
-        echo json_encode($response);
-//        $response = [];
-//        $fuck = [];
-//        foreach ($result->ticker as $pair) {
-//            if (strlen($pair->symbol) == 6) {
-//                $response[$pair->symbol] = strtoupper(substr($pair->symbol, 0,3) . "/" . substr($pair->symbol, 3));
-//            } else {
-//                if (strpos($pair->symbol, "BTC") != false) {
-//                    $response[$pair->symbol] = strtoupper(substr($pair->symbol, 0, strpos($pair->symbol, "BTC")) . "/" . substr($pair->symbol, strpos($pair->symbol, "BTC"), 3));
-//                } elseif (strpos($pair->symbol, "ETH") != false) {
-//                    $response[$pair->symbol] = strtoupper(substr($pair->symbol, 0, strpos($pair->symbol, "ETH")) . "/" . substr($pair->symbol, strpos($pair->symbol, "ETH"), 3));
-//                } elseif (strpos($pair->symbol, "USDT") != false) {
-//                    $response[$pair->symbol] = strtoupper(substr($pair->symbol, 0, strpos($pair->symbol, "USDT")) . "/" . substr($pair->symbol, strpos($pair->symbol, "USDT"), 3));
-//                } elseif (strpos($pair->symbol, "BNB") != false) {
-//                    $response[$pair->symbol] = strtoupper(substr($pair->symbol, 0, strpos($pair->symbol, "BNB")) . "/" . substr($pair->symbol, strpos($pair->symbol, "BNB"), 3));
-//                } else {
-//                    $fuck[] = $pair->symbol;
-//                }
-//            }
-//        }
-//        echo json_encode($response);
     }
 
     public function currencyVolumes()

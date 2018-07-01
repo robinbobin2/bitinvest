@@ -10,6 +10,7 @@ namespace App\Models\Founder\Models\Providers;
 
 
 use App\Models\Founder\Models\Connectors\VaultoroConnector;
+use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
 use App\Models\Founder\Models\Requests\Request;
 
@@ -17,7 +18,26 @@ class VaultoroProvider extends FounderProvider
 {
     public function search(Request $request)
     {
-        return [];
+        $response = $this->getConnector()->search();
+        $result = [];
+        if (!$response) {
+            return $result;
+        }
+
+        if (!isset($response->data)) {
+            return [];
+        }
+        $response = $response->data;
+        $ticker = new TickerEntity();
+        $ticker->setAsk($response->{"24hLow"});
+        $ticker->setBid($response->{"24hHigh"});
+        $ticker->setVolume($response->{"24hVolume"});
+        $ticker->setValue($response->LastPrice);
+        $ticker->setExchangeId($this->getExchangeId());
+        $ticker->setCurrency("BTC/GLD");
+        $result[] = $ticker;
+
+        return $result;
     }
 
     public function getExchangeId()

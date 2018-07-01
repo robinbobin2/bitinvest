@@ -9,6 +9,7 @@
 namespace App\Models\Founder\Models\Connectors;
 
 
+use App\Models\Founder\Models\Custom\SupplierLog;
 use App\Models\Founder\Models\FounderConnector;
 
 class OkCoinUSDConnector extends FounderConnector
@@ -44,6 +45,8 @@ class OkCoinUSDConnector extends FounderConnector
             curl_multi_remove_handle($mh, $c);
         }
         curl_multi_close($mh);
+        SupplierLog::log("search", json_encode($result), 50);
+
         return $result;
     }
 }

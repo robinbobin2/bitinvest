@@ -9,6 +9,7 @@
 namespace App\Models\Founder\Models\Connectors;
 
 
+use App\Models\Founder\Models\Custom\SupplierLog;
 use App\Models\Founder\Models\FounderConnector;
 
 class IndependentReserveConnector extends FounderConnector
@@ -31,7 +32,7 @@ class IndependentReserveConnector extends FounderConnector
             foreach ($this->secondatyCoins as $secondatyCoin) {
                 $currency = strtoupper($primaryCoin) . '/' . strtoupper($secondatyCoin);
                 $curly[$currency] = curl_init();
-                curl_setopt($curly[$currency], CURLOPT_URL, "https://api.coinnest.co.kr/api/pub/ticker?coin=" . $currency);
+                curl_setopt($curly[$currency], CURLOPT_URL, "https://api.independentreserve.com/Public/GetMarketSummary?primaryCurrencyCode=" . $primaryCoin . "&secondaryCurrencyCode=" . $secondatyCoin);
                 curl_setopt($curly[$currency], CURLOPT_HEADER, 0);
                 curl_setopt($curly[$currency], CURLOPT_RETURNTRANSFER, 1);
                 curl_setopt($curly[$currency], CURLOPT_TIMEOUT, 30);
@@ -53,6 +54,8 @@ class IndependentReserveConnector extends FounderConnector
             curl_multi_remove_handle($mh, $c);
         }
         curl_multi_close($mh);
+        SupplierLog::log("search", json_encode($result), 39);
+
         return $result;
     }
 }
