@@ -229,13 +229,15 @@ class Updater extends \Illuminate\Console\Command
 
         while (true) {
             shuffle($this->newExchanges);
+            $this->handler->channel->queue_purge('rpc_queue');
+
             foreach ($this->newExchanges as $supplier) {
                 $supplier = new $supplier;
                 $newRequest = new Request();
                 $newRequest->setProvider($supplier);
                 $this->handler->call($newRequest);
             }
-            sleep(60);
+            sleep(30);
         }
 
         return null;
