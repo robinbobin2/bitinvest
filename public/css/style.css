@@ -9384,3 +9384,6 @@ display: inherit;
 .main-news-slider .img {
   background-size: cover !important;
 }
+.news-body .main-news .news.news-slider-wrap, .interview-body .main-news .news.news-slider-wrap {
+  height: auto !important;
+}

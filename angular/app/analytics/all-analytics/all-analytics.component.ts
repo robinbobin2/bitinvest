@@ -33,7 +33,7 @@ export class AllAnalyticsComponent implements OnInit {
             this.order = params['order'];
             this.reverse = params['reverse'];
             if (this.order == undefined) {
-                this.order = 'position'
+                this.order = 'id'
             }
             if (this.reverse == undefined) {
                 this.reverse = false
@@ -46,5 +46,11 @@ export class AllAnalyticsComponent implements OnInit {
         }).subscribe()
     }
 
-
+    setOrder(value: string) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+        console.log(this.order);
+    }
 }

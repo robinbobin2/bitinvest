@@ -235,14 +235,37 @@
             <div class="news-body">
               <div class="news-tab-content active">
                 <h3>Новости #{{data?.name}}</h3>
-                <div class="main-news">
-                  <div class="main-news-slider">
-                    <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                    <div class="news" *ngIf="i <=0">
-                      <div class="img" [ngStyle]="{'background': 'linear-gradient(
+                <div class="main-news no-mobile" >
+                  <div class="main-news-slider" style="float: left;">
+                    <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index" let-last="last">
+                      <div class="news" [ngClass]="i >0 ? 'hidden' : '' ">
+                        <div class="img"  [ngStyle]="{'background-size': 'cover', 'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
-                                            ), url('+item.photos[0].file+')'}">
+                                            ), url('+item.photos[0].file+')  no-repeat center / cover'}">
+                          <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
+                          <a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
+                          <div class="info">
+                            <span class="date">{{item.created_at}}</span>
+                            <span class="views" *ngIf="item.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item.view_count}}</span>
+                            <a  [routerLink]="['/posts/post', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>
+                          </div>
+                        </div>
+                        <div class="text">
+                          <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </div>
+                  <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
+                    <div class="news news-slider-wrap" *ngIf="i > 0 && i <=1" style="float:right">
+                      <div class="news-slider news-slider-1">
+                        <div  class="slide" [ngStyle]="{'background': 'linear-gradient(
+                                              rgba(0, 0, 0, 0.35),
+                                              rgba(0, 0, 0, 0.35)
+                                            ), url('+item.photos[0].file+')'}"></div>
+                      </div>
+                      <div class="news-slider-info">
                         <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
                         <a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
                         <div class="info">
@@ -255,34 +278,20 @@
                         <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
                       </div>
                     </div>
-                    </ng-template>
-                  </div>
-                  <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                  <div class="news news-slider-wrap" *ngIf="i >0 && i<=1">
-                    <div class="news-slider news-slider-1">
-                      <div class="slide" [ngStyle]="{'background': 'linear-gradient(
-                                              rgba(0, 0, 0, 0.35),
-                                              rgba(0, 0, 0, 0.35)
-                                            ), url('+item.photos[0].file+')'}"></div>
-
-                    </div>
-                    <div class="news-slider-info">
-                      <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
-                      <a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
-                      <div class="info">
-                        <span class="date">{{item.created_at}}</span>
-                        <span class="views" *ngIf="item.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item.view_count}}</span>
-                        <a  [routerLink]="['/posts/post', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>
-                      </div>
-                    </div>
-                    <div class="text">
-                      <p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/posts/post/{{item.id}}">Подробнее</a></p>
-                    </div>
-                  </div>
                   </ng-template>
                 </div>
                 <div class="news-mobile">
                   <ul class="news-list-mobile">
+                    <li  *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive' | slice:0:show">
+                      <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
+                         [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
+                        <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
+                      </a>
+                      <div *ngIf="!item.name_credits" class="text">
+                        <a [routerLink]="['/posts/post', item.id]" class="title">{{item.title}}</a>
+                        <span class="date">{{item.created_at}}</span>
+                      </div>
+                    </li>
                     <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive' | slice:0:show">
                       <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
                          [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
@@ -349,14 +358,14 @@
           <div class="tab-content news-wrapper"  [ngClass]="getRoute('news') ? 'active' : ''">
             <div class="news-body">
               <div class="news-tab-content active">
-                <div class="main-news">
-                  <div class="main-news-slider">
-                    <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                      <div class="news" *ngIf="i <=0">
-                        <div class="img" [ngStyle]="{'background': 'linear-gradient(
+                <div class="main-news no-mobile" >
+                  <div class="main-news-slider" style="float: left;">
+                    <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index" let-last="last">
+                      <div class="news" [ngClass]="i >0 ? 'hidden' : '' ">
+                        <div class="img"  [ngStyle]="{'background-size': 'cover', 'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
-                                            ), url('+item.photos[0].file+')'}">
+                                            ), url('+item.photos[0].file+')  no-repeat center / cover'}">
                           <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
                           <a routerLink="/posts/post/{{item.id}}" class="title-link">{{item.title}}</a>
                           <div class="info">
@@ -372,13 +381,12 @@
                     </ng-template>
                   </div>
                   <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                    <div class="news news-slider-wrap" *ngIf="i >0 && i<=1">
+                    <div class="news news-slider-wrap" *ngIf="i > 0 && i <=1" style="float: right;">
                       <div class="news-slider news-slider-1">
-                        <div class="slide" [ngStyle]="{'background': 'linear-gradient(
+                        <div  class="slide" [ngStyle]="{'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
                                             ), url('+item.photos[0].file+')'}"></div>
-
                       </div>
                       <div class="news-slider-info">
                         <a [routerLink]="['/posts/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
@@ -397,6 +405,16 @@
                 </div>
                 <div class="news-mobile">
                   <ul class="news-list-mobile">
+                    <li  *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive' | slice:0:show">
+                      <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
+                         [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
+                        <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
+                      </a>
+                      <div *ngIf="!item.name_credits" class="text">
+                        <a [routerLink]="['/posts/post', item.id]" class="title">{{item.title}}</a>
+                        <span class="date">{{item.created_at}}</span>
+                      </div>
+                    </li>
                     <li  *ngFor="let item of news | orderBy: order:reverse:'case-insensitive' | slice:0:show">
                       <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
                          [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
@@ -501,7 +519,7 @@
 
           <div class="tab-content news-wrapper"  [ngClass]="getRoute('analytics') ? 'active' : ''">
             <div class="news-body">
-              <div class="main-news">
+              <div class="main-news no-mobile">
                 <div class="main-news-slider">
                   <ng-template ngFor let-item [ngForOf]="main_analytics | orderBy: order:reverse:'case-insensitive'" let-i="index">
                     <div class="news" *ngIf="i <=0">
@@ -549,6 +567,16 @@
               </div>
               <div class="news-mobile">
                 <ul class="news-list-mobile">
+                  <li  *ngFor="let item of main_analytics | orderBy: order:reverse:'case-insensitive' | slice:0:show_an">
+                    <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
+                       [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
+                      <button *ngIf="!item.name_credits" type="button" class="news-btn" [routerLink]="['/posts/category', item.cat_id]" >{{item.category.name}}</button>
+                    </a>
+                    <div *ngIf="!item.name_credits" class="text">
+                      <a [routerLink]="['/posts/post', item.id]" class="title">{{item.title}}</a>
+                      <span class="date">{{item.created_at}}</span>
+                    </div>
+                  </li>
                   <li  *ngFor="let item of analytics | orderBy: order:reverse:'case-insensitive' | slice:0:show_an">
                     <a *ngIf="!item.name_credits" [routerLink]="['/posts/post', item.id]" class="img"
                        [ngStyle]="{'background-image':'url('+item.photos[0].file+')' }" >
@@ -611,7 +639,7 @@
           <div [innerHTML]='data?.desc'></div>
           <br> <p><a class="more-sidebar"  routerLink="about">Подробнее</a><p>
           </div>
-          <app-sidebar ></app-sidebar>
+          <app-sidebar pageId="6"></app-sidebar>
         </aside>
       </div>
     </section>

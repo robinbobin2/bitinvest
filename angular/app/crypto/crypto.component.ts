@@ -276,6 +276,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
 
         this.min_value = Math.min.apply(null, this.min);
         this.max_value = Math.max.apply(null, this.max);
+
     }).subscribe();
 
 
@@ -347,6 +348,7 @@ export class CryptoComponent implements OnInit, OnDestroy {
                     }
                     if (response['main_news']) {
                         this.main_news.push(...response['main_news'])
+
                     }
                 });
             }
@@ -354,7 +356,6 @@ export class CryptoComponent implements OnInit, OnDestroy {
                 let newsUrl = "/analyticsbycat/" + item.id;
                 let newsInfo = this.http.get<any>(newsUrl).publishReplay(1).refCount();
                 newsInfo.subscribe(response => {
-                    console.log(response)
                     if (response['news']) {
                         for (let news_item of response['news']) {
                             this.analytics.push(news_item)
@@ -362,7 +363,9 @@ export class CryptoComponent implements OnInit, OnDestroy {
                     }
                     if (response['main_news']) {
                         this.main_analytics.push(...response['main_news'])
+
                     }
+
                 });
             }
         }

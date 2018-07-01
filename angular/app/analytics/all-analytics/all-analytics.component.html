@@ -2,9 +2,9 @@
     <div class="news-head">
         <h1>Аналитика<span>{{countAll}}</span><a routerLink="/analytics-filter"><img src="img/mining-icon.png" alt=""></a></h1>
         <ul class="news-tabs">
-            <li [ngClass]="order=='id' ? 'active':''"><a (click)="setOrder('id')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Новое за сегодня</a></li>
-            <li [ngClass]="order=='views_count' ? 'active':''"><a (click)="setOrder('views_count')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Самое популярное</a></li>
-            <li [ngClass]="order=='comments_count' ? 'active':''"><a  (click)="setOrder('comments_count')" routerLink="./" [queryParams]="{order: order, reverse: reverse}">Самое обсуждаемое</a></li>
+            <li [ngClass]="order=='id' ? 'active':''"><a (click)="setOrder('id')" routerLink="./" [queryParams]="{order: 'id', reverse: !reverse}">Новое за сегодня</a></li>
+            <li [ngClass]="order=='views_count' ? 'active':''"><a (click)="setOrder('views_count')" routerLink="./" [queryParams]="{order: 'views_count', reverse: !reverse}">Самое популярное</a></li>
+            <li [ngClass]="order=='comments_count' ? 'active':''"><a  (click)="setOrder('comments_count')" routerLink="./" [queryParams]="{order: 'comments_count', reverse: !reverse}">Самое обсуждаемое</a></li>
         </ul>
     </div>
     <div class="news-body">
@@ -12,33 +12,15 @@
             <img src="/img/load.gif" *ngIf="load == true" style=" width: 50px; height: 50px; text-align: center">
         </div>
         <div class="news-tab-content active">
-            <!--<div class="main-news">-->
-            <!--<div  *ngFor="let item of main_news | orderBy: order:reverse:'case-insensitive'" [ngClass]="item.workplace ? 'news trust' : 'news'">-->
-            <!--<div class="img" [ngStyle]="{'background': 'linear-gradient(-->
-            <!--rgba(0, 0, 0, 0.35),-->
-            <!--rgba(0, 0, 0, 0.35)-->
-            <!--), url('+item.photos[0].file+')'}">-->
-            <!--<a [routerLink]="['/analytics/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>-->
-            <!--<a routerLink="/analytics/item/{{item.id}}" class="title-link">{{item.title}}</a>-->
-            <!--<div class="info">-->
-            <!--<span class="date">{{item.created_at}}</span>-->
-            <!--<span class="views" *ngIf="item.view_count > 0"><i class="fa fa-eye" aria-hidden="true"></i>{{item.view_count}}</span>-->
-            <!--<a  [routerLink]="['/analytics/item', item.id]" fragment="comment-block" class="comments" *ngIf="item.comments_count > 0"><i class="fa fa-comment" aria-hidden="true"></i>{{item.comments_count}}</a>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--<div class="text">-->
-            <!--<p>{{item.desc | striphtml | excerpt:140}} <a routerLink="/analytics/item/{{item.id}}">Подробнее</a></p> -->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <div class="main-news">
+
+            <div class="main-news" >
                 <div class="main-news-slider">
-                    <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index">
-                        <div class="news" *ngIf="i <=0">
-                            <div class="img" [ngStyle]="{'background': 'linear-gradient(
+                    <ng-template ngFor let-item [ngForOf]="main_news | orderBy: order:reverse:'case-insensitive'" let-i="index" let-last="last">
+                        <div class="news" [ngClass]="i >0 ? 'hidden' : '' ">
+                            <div class="img"  [ngStyle]="{'background-size': 'cover', 'background': 'linear-gradient(
                                               rgba(0, 0, 0, 0.35),
                                               rgba(0, 0, 0, 0.35)
-                                            ), url('+item.photos[0].file+')'}">
+                                            ), url('+item.photos[0].file+')  no-repeat center / cover'}">
                                 <a [routerLink]="['/analytics/category', item.cat_id]" class="news-btn">{{item.category.name}}</a>
                                 <a routerLink="/analytics/item/{{item.id}}" class="title-link">{{item.title}}</a>
                                 <div class="info">

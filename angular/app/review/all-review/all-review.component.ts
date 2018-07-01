@@ -45,6 +45,12 @@ export class AllReviewComponent implements OnInit {
           this.countAll = this.news.length+this.main_news.length;
       }).subscribe()
   }
-
+    setOrder(value: string) {
+        if (this.order === value) {
+            this.reverse = !this.reverse;
+        }
+        this.order = value;
+        console.log(this.order);
+    }
 
 }

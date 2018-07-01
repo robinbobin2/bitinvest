@@ -57,7 +57,6 @@ export class AllNewsComponent implements AfterContentInit, OnInit {
           setTimeout(()=> {
               $.getScript('/js/script.js');
               this.load = false;
-              console.log(this.load);
           }, 800)
 
 
