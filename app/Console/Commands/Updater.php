@@ -189,7 +189,7 @@ class Updater extends \Illuminate\Console\Command
         KorbitProvider::class,
         NeraexProvider::class,
         TidexProvider::class,
-        FatBtcProvider::class
+        FatBtcProvider::class,
         VaultoroProvider::class,
         VirWoxProvider::class,
         FlowBTCProvider::class,
