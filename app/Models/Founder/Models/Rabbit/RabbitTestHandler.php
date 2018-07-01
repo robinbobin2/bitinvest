@@ -49,7 +49,7 @@ class RabbitTestHandler
     /**
      * @var \PhpAmqpLib\Channel\AMQPChannel
      */
-    private $channel;
+    public $channel;
 
     /**
      * @var Request[]
