@@ -26,10 +26,7 @@ class IndependentReserveProvider extends FounderProvider
         }
 
         foreach ($response as $currency => $value) {
-            if(!isset($value->result)){
-                continue;
-            }
-            $value = $value->result;
+
             $ticker = new TickerEntity();
             $ticker->setAsk($value->CurrentLowestOfferPrice);
             $ticker->setBid($value->CurrentHighestBidPrice);
@@ -45,7 +42,7 @@ class IndependentReserveProvider extends FounderProvider
 
     public function getExchangeId()
     {
-        return 3;
+        return 39;
     }
 
     protected function getConnectorClass()

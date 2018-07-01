@@ -24,6 +24,7 @@ class XBTCEConnector extends FounderConnector
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, "https://cryptottlivewebapi.xbtce.net:8443/api/v1/public/ticker");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
         $result = curl_exec($curl);
         SupplierLog::log("search", $result, 60);
         return json_decode($result);

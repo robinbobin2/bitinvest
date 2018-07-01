@@ -39,7 +39,7 @@ class ZaifProvider extends FounderProvider
     }
     public function getExchangeId()
     {
-        return 3;
+        return 61;
     }
 
     protected function getConnectorClass()

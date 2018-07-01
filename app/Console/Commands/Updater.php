@@ -56,13 +56,11 @@ use App\Models\Founder\Models\Providers\GateIOProvider;
 use App\Models\Founder\Models\Providers\GDaxProvider;
 use App\Models\Founder\Models\Providers\GeminiProvider;
 use App\Models\Founder\Models\Providers\HitBTCProvider;
-use App\Models\Founder\Models\Providers\HuobiProProvider;
 use App\Models\Founder\Models\Providers\HuobiProvider;
 use App\Models\Founder\Models\Providers\IBankProvider;
 use App\Models\Founder\Models\Providers\Ice3XProvider;
 use App\Models\Founder\Models\Providers\IndependentReserveProvider;
 use App\Models\Founder\Models\Providers\ItBitProvider;
-use App\Models\Founder\Models\Providers\JubiProvider;
 use App\Models\Founder\Models\Providers\KoineksProvider;
 use App\Models\Founder\Models\Providers\KorbitProvider;
 use App\Models\Founder\Models\Providers\KrakenProvider;
@@ -191,18 +189,18 @@ class Updater extends \Illuminate\Console\Command
         KorbitProvider::class,
         NeraexProvider::class,
         TidexProvider::class,
-        FatBtcProvider::class
+        FatBtcProvider::class,
+        VaultoroProvider::class,
+        VirWoxProvider::class,
+        FlowBTCProvider::class,
+        AllCoinProvider::class,
     ];
 
     private $suppliers = [
         PoloniexProvider::class,
         CoinexChangeProvider::class,
 
-        JubiProvider::class,
         Ice3XProvider::class,
-        HuobiProProvider::class,
-        FlowBTCProvider::class,
-        AllCoinProvider::class,
         CoinTigerProvider::class,
         BitMexProvider::class,
         BitMarketProvider::class,
@@ -212,8 +210,6 @@ class Updater extends \Illuminate\Console\Command
 
         OkexProvider::class,
         TideBitProvider::class,
-        VaultoroProvider::class,
-        VirWoxProvider::class,
         IBankProvider::class,
 
         CoinMarketCapProvider::class,

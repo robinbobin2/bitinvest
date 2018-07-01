@@ -9,133 +9,43 @@
 namespace App\Models\Founder\Models\Connectors;
 
 
+use App\Models\Founder\Models\Custom\SupplierLog;
+
 class AllCoinConnector
 {
-    public function describe () {
-        return array_replace_recursive (parent::describe (), array (
-            'id' => 'allcoin',
-            'name' => 'Allcoin',
-            'countries' => 'CA',
-            'has' => array (
-                'CORS' => false,
-            ),
-            'extension' => '',
-            'urls' => array (
-                'logo' => 'https://user-images.githubusercontent.com/1294454/31561809-c316b37c-b061-11e7-8d5a-b547b4d730eb.jpg',
-                'api' => array (
-                    'web' => 'https://www.allcoin.com',
-                    'public' => 'https://api.allcoin.com/api',
-                    'private' => 'https://api.allcoin.com/api',
-                ),
-                'www' => 'https://www.allcoin.com',
-                'doc' => 'https://www.allcoin.com/About/APIReference',
-            ),
-            'api' => array (
-                'web' => array (
-                    'get' => array (
-                        'Home/MarketOverViewDetail/',
-                    ),
-                ),
-                'public' => array (
-                    'get' => array (
-                        'depth',
-                        'kline',
-                        'ticker',
-                        'trades',
-                    ),
-                ),
-                'private' => array (
-                    'post' => array (
-                        'batch_trade',
-                        'cancel_order',
-                        'order_history',
-                        'order_info',
-                        'orders_info',
-                        'repayment',
-                        'trade',
-                        'trade_history',
-                        'userinfo',
-                    ),
-                ),
-            ),
-            'markets' => null,
-        ));
-    }
+    private $coins = ["btc2ckusd" => "BTC/USD", "ltc2btc" => "LTC/BTC"];
 
-    public function fetch_markets () {
-        $result = array ();
-        $response = $this->webGetHomeMarketOverViewDetail ();
-        $coins = $response['marketCoins'];
-        for ($j = 0; $j < count ($coins); $j++) {
-            $markets = $coins[$j]['Markets'];
-            for ($k = 0; $k < count ($markets); $k++) {
-                $market = $markets[$k]['Market'];
-                $base = $market['Primary'];
-                $quote = $market['Secondary'];
-                $baseId = strtolower ($base);
-                $quoteId = strtolower ($quote);
-                $id = $baseId . '_' . $quoteId;
-                $symbol = $base . '/' . $quote;
-                $active = $market['TradeEnabled'] && $market['BuyEnabled'] && $market['SellEnabled'];
-                $result[] = array (
-                    'id' => $id,
-                    'symbol' => $symbol,
-                    'base' => $base,
-                    'quote' => $quote,
-                    'baseId' => $baseId,
-                    'quoteId' => $quoteId,
-                    'active' => $active,
-                    'type' => 'spot',
-                    'spot' => true,
-                    'future' => false,
-                    'maker' => $market['AskFeeRate'], // BidFeeRate 0, AskFeeRate 0.002, we use just the AskFeeRate here
-                    'taker' => $market['AskFeeRate'], // BidFeeRate 0, AskFeeRate 0.002, we use just the AskFeeRate here
-                    'precision' => array (
-                        'amount' => $market['PrimaryDigits'],
-                        'price' => $market['SecondaryDigits'],
-                    ),
-                    'limits' => array (
-                        'amount' => array (
-                            'min' => $market['MinTradeAmount'],
-                            'max' => $market['MaxTradeAmount'],
-                        ),
-                        'price' => array (
-                            'min' => $market['MinOrderPrice'],
-                            'max' => $market['MaxOrderPrice'],
-                        ),
-                        'cost' => array (
-                            'min' => null,
-                            'max' => null,
-                        ),
-                    ),
-                    'info' => $market,
-                );
-            }
+    public function search()
+    {
+        $curly = [];
+        $result = [];
+        $mh = curl_multi_init();
+        foreach ($this->coins as $code => $currency) {
+            $curly[$currency] = curl_init();
+            curl_setopt($curly[$currency], CURLOPT_URL, "https://www.allcoin.ca/Api_Order/ticker?symbol=$code");
+            curl_setopt($curly[$currency], CURLOPT_HEADER, 0);
+            curl_setopt($curly[$currency], CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($curly[$currency], CURLOPT_TIMEOUT, 30);
+            curl_setopt($curly[$currency], CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($curly[$currency], CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($curly[$currency], CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($curly[$currency], CURLOPT_POST, true);
+            curl_setopt($curly[$currency], CURLOPT_USERAGENT, "Mozilla/5.0(Windows;U;WindowsNT5.1;ru;rv:1.9.0.4)Gecko/2008102920AdCentriaIM/1.7Firefox/3.0.4");
+            curl_multi_add_handle($mh, $curly[$currency]);
         }
+
+        $running = null;
+        do {
+            curl_multi_exec($mh, $running);
+        } while ($running > 0);
+
+        foreach ($curly as $id => $c) {
+            $result[$id] = json_decode(curl_multi_getcontent($c));
+            curl_multi_remove_handle($mh, $c);
+        }
+        curl_multi_close($mh);
+        SupplierLog::log("search", json_encode($result), 25);
+
         return $result;
-    }
-
-    public function parse_order_status ($status) {
-        if ($status === -1)
-            return 'canceled';
-        if ($status === 0)
-            return 'open';
-        if ($status === 1)
-            return 'open'; // partially filled
-        if ($status === 2)
-            return 'closed';
-        if ($status === 10)
-            return 'canceled';
-        return $status;
-    }
-
-    public function get_create_date_field () {
-        // allcoin typo create_data instead of create_date
-        return 'create_data';
-    }
-
-    public function get_orders_field () {
-        // allcoin typo order instead of orders (expected based on their API docs)
-        return 'order';
     }
 }
