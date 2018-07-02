@@ -14,11 +14,8 @@ banner: any;
   constructor(private bannerService: BannerService) { }
 
   ngOnInit() {
-      console.log(this.pageId);
       this.bannerService.getBannersById(this.pageId).subscribe(res => {
           this.banner = res
-          console.log('banner')
-          console.log(this.banner)
       })
   }
 
