@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Founder\Models\Custom\SupplierLog;
 use App\Models\Founder\Models\Entity\ResponseContainer;
 use App\Models\Founder\Models\Entity\TickerEntity;
 use App\Models\Founder\Models\FounderProvider;
@@ -84,7 +85,12 @@ class Rabbit extends Command
     {
         /* @var \App\Models\Founder\Models\Requests\Request $request */
         $request = unserialize($message->body);
-        $response = $request->provider->{$request->getFunction()}($request);
+        $response = [];
+        try{
+            $response = $request->provider->{$request->getFunction()}($request);
+        } catch (\Exception $e){
+            SupplierLog::log("error", $e->getMessage(), $request->provider->getExchangeId());
+        }
         $log = [];
         if(!empty($response)){
             if(current($response)->getType() == FounderProvider::RAPID_RATE){
