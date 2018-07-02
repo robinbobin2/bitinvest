@@ -28,7 +28,7 @@ class AddLinkFieldToBannersTable extends Migration
     {
         Schema::table('banners', function (Blueprint $table) {
             //
-            $table->dropColumn('link')
+            $table->dropColumn('link');
         });
     }
 }
