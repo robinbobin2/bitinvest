@@ -11,6 +11,7 @@
     
 
 {{csrf_field()}}
+{{ method_field('patch') }}
 <div class="form-group col-lg-12">
   <div >
     <img src="{{$banner->file}}">
