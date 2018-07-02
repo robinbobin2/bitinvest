@@ -12,17 +12,20 @@
 
 {{csrf_field()}}
 <div class="form-group col-lg-12">
+  <div >
+    <img src="/images/{{$banner->file}}">
+  </div>
 <label for="name">Название</label> 
-<input type="file" name="file" id="file" class="form-control">
+<input type="file" name="file" id="file" class="form-control" {{$banner->name}}>
 </div>
 <div class="form-group col-lg-12">
 <label for="start_date">Дата начала</label> 
-<input type="date" name="start_date" value="{{date('d.m.y')}}" id="start_date" class="form-control">
+<input type="date" name="start_date" value="{{$banner->start_date}}" id="start_date" class="form-control">
 </div>
 <hr>
 <div class="form-group col-lg-12">
 <label for="start_date">Дата окончания</label> 
-<input type="date" name="end_date" id="end_date" class="form-control">
+<input type="date" name="end_date" id="end_date" value="{{$banner->end_date}}" class="form-control">
 </div>
 <hr>
 <div class="form-group col-lg-12">
