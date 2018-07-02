@@ -27,7 +27,7 @@
                           <tr>
                               <td><img src="{{$n->file}}" width="100" /></td>
                               <td>
-                                  <a href="{{route('banner.edit', $n->id)}}">Edit</a> | 
+                                  <a href="{{route('banner.edit', $n->id)}}">Редактировать</a> | 
                                   <form method="post" action="{{route('banner.destroy', $n->id)}}"  enctype="multipart/form-data">
     {{ csrf_field() }}
     {{ method_field('delete') }}

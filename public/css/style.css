@@ -3160,7 +3160,7 @@ margin-bottom: 15px;
   color: #fff;
   font-weight: bold;
   line-height: 32px;
-  margin-top: 83px;
+  /*margin-top: 83px;*/
 }
 .news-slider-info .date {
   font-size: 12px;
@@ -9384,6 +9384,8 @@ display: inherit;
 .main-news-slider .img {
   background-size: cover !important;
 }
+@media (max-width: 600px) {
 .news-body .main-news .news.news-slider-wrap, .interview-body .main-news .news.news-slider-wrap {
   height: auto !important;
+}
 }

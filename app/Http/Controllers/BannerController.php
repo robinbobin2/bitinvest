@@ -20,14 +20,34 @@ class BannerController extends Controller
         $front = FrontEnd::all();
         return view('admin.banners.create', compact('front'));
     }
+    public function edit($id)
+    {
+        $banner = Banner::findOrFail($id);
+        $front = FrontEnd::all();
+        return view('admin.banners.edit', compact('front', 'banner'));
+    }
 
     public function store(Request $request)
     {
         if ($file = $request->file('file')) {
             $name = time(). $file->getClientOriginalName();
             $file->move('images', $name);
-            $banner = Banner::create(['file'=>$name, 'start_date'=>$request->start_date, 'end_date'=>$request->end_date]);
+            $banner = Banner::create(['file'=>$name, 'start_date'=>$request->start_date, 'end_date'=>$request->end_date, 'link'=>$request->link]);
             $banner->frontends()->sync($request->front);
+        }
+        return redirect('/admin/banners')
+            ->with('message', 'Banner Created Successfully');
+    }
+    public function update(Request $request, $id)
+    {
+        $banner = Banner::findOrFail($id);
+        if ($file = $request->file('file')) {
+            $name = time(). $file->getClientOriginalName();
+            $file->move('images', $name);
+            $banner->update(['file'=>$name, 'start_date'=>$request->start_date, 'end_date'=>$request->end_date, 'link'=>$request->link]);
+            $banner->frontends()->sync($request->front);
+        } else {
+            $banner->update(['start_date'=>$request->start_date, 'end_date'=>$request->end_date, 'link'=>$request->link]);
         }
         return redirect('/admin/banners')
             ->with('message', 'Banner Created Successfully');
