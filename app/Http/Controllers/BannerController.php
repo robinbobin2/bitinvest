@@ -38,13 +38,16 @@ class BannerController extends Controller
         return redirect('/admin/banners')
             ->with('message', 'Banner Created Successfully');
     }
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
+        $banner = Banner::findOrFail($id)
         if ($file = $request->file('file')) {
             $name = time(). $file->getClientOriginalName();
             $file->move('images', $name);
-            $banner = Banner::create(['file'=>$name, 'start_date'=>$request->start_date, 'end_date'=>$request->end_date]);
+            $banner->update(['file'=>$name, 'start_date'=>$request->start_date, 'end_date'=>$request->end_date]);
             $banner->frontends()->sync($request->front);
+        } else {
+            $banner->update(['start_date'=>$request->start_date, 'end_date'=>$request->end_date]);
         }
         return redirect('/admin/banners')
             ->with('message', 'Banner Created Successfully');
