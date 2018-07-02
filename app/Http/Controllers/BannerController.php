@@ -40,7 +40,7 @@ class BannerController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $banner = Banner::findOrFail($id)
+        $banner = Banner::findOrFail($id);
         if ($file = $request->file('file')) {
             $name = time(). $file->getClientOriginalName();
             $file->move('images', $name);
