@@ -13,7 +13,7 @@
 {{csrf_field()}}
 <div class="form-group col-lg-12">
   <div >
-    <img src="/images/{{$banner->file}}">
+    <img src="{{$banner->file}}">
   </div>
 <label for="name">Название</label> 
 <input type="file" name="file" id="file" class="form-control" {{$banner->name}}>
@@ -32,13 +32,17 @@
                            <h2>Где отображать</h2>
 
                                     @foreach($front as $item)
-                                       <label> <input type="checkbox" name="front[]" value="{{$item->id}}"> {{$item->name}}</label><br>
+                                       <label> <input type="checkbox" name="front[]"
+                                @if( count($banner->frontends->where('id', $item->id)) )
+                                    checked="checked"
+                               @endif
+                                        value="{{$item->id}}"> {{$item->name}}</label><br>
                                     @endforeach
 </div>
 
 
 </div>
-<input type="submit" class="btn btn-primary" value="Создать баннер" /> 
+<input type="submit" class="btn btn-primary" value="Редактировать баннер" /> 
 </form>
 </div>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
