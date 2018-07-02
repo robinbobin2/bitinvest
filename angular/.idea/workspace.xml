@@ -31,11 +31,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="review-categories.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="review-categories.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/review/review-categories/review-categories.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+            <state relative-caret-position="538">
+              <caret line="46" column="55" selection-start-line="46" selection-start-column="55" selection-end-line="46" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="all-review.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/review/all-review/all-review.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="55" column="98" selection-start-line="15" selection-start-column="12" selection-end-line="59" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -44,7 +53,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>*ngIf</find>
       <find>= fals</find>
       <find>numb</find>
       <find>handleFileInput</find>
@@ -74,6 +82,7 @@
       <find>main-news-slider</find>
       <find>interv</find>
       <find>&lt;div class=&quot;desc-wrap&quot;&gt;</find>
+      <find>posts/</find>
     </findStrings>
     <replaceStrings>
       <replace>portfolioItem['symbol']</replace>
@@ -91,6 +100,7 @@
       <replace>data?.</replace>
       <replace>analytics/item</replace>
       <replace>analytics/category</replace>
+      <replace>review/</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -142,11 +152,11 @@
         <option value="$PROJECT_DIR$/app/analytics/all-analytics/all-analytics.component.ts" />
         <option value="$PROJECT_DIR$/app/interview/all-interview/all-interview.component.html" />
         <option value="$PROJECT_DIR$/app/interview/all-interview/all-interview.component.ts" />
-        <option value="$PROJECT_DIR$/app/review/all-review/all-review.component.html" />
         <option value="$PROJECT_DIR$/app/news/all-news/all-news.component.ts" />
         <option value="$PROJECT_DIR$/app/crypto/crypto.component.ts" />
         <option value="$PROJECT_DIR$/app/crypto/crypto.component.html" />
         <option value="$PROJECT_DIR$/app/review/review-categories/review-categories.component.html" />
+        <option value="$PROJECT_DIR$/app/review/all-review/all-review.component.html" />
       </list>
     </option>
   </component>
@@ -566,12 +576,12 @@
       <workItem from="1527928097804" duration="84026000" />
       <workItem from="1528871430902" duration="39861000" />
       <workItem from="1529295323982" duration="41687000" />
-      <workItem from="1530020835088" duration="35686000" />
+      <workItem from="1530020835088" duration="35939000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="358432000" />
+    <option name="totallyTimeSpent" value="358685000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1021,13 +1031,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/review/all-review/all-review.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="75" column="12" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/review/review.component.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1043,8 +1046,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/review/review-categories/review-categories.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        <state relative-caret-position="538">
+          <caret line="46" column="55" selection-start-line="46" selection-start-column="55" selection-end-line="46" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/review/all-review/all-review.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="55" column="98" selection-start-line="15" selection-start-column="12" selection-end-line="59" selection-end-column="18" />
         </state>
       </provider>
     </entry>
