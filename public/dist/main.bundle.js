@@ -9141,7 +9141,7 @@ var _a;
 /***/ "./angular/app/sidebar/banner/banner.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<a style=\"height: auto;\" href=\"{{{{banner?.link}}}}\" target=\"_blank\" class=\"banner-black\">\n    <img src=\"{{banner?.file}}\" alt=\"\" style=\"max-width: 100%;\">\n</a>"
+module.exports = "<a style=\"height: auto;\" href=\"{{banner?.link}}\" target=\"_blank\" class=\"banner-black\">\n    <img src=\"{{banner?.file}}\" alt=\"\" style=\"max-width: 100%;\">\n</a>"
 
 /***/ }),
 
