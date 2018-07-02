@@ -43,8 +43,8 @@
       <file leaf-file-name="all-review.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/review/all-review/all-review.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="55" column="98" selection-start-line="15" selection-start-column="12" selection-end-line="59" selection-end-column="18" />
+            <state relative-caret-position="344">
+              <caret line="61" column="16" lean-forward="true" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -576,12 +576,12 @@
       <workItem from="1527928097804" duration="84026000" />
       <workItem from="1528871430902" duration="39861000" />
       <workItem from="1529295323982" duration="41687000" />
-      <workItem from="1530020835088" duration="35939000" />
+      <workItem from="1530020835088" duration="35940000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="358685000" />
+    <option name="totallyTimeSpent" value="358686000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1053,8 +1053,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/review/all-review/all-review.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="55" column="98" selection-start-line="15" selection-start-column="12" selection-end-line="59" selection-end-column="18" />
+        <state relative-caret-position="344">
+          <caret line="61" column="16" lean-forward="true" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
         </state>
       </provider>
     </entry>

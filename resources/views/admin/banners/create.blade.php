@@ -24,6 +24,10 @@
 <label for="start_date">Дата окончания</label> 
 <input type="date" name="end_date" id="end_date" class="form-control">
 </div>
+<div class="form-group col-lg-12">
+<label for="link">Полная ссылка</label> 
+<input type="text" value="http://" placeholder="http://" name="link" id="link" class="form-control">
+</div>
 <hr>
 <div class="form-group col-lg-12">
                            <h2>Где отображать</h2>

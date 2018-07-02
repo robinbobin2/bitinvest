@@ -9,7 +9,7 @@ class Banner extends Model
     //
     protected $fillable = [
 
-    	'file', 'start_date', 'end_date'
+    	'file', 'start_date', 'end_date', 'link'
 
     ];
     protected $uploads = '/images/';
